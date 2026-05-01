@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="he" dir="rtl" style="background:#F4F4F0">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,8 +41,10 @@
 
   <style>
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { background: #F4F4F0; color: #1C1C1C; font-family: 'Heebo', sans-serif; }
+    html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+    @view-transition { navigation: auto; }
+    ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.08s; }
+    body { background: #F4F4F0; color: #1C1C1C; font-family: 'Heebo', sans-serif; overflow-x: hidden; }
 
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #F4F4F0; }
@@ -179,8 +181,42 @@
     }
     .nav-drop-item:hover { color: #E8A020; background: rgba(255,255,255,0.04); border-right-color: #E8A020; }
 
+    .catalog-layout { display: grid; gap: 40px; align-items: start; }
+    .catalog-layout.with-sidebar { grid-template-columns: 240px 1fr; }
+    .catalog-layout.no-sidebar   { grid-template-columns: 1fr; }
+
+    /* ── Hamburger / Mobile Drawer ── */
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; justify-content: center; gap: 5px; }
+    .hamburger-line { display: block; width: 22px; height: 2px; background: #fff; border-radius: 1px; transition: transform 0.25s, opacity 0.25s; }
+    .hamburger.open .hamburger-line:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open .hamburger-line:nth-child(2) { opacity: 0; }
+    .hamburger.open .hamburger-line:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .mm-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 149; }
+    .mm-overlay.open { display: block; }
+    .mobile-menu { position: fixed; top: 0; right: 0; bottom: 0; width: 280px; background: #1A1A1A; border-left: 1px solid #2A2A2A; z-index: 150; overflow-y: auto; transform: translateX(110%); transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); box-shadow: -12px 0 40px rgba(0,0,0,0.6); }
+    .mobile-menu.open { transform: translateX(0); }
+    .mm-header { display: flex; align-items: center; justify-content: space-between; padding: 0 20px; height: 64px; border-bottom: 1px solid #222; }
+    .mm-close { background: none; border: none; cursor: pointer; color: #666; font-size: 22px; line-height: 1; padding: 4px; transition: color 0.15s; }
+    .mm-close:hover { color: #fff; }
+    .mm-link { display: block; padding: 13px 24px; color: #AAAAAA; text-decoration: none; font-size: 15px; font-weight: 500; border-right: 3px solid transparent; transition: all 0.15s; cursor: pointer; }
+    .mm-link:hover { color: #E8A020; border-right-color: #E8A020; background: rgba(255,255,255,0.04); }
+    .mm-link.sub { padding-right: 40px; font-size: 13px; color: #777; }
+    .mm-link.active { color: #E8A020; background: rgba(232,160,32,0.07); }
+    .mm-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #444; padding: 16px 24px 4px; }
+    .mm-divider { height: 1px; background: #252525; margin: 8px 0; }
+
     @media (max-width: 768px) {
       .sidebar-mobile-hidden { display: none; }
+      .catalog-layout.with-sidebar { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 900px) {
+      .nav-desktop-links { display: none !important; }
+      .hamburger { display: flex; }
+    }
+    .products-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+    @media (max-width: 600px) {
+      .catalog-content-pad { padding: 24px 16px !important; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
     }
 
     .pulse-gold {
@@ -646,6 +682,7 @@
     // ── Navbar ──
     const Navbar = ({ activeTab, setActiveTab }) => {
       const [openDrop, setOpenDrop] = useState(null);
+      const [menuOpen, setMenuOpen] = useState(false);
 
       const CATALOG = [
         { label: 'דרייברים',  tab: 'דרייברים'  },
@@ -668,13 +705,14 @@
       };
 
       return (
+        <>
         <nav style={{background:'#1A1A1A',borderBottom:'1px solid #2A2A2A',position:'sticky',top:0,zIndex:100,height:64,display:'flex',alignItems:'center'}}>
           <div style={{maxWidth:1200,margin:'0 auto',padding:'0 32px',display:'flex',alignItems:'center',gap:32,width:'100%'}}>
             <a href="index.html" style={{display:'flex',alignItems:'center',gap:4,textDecoration:'none',flexShrink:0,direction:'ltr'}}>
               <span style={{fontSize:22,fontWeight:900,letterSpacing:1,color:'#E8A020'}}>LED</span>
               <span style={{fontSize:22,fontWeight:300,color:'#FFFFFF'}}>LINK</span>
             </a>
-            <div style={{display:'flex',alignItems:'center',gap:4}}>
+            <div className="nav-desktop-links" style={{display:'flex',alignItems:'center',gap:4}}>
               {/* קטלוג מוצרים dropdown */}
               <div style={{position:'relative'}} onMouseEnter={()=>setOpenDrop('catalog')} onMouseLeave={()=>setOpenDrop(null)}>
                 <button style={{display:'flex',alignItems:'center',gap:4,color:'#E8A020',background:'rgba(232,160,32,0.1)',border:'none',cursor:'pointer',fontSize:15,fontWeight:700,padding:'6px 14px',borderRadius:6,fontFamily:'Heebo,sans-serif'}}>
@@ -704,15 +742,55 @@
                   </div>
                 )}
               </div>
+              <a href="guides.html" style={{color:'#AAAAAA',textDecoration:'none',fontSize:15,fontWeight:500,padding:'6px 14px',borderRadius:6}}>מדריכים</a>
+              <a href="about.html" style={{color:'#AAAAAA',textDecoration:'none',fontSize:15,fontWeight:500,padding:'6px 14px',borderRadius:6}}>אודות</a>
+              <a href="index.html#contact" style={{color:'#AAAAAA',textDecoration:'none',fontSize:15,fontWeight:500,padding:'6px 14px',borderRadius:6}}>צור קשר</a>
             </div>
-            <a href="guides.html" style={{color:'#AAAAAA',textDecoration:'none',fontSize:15,fontWeight:500,padding:'6px 14px',borderRadius:6}}>מדריכים</a>
             <div style={{flex:1}}></div>
+            <button className={menuOpen ? 'hamburger open' : 'hamburger'} aria-label="תפריט" onClick={()=>setMenuOpen(m=>!m)}>
+              <span className="hamburger-line"></span>
+              <span className="hamburger-line"></span>
+              <span className="hamburger-line"></span>
+            </button>
             <a href={`https://wa.me/972524444470?text=${encodeURIComponent('שלום LEDLink, אשמח לשמוע על המוצרים והשירותים שלכם.')}`} target="_blank" rel="noopener noreferrer"
               className="btn-gold" style={{fontSize:13,padding:'8px 18px',display:'flex',alignItems:'center',gap:6,textDecoration:'none',borderRadius:6,fontWeight:700}}>
               {Icons.wa} שלח הודעה
             </a>
           </div>
         </nav>
+
+        {/* Mobile Menu Overlay */}
+        <div className={menuOpen ? 'mm-overlay open' : 'mm-overlay'} onClick={()=>setMenuOpen(false)}></div>
+
+        {/* Mobile Menu Drawer */}
+        <div className={menuOpen ? 'mobile-menu open' : 'mobile-menu'}>
+          <div className="mm-header">
+            <div style={{direction:'ltr',display:'flex',alignItems:'center',gap:3}}>
+              <span style={{fontSize:18,fontWeight:900,color:'#E8A020'}}>LED</span>
+              <span style={{fontSize:18,fontWeight:300,color:'#fff'}}>LINK</span>
+            </div>
+            <button className="mm-close" onClick={()=>setMenuOpen(false)} aria-label="סגור">✕</button>
+          </div>
+          <div className="mm-label">קטלוג מוצרים</div>
+          {CATALOG.map(item => (
+            <span key={item.tab} className={activeTab===item.tab ? 'mm-link active' : 'mm-link'}
+              onClick={()=>{ setActiveTab(item.tab); setMenuOpen(false); }}>
+              {item.label}
+            </span>
+          ))}
+          <div className="mm-divider"></div>
+          <div className="mm-label">כלים ומדריכים</div>
+          <a href="tools.html" className="mm-link">כלי תכנון</a>
+          <a href="tools.html?tool=voltage" className="mm-link sub">⚡ מפל מתח</a>
+          <a href="tools.html?tool=lumen" className="mm-link sub">💡 לומן לחלל</a>
+          <a href="tools.html?tool=roi" className="mm-link sub">♻️ חיסכון אנרגיה</a>
+          <a href="tools.html?tool=beam-linear" className="mm-link sub">📏 פיזור אלומה</a>
+          <a href="guides.html" className="mm-link">מדריכים</a>
+          <div className="mm-divider"></div>
+          <a href="about.html" className="mm-link">אודות</a>
+          <a href="index.html#contact" className="mm-link" onClick={()=>setMenuOpen(false)}>צור קשר</a>
+        </div>
+        </>
       );
     };
 
@@ -892,7 +970,7 @@
           <Navbar activeTab={activeTab} setActiveTab={switchTab} />
 
           {/* Tab bar */}
-          <div style={{borderBottom:'1px solid #E0DDD6',background:'#FFFFFF',position:'sticky',top:60,zIndex:90,boxShadow:'0 1px 4px rgba(0,0,0,0.04)'}}>
+          <div style={{borderBottom:'1px solid #E0DDD6',background:'#FFFFFF',position:'sticky',top:64,zIndex:90,boxShadow:'0 1px 4px rgba(0,0,0,0.04)'}}>
             <div style={{maxWidth:1280,margin:'0 auto',padding:'0 24px',display:'flex',gap:0}}>
               {TABS.map(t => {
                 const cnt = products.filter(p => p.category === t.id).length;
@@ -906,7 +984,7 @@
                       background:'none',cursor:'pointer',
                       color: active ? '#E8A020' : '#777777',
                       fontFamily:'Heebo,sans-serif',
-                      fontSize:14,fontWeight:active?700:500,
+                      fontSize:14,fontWeight:700,
                       transition:'all 0.15s',
                       display:'flex',alignItems:'center',gap:8,
                     }}>
@@ -923,7 +1001,7 @@
           </div>
 
           {/* Content */}
-          <div style={{maxWidth:1280,margin:'0 auto',padding:'40px 24px'}}>
+          <div className="catalog-content-pad" style={{maxWidth:1280,margin:'0 auto',padding:'40px 24px'}}>
 
             {/* Category header */}
             <CategoryHeader label={tabInfo.label} count={filtered.length} desc={tabInfo.desc} />
@@ -953,11 +1031,11 @@
             </div>
 
             {/* Main layout */}
-            <div style={{display:'grid', gridTemplateColumns: showFilters ? '240px 1fr' : '1fr', gap:40, alignItems:'start'}}>
+            <div className={showFilters ? 'catalog-layout with-sidebar' : 'catalog-layout no-sidebar'}>
 
               {/* Sidebar */}
               {showFilters && (
-                <div style={{background:'#FFFFFF',border:'1px solid #E0DDD6',borderRadius:10,padding:'24px 20px',position:'sticky',top:130,boxShadow:'0 2px 8px rgba(0,0,0,0.04)'}}>
+                <div className="sidebar-mobile-hidden" style={{background:'#FFFFFF',border:'1px solid #E0DDD6',borderRadius:10,padding:'24px 20px',position:'sticky',top:130,boxShadow:'0 2px 8px rgba(0,0,0,0.04)'}}>
                   <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:24,paddingBottom:16,borderBottom:'1px solid #E8E5E0'}}>
                     <span style={{color:'#E8A020'}}>{Icons.filter}</span>
                     <span style={{fontSize:13,fontWeight:700,color:'#1C1C1C'}}>סינון</span>
@@ -983,11 +1061,7 @@
                     </button>
                   </div>
                 ) : (
-                  <div style={{
-                    display:'grid',
-                    gridTemplateColumns:'repeat(auto-fill, minmax(200px, 1fr))',
-                    gap:16,
-                  }}>
+                  <div className="products-grid">
                     {filtered.map(p => (
                       <ProductCard key={p.id} product={p} onClick={setSelected} />
                     ))}

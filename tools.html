@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="he" dir="rtl" style="background:#F4F4F0">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,6 +31,8 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+    @view-transition { navigation: auto; }
+    ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.08s; }
     body { background: #F4F4F0; color: #1C1C1C; font-family: 'Heebo', sans-serif; direction: rtl; }
     input:focus, select:focus { outline: none; border-color: #E8A020; }
     .btn-gold { background: #E8A020; color: #fff; font-weight: 700; border-radius: 6px; padding: 10px 20px; transition: background 0.15s; border: none; cursor: pointer; }
@@ -69,6 +71,27 @@
     .footer-legal a:hover { color: #E8A020; }
     @media (max-width: 768px) { .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; } }
     @media (max-width: 480px) { .footer-top { grid-template-columns: 1fr; } }
+
+    /* ── Hamburger ── */
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; justify-content: center; gap: 5px; }
+    .hamburger-line { display: block; width: 22px; height: 2px; background: #fff; border-radius: 1px; transition: transform 0.25s, opacity 0.25s; }
+    .hamburger.open .hamburger-line:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open .hamburger-line:nth-child(2) { opacity: 0; }
+    .hamburger.open .hamburger-line:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .mm-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 149; }
+    .mm-overlay.open { display: block; }
+    .mobile-menu { position: fixed; top: 0; right: 0; bottom: 0; width: 280px; background: #1A1A1A; border-left: 1px solid #2A2A2A; z-index: 150; overflow-y: auto; transform: translateX(110%); transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); box-shadow: -12px 0 40px rgba(0,0,0,0.6); }
+    .mobile-menu.open { transform: translateX(0); }
+    .mm-header { display: flex; align-items: center; justify-content: space-between; padding: 0 20px; height: 64px; border-bottom: 1px solid #222; }
+    .mm-close { background: none; border: none; cursor: pointer; color: #666; font-size: 22px; line-height: 1; padding: 4px; transition: color 0.15s; }
+    .mm-close:hover { color: #fff; }
+    .mm-link { display: block; padding: 13px 24px; color: #AAAAAA; text-decoration: none; font-size: 15px; font-weight: 500; border-right: 3px solid transparent; transition: all 0.15s; }
+    .mm-link:hover { color: #E8A020; border-right-color: #E8A020; background: rgba(255,255,255,0.04); }
+    .mm-link.sub { padding-right: 40px; font-size: 13px; color: #777; }
+    .mm-link.active { color: #E8A020; background: rgba(232,160,32,0.07); }
+    .mm-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #444; padding: 16px 24px 4px; }
+    .mm-divider { height: 1px; background: #252525; margin: 8px 0; }
+    @media (max-width: 900px) { .nav-desktop { display: none !important; } .hamburger { display: flex; } }
   </style>
 
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -509,6 +532,7 @@
     const App = () => {
       const [tool, setTool] = useState('voltage');
       const [openDrop, setOpenDrop] = useState(null);
+      const [menuOpen, setMenuOpen] = useState(false);
 
       useEffect(() => {
         const t = new URLSearchParams(window.location.search).get('tool');
@@ -545,9 +569,7 @@
                 <span style={{fontSize:22, fontWeight:900, letterSpacing:1, color:'#E8A020'}}>LED</span>
                 <span style={{fontSize:22, fontWeight:300, color:'#FFFFFF'}}>Link</span>
               </a>
-              <div style={{display:'flex', alignItems:'center', gap:4}}>
-                <a href="index.html" style={{color:'#AAAAAA', textDecoration:'none', fontSize:15, fontWeight:500, padding:'6px 14px', borderRadius:6}}>דף הבית</a>
-
+              <div className="nav-desktop" style={{display:'flex', alignItems:'center', gap:4}}>
                 {/* קטלוג מוצרים dropdown */}
                 <div style={{position:'relative'}} onMouseEnter={()=>setOpenDrop('catalog')} onMouseLeave={()=>setOpenDrop(null)}>
                   <a href="catalog.html" style={{display:'flex', alignItems:'center', gap:4, color:'#AAAAAA', textDecoration:'none', fontSize:15, fontWeight:500, padding:'6px 14px', borderRadius:6}}>
@@ -577,9 +599,16 @@
                     </div>
                   )}
                 </div>
+                <a href="guides.html" style={{color:'#AAAAAA', textDecoration:'none', fontSize:15, fontWeight:500, padding:'6px 14px', borderRadius:6}}>מדריכים</a>
+                <a href="about.html" style={{color:'#AAAAAA', textDecoration:'none', fontSize:15, fontWeight:500, padding:'6px 14px', borderRadius:6}}>אודות</a>
+                <a href="index.html#contact" style={{color:'#AAAAAA', textDecoration:'none', fontSize:15, fontWeight:500, padding:'6px 14px', borderRadius:6}}>צור קשר</a>
               </div>
-              <a href="guides.html" style={{color:'#AAAAAA', textDecoration:'none', fontSize:15, fontWeight:500, padding:'6px 14px', borderRadius:6}}>מדריכים</a>
               <div style={{flex:1}}></div>
+              <button className={menuOpen ? 'hamburger open' : 'hamburger'} aria-label="תפריט" onClick={()=>setMenuOpen(m=>!m)}>
+                <span className="hamburger-line"></span>
+                <span className="hamburger-line"></span>
+                <span className="hamburger-line"></span>
+              </button>
               <a href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('שלום LEDLink, אשמח לשמוע על המוצרים והשירותים שלכם.')}`}
                 target="_blank" rel="noopener noreferrer"
                 style={{background:'#E8A020', color:'#fff', fontWeight:700, fontSize:13, padding:'8px 18px', borderRadius:6, textDecoration:'none', display:'flex', alignItems:'center', gap:6}}>
@@ -587,6 +616,35 @@
               </a>
             </div>
           </nav>
+
+          {/* Mobile Menu Overlay */}
+          <div className={menuOpen ? 'mm-overlay open' : 'mm-overlay'} onClick={()=>setMenuOpen(false)}></div>
+
+          {/* Mobile Menu Drawer */}
+          <div className={menuOpen ? 'mobile-menu open' : 'mobile-menu'}>
+            <div className="mm-header">
+              <div style={{direction:'ltr',display:'flex',alignItems:'center',gap:3}}>
+                <span style={{fontSize:18,fontWeight:900,color:'#E8A020'}}>LED</span>
+                <span style={{fontSize:18,fontWeight:300,color:'#fff'}}>LINK</span>
+              </div>
+              <button className="mm-close" onClick={()=>setMenuOpen(false)} aria-label="סגור">✕</button>
+            </div>
+            <div className="mm-label">קטלוג</div>
+            <a href="catalog.html" className="mm-link">קטלוג מוצרים</a>
+            <a href="catalog.html?tab=דרייברים" className="mm-link sub">דרייברים</a>
+            <a href="catalog.html?tab=סטריפ LED" className="mm-link sub">סטריפ LED</a>
+            <a href="catalog.html?tab=פרופילים" className="mm-link sub">פרופילים</a>
+            <div className="mm-divider"></div>
+            <div className="mm-label">כלים ומדריכים</div>
+            <span className="mm-link active" style={{cursor:'default'}}>כלי תכנון</span>
+            {TOOL_ITEMS.map(item => (
+              <a key={item.id} className="mm-link sub" style={{cursor:'pointer'}} onClick={()=>{ setTool(item.id); setMenuOpen(false); }}>{item.label}</a>
+            ))}
+            <a href="guides.html" className="mm-link">מדריכים</a>
+            <div className="mm-divider"></div>
+            <a href="about.html" className="mm-link">אודות</a>
+            <a href="index.html#contact" className="mm-link" onClick={()=>setMenuOpen(false)}>צור קשר</a>
+          </div>
 
           {/* Page header */}
           <div style={{background:'#1A1A1A', padding:'48px 32px 40px'}}>
@@ -694,5 +752,6 @@
 
     ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
   </script>
+  <script src="a11y-widget.js"></script>
 </body>
 </html>
