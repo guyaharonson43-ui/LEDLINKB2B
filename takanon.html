@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>תקנון ותנאי שימוש – LEDLink</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Heebo', sans-serif; background: #F4F4F0; color: #1C1C1C; direction: rtl; }
+
+    .navbar {
+      background: #1A1A1A; position: sticky; top: 0; z-index: 100;
+      height: 64px; display: flex; align-items: center;
+      border-bottom: 1px solid #2A2A2A;
+    }
+    .navbar-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 32px;
+      display: flex; align-items: center; gap: 40px; width: 100%;
+    }
+    .logo { display: flex; align-items: center; gap: 4px; text-decoration: none; direction: ltr; }
+    .logo-led { font-size: 22px; font-weight: 900; color: #E8A020; }
+    .logo-link { font-size: 22px; font-weight: 300; color: #fff; }
+    .nav-back { color: #AAAAAA; text-decoration: none; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 6px; transition: color 0.15s; }
+    .nav-back:hover { color: #E8A020; }
+
+    .page-hero {
+      background: #1A1A1A; padding: 48px 32px;
+      border-bottom: 1px solid #2A2A2A;
+    }
+    .page-hero-inner { max-width: 800px; margin: 0 auto; }
+    .page-label { font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: #E8A020; margin-bottom: 12px; }
+    .page-title { font-size: 36px; font-weight: 900; color: #fff; margin-bottom: 8px; }
+    .page-date { font-size: 13px; color: #666; }
+
+    .content-wrap { max-width: 800px; margin: 0 auto; padding: 60px 32px 80px; }
+
+    .section-block { margin-bottom: 40px; }
+    .section-block h2 { font-size: 18px; font-weight: 800; color: #1C1C1C; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid #E8A020; display: inline-block; }
+    .section-block p { font-size: 15px; color: #444; line-height: 1.9; margin-bottom: 12px; }
+    .section-block ul { padding-right: 20px; margin-top: 8px; }
+    .section-block ul li { font-size: 15px; color: #444; line-height: 1.9; margin-bottom: 6px; }
+
+    .footer { background: #111; padding: 48px 32px 0; border-top: 1px solid #222; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid #1E1E1E; }
+    .footer-logo-led { font-size: 24px; font-weight: 900; color: #E8A020; }
+    .footer-logo-link { font-size: 24px; font-weight: 300; color: #fff; }
+    .footer-tagline { font-size: 13px; color: #555; margin-top: 10px; line-height: 1.6; max-width: 220px; }
+    .footer-col-title { font-size: 11px; font-weight: 700; color: #555; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 18px; }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-link { color: #888; text-decoration: none; font-size: 14px; transition: color 0.15s; display: flex; align-items: center; gap: 9px; }
+    .footer-link:hover { color: #E8A020; }
+    .footer-link svg { flex-shrink: 0; opacity: 0.5; transition: opacity 0.15s; }
+    .footer-link:hover svg { opacity: 1; }
+    .footer-hours-row { display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: #888; gap: 12px; }
+    .footer-hours-row + .footer-hours-row { margin-top: 12px; }
+    .hours-open { color: #4CAF50; font-size: 12px; font-weight: 600; }
+    .hours-closed { color: #555; font-size: 12px; font-weight: 600; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding: 20px 0; }
+    .footer-copy { font-size: 12px; color: #3A3A3A; }
+    .footer-legal { display: flex; flex-wrap: wrap; gap: 6px 20px; }
+    .footer-legal a { font-size: 12px; color: #3A3A3A; text-decoration: none; transition: color 0.15s; }
+    .footer-legal a:hover { color: #E8A020; }
+    @media (max-width: 768px) { .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; } }
+    @media (max-width: 480px) { .footer-top { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="home.html" class="logo">
+        <span class="logo-led">LED</span><span class="logo-link">LINK</span>
+      </a>
+      <a href="home.html" class="nav-back">← חזרה לדף הבית</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="page-label">מסמך משפטי</div>
+      <h1 class="page-title">תקנון ותנאי שימוש</h1>
+      <div class="page-date">עדכון אחרון: אפריל 2026 | לדלינק בע"מ, ח.פ. 514305903</div>
+    </div>
+  </div>
+
+  <div class="content-wrap">
+
+    <div class="section-block">
+      <h2>כללי</h2>
+      <p>ברוכים הבאים לאתר LEDLink (להלן: "האתר"). האתר מופעל על ידי לדלינק בע"מ, ח.פ. 514305903, יצירה 19, רחובות (להלן: "החברה").</p>
+      <p>השימוש באתר ובשירותים המוצעים בו כפוף לתנאים המפורטים להלן. בכניסה לאתר ו/או בשימוש בו, המשתמש מצהיר כי קרא את התקנון והסכים לתנאיו.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>שימוש באתר</h2>
+      <p>האתר מיועד לצפייה בקטלוג המוצרים של החברה, לקבלת מידע טכני ולפנייה לשירות הלקוחות. אין לעשות שימוש באתר למטרות בלתי חוקיות.</p>
+      <ul>
+        <li>אין להעתיק, לשכפל או להפיץ תוכן מהאתר ללא אישור בכתב מהחברה.</li>
+        <li>אין להכניס לאתר תוכנות זדוניות או לפגוע בתפקודו.</li>
+        <li>החברה שומרת לעצמה את הזכות לשנות את תכני האתר בכל עת.</li>
+      </ul>
+    </div>
+
+    <div class="section-block">
+      <h2>מוצרים ומחירים</h2>
+      <p>המחירים המוצגים באתר, ככל שמוצגים, הם מחירי מחירון ועשויים להשתנות ללא הודעה מוקדמת. מחיר סופי ייקבע מול נציג החברה.</p>
+      <p>זמינות המוצרים כפופה למלאי הקיים. החברה תעשה כמיטב יכולתה לעמוד בזמני אספקה שנסגרו.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>קניין רוחני</h2>
+      <p>כל התכנים באתר, לרבות טקסטים, תמונות, עיצובים, לוגו ומאפיינים טכניים, הם רכושה הבלעדי של החברה או של ספקיה. אין לעשות בהם שימוש ללא אישור מפורש בכתב.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>אחריות</h2>
+      <p>החברה אינה אחראית לנזקים שייגרמו כתוצאה משימוש לא נכון במוצרים. מפרטים טכניים הם באחריות היצרן. מומלץ להתייעץ עם הצוות הטכני לפני כל רכישה.</p>
+      <p>החברה אינה אחראית לתקלות טכניות זמניות באתר.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>שינויים בתקנון</h2>
+      <p>החברה רשאית לעדכן תקנון זה בכל עת. גרסה מעודכנת תפורסם באתר עם תאריך העדכון. המשך השימוש באתר לאחר שינוי התקנון מהווה הסכמה לגרסתו המעודכנת.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>יצירת קשר</h2>
+      <p>לכל שאלה בנוגע לתקנון ניתן לפנות אלינו:</p>
+      <ul>
+        <li>דוא"ל: <a href="mailto:office@ledlink.co.il" style="color:#E8A020;">office@ledlink.co.il</a></li>
+        <li>טלפון: <a href="tel:+97286326059" style="color:#E8A020;">08-632-6059</a></li>
+        <li>כתובת: יצירה 19, רחובות</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div style="direction:ltr;display:inline-flex;align-items:center;gap:2px;">
+            <span class="footer-logo-led">LED</span><span class="footer-logo-link">LINK</span>
+          </div>
+          <div class="footer-tagline">פתרונות תאורה מקצועיים לפרויקטים בכל גודל. ישירות מהמפעל, רחובות.</div>
+        </div>
+        <div>
+          <div class="footer-col-title">כתובת</div>
+          <div class="footer-links">
+            <span class="footer-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              יצירה 19, רחובות
+            </span>
+            <a href="https://waze.com/ul?ll=31.8969,34.8186&navigate=yes" target="_blank" class="footer-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+              נווט ב-Waze
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">צור קשר</div>
+          <div class="footer-links">
+            <a href="tel:+97286326059" class="footer-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6 6l1-1.06a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.72 16z"/></svg>
+              08-632-6059
+            </a>
+            <a href="mailto:office@ledlink.co.il" class="footer-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              office@ledlink.co.il
+            </a>
+            <a href="https://wa.me/972524444470" target="_blank" class="footer-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">שעות פעילות</div>
+          <div class="footer-hours-row"><span class="hours-day">ראשון – חמישי</span><span class="hours-open">07:00 – 15:00</span></div>
+          <div class="footer-hours-row"><span class="hours-day">שישי</span><span class="hours-closed">סגור</span></div>
+          <div class="footer-hours-row"><span class="hours-day">שבת</span><span class="hours-closed">סגור</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2026 LEDLink – כל הזכויות שמורות</div>
+        <div class="footer-legal">
+          <a href="about.html">אודות</a>
+          <a href="takanon.html">תקנון</a>
+          <a href="privacy.html">מדיניות פרטיות</a>
+          <a href="accessibility.html">הצהרת נגישות</a>
+          <a href="faq.html">שאלות נפוצות</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="a11y-widget.js"></script>
+</body>
+</html>

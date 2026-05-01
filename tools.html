@@ -1,0 +1,698 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>כלי תכנון תאורת LED — מחשבון מפל מתח, לומן, חיסכון אנרגיה | LEDLink</title>
+  <meta name="description" content="כלי תכנון הנדסיים חינמיים לתאורת LED: מחשבון מפל מתח, חישוב לומן לחלל לפי תקן EN 12464, מחשבון חיסכון אנרגיה, מחשבון פיזור אלומה ליניארי. LEDLink רחובות.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold:       '#E8A020',
+            'gold-dim': '#C4880A',
+            ink:        '#1C1C1C',
+            muted:      '#777777',
+            border:     '#E0DDD6',
+          },
+          fontFamily: { sans: ['Heebo', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: #F4F4F0; color: #1C1C1C; font-family: 'Heebo', sans-serif; direction: rtl; }
+    input:focus, select:focus { outline: none; border-color: #E8A020; }
+    .btn-gold { background: #E8A020; color: #fff; font-weight: 700; border-radius: 6px; padding: 10px 20px; transition: background 0.15s; border: none; cursor: pointer; }
+    .btn-gold:hover { background: #C4880A; }
+    .nav-drop-item {
+      display: block; padding: 10px 20px;
+      color: #AAAAAA; text-decoration: none;
+      font-size: 14px; font-weight: 500;
+      border-right: 2px solid transparent;
+      transition: all 0.15s; background: transparent;
+      width: 100%; text-align: right; cursor: pointer;
+      font-family: 'Heebo', sans-serif; box-sizing: border-box;
+      border-top: none; border-bottom: none; border-left: none;
+    }
+    .nav-drop-item:hover { color: #E8A020; background: rgba(255,255,255,0.04); border-right-color: #E8A020; }
+    .footer { background: #111; padding: 48px 32px 0; border-top: 1px solid #222; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid #1E1E1E; }
+    .footer-logo-led { font-size: 24px; font-weight: 900; color: #E8A020; }
+    .footer-logo-link { font-size: 24px; font-weight: 300; color: #fff; }
+    .footer-tagline { font-size: 13px; color: #555; margin-top: 10px; line-height: 1.6; max-width: 220px; }
+    .footer-col-title { font-size: 11px; font-weight: 700; color: #555; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 18px; }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-link { color: #888; text-decoration: none; font-size: 14px; transition: color 0.15s; display: flex; align-items: center; gap: 9px; }
+    .footer-link:hover { color: #E8A020; }
+    .footer-link svg { flex-shrink: 0; opacity: 0.5; transition: opacity 0.15s; }
+    .footer-link:hover svg { opacity: 1; }
+    .footer-hours-row { display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: #888; gap: 12px; }
+    .footer-hours-row + .footer-hours-row { margin-top: 12px; }
+    .hours-open { color: #4CAF50; font-size: 12px; font-weight: 600; }
+    .hours-closed { color: #555; font-size: 12px; font-weight: 600; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding: 20px 0; }
+    .footer-copy { font-size: 12px; color: #3A3A3A; }
+    .footer-legal { display: flex; flex-wrap: wrap; gap: 6px 20px; }
+    .footer-legal a { font-size: 12px; color: #3A3A3A; text-decoration: none; transition: color 0.15s; }
+    .footer-legal a:hover { color: #E8A020; }
+    @media (max-width: 768px) { .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; } }
+    @media (max-width: 480px) { .footer-top { grid-template-columns: 1fr; } }
+  </style>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    const WA_NUMBER = '972524444470';
+    const waLink = (text) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+
+    const WaIcon = () => (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+      </svg>
+    );
+
+    /* ── Voltage Drop Calculator ── */
+    const VoltageDropCalc = () => {
+      const [distance, setDistance] = useState('');
+      const [totalW,   setTotalW]   = useState('');
+      const [volt,     setVolt]     = useState('24');
+      const [gauge,    setGauge]    = useState('1.5');
+      const [result,   setResult]   = useState(null);
+
+      const GAUGES = [
+        { v: '0.5',  label: '0.5 ממ"ר', r: 36.0  },
+        { v: '0.75', label: '0.75 ממ"ר', r: 24.5 },
+        { v: '1',    label: '1.0 ממ"ר', r: 18.1  },
+        { v: '1.5',  label: '1.5 ממ"ר', r: 12.1  },
+        { v: '2.5',  label: '2.5 ממ"ר', r: 7.41  },
+      ];
+
+      const calc = () => {
+        const D = parseFloat(distance), W = parseFloat(totalW), V = parseFloat(volt);
+        if (!D || !W || !V) return;
+        const g = GAUGES.find(g => g.v === gauge);
+        const I = W / V;
+        const Vdrop = (2 * D * I * g.r) / 1000;
+        const Varrival = V - Vdrop;
+        const pct = (Vdrop / V) * 100;
+        let status, color, rec;
+        if (pct <= 3)      { status = 'תקין';   color = 'green'; rec = 'הכבל מתאים לעומס הנדרש.'; }
+        else if (pct <= 5) { status = 'גבולי';  color = 'amber'; rec = `שקול מעבר ל-${volt === '12' ? '24V' : '48V'} או הגדלת ממ"ר.`; }
+        else               { status = 'בעייתי'; color = 'red';   rec = `נדרש שינוי: ${volt === '12' ? 'עבור ל-24V' : volt === '24' ? 'עבור ל-48V או הזן כבל עבה יותר' : 'הוסף נקודת הזנה נוספת'}.`; }
+        setResult({ pct: pct.toFixed(1), Vdrop: Vdrop.toFixed(2), Varrival: Varrival.toFixed(2), status, color, rec, I: I.toFixed(2) });
+      };
+
+      const waText = result
+        ? `🔆 בדיקת מפל מתח — LEDLink\n──────────────────────\n📏 מרחק מהספק למקור: ${distance} מ׳\n⚡ מתח: ${volt}V | עומס: ${totalW}W\n🔌 כבל: ${gauge} ממ"ר\n\nתוצאה: מפל ${result.pct}% (${result.Vdrop}V) — מתח שמגיע למקור האור: ${result.Varrival}V — ${result.status}\n${result.rec}\n\nאשמח לקבל הצעת מחיר למקור אור ומתח מתאים`
+        : '';
+
+      const colors = { green: 'bg-green-50 border-green-200 text-green-800', amber: 'bg-amber-50 border-amber-200 text-amber-800', red: 'bg-red-50 border-red-200 text-red-800' };
+      const icons  = { green: '✅', amber: '⚠️', red: '❌' };
+
+      return (
+        <div className="bg-white rounded-lg border border-border p-6 mb-6">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center text-xl">⚡</div>
+            <div>
+              <h3 className="font-black text-lg text-ink">מחשבון מפל מתח</h3>
+              <p className="text-xs text-muted">בדוק כמה מתח יגיע למקור האור (סטריפ, ספוט, או כל גוף DC)</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label className="block text-xs font-bold text-ink mb-1">מרחק מהספק למקור האור (מ׳)</label>
+              <input type="number" value={distance} onChange={e=>setDistance(e.target.value)} placeholder="לדוגמה: 8"
+                className="w-full border border-border rounded px-3 py-2 text-sm"/>
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-ink mb-1">סה"כ עומס (ואט)</label>
+              <input type="number" value={totalW} onChange={e=>setTotalW(e.target.value)} placeholder="לדוגמה: 72"
+                className="w-full border border-border rounded px-3 py-2 text-sm"/>
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-ink mb-1">מתח</label>
+              <select value={volt} onChange={e=>setVolt(e.target.value)} className="w-full border border-border rounded px-3 py-2 text-sm bg-white">
+                {['12','24','48'].map(v => <option key={v} value={v}>{v}V</option>)}
+              </select>
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-ink mb-1">עובי כבל</label>
+              <select value={gauge} onChange={e=>setGauge(e.target.value)} className="w-full border border-border rounded px-3 py-2 text-sm bg-white">
+                {GAUGES.map(g => <option key={g.v} value={g.v}>{g.label}</option>)}
+              </select>
+            </div>
+          </div>
+          <button onClick={calc} className="w-full bg-ink hover:bg-slate-700 text-white font-bold py-2.5 rounded transition-colors mb-4">
+            חשב מפל מתח
+          </button>
+          {result && (
+            <div className={`rounded-lg border p-4 mb-4 ${colors[result.color]}`}>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-lg">{icons[result.color]}</span>
+                <span className="font-black text-lg">{result.status} — מפל {result.pct}% ({result.Vdrop}V)</span>
+              </div>
+              <p className="text-sm mb-1">זרם: {result.I}A | מתח שמגיע למקור האור: <strong>{result.Varrival}V</strong> מתוך {volt}V</p>
+              <p className="text-sm font-bold">{result.rec}</p>
+            </div>
+          )}
+          {result && (
+            <a href={waLink(waText)} target="_blank" rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded transition-colors text-sm">
+              <WaIcon/> קבל הצעת מחיר למקור אור ומתח מתאים
+            </a>
+          )}
+        </div>
+      );
+    };
+
+    /* ── Lumen Calculator ── */
+    const LumenCalc = () => {
+      const [room,   setRoom]   = useState('סלון');
+      const [area,   setArea]   = useState('');
+      const [height, setHeight] = useState('2.7');
+      const [result, setResult] = useState(null);
+
+      const ROOMS = [
+        { name: 'סלון',     lux: 150, cu: 0.70 },
+        { name: 'מטבח',     lux: 300, cu: 0.65 },
+        { name: 'חדר שינה', lux: 100, cu: 0.70 },
+        { name: 'משרד',     lux: 500, cu: 0.70 },
+        { name: 'מסדרון',   lux: 100, cu: 0.60 },
+        { name: 'אמבטיה',   lux: 200, cu: 0.60 },
+        { name: 'חנות',     lux: 500, cu: 0.65 },
+        { name: 'מחסן',     lux: 150, cu: 0.60 },
+      ];
+
+      const calc = () => {
+        const A = parseFloat(area), H = parseFloat(height);
+        if (!A || !H) return;
+        const r = ROOMS.find(r => r.name === room);
+        const totalLm = Math.ceil(r.lux * A / (r.cu * 0.8));
+        const spacing = +(H * 0.75).toFixed(1);
+        setResult({ lux: r.lux, totalLm, spacing });
+      };
+
+      const waText = result
+        ? `💡 חישוב תאורה — LEDLink\n──────────────────────\n🏠 חדר: ${room} | שטח: ${area} מ"ר | גובה: ${height} מ׳\n📊 דרישה: ${result.lux} לוקס (תקן EN 12464)\n✨ סה"כ לומן נדרש: ${result.totalLm.toLocaleString()} lm\n📐 ריווח מומלץ: ${result.spacing} מ׳\n\nאשמח לקבל המלצה מדויקת לחלל`
+        : '';
+
+      return (
+        <div className="bg-white rounded-lg border border-border p-6 mb-6">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center text-xl">💡</div>
+            <div>
+              <h3 className="font-black text-lg text-ink">מחשבון לומן לחלל</h3>
+              <p className="text-xs text-muted">דרישת תאורה מקצועית לפי תקן EN 12464</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-4 mb-4">
+            <div className="col-span-2">
+              <label className="block text-xs font-bold text-ink mb-1">סוג חדר</label>
+              <div className="flex flex-wrap gap-2">
+                {ROOMS.map(r => (
+                  <button key={r.name} onClick={() => { setRoom(r.name); setResult(null); }}
+                    className={`px-3 py-1.5 rounded border text-xs font-bold transition-all ${room === r.name ? 'bg-ink text-white border-ink' : 'border-border text-ink hover:border-gold'}`}>
+                    {r.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-ink mb-1">שטח (מ"ר)</label>
+              <input type="number" value={area} onChange={e=>setArea(e.target.value)} placeholder="לדוגמה: 20"
+                className="w-full border border-border rounded px-3 py-2 text-sm"/>
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-ink mb-1">גובה תקרה (מ׳)</label>
+              <input type="number" value={height} onChange={e=>setHeight(e.target.value)} step="0.1"
+                className="w-full border border-border rounded px-3 py-2 text-sm"/>
+            </div>
+          </div>
+          <button onClick={calc} className="w-full bg-ink hover:bg-slate-700 text-white font-bold py-2.5 rounded transition-colors mb-4">
+            חשב תאורה נדרשת
+          </button>
+          {result && (
+            <>
+              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4">
+                <div className="grid grid-cols-3 gap-3 text-center">
+                  <div className="bg-white rounded p-3 border border-amber-200">
+                    <p className="font-black text-xl text-ink">{result.lux}</p>
+                    <p className="text-xs text-muted mt-0.5">לוקס נדרש</p>
+                  </div>
+                  <div className="bg-white rounded p-3 border border-amber-200">
+                    <p className="font-black text-xl text-amber-700">{result.totalLm.toLocaleString()}</p>
+                    <p className="text-xs text-muted mt-0.5">לומן כולל</p>
+                  </div>
+                  <div className="bg-white rounded p-3 border border-amber-200">
+                    <p className="font-black text-xl text-ink">{result.spacing}מ׳</p>
+                    <p className="text-xs text-muted mt-0.5">ריווח בין גופים</p>
+                  </div>
+                </div>
+              </div>
+              <a href={waLink(waText)} target="_blank" rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded transition-colors text-sm">
+                <WaIcon/> קבל המלצה מדויקת לחלל שלך
+              </a>
+            </>
+          )}
+        </div>
+      );
+    };
+
+    /* ── ROI / Energy Saving Calculator ── */
+    const ROICalc = () => {
+      const [fixtures, setFixtures] = useState('');
+      const [oldWatt,  setOldWatt]  = useState('');
+      const [newWatt,  setNewWatt]  = useState('');
+      const [hours,    setHours]    = useState('8');
+      const [rate,     setRate]     = useState('0.65');
+      const [invest,   setInvest]   = useState('');
+      const [result,   setResult]   = useState(null);
+
+      const calc = () => {
+        const N = parseFloat(fixtures), Wo = parseFloat(oldWatt), Wn = parseFloat(newWatt);
+        const H = parseFloat(hours), R = parseFloat(rate), Inv = parseFloat(invest) || 0;
+        if (!N || !Wo || !Wn || !H || !R) return;
+        const costOld = N * Wo * H * 365 * R / 1000;
+        const costNew = N * Wn * H * 365 * R / 1000;
+        const saving  = costOld - costNew;
+        const payback = Inv > 0 ? (Inv / (saving / 12)).toFixed(1) : null;
+        setResult({ costOld: costOld.toFixed(0), costNew: costNew.toFixed(0), saving: saving.toFixed(0), payback, savePct: ((saving/costOld)*100).toFixed(0) });
+      };
+
+      const waText = result
+        ? `♻️ חישוב חיסכון אנרגיה — LEDLink\n──────────────────────\n🔴 לפני: ${fixtures} גופים × ${oldWatt}W — עלות שנתית: ₪${parseInt(result.costOld).toLocaleString()}\n🟢 אחרי LED: ${fixtures} גופים × ${newWatt}W — עלות שנתית: ₪${parseInt(result.costNew).toLocaleString()}\n\n💰 חיסכון שנתי: ₪${parseInt(result.saving).toLocaleString()} (${result.savePct}%)${result.payback ? `\n📅 החזר השקעה: ${result.payback} חודשים` : ''}\n\nאשמח לקבל הצעת מחיר לשדרוג LED`
+        : '';
+
+      return (
+        <div className="bg-white rounded-lg border border-border p-6 mb-6">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-xl">♻️</div>
+            <div>
+              <h3 className="font-black text-lg text-ink">מחשבון חיסכון אנרגיה</h3>
+              <p className="text-xs text-muted">כמה כסף תחסוך במעבר לתאורת LED</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label className="block text-xs font-bold text-ink mb-1">מספר גופים</label>
+              <input type="number" value={fixtures} onChange={e=>setFixtures(e.target.value)} placeholder="לדוגמה: 10"
+                className="w-full border border-border rounded px-3 py-2 text-sm"/>
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-ink mb-1">ואט נוכחי לגוף</label>
+              <input type="number" value={oldWatt} onChange={e=>setOldWatt(e.target.value)} placeholder="לדוגמה: 60"
+                className="w-full border border-border rounded px-3 py-2 text-sm"/>
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-ink mb-1">ואט LED חדש לגוף</label>
+              <input type="number" value={newWatt} onChange={e=>setNewWatt(e.target.value)} placeholder="לדוגמה: 9"
+                className="w-full border border-border rounded px-3 py-2 text-sm"/>
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-ink mb-1">שעות שימוש ביום</label>
+              <input type="number" value={hours} onChange={e=>setHours(e.target.value)}
+                className="w-full border border-border rounded px-3 py-2 text-sm"/>
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-ink mb-1">תעריף חשמל (₪/קוט"ש)</label>
+              <input type="number" value={rate} onChange={e=>setRate(e.target.value)} step="0.01"
+                className="w-full border border-border rounded px-3 py-2 text-sm"/>
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-ink mb-1">עלות השקעה (₪) — אופציונלי</label>
+              <input type="number" value={invest} onChange={e=>setInvest(e.target.value)} placeholder="לחישוב החזר"
+                className="w-full border border-border rounded px-3 py-2 text-sm"/>
+            </div>
+          </div>
+          <button onClick={calc} className="w-full bg-ink hover:bg-slate-700 text-white font-bold py-2.5 rounded transition-colors mb-4">
+            חשב חיסכון
+          </button>
+          {result && (
+            <>
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+                <div className="grid grid-cols-3 gap-3 text-center mb-3">
+                  <div className="bg-white rounded p-2 border border-green-200">
+                    <p className="text-xs text-muted mb-1">לפני</p>
+                    <p className="font-black text-ink">₪{parseInt(result.costOld).toLocaleString()}</p>
+                    <p className="text-xs text-muted">לשנה</p>
+                  </div>
+                  <div className="bg-white rounded p-2 border border-green-200">
+                    <p className="text-xs text-muted mb-1">אחרי LED</p>
+                    <p className="font-black text-green-700">₪{parseInt(result.costNew).toLocaleString()}</p>
+                    <p className="text-xs text-muted">לשנה</p>
+                  </div>
+                  <div className="bg-green-600 rounded p-2 text-white">
+                    <p className="text-xs opacity-80 mb-1">חיסכון</p>
+                    <p className="font-black">₪{parseInt(result.saving).toLocaleString()}</p>
+                    <p className="text-xs opacity-80">{result.savePct}% פחות</p>
+                  </div>
+                </div>
+                {result.payback && <p className="text-sm text-green-800 font-bold text-center">📅 החזר השקעה תוך {result.payback} חודשים</p>}
+              </div>
+              <a href={waLink(waText)} target="_blank" rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded transition-colors text-sm">
+                <WaIcon/> קבל הצעת מחיר לשדרוג LED
+              </a>
+            </>
+          )}
+        </div>
+      );
+    };
+
+    /* ── Beam Angle Calculator — Linear Fixture ── */
+    const BeamLinearCalc = () => {
+      const [height,  setHeight]  = useState('');
+      const [angle,   setAngle]   = useState('');
+      const [length,  setLength]  = useState('');
+      const [surface, setSurface] = useState('רצפה');
+      const [result,  setResult]  = useState(null);
+
+      const NARROW   = [10, 24, 36];
+      const WIDE     = [60, 90, 110, 120];
+      const SURFACES = ['רצפה', 'שולחן אוכל', 'אי מטבח', 'משטח עבודה', 'קיר'];
+
+      const calc = () => {
+        const H = parseFloat(height), A = parseFloat(angle);
+        if (!H || !A || A <= 0 || A >= 180) return;
+        const width   = +(2 * H * Math.tan((A / 2) * Math.PI / 180)).toFixed(2);
+        const spacing = +(width * 0.8).toFixed(2);
+        const L       = parseFloat(length);
+        const area    = (L && L > 0) ? +(width * L).toFixed(2) : null;
+        setResult({ width, spacing, area });
+      };
+
+      const waText = result
+        ? `📏 חישוב פיזור אלומה ליניארי — LEDLink\n──────────────────────\n📐 גובה: ${height}מ׳ | זווית: ${angle}°${length ? ` | אורך גוף: ${length}מ׳` : ''}\n🎯 משטח: ${surface}\n\nתוצאה: רצועת אור ברוחב ${result.width}מ׳${result.area ? ` | שטח מואר: ${result.area}מ"ר` : ''}\nריווח מומלץ בין גופים מקביליים: ${result.spacing}מ׳\n\nאשמח לקבל המלצה על גוף ליניארי מתאים`
+        : '';
+
+      const activePreset = [...NARROW, ...WIDE].includes(Number(angle)) ? Number(angle) : null;
+
+      return (
+        <div className="bg-white rounded-lg border border-border p-6 mb-6">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-xl">📏</div>
+            <div>
+              <h3 className="font-black text-lg text-ink">מחשבון פיזור אלומה — גוף ליניארי</h3>
+              <p className="text-xs text-muted">פרופיל LED, פנדנט, בטן, גוף מסלול — רוחב רצועת האור</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label className="block text-xs font-bold text-ink mb-1">גובה הגוף מהמשטח (מ׳)</label>
+              <input type="number" value={height} onChange={e=>{ setHeight(e.target.value); setResult(null); }} placeholder="לדוגמה: 2.5"
+                className="w-full border border-border rounded px-3 py-2 text-sm"/>
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-ink mb-1">אורך הגוף (מ׳) — אופציונלי</label>
+              <input type="number" value={length} onChange={e=>{ setLength(e.target.value); setResult(null); }} placeholder="לדוגמה: 1.2"
+                className="w-full border border-border rounded px-3 py-2 text-sm"/>
+            </div>
+            <div className="col-span-2">
+              <label className="block text-xs font-bold text-ink mb-1">סוג משטח</label>
+              <div className="flex flex-wrap gap-2">
+                {SURFACES.map(s => (
+                  <button key={s} onClick={() => setSurface(s)}
+                    className={`px-3 py-1.5 rounded border text-xs font-bold transition-all ${surface === s ? 'bg-ink text-white border-ink' : 'border-border text-ink hover:border-gold'}`}>
+                    {s}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="col-span-2">
+              <label className="block text-xs font-bold text-ink mb-2">זווית אלומה (°)</label>
+              <p className="text-xs text-muted mb-1.5">צר — מסלול / וול ווושר / פנדנט עם לוברים</p>
+              <div className="flex flex-wrap gap-2 mb-2">
+                {NARROW.map(p => (
+                  <button key={p} onClick={() => { setAngle(String(p)); setResult(null); }}
+                    className={`px-3 py-1.5 rounded border text-xs font-bold transition-all ${activePreset === p ? 'bg-ink text-white border-ink' : 'border-border text-ink hover:border-gold'}`}>
+                    {p}°
+                  </button>
+                ))}
+              </div>
+              <p className="text-xs text-muted mb-1.5">רחב — פרופיל LED / בטן / פאנל שקוע</p>
+              <div className="flex flex-wrap gap-2 mb-2">
+                {WIDE.map(p => (
+                  <button key={p} onClick={() => { setAngle(String(p)); setResult(null); }}
+                    className={`px-3 py-1.5 rounded border text-xs font-bold transition-all ${activePreset === p ? 'bg-ink text-white border-ink' : 'border-border text-ink hover:border-gold'}`}>
+                    {p}°
+                  </button>
+                ))}
+              </div>
+              <input type="number" value={angle} onChange={e=>{ setAngle(e.target.value); setResult(null); }} placeholder="או הזן ידנית..."
+                className="w-full border border-border rounded px-3 py-2 text-sm"/>
+            </div>
+          </div>
+          <button onClick={calc} className="w-full bg-ink hover:bg-slate-700 text-white font-bold py-2.5 rounded transition-colors mb-4">
+            חשב פיזור אלומה
+          </button>
+          {result && (
+            <>
+              <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4">
+                <p className="text-sm text-purple-900 font-bold mb-3 text-center">
+                  בגובה {height}מ׳ עם זווית {angle}° על {surface}:
+                </p>
+                <div className={`grid gap-3 text-center ${result.area ? 'grid-cols-3' : 'grid-cols-2'}`}>
+                  <div className="bg-white rounded p-3 border border-purple-200">
+                    <p className="font-black text-2xl text-purple-700">{result.width}מ׳</p>
+                    <p className="text-xs text-muted mt-0.5">רוחב רצועת האור</p>
+                  </div>
+                  <div className="bg-white rounded p-3 border border-purple-200">
+                    <p className="font-black text-2xl text-ink">{result.spacing}מ׳</p>
+                    <p className="text-xs text-muted mt-0.5">ריווח בין גופים מקביליים</p>
+                  </div>
+                  {result.area && (
+                    <div className="bg-white rounded p-3 border border-purple-200">
+                      <p className="font-black text-2xl text-purple-700">{result.area}מ"ר</p>
+                      <p className="text-xs text-muted mt-0.5">שטח מואר כולל</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <a href={waLink(waText)} target="_blank" rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded transition-colors text-sm">
+                <WaIcon/> קבל המלצה על גוף ליניארי מתאים
+              </a>
+            </>
+          )}
+        </div>
+      );
+    };
+
+    /* ── Main App ── */
+    const TOOLS = [
+      { id: 'voltage',     label: '⚡ מפל מתח' },
+      { id: 'lumen',       label: '💡 לומן לחלל' },
+      { id: 'roi',         label: '♻️ חיסכון אנרגיה' },
+      { id: 'beam-linear', label: '📏 פיזור אלומה' },
+    ];
+
+    const App = () => {
+      const [tool, setTool] = useState('voltage');
+      const [openDrop, setOpenDrop] = useState(null);
+
+      useEffect(() => {
+        const t = new URLSearchParams(window.location.search).get('tool');
+        if (t) setTool(t);
+      }, []);
+
+      const CATALOG = [
+        { label: 'דרייברים',  url: 'index.html?tab=דרייברים'  },
+        { label: 'סטריפ LED', url: 'index.html?tab=סטריפ LED' },
+        { label: 'פרופילים',  url: 'index.html?tab=פרופילים'  },
+      ];
+      const TOOL_ITEMS = [
+        { label: '⚡ מפל מתח',       id: 'voltage'     },
+        { label: '💡 לומן לחלל',     id: 'lumen'       },
+        { label: '♻️ חיסכון אנרגיה', id: 'roi'         },
+        { label: '📏 פיזור אלומה',   id: 'beam-linear' },
+      ];
+
+      const dropBox = {
+        position:'absolute', top:'100%', right:0,
+        background:'#1A1A1A', border:'1px solid #333',
+        borderTop:'2px solid #E8A020', borderRadius:'0 0 8px 8px',
+        minWidth:190, zIndex:200, padding:'6px 0',
+        boxShadow:'0 8px 24px rgba(0,0,0,0.3)',
+      };
+
+      return (
+        <div style={{minHeight:'100vh', background:'#F4F4F0'}}>
+
+          {/* Navbar */}
+          <nav style={{background:'#1A1A1A', borderBottom:'1px solid #2A2A2A', position:'sticky', top:0, zIndex:100, height:64, display:'flex', alignItems:'center'}}>
+            <div style={{maxWidth:1200, margin:'0 auto', padding:'0 32px', display:'flex', alignItems:'center', gap:32, width:'100%'}}>
+              <a href="home.html" style={{display:'flex', alignItems:'center', gap:4, textDecoration:'none', flexShrink:0}}>
+                <span style={{fontSize:22, fontWeight:900, letterSpacing:1, color:'#E8A020'}}>LED</span>
+                <span style={{fontSize:22, fontWeight:300, color:'#FFFFFF'}}>Link</span>
+              </a>
+              <div style={{display:'flex', alignItems:'center', gap:4}}>
+                <a href="home.html" style={{color:'#AAAAAA', textDecoration:'none', fontSize:15, fontWeight:500, padding:'6px 14px', borderRadius:6}}>דף הבית</a>
+
+                {/* קטלוג מוצרים dropdown */}
+                <div style={{position:'relative'}} onMouseEnter={()=>setOpenDrop('catalog')} onMouseLeave={()=>setOpenDrop(null)}>
+                  <a href="index.html" style={{display:'flex', alignItems:'center', gap:4, color:'#AAAAAA', textDecoration:'none', fontSize:15, fontWeight:500, padding:'6px 14px', borderRadius:6}}>
+                    קטלוג מוצרים <span style={{fontSize:10, transition:'transform 0.2s', display:'inline-block', transform:openDrop==='catalog'?'rotate(180deg)':'none'}}>▾</span>
+                  </a>
+                  {openDrop === 'catalog' && (
+                    <div style={dropBox}>
+                      {CATALOG.map(item => (
+                        <a key={item.url} href={item.url} className="nav-drop-item">{item.label}</a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* כלי תכנון dropdown */}
+                <div style={{position:'relative'}} onMouseEnter={()=>setOpenDrop('tools')} onMouseLeave={()=>setOpenDrop(null)}>
+                  <button style={{display:'flex', alignItems:'center', gap:4, color:'#E8A020', background:'rgba(232,160,32,0.1)', border:'none', cursor:'pointer', fontSize:15, fontWeight:700, padding:'6px 14px', borderRadius:6, fontFamily:'Heebo,sans-serif'}}>
+                    כלי תכנון <span style={{fontSize:10, transition:'transform 0.2s', display:'inline-block', transform:openDrop==='tools'?'rotate(180deg)':'none'}}>▾</span>
+                  </button>
+                  {openDrop === 'tools' && (
+                    <div style={dropBox}>
+                      {TOOL_ITEMS.map(item => (
+                        <button key={item.id} className="nav-drop-item" onClick={()=>{ setTool(item.id); setOpenDrop(null); }}>
+                          {item.label}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+              <a href="guides.html" style={{color:'#AAAAAA', textDecoration:'none', fontSize:15, fontWeight:500, padding:'6px 14px', borderRadius:6}}>מדריכים</a>
+              <div style={{flex:1}}></div>
+              <a href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('שלום LEDLink, אשמח לשמוע על המוצרים והשירותים שלכם.')}`}
+                target="_blank" rel="noopener noreferrer"
+                style={{background:'#E8A020', color:'#fff', fontWeight:700, fontSize:13, padding:'8px 18px', borderRadius:6, textDecoration:'none', display:'flex', alignItems:'center', gap:6}}>
+                <WaIcon/> שלח הודעה
+              </a>
+            </div>
+          </nav>
+
+          {/* Page header */}
+          <div style={{background:'#1A1A1A', padding:'48px 32px 40px'}}>
+            <div style={{maxWidth:800, margin:'0 auto'}}>
+              <div style={{fontSize:11, fontWeight:700, letterSpacing:4, textTransform:'uppercase', color:'#E8A020', marginBottom:12}}>LEDLink · רחובות</div>
+              <h1 style={{fontSize:'clamp(28px,4vw,48px)', fontWeight:900, color:'#FFFFFF', lineHeight:1.15, marginBottom:12}}>
+                כלי תכנון הנדסיים
+              </h1>
+              <p style={{fontSize:16, color:'rgba(255,255,255,0.6)', lineHeight:1.7, maxWidth:520}}>
+                חשב, תכנן, קבל הצעת מחיר — הכל במקום אחד. הכלים חינמיים ומיועדים לאנשי מקצוע ובעלי בתים.
+              </p>
+            </div>
+          </div>
+
+          {/* Tool tabs */}
+          <div style={{borderBottom:'1px solid #E0DDD6', background:'#FFFFFF', position:'sticky', top:64, zIndex:90, boxShadow:'0 1px 4px rgba(0,0,0,0.04)'}}>
+            <div style={{maxWidth:800, margin:'0 auto', padding:'0 24px', display:'flex', gap:0, overflowX:'auto'}}>
+              {TOOLS.map(t => (
+                <button key={t.id} onClick={() => setTool(t.id)}
+                  style={{
+                    padding:'16px 20px', border:'none',
+                    borderBottom: tool === t.id ? '2px solid #E8A020' : '2px solid transparent',
+                    background:'none', cursor:'pointer',
+                    color: tool === t.id ? '#E8A020' : '#777777',
+                    fontFamily:'Heebo,sans-serif', fontSize:14,
+                    fontWeight: tool === t.id ? 700 : 500,
+                    transition:'all 0.15s', whiteSpace:'nowrap',
+                  }}>
+                  {t.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Tool content */}
+          <div style={{maxWidth:800, margin:'0 auto', padding:'40px 24px'}}>
+            {tool === 'voltage'     && <VoltageDropCalc/>}
+            {tool === 'lumen'       && <LumenCalc/>}
+            {tool === 'roi'         && <ROICalc/>}
+            {tool === 'beam-linear' && <BeamLinearCalc/>}
+          </div>
+
+          {/* Footer */}
+          <footer className="footer">
+            <div className="footer-inner">
+              <div className="footer-top">
+                <div>
+                  <div style={{direction:'ltr',display:'inline-flex',alignItems:'center',gap:'2px'}}>
+                    <span className="footer-logo-led">LED</span><span className="footer-logo-link">LINK</span>
+                  </div>
+                  <div className="footer-tagline">פתרונות תאורה מקצועיים לפרויקטים בכל גודל. ישירות מהמפעל, רחובות.</div>
+                </div>
+                <div>
+                  <div className="footer-col-title">כתובת</div>
+                  <div className="footer-links">
+                    <span className="footer-link">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                      יצירה 19, רחובות
+                    </span>
+                    <a href="https://waze.com/ul?ll=31.8969,34.8186&navigate=yes" target="_blank" className="footer-link">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                      נווט ב-Waze
+                    </a>
+                  </div>
+                </div>
+                <div>
+                  <div className="footer-col-title">צור קשר</div>
+                  <div className="footer-links">
+                    <a href="tel:+97286326059" className="footer-link">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6 6l1-1.06a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.72 16z"/></svg>
+                      08-632-6059
+                    </a>
+                    <a href="mailto:office@ledlink.co.il" className="footer-link">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                      office@ledlink.co.il
+                    </a>
+                    <a href="https://wa.me/972524444470" target="_blank" className="footer-link">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                      WhatsApp
+                    </a>
+                  </div>
+                </div>
+                <div>
+                  <div className="footer-col-title">שעות פעילות</div>
+                  <div className="footer-hours-row"><span className="hours-day">ראשון – חמישי</span><span className="hours-open">07:00 – 15:00</span></div>
+                  <div className="footer-hours-row"><span className="hours-day">שישי</span><span className="hours-closed">סגור</span></div>
+                  <div className="footer-hours-row"><span className="hours-day">שבת</span><span className="hours-closed">סגור</span></div>
+                </div>
+              </div>
+              <div className="footer-bottom">
+                <div className="footer-copy">© 2026 LEDLink – כל הזכויות שמורות</div>
+                <div className="footer-legal">
+                  <a href="about.html">אודות</a>
+                  <a href="takanon.html">תקנון</a>
+                  <a href="privacy.html">מדיניות פרטיות</a>
+                  <a href="accessibility.html">הצהרת נגישות</a>
+                  <a href="faq.html">שאלות נפוצות</a>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      );
+    };
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+  </script>
+</body>
+</html>

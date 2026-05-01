@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEDLink – רכיבי LED מקצועיים ישירות מהמפעל</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Heebo', sans-serif; background: #F4F4F0; color: #1C1C1C; direction: rtl; }
+
+    /* ── Navbar ── */
+    .navbar {
+      background: #1A1A1A;
+      position: fixed; top: 0; right: 0; left: 0; z-index: 100;
+      height: 64px;
+      display: flex; align-items: center;
+      border-bottom: 1px solid #2A2A2A;
+    }
+    .navbar-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 32px;
+      display: flex; align-items: center; justify-content: flex-start; gap: 40px;
+      width: 100%;
+    }
+    .logo { display: flex; align-items: center; gap: 4px; text-decoration: none; flex-shrink: 0; }
+    .logo-led { font-size: 22px; font-weight: 900; color: #E8A020; }
+    .logo-link { font-size: 22px; font-weight: 300; color: #FFFFFF; }
+    .logo-tag { font-size: 9px; color: #555; letter-spacing: 3px; text-transform: uppercase; margin-right: 8px; margin-top: 2px; }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-link {
+      color: #AAAAAA; text-decoration: none; font-size: 15px; font-weight: 500;
+      transition: color 0.15s; padding: 6px 14px; border-radius: 6px;
+    }
+    .nav-link:hover { color: #E8A020; background: rgba(255,255,255,0.05); }
+    .nav-spacer { flex: 1; }
+    .nav-cta {
+      background: #E8A020; color: #fff; font-weight: 700; font-size: 13px;
+      padding: 8px 18px; border-radius: 6px; text-decoration: none;
+      transition: background 0.15s; display: flex; align-items: center; gap: 6px;
+    }
+    .nav-cta:hover { background: #C4880A; }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+      padding-top: 64px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('hero.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      filter: brightness(0.65);
+    }
+    .hero-bg-fallback {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #1A1A1A 0%, #2A2010 50%, #1A1A1A 100%);
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to left, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.75) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto; padding: 0 32px;
+      width: 100%;
+    }
+    .hero-eyebrow {
+      font-size: 13px; font-weight: 600; letter-spacing: 1.5px;
+      color: #E8A020;
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block; width: 24px; height: 2px; background: #E8A020; flex-shrink: 0;
+    }
+    .hero-title {
+      font-size: clamp(36px, 5vw, 68px);
+      font-weight: 900;
+      color: #FFFFFF;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      max-width: 700px;
+    }
+    .hero-title span { color: #E8A020; }
+    .hero-subtitle {
+      font-size: clamp(15px, 2vw, 19px);
+      color: rgba(255,255,255,0.7);
+      font-weight: 400;
+      line-height: 1.6;
+      max-width: 520px;
+      margin-bottom: 40px;
+    }
+    .hero-bullets {
+      display: flex; gap: 24px; flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .hero-bullet {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: rgba(255,255,255,0.75); font-weight: 500;
+    }
+    .hero-bullet-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: #E8A020; flex-shrink: 0;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: #E8A020; color: #fff;
+      font-weight: 700; font-size: 15px;
+      padding: 14px 32px; border-radius: 8px;
+      text-decoration: none; transition: background 0.15s;
+      display: inline-flex; align-items: center; gap: 8px;
+      border: none; cursor: pointer;
+    }
+    .btn-primary:hover { background: #C4880A; }
+    .btn-secondary {
+      background: transparent; color: #fff;
+      font-weight: 600; font-size: 15px;
+      padding: 13px 28px; border-radius: 8px;
+      text-decoration: none; transition: all 0.15s;
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.7); }
+
+    /* ── Scroll indicator ── */
+    .scroll-indicator {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 6px;
+      cursor: pointer; text-decoration: none;
+    }
+    .scroll-indicator span {
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); font-weight: 500;
+    }
+    .scroll-chevron {
+      width: 28px; height: 28px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); opacity: 0.4; }
+      50%       { transform: translateY(5px); opacity: 1; }
+    }
+
+    /* ── Trust badges ── */
+    .trust-bar {
+      background: #111;
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+      padding: 14px 32px;
+    }
+    .trust-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: center; align-items: center;
+      gap: 40px; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 10px;
+      color: #888; font-size: 13px; font-weight: 500;
+    }
+    .trust-item svg { flex-shrink: 0; opacity: 0.7; }
+    .trust-divider { width: 1px; height: 24px; background: #2A2A2A; }
+
+    /* ── Stats bar ── */
+    .stats-bar {
+      background: #1A1A1A;
+      padding: 20px 32px;
+    }
+    .stats-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-around; align-items: center;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 28px; font-weight: 900; color: #E8A020; line-height: 1; }
+    .stat-label { font-size: 12px; color: #777; margin-top: 4px; letter-spacing: 1px; }
+
+    /* ── Section ── */
+    .section { padding: 80px 32px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 4px;
+      text-transform: uppercase; color: #E8A020;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 800; color: #1C1C1C;
+      line-height: 1.2; margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px; color: #666; line-height: 1.7;
+      max-width: 560px; margin-bottom: 48px;
+    }
+
+    /* ── Category Cards ── */
+    .cats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .cat-card {
+      position: relative;
+      height: 360px;
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
+      background: #0c0b09;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .cat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(232,160,32,0.5);
+    }
+
+    /* shared light layer */
+    .cat-card::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 1;
+      transition: opacity 0.35s;
+    }
+    .cat-card:hover::before { filter: brightness(1.25); }
+
+    /* ── פרופילים: קו זהב אופקי יחיד, כמו פרופיל שפולט אור ── */
+    .cat-card--profiles { background: #0a0904; }
+    .cat-card--profiles::before {
+      background:
+        radial-gradient(ellipse 100% 18% at 50% 40%, rgba(232,160,32,0.18) 0%, transparent 100%),
+        linear-gradient(180deg,
+          transparent 37%,
+          rgba(232,160,32,0.08) 38.5%,
+          rgba(232,160,32,0.45) 39.5%,
+          rgba(255,210,80,0.95) 40.2%,
+          rgba(232,160,32,0.45) 41%,
+          rgba(232,160,32,0.08) 42%,
+          transparent 43.5%
+        );
+    }
+
+    /* ── סטריפ LED: שלושה קווים מקבילים — שורת LEDs ── */
+    .cat-card--strips { background: #09090a; }
+    .cat-card--strips::before {
+      background:
+        radial-gradient(ellipse 90% 50% at 50% 40%, rgba(232,160,32,0.07) 0%, transparent 100%),
+        linear-gradient(180deg,
+          transparent 22%,
+          rgba(232,160,32,0.08) 23%, rgba(255,200,60,0.8) 23.8%, rgba(232,160,32,0.08) 24.5%, transparent 26%,
+          transparent 36%,
+          rgba(232,160,32,0.06) 37%, rgba(255,200,60,0.65) 37.8%, rgba(232,160,32,0.06) 38.5%, transparent 40%,
+          transparent 50%,
+          rgba(232,160,32,0.04) 51%, rgba(255,200,60,0.45) 51.8%, rgba(232,160,32,0.04) 52.5%, transparent 54%
+        );
+    }
+
+    /* ── דרייברים: נקודת אור שמתפשטת — פלט כוח ── */
+    .cat-card--drivers { background: #080808; }
+    .cat-card--drivers::before {
+      background:
+        radial-gradient(circle 18px  at 50% 38%, rgba(255,230,120,1)    0%, transparent 100%),
+        radial-gradient(circle 60px  at 50% 38%, rgba(232,160,32,0.55)  0%, transparent 100%),
+        radial-gradient(circle 130px at 50% 38%, rgba(232,160,32,0.18)  0%, transparent 100%),
+        radial-gradient(circle 240px at 50% 38%, rgba(232,160,32,0.06)  0%, transparent 100%);
+    }
+
+    .cat-card-body {
+      position: absolute;
+      bottom: 0; right: 0; left: 0;
+      padding: 28px 24px;
+      z-index: 3;
+      background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 55%, transparent 100%);
+    }
+    .cat-count {
+      font-size: 11px; color: #E8A020; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;
+    }
+    .cat-name {
+      font-size: 26px; font-weight: 900; color: #fff;
+      margin-bottom: 8px;
+    }
+    .cat-desc {
+      font-size: 14px; color: rgba(255,255,255,0.58);
+      line-height: 1.6; margin-bottom: 18px;
+    }
+    .cat-link {
+      font-size: 13px; font-weight: 700; color: #E8A020;
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    /* ── Benefits ── */
+    .benefits-section { background: #FFF8EE; }
+    .benefits-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+    }
+    .benefit { padding: 8px 0; }
+    .benefit-icon {
+      width: 48px; height: 48px;
+      background: rgba(232,160,32,0.1);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .benefit-title { font-size: 17px; font-weight: 700; color: #1C1C1C; margin-bottom: 8px; }
+    .benefit-desc { font-size: 14px; color: #777; line-height: 1.7; }
+
+    /* ── Coffee CTA ── */
+    .coffee-section {
+      background: #1A1A1A;
+      padding: 80px 32px;
+      position: relative; overflow: hidden;
+    }
+    .coffee-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('hero.jpg') center/cover;
+      opacity: 0.08;
+    }
+    .coffee-inner {
+      max-width: 1200px; margin: 0 auto;
+      position: relative; z-index: 1;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 48px; flex-wrap: wrap;
+    }
+    .coffee-text { flex: 1; min-width: 280px; }
+    .coffee-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 4px;
+      text-transform: uppercase; color: #E8A020; margin-bottom: 16px;
+    }
+    .coffee-title {
+      font-size: clamp(28px, 3vw, 44px);
+      font-weight: 900; color: #fff;
+      line-height: 1.2; margin-bottom: 16px;
+    }
+    .coffee-title span { color: #E8A020; }
+    .coffee-sub { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.7; }
+    .coffee-actions { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+    .wa-btn {
+      background: #25D366; color: #fff;
+      font-weight: 700; font-size: 15px;
+      padding: 14px 28px; border-radius: 8px;
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px;
+      transition: background 0.15s; white-space: nowrap;
+    }
+    .wa-btn:hover { background: #1DB954; }
+    .phone-btn {
+      color: rgba(255,255,255,0.7); text-decoration: none;
+      font-size: 14px; font-weight: 500;
+      display: flex; align-items: center; gap: 8px;
+      justify-content: center; transition: color 0.15s;
+    }
+    .phone-btn:hover { color: #E8A020; }
+
+    /* ── Footer ── */
+    .footer {
+      background: #111;
+      padding: 48px 32px 0;
+      border-top: 1px solid #222;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #1E1E1E;
+    }
+    .footer-logo-led { font-size: 24px; font-weight: 900; color: #E8A020; }
+    .footer-logo-link { font-size: 24px; font-weight: 300; color: #fff; }
+    .footer-tagline { font-size: 13px; color: #555; margin-top: 10px; line-height: 1.6; max-width: 220px; }
+    .footer-col-title { font-size: 11px; font-weight: 700; color: #555; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 18px; }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-link {
+      color: #888; text-decoration: none; font-size: 14px;
+      transition: color 0.15s;
+      display: flex; align-items: center; gap: 9px;
+    }
+    .footer-link:hover { color: #E8A020; }
+    .footer-link svg { flex-shrink: 0; opacity: 0.5; transition: opacity 0.15s; }
+    .footer-link:hover svg { opacity: 1; }
+    .footer-hours-row {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 14px; color: #888; gap: 12px;
+    }
+    .footer-hours-row + .footer-hours-row { margin-top: 12px; }
+    .hours-day { }
+    .hours-open { color: #4CAF50; font-size: 12px; font-weight: 600; }
+    .hours-closed { color: #555; font-size: 12px; font-weight: 600; }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+      padding: 20px 0;
+    }
+    .footer-copy { font-size: 12px; color: #3A3A3A; }
+    .footer-legal {
+      display: flex; flex-wrap: wrap; gap: 6px 20px;
+    }
+    .footer-legal a { font-size: 12px; color: #3A3A3A; text-decoration: none; transition: color 0.15s; }
+    .footer-legal a:hover { color: #E8A020; }
+
+    /* ── Divider ── */
+    .gold-line { width: 40px; height: 3px; background: #E8A020; border-radius: 2px; margin-bottom: 32px; }
+
+    /* ── Dropdown ── */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-menu {
+      display: none; position: absolute;
+      top: 100%; right: 0;
+      background: #1A1A1A;
+      border: 1px solid #333;
+      border-top: 2px solid #E8A020;
+      border-radius: 0 0 8px 8px;
+      min-width: 190px; z-index: 200;
+      padding: 6px 0;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-arrow { font-size: 10px; transition: transform 0.2s; display: inline-block; margin-right: 2px; }
+    .nav-dropdown:hover .nav-dropdown-arrow { transform: rotate(180deg); }
+    .nav-drop-item {
+      display: block; padding: 10px 20px;
+      color: #AAAAAA; text-decoration: none;
+      font-size: 14px; font-weight: 500;
+      border-right: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .nav-drop-item:hover {
+      color: #E8A020;
+      background: rgba(255,255,255,0.04);
+      border-right-color: #E8A020;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .cats-grid { grid-template-columns: 1fr; }
+      .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      .section { padding: 60px 20px; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .coffee-inner { flex-direction: column; }
+      .stats-inner { gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navbar ── -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="home.html" class="logo" style="direction:ltr;">
+        <span class="logo-led">LED</span><span class="logo-link">LINK</span>
+      </a>
+      <div class="nav-links">
+        <div class="nav-dropdown">
+          <a href="index.html" class="nav-link" style="display:flex;align-items:center;gap:4px;">
+            קטלוג מוצרים <span class="nav-dropdown-arrow">▾</span>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a href="index.html?tab=דרייברים" class="nav-drop-item">דרייברים</a>
+            <a href="index.html?tab=סטריפ LED" class="nav-drop-item">סטריפ LED</a>
+            <a href="index.html?tab=פרופילים" class="nav-drop-item">פרופילים</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="tools.html" class="nav-link" style="display:flex;align-items:center;gap:4px;">
+            כלי תכנון <span class="nav-dropdown-arrow">▾</span>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a href="tools.html?tool=voltage" class="nav-drop-item">⚡ מפל מתח</a>
+            <a href="tools.html?tool=lumen" class="nav-drop-item">💡 לומן לחלל</a>
+            <a href="tools.html?tool=roi" class="nav-drop-item">♻️ חיסכון אנרגיה</a>
+            <a href="tools.html?tool=beam-linear" class="nav-drop-item">📏 פיזור אלומה</a>
+          </div>
+        </div>
+        <a href="guides.html" class="nav-link">מדריכים</a>
+        <a href="about.html" class="nav-link">אודות</a>
+        <a href="#contact" class="nav-link">צור קשר</a>
+      </div>
+      <div class="nav-spacer"></div>
+        <a href="https://wa.me/972524444470" target="_blank" class="nav-cta">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="hero-bg-fallback"></div>
+    <div class="hero-bg" onerror="this.style.display='none'"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">פתרונות תאורה מקצועיים · רחובות</div>
+      <h1 class="hero-title">
+        לא מפיצים -<br><span>יצרנים.</span>
+      </h1>
+      <p class="hero-subtitle">
+        מזמינים ישירות ממי שמייצר.<br>
+        פרופילים, סטריפ LED ודרייברים – מלאי מדף מוכן לאיסוף.
+      </p>
+      <div class="hero-bullets">
+        <div class="hero-bullet"><div class="hero-bullet-dot"></div>ייצור תוך שעות</div>
+        <div class="hero-bullet"><div class="hero-bullet-dot"></div>דרייברים אירופאים</div>
+        <div class="hero-bullet"><div class="hero-bullet-dot"></div>ייעוץ טכני ללא עלות</div>
+        <div class="hero-bullet"><div class="hero-bullet-dot"></div>15 שנות ניסיון</div>
+      </div>
+      <div class="hero-actions">
+        <a href="index.html" class="btn-primary">
+          לצפייה בקטלוג
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="https://wa.me/972524444470" target="_blank" class="btn-secondary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          שלח הודעה
+        </a>
+      </div>
+    </div>
+    <a href="#" onclick="document.querySelector('.stats-bar').scrollIntoView({behavior:'smooth'}); return false;" class="scroll-indicator">
+      <span>גלול</span>
+      <div class="scroll-chevron">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </a>
+  </section>
+
+  <!-- ── Trust Badges ── -->
+  <div class="trust-bar">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        ISO 9001:2015
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8" r="6"/>
+          <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+        </svg>
+        שותף רשמי QLT איטליה
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        ייצור מקומי · רחובות
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Stats Bar ── -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">שנות ניסיון</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">373</div>
+        <div class="stat-label">מוצרים בקטלוג</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">24H</div>
+        <div class="stat-label">ייצור מותאם</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">ישירות מהמפעל</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Categories ── -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-label">הקטלוג המקצועי</div>
+      <h2 class="section-title">שלושה תחומים. מענה אחד מלא.</h2>
+      <p class="section-desc">כל מה שצריך לפרויקט תאורת LED מקצועי – מהפרופיל ועד הדרייבר – ממקום אחד.</p>
+      <div class="gold-line"></div>
+      <div class="cats-grid">
+
+        <!-- פרופילים -->
+        <a href="index.html?tab=פרופילים" class="cat-card cat-card--profiles">
+          <div class="cat-card-body">
+            <div class="cat-count">20 דגמים</div>
+            <div class="cat-name">פרופילים</div>
+            <div class="cat-desc">פרופילי אלומיניום לסטריפ LED – ייצור לפי מידה, גוון וסגנון. צמוד, שקוע, תלוי, חוץ.</div>
+            <div class="cat-link">צפייה בקטלוג ←</div>
+          </div>
+        </a>
+
+        <!-- סטריפ LED -->
+        <a href="index.html?tab=סטריפ LED" class="cat-card cat-card--strips">
+          <div class="cat-card-body">
+            <div class="cat-count">112 דגמים</div>
+            <div class="cat-name">סטריפ LED</div>
+            <div class="cat-desc">סטריפ LED לכל שימוש – White, COB, Neon, RGB, SPI. 12V / 24V / 48V. IP20 עד IP68.</div>
+            <div class="cat-link">צפייה בקטלוג ←</div>
+          </div>
+        </a>
+
+        <!-- דרייברים -->
+        <a href="index.html?tab=דרייברים" class="cat-card cat-card--drivers">
+          <div class="cat-card-body">
+            <div class="cat-count">241 דגמים</div>
+            <div class="cat-name">דרייברים</div>
+            <div class="cat-desc">ספקי מתח LED מאירופה – קבוע מתח (CV), קבוע זרם (CC). DALI, 0-10V, PWM. IP20–IP68.</div>
+            <div class="cat-link">צפייה בקטלוג ←</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Projects ── -->
+  <section class="section" style="background:#F8F7F4; padding-top:80px; padding-bottom:80px;">
+    <div class="section-inner">
+      <div class="section-label">הגלריה שלנו</div>
+      <h2 class="section-title">פרויקטים שביצענו</h2>
+      <p class="section-desc">פתרונות תאורה מותאמים אישית לפרויקטי מגורים, מסחר ותעשייה</p>
+      <div class="gold-line"></div>
+
+      <div id="projects-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:40px;"></div>
+
+      <div style="text-align:center; margin-top:32px;">
+        <button id="projects-toggle" onclick="toggleProjects()"
+          style="border:1px solid #1A1A1A; color:#1A1A1A; background:#fff; font-weight:600;
+                 padding:14px 48px; font-size:15px; cursor:pointer; transition:background 0.2s, color 0.2s;"
+          onmouseover="this.style.background='#1A1A1A';this.style.color='#fff'"
+          onmouseout="this.style.background='#fff';this.style.color='#1A1A1A'">
+          הצג עוד ↓
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox overlay -->
+  <div id="lb-overlay" onclick="closeLightbox()"
+    style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92);
+           z-index:1000; align-items:center; justify-content:center;">
+    <div style="position:relative; max-width:900px; width:90%; pointer-events:none;" onclick="event.stopPropagation()">
+      <img id="lb-img" src="" alt=""
+        style="width:100%; max-height:80vh; object-fit:contain; border-radius:8px; pointer-events:auto;" />
+      <p id="lb-label" style="color:#fff; text-align:center; margin-top:12px; font-weight:700; font-size:16px;"></p>
+      <p id="lb-count" style="color:#888; text-align:center; font-size:13px; margin-top:4px;"></p>
+      <button onclick="event.stopPropagation(); moveLightbox(-1)"
+        style="position:absolute; right:-24px; top:50%; transform:translateY(-50%);
+               background:rgba(255,255,255,0.12); border:none; color:#fff; width:44px; height:44px;
+               border-radius:50%; font-size:22px; cursor:pointer; pointer-events:auto;">›</button>
+      <button onclick="event.stopPropagation(); moveLightbox(1)"
+        style="position:absolute; left:-24px; top:50%; transform:translateY(-50%);
+               background:rgba(255,255,255,0.12); border:none; color:#fff; width:44px; height:44px;
+               border-radius:50%; font-size:22px; cursor:pointer; pointer-events:auto;">‹</button>
+      <button onclick="closeLightbox()"
+        style="position:absolute; top:-36px; left:0; background:none; border:none;
+               color:rgba(255,255,255,0.7); font-size:14px; font-weight:700; cursor:pointer; pointer-events:auto;">
+        ✕ סגור
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const PROJECT_IMAGES = [
+      { src: 'projects/project_01.jpg', label: 'תאורת לד פנים' },
+      { src: 'projects/project_02.jpg', label: 'פרופיל תאורה' },
+      { src: 'projects/project_03.jpg', label: 'תאורה ליניארית' },
+      { src: 'projects/project_04.jpg', label: 'פרויקט מגורים' },
+      { src: 'projects/project_05.jpg', label: 'תאורה מסחרית' },
+      { src: 'projects/project_06.jpg', label: 'פרויקט יוקרה' },
+      { src: 'projects/project_07.jpg', label: 'תאורת פנים' },
+      { src: 'projects/project_08.jpg', label: 'תאורה שקועה' },
+      { src: 'projects/project_09.jpg', label: 'תאורת חוץ' },
+      { src: 'projects/project_10.jpg', label: 'גופי תאורה' },
+      { src: 'projects/project_11.jpg', label: 'פרופיל LINK' },
+      { src: 'projects/project_12.jpg', label: 'תאורת חלל' },
+      { src: 'projects/project_13.jpg', label: 'לובי ומסדרון' },
+      { src: 'projects/project_14.jpg', label: 'תאורה עיצובית' },
+      { src: 'projects/project_15.jpg', label: 'תאורת LED' },
+      { src: 'projects/project_16.jpg', label: 'פרויקט מסחרי' },
+    ];
+
+    let lbIndex = 0;
+    let projectsExpanded = false;
+
+    const grid = document.getElementById('projects-grid');
+    PROJECT_IMAGES.forEach((p, i) => {
+      const btn = document.createElement('button');
+      btn.style.cssText = 'position:relative; aspect-ratio:4/3; overflow:hidden; border-radius:8px; border:none; cursor:pointer; padding:0; background:#000;';
+      if (i >= 4) btn.style.display = 'none';
+      btn.innerHTML = `
+        <img src="${p.src}" alt="${p.label}"
+          style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s; display:block;" />
+        <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 60%);
+                    opacity:0; transition:opacity 0.3s;"></div>
+        <span style="position:absolute; bottom:10px; right:12px; left:12px; color:#fff; font-size:12px;
+                     font-weight:700; letter-spacing:1px; transform:translateY(8px); transition:transform 0.3s;
+                     opacity:0;">${p.label}</span>
+      `;
+      btn.addEventListener('mouseenter', () => {
+        btn.querySelector('img').style.transform = 'scale(1.07)';
+        btn.querySelector('div').style.opacity = '1';
+        btn.querySelector('span').style.opacity = '1';
+        btn.querySelector('span').style.transform = 'translateY(0)';
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.querySelector('img').style.transform = 'scale(1)';
+        btn.querySelector('div').style.opacity = '0';
+        btn.querySelector('span').style.opacity = '0';
+        btn.querySelector('span').style.transform = 'translateY(8px)';
+      });
+      btn.addEventListener('click', () => openLightbox(i));
+      grid.appendChild(btn);
+    });
+
+    function openLightbox(i) {
+      lbIndex = i;
+      updateLightbox();
+      const ov = document.getElementById('lb-overlay');
+      ov.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lb-overlay').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    function moveLightbox(dir) {
+      lbIndex = (lbIndex + dir + PROJECT_IMAGES.length) % PROJECT_IMAGES.length;
+      updateLightbox();
+    }
+    function updateLightbox() {
+      document.getElementById('lb-img').src = PROJECT_IMAGES[lbIndex].src;
+      document.getElementById('lb-img').alt = PROJECT_IMAGES[lbIndex].label;
+      document.getElementById('lb-label').textContent = PROJECT_IMAGES[lbIndex].label;
+      document.getElementById('lb-count').textContent = `${lbIndex + 1} / ${PROJECT_IMAGES.length}`;
+    }
+    function toggleProjects() {
+      projectsExpanded = !projectsExpanded;
+      const btns = grid.querySelectorAll('button');
+      btns.forEach((btn, i) => {
+        if (i >= 4) btn.style.display = projectsExpanded ? 'block' : 'none';
+      });
+      const toggle = document.getElementById('projects-toggle');
+      toggle.textContent = projectsExpanded ? 'הסתר ▲' : 'הצג עוד ↓';
+      if (!projectsExpanded) {
+        grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+    document.addEventListener('keydown', e => {
+      if (document.getElementById('lb-overlay').style.display === 'none') return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') moveLightbox(-1);
+      if (e.key === 'ArrowLeft')  moveLightbox(1);
+    });
+  </script>
+
+  <!-- ── Benefits ── -->
+  <section class="section benefits-section">
+    <div class="section-inner">
+      <div class="section-label">למה LEDLink</div>
+      <h2 class="section-title">היתרון של לקנות ישירות מהיצרן</h2>
+      <div class="gold-line"></div>
+      <div class="benefits-grid">
+
+        <div class="benefit">
+          <div class="benefit-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="benefit-title">ישירות מהמפעל</div>
+          <div class="benefit-desc">אין מתווכים, אין סוכנים. קונים מהיצרן עצמו – מחיר ייצור, ידע ייצור, גמישות ייצור.</div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="benefit-title">ייצור ביום העבודה</div>
+          <div class="benefit-desc">פרופיל תאורה לפי מידה? מייצרים לך במקום. לא ממתינים ימים.</div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+          </div>
+          <div class="benefit-title">דרייברים אירופאים</div>
+          <div class="benefit-desc">מייצגים את QLT האיטלקית – דרייברים ברמה אירופאית. אמינות, אחריות, תיעוד טכני מלא.</div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="benefit-title">ייעוץ טכני</div>
+          <div class="benefit-desc">לא יודעים איזה פרופיל? איזה דרייבר? צוות טכני שעונה – לא מוכר, מייעץ.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Coffee CTA ── -->
+  <section class="coffee-section" id="contact">
+    <div class="coffee-inner">
+      <div class="coffee-text">
+        <div class="coffee-label">בואו לרחובות</div>
+        <h2 class="coffee-title">
+          בואו שתו קפה –<br>
+          <span>נייצר לכם בינתיים.</span>
+        </h2>
+        <p class="coffee-sub">
+          יצירה 19, רחובות · א׳–ה׳ 07:00–15:00<br>
+          מוזמנים להגיע, לראות מלאי, לקבל ייעוץ – ללא עלות.
+        </p>
+      </div>
+      <div class="coffee-actions">
+        <a href="https://wa.me/972524444470?text=שלום, אני רוצה לקבל ייעוץ על רכיבי LED" target="_blank" class="wa-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          שלח הודעה בWhatsApp
+        </a>
+        <a href="tel:+97286326059" class="phone-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.64 3.3 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          08-632-6059
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+
+        <!-- לוגו + תיאור -->
+        <div>
+          <div style="direction:ltr;display:inline-flex;align-items:center;gap:2px;">
+            <span class="footer-logo-led">LED</span><span class="footer-logo-link">LINK</span>
+          </div>
+          <div class="footer-tagline">פתרונות תאורה מקצועיים לפרויקטים בכל גודל. ישירות מהמפעל, רחובות.</div>
+        </div>
+
+        <!-- כתובת -->
+        <div>
+          <div class="footer-col-title">כתובת</div>
+          <div class="footer-links">
+            <span class="footer-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              יצירה 19, רחובות
+            </span>
+            <a href="https://waze.com/ul?ll=31.8969,34.8186&navigate=yes" target="_blank" class="footer-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+              נווט ב-Waze
+            </a>
+          </div>
+        </div>
+
+        <!-- צור קשר -->
+        <div>
+          <div class="footer-col-title">צור קשר</div>
+          <div class="footer-links">
+            <a href="tel:+97286326059" class="footer-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6 6l1-1.06a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.72 16z"/></svg>
+              08-632-6059
+            </a>
+            <a href="mailto:office@ledlink.co.il" class="footer-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              office@ledlink.co.il
+            </a>
+            <a href="https://wa.me/972524444470" target="_blank" class="footer-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- שעות פעילות -->
+        <div>
+          <div class="footer-col-title">שעות פעילות</div>
+          <div class="footer-hours-row">
+            <span class="hours-day">ראשון – חמישי</span>
+            <span class="hours-open">07:00 – 15:00</span>
+          </div>
+          <div class="footer-hours-row">
+            <span class="hours-day">שישי</span>
+            <span class="hours-closed">סגור</span>
+          </div>
+          <div class="footer-hours-row">
+            <span class="hours-day">שבת</span>
+            <span class="hours-closed">סגור</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2026 LEDLink – כל הזכויות שמורות</div>
+        <div class="footer-legal">
+          <a href="about.html">אודות</a>
+          <a href="takanon.html">תקנון</a>
+          <a href="privacy.html">מדיניות פרטיות</a>
+          <a href="accessibility.html">הצהרת נגישות</a>
+          <a href="faq.html">שאלות נפוצות</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="a11y-widget.js"></script>
+</body>
+</html>

@@ -1,0 +1,483 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מדריכי תאורת LED — איך לבחור, לתכנן ולהתקין | LEDLink רחובות</title>
+  <meta name="description" content="מדריכי תאורת LED מקצועיים: בחירת פרופיל למטבח, תכנון תאורת סלון, חישוב הספק, התקנת פרופיל גבס, דירוג IP, גוון אור. מאת מהנדסי LEDLink.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold:       '#E8A020',
+            'gold-dim': '#C4880A',
+            ink:        '#1C1C1C',
+            muted:      '#777777',
+            border:     '#E0DDD6',
+          },
+          fontFamily: { sans: ['Heebo', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: #F4F4F0; color: #1C1C1C; font-family: 'Heebo', sans-serif; direction: rtl; }
+    .nav-drop-item {
+      display: block; padding: 10px 20px;
+      color: #AAAAAA; text-decoration: none;
+      font-size: 14px; font-weight: 500;
+      border-right: 2px solid transparent;
+      transition: all 0.15s; background: transparent;
+      width: 100%; text-align: right; cursor: pointer;
+      font-family: 'Heebo', sans-serif; box-sizing: border-box;
+      border-top: none; border-bottom: none; border-left: none;
+    }
+    .nav-drop-item:hover { color: #E8A020; background: rgba(255,255,255,0.04); border-right-color: #E8A020; }
+    .footer { background: #111; padding: 48px 32px 0; border-top: 1px solid #222; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid #1E1E1E; }
+    .footer-logo-led { font-size: 24px; font-weight: 900; color: #E8A020; }
+    .footer-logo-link { font-size: 24px; font-weight: 300; color: #fff; }
+    .footer-tagline { font-size: 13px; color: #555; margin-top: 10px; line-height: 1.6; max-width: 220px; }
+    .footer-col-title { font-size: 11px; font-weight: 700; color: #555; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 18px; }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-link { color: #888; text-decoration: none; font-size: 14px; transition: color 0.15s; display: flex; align-items: center; gap: 9px; }
+    .footer-link:hover { color: #E8A020; }
+    .footer-link svg { flex-shrink: 0; opacity: 0.5; transition: opacity 0.15s; }
+    .footer-link:hover svg { opacity: 1; }
+    .footer-hours-row { display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: #888; gap: 12px; }
+    .footer-hours-row + .footer-hours-row { margin-top: 12px; }
+    .hours-open { color: #4CAF50; font-size: 12px; font-weight: 600; }
+    .hours-closed { color: #555; font-size: 12px; font-weight: 600; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding: 20px 0; }
+    .footer-copy { font-size: 12px; color: #3A3A3A; }
+    .footer-legal { display: flex; flex-wrap: wrap; gap: 6px 20px; }
+    .footer-legal a { font-size: 12px; color: #3A3A3A; text-decoration: none; transition: color 0.15s; }
+    .footer-legal a:hover { color: #E8A020; }
+    @media (max-width: 768px) { .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; } }
+    @media (max-width: 480px) { .footer-top { grid-template-columns: 1fr; } }
+  </style>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    const WA_NUMBER = '972524444470';
+
+    const WaIcon = () => (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+      </svg>
+    );
+
+    const GUIDES = [
+      {
+        id: 1,
+        cat: 'מדריך קנייה',
+        readTime: '4 דק׳',
+        title: 'איך לבחור פרופיל LED למטבח?',
+        excerpt: 'פינתי, שקוע גבס או מוגן מים — מתי משתמשים בכל סוג, ואיך מתאימים את הפרופיל לתאורת השיש, הארונות והאי.',
+        img: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=500&q=80',
+        body: [
+          { type:'p', text:'בחירת פרופיל LED למטבח היא אחת ההחלטות שהכי משפיעות על האופי של החלל. המטבח הוא סביבת עבודה ראשית, אבל גם מקום מפגש — ולכן התאורה צריכה לשרת שניהם.' },
+          { type:'h', text:'תאורת מתחת לארונות עליונים' },
+          { type:'p', text:'פרופיל צמוד (Surface) הוא הפתרון הנפוץ ביותר. הוא מודבק או מוברג לתחתית הארון ומכוון אור ישירות אל השיש. חפשו פרופיל עם מפזר חלבי (Opal) כדי למנוע סנוור ולקבל קו אור אחיד. עובי מומלץ: 7–10 מ"מ כדי לא לבלוט מתחת לארון.' },
+          { type:'h', text:'תאורת אי מטבח' },
+          { type:'p', text:'פרופיל תלוי (Suspended) מעל אי המטבח יוצר אפקט דרמטי של קו אור צף. אורך הפרופיל צריך להיות כ-70–80% מאורך האי. שימו לב לגובה תלייה — 70–85 ס"מ מעל המשטח הוא הטווח האידיאלי.' },
+          { type:'h', text:'פרופיל שקוע גבס — למראה נקי' },
+          { type:'p', text:'אם אתם בשלב בנייה או שיפוץ, פרופיל שקוע גבס (Recessed) ייתן תוצאה הכי מקצועית. הפרופיל נטמע לתוך התקרה או הארון וכל מה שנראה הוא פס אור נקי. דורש תכנון מראש עם הגבסן.' },
+          { type:'h', text:'הגנת IP למטבח' },
+          { type:'p', text:'מומלץ לבחור פרופיל עם דירוג IP54 לפחות לאזור השיש — שם יש אדים, שומנים והתזות מים. לאזור התקרה מספיק IP20. אל תוותרו על הגנה — מטבח הוא סביבה לחה.' },
+          { type:'tip', text:'טיפ מקצועי: חיברו את תאורת השיש למתג נפרד מהתאורה הכללית. ככה תוכלו ליצור אווירה בארוחת ערב עם תאורת שיש בלבד.' },
+        ],
+      },
+      {
+        id: 2,
+        cat: 'תכנון תאורה',
+        readTime: '6 דק׳',
+        title: '5 כללי זהב לתאורת סלון מודרני',
+        excerpt: 'איך לשלב תאורה כללית, מבטאת ופונקציונלית כדי שהסלון יעבוד גם בסרט משפחתי וגם בארוחת ערב חגיגית.',
+        img: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=500&q=80',
+        body: [
+          { type:'p', text:'סלון מודרני צריך לפחות שלוש שכבות תאורה שעובדות יחד. הנה 5 כללי הזהב שמהנדסי התאורה שלנו מיישמים בכל פרויקט:' },
+          { type:'h', text:'1. שלוש שכבות — תמיד' },
+          { type:'p', text:'תאורה כללית (ambient) להארת החלל, תאורה מבטאת (accent) להדגשת אלמנטים, ותאורה פונקציונלית (task) לקריאה ועבודה. כל שכבה על מעגל נפרד עם עמעום.' },
+          { type:'h', text:'2. תאורת Cove — המפתח לאווירה' },
+          { type:'p', text:'פרופיל LED שקוע בנישה של הגבס ביצירת אור עקיף על התקרה הוא האלמנט הכי משפיע בסלון. הוא נותן תחושת גובה, חמימות ויוקרה — בלי גוף תאורה נראה.' },
+          { type:'h', text:'3. גוון אור אחיד' },
+          { type:'p', text:'כל גופי התאורה בסלון צריכים להיות באותו גוון (למשל 3000K). ערבוב של גוונים שונים יוצר תחושה לא נעימה ולא מקצועית.' },
+          { type:'h', text:'4. עמעום בכל מקום' },
+          { type:'p', text:'השקיעו בדימר לכל מעגל תאורה. סלון ב-100% בהירות מתאים לניקיון — לא לערב סרט. היכולת לעמעם ל-20–30% היא מה שהופך חלל רגיל לחוויה.' },
+          { type:'h', text:'5. אל תשכחו את הקיר' },
+          { type:'p', text:'תאורה מבטאת על קיר (wall washing) מרחיבה את החלל ויוצרת עומק. פרופיל LED צמוד תקרה עם כיוון אור לקיר, או אפלייט שקוע גבס — שניהם עובדים מצוין.' },
+          { type:'tip', text:'טיפ מקצועי: תכננו את נקודות החשמל לתאורה לפני שהגבסן מגיע. שינויים בדיעבד הם יקרים ומגבילים.' },
+        ],
+      },
+      {
+        id: 3,
+        cat: 'טכני',
+        readTime: '5 דק׳',
+        title: 'איך מחשבים הספק לסטריפ LED?',
+        excerpt: 'נוסחה פשוטה לחישוב הספק, בחירת ספק מתח מתאים, ומה שחייבים לדעת על מרחק, נפילת מתח ואחוז עומס.',
+        img: 'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=500&q=80',
+        body: [
+          { type:'p', text:'חישוב הספק נכון הוא הבסיס להתקנה מוצלחת. ספק חלש מדי יגרום לסטריפ לא לעבוד או להבהב, וספק חזק מדי הוא בזבוז כסף ומקום.' },
+          { type:'h', text:'הנוסחה הבסיסית' },
+          { type:'p', text:'הספק ספק (W) = אורך סטריפ (מ׳) × הספק למטר (W/m) × 1.2 (מקדם ביטחון 20%)' },
+          { type:'p', text:'לדוגמה: סטריפ באורך 5 מטר, 14.4W/m → 5 × 14.4 × 1.2 = 86.4W → בחרו ספק 100W.' },
+          { type:'h', text:'למה מקדם ביטחון?' },
+          { type:'p', text:'ספק מתח שעובד ב-100% עומס מתחמם יותר, מתכלה מהר יותר, ועלול לגרום להבהוב. עבודה ב-80% עומס (=מקדם 1.2) מבטיחה אורך חיים מקסימלי ופעולה יציבה.' },
+          { type:'h', text:'נפילת מתח — האויב השקט' },
+          { type:'p', text:'בסטריפ ארוך (מעל 5 מ׳), המתח יורד לאורך הרצועה. התוצאה: הקצה הרחוק חלש וכהה יותר. הפתרון: הזנה דו-צדדית (חיבור ספק משני הצדדים) או חיבור ספק כל 5 מטר.' },
+          { type:'h', text:'12V מול 24V' },
+          { type:'p', text:'סטריפ 24V סובל פחות מנפילת מתח ומתאים לריצות ארוכות יותר (עד 10 מ׳ בהזנה חד-צדדית). סטריפ 12V מתאים לריצות קצרות (עד 5 מ׳). ברוב הפרויקטים — 24V הוא הבחירה הנכונה.' },
+          { type:'tip', text:'טיפ מקצועי: תמיד בדקו שהספק ואורך הסטריפ תואמים. אם לא בטוחים — שלחו לנו הודעה בוואטסאפ עם אורך הסטריפ ונחשב בשבילכם.' },
+        ],
+      },
+      {
+        id: 4,
+        cat: 'מדריך התקנה',
+        readTime: '7 דק׳',
+        title: 'התקנת פרופיל שקוע גבס — צעד אחר צעד',
+        excerpt: 'מדידה, חיתוך, חיבור הסטריפ, שפכטל ותכנון נכון של התקנת הפרופיל בתוך הגבס לתוצאה מקצועית ונקייה.',
+        img: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=500&q=80',
+        body: [
+          { type:'p', text:'התקנת פרופיל שקוע גבס נותנת את התוצאה הכי מקצועית — קו אור נקי שמשתלב בתקרה בלי שום בליטה. הנה התהליך המלא:' },
+          { type:'h', text:'שלב 1: תכנון ומדידה' },
+          { type:'p', text:'סמנו את מיקום הפרופיל על התקרה. ודאו שיש גישה לנקודת חשמל בקצה. מדדו את האורך הנדרש והוסיפו 1 ס"מ לכל צד למרווח.' },
+          { type:'h', text:'שלב 2: הכנת החריץ בגבס' },
+          { type:'p', text:'חתכו חריץ בגבס ברוחב הפרופיל + 2 מ"מ מכל צד (למרווח שפכטל). עומק החריץ = גובה הפרופיל. השתמשו במסור גבס או סכין חדה.' },
+          { type:'h', text:'שלב 3: חיתוך הפרופיל' },
+          { type:'p', text:'חתכו את פרופיל האלומיניום עם מסור מתכת (miter saw) או מסור ידני למתכת. השתמשו בפצירה להחליק את הקצוות.' },
+          { type:'h', text:'שלב 4: הדבקת הסטריפ' },
+          { type:'p', text:'לפני ההתקנה בתקרה — הדביקו את סטריפ ה-LED בתוך הפרופיל. נקו את פני השטח באלכוהול, קלפו את הנייר מהדבק העצמי ולחצו בעדינות. חברו את הכבל לספק ובדקו שהכל דולק.' },
+          { type:'h', text:'שלב 5: התקנה ושפכטל' },
+          { type:'p', text:'הכניסו את הפרופיל לחריץ, קבעו עם דבק סיליקון או ברגים (תלוי בדגם). מלאו שפכטל סביב הפרופיל, יישרו עם הגבס, ולאחר ייבוש — שייפו וצבעו. התוצאה: קו אור שצומח מהתקרה.' },
+          { type:'h', text:'שלב 6: התקנת המפזר והפעלה' },
+          { type:'p', text:'הכניסו את המפזר (Cover) לפרופיל — בד"כ הוא נכנס בלחיצה (Snap-in). חברו לספק מתח ולמתג. הדליקו ותהנו.' },
+          { type:'tip', text:'טיפ מקצועי: תמיד בדקו את הסטריפ לפני ההתקנה הסופית. הרבה יותר קל לתקן בעיה כשהפרופיל עדיין לא בתקרה.' },
+        ],
+      },
+      {
+        id: 5,
+        cat: 'תכנון תאורה',
+        readTime: '5 דק׳',
+        title: 'IP44 / IP65 / IP67 — איזה דירוג לאיזה חלל?',
+        excerpt: 'הסבר מעשי על דירוג הגנת מים ואבק, ומתי חובה לבחור גוף תאורה מוגן (אמבטיה, מטבח, גינה, חצר רטובה).',
+        img: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=500&q=80',
+        body: [
+          { type:'p', text:'דירוג IP (Ingress Protection) מגדיר כמה גוף תאורה מוגן מפני אבק ומים. הספרה הראשונה = הגנה מאבק (0–6), השנייה = הגנה ממים (0–9). הנה מה שצריך לדעת:' },
+          { type:'h', text:'IP20 — פנימי יבש' },
+          { type:'p', text:'ללא הגנה ממים. מתאים לסלון, חדר שינה, מסדרון — כל חלל פנימי יבש. זה הדירוג הסטנדרטי ברוב הפרופילים.' },
+          { type:'h', text:'IP44 — התזות מים' },
+          { type:'p', text:'הגנה מפני התזות מים מכל כיוון. מתאים למטבח (אזור השיש), שירותים, חדר כביסה. הבחירה המינימלית לכל חלל עם אדים.' },
+          { type:'h', text:'IP54 — אבק + התזות' },
+          { type:'p', text:'הגנה מלאה מאבק + התזות מים. מתאים למרפסת מקורה, מוסך, מחסן. פתרון ביניים מצוין.' },
+          { type:'h', text:'IP65 — סילון מים' },
+          { type:'p', text:'הגנה מפני סילוני מים. מתאים לאמבטיה (אזור מקלחון), גינה, חצר, פרגולה. הדירוג הנפוץ ביותר לחוץ.' },
+          { type:'h', text:'IP67 — טבילה זמנית' },
+          { type:'p', text:'אטום גם בטבילה במים עד עומק 1 מ׳ ל-30 דקות. מתאים לבריכה, מזרקה, אדנית רטובה, ערוגות גינה. בחירה חובה לכל מה ששוכב על הרצפה בחוץ.' },
+          { type:'tip', text:'טיפ מקצועי: אל תחסכו בדירוג IP באמבטיה ובגינה. גוף תאורה שנרטב בלי הגנה מתאימה הוא סכנת חשמל. ההבדל במחיר שולי — ההבדל בבטיחות ענק.' },
+        ],
+      },
+      {
+        id: 6,
+        cat: 'מדריך קנייה',
+        readTime: '4 דק׳',
+        title: 'גוון אור 2700K, 3000K או 4000K?',
+        excerpt: 'איזה גוון מתאים לחדר שינה, איזה למטבח ואיזה למשרד — וטעויות נפוצות שגורמות לחלל להיראות "קר" או "צהבהב".',
+        img: 'https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?auto=format&fit=crop&w=500&q=80',
+        body: [
+          { type:'p', text:'גוון אור (טמפרטורת צבע) נמדד בקלווין (K). מספר נמוך = אור חם/צהבהב. מספר גבוה = אור קר/כחלחל. הנה איך לבחור נכון:' },
+          { type:'h', text:'2700K — חם ואינטימי' },
+          { type:'p', text:'אור כתום-זהוב, כמו נר. אידיאלי לחדר שינה, פינת ישיבה אינטימית, מסעדות. יוצר תחושת חמימות ורוגע. זה הגוון הנפוץ בבתי מלון יוקרתיים.' },
+          { type:'h', text:'3000K — חם-ניטרלי (הפופולרי ביותר)' },
+          { type:'p', text:'אור לבן-חם, נעים ומחמיא. מתאים לסלון, מטבח, חדר אוכל, מסדרון. זה הגוון ה"בטוח" — עובד כמעט בכל חלל ביתי. רוב הלקוחות שלנו בוחרים 3000K.' },
+          { type:'h', text:'4000K — ניטרלי-קריר' },
+          { type:'p', text:'אור לבן נקי ומרענן. מתאים למשרד, חדר עבודה, חנות, מרפאה. מעורר ריכוז ותחושת נקיון. פחות מתאים לחללים ביתיים שאמורים להרגיש חמימים.' },
+          { type:'h', text:'5000K–6500K — קר (אור יום)' },
+          { type:'p', text:'אור כחלחל-לבן. מתאים למחסנים, מוסכים, מעבדות, חללים תעשייתיים. לא מומלץ לבית — יוצר תחושה "סטרילית" ולא נעימה.' },
+          { type:'h', text:'הטעות הנפוצה ביותר' },
+          { type:'p', text:'ערבוב גוונים שונים באותו חלל. למשל ספוטים ב-4000K עם סטריפ LED ב-2700K. התוצאה — החלל נראה לא אחיד ולא מקצועי. בחרו גוון אחד וחזרו עליו בכל גופי התאורה בחדר.' },
+          { type:'tip', text:'טיפ מקצועי: לא בטוחים? הזמינו דוגמית סטריפ ב-2700K וב-3000K, הדליקו בחלל בערב, ותראו מה מרגיש לכם נכון. ההבדל קטן אבל משמעותי.' },
+        ],
+      },
+    ];
+
+    /* ── Guide Article Modal ── */
+    const GuideArticle = ({ guide, onClose }) => {
+      useEffect(() => {
+        const prev = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        const onKey = e => { if (e.key === 'Escape') onClose(); };
+        window.addEventListener('keydown', onKey);
+        return () => { document.body.style.overflow = prev; window.removeEventListener('keydown', onKey); };
+      }, []);
+
+      return (
+        <>
+          <div style={{position:'fixed',inset:0,background:'rgba(0,0,0,0.55)',zIndex:50,backdropFilter:'blur(4px)'}} onClick={onClose}/>
+          <div style={{position:'fixed',inset:0,zIndex:50,display:'flex',alignItems:'flex-start',justifyContent:'center',overflowY:'auto',padding:'40px 16px'}} onClick={onClose}>
+            <div style={{background:'#fff',width:'100%',maxWidth:760,borderRadius:16,overflow:'hidden',boxShadow:'0 24px 64px rgba(0,0,0,0.2)'}} onClick={e=>e.stopPropagation()}>
+
+              {/* Hero image */}
+              <div style={{position:'relative',aspectRatio:'21/9',overflow:'hidden',maxHeight:280}}>
+                <img src={guide.img} alt={guide.title} style={{width:'100%',height:'100%',objectFit:'cover'}}/>
+                <div style={{position:'absolute',inset:0,background:'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)'}}/>
+                <div style={{position:'absolute',bottom:0,right:0,left:0,padding:'32px'}}>
+                  <span style={{display:'inline-block',background:'#E8A020',color:'#fff',fontSize:10,fontWeight:700,letterSpacing:3,textTransform:'uppercase',padding:'3px 12px',borderRadius:4,marginBottom:12}}>
+                    {guide.cat}
+                  </span>
+                  <h1 style={{fontSize:'clamp(20px,3vw,28px)',fontWeight:900,color:'#fff',lineHeight:1.2,margin:0}}>{guide.title}</h1>
+                  <div style={{display:'flex',alignItems:'center',gap:6,color:'rgba(255,255,255,0.7)',fontSize:12,marginTop:10}}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    {guide.readTime} קריאה
+                  </div>
+                </div>
+                <button onClick={onClose} style={{position:'absolute',top:16,left:16,background:'rgba(0,0,0,0.4)',border:'none',borderRadius:'50%',width:36,height:36,display:'flex',alignItems:'center',justifyContent:'center',cursor:'pointer',color:'#fff'}}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+              </div>
+
+              {/* Article body */}
+              <div style={{padding:'32px 40px',direction:'rtl'}}>
+                {guide.body.map((block, i) => {
+                  if (block.type === 'h') return (
+                    <h3 key={i} style={{fontSize:18,fontWeight:900,color:'#1C1C1C',marginTop:32,marginBottom:8}}>{block.text}</h3>
+                  );
+                  if (block.type === 'tip') return (
+                    <div key={i} style={{background:'rgba(232,160,32,0.08)',borderRight:'4px solid #E8A020',borderRadius:8,padding:20,marginTop:24}}>
+                      <p style={{fontSize:14,color:'#555',lineHeight:1.7,margin:0}}><span style={{fontWeight:700,color:'#E8A020',marginLeft:6}}>💡</span>{block.text}</p>
+                    </div>
+                  );
+                  return (
+                    <p key={i} style={{fontSize:15,color:'#555',lineHeight:1.8,marginBottom:12}}>{block.text}</p>
+                  );
+                })}
+
+                {/* CTA */}
+                <div style={{background:'#1A1A1A',borderRadius:12,padding:28,textAlign:'center',marginTop:40}}>
+                  <p style={{color:'#fff',fontWeight:700,fontSize:18,marginBottom:8}}>צריך עזרה בתכנון?</p>
+                  <p style={{color:'rgba(255,255,255,0.6)',fontSize:14,marginBottom:20}}>שלח לנו הודעה ומהנדס התאורה שלנו יחזור אליך תוך שעות.</p>
+                  <a href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('שלום LEDLink, קראתי את המדריך ואשמח לעזרה בתכנון התאורה שלי.')}`}
+                    target="_blank" rel="noopener noreferrer"
+                    style={{display:'inline-flex',alignItems:'center',gap:8,background:'#25D366',color:'#fff',fontWeight:700,padding:'12px 28px',borderRadius:8,textDecoration:'none',fontSize:14}}>
+                    <WaIcon/> שלח WhatsApp
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      );
+    };
+
+    /* ── Guide Card ── */
+    const GuideCard = ({ g, onOpen }) => {
+      const [hovered, setHovered] = useState(false);
+      return (
+        <article onClick={() => onOpen(g)} onMouseEnter={()=>setHovered(true)} onMouseLeave={()=>setHovered(false)}
+          style={{background:'#fff',borderRadius:12,border:'1px solid #E0DDD6',overflow:'hidden',cursor:'pointer',transition:'transform 0.25s, box-shadow 0.25s',transform:hovered?'translateY(-4px)':'none',boxShadow:hovered?'0 12px 32px rgba(0,0,0,0.1)':'none'}}>
+          <div style={{aspectRatio:'16/10',overflow:'hidden',background:'#F0EDE8',position:'relative'}}>
+            <img src={g.img} alt={g.title} loading="lazy"
+              style={{width:'100%',height:'100%',objectFit:'cover',transition:'transform 0.5s',transform:hovered?'scale(1.05)':'scale(1)'}}
+              onError={e=>{ e.target.src='https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=500&q=80'; }}/>
+            <div style={{position:'absolute',top:12,right:12}}>
+              <span style={{background:'rgba(255,255,255,0.95)',fontSize:10,color:'#E8A020',fontWeight:700,letterSpacing:2,textTransform:'uppercase',padding:'3px 10px',borderRadius:4}}>
+                {g.cat}
+              </span>
+            </div>
+          </div>
+          <div style={{padding:20}}>
+            <div style={{display:'flex',alignItems:'center',gap:6,fontSize:11,color:'#999',marginBottom:8}}>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              {g.readTime} קריאה
+            </div>
+            <h3 style={{fontSize:17,fontWeight:900,color:hovered?'#E8A020':'#1C1C1C',lineHeight:1.3,marginBottom:8,transition:'color 0.15s'}}>{g.title}</h3>
+            <p style={{fontSize:14,color:'#777',lineHeight:1.7,marginBottom:16,display:'-webkit-box',WebkitLineClamp:3,WebkitBoxOrient:'vertical',overflow:'hidden'}}>{g.excerpt}</p>
+            <span style={{fontSize:12,fontWeight:700,color:hovered?'#E8A020':'#1C1C1C',display:'flex',alignItems:'center',gap:4,transition:'color 0.15s'}}>
+              קרא עוד
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            </span>
+          </div>
+        </article>
+      );
+    };
+
+    /* ── Main App ── */
+    const App = () => {
+      const [openGuide, setOpenGuide] = useState(null);
+      const [openDrop,  setOpenDrop]  = useState(null);
+
+      const CATALOG = [
+        { label: 'דרייברים',  url: 'index.html?tab=דרייברים'  },
+        { label: 'סטריפ LED', url: 'index.html?tab=סטריפ LED' },
+        { label: 'פרופילים',  url: 'index.html?tab=פרופילים'  },
+      ];
+      const TOOLS = [
+        { label: '⚡ מפל מתח',       url: 'tools.html?tool=voltage'     },
+        { label: '💡 לומן לחלל',     url: 'tools.html?tool=lumen'       },
+        { label: '♻️ חיסכון אנרגיה', url: 'tools.html?tool=roi'         },
+        { label: '📏 פיזור אלומה',   url: 'tools.html?tool=beam-linear' },
+      ];
+      const dropBox = {
+        position:'absolute', top:'100%', right:0,
+        background:'#1A1A1A', border:'1px solid #333',
+        borderTop:'2px solid #E8A020', borderRadius:'0 0 8px 8px',
+        minWidth:190, zIndex:200, padding:'6px 0',
+        boxShadow:'0 8px 24px rgba(0,0,0,0.3)',
+      };
+
+      return (
+        <div style={{minHeight:'100vh', background:'#F4F4F0'}}>
+
+          {/* Navbar */}
+          <nav style={{background:'#1A1A1A', borderBottom:'1px solid #2A2A2A', position:'sticky', top:0, zIndex:100, height:64, display:'flex', alignItems:'center'}}>
+            <div style={{maxWidth:1200, margin:'0 auto', padding:'0 32px', display:'flex', alignItems:'center', gap:32, width:'100%'}}>
+              <a href="home.html" style={{display:'flex', alignItems:'center', gap:4, textDecoration:'none', flexShrink:0}}>
+                <span style={{fontSize:22, fontWeight:900, letterSpacing:1, color:'#E8A020'}}>LED</span>
+                <span style={{fontSize:22, fontWeight:300, color:'#FFFFFF'}}>Link</span>
+              </a>
+              <div style={{display:'flex', alignItems:'center', gap:4}}>
+                <a href="home.html" style={{color:'#AAAAAA', textDecoration:'none', fontSize:15, fontWeight:500, padding:'6px 14px', borderRadius:6}}>דף הבית</a>
+
+                {/* קטלוג מוצרים dropdown */}
+                <div style={{position:'relative'}} onMouseEnter={()=>setOpenDrop('catalog')} onMouseLeave={()=>setOpenDrop(null)}>
+                  <a href="index.html" style={{display:'flex', alignItems:'center', gap:4, color:'#AAAAAA', textDecoration:'none', fontSize:15, fontWeight:500, padding:'6px 14px', borderRadius:6}}>
+                    קטלוג מוצרים <span style={{fontSize:10, display:'inline-block', transform:openDrop==='catalog'?'rotate(180deg)':'none', transition:'transform 0.2s'}}>▾</span>
+                  </a>
+                  {openDrop === 'catalog' && (
+                    <div style={dropBox}>
+                      {CATALOG.map(item => <a key={item.url} href={item.url} className="nav-drop-item">{item.label}</a>)}
+                    </div>
+                  )}
+                </div>
+
+                {/* כלי תכנון dropdown */}
+                <div style={{position:'relative'}} onMouseEnter={()=>setOpenDrop('tools')} onMouseLeave={()=>setOpenDrop(null)}>
+                  <a href="tools.html" style={{display:'flex', alignItems:'center', gap:4, color:'#AAAAAA', textDecoration:'none', fontSize:15, fontWeight:500, padding:'6px 14px', borderRadius:6}}>
+                    כלי תכנון <span style={{fontSize:10, display:'inline-block', transform:openDrop==='tools'?'rotate(180deg)':'none', transition:'transform 0.2s'}}>▾</span>
+                  </a>
+                  {openDrop === 'tools' && (
+                    <div style={dropBox}>
+                      {TOOLS.map(item => <a key={item.url} href={item.url} className="nav-drop-item">{item.label}</a>)}
+                    </div>
+                  )}
+                </div>
+
+                <a href="guides.html" style={{color:'#E8A020', textDecoration:'none', fontSize:15, fontWeight:700, padding:'6px 14px', borderRadius:6, background:'rgba(232,160,32,0.1)'}}>מדריכים</a>
+              </div>
+              <div style={{flex:1}}></div>
+              <a href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('שלום LEDLink, אשמח לשמוע על המוצרים והשירותים שלכם.')}`}
+                target="_blank" rel="noopener noreferrer"
+                style={{background:'#E8A020', color:'#fff', fontWeight:700, fontSize:13, padding:'8px 18px', borderRadius:6, textDecoration:'none', display:'flex', alignItems:'center', gap:6}}>
+                <WaIcon/> שלח הודעה
+              </a>
+            </div>
+          </nav>
+
+          {/* Page header */}
+          <div style={{background:'#1A1A1A', padding:'48px 32px 40px'}}>
+            <div style={{maxWidth:900, margin:'0 auto'}}>
+              <div style={{fontSize:11, fontWeight:700, letterSpacing:4, textTransform:'uppercase', color:'#E8A020', marginBottom:12}}>LEDLink · רחובות</div>
+              <h1 style={{fontSize:'clamp(28px,4vw,48px)', fontWeight:900, color:'#FFFFFF', lineHeight:1.15, marginBottom:12}}>
+                לפני שקונים — לומדים
+              </h1>
+              <p style={{fontSize:16, color:'rgba(255,255,255,0.6)', lineHeight:1.7, maxWidth:520}}>
+                מדריכים שיכולים לעזור.
+              </p>
+            </div>
+          </div>
+
+          {/* Guides grid */}
+          <div style={{maxWidth:1100, margin:'0 auto', padding:'48px 24px'}}>
+            <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(300px, 1fr))', gap:24}}>
+              {GUIDES.map(g => <GuideCard key={g.id} g={g} onOpen={setOpenGuide}/>)}
+            </div>
+          </div>
+
+          {/* Footer */}
+          <footer className="footer">
+            <div className="footer-inner">
+              <div className="footer-top">
+                <div>
+                  <div style={{direction:'ltr',display:'inline-flex',alignItems:'center',gap:'2px'}}>
+                    <span className="footer-logo-led">LED</span><span className="footer-logo-link">LINK</span>
+                  </div>
+                  <div className="footer-tagline">פתרונות תאורה מקצועיים לפרויקטים בכל גודל. ישירות מהמפעל, רחובות.</div>
+                </div>
+                <div>
+                  <div className="footer-col-title">כתובת</div>
+                  <div className="footer-links">
+                    <span className="footer-link">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                      יצירה 19, רחובות
+                    </span>
+                    <a href="https://waze.com/ul?ll=31.8969,34.8186&navigate=yes" target="_blank" className="footer-link">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                      נווט ב-Waze
+                    </a>
+                  </div>
+                </div>
+                <div>
+                  <div className="footer-col-title">צור קשר</div>
+                  <div className="footer-links">
+                    <a href="tel:+97286326059" className="footer-link">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6 6l1-1.06a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.72 16z"/></svg>
+                      08-632-6059
+                    </a>
+                    <a href="mailto:office@ledlink.co.il" className="footer-link">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                      office@ledlink.co.il
+                    </a>
+                    <a href="https://wa.me/972524444470" target="_blank" className="footer-link">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                      WhatsApp
+                    </a>
+                  </div>
+                </div>
+                <div>
+                  <div className="footer-col-title">שעות פעילות</div>
+                  <div className="footer-hours-row"><span className="hours-day">ראשון – חמישי</span><span className="hours-open">07:00 – 15:00</span></div>
+                  <div className="footer-hours-row"><span className="hours-day">שישי</span><span className="hours-closed">סגור</span></div>
+                  <div className="footer-hours-row"><span className="hours-day">שבת</span><span className="hours-closed">סגור</span></div>
+                </div>
+              </div>
+              <div className="footer-bottom">
+                <div className="footer-copy">© 2026 LEDLink – כל הזכויות שמורות</div>
+                <div className="footer-legal">
+                  <a href="about.html">אודות</a>
+                  <a href="takanon.html">תקנון</a>
+                  <a href="privacy.html">מדיניות פרטיות</a>
+                  <a href="accessibility.html">הצהרת נגישות</a>
+                  <a href="faq.html">שאלות נפוצות</a>
+                </div>
+              </div>
+            </div>
+          </footer>
+
+          {openGuide && <GuideArticle guide={openGuide} onClose={()=>setOpenGuide(null)}/>}
+        </div>
+      );
+    };
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+  </script>
+</body>
+</html>
