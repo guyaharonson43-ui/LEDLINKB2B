@@ -743,15 +743,20 @@
     ];
 
     const App = () => {
-      const [tool, setTool] = useState('voltage');
+      const [tool, setTool] = useState(() => {
+        const t = new URLSearchParams(window.location.search).get('tool');
+        return t || 'voltage';
+      });
       const [openDrop, setOpenDrop] = useState(null);
       const [menuOpen, setMenuOpen] = useState(false);
       const [lumenPreset, setLumenPreset] = useState(null);
 
-      useEffect(() => {
-        const t = new URLSearchParams(window.location.search).get('tool');
-        if (t) setTool(t);
-      }, []);
+      const goToTool = (id) => {
+        setTool(id);
+        const url = new URL(window.location.href);
+        url.searchParams.set('tool', id);
+        window.history.replaceState({}, '', url.toString());
+      };
 
       const CATALOG = [
         { label: 'דרייברים',  url: 'catalog.html?tab=דרייברים'  },
@@ -808,7 +813,7 @@
                     <div style={dropBox}>
                       {TOOL_ITEMS.map(item => (
                         <button key={item.id} className="nav-drop-item" onClick={()=>{
-                          setTool(item.id);
+                          goToTool(item.id);
                           setOpenDrop(null);
                         }}>
                           {item.label}
@@ -856,7 +861,7 @@
             <div className="mm-label">כלים ומדריכים</div>
             <span className="mm-link active" style={{cursor:'default'}}>כלי תכנון</span>
             {TOOL_ITEMS.map(item => (
-              <a key={item.id} className="mm-link sub" style={{cursor:'pointer'}} onClick={()=>{ setTool(item.id); setMenuOpen(false); }}>{item.label}</a>
+              <a key={item.id} className="mm-link sub" style={{cursor:'pointer'}} onClick={()=>{ goToTool(item.id); setMenuOpen(false); }}>{item.label}</a>
             ))}
             <a href="guides.html" className="mm-link">מדריכים</a>
             <div className="mm-divider"></div>
@@ -881,7 +886,7 @@
           <div style={{borderBottom:'1px solid #E0DDD6', background:'#FFFFFF', position:'sticky', top:64, zIndex:90, boxShadow:'0 1px 4px rgba(0,0,0,0.04)'}}>
             <div style={{maxWidth:800, margin:'0 auto', padding:'0 24px', display:'flex', gap:0, overflowX:'auto'}}>
               {TOOLS.map(t => (
-                <button key={t.id} onClick={() => setTool(t.id)}
+                <button key={t.id} onClick={() => goToTool(t.id)}
                   style={{
                     padding:'16px 20px', border:'none',
                     borderBottom: tool === t.id ? '2px solid #E8A020' : '2px solid transparent',
@@ -903,7 +908,7 @@
             {tool === 'lumen'       && <LumenCalc preset={lumenPreset}/>}
             {tool === 'roi'         && <ROICalc/>}
             {tool === 'beam-linear' && <BeamLinearCalc/>}
-            {tool === 'circadian'   && <BiologicalCalc onGoToLumen={(room) => { setLumenPreset(room); setTool('lumen'); }}/>}
+            {tool === 'circadian'   && <BiologicalCalc onGoToLumen={(room) => { setLumenPreset(room); goToTool('lumen'); }}/>}
           </div>
 
           {/* Footer */}
