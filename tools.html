@@ -516,9 +516,9 @@
       }, []);
 
       const CATALOG = [
-        { label: 'דרייברים',  url: 'index.html?tab=דרייברים'  },
-        { label: 'סטריפ LED', url: 'index.html?tab=סטריפ LED' },
-        { label: 'פרופילים',  url: 'index.html?tab=פרופילים'  },
+        { label: 'דרייברים',  url: 'catalog.html?tab=דרייברים'  },
+        { label: 'סטריפ LED', url: 'catalog.html?tab=סטריפ LED' },
+        { label: 'פרופילים',  url: 'catalog.html?tab=פרופילים'  },
       ];
       const TOOL_ITEMS = [
         { label: '⚡ מפל מתח',       id: 'voltage'     },
@@ -541,16 +541,16 @@
           {/* Navbar */}
           <nav style={{background:'#1A1A1A', borderBottom:'1px solid #2A2A2A', position:'sticky', top:0, zIndex:100, height:64, display:'flex', alignItems:'center'}}>
             <div style={{maxWidth:1200, margin:'0 auto', padding:'0 32px', display:'flex', alignItems:'center', gap:32, width:'100%'}}>
-              <a href="home.html" style={{display:'flex', alignItems:'center', gap:4, textDecoration:'none', flexShrink:0}}>
+              <a href="index.html" style={{display:'flex', alignItems:'center', gap:4, textDecoration:'none', flexShrink:0}}>
                 <span style={{fontSize:22, fontWeight:900, letterSpacing:1, color:'#E8A020'}}>LED</span>
                 <span style={{fontSize:22, fontWeight:300, color:'#FFFFFF'}}>Link</span>
               </a>
               <div style={{display:'flex', alignItems:'center', gap:4}}>
-                <a href="home.html" style={{color:'#AAAAAA', textDecoration:'none', fontSize:15, fontWeight:500, padding:'6px 14px', borderRadius:6}}>דף הבית</a>
+                <a href="index.html" style={{color:'#AAAAAA', textDecoration:'none', fontSize:15, fontWeight:500, padding:'6px 14px', borderRadius:6}}>דף הבית</a>
 
                 {/* קטלוג מוצרים dropdown */}
                 <div style={{position:'relative'}} onMouseEnter={()=>setOpenDrop('catalog')} onMouseLeave={()=>setOpenDrop(null)}>
-                  <a href="index.html" style={{display:'flex', alignItems:'center', gap:4, color:'#AAAAAA', textDecoration:'none', fontSize:15, fontWeight:500, padding:'6px 14px', borderRadius:6}}>
+                  <a href="catalog.html" style={{display:'flex', alignItems:'center', gap:4, color:'#AAAAAA', textDecoration:'none', fontSize:15, fontWeight:500, padding:'6px 14px', borderRadius:6}}>
                     קטלוג מוצרים <span style={{fontSize:10, transition:'transform 0.2s', display:'inline-block', transform:openDrop==='catalog'?'rotate(180deg)':'none'}}>▾</span>
                   </a>
                   {openDrop === 'catalog' && (

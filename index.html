@@ -3,1010 +3,921 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LEDLink Components — קטלוג מקצועי</title>
-
-  <!-- Fonts -->
+  <title>LEDLink – רכיבי LED מקצועיים ישירות מהמפעל</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            surface:      '#F4F4F0',
-            'surface-alt':'#ECEAE4',
-            card:         '#FFFFFF',
-            'card-hover': '#FAFAF8',
-            border:       '#E0DDD6',
-            'border-dark':'#C8C4BC',
-            nav:          '#1A1A1A',
-            gold:         '#E8A020',
-            'gold-dim':   '#C4880A',
-            'gold-faint': 'rgba(232,160,32,0.12)',
-            ink:          '#1C1C1C',
-            'ink-soft':   '#555555',
-            'ink-faint':  '#999999',
-          },
-          fontFamily: {
-            sans: ['Heebo', 'sans-serif'],
-          },
-        }
-      }
-    }
-  </script>
-
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { background: #F4F4F0; color: #1C1C1C; font-family: 'Heebo', sans-serif; }
+    body { font-family: 'Heebo', sans-serif; background: #F4F4F0; color: #1C1C1C; direction: rtl; }
 
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #F4F4F0; }
-    ::-webkit-scrollbar-thumb { background: #C8C4BC; border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: #E8A020; }
-
-    .gold-underline {
-      border-bottom: 2px solid #E8A020;
-      padding-bottom: 2px;
+    /* ── Navbar ── */
+    .navbar {
+      background: #1A1A1A;
+      position: fixed; top: 0; right: 0; left: 0; z-index: 100;
+      height: 64px;
+      display: flex; align-items: center;
+      border-bottom: 1px solid #2A2A2A;
     }
-
-    .tab-active {
-      color: #E8A020;
-      border-bottom: 2px solid #E8A020;
-    }
-
-    .product-card {
-      background: #FFFFFF;
-      border: 1px solid #E0DDD6;
-      border-radius: 10px;
-      overflow: hidden;
-      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-      cursor: pointer;
-    }
-    .product-card:hover {
-      border-color: #E8A020;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    }
-
-    .filter-chip {
-      border: 1px solid #D0CCC4;
-      border-radius: 4px;
-      padding: 4px 10px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.15s;
-      color: #666666;
-      background: #FFFFFF;
-      white-space: nowrap;
-    }
-    .filter-chip:hover { border-color: #E8A020; color: #E8A020; }
-    .filter-chip.active { border-color: #E8A020; color: #FFFFFF; background: #E8A020; }
-
-    .spec-tag {
-      background: #F0EDE8;
-      border: 1px solid #E0DDD6;
-      border-radius: 4px;
-      padding: 2px 8px;
-      font-size: 11px;
-      color: #666666;
-      display: inline-block;
-    }
-    .spec-tag.highlight { border-color: rgba(232,160,32,0.5); color: #C4880A; background: rgba(232,160,32,0.08); }
-
-    .modal-overlay {
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,0.6);
-      z-index: 1000;
-      display: flex; align-items: center; justify-content: center;
-      padding: 16px;
-      backdrop-filter: blur(4px);
-    }
-    .modal-box {
-      background: #FFFFFF;
-      border: 1px solid #E0DDD6;
-      border-radius: 14px;
-      width: 100%; max-width: 680px;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: 0 24px 64px rgba(0,0,0,0.15);
-    }
-
-    .btn-gold {
-      background: #E8A020;
-      color: #FFFFFF;
-      font-weight: 700;
-      border-radius: 6px;
-      padding: 10px 20px;
-      transition: background 0.15s;
-      border: none;
-      cursor: pointer;
-      display: inline-block;
-      text-align: center;
-    }
-    .btn-gold:hover { background: #C4880A; }
-
-    .btn-outline {
-      border: 1px solid #D0CCC4;
-      color: #555555;
-      font-weight: 600;
-      border-radius: 6px;
-      padding: 9px 18px;
-      transition: all 0.15s;
-      background: transparent;
-      cursor: pointer;
-      display: inline-block;
-      text-align: center;
-    }
-    .btn-outline:hover { border-color: #E8A020; color: #E8A020; }
-
-    .search-input {
-      background: #FFFFFF;
-      border: 1px solid #D0CCC4;
-      border-radius: 6px;
-      color: #1C1C1C;
-      padding: 10px 40px 10px 16px;
-      font-family: 'Heebo', sans-serif;
-      font-size: 14px;
+    .navbar-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 32px;
+      display: flex; align-items: center; justify-content: flex-start; gap: 40px;
       width: 100%;
-      transition: border-color 0.15s;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     }
-    .search-input:focus { outline: none; border-color: #E8A020; }
-    .search-input::placeholder { color: #AAAAAA; }
+    .logo { display: flex; align-items: center; gap: 4px; text-decoration: none; flex-shrink: 0; }
+    .logo-led { font-size: 22px; font-weight: 900; color: #E8A020; }
+    .logo-link { font-size: 22px; font-weight: 300; color: #FFFFFF; }
+    .logo-tag { font-size: 9px; color: #555; letter-spacing: 3px; text-transform: uppercase; margin-right: 8px; margin-top: 2px; }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-link {
+      color: #AAAAAA; text-decoration: none; font-size: 15px; font-weight: 500;
+      transition: color 0.15s; padding: 6px 14px; border-radius: 6px;
+    }
+    .nav-link:hover { color: #E8A020; background: rgba(255,255,255,0.05); }
+    .nav-spacer { flex: 1; }
+    .nav-cta {
+      background: #E8A020; color: #fff; font-weight: 700; font-size: 13px;
+      padding: 8px 18px; border-radius: 6px; text-decoration: none;
+      transition: background 0.15s; display: flex; align-items: center; gap: 6px;
+    }
+    .nav-cta:hover { background: #C4880A; }
 
-    .no-img-placeholder {
-      width: 100%; padding-top: 65%;
-      background: linear-gradient(135deg, #F0EDE8 0%, #ECEAE4 100%);
-      display: flex; align-items: center; justify-content: center;
+    /* ── Hero ── */
+    .hero {
       position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+      padding-top: 64px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('hero.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      filter: brightness(0.65);
+    }
+    .hero-bg-fallback {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #1A1A1A 0%, #2A2010 50%, #1A1A1A 100%);
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to left, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.75) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto; padding: 0 32px;
+      width: 100%;
+    }
+    .hero-eyebrow {
+      font-size: 13px; font-weight: 600; letter-spacing: 1.5px;
+      color: #E8A020;
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block; width: 24px; height: 2px; background: #E8A020; flex-shrink: 0;
+    }
+    .hero-title {
+      font-size: clamp(36px, 5vw, 68px);
+      font-weight: 900;
+      color: #FFFFFF;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      max-width: 700px;
+    }
+    .hero-title span { color: #E8A020; }
+    .hero-subtitle {
+      font-size: clamp(15px, 2vw, 19px);
+      color: rgba(255,255,255,0.7);
+      font-weight: 400;
+      line-height: 1.6;
+      max-width: 520px;
+      margin-bottom: 40px;
+    }
+    .hero-bullets {
+      display: flex; gap: 24px; flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .hero-bullet {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: rgba(255,255,255,0.75); font-weight: 500;
+    }
+    .hero-bullet-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: #E8A020; flex-shrink: 0;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: #E8A020; color: #fff;
+      font-weight: 700; font-size: 15px;
+      padding: 14px 32px; border-radius: 8px;
+      text-decoration: none; transition: background 0.15s;
+      display: inline-flex; align-items: center; gap: 8px;
+      border: none; cursor: pointer;
+    }
+    .btn-primary:hover { background: #C4880A; }
+    .btn-secondary {
+      background: transparent; color: #fff;
+      font-weight: 600; font-size: 15px;
+      padding: 13px 28px; border-radius: 8px;
+      text-decoration: none; transition: all 0.15s;
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.7); }
+
+    /* ── Scroll indicator ── */
+    .scroll-indicator {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 6px;
+      cursor: pointer; text-decoration: none;
+    }
+    .scroll-indicator span {
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); font-weight: 500;
+    }
+    .scroll-chevron {
+      width: 28px; height: 28px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); opacity: 0.4; }
+      50%       { transform: translateY(5px); opacity: 1; }
     }
 
-    .nav-drop-item {
-      display: block; padding: 10px 20px;
-      color: #AAAAAA; text-decoration: none;
+    /* ── Trust badges ── */
+    .trust-bar {
+      background: #111;
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+      padding: 14px 32px;
+    }
+    .trust-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: center; align-items: center;
+      gap: 40px; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 10px;
+      color: #888; font-size: 13px; font-weight: 500;
+    }
+    .trust-item svg { flex-shrink: 0; opacity: 0.7; }
+    .trust-divider { width: 1px; height: 24px; background: #2A2A2A; }
+
+    /* ── Stats bar ── */
+    .stats-bar {
+      background: #1A1A1A;
+      padding: 20px 32px;
+    }
+    .stats-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-around; align-items: center;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 28px; font-weight: 900; color: #E8A020; line-height: 1; }
+    .stat-label { font-size: 12px; color: #777; margin-top: 4px; letter-spacing: 1px; }
+
+    /* ── Section ── */
+    .section { padding: 80px 32px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 4px;
+      text-transform: uppercase; color: #E8A020;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 800; color: #1C1C1C;
+      line-height: 1.2; margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px; color: #666; line-height: 1.7;
+      max-width: 560px; margin-bottom: 48px;
+    }
+
+    /* ── Category Cards ── */
+    .cats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .cat-card {
+      position: relative;
+      height: 360px;
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
+      background: #0c0b09;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .cat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(232,160,32,0.5);
+    }
+
+    /* shared light layer */
+    .cat-card::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 1;
+      transition: opacity 0.35s;
+    }
+    .cat-card:hover::before { filter: brightness(1.25); }
+
+    /* ── פרופילים: קו זהב אופקי יחיד, כמו פרופיל שפולט אור ── */
+    .cat-card--profiles { background: #0a0904; }
+    .cat-card--profiles::before {
+      background:
+        radial-gradient(ellipse 100% 18% at 50% 40%, rgba(232,160,32,0.18) 0%, transparent 100%),
+        linear-gradient(180deg,
+          transparent 37%,
+          rgba(232,160,32,0.08) 38.5%,
+          rgba(232,160,32,0.45) 39.5%,
+          rgba(255,210,80,0.95) 40.2%,
+          rgba(232,160,32,0.45) 41%,
+          rgba(232,160,32,0.08) 42%,
+          transparent 43.5%
+        );
+    }
+
+    /* ── סטריפ LED: שלושה קווים מקבילים — שורת LEDs ── */
+    .cat-card--strips { background: #09090a; }
+    .cat-card--strips::before {
+      background:
+        radial-gradient(ellipse 90% 50% at 50% 40%, rgba(232,160,32,0.07) 0%, transparent 100%),
+        linear-gradient(180deg,
+          transparent 22%,
+          rgba(232,160,32,0.08) 23%, rgba(255,200,60,0.8) 23.8%, rgba(232,160,32,0.08) 24.5%, transparent 26%,
+          transparent 36%,
+          rgba(232,160,32,0.06) 37%, rgba(255,200,60,0.65) 37.8%, rgba(232,160,32,0.06) 38.5%, transparent 40%,
+          transparent 50%,
+          rgba(232,160,32,0.04) 51%, rgba(255,200,60,0.45) 51.8%, rgba(232,160,32,0.04) 52.5%, transparent 54%
+        );
+    }
+
+    /* ── דרייברים: נקודת אור שמתפשטת — פלט כוח ── */
+    .cat-card--drivers { background: #080808; }
+    .cat-card--drivers::before {
+      background:
+        radial-gradient(circle 18px  at 50% 38%, rgba(255,230,120,1)    0%, transparent 100%),
+        radial-gradient(circle 60px  at 50% 38%, rgba(232,160,32,0.55)  0%, transparent 100%),
+        radial-gradient(circle 130px at 50% 38%, rgba(232,160,32,0.18)  0%, transparent 100%),
+        radial-gradient(circle 240px at 50% 38%, rgba(232,160,32,0.06)  0%, transparent 100%);
+    }
+
+    .cat-card-body {
+      position: absolute;
+      bottom: 0; right: 0; left: 0;
+      padding: 28px 24px;
+      z-index: 3;
+      background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 55%, transparent 100%);
+    }
+    .cat-count {
+      font-size: 11px; color: #E8A020; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;
+    }
+    .cat-name {
+      font-size: 26px; font-weight: 900; color: #fff;
+      margin-bottom: 8px;
+    }
+    .cat-desc {
+      font-size: 14px; color: rgba(255,255,255,0.58);
+      line-height: 1.6; margin-bottom: 18px;
+    }
+    .cat-link {
+      font-size: 13px; font-weight: 700; color: #E8A020;
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    /* ── Benefits ── */
+    .benefits-section { background: #FFF8EE; }
+    .benefits-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+    }
+    .benefit { padding: 8px 0; }
+    .benefit-icon {
+      width: 48px; height: 48px;
+      background: rgba(232,160,32,0.1);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .benefit-title { font-size: 17px; font-weight: 700; color: #1C1C1C; margin-bottom: 8px; }
+    .benefit-desc { font-size: 14px; color: #777; line-height: 1.7; }
+
+    /* ── Coffee CTA ── */
+    .coffee-section {
+      background: #1A1A1A;
+      padding: 80px 32px;
+      position: relative; overflow: hidden;
+    }
+    .coffee-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('hero.jpg') center/cover;
+      opacity: 0.08;
+    }
+    .coffee-inner {
+      max-width: 1200px; margin: 0 auto;
+      position: relative; z-index: 1;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 48px; flex-wrap: wrap;
+    }
+    .coffee-text { flex: 1; min-width: 280px; }
+    .coffee-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 4px;
+      text-transform: uppercase; color: #E8A020; margin-bottom: 16px;
+    }
+    .coffee-title {
+      font-size: clamp(28px, 3vw, 44px);
+      font-weight: 900; color: #fff;
+      line-height: 1.2; margin-bottom: 16px;
+    }
+    .coffee-title span { color: #E8A020; }
+    .coffee-sub { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.7; }
+    .coffee-actions { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+    .wa-btn {
+      background: #25D366; color: #fff;
+      font-weight: 700; font-size: 15px;
+      padding: 14px 28px; border-radius: 8px;
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px;
+      transition: background 0.15s; white-space: nowrap;
+    }
+    .wa-btn:hover { background: #1DB954; }
+    .phone-btn {
+      color: rgba(255,255,255,0.7); text-decoration: none;
       font-size: 14px; font-weight: 500;
-      border-right: 2px solid transparent;
-      transition: all 0.15s; background: transparent;
-      width: 100%; text-align: right; cursor: pointer;
-      font-family: 'Heebo', sans-serif; box-sizing: border-box;
-      border-top: none; border-bottom: none; border-left: none;
+      display: flex; align-items: center; gap: 8px;
+      justify-content: center; transition: color 0.15s;
     }
-    .nav-drop-item:hover { color: #E8A020; background: rgba(255,255,255,0.04); border-right-color: #E8A020; }
+    .phone-btn:hover { color: #E8A020; }
 
-    @media (max-width: 768px) {
-      .sidebar-mobile-hidden { display: none; }
+    /* ── Footer ── */
+    .footer {
+      background: #111;
+      padding: 48px 32px 0;
+      border-top: 1px solid #222;
     }
-
-    .pulse-gold {
-      animation: pulseGold 2s infinite;
-    }
-    @keyframes pulseGold {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.6; }
-    }
-    .footer { background: #111; padding: 48px 32px 0; border-top: 1px solid #222; }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
-    .footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid #1E1E1E; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #1E1E1E;
+    }
     .footer-logo-led { font-size: 24px; font-weight: 900; color: #E8A020; }
     .footer-logo-link { font-size: 24px; font-weight: 300; color: #fff; }
     .footer-tagline { font-size: 13px; color: #555; margin-top: 10px; line-height: 1.6; max-width: 220px; }
     .footer-col-title { font-size: 11px; font-weight: 700; color: #555; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 18px; }
     .footer-links { display: flex; flex-direction: column; gap: 12px; }
-    .footer-link { color: #888; text-decoration: none; font-size: 14px; transition: color 0.15s; display: flex; align-items: center; gap: 9px; }
+    .footer-link {
+      color: #888; text-decoration: none; font-size: 14px;
+      transition: color 0.15s;
+      display: flex; align-items: center; gap: 9px;
+    }
     .footer-link:hover { color: #E8A020; }
     .footer-link svg { flex-shrink: 0; opacity: 0.5; transition: opacity 0.15s; }
     .footer-link:hover svg { opacity: 1; }
-    .footer-hours-row { display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: #888; gap: 12px; }
+    .footer-hours-row {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 14px; color: #888; gap: 12px;
+    }
     .footer-hours-row + .footer-hours-row { margin-top: 12px; }
+    .hours-day { }
     .hours-open { color: #4CAF50; font-size: 12px; font-weight: 600; }
     .hours-closed { color: #555; font-size: 12px; font-weight: 600; }
-    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding: 20px 0; }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+      padding: 20px 0;
+    }
     .footer-copy { font-size: 12px; color: #3A3A3A; }
-    .footer-legal { display: flex; flex-wrap: wrap; gap: 6px 20px; }
+    .footer-legal {
+      display: flex; flex-wrap: wrap; gap: 6px 20px;
+    }
     .footer-legal a { font-size: 12px; color: #3A3A3A; text-decoration: none; transition: color 0.15s; }
     .footer-legal a:hover { color: #E8A020; }
-    @media (max-width: 768px) { .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; } }
-    @media (max-width: 480px) { .footer-top { grid-template-columns: 1fr; } }
-  </style>
 
-  <!-- React + Babel -->
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    /* ── Divider ── */
+    .gold-line { width: 40px; height: 3px; background: #E8A020; border-radius: 2px; margin-bottom: 32px; }
+
+    /* ── Dropdown ── */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-menu {
+      display: none; position: absolute;
+      top: 100%; right: 0;
+      background: #1A1A1A;
+      border: 1px solid #333;
+      border-top: 2px solid #E8A020;
+      border-radius: 0 0 8px 8px;
+      min-width: 190px; z-index: 200;
+      padding: 6px 0;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-arrow { font-size: 10px; transition: transform 0.2s; display: inline-block; margin-right: 2px; }
+    .nav-dropdown:hover .nav-dropdown-arrow { transform: rotate(180deg); }
+    .nav-drop-item {
+      display: block; padding: 10px 20px;
+      color: #AAAAAA; text-decoration: none;
+      font-size: 14px; font-weight: 500;
+      border-right: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .nav-drop-item:hover {
+      color: #E8A020;
+      background: rgba(255,255,255,0.04);
+      border-right-color: #E8A020;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .cats-grid { grid-template-columns: 1fr; }
+      .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      .section { padding: 60px 20px; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .coffee-inner { flex-direction: column; }
+      .stats-inner { gap: 32px; }
+    }
+  </style>
 </head>
 <body>
-  <div id="root"></div>
 
-  <!-- Products data (373 products: profiles, LED strips, drivers) -->
-  <script src="products_data.js"></script>
-  <!-- Datasheets data -->
-  <script src="datasheets_data.js"></script>
-
-  <script type="text/babel">
-    const { useState, useEffect, useRef, useMemo, useCallback } = React;
-
-    // ── Base path for images/datasheets (local dev) ──
-    const IMG_BASE = '';
-
-    // ── Helpers ──
-    function cleanName(s) {
-      return (s||'').replace(/&#(\d+);/g,(_,n)=>String.fromCharCode(+n)).replace(/&amp;/g,'&').replace(/&#038;/g,'&');
-    }
-
-    function imgSrc(path) {
-      if (!path) return null;
-      if (path.startsWith('http')) return path;
-      return IMG_BASE + path;
-    }
-
-    function pdfSrc(path) {
-      if (!path) return null;
-      return path;
-    }
-
-    // ── Strip metadata ──
-    function parseStripDesc(desc) {
-      if (!desc) return {};
-      const ipM = desc.match(/IP(\d+)/i);
-      const wM  = desc.match(/(\d+(?:\.\d+)?)\s*W/i);
-      const isRGBW = /RGBW/i.test(desc), isRGB = !isRGBW && /RGB/i.test(desc);
-      return {
-        ip:    ipM ? 'IP'+ipM[1] : '',
-        power: wM  ? parseFloat(wM[1]) : null,
-        color: isRGBW ? 'RGBW' : isRGB ? 'RGB' : 'לבן',
-        type:  /COB/i.test(desc)?'COB':/נאון/.test(desc)?'נאון':/זיגזג/.test(desc)?'זיגזג':/דיגיטלי/.test(desc)?'דיגיטלי':'סטנדרט',
-      };
-    }
-    function getStripMeta(p) {
-      const d = parseStripDesc(p.desc || '');
-      const name = (p.name || '').toUpperCase();
-      const sub  = p.subCategory || '';
-      const ip = p.specs?.ip || d.ip || '';
-      const power = (d.power !== undefined && d.power !== null) ? d.power
-        : p.specs?.power ? parseFloat(p.specs.power) : null;
-      let color = d.color;
-      if (!p.desc) {
-        if (/RGBW/i.test(name)) color = 'RGBW';
-        else if (/RGB/i.test(name) || sub === 'RGB') color = 'RGB';
-        else color = 'לבן';
-      }
-      let type = d.type;
-      if (!p.desc) {
-        if (sub === 'COB' || /COB|DOB/i.test(name)) type = 'COB';
-        else if (sub === 'Neon' || /NEON/i.test(name) || /נאון/.test(name)) type = 'נאון';
-        else if (sub === 'SPI' || /\bSPI\b/i.test(name)) type = 'דיגיטלי';
-        else if (/3D/i.test(name)) type = 'זיגזג';
-        else type = 'סטנדרט';
-      }
-      const voltage = p.specs?.voltage || p.specs?.inputVoltage ||
-        ((p.desc||'').match(/\b(12|24|48)V\b/)?.[0] ?? '');
-      return { ip, power, type, color, voltage };
-    }
-
-    // ── Filter constants ──
-    const STRIP_IP_OPTIONS      = ['הכל','IP20','IP65','IP67','IP68'];
-    const STRIP_TYPE_OPTIONS    = ['הכל','סטנדרט','COB','נאון','זיגזג','דיגיטלי'];
-    const STRIP_COLOR_OPTIONS   = ['הכל','לבן','RGB','RGBW'];
-    const STRIP_VOLTAGE_OPTIONS = ['הכל','12V','24V','48V'];
-    const STRIP_POWER_RANGES    = [
-      {label:'הכל',min:0,max:99999},{label:'עד 10W',min:0,max:10},
-      {label:'10–15W',min:10,max:15},{label:'15–20W',min:15,max:20},{label:'20W+',min:20,max:99999},
-    ];
-    const STRIP_LMW_RANGES = [
-      {label:'הכל',min:0,max:99999},{label:'עד 100',min:0,max:100},
-      {label:'100–150',min:100,max:150},{label:'150–200',min:150,max:200},{label:'200+',min:200,max:99999},
-    ];
-    const PS_VOLTAGE_OPTIONS = ['הכל','12V','24V','48V'];
-    const PS_IP_OPTIONS      = ['הכל','IP20','IP65','IP67','IP68'];
-    const PS_OUTPUT_OPTIONS  = ['הכל','CV','CC','CV+CC'];
-    const PS_DIMMING_OPTIONS = ['הכל','DALI','0-10V','PWM','TRIAC','Resistor','Push'];
-    const PS_POWER_RANGES    = [
-      {label:'הכל',min:0,max:99999},{label:'עד 30W',min:0,max:30},
-      {label:'30–60W',min:30,max:60},{label:'60–100W',min:60,max:100},
-      {label:'100–200W',min:100,max:200},{label:'200W+',min:200,max:99999},
-    ];
-    const INIT_STRIP = { ip:'הכל', type:'הכל', color:'הכל', voltage:'הכל', power:'הכל', lmw:'הכל' };
-    const INIT_PS    = { voltage:'הכל', ip:'הכל', output:'הכל', dimming:'הכל', power:'הכל' };
-
-    // ── SVG Icons ──
-    const Icons = {
-      search:   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>,
-      close:    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>,
-      phone:    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.64 3.3 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>,
-      filter:   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>,
-      wa:       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>,
-      download: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>,
-      external: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>,
-      chevron:  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6 9 12 15 18 9"/></svg>,
-    };
-
-    // ── Filter Chip ──
-    const Chip = ({ label, active, onClick }) => (
-      <button className={`filter-chip ${active ? 'active' : ''}`} onClick={onClick}>{label}</button>
-    );
-
-    // ── Product Image ──
-    const ProductImg = ({ src, name, tall }) => {
-      const [err, setErr] = useState(false);
-      const h = tall ? 'padding-top: 75%' : '';
-      if (!src || err) return (
-        <div style={{paddingTop: tall ? '75%' : '65%', position:'relative', background:'#F0EDE8'}}>
-          <div style={{position:'absolute',inset:0,display:'flex',alignItems:'center',justifyContent:'center'}}>
-            <span style={{fontSize:11,color:'#CCCCCC',letterSpacing:2}}>LEDLINK</span>
-          </div>
-        </div>
-      );
-      return (
-        <div style={{paddingTop: tall ? '75%' : '65%', position:'relative', overflow:'hidden'}}>
-          <img
-            src={imgSrc(src)}
-            alt={name}
-            onError={() => setErr(true)}
-            style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'contain',padding:'12px'}}
-          />
-        </div>
-      );
-    };
-
-    // ── Spec Tags for product card ──
-    const SpecTags = ({ product }) => {
-      const cat = product.category;
-      const tags = [];
-      if (cat === 'דרייברים') {
-        if (product.specs?.power) tags.push({ label: product.specs.power, hi: true });
-        if (product.specs?.voltage) tags.push({ label: product.specs.voltage });
-        if (product.specs?.ip) tags.push({ label: product.specs.ip });
-        if (product.specs?.outputMode) tags.push({ label: product.specs.outputMode });
-        if (product.specs?.dimming?.length) tags.push({ label: product.specs.dimming[0] });
-      } else if (cat === 'סטריפ LED') {
-        const m = getStripMeta(product);
-        if (m.power) tags.push({ label: m.power+'W/m', hi: true });
-        if (m.voltage) tags.push({ label: m.voltage });
-        if (m.ip) tags.push({ label: m.ip });
-        if (m.type && m.type !== 'סטנדרט') tags.push({ label: m.type });
-        if (m.color !== 'לבן') tags.push({ label: m.color });
-      } else if (cat === 'פרופילים') {
-        const d = product.desc || '';
-        const mkat = d.match(/מקט:\s*([^\s|]+)/);
-        const mlen = d.match(/(?:אורך[^:]*:\s*)([^\s|]+)/);
-        const mip  = d.match(/IP(\d+)/i);
-        if (mkat) tags.push({ label: mkat[1], hi: true });
-        if (mip)  tags.push({ label: 'IP'+mip[1] });
-        if (mlen) tags.push({ label: mlen[1] });
-      }
-      if (!tags.length) return null;
-      return (
-        <div style={{display:'flex',flexWrap:'wrap',gap:4,marginTop:8}}>
-          {tags.slice(0,4).map((t,i) => (
-            <span key={i} className={`spec-tag ${t.hi ? 'highlight' : ''}`}>{t.label}</span>
-          ))}
-        </div>
-      );
-    };
-
-    // ── Product Card ──
-    const ProductCard = ({ product, onClick }) => (
-      <div className="product-card" onClick={() => onClick(product)}>
-        <ProductImg src={product.img} name={product.name} />
-        <div style={{padding:'12px 14px 14px'}}>
-          <div style={{fontSize:12,color:'#999999',marginBottom:4,letterSpacing:1,textTransform:'uppercase'}}>
-            {product.subCategory || product.category}
-          </div>
-          <div style={{fontSize:14,fontWeight:700,color:'#1C1C1C',lineHeight:1.3,minHeight:36}}>
-            {product.name}
-          </div>
-          <SpecTags product={product} />
-          <button className="btn-outline" style={{marginTop:12,width:'100%',fontSize:13,padding:'7px 0'}}>
-            פרטים נוספים
-          </button>
-        </div>
-      </div>
-    );
-
-    // ── Strip Filters ──
-    const StripFilters = ({ filters, setFilters, count }) => {
-      const hasActive = Object.values(filters).some(v => v !== 'הכל');
-      return (
-        <div>
-          <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:20}}>
-            <span style={{fontSize:12,color:'#999999'}}>{count} מוצרים</span>
-            {hasActive && <button onClick={()=>setFilters({...INIT_STRIP})} style={{fontSize:12,color:'#E8A020',background:'none',border:'none',cursor:'pointer'}}>איפוס</button>}
-          </div>
-          {[
-            { title: 'סוג', options: STRIP_TYPE_OPTIONS, key: 'type' },
-            { title: 'מתח', options: STRIP_VOLTAGE_OPTIONS, key: 'voltage' },
-            { title: 'הגנה (IP)', options: STRIP_IP_OPTIONS, key: 'ip' },
-            { title: 'צבע', options: STRIP_COLOR_OPTIONS, key: 'color' },
-          ].map(({ title, options, key }) => (
-            <div key={key} style={{marginBottom:20}}>
-              <div style={{fontSize:11,fontWeight:700,color:'#999999',letterSpacing:2,textTransform:'uppercase',marginBottom:8}}>{title}</div>
-              <div style={{display:'flex',flexWrap:'wrap',gap:6}}>
-                {options.map(v => <Chip key={v} label={v} active={filters[key]===v} onClick={()=>setFilters(f=>({...f,[key]:v}))} />)}
-              </div>
-            </div>
-          ))}
-          <div style={{marginBottom:20}}>
-            <div style={{fontSize:11,fontWeight:700,color:'#999999',letterSpacing:2,textTransform:'uppercase',marginBottom:8}}>הספק (W/m)</div>
-            <div style={{display:'flex',flexWrap:'wrap',gap:6}}>
-              {STRIP_POWER_RANGES.map(r => <Chip key={r.label} label={r.label} active={filters.power===r.label} onClick={()=>setFilters(f=>({...f,power:r.label}))} />)}
-            </div>
-          </div>
-          <div style={{marginBottom:20}}>
-            <div style={{fontSize:11,fontWeight:700,color:'#999999',letterSpacing:2,textTransform:'uppercase',marginBottom:8}}>לומן/וואט</div>
-            <div style={{display:'flex',flexWrap:'wrap',gap:6}}>
-              {STRIP_LMW_RANGES.map(r => <Chip key={r.label} label={r.label} active={filters.lmw===r.label} onClick={()=>setFilters(f=>({...f,lmw:r.label}))} />)}
-            </div>
-          </div>
-        </div>
-      );
-    };
-
-    // ── Driver Filters ──
-    const DriverFilters = ({ filters, setFilters, count }) => {
-      const hasActive = Object.values(filters).some(v => v !== 'הכל');
-      return (
-        <div>
-          <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:20}}>
-            <span style={{fontSize:12,color:'#999999'}}>{count} מוצרים</span>
-            {hasActive && <button onClick={()=>setFilters({...INIT_PS})} style={{fontSize:12,color:'#E8A020',background:'none',border:'none',cursor:'pointer'}}>איפוס</button>}
-          </div>
-          {[
-            { title: 'מתח פלט', options: PS_VOLTAGE_OPTIONS, key: 'voltage' },
-            { title: 'הגנה (IP)', options: PS_IP_OPTIONS, key: 'ip' },
-            { title: 'מצב פלט', options: PS_OUTPUT_OPTIONS, key: 'output' },
-          ].map(({ title, options, key }) => (
-            <div key={key} style={{marginBottom:20}}>
-              <div style={{fontSize:11,fontWeight:700,color:'#999999',letterSpacing:2,textTransform:'uppercase',marginBottom:8}}>{title}</div>
-              <div style={{display:'flex',flexWrap:'wrap',gap:6}}>
-                {options.map(v => <Chip key={v} label={v} active={filters[key]===v} onClick={()=>setFilters(f=>({...f,[key]:v}))} />)}
-              </div>
-            </div>
-          ))}
-          <div style={{marginBottom:20}}>
-            <div style={{fontSize:11,fontWeight:700,color:'#999999',letterSpacing:2,textTransform:'uppercase',marginBottom:8}}>עמעום</div>
-            <div style={{display:'flex',flexWrap:'wrap',gap:6}}>
-              {PS_DIMMING_OPTIONS.map(v => <Chip key={v} label={v} active={filters.dimming===v} onClick={()=>setFilters(f=>({...f,dimming:v}))} />)}
-            </div>
-          </div>
-          <div style={{marginBottom:20}}>
-            <div style={{fontSize:11,fontWeight:700,color:'#999999',letterSpacing:2,textTransform:'uppercase',marginBottom:8}}>הספק</div>
-            <div style={{display:'flex',flexWrap:'wrap',gap:6}}>
-              {PS_POWER_RANGES.map(r => <Chip key={r.label} label={r.label} active={filters.power===r.label} onClick={()=>setFilters(f=>({...f,power:r.label}))} />)}
-            </div>
-          </div>
-        </div>
-      );
-    };
-
-    // ── Profile Filters ──
-    const ProfileFilters = ({ count }) => (
-      <div>
-        <div style={{fontSize:12,color:'#999999',marginBottom:20}}>{count} פרופילים</div>
-        <div style={{fontSize:13,color:'#666666',lineHeight:1.8}}>
-          <p>פרופילי LED מיוצרים בהזמנה אישית — אורך, צבע גימור (לבן/שחור/RAL), ודגם לפי בחירה.</p>
-          <p style={{marginTop:12}}>לייעוץ ובחירת פרופיל:</p>
-          <a href={`https://wa.me/972524444470?text=${encodeURIComponent('שלום LEDLink, אני מעוניין/ת בפרופיל LED. אשמח לקבל ייעוץ.')}`} target="_blank"
-            style={{display:'inline-flex',alignItems:'center',gap:6,color:'#E8A020',fontWeight:700,marginTop:8,textDecoration:'none'}}>
-            {Icons.wa} WhatsApp ←
+  <!-- ── Navbar ── -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo" style="direction:ltr;">
+        <span class="logo-led">LED</span><span class="logo-link">LINK</span>
+      </a>
+      <div class="nav-links">
+        <div class="nav-dropdown">
+          <a href="catalog.html" class="nav-link" style="display:flex;align-items:center;gap:4px;">
+            קטלוג מוצרים <span class="nav-dropdown-arrow">▾</span>
           </a>
+          <div class="nav-dropdown-menu">
+            <a href="catalog.html?tab=דרייברים" class="nav-drop-item">דרייברים</a>
+            <a href="catalog.html?tab=סטריפ LED" class="nav-drop-item">סטריפ LED</a>
+            <a href="catalog.html?tab=פרופילים" class="nav-drop-item">פרופילים</a>
+          </div>
         </div>
+        <div class="nav-dropdown">
+          <a href="tools.html" class="nav-link" style="display:flex;align-items:center;gap:4px;">
+            כלי תכנון <span class="nav-dropdown-arrow">▾</span>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a href="tools.html?tool=voltage" class="nav-drop-item">⚡ מפל מתח</a>
+            <a href="tools.html?tool=lumen" class="nav-drop-item">💡 לומן לחלל</a>
+            <a href="tools.html?tool=roi" class="nav-drop-item">♻️ חיסכון אנרגיה</a>
+            <a href="tools.html?tool=beam-linear" class="nav-drop-item">📏 פיזור אלומה</a>
+          </div>
+        </div>
+        <a href="guides.html" class="nav-link">מדריכים</a>
+        <a href="about.html" class="nav-link">אודות</a>
+        <a href="#contact" class="nav-link">צור קשר</a>
       </div>
-    );
-
-    // ── Product Modal ──
-    const ProductModal = ({ product, onClose }) => {
-      const ds = (typeof PRODUCT_DATASHEETS !== 'undefined' ? PRODUCT_DATASHEETS : {})[product.id]
-              || (typeof PRODUCT_DATASHEETS !== 'undefined' ? PRODUCT_DATASHEETS : {})[product.name]
-              || [];
-      const cat = product.category;
-      const [copied, setCopied] = useState(false);
-      const copyLink = () => {
-        const url = `${location.href.split('?')[0]}?product=${encodeURIComponent(product.id)}`;
-        navigator.clipboard.writeText(url).then(() => {
-          setCopied(true);
-          setTimeout(() => setCopied(false), 2000);
-        });
-      };
-
-      const renderSpecs = () => {
-        if (cat === 'דרייברים' && product.specs) {
-          const s = product.specs;
-          return (
-            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12,marginTop:16}}>
-              {[['הספק', s.power], ['מתח', s.voltage], ['IP', s.ip], ['מצב פלט', s.outputMode],
-                ['מתח כניסה', s.inputVoltage], ['עמעום', s.dimming?.join(', ')]].filter(([,v])=>v).map(([k,v])=>(
-                <div key={k} style={{background:'#F4F4F0',borderRadius:6,padding:'10px 14px',border:'1px solid #E0DDD6'}}>
-                  <div style={{fontSize:10,color:'#999999',letterSpacing:1,textTransform:'uppercase',marginBottom:4}}>{k}</div>
-                  <div style={{fontSize:14,fontWeight:700,color:'#1C1C1C'}}>{v}</div>
-                </div>
-              ))}
-            </div>
-          );
-        }
-        if (cat === 'סטריפ LED') {
-          const m = getStripMeta(product);
-          const desc = product.desc || '';
-          const lmwM = desc.match(/(\d+(?:\.\d+)?)\s*Lm\/W/i);
-          const lmM  = desc.match(/(\d+(?:\.\d+)?)\s*Lm\/m/i);
-          const kelvinM = desc.match(/([\d\/]+)\s*K/);
-          return (
-            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12,marginTop:16}}>
-              {[
-                ['הספק', m.power ? m.power+'W/m' : null],
-                ['מתח', m.voltage],
-                ['הגנה', m.ip],
-                ['סוג', m.type],
-                ['צבע', m.color],
-                ['לומן/וואט', lmwM ? lmwM[1]+' Lm/W' : null],
-                ['לומן/מטר', lmM  ? lmM[1]+' Lm/m'  : null],
-                ['טמפרטורת צבע', kelvinM ? kelvinM[1]+'K' : null],
-              ].filter(([,v])=>v).map(([k,v])=>(
-                <div key={k} style={{background:'#F4F4F0',borderRadius:6,padding:'10px 14px',border:'1px solid #E0DDD6'}}>
-                  <div style={{fontSize:10,color:'#999999',letterSpacing:1,textTransform:'uppercase',marginBottom:4}}>{k}</div>
-                  <div style={{fontSize:14,fontWeight:700,color:'#1C1C1C'}}>{v}</div>
-                </div>
-              ))}
-            </div>
-          );
-        }
-        if (cat === 'פרופילים' && product.desc) {
-          const parts = product.desc.split('|').map(s => s.trim()).filter(Boolean);
-          return (
-            <div style={{marginTop:16}}>
-              {parts.map((p,i) => (
-                <div key={i} style={{borderBottom:'1px solid #E8E5E0',padding:'10px 0',fontSize:14,color:'#444444'}}>{p}</div>
-              ))}
-            </div>
-          );
-        }
-        return null;
-      };
-
-      return (
-        <div className="modal-overlay" onClick={onClose}>
-          <div className="modal-box" onClick={e=>e.stopPropagation()}>
-            {/* Header */}
-            <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start',padding:'20px 24px',borderBottom:'1px solid #E8E5E0'}}>
-              <div>
-                <div style={{fontSize:11,color:'#999999',letterSpacing:2,textTransform:'uppercase',marginBottom:4}}>
-                  {product.subCategory || product.category}
-                </div>
-                <h2 style={{fontSize:20,fontWeight:800,color:'#1C1C1C',margin:0}}>{product.name}</h2>
-              </div>
-              <button onClick={onClose} style={{background:'none',border:'none',cursor:'pointer',color:'#AAAAAA',padding:4,marginTop:2}}>
-                {Icons.close}
-              </button>
-            </div>
-
-            {/* Body */}
-            <div style={{padding:'24px'}}>
-              <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:24,alignItems:'start'}}>
-                {/* Image */}
-                <div style={{borderRadius:8,overflow:'hidden',border:'1px solid #E0DDD6'}}>
-                  <ProductImg src={product.img} name={product.name} tall />
-                </div>
-                {/* Specs */}
-                <div>
-                  {renderSpecs()}
-                </div>
-              </div>
-
-              {/* Description */}
-              {product.desc && cat !== 'פרופילים' && (
-                <div style={{marginTop:20,background:'#F4F4F0',borderRadius:8,padding:'14px 16px',border:'1px solid #E0DDD6'}}>
-                  <div style={{fontSize:11,color:'#999999',letterSpacing:2,textTransform:'uppercase',marginBottom:8}}>תיאור</div>
-                  <p style={{fontSize:13,color:'#555555',lineHeight:1.7,margin:0}}>{product.desc}</p>
-                </div>
-              )}
-
-              {/* Datasheets */}
-              {ds.length > 0 && (
-                <div style={{marginTop:20}}>
-                  <div style={{fontSize:11,color:'#999999',letterSpacing:2,textTransform:'uppercase',marginBottom:10}}>מסמכים טכניים</div>
-                  <div style={{display:'flex',flexDirection:'column',gap:8}}>
-                    {ds.map((d,i) => (
-                      <a key={i} href={pdfSrc(d.file)} target="_blank" rel="noopener noreferrer"
-                        style={{display:'flex',alignItems:'center',gap:8,padding:'10px 14px',background:'#F4F4F0',
-                          border:'1px solid #E0DDD6',borderRadius:6,color:'#E8A020',textDecoration:'none',
-                          fontSize:13,fontWeight:600,transition:'border-color 0.15s'}}
-                        onMouseEnter={e=>e.currentTarget.style.borderColor='#E8A020'}
-                        onMouseLeave={e=>e.currentTarget.style.borderColor='#E0DDD6'}>
-                        {Icons.download}
-                        {d.label}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Actions */}
-              <div style={{display:'flex',gap:12,marginTop:24}}>
-                <a href={`https://wa.me/972524444470?text=${encodeURIComponent('שלום LEDLink, אשמח לקבל מחיר עבור: '+product.name+' (מק"ט: '+product.id+')')}`}
-                  target="_blank" rel="noopener noreferrer" className="btn-gold"
-                  style={{flex:1,display:'flex',alignItems:'center',justifyContent:'center',gap:8,textDecoration:'none'}}>
-                  {Icons.wa} בקש מחיר
-                </a>
-                <button onClick={copyLink} className="btn-outline"
-                  style={{display:'flex',alignItems:'center',gap:6,cursor:'pointer',border:'none'}}>
-                  {copied ? '✓ הועתק' : '🔗 העתק לינק'}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    };
-
-    // ── Navbar ──
-    const Navbar = ({ activeTab, setActiveTab }) => {
-      const [openDrop, setOpenDrop] = useState(null);
-
-      const CATALOG = [
-        { label: 'דרייברים',  tab: 'דרייברים'  },
-        { label: 'סטריפ LED', tab: 'סטריפ LED' },
-        { label: 'פרופילים',  tab: 'פרופילים'  },
-      ];
-      const TOOLS = [
-        { label: '⚡ מפל מתח',       url: 'tools.html?tool=voltage'     },
-        { label: '💡 לומן לחלל',     url: 'tools.html?tool=lumen'       },
-        { label: '♻️ חיסכון אנרגיה', url: 'tools.html?tool=roi'         },
-        { label: '📏 פיזור אלומה',   url: 'tools.html?tool=beam-linear' },
-      ];
-
-      const dropBox = {
-        position:'absolute', top:'100%', right:0,
-        background:'#1A1A1A', border:'1px solid #333',
-        borderTop:'2px solid #E8A020', borderRadius:'0 0 8px 8px',
-        minWidth:190, zIndex:200, padding:'6px 0',
-        boxShadow:'0 8px 24px rgba(0,0,0,0.3)',
-      };
-
-      return (
-        <nav style={{background:'#1A1A1A',borderBottom:'1px solid #2A2A2A',position:'sticky',top:0,zIndex:100,height:64,display:'flex',alignItems:'center'}}>
-          <div style={{maxWidth:1200,margin:'0 auto',padding:'0 32px',display:'flex',alignItems:'center',gap:32,width:'100%'}}>
-            <a href="home.html" style={{display:'flex',alignItems:'center',gap:4,textDecoration:'none',flexShrink:0,direction:'ltr'}}>
-              <span style={{fontSize:22,fontWeight:900,letterSpacing:1,color:'#E8A020'}}>LED</span>
-              <span style={{fontSize:22,fontWeight:300,color:'#FFFFFF'}}>LINK</span>
-            </a>
-            <div style={{display:'flex',alignItems:'center',gap:4}}>
-              {/* קטלוג מוצרים dropdown */}
-              <div style={{position:'relative'}} onMouseEnter={()=>setOpenDrop('catalog')} onMouseLeave={()=>setOpenDrop(null)}>
-                <button style={{display:'flex',alignItems:'center',gap:4,color:'#E8A020',background:'rgba(232,160,32,0.1)',border:'none',cursor:'pointer',fontSize:15,fontWeight:700,padding:'6px 14px',borderRadius:6,fontFamily:'Heebo,sans-serif'}}>
-                  קטלוג מוצרים <span style={{fontSize:10,transition:'transform 0.2s',display:'inline-block',transform:openDrop==='catalog'?'rotate(180deg)':'none'}}>▾</span>
-                </button>
-                {openDrop === 'catalog' && (
-                  <div style={dropBox}>
-                    {CATALOG.map(item => (
-                      <button key={item.tab} className="nav-drop-item" onClick={()=>{ setActiveTab(item.tab); setOpenDrop(null); }}>
-                        {item.label}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* כלי תכנון dropdown */}
-              <div style={{position:'relative'}} onMouseEnter={()=>setOpenDrop('tools')} onMouseLeave={()=>setOpenDrop(null)}>
-                <a href="tools.html" style={{display:'flex',alignItems:'center',gap:4,color:'#AAAAAA',textDecoration:'none',fontSize:15,fontWeight:500,padding:'6px 14px',borderRadius:6}}>
-                  כלי תכנון <span style={{fontSize:10,transition:'transform 0.2s',display:'inline-block',transform:openDrop==='tools'?'rotate(180deg)':'none'}}>▾</span>
-                </a>
-                {openDrop === 'tools' && (
-                  <div style={dropBox}>
-                    {TOOLS.map(item => (
-                      <a key={item.url} href={item.url} className="nav-drop-item">{item.label}</a>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-            <a href="guides.html" style={{color:'#AAAAAA',textDecoration:'none',fontSize:15,fontWeight:500,padding:'6px 14px',borderRadius:6}}>מדריכים</a>
-            <div style={{flex:1}}></div>
-            <a href={`https://wa.me/972524444470?text=${encodeURIComponent('שלום LEDLink, אשמח לשמוע על המוצרים והשירותים שלכם.')}`} target="_blank" rel="noopener noreferrer"
-              className="btn-gold" style={{fontSize:13,padding:'8px 18px',display:'flex',alignItems:'center',gap:6,textDecoration:'none',borderRadius:6,fontWeight:700}}>
-              {Icons.wa} שלח הודעה
-            </a>
-          </div>
-        </nav>
-      );
-    };
-
-    // ── Category Header ──
-    const CategoryHeader = ({ label, count, desc }) => (
-      <div style={{marginBottom:32}}>
-        <div style={{display:'flex',alignItems:'baseline',gap:12,marginBottom:8}}>
-          <h1 style={{fontSize:28,fontWeight:800,color:'#1C1C1C',margin:0}}>{label}</h1>
-          <span style={{fontSize:14,color:'#E8A020',fontWeight:700}}>{count}</span>
-        </div>
-        {desc && <p style={{fontSize:14,color:'#777777',margin:0,lineHeight:1.6}}>{desc}</p>}
-        <div style={{width:40,height:2,background:'#E8A020',marginTop:12}}></div>
+      <div class="nav-spacer"></div>
+        <a href="https://wa.me/972524444470" target="_blank" class="nav-cta">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
       </div>
-    );
+    </div>
+  </nav>
 
-    // ── Footer ──
-    const Footer = () => (
-      <footer className="footer">
-        <div className="footer-inner">
-          <div className="footer-top">
-            <div>
-              <div style={{direction:'ltr',display:'inline-flex',alignItems:'center',gap:'2px'}}>
-                <span className="footer-logo-led">LED</span><span className="footer-logo-link">LINK</span>
-              </div>
-              <div className="footer-tagline">פתרונות תאורה מקצועיים לפרויקטים בכל גודל. ישירות מהמפעל, רחובות.</div>
-            </div>
-            <div>
-              <div className="footer-col-title">כתובת</div>
-              <div className="footer-links">
-                <span className="footer-link">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  יצירה 19, רחובות
-                </span>
-                <a href="https://waze.com/ul?ll=31.8969,34.8186&navigate=yes" target="_blank" className="footer-link">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
-                  נווט ב-Waze
-                </a>
-              </div>
-            </div>
-            <div>
-              <div className="footer-col-title">צור קשר</div>
-              <div className="footer-links">
-                <a href="tel:+97286326059" className="footer-link">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6 6l1-1.06a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.72 16z"/></svg>
-                  08-632-6059
-                </a>
-                <a href="mailto:office@ledlink.co.il" className="footer-link">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                  office@ledlink.co.il
-                </a>
-                <a href="https://wa.me/972524444470" target="_blank" className="footer-link">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                  WhatsApp
-                </a>
-              </div>
-            </div>
-            <div>
-              <div className="footer-col-title">שעות פעילות</div>
-              <div className="footer-hours-row"><span className="hours-day">ראשון – חמישי</span><span className="hours-open">07:00 – 15:00</span></div>
-              <div className="footer-hours-row"><span className="hours-day">שישי</span><span className="hours-closed">סגור</span></div>
-              <div className="footer-hours-row"><span className="hours-day">שבת</span><span className="hours-closed">סגור</span></div>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <div className="footer-copy">© 2026 LEDLink – כל הזכויות שמורות</div>
-            <div className="footer-legal">
-              <a href="about.html">אודות</a>
-              <a href="takanon.html">תקנון</a>
-              <a href="privacy.html">מדיניות פרטיות</a>
-              <a href="accessibility.html">הצהרת נגישות</a>
-              <a href="faq.html">שאלות נפוצות</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-    );
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="hero-bg-fallback"></div>
+    <div class="hero-bg" onerror="this.style.display='none'"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">פתרונות תאורה מקצועיים · רחובות</div>
+      <h1 class="hero-title">
+        לא מפיצים -<br><span>יצרנים.</span>
+      </h1>
+      <p class="hero-subtitle">
+        מזמינים ישירות ממי שמייצר.<br>
+        פרופילים, סטריפ LED ודרייברים – מלאי מדף מוכן לאיסוף.
+      </p>
+      <div class="hero-bullets">
+        <div class="hero-bullet"><div class="hero-bullet-dot"></div>ייצור תוך שעות</div>
+        <div class="hero-bullet"><div class="hero-bullet-dot"></div>דרייברים אירופאים</div>
+        <div class="hero-bullet"><div class="hero-bullet-dot"></div>ייעוץ טכני ללא עלות</div>
+        <div class="hero-bullet"><div class="hero-bullet-dot"></div>15 שנות ניסיון</div>
+      </div>
+      <div class="hero-actions">
+        <a href="catalog.html" class="btn-primary">
+          לצפייה בקטלוג
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="https://wa.me/972524444470" target="_blank" class="btn-secondary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          שלח הודעה
+        </a>
+      </div>
+    </div>
+    <a href="#" onclick="document.querySelector('.stats-bar').scrollIntoView({behavior:'smooth'}); return false;" class="scroll-indicator">
+      <span>גלול</span>
+      <div class="scroll-chevron">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </a>
+  </section>
 
-    // ── Main App ──
-    const TABS = [
-      { id: 'דרייברים',  label: 'דרייברים', desc: 'ספקי מתח LED מאירופה — קבוע מתח, קבוע זרם, עמעום' },
-      { id: 'סטריפ LED', label: 'סטריפ LED', desc: 'סטריפ LED באיכות גבוהה לכל שימוש — COB, Neon, RGB ועוד' },
-      { id: 'פרופילים',  label: 'פרופילים', desc: 'פרופילי אלומיניום לסטריפ LED — ייצור בהזמנה אישית' },
+  <!-- ── Trust Badges ── -->
+  <div class="trust-bar">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        ISO 9001:2015
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8" r="6"/>
+          <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+        </svg>
+        שותף רשמי QLT איטליה
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        ייצור מקומי · רחובות
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Stats Bar ── -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">שנות ניסיון</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">373</div>
+        <div class="stat-label">מוצרים בקטלוג</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">24H</div>
+        <div class="stat-label">ייצור מותאם</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">ישירות מהמפעל</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Categories ── -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-label">הקטלוג המקצועי</div>
+      <h2 class="section-title">שלושה תחומים. מענה אחד מלא.</h2>
+      <p class="section-desc">כל מה שצריך לפרויקט תאורת LED מקצועי – מהפרופיל ועד הדרייבר – ממקום אחד.</p>
+      <div class="gold-line"></div>
+      <div class="cats-grid">
+
+        <!-- פרופילים -->
+        <a href="catalog.html?tab=פרופילים" class="cat-card cat-card--profiles">
+          <div class="cat-card-body">
+            <div class="cat-count">20 דגמים</div>
+            <div class="cat-name">פרופילים</div>
+            <div class="cat-desc">פרופילי אלומיניום לסטריפ LED – ייצור לפי מידה, גוון וסגנון. צמוד, שקוע, תלוי, חוץ.</div>
+            <div class="cat-link">צפייה בקטלוג ←</div>
+          </div>
+        </a>
+
+        <!-- סטריפ LED -->
+        <a href="catalog.html?tab=סטריפ LED" class="cat-card cat-card--strips">
+          <div class="cat-card-body">
+            <div class="cat-count">112 דגמים</div>
+            <div class="cat-name">סטריפ LED</div>
+            <div class="cat-desc">סטריפ LED לכל שימוש – White, COB, Neon, RGB, SPI. 12V / 24V / 48V. IP20 עד IP68.</div>
+            <div class="cat-link">צפייה בקטלוג ←</div>
+          </div>
+        </a>
+
+        <!-- דרייברים -->
+        <a href="catalog.html?tab=דרייברים" class="cat-card cat-card--drivers">
+          <div class="cat-card-body">
+            <div class="cat-count">241 דגמים</div>
+            <div class="cat-name">דרייברים</div>
+            <div class="cat-desc">ספקי מתח LED מאירופה – קבוע מתח (CV), קבוע זרם (CC). DALI, 0-10V, PWM. IP20–IP68.</div>
+            <div class="cat-link">צפייה בקטלוג ←</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Projects ── -->
+  <section class="section" style="background:#F8F7F4; padding-top:80px; padding-bottom:80px;">
+    <div class="section-inner">
+      <div class="section-label">הגלריה שלנו</div>
+      <h2 class="section-title">פרויקטים שביצענו</h2>
+      <p class="section-desc">פתרונות תאורה מותאמים אישית לפרויקטי מגורים, מסחר ותעשייה</p>
+      <div class="gold-line"></div>
+
+      <div id="projects-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:40px;"></div>
+
+      <div style="text-align:center; margin-top:32px;">
+        <button id="projects-toggle" onclick="toggleProjects()"
+          style="border:1px solid #1A1A1A; color:#1A1A1A; background:#fff; font-weight:600;
+                 padding:14px 48px; font-size:15px; cursor:pointer; transition:background 0.2s, color 0.2s;"
+          onmouseover="this.style.background='#1A1A1A';this.style.color='#fff'"
+          onmouseout="this.style.background='#fff';this.style.color='#1A1A1A'">
+          הצג עוד ↓
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox overlay -->
+  <div id="lb-overlay" onclick="closeLightbox()"
+    style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92);
+           z-index:1000; align-items:center; justify-content:center;">
+    <div style="position:relative; max-width:900px; width:90%; pointer-events:none;" onclick="event.stopPropagation()">
+      <img id="lb-img" src="" alt=""
+        style="width:100%; max-height:80vh; object-fit:contain; border-radius:8px; pointer-events:auto;" />
+      <p id="lb-label" style="color:#fff; text-align:center; margin-top:12px; font-weight:700; font-size:16px;"></p>
+      <p id="lb-count" style="color:#888; text-align:center; font-size:13px; margin-top:4px;"></p>
+      <button onclick="event.stopPropagation(); moveLightbox(-1)"
+        style="position:absolute; right:-24px; top:50%; transform:translateY(-50%);
+               background:rgba(255,255,255,0.12); border:none; color:#fff; width:44px; height:44px;
+               border-radius:50%; font-size:22px; cursor:pointer; pointer-events:auto;">›</button>
+      <button onclick="event.stopPropagation(); moveLightbox(1)"
+        style="position:absolute; left:-24px; top:50%; transform:translateY(-50%);
+               background:rgba(255,255,255,0.12); border:none; color:#fff; width:44px; height:44px;
+               border-radius:50%; font-size:22px; cursor:pointer; pointer-events:auto;">‹</button>
+      <button onclick="closeLightbox()"
+        style="position:absolute; top:-36px; left:0; background:none; border:none;
+               color:rgba(255,255,255,0.7); font-size:14px; font-weight:700; cursor:pointer; pointer-events:auto;">
+        ✕ סגור
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const PROJECT_IMAGES = [
+      { src: 'projects/project_01.jpg', label: 'תאורת לד פנים' },
+      { src: 'projects/project_02.jpg', label: 'פרופיל תאורה' },
+      { src: 'projects/project_03.jpg', label: 'תאורה ליניארית' },
+      { src: 'projects/project_04.jpg', label: 'פרויקט מגורים' },
+      { src: 'projects/project_05.jpg', label: 'תאורה מסחרית' },
+      { src: 'projects/project_06.jpg', label: 'פרויקט יוקרה' },
+      { src: 'projects/project_07.jpg', label: 'תאורת פנים' },
+      { src: 'projects/project_08.jpg', label: 'תאורה שקועה' },
+      { src: 'projects/project_09.jpg', label: 'תאורת חוץ' },
+      { src: 'projects/project_10.jpg', label: 'גופי תאורה' },
+      { src: 'projects/project_11.jpg', label: 'פרופיל LINK' },
+      { src: 'projects/project_12.jpg', label: 'תאורת חלל' },
+      { src: 'projects/project_13.jpg', label: 'לובי ומסדרון' },
+      { src: 'projects/project_14.jpg', label: 'תאורה עיצובית' },
+      { src: 'projects/project_15.jpg', label: 'תאורת LED' },
+      { src: 'projects/project_16.jpg', label: 'פרויקט מסחרי' },
     ];
 
-    const App = () => {
-      const [products, setProducts]       = useState([]);
-      const [activeTab, setActiveTab]     = useState('דרייברים');
-      const [selected, setSelected]       = useState(null);
-      const [search, setSearch]           = useState('');
-      const [stripF, setStripF]           = useState({...INIT_STRIP});
-      const [psF, setPsF]                 = useState({...INIT_PS});
-      const [sidebarOpen, setSidebarOpen] = useState(false);
+    let lbIndex = 0;
+    let projectsExpanded = false;
 
-      useEffect(() => {
-        const params = new URLSearchParams(window.location.search);
-        if (window.__PRODUCTS__) {
-          const loaded = window.__PRODUCTS__.map(p => ({...p, name: cleanName(p.name)}));
-          setProducts(loaded);
-          const productId = params.get('product');
-          if (productId) {
-            const found = loaded.find(p => p.id === decodeURIComponent(productId));
-            if (found) {
-              setSelected(found);
-              setActiveTab(found.category);
-            }
-          }
-        }
-        const tab = params.get('tab');
-        if (tab) setActiveTab(tab);
-      }, []);
+    const grid = document.getElementById('projects-grid');
+    PROJECT_IMAGES.forEach((p, i) => {
+      const btn = document.createElement('button');
+      btn.style.cssText = 'position:relative; aspect-ratio:4/3; overflow:hidden; border-radius:8px; border:none; cursor:pointer; padding:0; background:#000;';
+      if (i >= 4) btn.style.display = 'none';
+      btn.innerHTML = `
+        <img src="${p.src}" alt="${p.label}"
+          style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s; display:block;" />
+        <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 60%);
+                    opacity:0; transition:opacity 0.3s;"></div>
+        <span style="position:absolute; bottom:10px; right:12px; left:12px; color:#fff; font-size:12px;
+                     font-weight:700; letter-spacing:1px; transform:translateY(8px); transition:transform 0.3s;
+                     opacity:0;">${p.label}</span>
+      `;
+      btn.addEventListener('mouseenter', () => {
+        btn.querySelector('img').style.transform = 'scale(1.07)';
+        btn.querySelector('div').style.opacity = '1';
+        btn.querySelector('span').style.opacity = '1';
+        btn.querySelector('span').style.transform = 'translateY(0)';
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.querySelector('img').style.transform = 'scale(1)';
+        btn.querySelector('div').style.opacity = '0';
+        btn.querySelector('span').style.opacity = '0';
+        btn.querySelector('span').style.transform = 'translateY(8px)';
+      });
+      btn.addEventListener('click', () => openLightbox(i));
+      grid.appendChild(btn);
+    });
 
-      // Switch tab: reset search + filters
-      const switchTab = useCallback(id => {
-        setActiveTab(id);
-        setSearch('');
-        setStripF({...INIT_STRIP});
-        setPsF({...INIT_PS});
-        setSidebarOpen(false);
-      }, []);
-
-      const filtered = useMemo(() => {
-        let r = products.filter(p => p.category === activeTab);
-        if (search.trim()) {
-          const q = search.trim().toLowerCase();
-          r = r.filter(p => p.name.toLowerCase().includes(q) || (p.desc||'').toLowerCase().includes(q));
-        }
-        if (activeTab === 'סטריפ LED') {
-          r = r.filter(p => {
-            const m = getStripMeta(p);
-            if (stripF.ip !== 'הכל' && m.ip !== stripF.ip) return false;
-            if (stripF.type !== 'הכל' && m.type !== stripF.type) return false;
-            if (stripF.color !== 'הכל' && m.color !== stripF.color) return false;
-            if (stripF.voltage !== 'הכל' && m.voltage !== stripF.voltage) return false;
-            if (stripF.power !== 'הכל') {
-              const range = STRIP_POWER_RANGES.find(x => x.label === stripF.power);
-              if (range && (m.power === null || m.power < range.min || m.power > range.max)) return false;
-            }
-            if (stripF.lmw !== 'הכל') {
-              const desc = p.desc || '';
-              const lmwM = desc.match(/(\d+(?:\.\d+)?)\s*Lm\/W/i);
-              const val = lmwM ? parseFloat(lmwM[1]) : null;
-              const range = STRIP_LMW_RANGES.find(x => x.label === stripF.lmw);
-              if (range && (val === null || val < range.min || val > range.max)) return false;
-            }
-            return true;
-          });
-        }
-        if (activeTab === 'דרייברים') {
-          r = r.filter(p => {
-            const s = p.specs || {};
-            if (psF.voltage !== 'הכל' && s.voltage !== psF.voltage) return false;
-            if (psF.ip !== 'הכל' && s.ip !== psF.ip) return false;
-            if (psF.output !== 'הכל' && s.outputMode !== psF.output) return false;
-            if (psF.dimming !== 'הכל' && !(s.dimming||[]).some(d => d.toLowerCase().includes(psF.dimming.toLowerCase()))) return false;
-            if (psF.power !== 'הכל') {
-              const range = PS_POWER_RANGES.find(x => x.label === psF.power);
-              const pw = s.power ? parseFloat(s.power) : null;
-              if (range && (pw === null || pw < range.min || pw > range.max)) return false;
-            }
-            return true;
-          });
-        }
-        return r;
-      }, [products, activeTab, search, stripF, psF]);
-
-      const tabInfo = TABS.find(t => t.id === activeTab);
-      const showFilters = activeTab !== 'פרופילים';
-
-      const renderSidebar = () => {
-        if (activeTab === 'פרופילים') return <ProfileFilters count={filtered.length} />;
-        if (activeTab === 'סטריפ LED') return <StripFilters filters={stripF} setFilters={setStripF} count={filtered.length} />;
-        if (activeTab === 'דרייברים') return <DriverFilters filters={psF} setFilters={setPsF} count={filtered.length} />;
-      };
-
-      return (
-        <div style={{minHeight:'100vh',background:'#F4F4F0'}}>
-          <Navbar activeTab={activeTab} setActiveTab={switchTab} />
-
-          {/* Tab bar */}
-          <div style={{borderBottom:'1px solid #E0DDD6',background:'#FFFFFF',position:'sticky',top:60,zIndex:90,boxShadow:'0 1px 4px rgba(0,0,0,0.04)'}}>
-            <div style={{maxWidth:1280,margin:'0 auto',padding:'0 24px',display:'flex',gap:0}}>
-              {TABS.map(t => {
-                const cnt = products.filter(p => p.category === t.id).length;
-                const active = activeTab === t.id;
-                return (
-                  <button key={t.id} onClick={()=>switchTab(t.id)}
-                    style={{
-                      padding:'16px 24px',
-                      border:'none',
-                      borderBottom: active ? '2px solid #E8A020' : '2px solid transparent',
-                      background:'none',cursor:'pointer',
-                      color: active ? '#E8A020' : '#777777',
-                      fontFamily:'Heebo,sans-serif',
-                      fontSize:14,fontWeight:active?700:500,
-                      transition:'all 0.15s',
-                      display:'flex',alignItems:'center',gap:8,
-                    }}>
-                    {t.label}
-                    <span style={{fontSize:11,background: active?'rgba(232,160,32,0.12)':'#F0EDE8',
-                      color: active?'#E8A020':'#999999',
-                      padding:'1px 7px',borderRadius:20,fontWeight:700}}>
-                      {cnt}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Content */}
-          <div style={{maxWidth:1280,margin:'0 auto',padding:'40px 24px'}}>
-
-            {/* Category header */}
-            <CategoryHeader label={tabInfo.label} count={filtered.length} desc={tabInfo.desc} />
-
-            {/* Search + mobile filter toggle */}
-            <div style={{display:'flex',gap:12,marginBottom:32,alignItems:'center'}}>
-              <div style={{position:'relative',flex:1,maxWidth:400}}>
-                <input
-                  type="text"
-                  placeholder={`חיפוש ב${tabInfo.label}...`}
-                  value={search}
-                  onChange={e=>setSearch(e.target.value)}
-                  className="search-input"
-                />
-                <span style={{position:'absolute',left:14,top:'50%',transform:'translateY(-50%)',color:'#BBBBBB',pointerEvents:'none'}}>
-                  {Icons.search}
-                </span>
-              </div>
-              {showFilters && (
-                <button onClick={()=>setSidebarOpen(o=>!o)}
-                  className="btn-outline"
-                  style={{display:'flex',alignItems:'center',gap:8,fontSize:13,display:'none'}}
-                  id="mobile-filter-btn">
-                  {Icons.filter} סינון
-                </button>
-              )}
-            </div>
-
-            {/* Main layout */}
-            <div style={{display:'grid', gridTemplateColumns: showFilters ? '240px 1fr' : '1fr', gap:40, alignItems:'start'}}>
-
-              {/* Sidebar */}
-              {showFilters && (
-                <div style={{background:'#FFFFFF',border:'1px solid #E0DDD6',borderRadius:10,padding:'24px 20px',position:'sticky',top:130,boxShadow:'0 2px 8px rgba(0,0,0,0.04)'}}>
-                  <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:24,paddingBottom:16,borderBottom:'1px solid #E8E5E0'}}>
-                    <span style={{color:'#E8A020'}}>{Icons.filter}</span>
-                    <span style={{fontSize:13,fontWeight:700,color:'#1C1C1C'}}>סינון</span>
-                  </div>
-                  {renderSidebar()}
-                </div>
-              )}
-
-              {/* Product grid */}
-              <div>
-                {activeTab === 'פרופילים' && (
-                  <div style={{marginBottom:24,background:'#FFFFFF',border:'1px solid #E0DDD6',borderRadius:10,padding:'20px 24px',boxShadow:'0 2px 8px rgba(0,0,0,0.04)'}}>
-                    <ProfileFilters count={filtered.length} />
-                  </div>
-                )}
-                {filtered.length === 0 ? (
-                  <div style={{textAlign:'center',padding:'80px 0',color:'#BBBBBB'}}>
-                    <div style={{fontSize:48,marginBottom:16}}>◯</div>
-                    <div style={{fontSize:16,color:'#888888'}}>לא נמצאו מוצרים</div>
-                    <button onClick={()=>{setSearch('');setStripF({...INIT_STRIP});setPsF({...INIT_PS})}}
-                      style={{marginTop:16,color:'#E8A020',background:'none',border:'none',cursor:'pointer',fontSize:14}}>
-                      נקה סינון
-                    </button>
-                  </div>
-                ) : (
-                  <div style={{
-                    display:'grid',
-                    gridTemplateColumns:'repeat(auto-fill, minmax(200px, 1fr))',
-                    gap:16,
-                  }}>
-                    {filtered.map(p => (
-                      <ProductCard key={p.id} product={p} onClick={setSelected} />
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-
-          <Footer />
-
-          {/* Modal */}
-          {selected && <ProductModal product={selected} onClose={()=>{ setSelected(null); history.replaceState(null,'',location.pathname + (activeTab ? '?tab='+encodeURIComponent(activeTab) : '')); }} />}
-        </div>
-      );
-    };
-
-    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    function openLightbox(i) {
+      lbIndex = i;
+      updateLightbox();
+      const ov = document.getElementById('lb-overlay');
+      ov.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lb-overlay').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    function moveLightbox(dir) {
+      lbIndex = (lbIndex + dir + PROJECT_IMAGES.length) % PROJECT_IMAGES.length;
+      updateLightbox();
+    }
+    function updateLightbox() {
+      document.getElementById('lb-img').src = PROJECT_IMAGES[lbIndex].src;
+      document.getElementById('lb-img').alt = PROJECT_IMAGES[lbIndex].label;
+      document.getElementById('lb-label').textContent = PROJECT_IMAGES[lbIndex].label;
+      document.getElementById('lb-count').textContent = `${lbIndex + 1} / ${PROJECT_IMAGES.length}`;
+    }
+    function toggleProjects() {
+      projectsExpanded = !projectsExpanded;
+      const btns = grid.querySelectorAll('button');
+      btns.forEach((btn, i) => {
+        if (i >= 4) btn.style.display = projectsExpanded ? 'block' : 'none';
+      });
+      const toggle = document.getElementById('projects-toggle');
+      toggle.textContent = projectsExpanded ? 'הסתר ▲' : 'הצג עוד ↓';
+      if (!projectsExpanded) {
+        grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+    document.addEventListener('keydown', e => {
+      if (document.getElementById('lb-overlay').style.display === 'none') return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') moveLightbox(-1);
+      if (e.key === 'ArrowLeft')  moveLightbox(1);
+    });
   </script>
+
+  <!-- ── Benefits ── -->
+  <section class="section benefits-section">
+    <div class="section-inner">
+      <div class="section-label">למה LEDLink</div>
+      <h2 class="section-title">היתרון של לקנות ישירות מהיצרן</h2>
+      <div class="gold-line"></div>
+      <div class="benefits-grid">
+
+        <div class="benefit">
+          <div class="benefit-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="benefit-title">ישירות מהמפעל</div>
+          <div class="benefit-desc">אין מתווכים, אין סוכנים. קונים מהיצרן עצמו – מחיר ייצור, ידע ייצור, גמישות ייצור.</div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="benefit-title">ייצור ביום העבודה</div>
+          <div class="benefit-desc">פרופיל תאורה לפי מידה? מייצרים לך במקום. לא ממתינים ימים.</div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+          </div>
+          <div class="benefit-title">דרייברים אירופאים</div>
+          <div class="benefit-desc">מייצגים את QLT האיטלקית – דרייברים ברמה אירופאית. אמינות, אחריות, תיעוד טכני מלא.</div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="benefit-title">ייעוץ טכני</div>
+          <div class="benefit-desc">לא יודעים איזה פרופיל? איזה דרייבר? צוות טכני שעונה – לא מוכר, מייעץ.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Coffee CTA ── -->
+  <section class="coffee-section" id="contact">
+    <div class="coffee-inner">
+      <div class="coffee-text">
+        <div class="coffee-label">בואו לרחובות</div>
+        <h2 class="coffee-title">
+          בואו שתו קפה –<br>
+          <span>נייצר לכם בינתיים.</span>
+        </h2>
+        <p class="coffee-sub">
+          יצירה 19, רחובות · א׳–ה׳ 07:00–15:00<br>
+          מוזמנים להגיע, לראות מלאי, לקבל ייעוץ – ללא עלות.
+        </p>
+      </div>
+      <div class="coffee-actions">
+        <a href="https://wa.me/972524444470?text=שלום, אני רוצה לקבל ייעוץ על רכיבי LED" target="_blank" class="wa-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          שלח הודעה בWhatsApp
+        </a>
+        <a href="tel:+97286326059" class="phone-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.64 3.3 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          08-632-6059
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+
+        <!-- לוגו + תיאור -->
+        <div>
+          <div style="direction:ltr;display:inline-flex;align-items:center;gap:2px;">
+            <span class="footer-logo-led">LED</span><span class="footer-logo-link">LINK</span>
+          </div>
+          <div class="footer-tagline">פתרונות תאורה מקצועיים לפרויקטים בכל גודל. ישירות מהמפעל, רחובות.</div>
+        </div>
+
+        <!-- כתובת -->
+        <div>
+          <div class="footer-col-title">כתובת</div>
+          <div class="footer-links">
+            <span class="footer-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              יצירה 19, רחובות
+            </span>
+            <a href="https://waze.com/ul?ll=31.8969,34.8186&navigate=yes" target="_blank" class="footer-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+              נווט ב-Waze
+            </a>
+          </div>
+        </div>
+
+        <!-- צור קשר -->
+        <div>
+          <div class="footer-col-title">צור קשר</div>
+          <div class="footer-links">
+            <a href="tel:+97286326059" class="footer-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6 6l1-1.06a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.72 16z"/></svg>
+              08-632-6059
+            </a>
+            <a href="mailto:office@ledlink.co.il" class="footer-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              office@ledlink.co.il
+            </a>
+            <a href="https://wa.me/972524444470" target="_blank" class="footer-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- שעות פעילות -->
+        <div>
+          <div class="footer-col-title">שעות פעילות</div>
+          <div class="footer-hours-row">
+            <span class="hours-day">ראשון – חמישי</span>
+            <span class="hours-open">07:00 – 15:00</span>
+          </div>
+          <div class="footer-hours-row">
+            <span class="hours-day">שישי</span>
+            <span class="hours-closed">סגור</span>
+          </div>
+          <div class="footer-hours-row">
+            <span class="hours-day">שבת</span>
+            <span class="hours-closed">סגור</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2026 LEDLink – כל הזכויות שמורות</div>
+        <div class="footer-legal">
+          <a href="about.html">אודות</a>
+          <a href="takanon.html">תקנון</a>
+          <a href="privacy.html">מדיניות פרטיות</a>
+          <a href="accessibility.html">הצהרת נגישות</a>
+          <a href="faq.html">שאלות נפוצות</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
   <script src="a11y-widget.js"></script>
 </body>
 </html>
