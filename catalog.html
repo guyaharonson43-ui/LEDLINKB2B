@@ -217,6 +217,7 @@
     @media (max-width: 600px) {
       .catalog-content-pad { padding: 24px 16px !important; }
       .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .tab-button { padding: 12px 14px !important; gap: 4px !important; font-size: 13px !important; }
     }
 
     .pulse-gold {
@@ -977,6 +978,7 @@
                 const active = activeTab === t.id;
                 return (
                   <button key={t.id} onClick={()=>switchTab(t.id)}
+                    className="tab-button"
                     style={{
                       padding:'16px 24px',
                       border:'none',
