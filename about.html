@@ -298,5 +298,15 @@
   </footer>
 
   <script src="a11y-widget.js"></script>
-</body>
+  <button id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="חזרה לראש העמוד">&#8679;</button>
+  <style>
+    #scroll-top-btn{position:fixed;bottom:24px;left:20px;width:44px;height:44px;border-radius:50%;background:#1d4ed8;color:#fff;border:none;font-size:24px;line-height:1;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,0.25);opacity:0;transform:translateY(16px);transition:opacity .25s,transform .25s;z-index:998;pointer-events:none;display:flex;align-items:center;justify-content:center;}
+    #scroll-top-btn.visible{opacity:1;transform:translateY(0);pointer-events:auto;}
+    #scroll-top-btn:hover{background:#1e40af;}
+  </style>
+  <script>
+    (function(){ var b=document.getElementById('scroll-top-btn');
+      window.addEventListener('scroll',function(){ b.classList.toggle('visible',window.scrollY>300); },{passive:true});
+    })();
+  </script></body>
 </html>

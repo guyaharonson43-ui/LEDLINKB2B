@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Circadian Pro v2.7 — LEDLink Professional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Heebo', sans-serif; background-color: #0f172a; color: white; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; margin: 0; }
+        .gold { color: #E8A020; }
+        .card { background: #1e293b; border: 2px solid #334155; border-radius: 1.5rem; width: 100%; max-width: 550px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        input[type=range] { accent-color: #E8A020; cursor: pointer; height: 8px; width: 100%; }
+        select { background: #0f172a; border: 1px solid #E8A020; color: white; padding: 8px; border-radius: 8px; width: 100%; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .insight-section { background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(232, 160, 32, 0.2); padding: 15px; border-radius: 12px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="card p-6 lg:p-8">
+        <div class="text-center mb-6">
+            <h1 class="text-3xl font-black gold tracking-tighter uppercase mb-1">Circadian Pro</h1>
+            <p class="text-slate-400 text-[10px] tracking-widest font-bold uppercase mb-4">Engineering Science | LEDLink</p>
+            
+            <div class="bg-slate-900/50 p-4 rounded-xl text-right border-r-4 border-gold text-[13px] leading-relaxed italic text-slate-300">
+                <strong class="gold block text-sm mb-1 not-italic font-bold">מלטונין והשעון הביולוגי:</strong>
+                מלטונין הוא הורמון המשרה שינה. אור קר (כחול) עוצר את הייצור שלו וגורם לערנות שיא. אור חם מאפשר לגוף להפריש מלטונין ולנוח.
+            </div>
+        </div>
+
+        <div class="space-y-6">
+            <div class="grid grid-cols-1 gap-6">
+                <div>
+                    <label class="text-xs font-bold text-slate-400 block mb-2 uppercase tracking-widest">סוג החלל:</label>
+                    <select id="roomType">
+                        <option value="office">🏢 משרד / עבודה (ריכוז)</option>
+                        <option value="classroom">🎓 כיתה / הדרכה (למידה)</option>
+                        <option value="healthcare">🏥 רפואה (ערנות גבוהה)</option>
+                        <option value="bedroom">🌙 חדר שינה (הרפיה ושינה)</option>
+                        <option value="lobby">🏨 לובי / שהייה (איזון)</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-[11px] font-bold text-slate-500 uppercase">עוצמת הארה (Lux):</label>
+                            <span id="lVal" class="text-xl font-black gold">500</span>
+                        </div>
+                        <input type="range" id="lIn" min="50" max="1000" value="500">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-[11px] font-bold text-slate-500 uppercase">גוון אור (Kelvin):</label>
+                            <span id="kVal" class="text-xl font-black gold">4000K</span>
+                        </div>
+                        <input type="range" id="kIn" min="2700" max="6500" step="100" value="4000">
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 rounded-2xl p-5 border border-slate-700 text-center relative overflow-hidden">
+                <div class="absolute top-2 left-3 text-[10px] font-bold text-emerald-400">
+                    Impact Factor: <span id="bioFactor">x1.0</span>
+                </div>
+                <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Melanopic Lux (EML)</div>
+                <div id="mResult" class="text-6xl font-black mb-1 tracking-tighter">--</div>
+                <div id="targetLabel" class="text-[10px] font-bold px-3 py-1 rounded-full inline-block mb-4 uppercase">יעד: --</div>
+                
+                <div id="summaryBox" class="text-right bg-slate-800 p-4 rounded-xl border-r-4 border-slate-600">
+                    <h4 id="summaryTitle" class="font-bold text-sm mb-1 text-white">סיכום הנדסי:</h4>
+                    <p id="summaryText" class="text-[12px] text-slate-300 leading-snug italic font-medium">טוען נתונים...</p>
+                </div>
+            </div>
+
+            <div class="insight-section text-right">
+                <h4 class="gold text-xs font-bold uppercase mb-3 tracking-widest border-b border-slate-700 pb-2">תובנות יישומיות מהשטח:</h4>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-3">
+                        <span class="text-gold mt-1">●</span>
+                        <p class="text-[12px] text-slate-300"><strong class="text-white">יעילות במשרדים:</strong> מעבר ל-6500K מאפשר הגעה ליעדי WELL עם פחות גופי תאורה. כל לוקס "שווה" פי 2.7 יותר ביולוגית, מה שחוסך אנרגיה ועלויות ציוד.</p>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-gold mt-1">●</span>
+                        <p class="text-[12px] text-slate-300"><strong class="text-white">איכות חיים במגורים:</strong> אור קר בערב מדכא מלטונין גם בעוצמה נמוכה. הדיוק הספקטרלי קריטי למניעת הפרעות שינה אצל משתמשי הקצה.</p>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-gold mt-1">●</span>
+                        <p class="text-[12px] text-slate-300"><strong class="text-white">דיוק במפרט:</strong> הבדל של 173% בין גוונים הוא קריטי. תכנון מבוסס EML הוא ההבדל בין פרויקט בריא לכזה שנכשל בתקן WELL.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="mt-6 text-[8px] text-center text-slate-500 uppercase tracking-widest font-bold">
+            CIE S 026:2018 Standards | Engineered by LEDLink
+        </div>
+    </div>
+
+    <script>
+        function init() {
+            const inputs = { r: document.getElementById('roomType'), l: document.getElementById('lIn'), k: document.getElementById('kIn') };
+            const displays = { 
+                lV: document.getElementById('lVal'), kV: document.getElementById('kVal'), mR: document.getElementById('mResult'),
+                tg: document.getElementById('targetLabel'), bx: document.getElementById('summaryBox'), tt: document.getElementById('summaryTitle'),
+                tx: document.getElementById('summaryText'), bf: document.getElementById('bioFactor')
+            };
+
+            const specs = {
+                office: { target: 250, name: "משרד", advice: "מגביר ערנות." },
+                classroom: { target: 200, name: "כיתה", advice: "משפר למידה." },
+                healthcare: { target: 250, name: "רפואה", advice: "תומך בהחלמה." },
+                bedroom: { target: 100, name: "חדר שינה", advice: "משרה שינה.", max: true },
+                lobby: { target: 150, name: "לובי", advice: "מאזן חלל." }
+            };
+
+            const derT = [{k:2700,d:0.45},{k:3000,d:0.52},{k:4000,d:0.65},{k:5000,d:0.90},{k:6500,d:1.10}];
+
+            function getDer(k) {
+                for (let i=0; i<derT.length-1; i++) {
+                    if (k >= derT[i].k && k <= derT[i+1].k) {
+                        let r = (k - derT[i].k) / (derT[i+1].k - derT[i].k);
+                        return derT[i].d + r * (derT[i+1].d - derT[i].d);
+                    }
+                }
+                return k < 2700 ? 0.45 : 1.10;
+            }
+
+            function update() {
+                const lux = parseInt(inputs.l.value);
+                const k = parseInt(inputs.k.value);
+                const room = specs[inputs.r.value];
+                
+                const effRatio = 1 + ((k - 2700) / (6500 - 2700) * 0.12);
+                const eLux = lux * effRatio;
+                const res = Math.round(eLux * getDer(k));
+                const factor = (res / (lux * 0.45)).toFixed(1);
+
+                displays.lV.innerText = lux;
+                displays.kV.innerText = k + "K";
+                displays.mR.innerText = res;
+                displays.bf.innerText = "x" + factor;
+                displays.tg.innerText = `יעד WELL: ${room.max ? '<' : '>'}${room.target} EML`;
+
+                const isSuccess = room.max ? res <= room.target : res >= room.target;
+                const glare = eLux >= 800;
+
+                displays.mR.className = `text-6xl font-black mb-1 ${isSuccess && !glare ? 'text-green-400' : 'text-red-500'}`;
+                displays.tg.className = `text-[10px] font-black px-3 py-1 rounded-full inline-block mb-4 uppercase ${isSuccess && !glare ? 'bg-green-400/20 text-green-400' : 'bg-red-500/20 text-red-500'}`;
+                displays.bx.style.borderRightColor = isSuccess && !glare ? '#4ade80' : '#ef4444';
+                displays.tt.innerText = (isSuccess && !glare) ? "✓ תכנון מאוזן" : "⚠ נדרש תיקון";
+                
+                let sm = `עבור ${room.name}, האור מעורר פי ${factor} יותר מאור חם. `;
+                if (glare) sm += "סכנת סנוור עקב עוצמה גבוהה.";
+                else if (isSuccess) sm += `התצורה ${room.advice} תקינה.`;
+                else sm += room.max ? "ערך גבוה מדי לשינה." : "ערך נמוך מדי לערנות.";
+                displays.tx.innerText = sm;
+            }
+
+            [inputs.l, inputs.k, inputs.r].forEach(el => el.addEventListener('input', update));
+            update();
+        }
+        window.onload = init;
+    </script>
+</body>
+</html>
