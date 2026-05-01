@@ -420,20 +420,29 @@
 
       const NARROW   = [10, 24, 36];
       const WIDE     = [60, 90, 110, 120];
-      const SURFACES = ['רצפה', 'שולחן אוכל', 'אי מטבח', 'משטח עבודה', 'קיר'];
+      const SURFACES = [
+        { label: 'רצפה',         offset: 0.00, note: '' },
+        { label: 'שולחן אוכל',   offset: 0.75, note: '−75 ס"מ' },
+        { label: 'אי מטבח',      offset: 0.90, note: '−90 ס"מ' },
+        { label: 'משטח עבודה',   offset: 0.75, note: '−75 ס"מ' },
+        { label: 'קיר',           offset: 0.00, note: '' },
+      ];
 
       const calc = () => {
         const H = parseFloat(height), A = parseFloat(angle);
         if (!H || !A || A <= 0 || A >= 180) return;
-        const width   = +(2 * H * Math.tan((A / 2) * Math.PI / 180)).toFixed(2);
+        const surfaceObj  = SURFACES.find(s => s.label === surface) || SURFACES[0];
+        const effectiveH  = +(H - surfaceObj.offset).toFixed(2);
+        if (effectiveH <= 0) { setResult({ error: true, effectiveH }); return; }
+        const width   = +(2 * effectiveH * Math.tan((A / 2) * Math.PI / 180)).toFixed(2);
         const spacing = +(width * 0.8).toFixed(2);
         const L       = parseFloat(length);
         const area    = (L && L > 0) ? +(width * L).toFixed(2) : null;
-        setResult({ width, spacing, area });
+        setResult({ width, spacing, area, effectiveH, offset: surfaceObj.offset });
       };
 
-      const waText = result
-        ? `📏 חישוב פיזור אלומה ליניארי — LEDLink\n──────────────────────\n📐 גובה: ${height}מ׳ | זווית: ${angle}°${length ? ` | אורך גוף: ${length}מ׳` : ''}\n🎯 משטח: ${surface}\n\nתוצאה: רצועת אור ברוחב ${result.width}מ׳${result.area ? ` | שטח מואר: ${result.area}מ"ר` : ''}\nריווח מומלץ בין גופים מקביליים: ${result.spacing}מ׳\n\nאשמח לקבל המלצה על גוף ליניארי מתאים`
+      const waText = (result && !result.error)
+        ? `📏 חישוב פיזור אלומה ליניארי — LEDLink\n──────────────────────\n📐 גובה מקור: ${height}מ׳ | משטח: ${surface}${result.offset > 0 ? ` (אפקטיבי: ${result.effectiveH}מ׳)` : ''} | זווית: ${angle}°${length ? ` | אורך גוף: ${length}מ׳` : ''}\n\nתוצאה: רצועת אור ברוחב ${result.width}מ׳${result.area ? ` | שטח מואר: ${result.area}מ"ר` : ''}\nריווח מומלץ בין גופים מקביליים: ${result.spacing}מ׳\n\nאשמח לקבל המלצה על גוף ליניארי מתאים`
         : '';
 
       const activePreset = [...NARROW, ...WIDE].includes(Number(angle)) ? Number(angle) : null;
@@ -449,7 +458,7 @@
           </div>
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
-              <label className="block text-xs font-bold text-ink mb-1">גובה הגוף מהמשטח (מ׳)</label>
+              <label className="block text-xs font-bold text-ink mb-1">גובה מקור האור מהרצפה (מ׳)</label>
               <input type="number" value={height} onChange={e=>{ setHeight(e.target.value); setResult(null); }} placeholder="לדוגמה: 2.5"
                 className="w-full border border-border rounded px-3 py-2 text-sm"/>
             </div>
@@ -459,12 +468,12 @@
                 className="w-full border border-border rounded px-3 py-2 text-sm"/>
             </div>
             <div className="col-span-2">
-              <label className="block text-xs font-bold text-ink mb-1">סוג משטח</label>
+              <label className="block text-xs font-bold text-ink mb-1">משטח המטרה (מה מואר)</label>
               <div className="flex flex-wrap gap-2">
                 {SURFACES.map(s => (
-                  <button key={s} onClick={() => setSurface(s)}
-                    className={`px-3 py-1.5 rounded border text-xs font-bold transition-all ${surface === s ? 'bg-ink text-white border-ink' : 'border-border text-ink hover:border-gold'}`}>
-                    {s}
+                  <button key={s.label} onClick={() => { setSurface(s.label); setResult(null); }}
+                    className={`px-3 py-1.5 rounded border text-xs font-bold transition-all ${surface === s.label ? 'bg-ink text-white border-ink' : 'border-border text-ink hover:border-gold'}`}>
+                    {s.label}{s.note ? <span style={{fontWeight:400, opacity:0.7}}> {s.note}</span> : ''}
                   </button>
                 ))}
               </div>
@@ -496,12 +505,23 @@
           <button onClick={calc} className="w-full bg-ink hover:bg-slate-700 text-white font-bold py-2.5 rounded transition-colors mb-4">
             חשב פיזור אלומה
           </button>
-          {result && (
+          {result && result.error && (
+            <div className="bg-red-50 border border-red-300 rounded-lg p-4 mb-4 text-center">
+              <p className="text-sm font-bold text-red-700">⚠️ גובה המשטח ({SURFACES.find(s=>s.label===surface)?.offset}מ׳) גבוה ממיקום הגוף ({height}מ׳)</p>
+              <p className="text-xs text-red-500 mt-1">הזן גובה גוף גדול יותר</p>
+            </div>
+          )}
+          {result && !result.error && (
             <>
               <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4">
-                <p className="text-sm text-purple-900 font-bold mb-3 text-center">
+                <p className="text-sm text-purple-900 font-bold mb-1 text-center">
                   בגובה {height}מ׳ עם זווית {angle}° על {surface}:
                 </p>
+                {result.offset > 0 && (
+                  <p className="text-xs text-center mb-3" style={{color:'#7c3aed'}}>
+                    גובה אפקטיבי לחישוב: {result.effectiveH}מ׳ ({height} − {result.offset} ס"מ מגובה המשטח)
+                  </p>
+                )}
                 <div className={`grid gap-3 text-center ${result.area ? 'grid-cols-3' : 'grid-cols-2'}`}>
                   <div className="bg-white rounded p-3 border border-purple-200">
                     <p className="font-black text-2xl text-purple-700">{result.width}מ׳</p>
