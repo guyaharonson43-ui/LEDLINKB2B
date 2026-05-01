@@ -212,14 +212,10 @@
       const [room,   setRoom]   = useState('סלון');
       const [area,   setArea]   = useState('');
       const [height, setHeight] = useState('2.7');
-      const [result, setResult] = useState(null);
 
       // כשמגיע preset מהמחשבון הביולוגי — מגדיר חדר אוטומטית
       useEffect(() => {
-        if (preset) {
-          setRoom(preset);
-          setResult(null);
-        }
+        if (preset) setRoom(preset);
       }, [preset]);
 
       const ROOMS = [
@@ -235,12 +231,14 @@
 
       const calc = () => {
         const A = parseFloat(area), H = parseFloat(height);
-        if (!A || !H) return;
+        if (!A || !H) return null;
         const r = ROOMS.find(r => r.name === room);
         const totalLm = Math.ceil(r.lux * A / (r.cu * 0.8));
         const spacing = +(H * 0.75).toFixed(1);
-        setResult({ lux: r.lux, totalLm, spacing });
+        return { lux: r.lux, totalLm, spacing };
       };
+
+      const result = calc();
 
       const waText = result
         ? `💡 חישוב תאורה — LEDLink\n──────────────────────\n🏠 חדר: ${room} | שטח: ${area} מ"ר | גובה: ${height} מ׳\n📊 דרישה: ${result.lux} לוקס (תקן EN 12464)\n✨ סה"כ לומן נדרש: ${result.totalLm.toLocaleString()} lm\n📐 ריווח מומלץ: ${result.spacing} מ׳\n\nאשמח לקבל המלצה מדויקת לחלל`
@@ -260,7 +258,7 @@
               <label className="block text-xs font-bold text-ink mb-1">סוג חדר</label>
               <div className="flex flex-wrap gap-2">
                 {ROOMS.map(r => (
-                  <button key={r.name} onClick={() => { setRoom(r.name); setResult(null); }}
+                  <button key={r.name} onClick={() => setRoom(r.name)}
                     className={`px-3 py-1.5 rounded border text-xs font-bold transition-all ${room === r.name ? 'bg-ink text-white border-ink' : 'border-border text-ink hover:border-gold'}`}>
                     {r.name}
                   </button>
@@ -278,9 +276,6 @@
                 className="w-full border border-border rounded px-3 py-2 text-sm"/>
             </div>
           </div>
-          <button onClick={calc} className="w-full bg-ink hover:bg-slate-700 text-white font-bold py-2.5 rounded transition-colors mb-4">
-            חשב תאורה נדרשת
-          </button>
           {result && (
             <>
               <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4">
