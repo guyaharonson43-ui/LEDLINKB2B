@@ -59,6 +59,17 @@
     .footer-legal a:hover { color: #E8A020; }
     @media (max-width: 768px) { .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; } }
     @media (max-width: 480px) { .footer-top { grid-template-columns: 1fr; } }
+
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      @view-transition { navigation: none; }
+    }
   </style>
 </head>
 <body>
@@ -199,3 +210,4 @@
     })();
   </script></body>
 </html>
+

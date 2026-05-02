@@ -135,6 +135,17 @@
       .page-title { font-size: 28px; }
       .footer-top { grid-template-columns: 1fr; }
     }
+
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      @view-transition { navigation: none; }
+    }
   </style>
 </head>
 <body>
@@ -316,3 +327,4 @@
     })();
   </script></body>
 </html>
+

@@ -554,6 +554,16 @@
     @media (max-width: 480px) {
       .footer-top { grid-template-columns: 1fr; }
     }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      @view-transition { navigation: none; }
+    }
   </style>
 </head>
 <body>
@@ -867,21 +877,22 @@
   <script>
     /* ── Stats count-up animation ── */
     (function() {
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       function animateStat(el) {
-        const target = parseInt(el.dataset.count, 10);
-        const suffix = el.dataset.suffix || '';
-        const duration = 1400;
-        let startTime = null;
+        var target = parseInt(el.dataset.count, 10);
+        var suffix = el.dataset.suffix || '';
+        if (reducedMotion) { el.textContent = target + suffix; return; }
+        var duration = 1400, startTime = null;
         function step(ts) {
           if (!startTime) startTime = ts;
-          const progress = Math.min((ts - startTime) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
+          var progress = Math.min((ts - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
           el.textContent = Math.floor(eased * target) + suffix;
           if (progress < 1) requestAnimationFrame(step);
         }
         requestAnimationFrame(step);
       }
-      const observer = new IntersectionObserver(function(entries) {
+      var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
             entry.target.querySelectorAll('[data-count]').forEach(animateStat);
@@ -889,7 +900,7 @@
           }
         });
       }, { threshold: 0.3 });
-      const statsBar = document.querySelector('.stats-bar');
+      var statsBar = document.querySelector('.stats-bar');
       if (statsBar) observer.observe(statsBar);
     })();
 

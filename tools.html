@@ -126,6 +126,16 @@
     .mm-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #444; padding: 16px 24px 4px; }
     .mm-divider { height: 1px; background: #252525; margin: 8px 0; }
     @media (max-width: 900px) { .nav-desktop { display: none !important; } .hamburger { display: flex; } }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      @view-transition { navigation: none; }
+    }
   </style>
 
   <script crossorigin src="libs/react.production.min.js"></script>

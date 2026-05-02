@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>LEDLink — מחשבון התאמת הספק למלאי</title>
+    <style>
+        :root { --gold: #E8A020; --slate: #0f172a; --bg: #F4F4F0; }
+        body { font-family: sans-serif; background: var(--bg); padding: 20px; color: #1C1C1C; }
+        .card { max-width: 450px; margin: 0 auto; background: white; border-radius: 24px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #ddd; }
+        .header { background: var(--slate); padding: 25px; text-align: center; border-bottom: 4px solid var(--gold); }
+        .header h1 { color: var(--gold); margin: 0; font-size: 22px; font-weight: 900; }
+        .content { padding: 30px; }
+        .input-group { margin-bottom: 25px; }
+        label { display: block; font-size: 11px; font-weight: bold; color: #64748b; margin-bottom: 8px; text-transform: uppercase; }
+        input, select { width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 12px; box-sizing: border-box; font-weight: bold; font-size: 18px; transition: border-color 0.2s; }
+        input:focus { border-color: var(--gold); outline: none; }
+        .result-box { background: var(--slate); border-radius: 20px; padding: 30px; text-align: center; color: white; margin-top: 10px; }
+        .res-label { font-size: 10px; font-weight: bold; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; }
+        .res-val { font-size: 60px; font-weight: 900; color: var(--gold); margin: 5px 0; line-height: 1; }
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 25px; }
+        .stat-item { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
+        .wa-btn { display: block; width: 100%; padding: 16px; background: #25D366; color: white; text-align: center; text-decoration: none; border-radius: 14px; font-weight: bold; margin-top: 25px; font-size: 15px; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2); }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="header">
+        <h1>התאמת ספק כוח</h1>
+        <p style="color:#94a3b8; margin:5px 0 0; font-size:10px; font-weight: bold; letter-spacing: 1px;">INVENTORY-BASED SPECIFICATION</p>
+    </div>
+
+    <div class="content">
+        <div class="input-group">
+            <label>עומס תאורה מתוכנן (Watt):</label>
+            <input type="number" id="in-watt" value="100" oninput="calculate()">
+        </div>
+
+        <div class="input-group">
+            <label>מתח עבודה נדרש (DC):</label>
+            <select id="in-volt" onchange="calculate()">
+                <option value="12">12V DC</option>
+                <option value="24" selected>24V DC</option>
+                <option value="48">48V DC</option>
+            </select>
+        </div>
+
+        <div class="result-box">
+            <div class="res-label">הספק ספק כוח מומלץ מהמלאי</div>
+            <div id="res-total" class="res-val">150W</div>
+            <div id="res-calc-info" style="font-size: 11px; color: #94a3b8; margin-top: 5px;"></div>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="res-label" style="font-size: 8px;">זרם עבודה</div>
+                    <div id="res-amp" style="font-weight: 900; font-size: 20px; color: white;">5.00A</div>
+                </div>
+                <div class="stat-item">
+                    <div class="res-label" style="font-size: 8px;">ניצולת עבודה</div>
+                    <div id="res-util" style="font-weight: 900; font-size: 20px; color: var(--gold);">67%</div>
+                </div>
+            </div>
+        </div>
+
+        <a id="wa-link" href="#" target="_blank" class="wa-btn">
+             שלח מפרט טכני להזמנת ספק ב-WhatsApp
+        </a>
+    </div>
+</div>
+
+<script>
+    // דרגות הספק סטנדרטיות במלאי
+    const INVENTORY_WATTS = [25, 50, 75, 100, 150, 200, 350];
+
+    function calculate() {
+        const watt = Number(document.getElementById('in-watt').value);
+        const volt = Number(document.getElementById('in-volt').value);
+
+        if (!watt || watt <= 0) return;
+
+        // חישוב הספק הנדרש בבטיחות (120%)
+        const safetyRequired = watt * 1.2;
+        
+        // מציאת הדרגה הבאה במלאי
+        let recommendedWatt = INVENTORY_WATTS[INVENTORY_WATTS.length - 1];
+        let found = false;
+        
+        for (let w of INVENTORY_WATTS) {
+            if (w >= safetyRequired) {
+                recommendedWatt = w;
+                found = true;
+                break;
+            }
+        }
+
+        // במידה והעומס גדול מהספק המקסימלי במלאי
+        if (safetyRequired > INVENTORY_WATTS[INVENTORY_WATTS.length - 1]) {
+            document.getElementById('res-total').innerText = "נדרש פיצול";
+            document.getElementById('res-total').style.fontSize = "36px";
+            document.getElementById('res-calc-info').innerText = `עומס בטיחות (${safetyRequired.toFixed(0)}W) חורג מהספק יחיד`;
+        } else {
+            document.getElementById('res-total').innerText = recommendedWatt + 'W';
+            document.getElementById('res-total').style.fontSize = "60px";
+            document.getElementById('res-calc-info').innerText = `עומס בטיחות מחושב: ${safetyRequired.toFixed(0)}W`;
+        }
+
+        const current = (watt / volt).toFixed(2);
+        const utilization = Math.round((watt / recommendedWatt) * 100);
+
+        document.getElementById('res-amp').innerText = current + 'A';
+        document.getElementById('res-util').innerText = utilization + '%';
+
+        // WhatsApp Link
+        const msg = `🔆 הזמנת ספק כוח — LEDLink\n──────────────────────\n⚡ עומס מחושב: ${watt}W ב-${volt}V\n✅ ספק נדרש מהמלאי: ${recommendedWatt}W\n🔌 זרם עבודה: ${current}A\n\nאשמח לקבל הצעת מחיר בהתאם למפרט.`;
+        document.getElementById('wa-link').href = `https://wa.me/972524444470?text=${encodeURIComponent(msg)}`;
+    }
+
+    // Init
+    calculate();
+</script>
+
+</body>
+</html>
