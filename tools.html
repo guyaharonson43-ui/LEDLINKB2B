@@ -1044,8 +1044,18 @@
         setTool(id);
         const url = new URL(window.location.href);
         url.searchParams.set('tool', id);
-        window.history.replaceState({}, '', url.toString());
+        window.history.pushState({ tool: id }, '', url.toString());
       };
+
+      // סנכרון כפתור חזור של הדפדפן עם state של React
+      React.useEffect(() => {
+        const onPop = (e) => {
+          const id = new URLSearchParams(window.location.search).get('tool') || 'voltage';
+          setTool(id);
+        };
+        window.addEventListener('popstate', onPop);
+        return () => window.removeEventListener('popstate', onPop);
+      }, []);
 
       const CATALOG = [
         { label: 'דרייברים',  url: 'catalog.html?tab=דרייברים'  },
