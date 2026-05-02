@@ -1247,13 +1247,16 @@
             <div className="mm-divider"></div>
             <div className="mm-label">כלים ומדריכים</div>
             <span className="mm-link active" style={{cursor:'default'}}>כלי תכנון</span>
-            {TOOL_ITEMS.map(item => (
-              <a key={item.id} className="mm-link sub" style={{cursor:'pointer', display:'flex', alignItems:'center', gap:8}}
-                 onClick={()=>{ goToTool(item.id); setMenuOpen(false); }}>
-                <item.Icon s={13}/>
-                {item.label}
-              </a>
-            ))}
+            {TOOL_ITEMS.map(item => {
+              const ItemIc = item.Icon;
+              return (
+                <a key={item.id} className="mm-link sub" style={{cursor:'pointer', display:'flex', alignItems:'center', gap:8}}
+                   onClick={()=>{ goToTool(item.id); setMenuOpen(false); }}>
+                  <ItemIc s={13}/>
+                  {item.label}
+                </a>
+              );
+            })}
             <a href="guides.html" className="mm-link">מדריכים</a>
             <div className="mm-divider"></div>
             <a href="about.html" className="mm-link">אודות</a>
@@ -1279,23 +1282,26 @@
               {/* Desktop: scrollable tabs */}
               <div className="tabs-fade-wrap">
                 <div ref={tabsRef} className="tabs-scroll" style={{padding:'0 24px', display:'flex', gap:0}}>
-                  {TOOLS.map(t => (
-                    <button key={t.id} onClick={() => goToTool(t.id)}
-                      data-active={tool === t.id ? 'true' : 'false'}
-                      style={{
-                        padding:'14px 16px', border:'none',
-                        borderBottom: tool === t.id ? '2px solid #E8A020' : '2px solid transparent',
-                        background:'none', cursor:'pointer',
-                        color: tool === t.id ? '#E8A020' : '#888888',
-                        fontFamily:'Heebo,sans-serif', fontSize:13,
-                        fontWeight: tool === t.id ? 700 : 500,
-                        transition:'all 0.15s', whiteSpace:'nowrap',
-                        display:'flex', alignItems:'center', gap:6,
-                      }}>
-                      <t.Icon s={14}/>
-                      {t.label}
-                    </button>
-                  ))}
+                  {TOOLS.map(t => {
+                    const ToolIc = t.Icon;
+                    return (
+                      <button key={t.id} onClick={() => goToTool(t.id)}
+                        data-active={tool === t.id ? 'true' : 'false'}
+                        style={{
+                          padding:'14px 16px', border:'none',
+                          borderBottom: tool === t.id ? '2px solid #E8A020' : '2px solid transparent',
+                          background:'none', cursor:'pointer',
+                          color: tool === t.id ? '#E8A020' : '#888888',
+                          fontFamily:'Heebo,sans-serif', fontSize:13,
+                          fontWeight: tool === t.id ? 700 : 500,
+                          transition:'all 0.15s', whiteSpace:'nowrap',
+                          display:'flex', alignItems:'center', gap:6,
+                        }}>
+                        <ToolIc s={14}/>
+                        {t.label}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
               {/* Mobile: select dropdown */}
