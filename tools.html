@@ -1084,6 +1084,19 @@
 
           {/* Tool content */}
           <div style={{maxWidth:800, margin:'0 auto', padding:'40px 24px'}}>
+
+            {/* ─ Disclaimer banner ─ */}
+            <div className="rounded-lg border p-4 mb-6 flex gap-3 items-start"
+              style={{background:'#fffbf0', borderColor:'rgba(232,160,32,0.4)'}}>
+              <span style={{fontSize:20, lineHeight:1}}>📐</span>
+              <div>
+                <p className="font-bold text-sm mb-1" style={{color:'#C4880A'}}>כלי תכנון — להערכה ראשונית בלבד</p>
+                <p className="text-xs leading-relaxed" style={{color:'#5a4a1a'}}>
+                  החישובים מבוססים על נוסחאות תקן EN 12464 עם פרמטרים ממוצעים. התוצאות אינן תחליף לתכנון תאורה מקצועי ואינן מהוות התחייבות מצד LEDLink לתוצאות בשטח.
+                </p>
+              </div>
+            </div>
+
             {tool === 'voltage'     && <VoltageDropCalc/>}
             {tool === 'lumen'       && <LumenCalc
               preset={lumenPreset}
