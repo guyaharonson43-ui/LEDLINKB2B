@@ -49,6 +49,15 @@
       border-top: none; border-bottom: none; border-left: none;
     }
     .nav-drop-item:hover { color: #E8A020; background: rgba(255,255,255,0.04); border-right-color: #E8A020; }
+    /* ─ Tab bar scroll ─ */
+    .tabs-scroll { overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
+    .tabs-scroll::-webkit-scrollbar { display: none; }
+    .tabs-fade-wrap { position: relative; }
+    .tabs-fade-wrap::after {
+      content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 48px;
+      background: linear-gradient(to left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.95) 100%);
+      pointer-events: none; z-index: 2;
+    }
     .footer { background: #111; padding: 48px 32px 0; border-top: 1px solid #222; }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
     .footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid #1E1E1E; }
@@ -1049,6 +1058,7 @@
       const [menuOpen, setMenuOpen] = useState(false);
       const [lumenPreset,  setLumenPreset]  = useState(null);
       const [linearPreset, setLinearPreset] = useState(null);
+      const tabsRef = React.useRef(null);
 
       const goToTool = (id) => {
         setTool(id);
@@ -1056,6 +1066,13 @@
         url.searchParams.set('tool', id);
         window.history.pushState({ tool: id }, '', url.toString());
       };
+
+      // גלילת טאב פעיל לתצוגה במובייל
+      React.useEffect(() => {
+        if (!tabsRef.current) return;
+        const active = tabsRef.current.querySelector('[data-active="true"]');
+        if (active) active.scrollIntoView({ inline: 'nearest', block: 'nearest', behavior: 'smooth' });
+      }, [tool]);
 
       // עיגון ה-state הראשוני בהיסטוריה + סנכרון כפתור חזור
       React.useEffect(() => {
@@ -1204,21 +1221,24 @@
 
           {/* Tool tabs */}
           <div style={{borderBottom:'1px solid #E0DDD6', background:'#FFFFFF', position:'sticky', top:64, zIndex:90, boxShadow:'0 1px 4px rgba(0,0,0,0.04)'}}>
-            <div style={{maxWidth:800, margin:'0 auto', padding:'0 24px', display:'flex', gap:0, overflowX:'auto'}}>
-              {TOOLS.map(t => (
-                <button key={t.id} onClick={() => goToTool(t.id)}
-                  style={{
-                    padding:'16px 20px', border:'none',
-                    borderBottom: tool === t.id ? '2px solid #E8A020' : '2px solid transparent',
-                    background:'none', cursor:'pointer',
-                    color: tool === t.id ? '#E8A020' : '#777777',
-                    fontFamily:'Heebo,sans-serif', fontSize:14,
-                    fontWeight: tool === t.id ? 700 : 500,
-                    transition:'all 0.15s', whiteSpace:'nowrap',
-                  }}>
-                  {t.label}
-                </button>
-              ))}
+            <div className="tabs-fade-wrap" style={{maxWidth:800, margin:'0 auto'}}>
+              <div ref={tabsRef} className="tabs-scroll" style={{padding:'0 24px', display:'flex', gap:0}}>
+                {TOOLS.map(t => (
+                  <button key={t.id} onClick={() => goToTool(t.id)}
+                    data-active={tool === t.id ? 'true' : 'false'}
+                    style={{
+                      padding:'16px 20px', border:'none',
+                      borderBottom: tool === t.id ? '2px solid #E8A020' : '2px solid transparent',
+                      background:'none', cursor:'pointer',
+                      color: tool === t.id ? '#E8A020' : '#777777',
+                      fontFamily:'Heebo,sans-serif', fontSize:14,
+                      fontWeight: tool === t.id ? 700 : 500,
+                      transition:'all 0.15s', whiteSpace:'nowrap',
+                    }}>
+                    {t.label}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
