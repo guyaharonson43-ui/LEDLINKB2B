@@ -113,14 +113,29 @@
       </svg>
     );
 
+    /* ── Shared Contact Row (WA + Phone) ── */
+    const PHONE_HREF = 'tel:+97286326059';
+    const ContactRow = ({ waHref, disabled }) => (
+      <div className="flex gap-2">
+        <a href={PHONE_HREF}
+          className="flex items-center justify-center font-bold py-3 px-5 rounded text-sm flex-shrink-0 transition-colors"
+          style={{background:'#1C1C1C', color:'#fff', textDecoration:'none'}}>
+          📞
+        </a>
+        <a href={disabled ? undefined : waHref} target="_blank" rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2 flex-1 font-bold py-3 rounded transition-colors text-sm"
+          style={{background: disabled ? '#d1d5db' : '#25D366', color:'#fff', textDecoration:'none', pointerEvents: disabled ? 'none' : 'auto'}}>
+          <WaIcon/> דבר איתנו
+        </a>
+      </div>
+    );
+
     /* ── Voltage Drop Calculator ── */
     const VoltageDropCalc = () => {
       const [distance, setDistance] = useState('');
       const [totalW,   setTotalW]   = useState('');
       const [volt,     setVolt]     = useState('24');
       const [gauge,    setGauge]    = useState('1.5');
-      const [result,   setResult]   = useState(null);
-
       const GAUGES = [
         { v: '0.5',  label: '0.5 ממ"ר', r: 36.0  },
         { v: '0.75', label: '0.75 ממ"ר', r: 24.5 },
@@ -131,7 +146,7 @@
 
       const calc = () => {
         const D = parseFloat(distance), W = parseFloat(totalW), V = parseFloat(volt);
-        if (!D || !W || !V) return;
+        if (!D || !W || !V) return null;
         const g = GAUGES.find(g => g.v === gauge);
         const I = W / V;
         const Vdrop = (2 * D * I * g.r) / 1000;
@@ -141,8 +156,10 @@
         if (pct <= 3)      { status = 'תקין';   color = 'green'; rec = 'הכבל מתאים לעומס הנדרש.'; }
         else if (pct <= 5) { status = 'גבולי';  color = 'amber'; rec = `שקול מעבר ל-${volt === '12' ? '24V' : '48V'} או הגדלת ממ"ר.`; }
         else               { status = 'בעייתי'; color = 'red';   rec = `נדרש שינוי: ${volt === '12' ? 'עבור ל-24V' : volt === '24' ? 'עבור ל-48V או הזן כבל עבה יותר' : 'הוסף נקודת הזנה נוספת'}.`; }
-        setResult({ pct: pct.toFixed(1), Vdrop: Vdrop.toFixed(2), Varrival: Varrival.toFixed(2), status, color, rec, I: I.toFixed(2) });
+        return { pct: pct.toFixed(1), Vdrop: Vdrop.toFixed(2), Varrival: Varrival.toFixed(2), status, color, rec, I: I.toFixed(2) };
       };
+
+      const result = calc();
 
       const waText = result
         ? `🔆 בדיקת מפל מתח — LEDLink\n──────────────────────\n📏 מרחק מהספק למקור: ${distance} מ׳\n⚡ מתח: ${volt}V | עומס: ${totalW}W\n🔌 כבל: ${gauge} ממ"ר\n\nתוצאה: מפל ${result.pct}% (${result.Vdrop}V) — מתח שמגיע למקור האור: ${result.Varrival}V — ${result.status}\n${result.rec}\n\nאשמח לקבל הצעת מחיר למקור אור ומתח מתאים`
@@ -184,9 +201,6 @@
               </select>
             </div>
           </div>
-          <button onClick={calc} className="w-full bg-ink hover:bg-slate-700 text-white font-bold py-2.5 rounded transition-colors mb-4">
-            חשב מפל מתח
-          </button>
           {result && (
             <div className={`rounded-lg border p-4 mb-4 ${colors[result.color]}`}>
               <div className="flex items-center gap-2 mb-2">
@@ -198,19 +212,17 @@
             </div>
           )}
           {result && (
-            <a href={waLink(waText)} target="_blank" rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded transition-colors text-sm">
-              <WaIcon/> קבל הצעת מחיר למקור אור ומתח מתאים
-            </a>
+            <ContactRow waHref={waLink(waText)}/>
           )}
         </div>
       );
     };
 
     /* ── Lumen Calculator ── */
-    const LumenCalc = ({ preset }) => {
+    const LumenCalc = ({ preset, onGoToLinear, onGoBack, fromLabel }) => {
       const [room,   setRoom]   = useState('סלון');
-      const [area,   setArea]   = useState('');
+      const [width,  setWidth]  = useState('');
+      const [length, setLength] = useState('');
       const [height, setHeight] = useState('2.7');
 
       // כשמגיע preset מהמחשבון הביולוגי — מגדיר חדר אוטומטית
@@ -230,22 +242,31 @@
       ];
 
       const calc = () => {
-        const A = parseFloat(area), H = parseFloat(height);
-        if (!A || !H) return null;
+        const W = parseFloat(width), L = parseFloat(length), H = parseFloat(height);
+        if (!W || !L || !H) return null;
+        const area = +(W * L).toFixed(1);
         const r = ROOMS.find(r => r.name === room);
-        const totalLm = Math.ceil(r.lux * A / (r.cu * 0.8));
+        const totalLm = Math.ceil(r.lux * area / (r.cu * 0.8));
         const spacing = +(H * 0.75).toFixed(1);
-        return { lux: r.lux, totalLm, spacing };
+        return { lux: r.lux, totalLm, spacing, area };
       };
 
       const result = calc();
 
       const waText = result
-        ? `💡 חישוב תאורה — LEDLink\n──────────────────────\n🏠 חדר: ${room} | שטח: ${area} מ"ר | גובה: ${height} מ׳\n📊 דרישה: ${result.lux} לוקס (תקן EN 12464)\n✨ סה"כ לומן נדרש: ${result.totalLm.toLocaleString()} lm\n📐 ריווח מומלץ: ${result.spacing} מ׳\n\nאשמח לקבל המלצה מדויקת לחלל`
+        ? `💡 חישוב תאורה — LEDLink\n──────────────────────\n🏠 חדר: ${room} | ${width}×${length} מ׳ (${result.area} מ"ר) | גובה: ${height} מ׳\n📊 דרישה: ${result.lux} לוקס (תקן EN 12464)\n✨ סה"כ לומן נדרש: ${result.totalLm.toLocaleString()} lm\n📐 ריווח מומלץ: ${result.spacing} מ׳\n\nאשמח לקבל המלצה מדויקת לחלל`
         : '';
 
       return (
         <div className="bg-white rounded-lg border border-border p-6 mb-6">
+          {/* כפתור חזרה */}
+          {onGoBack && (
+            <button onClick={onGoBack}
+              className="flex items-center gap-1 text-xs font-bold mb-4 transition-colors"
+              style={{color:'#E8A020', background:'none', border:'none', cursor:'pointer', padding:0}}>
+              ▶ חזרה ל{fromLabel}
+            </button>
+          )}
           <div className="flex items-center gap-3 mb-5">
             <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center text-xl">💡</div>
             <div>
@@ -266,11 +287,16 @@
               </div>
             </div>
             <div>
-              <label className="block text-xs font-bold text-ink mb-1">שטח (מ"ר)</label>
-              <input type="number" value={area} onChange={e=>setArea(e.target.value)} placeholder="לדוגמה: 20"
+              <label className="block text-xs font-bold text-ink mb-1">רוחב חדר (מ׳)</label>
+              <input type="number" value={width} onChange={e=>setWidth(e.target.value)} placeholder="לדוגמה: 4"
                 className="w-full border border-border rounded px-3 py-2 text-sm"/>
             </div>
             <div>
+              <label className="block text-xs font-bold text-ink mb-1">אורך חדר (מ׳)</label>
+              <input type="number" value={length} onChange={e=>setLength(e.target.value)} placeholder="לדוגמה: 5"
+                className="w-full border border-border rounded px-3 py-2 text-sm"/>
+            </div>
+            <div className="col-span-2">
               <label className="block text-xs font-bold text-ink mb-1">גובה תקרה (מ׳)</label>
               <input type="number" value={height} onChange={e=>setHeight(e.target.value)} step="0.1"
                 className="w-full border border-border rounded px-3 py-2 text-sm"/>
@@ -294,10 +320,14 @@
                   </div>
                 </div>
               </div>
-              <a href={waLink(waText)} target="_blank" rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded transition-colors text-sm">
-                <WaIcon/> קבל המלצה מדויקת לחלל שלך
-              </a>
+              <ContactRow waHref={waLink(waText)}/>
+              {onGoToLinear && (
+                <button onClick={() => onGoToLinear({ roomType: room, width, length })}
+                  className="flex items-center justify-center gap-2 w-full font-bold py-3 rounded text-sm mt-2 transition-colors"
+                  style={{background:'#E8A020', color:'#fff'}}>
+                  🔆 חשב אורך פרופיל LED ◀
+                </button>
+              )}
             </>
           )}
         </div>
@@ -312,18 +342,18 @@
       const [hours,    setHours]    = useState('8');
       const [rate,     setRate]     = useState('0.65');
       const [invest,   setInvest]   = useState('');
-      const [result,   setResult]   = useState(null);
-
       const calc = () => {
         const N = parseFloat(fixtures), Wo = parseFloat(oldWatt), Wn = parseFloat(newWatt);
         const H = parseFloat(hours), R = parseFloat(rate), Inv = parseFloat(invest) || 0;
-        if (!N || !Wo || !Wn || !H || !R) return;
+        if (!N || !Wo || !Wn || !H || !R) return null;
         const costOld = N * Wo * H * 365 * R / 1000;
         const costNew = N * Wn * H * 365 * R / 1000;
         const saving  = costOld - costNew;
         const payback = Inv > 0 ? (Inv / (saving / 12)).toFixed(1) : null;
-        setResult({ costOld: costOld.toFixed(0), costNew: costNew.toFixed(0), saving: saving.toFixed(0), payback, savePct: ((saving/costOld)*100).toFixed(0) });
+        return { costOld: costOld.toFixed(0), costNew: costNew.toFixed(0), saving: saving.toFixed(0), payback, savePct: ((saving/costOld)*100).toFixed(0) };
       };
+
+      const result = calc();
 
       const waText = result
         ? `♻️ חישוב חיסכון אנרגיה — LEDLink\n──────────────────────\n🔴 לפני: ${fixtures} גופים × ${oldWatt}W — עלות שנתית: ₪${parseInt(result.costOld).toLocaleString()}\n🟢 אחרי LED: ${fixtures} גופים × ${newWatt}W — עלות שנתית: ₪${parseInt(result.costNew).toLocaleString()}\n\n💰 חיסכון שנתי: ₪${parseInt(result.saving).toLocaleString()} (${result.savePct}%)${result.payback ? `\n📅 החזר השקעה: ${result.payback} חודשים` : ''}\n\nאשמח לקבל הצעת מחיר לשדרוג LED`
@@ -370,9 +400,6 @@
                 className="w-full border border-border rounded px-3 py-2 text-sm"/>
             </div>
           </div>
-          <button onClick={calc} className="w-full bg-ink hover:bg-slate-700 text-white font-bold py-2.5 rounded transition-colors mb-4">
-            חשב חיסכון
-          </button>
           {result && (
             <>
               <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
@@ -395,10 +422,7 @@
                 </div>
                 {result.payback && <p className="text-sm text-green-800 font-bold text-center">📅 החזר השקעה תוך {result.payback} חודשים</p>}
               </div>
-              <a href={waLink(waText)} target="_blank" rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded transition-colors text-sm">
-                <WaIcon/> קבל הצעת מחיר לשדרוג LED
-              </a>
+              <ContactRow waHref={waLink(waText)}/>
             </>
           )}
         </div>
@@ -532,10 +556,7 @@
                   )}
                 </div>
               </div>
-              <a href={waLink(waText)} target="_blank" rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded transition-colors text-sm">
-                <WaIcon/> קבל המלצה על גוף ליניארי מתאים
-              </a>
+              <ContactRow waHref={waLink(waText)}/>
             </>
           )}
         </div>
@@ -728,6 +749,167 @@
       );
     };
 
+    /* ── Linear Profile Calculator ── */
+    const LinearLengthCalc = ({ preset, onGoBack, fromLabel }) => {
+      const [roomType,   setRoomType]   = useState('משרד');
+      const [width,      setWidth]      = useState('');
+      const [length,     setLength]     = useState('');
+      const [profileIdx, setProfileIdx] = useState(1);
+
+      // כשמגיע preset מלומן לחלל — ממלא הכל אוטומטית
+      useEffect(() => {
+        if (!preset) return;
+        if (preset.roomType) setRoomType(preset.roomType);
+        if (preset.width)    setWidth(preset.width);
+        if (preset.length)   setLength(preset.length);
+      }, [preset]);
+
+      const ROOMS = [
+        { name: 'סלון',     lux: 150 },
+        { name: 'מטבח',     lux: 300 },
+        { name: 'חדר שינה', lux: 120 },
+        { name: 'משרד',     lux: 500 },
+        { name: 'מסדרון',   lux: 100 },
+        { name: 'חנות',     lux: 500 },
+        { name: 'אמבטיה',   lux: 200 },
+      ];
+
+      const PROFILES = [
+        { id: 0, label: '10W/m', sub: '1730 Lm/m', lmM: 1730, wM: 10 },
+        { id: 1, label: '15W/m', sub: '2800 Lm/m', lmM: 2800, wM: 15 },
+        { id: 2, label: '30W/m', sub: '4000 Lm/m', lmM: 4000, wM: 30 },
+      ];
+
+      const calc = () => {
+        const W = parseFloat(width), L = parseFloat(length);
+        if (!W || !L) return null;
+        const profile  = PROFILES[profileIdx];
+        const room     = ROOMS.find(r => r.name === roomType);
+        const area     = +(W * L).toFixed(1);
+        const totalLm      = (room.lux * area) / (0.7 * 0.8);
+        const effectiveLmM = profile.lmM * 0.70;          // ניכוי 30% הפסדי דיפוזר
+        const meters       = +(totalLm / effectiveLmM).toFixed(1);
+        const watt     = Math.ceil(meters * profile.wM);
+        const efficacy = (profile.lmM / profile.wM).toFixed(0);
+        return { meters, watt, efficacy, lux: room.lux, area };
+      };
+
+      const result = calc();
+
+      const waText = result
+        ? `🔆 מחשבון פרופיל LED ליניארי — LEDLink\n──────────────────────\n🏠 חלל: ${roomType} | ${width}×${length} מ׳ (${result.area} מ"ר)\n💡 יעד: ${result.lux} לוקס | פרופיל: ${PROFILES[profileIdx].label} (${PROFILES[profileIdx].sub})\n\n📏 אורך נדרש: ${result.meters} מ׳\n⚡ הספק: ${result.watt}W\n✨ נצילות: ${result.efficacy} Lm/W\n\nאשמח לקבל הצעת מחיר לפרופיל LED מתאים`
+        : '';
+
+      return (
+        <div className="bg-white rounded-lg border border-border p-6 mb-6">
+
+          {/* ─ כפתור חזרה ─ */}
+          {onGoBack && (
+            <button onClick={onGoBack}
+              className="flex items-center gap-1 text-xs font-bold mb-4 transition-colors"
+              style={{color:'#E8A020', background:'none', border:'none', cursor:'pointer', padding:0}}>
+              ▶ חזרה ל{fromLabel}
+            </button>
+          )}
+
+          {/* ─ Header ─ */}
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-10 h-10 rounded-lg flex items-center justify-center text-xl" style={{background:'rgba(232,160,32,0.12)'}}>🔆</div>
+            <div>
+              <h3 className="font-black text-lg text-ink">מחשבון פרופיל LED ליניארי</h3>
+              <p className="text-xs text-muted">אורך פרופיל נדרש לפי גודל חלל ועוצמת הסטריפ</p>
+            </div>
+          </div>
+
+          {/* ─ Info box ─ */}
+          <div className="rounded-lg p-4 mb-5 border" style={{background:'rgba(232,160,32,0.07)', borderColor:'rgba(232,160,32,0.35)'}}>
+            <strong className="block mb-1 text-sm" style={{color:'#C4880A'}}>🔆 איך זה עובד:</strong>
+            <p className="text-sm text-muted leading-relaxed">
+              בוחר סוג חלל ← מזין ממדים ← בוחר עוצמת הסטריפ — המחשבון מחשב כמה מטרים של פרופיל LED נדרשים לעמוד בדרישת הלוקס לפי תקן EN 12464.
+            </p>
+          </div>
+
+          {/* ─ Room type ─ */}
+          <div className="mb-4">
+            <label className="block text-xs font-bold text-ink mb-2">סוג החלל</label>
+            <div className="flex flex-wrap gap-2">
+              {ROOMS.map(r => (
+                <button key={r.name} onClick={() => setRoomType(r.name)}
+                  className={`px-3 py-1.5 rounded border text-xs font-bold transition-all ${roomType === r.name ? 'bg-ink text-white border-ink' : 'border-border text-ink hover:border-gold'}`}>
+                  {r.name} <span style={{opacity:0.6, fontWeight:400}}>{r.lux} lx</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* ─ Dimensions ─ */}
+          <div className="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label className="block text-xs font-bold text-ink mb-1">רוחב חדר (מ׳)</label>
+              <input type="number" value={width} onChange={e => setWidth(e.target.value)} placeholder="לדוגמה: 4"
+                className="w-full border border-border rounded px-3 py-2 text-sm"/>
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-ink mb-1">אורך חדר (מ׳)</label>
+              <input type="number" value={length} onChange={e => setLength(e.target.value)} placeholder="לדוגמה: 5"
+                className="w-full border border-border rounded px-3 py-2 text-sm"/>
+            </div>
+          </div>
+
+          {/* ─ Profile selection ─ */}
+          <div className="mb-5">
+            <label className="block text-xs font-bold text-ink mb-2">סוג סטריפ LED</label>
+            <div className="flex flex-col gap-2">
+              {PROFILES.map(p => (
+                <button key={p.id} onClick={() => setProfileIdx(p.id)}
+                  className={`p-3 rounded-lg border text-right transition-all ${profileIdx === p.id ? 'border-gold' : 'border-border hover:border-gold'}`}
+                  style={{background: profileIdx === p.id ? 'rgba(232,160,32,0.07)' : '#fff'}}>
+                  <div className="flex justify-between items-center">
+                    <span className="font-bold text-sm" style={{color: profileIdx === p.id ? '#E8A020' : '#1C1C1C'}}>{p.label}</span>
+                    <span className="text-xs text-muted font-mono">נומינלי: {p.sub} · אפקטיבי: {Math.round(p.lmM * 0.70)} Lm/m</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* ─ Result ─ */}
+          {result && (
+            <div className="rounded-lg p-5 mb-4 border" style={{background:'rgba(232,160,32,0.08)', borderColor:'#E8A020'}}>
+              <p className="text-xs text-muted text-center mb-1">אורך פרופיל כולל נדרש</p>
+              <p className="font-black text-center mb-1" style={{fontSize:52, lineHeight:1.1, color:'#E8A020'}}>
+                {result.meters}<span style={{fontSize:22, fontWeight:700}}>מ׳</span>
+              </p>
+              <p className="text-xs text-center text-muted mb-4">עבור {result.lux} לוקס בחלל {width}×{length}מ׳ ({result.area} מ"ר)</p>
+
+              <div className="grid grid-cols-2 gap-3 mb-4">
+                <div className="bg-white rounded p-3 border border-amber-200 text-center">
+                  <p className="font-black text-2xl text-ink">{result.watt}W</p>
+                  <p className="text-xs text-muted mt-0.5">הספק ספק כוח</p>
+                </div>
+                <div className="bg-white rounded p-3 border border-amber-200 text-center">
+                  <p className="font-black text-2xl" style={{color:'#E8A020'}}>{result.efficacy} <span className="text-sm">Lm/W</span></p>
+                  <p className="text-xs text-muted mt-0.5">נצילות אנרגטית</p>
+                </div>
+              </div>
+
+              <div className="bg-white rounded p-3 border border-amber-200">
+                <p className="text-xs font-bold text-ink mb-1">📋 הערה למפרט:</p>
+                <p className="text-xs text-muted leading-relaxed">
+                  מומלץ לחלק את {result.meters}מ׳ למספר גופים לאחידות מקסימלית ומניעת שטחים מתים בפינות החדר.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* ─ Contact ─ */}
+          <ContactRow waHref={result ? waLink(waText) : undefined} disabled={!result}/>
+
+          <p className="text-center text-xs text-muted mt-4 uppercase tracking-wider">EN 12464 Standards | LEDLink</p>
+        </div>
+      );
+    };
+
     /* ── Main App ── */
     const TOOLS = [
       { id: 'voltage',     label: '⚡ מפל מתח' },
@@ -735,6 +917,7 @@
       { id: 'roi',         label: '♻️ חיסכון אנרגיה' },
       { id: 'beam-linear', label: '📏 פיזור אלומה' },
       { id: 'circadian',   label: '🌙 מחשבון ביולוגי' },
+      { id: 'linear',      label: '🔆 פרופיל LED' },
     ];
 
     const App = () => {
@@ -744,7 +927,8 @@
       });
       const [openDrop, setOpenDrop] = useState(null);
       const [menuOpen, setMenuOpen] = useState(false);
-      const [lumenPreset, setLumenPreset] = useState(null);
+      const [lumenPreset,  setLumenPreset]  = useState(null);
+      const [linearPreset, setLinearPreset] = useState(null);
 
       const goToTool = (id) => {
         setTool(id);
@@ -764,6 +948,7 @@
         { label: '♻️ חיסכון אנרגיה', id: 'roi'         },
         { label: '📏 פיזור אלומה',   id: 'beam-linear' },
         { label: '🌙 מחשבון ביולוגי', id: 'circadian'   },
+        { label: '🔆 פרופיל LED',     id: 'linear'      },
       ];
 
       const dropBox = {
@@ -900,10 +1085,20 @@
           {/* Tool content */}
           <div style={{maxWidth:800, margin:'0 auto', padding:'40px 24px'}}>
             {tool === 'voltage'     && <VoltageDropCalc/>}
-            {tool === 'lumen'       && <LumenCalc preset={lumenPreset}/>}
+            {tool === 'lumen'       && <LumenCalc
+              preset={lumenPreset}
+              onGoBack={lumenPreset ? () => { setLumenPreset(null); goToTool('circadian'); } : null}
+              fromLabel="מחשבון ביולוגי"
+              onGoToLinear={(p) => { setLinearPreset(p); goToTool('linear'); }}
+            />}
             {tool === 'roi'         && <ROICalc/>}
             {tool === 'beam-linear' && <BeamLinearCalc/>}
             {tool === 'circadian'   && <BiologicalCalc onGoToLumen={(room) => { setLumenPreset(room); goToTool('lumen'); }}/>}
+            {tool === 'linear'      && <LinearLengthCalc
+              preset={linearPreset}
+              onGoBack={linearPreset ? () => { setLinearPreset(null); goToTool('lumen'); } : null}
+              fromLabel="מחשבון לומן לחלל"
+            />}
           </div>
 
           {/* Footer */}
