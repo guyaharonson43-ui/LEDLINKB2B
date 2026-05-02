@@ -900,16 +900,37 @@
           }
         }
         const tab = params.get('tab');
+        const initTab = tab || 'דרייברים';
         if (tab) setActiveTab(tab);
+        // עיגון ה-state הראשוני בהיסטוריה
+        window.history.replaceState({ tab: initTab }, '', window.location.href);
       }, []);
 
-      // Switch tab: reset search + filters
+      // סנכרון כפתור חזור של הדפדפן
+      useEffect(() => {
+        const onPop = (e) => {
+          const id = (e.state && e.state.tab)
+            || new URLSearchParams(window.location.search).get('tab')
+            || 'דרייברים';
+          setActiveTab(id);
+          setSearch('');
+          setStripF({...INIT_STRIP});
+          setPsF({...INIT_PS});
+        };
+        window.addEventListener('popstate', onPop);
+        return () => window.removeEventListener('popstate', onPop);
+      }, []);
+
+      // Switch tab: reset search + filters + pushState
       const switchTab = useCallback(id => {
         setActiveTab(id);
         setSearch('');
         setStripF({...INIT_STRIP});
         setPsF({...INIT_PS});
         setSidebarOpen(false);
+        const url = new URL(window.location.href);
+        url.searchParams.set('tab', id);
+        window.history.pushState({ tab: id }, '', url.toString());
       }, []);
 
       const filtered = useMemo(() => {

@@ -1047,11 +1047,20 @@
         window.history.pushState({ tool: id }, '', url.toString());
       };
 
-      // סנכרון כפתור חזור של הדפדפן עם state של React
+      // עיגון ה-state הראשוני בהיסטוריה + סנכרון כפתור חזור
       React.useEffect(() => {
+        // עיגון ערך ראשוני — כדי שחזרה מהכלי הראשון לא תצא מהדף
+        const initId = new URLSearchParams(window.location.search).get('tool') || 'voltage';
+        window.history.replaceState({ tool: initId }, '', window.location.href);
+
         const onPop = (e) => {
-          const id = new URLSearchParams(window.location.search).get('tool') || 'voltage';
+          const id = (e.state && e.state.tool)
+            || new URLSearchParams(window.location.search).get('tool')
+            || 'voltage';
           setTool(id);
+          // ניקוי presets כשחוזרים דרך הדפדפן
+          setLumenPreset(null);
+          setLinearPreset(null);
         };
         window.addEventListener('popstate', onPop);
         return () => window.removeEventListener('popstate', onPop);
