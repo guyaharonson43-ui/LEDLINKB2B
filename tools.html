@@ -146,8 +146,11 @@
       ];
 
       const calc = () => {
+        if (distance === '' && totalW === '') return null; // שדות ריקים — אין תוצאה עדיין
         const D = parseFloat(distance), W = parseFloat(totalW), V = parseFloat(volt);
-        if (!D || !W || !V) return null;
+        if (isNaN(D) || isNaN(W)) return null;
+        if (D <= 0) return { error: 'מרחק חייב להיות גדול מ-0' };
+        if (W <= 0) return { error: 'עומס חייב להיות גדול מ-0 ואט' };
         const g = GAUGES.find(g => g.v === gauge);
         const I = W / V;
         const Vdrop = (2 * D * I * g.r) / 1000;
@@ -202,7 +205,13 @@
               </select>
             </div>
           </div>
-          {result && (
+          {result && result.error && (
+            <div className="rounded-lg border border-red-200 bg-red-50 p-3 mb-4 flex items-center gap-2">
+              <span>⚠️</span>
+              <p className="text-sm font-bold text-red-700">{result.error}</p>
+            </div>
+          )}
+          {result && !result.error && (
             <div className={`rounded-lg border p-4 mb-4 ${colors[result.color]}`}>
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-lg">{icons[result.color]}</span>
@@ -212,7 +221,7 @@
               <p className="text-sm font-bold">{result.rec}</p>
             </div>
           )}
-          {result && (
+          {result && !result.error && (
             <ContactRow waHref={waLink(waText)}/>
           )}
         </div>
