@@ -656,6 +656,8 @@ const TABS = [
 { id: 'פרופילים', label: 'פרופילים', desc: 'פרופילי אלומיניום לסטריפ LED — ייצור בהזמנה אישית' }];
 
 
+const PAGE_SIZE = 30;
+
 const App = () => {
   const [products, setProducts] = useState([]);
   const [activeTab, setActiveTab] = useState('דרייברים');
@@ -665,6 +667,7 @@ const App = () => {
   const [psF, setPsF] = useState({ ...INIT_PS });
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showCfg, setShowCfg] = useState(false);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -697,6 +700,7 @@ const App = () => {
       setSearch('');
       setStripF({ ...INIT_STRIP });
       setPsF({ ...INIT_PS });
+      setPage(1);
     };
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
@@ -709,6 +713,7 @@ const App = () => {
     setStripF({ ...INIT_STRIP });
     setPsF({ ...INIT_PS });
     setSidebarOpen(false);
+    setPage(1);
     const url = new URL(window.location.href);
     url.searchParams.set('tab', id);
     window.history.pushState({ tab: id }, '', url.toString());
@@ -758,6 +763,11 @@ const App = () => {
     }
     return r;
   }, [products, activeTab, search, stripF, psF]);
+
+  useEffect(() => { setPage(1); }, [filtered]);
+
+  const visibleProducts = filtered.slice(0, page * PAGE_SIZE);
+  const hasMore = visibleProducts.length < filtered.length;
 
   const tabInfo = TABS.find((t) => t.id === activeTab);
   const showFilters = activeTab !== 'פרופילים';
@@ -876,9 +886,16 @@ const App = () => {
     )
     ) : /*#__PURE__*/
 
+    React.createElement("div", null,
     React.createElement("div", { className: "products-grid" },
-    filtered.map((p) => /*#__PURE__*/
+    visibleProducts.map((p) => /*#__PURE__*/
     React.createElement(ProductCard, { key: p.id, product: p, onClick: setSelected })
+    )),
+    hasMore && /*#__PURE__*/React.createElement("div", { style: { textAlign: 'center', padding: '32px 0 16px' } }, /*#__PURE__*/
+      React.createElement("button", {
+        onClick: () => setPage((p) => p + 1),
+        style: { background: '#1C1C1C', color: '#fff', border: 'none', borderRadius: 8, padding: '12px 32px', fontSize: 15, fontWeight: 600, cursor: 'pointer', fontFamily: 'Heebo, sans-serif' }
+      }, `הצג עוד (${filtered.length - visibleProducts.length} נותרו)`)
     )
     )
 
