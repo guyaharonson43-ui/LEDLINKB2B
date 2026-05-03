@@ -4,6 +4,11 @@ const { useState, useEffect, useRef, useMemo, useCallback } = React;
 // ── Base path for images/datasheets (local dev) ──
 const IMG_BASE = '';
 
+// ── Analytics ──
+function trackEvent(name, params) {
+  if (typeof gtag === 'function') gtag('event', name, params || {});
+}
+
 // ── Helpers ──
 function cleanName(s) {
   return (s || '').replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n)).replace(/&amp;/g, '&').replace(/&#038;/g, '&');
@@ -396,7 +401,7 @@ const ProductModal = ({ product, onClose }) => {
     React.createElement("div", { style: { fontSize: 11, color: '#999999', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 10 } }, "\u05DE\u05E1\u05DE\u05DB\u05D9\u05DD \u05D8\u05DB\u05E0\u05D9\u05D9\u05DD"), /*#__PURE__*/
     React.createElement("div", { style: { display: 'flex', flexDirection: 'column', gap: 8 } },
     ds.map((d, i) => /*#__PURE__*/
-    React.createElement("a", { key: i, href: pdfSrc(d.file), target: "_blank", rel: "noopener noreferrer",
+    React.createElement("a", { key: i, href: pdfSrc(d.file), target: "_blank", rel: "noopener noreferrer", onClick: () => trackEvent('datasheet_download', { product_id: product.id, datasheet: d.file }),
       style: { display: 'flex', alignItems: 'center', gap: 8, padding: '10px 14px', background: '#F4F4F0',
         border: '1px solid #E0DDD6', borderRadius: 6, color: '#E8A020', textDecoration: 'none',
         fontSize: 13, fontWeight: 600, transition: 'border-color 0.15s' },
@@ -414,7 +419,8 @@ const ProductModal = ({ product, onClose }) => {
     React.createElement("div", { style: { display: 'flex', gap: 12, marginTop: 24 } }, /*#__PURE__*/
     React.createElement("a", { href: `https://wa.me/972524444470?text=${encodeURIComponent('שלום LEDLink, אשמח לקבל מחיר עבור: ' + product.name + ' (מק"ט: ' + product.id + ')')}`,
       target: "_blank", rel: "noopener noreferrer", className: "btn-gold",
-      style: { flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, textDecoration: 'none' } },
+      style: { flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, textDecoration: 'none' },
+      onClick: () => trackEvent('whatsapp_click', { product_id: product.id, product_name: product.name }) },
     Icons.wa, " \u05D1\u05E7\u05E9 \u05DE\u05D7\u05D9\u05E8"
     ), /*#__PURE__*/
     React.createElement("button", { onClick: copyLink, className: "btn-outline",
@@ -784,6 +790,11 @@ const App = () => {
   const visibleProducts = filtered.slice(0, page * PAGE_SIZE);
   const hasMore = visibleProducts.length < filtered.length;
 
+  const openProduct = useCallback((p) => {
+    trackEvent('product_view', { product_id: p.id, product_name: p.name, category: p.category });
+    setSelected(p);
+  }, []);
+
   const tabInfo = TABS.find((t) => t.id === activeTab);
   const showFilters = activeTab !== 'פרופילים';
 
@@ -908,7 +919,7 @@ const App = () => {
     React.createElement("div", null,
     React.createElement("div", { className: "products-grid" },
     visibleProducts.map((p) => /*#__PURE__*/
-    React.createElement(ProductCard, { key: p.id, product: p, onClick: setSelected })
+    React.createElement(ProductCard, { key: p.id, product: p, onClick: openProduct })
     )),
     hasMore && /*#__PURE__*/React.createElement("div", { style: { textAlign: 'center', padding: '32px 0 16px' } }, /*#__PURE__*/
       React.createElement("button", {
