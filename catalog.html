@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>if(location.protocol==='file:'){location.replace('http://localhost:8000/catalog.html'+location.search+location.hash);}</script>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EFYL6ZDMW"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0EFYL6ZDMW');</script>
@@ -260,6 +261,48 @@
     @media (max-width: 768px) { .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; } }
     @media (max-width: 480px) { .footer-top { grid-template-columns: 1fr; } }
 
+    /* ── Profile Configurator Modal ── */
+    .cfg-overlay { position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:2000;display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(6px);overflow-y:auto; }
+    .cfg-card { width:100%;max-width:700px;background:#FFFFFF;border-radius:20px;box-shadow:0 8px 40px rgba(0,0,0,0.15);overflow:hidden;border:1px solid #E0DDD6;font-family:'Heebo',sans-serif; }
+    .cfg-header { text-align:center;padding:22px;border-bottom:1px solid #E0DDD6;background:#F8F7F4; }
+    .cfg-header h2 { margin:0;color:#1C1C1C;font-size:20px;font-weight:900; }
+    .cfg-header p  { margin:4px 0 0;font-size:10px;color:#777777;text-transform:uppercase;letter-spacing:2px; }
+    .cfg-step { padding:22px;display:none; }
+    .cfg-step.active { display:block;animation:cfgFade .25s ease; }
+    @keyframes cfgFade { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+    .cfg-step-title { font-size:18px;font-weight:800;margin-bottom:18px;text-align:center;color:#1C1C1C; }
+    .cfg-grid-2 { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px; }
+    .cfg-opt { background:#F8F7F4;border:2px solid #E0DDD6;border-radius:14px;padding:18px;text-align:center;cursor:pointer;transition:.18s;color:#1C1C1C;font-size:15px;font-weight:600; }
+    .cfg-opt:hover { background:#F0EDE8;border-color:#C8C4BE; }
+    .cfg-opt.selected { border-color:#E8A020;background:rgba(232,160,32,.08); }
+    .cfg-opt-icon { font-size:28px;margin-bottom:8px;display:block; }
+    .cfg-canvas-wrap { position:relative;width:100%;height:360px;background:#0b1120;border-radius:14px;border:1px solid #E0DDD6;overflow:hidden; }
+    .cfg-canvas-wrap canvas { display:block;width:100%;height:100%;touch-action:none;cursor:crosshair; }
+    .cfg-ui-layer { position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:10; }
+    .cfg-tools { position:absolute;top:10px;left:10px;display:flex;gap:8px;z-index:20; }
+    .cfg-tool-btn { background:#F0EDE8;color:#1C1C1C;border:1px solid #E0DDD6;padding:7px 10px;border-radius:7px;font-size:11px;cursor:pointer;transition:.2s;display:none;font-family:'Heebo',sans-serif; }
+    .cfg-tool-btn:hover { background:#E8E4DE; }
+    .cfg-status { position:absolute;top:12px;right:12px;font-size:10px;color:#94a3b8;background:rgba(0,0,0,.5);padding:3px 8px;border-radius:8px;pointer-events:none; }
+    .cfg-measure-input { position:absolute;transform:translate(-50%,-50%);width:66px;padding:7px;text-align:center;font-weight:700;border:2px solid #E8A020;border-radius:7px;background:#fff;color:#000;font-size:12px;outline:none;pointer-events:auto;z-index:15;font-family:'Heebo',sans-serif; }
+    .cfg-seg-hit { position:absolute;height:40px;transform-origin:0 50%;pointer-events:auto;cursor:pointer; }
+    .cfg-nav { display:flex;gap:10px;margin-top:20px; }
+    .cfg-btn { flex:1;padding:13px;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;transition:.18s;font-family:'Heebo',sans-serif; }
+    .cfg-btn-prev { background:#F0EDE8;color:#1C1C1C;border:1px solid #E0DDD6; } .cfg-btn-prev:hover { background:#E8E4DE; }
+    .cfg-btn-next { background:#E8A020;color:#111; } .cfg-btn-next:hover { background:#C4880A; }
+    .cfg-label { display:block;margin-bottom:6px;font-size:11px;color:#777777; }
+    .cfg-bom-box { background:#F8F7F4;border-radius:14px;padding:18px;border:1px solid #E0DDD6;margin-top:18px; }
+    .cfg-bom-item { display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #E0DDD6;font-size:13px;color:#1C1C1C; }
+    .cfg-bom-val { font-weight:700;color:#E8A020;font-family:monospace; }
+    .cfg-snapshot { width:100%;height:160px;background:#0b1120;border-radius:10px;margin-top:12px;border:1px solid #E0DDD6;object-fit:contain; }
+    .cfg-btn-wa { display:block;background:#25D366;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:17px;text-decoration:none;margin-top:14px;transition:background .15s;font-family:'Heebo',sans-serif; }
+    .cfg-btn-wa:hover { background:#1da854; }
+    .cfg-btn-dl { width:100%;background:#F8F7F4;color:#1C1C1C;margin-top:8px;padding:9px;border-radius:7px;border:1px dashed #E8A020;cursor:pointer;font-size:12px;font-family:'Heebo',sans-serif;transition:background .15s; }
+    .cfg-btn-dl:hover { background:#F0EDE8; }
+    .cfg-close-btn { position:absolute;top:-14px;left:-14px;width:34px;height:34px;background:#FFFFFF;border:1px solid #E0DDD6;color:#888;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;z-index:5;transition:all .15s;line-height:1; }
+    .cfg-close-btn:hover { color:#1C1C1C;border-color:#E8A020; }
+    .cfg-cta-card { background:#FFFFFF;border:1px solid #E8A020;border-radius:10px;padding:18px 20px;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:20px; }
+    .cfg-cta-card:hover { transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,160,32,.18); }
+
     /* ── Reduced motion ── */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
@@ -278,7 +321,6 @@
 </head>
 <body>
   <div id="root"></div>
-
   <!-- Products data (373 products: profiles, LED strips, drivers) -->
   <script src="products_data.js"></script>
   <!-- Datasheets data -->
@@ -701,6 +743,42 @@
       );
     };
 
+    // ── Configurator Modal (canvas wizard from new4.html) ──
+    const ConfiguratorModal = ({ onClose }) => {
+      const wrapRef = useRef(null);
+
+      // Initialize vanilla-JS configurator after mount
+      useEffect(() => {
+        let cleanup = null;
+        if (wrapRef.current && window.initConfigurator) {
+          cleanup = window.initConfigurator(wrapRef.current, onClose);
+        }
+        return () => { if (typeof cleanup === 'function') cleanup(); };
+      }, []);
+
+      // Close on Escape
+      useEffect(() => {
+        const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+        document.addEventListener('keydown', onKey);
+        return () => document.removeEventListener('keydown', onKey);
+      }, [onClose]);
+
+      // Lock body scroll
+      useEffect(() => {
+        document.body.style.overflow = 'hidden';
+        return () => { document.body.style.overflow = ''; };
+      }, []);
+
+      return (
+        <div className="cfg-overlay" onClick={onClose}>
+          <div style={{position:'relative',width:'100%',maxWidth:700}} onClick={e=>e.stopPropagation()}>
+            <button className="cfg-close-btn" onClick={onClose} aria-label="סגור">✕</button>
+            <div ref={wrapRef}></div>
+          </div>
+        </div>
+      );
+    };
+
     // ── Navbar ──
     const Navbar = ({ activeTab, setActiveTab }) => {
       const [openDrop, setOpenDrop] = useState(null);
@@ -712,10 +790,13 @@
         { label: 'פרופילים',  tab: 'פרופילים'  },
       ];
       const TOOLS = [
-        { label: '⚡ מפל מתח',       url: 'tools.html?tool=voltage'     },
-        { label: '💡 לומן לחלל',     url: 'tools.html?tool=lumen'       },
-        { label: '♻️ חיסכון אנרגיה', url: 'tools.html?tool=roi'         },
-        { label: '📏 פיזור אלומה',   url: 'tools.html?tool=beam-linear' },
+        { label: '⚡ מפל מתח',        url: 'tools.html?tool=voltage'     },
+        { label: '💡 לומן לחלל',      url: 'tools.html?tool=lumen'       },
+        { label: '♻️ חיסכון אנרגיה',  url: 'tools.html?tool=roi'         },
+        { label: '📏 פיזור אלומה',    url: 'tools.html?tool=beam-linear' },
+        { label: '🌙 מחשבון ביולוגי', url: 'tools.html?tool=circadian'   },
+        { label: '📐 פרופיל LED',     url: 'tools.html?tool=linear'      },
+        { label: '🔌 ספק כוח',        url: 'tools.html?tool=power'       },
       ];
 
       const dropBox = {
@@ -800,6 +881,10 @@
               {item.label}
             </span>
           ))}
+          <span className="mm-link sub" style={{color:'#E8A020',display:'flex',alignItems:'center',gap:8}}
+            onClick={()=>{ setActiveTab('פרופילים'); setShowCfg(true); setMenuOpen(false); }}>
+            ✏️ תכנן פרופיל בהתאמה אישית
+          </span>
           <div className="mm-divider"></div>
           <div className="mm-label">כלים ומדריכים</div>
           <a href="tools.html" className="mm-link">כלי תכנון</a>
@@ -807,6 +892,9 @@
           <a href="tools.html?tool=lumen" className="mm-link sub">💡 לומן לחלל</a>
           <a href="tools.html?tool=roi" className="mm-link sub">♻️ חיסכון אנרגיה</a>
           <a href="tools.html?tool=beam-linear" className="mm-link sub">📏 פיזור אלומה</a>
+          <a href="tools.html?tool=circadian" className="mm-link sub">🌙 מחשבון ביולוגי</a>
+          <a href="tools.html?tool=linear" className="mm-link sub">📐 פרופיל LED</a>
+          <a href="tools.html?tool=power" className="mm-link sub">🔌 ספק כוח</a>
           <a href="guides.html" className="mm-link">מדריכים</a>
           <div className="mm-divider"></div>
           <a href="about.html" className="mm-link">אודות</a>
@@ -904,7 +992,8 @@
       const [search, setSearch]           = useState('');
       const [stripF, setStripF]           = useState({...INIT_STRIP});
       const [psF, setPsF]                 = useState({...INIT_PS});
-      const [sidebarOpen, setSidebarOpen] = useState(false);
+      const [sidebarOpen, setSidebarOpen]   = useState(false);
+      const [showCfg, setShowCfg]           = useState(false);
 
       useEffect(() => {
         const params = new URLSearchParams(window.location.search);
@@ -1093,6 +1182,17 @@
                 {activeTab === 'פרופילים' && (
                   <div style={{marginBottom:24,background:'#FFFFFF',border:'1px solid #E0DDD6',borderRadius:10,padding:'20px 24px',boxShadow:'0 2px 8px rgba(0,0,0,0.04)'}}>
                     <ProfileFilters count={filtered.length} />
+                    {/* ── Configurator CTA ── */}
+                    <div className="cfg-cta-card" onClick={()=>setShowCfg(true)}>
+                      <div style={{display:'flex',alignItems:'center',gap:14}}>
+                        <div style={{width:44,height:44,background:'rgba(232,160,32,0.15)',borderRadius:10,display:'flex',alignItems:'center',justifyContent:'center',fontSize:22,flexShrink:0}}>✏️</div>
+                        <div style={{flex:1}}>
+                          <div style={{fontSize:14,fontWeight:800,color:'#1C1C1C',marginBottom:3}}>תכנן פרופיל בהתאמה אישית</div>
+                          <div style={{fontSize:12,color:'#777777',lineHeight:1.4}}>שרטוט מידות, בחירת גימור ו-BOM אוטומטי — ארבעה שלבים פשוטים</div>
+                        </div>
+                        <div style={{color:'#E8A020',fontSize:22,flexShrink:0}}>←</div>
+                      </div>
+                    </div>
                   </div>
                 )}
                 {filtered.length === 0 ? (
@@ -1117,14 +1217,357 @@
 
           <Footer />
 
-          {/* Modal */}
+          {/* Product modal */}
           {selected && <ProductModal product={selected} onClose={()=>{ setSelected(null); history.replaceState(null,'',location.pathname + (activeTab ? '?tab='+encodeURIComponent(activeTab) : '')); }} />}
+
+          {/* Configurator modal */}
+          {showCfg && <ConfiguratorModal onClose={()=>setShowCfg(false)} />}
         </div>
       );
     };
 
     ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   </script>
+  <!-- ── Configurator: vanilla JS ── -->
+  <script>
+  window.initConfigurator = function(rootEl, onCloseFn) {
+    // 1. Inject HTML structure
+    rootEl.innerHTML = `
+      <div class="cfg-card">
+        <div class="cfg-header">
+          <h2>LEDLink Configurator</h2>
+          <p>תכנון הנדסי וייצור בהתאמה אישית</p>
+        </div>
+        <!-- Step 1: Template -->
+        <div class="cfg-step active" id="cfg-step-1">
+          <div class="cfg-step-title">בחר צורת התחלה</div>
+          <div class="cfg-grid-2">
+            <div class="cfg-opt" id="cfg-tpl-I"><span class="cfg-opt-icon">➖</span>קו ישר</div>
+            <div class="cfg-opt" id="cfg-tpl-L"><span class="cfg-opt-icon">📐</span>צורת ר'</div>
+            <div class="cfg-opt" id="cfg-tpl-U"><span class="cfg-opt-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5 L5 27 L27 27 L27 5"/></svg></span>צורת ח'</div>
+            <div class="cfg-opt" id="cfg-tpl-FREE"><span class="cfg-opt-icon">✏️</span>שרטוט חופשי</div>
+          </div>
+        </div>
+        <!-- Step 2: Canvas -->
+        <div class="cfg-step" id="cfg-step-2">
+          <div class="cfg-step-title">הגדר מידות והזנה</div>
+          <div class="cfg-canvas-wrap" id="cfg-container">
+            <div class="cfg-status" id="cfg-status"></div>
+            <div class="cfg-tools">
+              <button class="cfg-tool-btn" id="cfg-tool-rotate">🔄 סובב</button>
+              <button class="cfg-tool-btn" id="cfg-tool-clear">🗑️ נקה</button>
+            </div>
+            <canvas id="cfg-canvas"></canvas>
+            <div class="cfg-ui-layer" id="cfg-ui-layer"></div>
+          </div>
+          <div class="cfg-nav">
+            <button class="cfg-btn cfg-btn-prev" id="cfg-back-1">▶ חזור</button>
+            <button class="cfg-btn cfg-btn-next" id="cfg-next-2">המשך לעיצוב ◀</button>
+          </div>
+        </div>
+        <!-- Step 3: Design -->
+        <div class="cfg-step" id="cfg-step-3">
+          <div class="cfg-step-title">חתימת אור וגימור</div>
+          <span class="cfg-label">צבע פרופיל:</span>
+          <div class="cfg-grid-2">
+            <div class="cfg-opt selected" id="cfg-c-BLK">שחור מט</div>
+            <div class="cfg-opt" id="cfg-c-WHT">לבן מט</div>
+          </div>
+          <span class="cfg-label">גוון אור (CCT):</span>
+          <div class="cfg-grid-2">
+            <div class="cfg-opt selected" id="cfg-k-3000">חם 3000K</div>
+            <div class="cfg-opt" id="cfg-k-4000">טבעי 4000K</div>
+          </div>
+          <span class="cfg-label">ייעוד התאורה:</span>
+          <div class="cfg-grid-2">
+            <div class="cfg-opt selected" id="cfg-lighting-central">מרכזית (30W/m)</div>
+            <div class="cfg-opt" id="cfg-lighting-mood">אווירה (10W/m)</div>
+          </div>
+          <span class="cfg-label">אופן התקנה:</span>
+          <div class="cfg-grid-2">
+            <div class="cfg-opt selected" id="cfg-install-recessed">שקוע גבס</div>
+            <div class="cfg-opt" id="cfg-install-surface">צמוד / תלוי</div>
+          </div>
+          <div class="cfg-nav">
+            <button class="cfg-btn cfg-btn-prev" id="cfg-back-2">▶ חזור לשרטוט</button>
+            <button class="cfg-btn cfg-btn-next" id="cfg-next-3">סיים וחשב BOM ◀</button>
+          </div>
+        </div>
+        <!-- Step 4: BOM -->
+        <div class="cfg-step" id="cfg-step-4">
+          <div class="cfg-step-title" style="color:#E8A020">מפרט מוכן לייצור!</div>
+          <img id="cfg-snapshot" class="cfg-snapshot" alt="שרטוט טכני">
+          <button class="cfg-btn-dl" id="cfg-dl-btn">💾 הורד שרטוט (צרף לווטסאפ)</button>
+          <div class="cfg-bom-box" id="cfg-bom"></div>
+          <a id="cfg-wa-link" href="#" target="_blank" class="cfg-btn-wa">💬 שלח תכנון, נחזור אליך</a>
+          <div class="cfg-nav" style="margin-top:14px">
+            <button class="cfg-btn cfg-btn-prev" id="cfg-back-3">חזור לעריכה</button>
+            <button class="cfg-btn" style="background:#F0EDE8;color:#1C1C1C;border:1px solid #E0DDD6" id="cfg-restart">תכנן חדש</button>
+          </div>
+        </div>
+      </div>`;
+
+    // 2. DOM refs
+    var canvas     = rootEl.querySelector('#cfg-canvas');
+    var ctx        = canvas.getContext('2d');
+    var uiLayer    = rootEl.querySelector('#cfg-ui-layer');
+    var statusEl   = rootEl.querySelector('#cfg-status');
+    var container  = rootEl.querySelector('#cfg-container');
+    var toolRotate = rootEl.querySelector('#cfg-tool-rotate');
+    var toolClear  = rootEl.querySelector('#cfg-tool-clear');
+
+    // 3. State
+    var state = { mode:'I', vertices:[], feedIndex:0, feedSelected:false, inputs:[], color:'BLK', cct:'3000K', lightingType:'מרכזית', installType:'שקוע', locked:false };
+
+    // 4. Helpers
+    function goToStep(n) {
+      rootEl.querySelectorAll('.cfg-step').forEach(function(p){ p.classList.remove('active'); });
+      rootEl.querySelector('#cfg-step-'+n).classList.add('active');
+      if (n === 2) resize();
+    }
+
+    function resize() {
+      canvas.width  = container.clientWidth;
+      canvas.height = container.clientHeight;
+      if (state.vertices.length) redrawCanvas();
+    }
+
+    function recenterShape() {
+      if (!state.vertices.length) return;
+      var xs = state.vertices.map(function(v){return v.x;}), ys = state.vertices.map(function(v){return v.y;});
+      var minX=Math.min.apply(null,xs), maxX=Math.max.apply(null,xs);
+      var minY=Math.min.apply(null,ys), maxY=Math.max.apply(null,ys);
+      var offX=(canvas.width/2)-(minX+maxX)/2, offY=(canvas.height/2)-(minY+maxY)/2;
+      state.vertices.forEach(function(v){ v.x+=offX; v.y+=offY; });
+    }
+
+    function injectTemplate(t) {
+      var cx=canvas.width/2, cy=canvas.height/2;
+      if(t==='I') state.vertices=[{x:cx-150,y:cy},{x:cx+150,y:cy}];
+      if(t==='L') state.vertices=[{x:cx-100,y:cy-100},{x:cx-100,y:cy+100},{x:cx+100,y:cy+100}];
+      if(t==='U') state.vertices=[{x:cx-100,y:cy-100},{x:cx-100,y:cy+100},{x:cx+100,y:cy+100},{x:cx+100,y:cy-100}];
+      recenterShape(); redrawCanvas();
+    }
+
+    function rotateShape() {
+      if (!state.vertices.length) return;
+      var xs=state.vertices.map(function(v){return v.x;}), ys=state.vertices.map(function(v){return v.y;});
+      var cx=(Math.min.apply(null,xs)+Math.max.apply(null,xs))/2;
+      var cy=(Math.min.apply(null,ys)+Math.max.apply(null,ys))/2;
+      state.vertices = state.vertices.map(function(v){
+        var dx=v.x-cx, dy=v.y-cy; return {x:cx-dy,y:cy+dx};
+      });
+      recenterShape(); redrawCanvas();
+    }
+
+    function selectTemplate(t) {
+      state.mode=t; state.locked=(t!=='FREE'); state.inputs=[]; state.feedIndex=0;
+      state.feedSelected=(t==='I');
+      goToStep(2);
+      setTimeout(function(){
+        resize();
+        if(t==='FREE'){
+          state.vertices=[]; toolRotate.style.display='none'; toolClear.style.display='none';
+          statusEl.innerText='צייר כעת...'; redrawCanvas();
+        } else {
+          toolRotate.style.display='block'; toolClear.style.display='none';
+          injectTemplate(t); statusEl.innerText='';
+        }
+      }, 60);
+    }
+
+    function redrawCanvas() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      uiLayer.innerHTML='';
+      for (var i=0; i<state.vertices.length-1; i++) {
+        var p1=state.vertices[i], p2=state.vertices[i+1];
+        var isFeed = state.feedSelected && i===state.feedIndex;
+        ctx.beginPath(); ctx.lineWidth=14; ctx.lineCap='square';
+        ctx.strokeStyle = isFeed ? '#E8A020' : '#FFFFFF';
+        ctx.shadowBlur  = isFeed ? 20 : 0;
+        ctx.shadowColor = '#E8A020';
+        ctx.moveTo(p1.x,p1.y); ctx.lineTo(p2.x,p2.y); ctx.stroke();
+        ctx.shadowBlur=0;
+        var midX=(p1.x+p2.x)/2, midY=(p1.y+p2.y)/2;
+        var len=Math.hypot(p2.x-p1.x,p2.y-p1.y);
+        var ang=Math.atan2(p2.y-p1.y,p2.x-p1.x);
+        // Hit area for feed selection
+        var hit=document.createElement('div'); hit.className='cfg-seg-hit';
+        hit.style.width=len+'px'; hit.style.left=p1.x+'px'; hit.style.top=(p1.y-20)+'px';
+        hit.style.transform='rotate('+ang+'rad)';
+        (function(idx){ hit.onclick=function(){ state.feedIndex=idx; state.feedSelected=true; redrawCanvas(); }; })(i);
+        uiLayer.appendChild(hit);
+        // Measure input
+        var inp=document.createElement('input'); inp.type='number'; inp.className='cfg-measure-input';
+        inp.placeholder='ס"מ'; inp.style.left=midX+'px'; inp.style.top=midY+'px';
+        inp.value = state.inputs[i]||'';
+        (function(idx, el){ el.oninput=function(){ el.style.borderColor='#E8A020'; state.inputs[idx]=el.value; }; })(i,inp);
+        uiLayer.appendChild(inp);
+      }
+    }
+
+    // Freehand drawing
+    var isDrawing=false, rawPoints=[];
+    function onPointerDown(e) {
+      if(state.locked) return;
+      isDrawing=true; rawPoints=[];
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      ctx.beginPath(); ctx.lineWidth=4; ctx.strokeStyle='rgba(255,255,255,0.4)';
+    }
+    function onPointerMove(e) {
+      if(!isDrawing) return;
+      var rect=canvas.getBoundingClientRect();
+      var pt={x:(e.clientX-rect.left)*(canvas.width/rect.width),y:(e.clientY-rect.top)*(canvas.height/rect.height)};
+      rawPoints.push(pt);
+      if(rawPoints.length===1) ctx.moveTo(pt.x,pt.y); else ctx.lineTo(pt.x,pt.y);
+      ctx.stroke();
+    }
+    function onPointerUp() {
+      if(!isDrawing) return; isDrawing=false;
+      if(rawPoints.length>5) processFreehand();
+    }
+    canvas.addEventListener('pointerdown', onPointerDown);
+    canvas.addEventListener('pointermove', onPointerMove);
+    canvas.addEventListener('pointerup',   onPointerUp);
+
+    function rdp(p,e) {
+      if(p.length<3) return p;
+      var maxD=0, idx=0;
+      for(var i=1;i<p.length-1;i++){
+        var d=Math.abs((p[p.length-1].y-p[0].y)*p[i].x-(p[p.length-1].x-p[0].x)*p[i].y+p[p.length-1].x*p[0].y-p[p.length-1].y*p[0].x)/Math.hypot(p[p.length-1].y-p[0].y,p[p.length-1].x-p[0].x);
+        if(d>maxD){maxD=d;idx=i;}
+      }
+      if(maxD>e) return rdp(p.slice(0,idx+1),e).slice(0,-1).concat(rdp(p.slice(idx),e));
+      return [p[0],p[p.length-1]];
+    }
+
+    function processFreehand() {
+      var simplified=rdp(rawPoints,35);
+      if(simplified.length<2) return;
+      var v=[simplified[0]];
+      for(var i=1;i<simplified.length;i++){
+        var p1=v[v.length-1], p2=simplified[i];
+        if(Math.abs(p2.x-p1.x)>Math.abs(p2.y-p1.y)) v.push({x:p2.x,y:p1.y}); else v.push({x:p1.x,y:p2.y});
+      }
+      var clean=[v[0]];
+      for(var j=1;j<v.length;j++){
+        if(Math.hypot(v[j].x-clean[clean.length-1].x,v[j].y-clean[clean.length-1].y)>25) clean.push(v[j]);
+      }
+      if(clean.length>2&&Math.hypot(clean[clean.length-1].x-clean[0].x,clean[clean.length-1].y-clean[0].y)<80)
+        clean[clean.length-1]=clean[0];
+      state.vertices=clean; state.locked=true;
+      state.feedSelected=(state.vertices.length-1===1);
+      toolRotate.style.display='block'; toolClear.style.display='block'; statusEl.innerText='';
+      recenterShape(); redrawCanvas();
+    }
+
+    function validateAndProceed() {
+      if(!state.vertices.length){ alert('נא לשרטוט או לבחור צורה'); return; }
+      var missing=false;
+      var inputs=uiLayer.querySelectorAll('input');
+      for(var i=0;i<state.vertices.length-1;i++){
+        if(!state.inputs[i]||Number(state.inputs[i])<=0){
+          missing=true; if(inputs[i]) inputs[i].style.borderColor='#ef4444';
+        }
+      }
+      if(missing){ alert('שגיאה: נא להזין מידה תקינה לכל הצלעות'); return; }
+      if((state.vertices.length-1)>1&&!state.feedSelected){ alert('נא ללחוץ על הצלע שממנה תהיה ההזנה (תסומן בזהב)'); return; }
+      goToStep(3);
+    }
+
+    function captureCanvas() {
+      rootEl.querySelector('#cfg-snapshot').src=canvas.toDataURL('image/png');
+    }
+
+    function downloadSnapshot() {
+      var link=document.createElement('a');
+      link.download='LEDLink-Drawing-'+Date.now()+'.png';
+      link.href=canvas.toDataURL('image/png'); link.click();
+      alert('השרטוט נשמר! עכשיו פתח את הווטסאפ וצרף את התמונה להודעה.');
+    }
+
+    function generateFinalBOM() {
+      captureCanvas();
+      var totalCM=0; state.inputs.forEach(function(v){ totalCM+=Number(v||0); });
+      var totalM=totalCM/100;
+      var corners=state.vertices.length-2;
+      var first=state.vertices[0], last=state.vertices[state.vertices.length-1];
+      if(state.vertices.length>1&&first.x===last.x&&first.y===last.y) corners+=1;
+      var wpm=(state.lightingType==='מרכזית')?30:10;
+      var reqW=totalM*wpm*1.2;
+      var PSU=[25,50,75,100,150,200,250,350];
+      var psuText='', splitNote='';
+      if(reqW>350||totalM>5){
+        var num=Math.ceil(Math.max(reqW/350,totalM/5));
+        var wpu=reqW/num;
+        var mpsu=PSU.find(function(w){return w>=wpu;})||350;
+        psuText=num+" יח' זהות של "+mpsu+'W';
+        splitNote='⚠️ תכנון בטוח: פיצול ל-'+num+' הזנות למניעת מפל מתח.';
+      } else {
+        var matchedPsu=PSU.find(function(w){return w>=reqW;})||350;
+        psuText="יח' אחת של "+matchedPsu+'W';
+      }
+      var html='<div class="cfg-bom-item"><span>אורך חיתוך אלומיניום</span><span class="cfg-bom-val">'+totalM.toFixed(2)+' מ\'</span></div>';
+      html+='<div class="cfg-bom-item"><span>סוג התקנה / ייעוד</span><span class="cfg-bom-val">'+state.installType+' / '+state.lightingType+'</span></div>';
+      html+='<div class="cfg-bom-item"><span>גוון וגימור</span><span class="cfg-bom-val">'+state.cct+' / '+state.color+'</span></div>';
+      html+='<div class="cfg-bom-item"><span>הזנת חשמל ⚡</span><span class="cfg-bom-val">צלע מס\' '+(state.feedIndex+1)+'</span></div>';
+      if(corners>0) html+='<div class="cfg-bom-item"><span>פינות 90° + הלחמות</span><span class="cfg-bom-val">'+corners+'</span></div>';
+      html+='<div class="cfg-bom-item" style="border-bottom:none;flex-direction:column;gap:4px"><div style="display:flex;justify-content:space-between;width:100%"><span>ספקי כוח (24V)</span><span class="cfg-bom-val">'+psuText+'</span></div>'+(splitNote?'<div style="font-size:10px;color:#E8A020">'+splitNote+'</div>':'')+'</div>';
+      rootEl.querySelector('#cfg-bom').innerHTML=html;
+      var msg='*הזמנת מפרט LEDLink (מצורף שרטוט)*\n---\nאורך: '+totalM.toFixed(2)+' מ\'\nייעוד: '+state.lightingType+'\nהתקנה: '+state.installType+'\nגוון/גימור: '+state.cct+'/'+state.color+'\nספקים: '+psuText+'\n📌 הזנה: צלע '+(state.feedIndex+1)+'\n\n*נא לצרף את תמונת השרטוט ששמרתם.*';
+      rootEl.querySelector('#cfg-wa-link').href='https://wa.me/972524444470?text='+encodeURIComponent(msg);
+      goToStep(4);
+    }
+
+    function clearCanvas() {
+      state.locked=false; state.vertices=[]; state.inputs=[]; state.feedIndex=0; state.feedSelected=false;
+      toolClear.style.display='none'; toolRotate.style.display='none';
+      redrawCanvas(); statusEl.innerText='צייר כעת...';
+    }
+
+    // 5. Wire up buttons
+    rootEl.querySelector('#cfg-tpl-I').onclick    = function(){ selectTemplate('I'); };
+    rootEl.querySelector('#cfg-tpl-L').onclick    = function(){ selectTemplate('L'); };
+    rootEl.querySelector('#cfg-tpl-U').onclick    = function(){ selectTemplate('U'); };
+    rootEl.querySelector('#cfg-tpl-FREE').onclick = function(){ selectTemplate('FREE'); };
+    rootEl.querySelector('#cfg-back-1').onclick   = function(){ goToStep(1); };
+    rootEl.querySelector('#cfg-next-2').onclick   = validateAndProceed;
+    rootEl.querySelector('#cfg-back-2').onclick   = function(){ goToStep(2); };
+    rootEl.querySelector('#cfg-next-3').onclick   = generateFinalBOM;
+    rootEl.querySelector('#cfg-back-3').onclick   = function(){ goToStep(3); };
+    rootEl.querySelector('#cfg-restart').onclick  = function(){ clearCanvas(); goToStep(1); };
+    rootEl.querySelector('#cfg-tool-rotate').onclick = rotateShape;
+    rootEl.querySelector('#cfg-tool-clear').onclick  = clearCanvas;
+    rootEl.querySelector('#cfg-dl-btn').onclick      = downloadSnapshot;
+
+    // Design option buttons
+    var designGroups = [
+      { ids:['cfg-c-BLK','cfg-c-WHT'],               key:'color',        vals:['BLK','WHT'] },
+      { ids:['cfg-k-3000','cfg-k-4000'],              key:'cct',          vals:['3000K','4000K'] },
+      { ids:['cfg-lighting-central','cfg-lighting-mood'], key:'lightingType', vals:['מרכזית','אווירה'] },
+      { ids:['cfg-install-recessed','cfg-install-surface'], key:'installType', vals:['שקוע','צמוד/תלוי'] },
+    ];
+    designGroups.forEach(function(grp){
+      grp.ids.forEach(function(id, idx){
+        var el=rootEl.querySelector('#'+id);
+        if(!el) return;
+        el.onclick=function(){
+          grp.ids.forEach(function(gid){ rootEl.querySelector('#'+gid).classList.remove('selected'); });
+          el.classList.add('selected');
+          state[grp.key]=grp.vals[idx];
+        };
+      });
+    });
+
+    // Return cleanup
+    return function() {
+      canvas.removeEventListener('pointerdown', onPointerDown);
+      canvas.removeEventListener('pointermove', onPointerMove);
+      canvas.removeEventListener('pointerup',   onPointerUp);
+    };
+  };
+  </script>
+
   <script src="a11y-widget.js"></script>
   <button id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="חזרה לראש העמוד">&#8679;</button>
   <style>

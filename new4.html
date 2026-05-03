@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" style="background:#F4F4F0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script>if(location.protocol==='file:'){location.replace('http://localhost:8000/new4.html'+location.search+location.hash);}</script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EFYL6ZDMW"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0EFYL6ZDMW');</script>
+    <!-- Microsoft Clarity -->
+    <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","wig5hbhnh4");</script>
+    <title>מחשבון תכנון פרופילים LED — הגדרה אישית | LEDLink</title>
+    <meta name="description" content="תכנן פרופיל LED בהתאמה אישית: שרטוט חופשי, קו ישר, צורת ר׳ או ח׳ — עם חישוב BOM אוטומטי ושליחה ישירה בווטסאפ. LEDLink רחובות.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root { --gold: #E8A020; --gold-dim: #C4880A; --ink: #1C1C1C; --muted: #777777; --border: #E0DDD6; --bg: #F4F4F0; }
+        body { font-family: 'Heebo', sans-serif; background: var(--bg); margin: 0; padding: 0; color: var(--ink); }
+        .master-card { width: 100%; max-width: 760px; background: #FFFFFF; border-radius: 24px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); overflow: hidden; border: 1px solid var(--border); }
+
+        .header { text-align: center; padding: 25px; border-bottom: 1px solid var(--border); background: #F8F7F4; }
+        .header h1 { margin: 0; color: var(--ink); font-size: 22px; font-weight: 900; }
+        .header p { margin: 5px 0 0; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; }
+
+        .step-pane { padding: 25px; display: none; }
+        .step-pane.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from{opacity:0; transform:translateY(5px)} to{opacity:1; transform:translateY(0)} }
+
+        .step-title { font-size: 20px; font-weight: bold; margin-bottom: 20px; text-align: center; color: var(--ink); }
+
+        .template-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .opt-card { background: #F8F7F4; border: 2px solid var(--border); border-radius: 16px; padding: 20px; text-align: center; cursor: pointer; transition: 0.2s; color: var(--ink); }
+        .opt-card:hover { background: #F0EDE8; border-color: #C8C4BE; }
+        .opt-card.selected { border-color: var(--gold); background: rgba(232, 160, 32, 0.08); }
+        .opt-icon { font-size: 30px; margin-bottom: 10px; display: block; }
+
+        .canvas-container { position: relative; width: 100%; height: 400px; background: #0b1120; border-radius: 16px; border: 1px solid #334155; overflow: hidden; }
+        canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: crosshair; }
+        #ui-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; }
+        .segment-hit-area { position: absolute; height: 40px; transform-origin: 0 50%; pointer-events: auto; cursor: pointer; }
+        .measure-input { position: absolute; transform: translate(-50%, -50%); width: 70px; padding: 8px; text-align: center; font-weight: bold; border: 2px solid var(--gold); border-radius: 8px; background: #fff; color: #000; box-shadow: 0 4px 15px rgba(0,0,0,0.3); font-size: 13px; outline: none; pointer-events: auto; z-index: 15; transition: border-color 0.3s; }
+        
+        .canvas-tools { position: absolute; top: 10px; left: 10px; display: flex; gap: 8px; z-index: 20; }
+        .design-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+
+        .nav-btns { display: flex; gap: 12px; margin-top: 25px; }
+        .btn { flex: 1; padding: 15px; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.2s; font-family: 'Heebo', sans-serif; }
+        .btn-prev { background: #F0EDE8; color: var(--ink); border: 1px solid var(--border); }
+        .btn-prev:hover { background: #E8E4DE; }
+        .btn-next { background: var(--gold); color: #111; }
+        .btn-next:hover { background: var(--gold-dim); }
+        .btn-wa { background: #25D366; color: white; width: 100%; text-decoration: none; text-align: center; display: block; margin-top: 15px; padding: 15px; box-sizing: border-box; font-weight: bold; border-radius: 12px; font-size: 18px; font-family: 'Heebo', sans-serif; }
+        .btn-download { background: #F8F7F4; color: var(--ink); width: 100%; margin-top: 10px; padding: 10px; border-radius: 8px; border: 1px dashed var(--gold); cursor: pointer; font-size: 13px; font-family: 'Heebo', sans-serif; }
+        .btn-download:hover { background: #F0EDE8; }
+        .tool-btn { background: #F0EDE8; color: var(--ink); border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.2s; display: none; font-family: 'Heebo', sans-serif; }
+        .tool-btn:hover { background: #E8E4DE; }
+
+        .bom-box { background: #F8F7F4; border-radius: 16px; padding: 20px; border: 1px solid var(--border); margin-top: 20px; }
+        .bom-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--ink); }
+        .bom-val { font-weight: bold; color: var(--gold); font-family: monospace; }
+        .status-msg { position: absolute; top: 15px; right: 15px; font-size: 11px; color: #94a3b8; font-weight: bold; pointer-events: none; background: rgba(0,0,0,0.5); padding: 4px 10px; border-radius: 10px; }
+
+        /* תצוגת התמונה בסיכום */
+        .snapshot-preview { width: 100%; height: 180px; background: #0b1120; border-radius: 12px; margin-top: 15px; border: 1px solid var(--border); object-fit: contain; }
+
+        /* ── NAV ── */
+        .nav-drop-item { display:block; padding:10px 20px; color:#AAAAAA; text-decoration:none; font-size:14px; font-weight:500; border-right:2px solid transparent; transition:all 0.15s; background:transparent; width:100%; text-align:right; cursor:pointer; font-family:'Heebo',sans-serif; box-sizing:border-box; border-top:none; border-bottom:none; border-left:none; }
+        .nav-drop-item:hover { color:#E8A020; background:rgba(255,255,255,0.04); border-right-color:#E8A020; }
+        .nav-drop-box { position:absolute; top:100%; right:0; background:#1A1A1A; border:1px solid #333; border-top:2px solid #E8A020; border-radius:0 0 8px 8px; min-width:190px; z-index:200; padding:6px 0; box-shadow:0 8px 24px rgba(0,0,0,0.3); display:none; }
+        .nav-drop-wrap:hover .nav-drop-box { display:block; }
+        .nav-desktop { display:flex; align-items:center; gap:4px; }
+        @media (max-width:900px) { .nav-desktop { display:none !important; } .hamburger { display:flex !important; } }
+        .hamburger { display:none; background:none; border:none; cursor:pointer; padding:8px; flex-direction:column; justify-content:center; gap:5px; }
+        .hamburger-line { display:block; width:22px; height:2px; background:#fff; border-radius:1px; transition:transform 0.25s,opacity 0.25s; }
+        .hamburger.open .hamburger-line:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+        .hamburger.open .hamburger-line:nth-child(2) { opacity:0; }
+        .hamburger.open .hamburger-line:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
+        .mm-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:149; }
+        .mm-overlay.open { display:block; }
+        .mobile-menu { position:fixed; top:0; right:0; bottom:0; width:280px; background:#1A1A1A; border-left:1px solid #2A2A2A; z-index:150; overflow-y:auto; transform:translateX(110%); transition:transform 0.3s cubic-bezier(0.4,0,0.2,1); box-shadow:-12px 0 40px rgba(0,0,0,0.6); }
+        .mobile-menu.open { transform:translateX(0); }
+        .mm-header { display:flex; align-items:center; justify-content:space-between; padding:0 20px; height:64px; border-bottom:1px solid #222; }
+        .mm-close { background:none; border:none; cursor:pointer; color:#666; font-size:22px; line-height:1; padding:4px; transition:color 0.15s; }
+        .mm-close:hover { color:#fff; }
+        .mm-link { display:block; padding:13px 24px; color:#AAAAAA; text-decoration:none; font-size:15px; font-weight:500; border-right:3px solid transparent; transition:all 0.15s; }
+        .mm-link:hover { color:#E8A020; border-right-color:#E8A020; background:rgba(255,255,255,0.04); }
+        .mm-link.sub { padding-right:40px; font-size:13px; color:#777; }
+        .mm-link.active { color:#E8A020; background:rgba(232,160,32,0.07); }
+        .mm-label { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#444; padding:16px 24px 4px; }
+        .mm-divider { height:1px; background:#252525; margin:8px 0; }
+        .page-content { padding:24px 16px; display:flex; justify-content:center; }
+
+        /* ── Footer ── */
+        .footer { background:#111; padding:48px 32px 0; border-top:1px solid #222; }
+        .footer-inner { max-width:1200px; margin:0 auto; }
+        .footer-top { display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:48px; padding-bottom:40px; border-bottom:1px solid #1E1E1E; }
+        .footer-logo-led { font-size:24px; font-weight:900; color:#E8A020; }
+        .footer-logo-link { font-size:24px; font-weight:300; color:#fff; }
+        .footer-tagline { font-size:13px; color:#555; margin-top:10px; line-height:1.6; max-width:220px; }
+        .footer-col-title { font-size:11px; font-weight:700; color:#555; letter-spacing:3px; text-transform:uppercase; margin-bottom:18px; }
+        .footer-links { display:flex; flex-direction:column; gap:12px; }
+        .footer-link { color:#888; text-decoration:none; font-size:14px; transition:color 0.15s; display:flex; align-items:center; gap:9px; }
+        .footer-link:hover { color:#E8A020; }
+        .footer-link svg { flex-shrink:0; opacity:0.5; transition:opacity 0.15s; }
+        .footer-link:hover svg { opacity:1; }
+        .footer-hours-row { display:flex; justify-content:space-between; align-items:center; font-size:14px; color:#888; gap:12px; }
+        .footer-hours-row + .footer-hours-row { margin-top:12px; }
+        .hours-open { color:#4CAF50; font-size:12px; font-weight:600; }
+        .hours-closed { color:#555; font-size:12px; font-weight:600; }
+        .footer-bottom { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; padding:20px 0; }
+        .footer-copy { font-size:12px; color:#3A3A3A; }
+        .footer-legal { display:flex; flex-wrap:wrap; gap:6px 20px; }
+        .footer-legal a { font-size:12px; color:#3A3A3A; text-decoration:none; transition:color 0.15s; }
+        .footer-legal a:hover { color:#E8A020; }
+        @media (max-width:768px) { .footer-top { grid-template-columns:1fr 1fr; gap:32px; } }
+        @media (max-width:480px) { .footer-top { grid-template-columns:1fr; } }
+
+        @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; } }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav style="background:#1A1A1A;border-bottom:1px solid #2A2A2A;position:sticky;top:0;z-index:100;height:64px;display:flex;align-items:center;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:center;gap:32px;width:100%;box-sizing:border-box;">
+    <a href="index.html" style="display:flex;align-items:center;gap:4px;text-decoration:none;flex-shrink:0;">
+      <span style="font-size:22px;font-weight:900;letter-spacing:1px;color:#E8A020;">LED</span>
+      <span style="font-size:22px;font-weight:300;color:#FFFFFF;">Link</span>
+    </a>
+    <div class="nav-desktop">
+      <div class="nav-drop-wrap" style="position:relative;">
+        <a href="catalog.html" style="display:flex;align-items:center;gap:4px;color:#AAAAAA;text-decoration:none;font-size:15px;font-weight:500;padding:6px 14px;border-radius:6px;font-family:'Heebo',sans-serif;">קטלוג מוצרים <span style="font-size:10px;">▾</span></a>
+        <div class="nav-drop-box">
+          <a href="catalog.html?tab=דרייברים" class="nav-drop-item">דרייברים</a>
+          <a href="catalog.html?tab=סטריפ LED" class="nav-drop-item">סטריפ LED</a>
+          <a href="catalog.html?tab=פרופילים" class="nav-drop-item">פרופילים</a>
+        </div>
+      </div>
+      <div class="nav-drop-wrap" style="position:relative;">
+        <button style="display:flex;align-items:center;gap:4px;color:#E8A020;background:rgba(232,160,32,0.1);border:none;cursor:pointer;font-size:15px;font-weight:700;padding:6px 14px;border-radius:6px;font-family:'Heebo',sans-serif;">כלי תכנון <span style="font-size:10px;">▾</span></button>
+        <div class="nav-drop-box">
+          <a href="tools.html" class="nav-drop-item">כל הכלים</a>
+          <a href="new4.html" class="nav-drop-item" style="color:#E8A020;">תכנון פרופיל LED</a>
+          <a href="calcpowerlast.html" class="nav-drop-item">ספק כוח</a>
+          <a href="calc-circadian.html" class="nav-drop-item">מחשבון ביולוגי</a>
+        </div>
+      </div>
+      <a href="guides.html" style="color:#AAAAAA;text-decoration:none;font-size:15px;font-weight:500;padding:6px 14px;border-radius:6px;font-family:'Heebo',sans-serif;">מדריכים</a>
+      <a href="about.html" style="color:#AAAAAA;text-decoration:none;font-size:15px;font-weight:500;padding:6px 14px;border-radius:6px;font-family:'Heebo',sans-serif;">אודות</a>
+      <a href="index.html#contact" style="color:#AAAAAA;text-decoration:none;font-size:15px;font-weight:500;padding:6px 14px;border-radius:6px;font-family:'Heebo',sans-serif;">צור קשר</a>
+    </div>
+    <div style="flex:1;"></div>
+    <button class="hamburger" id="hamburger" aria-label="תפריט" onclick="toggleMenu()">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+    <a href="https://wa.me/972524444470?text=%D7%A9%D7%9C%D7%95%D7%9D%20LEDLink%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%95%D7%A6%D7%A8%D7%99%D7%9D%20%D7%95%D7%94%D7%A9%D7%99%D7%A8%D7%95%D7%AA%D7%99%D7%9D%20%D7%A9%D7%9C%D7%9B%D7%9D."
+      target="_blank" rel="noopener noreferrer"
+      style="background:#E8A020;color:#fff;font-weight:700;font-size:13px;padding:8px 18px;border-radius:6px;text-decoration:none;white-space:nowrap;font-family:'Heebo',sans-serif;">שלח הודעה</a>
+  </div>
+</nav>
+
+<!-- Mobile overlay -->
+<div class="mm-overlay" id="mm-overlay" onclick="toggleMenu()"></div>
+
+<!-- Mobile drawer -->
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mm-header">
+    <div style="direction:ltr;display:flex;align-items:center;gap:3px;">
+      <span style="font-size:18px;font-weight:900;color:#E8A020;">LED</span>
+      <span style="font-size:18px;font-weight:300;color:#fff;">LINK</span>
+    </div>
+    <button class="mm-close" onclick="toggleMenu()" aria-label="סגור">✕</button>
+  </div>
+  <div class="mm-label">קטלוג</div>
+  <a href="catalog.html" class="mm-link">קטלוג מוצרים</a>
+  <a href="catalog.html?tab=דרייברים" class="mm-link sub">דרייברים</a>
+  <a href="catalog.html?tab=סטריפ LED" class="mm-link sub">סטריפ LED</a>
+  <a href="catalog.html?tab=פרופילים" class="mm-link sub">פרופילים</a>
+  <div class="mm-divider"></div>
+  <div class="mm-label">כלים ומדריכים</div>
+  <a href="tools.html" class="mm-link">כלי תכנון</a>
+  <a href="new4.html" class="mm-link sub active">תכנון פרופיל LED</a>
+  <a href="calcpowerlast.html" class="mm-link sub">ספק כוח</a>
+  <a href="calc-circadian.html" class="mm-link sub">מחשבון ביולוגי</a>
+  <a href="guides.html" class="mm-link">מדריכים</a>
+  <div class="mm-divider"></div>
+  <a href="about.html" class="mm-link">אודות</a>
+  <a href="index.html#contact" class="mm-link" onclick="toggleMenu()">צור קשר</a>
+</div>
+
+<!-- Hero -->
+<div style="background:#1A1A1A;padding:48px 32px 40px;">
+  <div style="max-width:800px;margin:0 auto;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#E8A020;margin-bottom:12px;">LEDLink · רחובות</div>
+    <h1 style="font-size:clamp(26px,4vw,44px);font-weight:900;color:#FFFFFF;line-height:1.15;margin:0 0 12px;font-family:'Heebo',sans-serif;">מחשבון תכנון פרופילים LED</h1>
+    <p style="font-size:16px;color:rgba(255,255,255,0.85);font-weight:500;line-height:1.7;max-width:520px;margin:0;font-family:'Heebo',sans-serif;">שרטט את הפרופיל שלך, הגדר מידות וגימור — וקבל מפרט מוכן לייצור בשליחה ישירה לווטסאפ.</p>
+  </div>
+</div>
+
+<div class="page-content">
+<div class="master-card">
+    <div class="header">
+        <h1>LEDLink Configurator</h1>
+        <p>תכנון הנדסי וייצור בהתאמה אישית</p>
+    </div>
+
+    <div class="step-pane active" id="step-1">
+        <div class="step-title">בחר צורת התחלה</div>
+        <div class="template-grid">
+            <div class="opt-card" onclick="selectTemplate('I')">
+                <span class="opt-icon">➖</span><div class="opt-title">קו ישר</div>
+            </div>
+            <div class="opt-card" onclick="selectTemplate('L')">
+                <span class="opt-icon">📐</span><div class="opt-title">צורת ר'</div>
+            </div>
+            <div class="opt-card" onclick="selectTemplate('U')">
+                <span class="opt-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5 L5 27 L27 27 L27 5"/></svg></span><div class="opt-title">צורת ח'</div>
+            </div>
+            <div class="opt-card" onclick="selectTemplate('FREE')">
+                <span class="opt-icon">✏️</span><div class="opt-title">שרטוט חופשי</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="step-pane" id="step-2">
+        <div class="step-title" id="canvas-title">הגדר מידות והזנה</div>
+        <div class="canvas-container" id="container">
+            <div class="status-msg" id="status"></div>
+            <div class="canvas-tools" id="canvas-tools">
+                <button class="tool-btn" id="tool-rotate" onclick="rotateShape()">🔄 סובב</button>
+                <button class="tool-btn" id="tool-clear" onclick="clearCanvas()">🗑️ נקה שרטוט</button>
+            </div>
+            <canvas id="drawCanvas"></canvas>
+            <div id="ui-layer"></div>
+        </div>
+        <div class="nav-btns">
+            <button class="btn btn-prev" onclick="goToStep(1)">▶ חזור</button>
+            <button class="btn btn-next" onclick="validateAndProceed()">המשך לעיצוב ◀</button>
+        </div>
+    </div>
+
+    <div class="step-pane" id="step-3">
+        <div class="step-title">חתימת אור וגימור</div>
+        <label style="display:block; margin-bottom:8px; font-size:12px; color:#777777;">צבע פרופיל:</label>
+        <div class="design-grid">
+            <div class="opt-card selected" id="c-BLK" onclick="setDesign('color','BLK','c-BLK')">שחור מט</div>
+            <div class="opt-card" id="c-WHT" onclick="setDesign('color','WHT','c-WHT')">לבן מט</div>
+        </div>
+        <label style="display:block; margin-bottom:8px; font-size:12px; color:#777777;">גוון אור (CCT):</label>
+        <div class="design-grid">
+            <div class="opt-card selected" id="k-3000" onclick="setDesign('cct','3000K','k-3000')">חם 3000K</div>
+            <div class="opt-card" id="k-4000" onclick="setDesign('cct','4000K','k-4000')">טבעי 4000K</div>
+        </div>
+        <label style="display:block; margin-bottom:8px; font-size:12px; color:#777777;">ייעוד התאורה:</label>
+        <div class="design-grid">
+            <div class="opt-card selected" id="lighting-central" onclick="setDesign('lightingType','מרכזית','lighting-central')">מרכזית (30W/m)</div>
+            <div class="opt-card" id="lighting-mood" onclick="setDesign('lightingType','אווירה','lighting-mood')">אווירה (10W/m)</div>
+        </div>
+        <label style="display:block; margin-bottom:8px; font-size:12px; color:#777777;">אופן התקנה:</label>
+        <div class="design-grid">
+            <div class="opt-card selected" id="install-recessed" onclick="setDesign('installType','שקוע','install-recessed')">שקוע גבס</div>
+            <div class="opt-card" id="install-surface" onclick="setDesign('installType','צמוד/תלוי','install-surface')">צמוד / תלוי</div>
+        </div>
+        <div class="nav-btns">
+            <button class="btn btn-prev" onclick="goToStep(2)">▶ חזור לשרטוט</button>
+            <button class="btn btn-next" onclick="generateFinalBOM()">סיים וחשב BOM ◀</button>
+        </div>
+    </div>
+
+    <div class="step-pane" id="step-4">
+        <div class="step-title" style="color:var(--gold)">מפרט מוכן לייצור!</div>
+        
+        <img id="drawing-snapshot" class="snapshot-preview" alt="שרטוט טכני">
+        <button class="btn-download" onclick="downloadSnapshot()">💾 הורד שרטוט כתמונה (צרף לווטסאפ)</button>
+        
+        <div class="bom-box" id="bom-render"></div>
+        
+        <a id="wa-link" href="#" target="_blank" class="btn btn-wa">💬 שלח תכנון, נחזור אליך</a>
+        
+        <div class="nav-btns" style="margin-top: 15px;">
+            <button class="btn btn-prev" onclick="goToStep(3)">חזור לעריכה</button>
+            <button class="btn btn-next" style="background: var(--slate-light); color: white;" onclick="clearCanvasAndRestart()">תכנן חדש</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const canvas = document.getElementById('drawCanvas'), ctx = canvas.getContext('2d');
+    const uiLayer = document.getElementById('ui-layer'), status = document.getElementById('status');
+    const container = document.getElementById('container'), toolRotate = document.getElementById('tool-rotate'), toolClear = document.getElementById('tool-clear');
+    
+    let state = { mode: 'I', vertices: [], feedIndex: 0, feedSelected: false, inputs: [], color: 'BLK', cct: '3000K', lightingType: 'מרכזית', installType: 'שקוע', locked: false };
+
+    function goToStep(n) {
+        document.querySelectorAll('.step-pane').forEach(p => p.classList.remove('active'));
+        document.getElementById(`step-${n}`).classList.add('active');
+        if(n === 2) resize();
+    }
+
+    function selectTemplate(t) {
+        state.mode = t; state.locked = (t !== 'FREE'); state.inputs = []; state.feedIndex = 0;
+        state.feedSelected = (t === 'I'); 
+        goToStep(2); 
+        setTimeout(() => { 
+            resize(); 
+            if (t === 'FREE') { 
+                state.vertices = []; toolRotate.style.display = 'none'; toolClear.style.display = 'none'; 
+                status.innerText = "צייר כעת..."; redrawCanvas(); 
+            } else { 
+                toolRotate.style.display = 'block'; toolClear.style.display = 'none'; injectTemplate(t); 
+                status.innerText = "";
+            }
+        }, 50);
+    }
+
+    function injectTemplate(t) {
+        const cx = canvas.width / 2, cy = canvas.height / 2;
+        if(t === 'I') state.vertices = [{x: cx-150, y: cy}, {x: cx+150, y: cy}];
+        if(t === 'L') state.vertices = [{x: cx-100, y: cy-100}, {x: cx-100, y: cy+100}, {x: cx+100, y: cy+100}];
+        if(t === 'U') state.vertices = [{x: cx-100, y: cy-100}, {x: cx-100, y: cy+100}, {x: cx+100, y: cy+100}, {x: cx+100, y: cy-100}];
+        recenterShape(); redrawCanvas();
+    }
+
+    function rotateShape() {
+        if (!state.vertices.length) return;
+        let minX = Math.min(...state.vertices.map(v=>v.x)), maxX = Math.max(...state.vertices.map(v=>v.x));
+        let minY = Math.min(...state.vertices.map(v=>v.y)), maxY = Math.max(...state.vertices.map(v=>v.y));
+        let cx = (minX + maxX) / 2, cy = (minY + maxY) / 2;
+        state.vertices = state.vertices.map(v => { let dx = v.x - cx, dy = v.y - cy; return { x: cx - dy, y: cy + dx }; });
+        recenterShape(); redrawCanvas();
+    }
+
+    function recenterShape() {
+        if (!state.vertices.length) return;
+        let minX = Math.min(...state.vertices.map(v=>v.x)), maxX = Math.max(...state.vertices.map(v=>v.x));
+        let minY = Math.min(...state.vertices.map(v=>v.y)), maxY = Math.max(...state.vertices.map(v=>v.y));
+        let offsetX = (canvas.width/2) - (minX + maxX)/2, offsetY = (canvas.height/2) - (minY + maxY)/2;
+        state.vertices.forEach(v => { v.x += offsetX; v.y += offsetY; });
+    }
+
+    let isDrawing = false, rawPoints = [];
+    canvas.addEventListener('pointerdown', e => { if(state.locked) return; isDrawing = true; rawPoints = []; ctx.clearRect(0,0,canvas.width,canvas.height); ctx.beginPath(); ctx.lineWidth=4; ctx.strokeStyle='rgba(255,255,255,0.4)'; });
+    canvas.addEventListener('pointermove', e => { if(!isDrawing) return; const rect = canvas.getBoundingClientRect(); let pt = { x: e.clientX - rect.left, y: e.clientY - rect.top }; rawPoints.push(pt); if(rawPoints.length === 1) ctx.moveTo(pt.x, pt.y); else ctx.lineTo(pt.x, pt.y); ctx.stroke(); });
+    canvas.addEventListener('pointerup', () => { if(!isDrawing) return; isDrawing = false; if(rawPoints.length > 5) processFreehand(); });
+
+    function rdp(p, e) { if (p.length < 3) return p; let maxD = 0, idx = 0; for (let i = 1; i < p.length - 1; i++) { let d = Math.abs((p[p.length-1].y - p[0].y) * p[i].x - (p[p.length-1].x - p[0].x) * p[i].y + p[p.length-1].x * p[0].y - p[p.length-1].y * p[0].x) / Math.hypot(p[p.length-1].y - p[0].y, p[p.length-1].x - p[0].x); if (d > maxD) { maxD = d; idx = i; } } if (maxD > e) { return rdp(p.slice(0, idx + 1), e).slice(0, -1).concat(rdp(p.slice(idx), e)); } else return [p[0], p[p.length-1]]; }
+
+    function processFreehand() {
+        let simplified = rdp(rawPoints, 35); if(simplified.length < 2) return;
+        let v = [simplified[0]]; for (let i = 1; i < simplified.length; i++) { let p1 = v[v.length-1], p2 = simplified[i]; if (Math.abs(p2.x - p1.x) > Math.abs(p2.y - p1.y)) v.push({x: p2.x, y: p1.y}); else v.push({x: p1.x, y: p2.y}); }
+        let clean = [v[0]]; for (let i = 1; i < v.length; i++) { if (Math.hypot(v[i].x-clean[clean.length-1].x, v[i].y-clean[clean.length-1].y) > 25) clean.push(v[i]); }
+        if (clean.length > 2 && Math.hypot(clean[clean.length-1].x-clean[0].x, clean[clean.length-1].y-clean[0].y) < 80) clean[clean.length-1] = clean[0];
+        state.vertices = clean; state.locked = true; 
+        state.feedSelected = (state.vertices.length - 1 === 1);
+        toolRotate.style.display = 'block'; toolClear.style.display = 'block'; status.innerText = "";
+        recenterShape(); redrawCanvas();
+    }
+
+    function redrawCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); uiLayer.innerHTML = '';
+        for (let i = 0; i < state.vertices.length - 1; i++) {
+            const p1 = state.vertices[i], p2 = state.vertices[i+1];
+            ctx.beginPath(); ctx.lineWidth = 14; ctx.lineCap = 'square';
+            ctx.strokeStyle = (state.feedSelected && i === state.feedIndex) ? '#E8A020' : '#FFFFFF';
+            if(state.feedSelected && i === state.feedIndex) { ctx.shadowBlur = 20; ctx.shadowColor = '#E8A020'; } else ctx.shadowBlur = 0;
+            ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+            const midX = (p1.x+p2.x)/2, midY = (p1.y+p2.y)/2, length = Math.hypot(p2.x-p1.x, p2.y-p1.y), angle = Math.atan2(p2.y-p1.y, p2.x-p1.x);
+            const hit = document.createElement('div'); hit.className = 'segment-hit-area'; hit.style.width = length+'px'; hit.style.left = p1.x+'px'; hit.style.top = (p1.y-20)+'px'; hit.style.transform = `rotate(${angle}rad)`; hit.onclick = () => { state.feedIndex = i; state.feedSelected = true; redrawCanvas(); }; uiLayer.appendChild(hit);
+            const inp = document.createElement('input'); inp.type = 'number'; inp.className = 'measure-input'; inp.placeholder = 'ס"מ'; inp.style.left = midX+'px'; inp.style.top = midY+'px'; inp.id = `input-${i}`; inp.value = state.inputs[i] || ''; inp.oninput = (e) => { inp.style.borderColor = 'var(--gold)'; state.inputs[i] = e.target.value; }; uiLayer.appendChild(inp);
+        }
+    }
+
+    function setDesign(k, v, id) {
+        state[k] = v;
+        const group = (k === 'color') ? ['c-BLK','c-WHT'] : (k === 'cct') ? ['k-3000','k-4000'] : (k === 'lightingType') ? ['lighting-central','lighting-mood'] : ['install-recessed','install-surface'];
+        group.forEach(el => document.getElementById(el).classList.remove('selected'));
+        document.getElementById(id).classList.add('selected');
+    }
+
+    function validateAndProceed() {
+        let missing = false;
+        if (!state.vertices.length) { alert('נא לשרטוט או לבחור צורה'); return; }
+        for (let i = 0; i < state.vertices.length - 1; i++) {
+            if (!state.inputs[i] || Number(state.inputs[i]) <= 0) { missing = true; document.getElementById(`input-${i}`).style.borderColor = '#ef4444'; }
+        }
+        if (missing) { alert('שגיאה: נא להזין מידה תקינה לכל הצלעות'); return; }
+        if ((state.vertices.length - 1) > 1 && !state.feedSelected) { alert('נא ללחוץ על הצלע שממנה תהיה ההזנה (תסומן בזהב)'); return; }
+        goToStep(3);
+    }
+
+    // --- מנוע ה-Snapshot החדש ---
+    function captureCanvas() {
+        // יצירת תמונה ממה שיש כרגע על הקנבס
+        const dataURL = canvas.toDataURL("image/png");
+        document.getElementById('drawing-snapshot').src = dataURL;
+    }
+
+    function downloadSnapshot() {
+        const link = document.createElement('a');
+        link.download = `LEDLink-Drawing-${Date.now()}.png`;
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+        alert("השרטוט נשמר! עכשיו פתח את הווטסאפ וצרף את התמונה להודעה.");
+    }
+
+    function generateFinalBOM() {
+        captureCanvas(); // צילום השרטוט למסך הסיכום
+
+        let totalCM = 0; state.inputs.forEach(v => totalCM += Number(v || 0));
+        let totalM = totalCM / 100;
+        let corners = state.vertices.length - 2; 
+        if (state.vertices[0].x === state.vertices[state.vertices.length-1].x && state.vertices[0].y === state.vertices[state.vertices.length-1].y) corners += 1;
+        
+        let wattsPerMeter = (state.lightingType === 'מרכזית') ? 30 : 10;
+        let requiredWatts = totalM * wattsPerMeter * 1.2;
+        const PSU_STEPS = [25, 50, 75, 100, 150, 200, 250, 350];
+        let psuText = "", splitNote = "";
+
+        if (requiredWatts > 350 || totalM > 5) {
+            let numUnits = Math.ceil(Math.max(requiredWatts / 350, totalM / 5));
+            let wattsPerUnit = requiredWatts / numUnits;
+            let matchedPsu = PSU_STEPS.find(w => w >= wattsPerUnit) || 350;
+            psuText = `${numUnits} יח' זהות של ${matchedPsu}W`;
+            splitNote = `⚠️ תכנון בטוח: פיצול ל-${numUnits} הזנות למניעת מפל מתח.`;
+        } else {
+            let matchedPsu = PSU_STEPS.find(w => w >= requiredWatts) || 350;
+            psuText = `יח' אחת של ${matchedPsu}W`;
+        }
+
+        let html = `<div class="bom-item"><span>אורך חיתוך אלומיניום</span><span class="bom-val">${totalM.toFixed(2)} מ'</span></div>`;
+        html += `<div class="bom-item"><span>סוג התקנה / ייעוד</span><span class="bom-val">${state.installType} / ${state.lightingType}</span></div>`;
+        html += `<div class="bom-item"><span>גוון וגימור</span><span class="bom-val">${state.cct} / ${state.color}</span></div>`;
+        html += `<div class="bom-item"><span>הזנת חשמל (⚡)</span><span class="bom-val">צלע מס' ${state.feedIndex+1}</span></div>`;
+        if (corners > 0) html += `<div class="bom-item"><span>גרונג 90° + הלחמות</span><span class="bom-val">${corners} פינות</span></div>`;
+        html += `<div class="bom-item" style="border-bottom:none; flex-direction:column; align-items:flex-start; gap:5px;">
+                    <div style="display:flex; justify-content:space-between; width:100%;"><span>ספקי כוח (24V)</span><span class="bom-val">${psuText}</span></div>
+                    ${splitNote ? `<div style="font-size:10px; color:var(--gold); line-height:1.2;">${splitNote}</div>` : ''}
+                </div>`;
+        
+        document.getElementById('bom-render').innerHTML = html;
+        const msg = `*הזמנת מפרט LEDLink (מצורף שרטוט)*\n---\nאורך: ${totalM.toFixed(2)} מ'\nייעוד: ${state.lightingType}\nהתקנה: ${state.installType}\nגוון/גימור: ${state.cct}/${state.color}\nספקים: ${psuText}\n📌 הזנה: צלע ${state.feedIndex+1}\n\n*נא לצרף את תמונת השרטוט ששמרתם.*`;
+        document.getElementById('wa-link').href = `https://wa.me/972524444470?text=${encodeURIComponent(msg)}`;
+        goToStep(4);
+    }
+
+    function clearCanvas() { state.locked = false; state.vertices = []; state.inputs = []; state.feedIndex = 0; state.feedSelected = false; toolClear.style.display = 'none'; toolRotate.style.display = 'none'; redrawCanvas(); status.innerText = "צייר כעת..."; }
+    function clearCanvasAndRestart() { clearCanvas(); goToStep(1); }
+    function resize() { canvas.width = container.clientWidth; canvas.height = container.clientHeight; if(state.vertices.length) redrawCanvas(); }
+</script>
+</div><!-- /page-content -->
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div style="direction:ltr;display:inline-flex;align-items:center;gap:2px;">
+          <span class="footer-logo-led">LED</span><span class="footer-logo-link">LINK</span>
+        </div>
+        <div class="footer-tagline">פתרונות תאורה מקצועיים לפרויקטים בכל גודל. ישירות מהמפעל, רחובות.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">כתובת</div>
+        <div class="footer-links">
+          <span class="footer-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            יצירה 19, רחובות
+          </span>
+          <a href="https://waze.com/ul?ll=31.8969,34.8186&navigate=yes" target="_blank" class="footer-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+            נווט ב-Waze
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">צור קשר</div>
+        <div class="footer-links">
+          <a href="tel:+97286326059" class="footer-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6 6l1-1.06a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.72 16z"/></svg>
+            08-632-6059
+          </a>
+          <a href="mailto:office@ledlink.co.il" class="footer-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            office@ledlink.co.il
+          </a>
+          <a href="https://wa.me/972524444470" target="_blank" class="footer-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">שעות פעילות</div>
+        <div class="footer-hours-row"><span>ראשון – חמישי</span><span class="hours-open">07:00 – 15:00</span></div>
+        <div class="footer-hours-row"><span>שישי</span><span class="hours-closed">סגור</span></div>
+        <div class="footer-hours-row"><span>שבת</span><span class="hours-closed">סגור</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 LEDLink – כל הזכויות שמורות</div>
+      <div class="footer-legal">
+        <a href="about.html">אודות</a>
+        <a href="takanon.html">תקנון</a>
+        <a href="privacy.html">מדיניות פרטיות</a>
+        <a href="accessibility.html">הצהרת נגישות</a>
+        <a href="faq.html">שאלות נפוצות</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="חזרה לראש העמוד">&#8679;</button>
+<style>
+  #scroll-top-btn{position:fixed;bottom:24px;left:20px;width:44px;height:44px;border-radius:50%;background:#E8A020;color:#fff;border:none;font-size:24px;line-height:1;cursor:pointer;box-shadow:0 3px 12px rgba(232,160,32,0.4);opacity:0;transform:translateY(16px);transition:opacity .25s,transform .25s;z-index:998;pointer-events:none;display:flex;align-items:center;justify-content:center;}
+  #scroll-top-btn.visible{opacity:1;transform:translateY(0);pointer-events:auto;}
+  #scroll-top-btn:hover{background:#C4880A;}
+</style>
+<script>
+    function toggleMenu() {
+        document.getElementById('hamburger').classList.toggle('open');
+        document.getElementById('mobile-menu').classList.toggle('open');
+        document.getElementById('mm-overlay').classList.toggle('open');
+    }
+    (function(){ var b=document.getElementById('scroll-top-btn');
+      window.addEventListener('scroll',function(){ b.classList.toggle('visible',window.scrollY>300); },{passive:true});
+    })();
+</script>
+</body>
+</html>
