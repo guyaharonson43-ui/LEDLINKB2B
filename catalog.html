@@ -775,7 +775,6 @@
       return (
         <div className="cfg-overlay" onClick={onClose}>
           <div style={{position:'relative',width:'100%',maxWidth:700}} onClick={e=>e.stopPropagation()}>
-            <button className="cfg-close-btn" onClick={onClose} aria-label="סגור">✕</button>
             <div ref={wrapRef}></div>
           </div>
         </div>
@@ -1344,7 +1343,6 @@
       }
     }
     window.addEventListener('popstate', onPopState);
-    return function() { window.removeEventListener('popstate', onPopState); };
 
     function resize() {
       canvas.width  = container.clientWidth;
@@ -1584,6 +1582,7 @@
       canvas.removeEventListener('pointerdown', onPointerDown);
       canvas.removeEventListener('pointermove', onPointerMove);
       canvas.removeEventListener('pointerup',   onPointerUp);
+      window.removeEventListener('popstate', onPopState);
     };
   };
   </script>
