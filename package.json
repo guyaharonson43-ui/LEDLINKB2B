@@ -4,7 +4,8 @@
   "description": "",
   "main": "a11y-widget.js",
   "scripts": {
-    "build": "node compile.js && npx tailwindcss -i tailwind-input.css -o tailwind-purged.css --minify"
+    "build": "node compile.js && npx tailwindcss -i tailwind-input.css -o tailwind-purged.css --minify",
+    "images": "node convert-images.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   "devDependencies": {
     "@babel/core": "^7.29.0",
     "@babel/plugin-transform-react-jsx": "^7.28.6",
+    "sharp": "^0.34.5",
     "tailwindcss": "^3.4.19"
   }
 }
