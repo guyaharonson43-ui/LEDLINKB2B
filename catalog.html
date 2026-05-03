@@ -1303,7 +1303,7 @@
           <img id="cfg-snapshot" class="cfg-snapshot" alt="שרטוט טכני">
           <button class="cfg-btn-dl" id="cfg-dl-btn">💾 הורד שרטוט (צרף לווטסאפ)</button>
           <div class="cfg-bom-box" id="cfg-bom"></div>
-          <a id="cfg-wa-link" href="#" target="_blank" class="cfg-btn-wa">💬 שלח תכנון, נחזור אליך</a>
+          <button id="cfg-wa-link" class="cfg-btn-wa">💬 שלח תכנון, נחזור אליך</button>
           <div class="cfg-nav" style="margin-top:14px">
             <button class="cfg-btn cfg-btn-prev" id="cfg-back-3">חזור לעריכה</button>
             <button class="cfg-btn" style="background:#F0EDE8;color:#1C1C1C;border:1px solid #E0DDD6" id="cfg-restart">תכנן חדש</button>
@@ -1400,6 +1400,12 @@
     function redrawCanvas() {
       ctx.clearRect(0,0,canvas.width,canvas.height);
       uiLayer.innerHTML='';
+
+      // Centroid — for pushing labels outside the shape
+      var cx=0, cy=0;
+      state.vertices.forEach(function(v){ cx+=v.x; cy+=v.y; });
+      if(state.vertices.length) { cx/=state.vertices.length; cy/=state.vertices.length; }
+
       for (var i=0; i<state.vertices.length-1; i++) {
         var p1=state.vertices[i], p2=state.vertices[i+1];
         var isFeed = state.feedSelected && i===state.feedIndex;
@@ -1418,9 +1424,24 @@
         hit.style.transform='rotate('+ang+'rad)';
         (function(idx){ hit.onclick=function(){ state.feedIndex=idx; state.feedSelected=true; redrawCanvas(); }; })(i);
         uiLayer.appendChild(hit);
-        // Measure input
+        // Measure input — positioned outside the shape
+        var OFF=20;
+        var isH=Math.abs(p2.x-p1.x)>Math.abs(p2.y-p1.y);
         var inp=document.createElement('input'); inp.type='number'; inp.className='cfg-measure-input';
-        inp.placeholder='ס"מ'; inp.style.left=midX+'px'; inp.style.top=midY+'px';
+        inp.placeholder='ס"מ';
+        if(isH){
+          var pushUp=(midY<=cy);
+          inp.style.left=midX+'px';
+          inp.style.top=(pushUp ? midY-OFF : midY+OFF)+'px';
+          // center X; push fully above (bottom edge at anchor) or below (top edge at anchor)
+          inp.style.transform=pushUp ? 'translate(-50%,-100%)' : 'translate(-50%,0%)';
+        } else {
+          var pushRight=(midX>=cx);
+          inp.style.left=(pushRight ? midX+OFF : midX-OFF)+'px';
+          inp.style.top=midY+'px';
+          // center Y; push fully right (left edge at anchor) or left (right edge at anchor)
+          inp.style.transform=pushRight ? 'translate(0%,-50%)' : 'translate(-100%,-50%)';
+        }
         inp.value = state.inputs[i]||'';
         (function(idx, el){ el.oninput=function(){ el.style.borderColor='#E8A020'; state.inputs[idx]=el.value; }; })(i,inp);
         uiLayer.appendChild(inp);
@@ -1519,15 +1540,103 @@
       goToStep(3);
     }
 
+    function buildExportCanvas() {
+      var cw=canvas.width, ch=canvas.height;
+      var HDR=54, FTR=34;
+      var oc=document.createElement('canvas'); oc.width=cw; oc.height=ch+HDR+FTR;
+      var ox=oc.getContext('2d');
+
+      // ── HEADER (dark bar) ──
+      ox.fillStyle='#1C1C1C'; ox.fillRect(0,0,cw,HDR);
+      // Logo: LED (gold bold) + LINK (white light)
+      ox.textBaseline='middle'; ox.textAlign='right';
+      ox.font='900 18px Heebo,sans-serif'; ox.fillStyle='#E8A020';
+      ox.fillText('LED', cw-14, HDR/2);
+      var ledW=ox.measureText('LED').width;
+      ox.font='300 18px Heebo,sans-serif'; ox.fillStyle='#FFFFFF';
+      ox.fillText('LINK', cw-14-ledW, HDR/2);
+      // Subtitle
+      ox.font='12px Heebo,sans-serif'; ox.fillStyle='#666'; ox.textAlign='left';
+      ox.fillText('תכנון פרופיל LED אישי', 14, HDR/2);
+      // Gold bottom line
+      ox.fillStyle='#E8A020'; ox.fillRect(0,HDR-2,cw,2);
+
+      // ── DRAWING AREA (white) ──
+      ox.fillStyle='#FFFFFF'; ox.fillRect(0,HDR,cw,ch);
+
+      // Subtle grid
+      ox.strokeStyle='rgba(224,221,214,0.5)'; ox.lineWidth=0.5;
+      for(var gx=0;gx<cw;gx+=30){ ox.beginPath(); ox.moveTo(gx,HDR); ox.lineTo(gx,HDR+ch); ox.stroke(); }
+      for(var gy=0;gy<ch;gy+=30){ ox.beginPath(); ox.moveTo(0,HDR+gy); ox.lineTo(cw,HDR+gy); ox.stroke(); }
+
+      // Centroid of shape (in original canvas coords, without HDR)
+      var cx=0, cy=0;
+      state.vertices.forEach(function(v){ cx+=v.x; cy+=v.y; });
+      cx/=state.vertices.length; cy/=state.vertices.length;
+
+      // Segments
+      for(var i=0;i<state.vertices.length-1;i++){
+        var p1=state.vertices[i], p2=state.vertices[i+1];
+        var isFeed=state.feedSelected&&i===state.feedIndex;
+        var x1=p1.x, y1=p1.y+HDR, x2=p2.x, y2=p2.y+HDR;
+        // Strip line
+        ox.beginPath(); ox.lineWidth=10; ox.lineCap='square';
+        ox.strokeStyle=isFeed?'#E8A020':'#1C1C1C';
+        ox.moveTo(x1,y1); ox.lineTo(x2,y2); ox.stroke();
+        // Feed label
+        if(isFeed){
+          var fx=(x1+x2)/2, fy=(y1+y2)/2;
+          ox.font='bold 10px Heebo,sans-serif'; ox.textAlign='center'; ox.textBaseline='middle';
+          ox.fillStyle='#E8A020'; ox.fillText('⚡ הזנה', fx, fy+18);
+        }
+        // Dimension label — pushed outward from centroid
+        if(state.inputs[i]){
+          var OFF=26;
+          var smx=(p1.x+p2.x)/2, smy=(p1.y+p2.y)/2; // midpoint in original coords
+          var isH=Math.abs(p2.x-p1.x)>Math.abs(p2.y-p1.y);
+          var lx, ly;
+          if(isH){
+            lx=(x1+x2)/2;
+            // above midpoint when midpoint is above/at centroid, else below
+            ly=(smy<=cy ? (smy+HDR)-OFF : (smy+HDR)+OFF);
+          } else {
+            // right of midpoint when midpoint is right of/at centroid, else left
+            lx=(smx>=cx ? smx+OFF : smx-OFF);
+            ly=(y1+y2)/2;
+          }
+          var text=state.inputs[i]+' ס"מ';
+          ox.font='bold 11px Heebo,sans-serif'; ox.textAlign='center'; ox.textBaseline='middle';
+          var tw=ox.measureText(text).width;
+          ox.fillStyle='#F4F4F0'; ox.fillRect(lx-tw/2-5,ly-8,tw+10,16);
+          ox.strokeStyle='#E0DDD6'; ox.lineWidth=1; ox.strokeRect(lx-tw/2-5,ly-8,tw+10,16);
+          ox.fillStyle='#1C1C1C'; ox.fillText(text,lx,ly);
+        }
+      }
+      // Corner dots
+      state.vertices.forEach(function(v){
+        ox.beginPath(); ox.arc(v.x,v.y+HDR,4,0,Math.PI*2);
+        ox.fillStyle='#E8A020'; ox.fill();
+        ox.strokeStyle='#1C1C1C'; ox.lineWidth=1.5; ox.stroke();
+      });
+
+      // ── FOOTER ──
+      ox.fillStyle='#E8A020'; ox.fillRect(0,HDR+ch,cw,2);
+      ox.fillStyle='#F4F4F0'; ox.fillRect(0,HDR+ch+2,cw,FTR-2);
+      ox.font='10px Heebo,sans-serif'; ox.textAlign='center'; ox.textBaseline='middle';
+      ox.fillStyle='#666';
+      ox.fillText(state.installType+' · '+state.lightingType+' · '+state.cct+' · '+state.color, cw/2, HDR+ch+2+(FTR-2)/2);
+
+      return oc;
+    }
+
     function captureCanvas() {
-      rootEl.querySelector('#cfg-snapshot').src=canvas.toDataURL('image/png');
+      rootEl.querySelector('#cfg-snapshot').src=buildExportCanvas().toDataURL('image/png');
     }
 
     function downloadSnapshot() {
       var link=document.createElement('a');
       link.download='LEDLink-Drawing-'+Date.now()+'.png';
-      link.href=canvas.toDataURL('image/png'); link.click();
-      alert('השרטוט נשמר! עכשיו פתח את הווטסאפ וצרף את התמונה להודעה.');
+      link.href=buildExportCanvas().toDataURL('image/png'); link.click();
     }
 
     function generateFinalBOM() {
@@ -1559,7 +1668,10 @@
       html+='<div class="cfg-bom-item" style="border-bottom:none;flex-direction:column;gap:4px"><div style="display:flex;justify-content:space-between;width:100%"><span>ספקי כוח (24V)</span><span class="cfg-bom-val">'+psuText+'</span></div>'+(splitNote?'<div style="font-size:10px;color:#E8A020">'+splitNote+'</div>':'')+'</div>';
       rootEl.querySelector('#cfg-bom').innerHTML=html;
       var msg='*הזמנת מפרט LEDLink (מצורף שרטוט)*\n---\nאורך: '+totalM.toFixed(2)+' מ\'\nייעוד: '+state.lightingType+'\nהתקנה: '+state.installType+'\nגוון/גימור: '+state.cct+'/'+state.color+'\nספקים: '+psuText+'\n📌 הזנה: צלע '+(state.feedIndex+1)+'\n\n*נא לצרף את תמונת השרטוט ששמרתם.*';
-      rootEl.querySelector('#cfg-wa-link').href='https://wa.me/972524444470?text='+encodeURIComponent(msg);
+      var isMobile=/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+      waUrl=isMobile
+        ?'https://wa.me/972524444470?text='+encodeURIComponent(msg)
+        :'https://web.whatsapp.com/send?phone=972524444470&text='+encodeURIComponent(msg);
       goToStep(4);
     }
 
@@ -1583,6 +1695,30 @@
     rootEl.querySelector('#cfg-tool-rotate').onclick = rotateShape;
     rootEl.querySelector('#cfg-tool-clear').onclick  = clearCanvas;
     rootEl.querySelector('#cfg-dl-btn').onclick      = downloadSnapshot;
+
+    // WA send — overlay at body level (avoids backdrop-filter clipping)
+    var waUrl     = '';
+    var waLink    = rootEl.querySelector('#cfg-wa-link');
+    var waOverlay = document.createElement('div');
+    waOverlay.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:99999;align-items:center;justify-content:center;';
+    waOverlay.innerHTML = '<div style="background:#0f1724;border:1px solid #E8A020;border-radius:14px;padding:28px 24px 24px;max-width:340px;width:90%;position:relative;text-align:right;font-family:Heebo,sans-serif">'
+      + '<button id="cfg-wa-close-btn" style="position:absolute;top:12px;left:14px;background:transparent;border:none;color:#aaa;font-size:22px;cursor:pointer;line-height:1">✕</button>'
+      + '<div style="font-size:32px;margin-bottom:12px">📎</div>'
+      + '<div style="font-size:16px;font-weight:700;color:#E8A020;margin-bottom:10px">רגע לפני השליחה</div>'
+      + '<div style="font-size:14px;color:#E0DDD6;line-height:1.7">השרטוט שלך יורד אוטומטית.<br>צרף אותו להודעת הוואטסאפ כדי שנוכל לעבד את ההזמנה מהר יותר.</div>'
+      + '</div>';
+    document.body.appendChild(waOverlay);
+
+    function dismissWaOverlay() {
+      waOverlay.style.display = 'none';
+      downloadSnapshot();
+      setTimeout(function(){ window.open(waUrl, '_blank'); }, 400);
+    }
+    waLink.onclick = function() { waOverlay.style.display = 'flex'; };
+    waOverlay.querySelector('#cfg-wa-close-btn').onclick = dismissWaOverlay;
+    waOverlay.addEventListener('click', function(e) {
+      if (e.target === waOverlay) dismissWaOverlay();
+    });
 
     // Design option buttons
     var designGroups = [
@@ -1609,6 +1745,7 @@
       canvas.removeEventListener('pointermove', onPointerMove);
       canvas.removeEventListener('pointerup',   onPointerUp);
       window.removeEventListener('popstate', onPopState);
+      if (waOverlay && waOverlay.parentNode) waOverlay.parentNode.removeChild(waOverlay);
     };
   };
   </script>
