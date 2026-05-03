@@ -1463,19 +1463,42 @@
     }
 
     function processFreehand() {
-      var simplified=rdp(rawPoints,35);
+      var simplified=rdp(rawPoints,40);
       if(simplified.length<2) return;
-      var v=[simplified[0]];
+      // 1. יישור ל-90 מעלות
+      var ortho=[simplified[0]];
       for(var i=1;i<simplified.length;i++){
-        var p1=v[v.length-1], p2=simplified[i];
-        if(Math.abs(p2.x-p1.x)>Math.abs(p2.y-p1.y)) v.push({x:p2.x,y:p1.y}); else v.push({x:p1.x,y:p2.y});
+        var p1=ortho[ortho.length-1], p2=simplified[i];
+        if(Math.abs(p2.x-p1.x)>Math.abs(p2.y-p1.y)) ortho.push({x:p2.x,y:p1.y});
+        else ortho.push({x:p1.x,y:p2.y});
       }
-      var clean=[v[0]];
-      for(var j=1;j<v.length;j++){
-        if(Math.hypot(v[j].x-clean[clean.length-1].x,v[j].y-clean[clean.length-1].y)>25) clean.push(v[j]);
+      // 2. סגירה מגנטית + תיקון הפינה שלפני הסגירה
+      if(ortho.length>2&&Math.hypot(ortho[ortho.length-1].x-ortho[0].x,ortho[ortho.length-1].y-ortho[0].y)<90){
+        ortho[ortho.length-1]={x:ortho[0].x,y:ortho[0].y};
+        var prev=ortho[ortho.length-2];
+        if(Math.abs(ortho[ortho.length-3].y-prev.y)<5) prev.x=ortho[0].x;
+        else prev.y=ortho[0].y;
       }
-      if(clean.length>2&&Math.hypot(clean[clean.length-1].x-clean[0].x,clean[clean.length-1].y-clean[0].y)<80)
-        clean[clean.length-1]=clean[0];
+      // 3. הלחמת צלעות קולינאריות (מונע חלוניות מידה כפולות)
+      var clean=[ortho[0]];
+      for(var j=1;j<ortho.length;j++){
+        var prev=clean[clean.length-1], curr=ortho[j];
+        if(Math.hypot(curr.x-prev.x,curr.y-prev.y)<5) continue;
+        if(clean.length>1){
+          var pPrev=clean[clean.length-2];
+          var isHoriz=Math.abs(prev.y-pPrev.y)<2&&Math.abs(curr.y-prev.y)<2;
+          var isVert=Math.abs(prev.x-pPrev.x)<2&&Math.abs(curr.x-prev.x)<2;
+          if(isHoriz||isVert){ clean[clean.length-1]=curr; continue; }
+        }
+        clean.push(curr);
+      }
+      // 4. בדיקת איחוד בצומת הסגירה
+      if(clean.length>3&&clean[0].x===clean[clean.length-1].x&&clean[0].y===clean[clean.length-1].y){
+        var pFirst=clean[1], pLast=clean[clean.length-2];
+        var isHoriz=Math.abs(clean[0].y-pFirst.y)<2&&Math.abs(clean[0].y-pLast.y)<2;
+        var isVert=Math.abs(clean[0].x-pFirst.x)<2&&Math.abs(clean[0].x-pLast.x)<2;
+        if(isHoriz||isVert){ clean[0]=pLast; clean.pop(); clean[clean.length-1]=pLast; }
+      }
       state.vertices=clean; state.locked=true;
       state.feedSelected=(state.vertices.length-1===1);
       toolRotate.style.display='block'; toolClear.style.display='block'; statusEl.innerText='';
