@@ -1476,6 +1476,16 @@
       }
       if(clean.length>2&&Math.hypot(clean[clean.length-1].x-clean[0].x,clean[clean.length-1].y-clean[0].y)<80)
         clean[clean.length-1]=clean[0];
+      // Merge consecutive collinear segments (same axis) to avoid duplicate inputs
+      var merged=[clean[0]];
+      for(var k=1;k<clean.length-1;k++){
+        var pv=merged[merged.length-1],cv=clean[k],nv=clean[k+1];
+        var colX=Math.abs(pv.x-cv.x)<2&&Math.abs(cv.x-nv.x)<2;
+        var colY=Math.abs(pv.y-cv.y)<2&&Math.abs(cv.y-nv.y)<2;
+        if(!colX&&!colY) merged.push(cv);
+      }
+      merged.push(clean[clean.length-1]);
+      clean=merged;
       state.vertices=clean; state.locked=true;
       state.feedSelected=(state.vertices.length-1===1);
       toolRotate.style.display='block'; toolClear.style.display='block'; statusEl.innerText='';
