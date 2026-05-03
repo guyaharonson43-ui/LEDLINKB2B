@@ -300,6 +300,9 @@
     .cfg-btn-dl:hover { background:#F0EDE8; }
     .cfg-close-btn { position:absolute;top:-14px;left:-14px;width:34px;height:34px;background:#FFFFFF;border:1px solid #E0DDD6;color:#888;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;z-index:5;transition:all .15s;line-height:1; }
     .cfg-close-btn:hover { color:#1C1C1C;border-color:#E8A020; }
+    .cfg-hdr-close { position:absolute;top:50%;left:14px;transform:translateY(-50%);width:32px;height:32px;background:none;border:1px solid #E0DDD6;border-radius:50%;cursor:pointer;font-size:15px;color:#888;display:flex;align-items:center;justify-content:center;transition:all .15s;line-height:1;font-family:'Heebo',sans-serif; }
+    .cfg-hdr-close:hover { color:#1C1C1C;border-color:#E8A020; }
+    .cfg-header { position:relative; }
     .cfg-cta-card { background:#FFFFFF;border:1px solid #E8A020;border-radius:10px;padding:18px 20px;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:20px; }
     .cfg-cta-card:hover { transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,160,32,.18); }
 
@@ -1235,6 +1238,7 @@
     rootEl.innerHTML = `
       <div class="cfg-card">
         <div class="cfg-header">
+          <button class="cfg-hdr-close" id="cfg-hdr-close" aria-label="סגור">✕</button>
           <h2>LEDLink Configurator</h2>
           <p>תכנון הנדסי וייצור בהתאמה אישית</p>
         </div>
@@ -1308,6 +1312,7 @@
       </div>`;
 
     // 2. DOM refs
+    rootEl.querySelector('#cfg-hdr-close').onclick = onCloseFn;
     var canvas     = rootEl.querySelector('#cfg-canvas');
     var ctx        = canvas.getContext('2d');
     var uiLayer    = rootEl.querySelector('#cfg-ui-layer');
