@@ -1303,7 +1303,7 @@
           <img id="cfg-snapshot" class="cfg-snapshot" alt="שרטוט טכני">
           <button class="cfg-btn-dl" id="cfg-dl-btn">💾 הורד שרטוט (צרף לווטסאפ)</button>
           <div class="cfg-bom-box" id="cfg-bom"></div>
-          <a id="cfg-wa-link" href="#" target="_blank" class="cfg-btn-wa">💬 שלח תכנון, נחזור אליך</a>
+          <button id="cfg-wa-link" class="cfg-btn-wa">💬 שלח תכנון, נחזור אליך</button>
           <div class="cfg-nav" style="margin-top:14px">
             <button class="cfg-btn cfg-btn-prev" id="cfg-back-3">חזור לעריכה</button>
             <button class="cfg-btn" style="background:#F0EDE8;color:#1C1C1C;border:1px solid #E0DDD6" id="cfg-restart">תכנן חדש</button>
@@ -1558,8 +1558,9 @@
       if(corners>0) html+='<div class="cfg-bom-item"><span>פינות 90° + הלחמות</span><span class="cfg-bom-val">'+corners+'</span></div>';
       html+='<div class="cfg-bom-item" style="border-bottom:none;flex-direction:column;gap:4px"><div style="display:flex;justify-content:space-between;width:100%"><span>ספקי כוח (24V)</span><span class="cfg-bom-val">'+psuText+'</span></div>'+(splitNote?'<div style="font-size:10px;color:#E8A020">'+splitNote+'</div>':'')+'</div>';
       rootEl.querySelector('#cfg-bom').innerHTML=html;
+      waOverlay.style.display='none';
       var msg='*הזמנת מפרט LEDLink (מצורף שרטוט)*\n---\nאורך: '+totalM.toFixed(2)+' מ\'\nייעוד: '+state.lightingType+'\nהתקנה: '+state.installType+'\nגוון/גימור: '+state.cct+'/'+state.color+'\nספקים: '+psuText+'\n📌 הזנה: צלע '+(state.feedIndex+1)+'\n\n*נא לצרף את תמונת השרטוט ששמרתם.*';
-      rootEl.querySelector('#cfg-wa-link').href='https://wa.me/972524444470?text='+encodeURIComponent(msg);
+      waUrl='https://wa.me/972524444470?text='+encodeURIComponent(msg);
       goToStep(4);
     }
 
@@ -1583,6 +1584,33 @@
     rootEl.querySelector('#cfg-tool-rotate').onclick = rotateShape;
     rootEl.querySelector('#cfg-tool-clear').onclick  = clearCanvas;
     rootEl.querySelector('#cfg-dl-btn').onclick      = downloadSnapshot;
+
+    // WA send — show reminder overlay, then download + open WA on dismiss
+    var waUrl  = '';
+    var waLink = rootEl.querySelector('#cfg-wa-link');
+
+    // Build overlay at body level (avoids backdrop-filter/overflow:hidden clipping)
+    var waOverlay = document.createElement('div');
+    waOverlay.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:99999;align-items:center;justify-content:center;';
+    waOverlay.innerHTML = '<div style="background:#0f1724;border:1px solid #E8A020;border-radius:14px;padding:28px 24px 24px;max-width:340px;width:90%;position:relative;text-align:right;font-family:Heebo,sans-serif">'
+      + '<button id="cfg-wa-close-btn" style="position:absolute;top:12px;left:14px;background:transparent;border:none;color:#aaa;font-size:22px;cursor:pointer;line-height:1">✕</button>'
+      + '<div style="font-size:32px;margin-bottom:12px">📎</div>'
+      + '<div style="font-size:16px;font-weight:700;color:#E8A020;margin-bottom:10px">רגע לפני השליחה</div>'
+      + '<div style="font-size:14px;color:#E0DDD6;line-height:1.7">השרטוט שלך יורד אוטומטית.<br>צרף אותו להודעת הוואטסאפ כדי שנוכל לעבד את ההזמנה מהר יותר.</div>'
+      + '</div>';
+    document.body.appendChild(waOverlay);
+
+    function dismissWaOverlay() {
+      waOverlay.style.display = 'none';
+      downloadSnapshot();
+      setTimeout(function(){ window.open(waUrl, '_blank'); }, 400);
+    }
+
+    waLink.onclick = function() { waOverlay.style.display = 'flex'; };
+    waOverlay.querySelector('#cfg-wa-close-btn').onclick = dismissWaOverlay;
+    waOverlay.addEventListener('click', function(e) {
+      if (e.target === waOverlay) dismissWaOverlay();
+    });
 
     // Design option buttons
     var designGroups = [
@@ -1609,6 +1637,7 @@
       canvas.removeEventListener('pointermove', onPointerMove);
       canvas.removeEventListener('pointerup',   onPointerUp);
       window.removeEventListener('popstate', onPopState);
+      if (waOverlay && waOverlay.parentNode) waOverlay.parentNode.removeChild(waOverlay);
     };
   };
   </script>

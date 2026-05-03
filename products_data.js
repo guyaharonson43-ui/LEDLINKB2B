@@ -2,7 +2,7 @@
   {
     "id": "ledlink-tuba30",
     "name": "טיובה 30",
-    "img": "strips/R30.jpg",
+    "img": "strips/R30.webp",
     "desc": "מקט: R30 | פרופיל צמוד/תלייה | אורך יחידה: עד 6 מטר",
     "category": "פרופילים",
     "price": null,
@@ -13,7 +13,7 @@
   {
     "id": "ledlink-tuba60",
     "name": "טיובה 60",
-    "img": "strips/R60.jpg",
+    "img": "strips/R60.webp",
     "desc": "מקט: R60 | פרופיל צמוד/תלייה | אורך יחידה: עד 6 מטר",
     "category": "פרופילים",
     "price": null,
@@ -24,7 +24,7 @@
   {
     "id": "ledlink-irgul3528",
     "name": "עירגול 3528",
-    "img": "strips/3528.jpg",
+    "img": "strips/3528.webp",
     "desc": "מקט: 3528 | פרופיל עגול | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
@@ -35,7 +35,7 @@
   {
     "id": "ledlink-1808",
     "name": "פרופיל מוגן מים 1808",
-    "img": "strips/1808.jpg",
+    "img": "strips/1808.webp",
     "desc": "מקט: 1808 | IP65 | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
@@ -46,7 +46,7 @@
   {
     "id": "ledlink-1813",
     "name": "פרופיל מוגן מים 1813",
-    "img": "strips/1813.jpg",
+    "img": "strips/1813.webp",
     "desc": "מקט: 1813 | IP65 | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
@@ -57,7 +57,7 @@
   {
     "id": "ledlink-1013",
     "name": "1013",
-    "img": "strips/1013.jpg",
+    "img": "strips/1013.webp",
     "desc": "מקט: 1013 | פרופיל צמוד | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
@@ -68,7 +68,7 @@
   {
     "id": "ledlink-1616",
     "name": "1616 פינתי",
-    "img": "strips/1616.jpg",
+    "img": "strips/1616.webp",
     "desc": "מקט: 1616 | פרופיל פינתי | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
@@ -79,7 +79,7 @@
   {
     "id": "ledlink-1707",
     "name": "1707",
-    "img": "strips/1707.jpg",
+    "img": "strips/1707.webp",
     "desc": "מקט: 1707 | פרופיל דק | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
@@ -90,7 +90,7 @@
   {
     "id": "ledlink-1713",
     "name": "1713",
-    "img": "strips/1713.jpg",
+    "img": "strips/1713.webp",
     "desc": "מקט: 1713 | פרופיל | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
@@ -101,7 +101,7 @@
   {
     "id": "ledlink-1715",
     "name": "1715",
-    "img": "strips/1715.jpg",
+    "img": "strips/1715.webp",
     "desc": "מקט: 1715 | פרופיל | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
@@ -112,7 +112,7 @@
   {
     "id": "ledlink-2010",
     "name": "2010",
-    "img": "strips/2010.jpg",
+    "img": "strips/2010.webp",
     "desc": "מקט: 2010 | פרופיל | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
@@ -123,7 +123,7 @@
   {
     "id": "ledlink-2020",
     "name": "2020",
-    "img": "strips/2020.jpg",
+    "img": "strips/2020.webp",
     "desc": "מקט: 2020 | פרופיל | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
@@ -134,7 +134,7 @@
   {
     "id": "ledlink-2415",
     "name": "2415",
-    "img": "strips/2417.jpg",
+    "img": "strips/2417.webp",
     "desc": "מקט: 2415 | פרופיל | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
@@ -145,7 +145,7 @@
   {
     "id": "ledlink-3020",
     "name": "3020",
-    "img": "strips/3020.jpg",
+    "img": "strips/3020.webp",
     "desc": "מקט: 3020 | פרופיל | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
@@ -156,7 +156,7 @@
   {
     "id": "ledlink-3030",
     "name": "3030 פינתי",
-    "img": "strips/3030.jpg",
+    "img": "strips/3030.webp",
     "desc": "מקט: 3030 | פרופיל פינתי | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
@@ -167,7 +167,7 @@
   {
     "id": "ledlink-3535p",
     "name": "3535",
-    "img": "strips/35351.jpg",
+    "img": "strips/35351.webp",
     "desc": "מקט: 3535 | פרופיל | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
@@ -178,7 +178,7 @@
   {
     "id": "ledlink-4435",
     "name": "4435",
-    "img": "strips/4435-600x600.png",
+    "img": "strips/4435-600x600.webp",
     "desc": "מקט: 4435 | פרופיל רחב | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
@@ -189,7 +189,7 @@
   {
     "id": "ledlink-5075",
     "name": "5075",
-    "img": "strips/5075-1.jpg",
+    "img": "strips/5075-1.webp",
     "desc": "מקט: 5075 | פרופיל גדול | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
@@ -200,7 +200,7 @@
   {
     "id": "ledlink-5213",
     "name": "5213 שקוע גבס",
-    "img": "strips/5213.jpg",
+    "img": "strips/5213.webp",
     "desc": "מקט: 5213 | פרופיל שקוע גבס | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
@@ -211,7 +211,7 @@
   {
     "id": "ledlink-6114",
     "name": "6114 שקוע גבס",
-    "img": "strips/6114.jpg",
+    "img": "strips/6114.webp",
     "desc": "מקט: 6114 | פרופיל שקוע גבס רחב | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
@@ -222,7 +222,7 @@
   {
     "id": "ledlink-strip-zigzag",
     "name": "סטריפ LED זיגזג 4.8W",
-    "img": "strips/3D2460.jpg",
+    "img": "strips/3D2460.webp",
     "desc": "הספק: 4.8W | 24V | 83-92 Lm/W | 400-440Lm/m | גוון: 3000/4000/6000K | IP20",
     "category": "סטריפ LED",
     "price": null,
@@ -233,7 +233,7 @@
   {
     "id": "ledlink-strip-digital",
     "name": "סטריפ LED דיגיטלי 24V",
-    "img": "strips/A24240.jpg",
+    "img": "strips/A24240.webp",
     "desc": "הספק: 9.6W | 24V | 240 Lm/W | 2300Lm/m | גוון: 3000/4000/5500K | IP20",
     "category": "סטריפ LED",
     "price": null,
@@ -244,7 +244,7 @@
   {
     "id": "ledlink-strip-10w",
     "name": "סטריפ LED 10W IP20",
-    "img": "strips/D24160.jpg",
+    "img": "strips/D24160.webp",
     "desc": "הספק: 10W | 24V | 155-170 Lm/W | 1550-1700Lm/m | גוון: 3000/4000K | IP20",
     "category": "סטריפ LED",
     "price": null,
@@ -255,7 +255,7 @@
   {
     "id": "ledlink-strip-15w",
     "name": "סטריפ LED 15W IP20",
-    "img": "strips/D24160.jpg",
+    "img": "strips/D24160.webp",
     "desc": "הספק: 15W | 24V | 173-186 Lm/W | 2600-2790Lm/m | גוון: 3000/4000K | IP20",
     "category": "סטריפ LED",
     "price": null,
@@ -266,7 +266,7 @@
   {
     "id": "ledlink-strip-ip65-12w",
     "name": "סטריפ LED 12W IP65",
-    "img": "strips/B24A.jpg",
+    "img": "strips/B24A.webp",
     "desc": "הספק: 12W | 24V | 142-152 Lm/W | 1700-1820Lm/m | גוון: 2700/3000/4000K | IP65",
     "category": "סטריפ LED",
     "price": null,
@@ -277,7 +277,7 @@
   {
     "id": "ledlink-strip-ip65-16w",
     "name": "סטריפ LED 16W IP65",
-    "img": "strips/B24A.jpg",
+    "img": "strips/B24A.webp",
     "desc": "הספק: 16W | 24V | 141-153 Lm/W | 2260-2450Lm/m | גוון: 2700/3000/4000K | IP65",
     "category": "סטריפ LED",
     "price": null,
@@ -288,7 +288,7 @@
   {
     "id": "ledlink-strip-ip65-20w",
     "name": "סטריפ LED 20W IP65",
-    "img": "strips/B24A.jpg",
+    "img": "strips/B24A.webp",
     "desc": "הספק: 20W | 24V | 143-153 Lm/W | 2850-3050Lm/m | גוון: 2700/3000/4000K | IP65",
     "category": "סטריפ LED",
     "price": null,
@@ -299,7 +299,7 @@
   {
     "id": "ledlink-strip-50w",
     "name": "סטריפ LED 50W IP20",
-    "img": "strips/A24240.jpg",
+    "img": "strips/A24240.webp",
     "desc": "הספק: 50W | 24V | 4600-5280Lm | גוון: 2700/3000/4000/5500K | IP20",
     "category": "סטריפ LED",
     "price": null,
@@ -310,7 +310,7 @@
   {
     "id": "ledlink-strip-dob",
     "name": "סטריפ LED DOB 15W IP20",
-    "img": "strips/D24160.jpg",
+    "img": "strips/D24160.webp",
     "desc": "הספק: 15W | 24V | 152 Lm/W | 2280Lm/m | גוון: 2700/3000/4000K | IP20 | DOB",
     "category": "סטריפ LED",
     "price": null,
@@ -321,7 +321,7 @@
   {
     "id": "ledlink-strip-rgbw-ip20",
     "name": "סטריפ LED RGBW 20W IP20",
-    "img": "strips/S24120RW.jpg",
+    "img": "strips/S24120RW.webp",
     "desc": "הספק: 20W | 24V | RGBW | IP20",
     "category": "סטריפ LED",
     "price": null,
@@ -332,7 +332,7 @@
   {
     "id": "ledlink-strip-ip68-14w",
     "name": "סטריפ LED 14.4W IP68",
-    "img": "strips/H24I.jpg",
+    "img": "strips/H24I.webp",
     "desc": "הספק: 14.4W | 24V | 122-140 Lm/W | 1760-2020Lm/m | גוון: 2700/3000/4000/6000K | IP68",
     "category": "סטריפ LED",
     "price": null,
@@ -343,7 +343,7 @@
   {
     "id": "ledlink-strip-ip68-9w",
     "name": "סטריפ LED 9.6W IP68",
-    "img": "strips/H24I.jpg",
+    "img": "strips/H24I.webp",
     "desc": "הספק: 9.6W | 24V | 124-142 Lm/W | 1190-1360Lm/m | גוון: 2700/3000/4000/6000K | IP68",
     "category": "סטריפ LED",
     "price": null,
@@ -354,7 +354,7 @@
   {
     "id": "ledlink-neon-top",
     "name": "נאון סטריפ LED TOP 14.4W IP67",
-    "img": "strips/N2424H.jpg",
+    "img": "strips/N2424H.webp",
     "desc": "הספק: 14.4W | 24V | 80-83 Lm/W | 1150-1200Lm/m | גוון: 2700/3000/4000K | IP67 | TOP",
     "category": "סטריפ LED",
     "price": null,
@@ -365,7 +365,7 @@
   {
     "id": "ledlink-strip-cob",
     "name": "סטריפ LED COB 14.4W IP20",
-    "img": "strips/COB2415.jpg",
+    "img": "strips/COB2415.webp",
     "desc": "הספק: 14.4W | 24V | 90-97 Lm/W | 1300-1400Lm/m | גוון: 3000/4000K | IP20 | COB",
     "category": "סטריפ LED",
     "price": null,
@@ -376,7 +376,7 @@
   {
     "id": "ledlink-neon-side",
     "name": "נאון סטריפ LED SIDE 18W IP67",
-    "img": "strips/N2412L.jpg",
+    "img": "strips/N2412L.webp",
     "desc": "הספק: 18W | 24V | 42-47 Lm/W | 760-840Lm/m | גוון: 2700/3000/4000K | IP67 | SIDE",
     "category": "סטריפ LED",
     "price": null,
@@ -387,7 +387,7 @@
   {
     "id": "ledlink-neon-rgb",
     "name": "סטריפ LED RGB IP67 14.4W",
-    "img": "strips/N2412BRG.jpg",
+    "img": "strips/N2412BRG.webp",
     "desc": "הספק: 14.4W | 24V | RGB | IP67",
     "category": "סטריפ LED",
     "price": null,
@@ -398,7 +398,7 @@
   {
     "id": "ledlink-strip-rgbw-ip65",
     "name": "סטריפ LED RGBW 20W IP65",
-    "img": "strips/S24120RW.jpg",
+    "img": "strips/S24120RW.webp",
     "desc": "הספק: 20W | 24V | RGBW | IP65",
     "category": "סטריפ LED",
     "price": null,
@@ -408,8 +408,8 @@
   },
   {
     "id": "qlt-3d2460",
-    "name": "3D2460",
-    "img": "strips/A413D126000W-1024x683.jpg",
+    "name": "סטריפ LED 4.8W/m IP20 — 3D2460",
+    "img": "strips/A413D126000W-1024x683.webp",
     "desc": "הספק: 4.8W/m | 24V | עד 90 lm/w | גוון: 3000K/4000K/6000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -427,8 +427,8 @@
   },
   {
     "id": "qlt-a241120",
-    "name": "A24112",
-    "img": "strips/FOOD-DISPLAY.jpg",
+    "name": "סטריפ LED 16.8W/m IP20 — A24112",
+    "img": "strips/FOOD-DISPLAY.webp",
     "desc": "הספק: 16.8W/m | 24V | עד 110 lm/W | 1520-1900 Lm/m | גוון: 2500K/2900K/3000K/5000K/7500K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -446,8 +446,8 @@
   },
   {
     "id": "qlt-a2411c",
-    "name": "A2411C",
-    "img": "strips/A2416C_IP20_IP65-1024x482.jpg",
+    "name": "סטריפ LED 10W/m IP20 — A2411C",
+    "img": "strips/A2416C_IP20_IP65-1024x482.webp",
     "desc": "הספק: 10W/m | 24V | עד 120 lm/W | 1000-1210 Lm/m | גוון: 2700K/3000K/4000K/6500K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -465,8 +465,8 @@
   },
   {
     "id": "qlt-a2411ca",
-    "name": "A2411CA",
-    "img": "strips/A2416C_IP20_IP65-1024x482.jpg",
+    "name": "סטריפ LED 10W/m IP65 — A2411CA",
+    "img": "strips/A2416C_IP20_IP65-1024x482.webp",
     "desc": "הספק: 10W/m | 24V | עד 120 lm/W | 1000-1110 Lm/m | גוון: 2700K/3000K/4000K/6500K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -484,8 +484,8 @@
   },
   {
     "id": "qlt-a2411ci",
-    "name": "A2411CI",
-    "img": "strips/A2416C_IP20_IP65-1024x482.jpg",
+    "name": "סטריפ LED 10W/m IP68 — A2411CI",
+    "img": "strips/A2416C_IP20_IP65-1024x482.webp",
     "desc": "הספק: 10W/m | 24V | עד 120 lm/W | 1060-1180 Lm/m | גוון: 3000K/4000K | IP68",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -503,8 +503,8 @@
   },
   {
     "id": "qlt-a2416c0",
-    "name": "A2416C",
-    "img": "strips/A2416C_IP20_IP65-1024x482.jpg",
+    "name": "סטריפ LED 14.4W/m IP20 — A2416C",
+    "img": "strips/A2416C_IP20_IP65-1024x482.webp",
     "desc": "הספק: 14.4W/m | 24V | עד 120 lm/W | 1420-1740 Lm/m | גוון: 2700K/3000K/4000K/6500K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -522,8 +522,8 @@
   },
   {
     "id": "qlt-a2416c",
-    "name": "A2416CA",
-    "img": "strips/A2416C_IP20_IP65-1024x482.jpg",
+    "name": "סטריפ LED 14.4W/m IP65 — A2416CA",
+    "img": "strips/A2416C_IP20_IP65-1024x482.webp",
     "desc": "הספק: 14.4W/m | 24V | עד 120 lm/W | 1420-1740 Lm/m | גוון: 2700K/3000K/4000K/6500K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -541,8 +541,8 @@
   },
   {
     "id": "qlt-a2416ci",
-    "name": "A2416CI",
-    "img": "strips/A2416C_IP20_IP65-1024x482.jpg",
+    "name": "סטריפ LED 14.4W/m IP68 — A2416CI",
+    "img": "strips/A2416C_IP20_IP65-1024x482.webp",
     "desc": "הספק: 14.4W/m | 24V | עד 120 lm/W | 1530-1720 Lm/m | גוון: 3000K/4000K | IP68",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -560,8 +560,8 @@
   },
   {
     "id": "qlt-a2424c",
-    "name": "A2424C",
-    "img": "strips/A2416C_IP20_IP65-1024x482.jpg",
+    "name": "סטריפ LED 21.6W/m IP20 — A2424C",
+    "img": "strips/A2416C_IP20_IP65-1024x482.webp",
     "desc": "הספק: 21.6W/m | 24V | עד 120 lm/W | 2140-2290 Lm/m | גוון: 2700K/3000K/4000K/6500K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -579,8 +579,8 @@
   },
   {
     "id": "qlt-a2424ca",
-    "name": "A2424CA",
-    "img": "strips/A2416C_IP20_IP65-1024x482.jpg",
+    "name": "סטריפ LED 21.6W/m IP65 — A2424CA",
+    "img": "strips/A2416C_IP20_IP65-1024x482.webp",
     "desc": "הספק: 21.6W/m | 24V | עד 120 lm/W | 2060-2100 Lm/m | גוון: 2700K/3000K/4000K/6500K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -598,8 +598,8 @@
   },
   {
     "id": "qlt-b24080",
-    "name": "B24080",
-    "img": "strips/A41B24160040-1024x683.jpg",
+    "name": "סטריפ LED 12W/m IP20 — B24080",
+    "img": "strips/A41B24160040-1024x683.webp",
     "desc": "הספק: 12W/m | 24V | עד 150 lm/W | 1660-1840 Lm/m | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -617,8 +617,8 @@
   },
   {
     "id": "qlt-b24080a",
-    "name": "B24080A",
-    "img": "strips/Led-A41B24160A30-IP65-1024x503.jpg",
+    "name": "סטריפ LED 12W/m IP65 — B24080A",
+    "img": "strips/Led-A41B24160A30-IP65-1024x503.webp",
     "desc": "הספק: 12W/m | 24V | עד 140 lm/W | 1460-1690 Lm/m | גוון: 2700K/3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -636,8 +636,8 @@
   },
   {
     "id": "qlt-b24128",
-    "name": "B24128",
-    "img": "strips/A41B24160040-1024x683.jpg",
+    "name": "סטריפ LED 16W/m IP20 — B24128",
+    "img": "strips/A41B24160040-1024x683.webp",
     "desc": "הספק: 16W/m | 24V | עד 150 lm/W | 2280-2310 Lm/m | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -655,8 +655,8 @@
   },
   {
     "id": "qlt-b24128a",
-    "name": "B24128A",
-    "img": "strips/Led-A41B24160A30-IP65-1024x503.jpg",
+    "name": "סטריפ LED 16W/m IP65 — B24128A",
+    "img": "strips/Led-A41B24160A30-IP65-1024x503.webp",
     "desc": "הספק: 16W/m | 24V | עד 140 lm/W | 2040-2260 Lm/m | גוון: 2700K/3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -674,8 +674,8 @@
   },
   {
     "id": "qlt-b24160",
-    "name": "B24160",
-    "img": "strips/A41B24160040-1024x683.jpg",
+    "name": "סטריפ LED 20W/m IP20 — B24160",
+    "img": "strips/A41B24160040-1024x683.webp",
     "desc": "הספק: 20W/m | 24V | עד 150 lm/W | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -693,8 +693,8 @@
   },
   {
     "id": "qlt-b24160a",
-    "name": "B24160A",
-    "img": "strips/Led-A41B24160A30-IP65-1024x503.jpg",
+    "name": "סטריפ LED 20W/m IP65 — B24160A",
+    "img": "strips/Led-A41B24160A30-IP65-1024x503.webp",
     "desc": "הספק: 20W/m | 24V | עד 140 lm/W | גוון: 2700K/3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -712,8 +712,8 @@
   },
   {
     "id": "qlt-cob2488",
-    "name": "COB2488",
-    "img": "strips/COB-1024x683.jpg",
+    "name": "סטריפ LED COB 8W/m IP20 — COB2488",
+    "img": "strips/COB-1024x683.webp",
     "desc": "הספק: 8W/m | 24V | עד 110 lm/W | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "COB",
@@ -731,8 +731,8 @@
   },
   {
     "id": "qlt-cob2415",
-    "name": "COB2L15",
-    "img": "strips/COB-1024x683.jpg",
+    "name": "סטריפ LED COB 15W/m IP20 — COB2L15",
+    "img": "strips/COB-1024x683.webp",
     "desc": "הספק: 15W/m | 24V | עד 125 lm/W | 1760-1610 Lm/m | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "COB",
@@ -750,8 +750,8 @@
   },
   {
     "id": "qlt-cob845a",
-    "name": "COB845A",
-    "img": "strips/COB-FREE-CUT-1024x683.jpg",
+    "name": "סטריפ LED COB 12W/m IP65 — COB845A",
+    "img": "strips/COB-FREE-CUT-1024x683.webp",
     "desc": "הספק: 12W/m | 24V | עד 110 lm/W | גוון: 2700K/3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "COB",
@@ -769,8 +769,8 @@
   },
   {
     "id": "qlt-d241600ct",
-    "name": "D241600CT",
-    "img": "strips/A41D24160CT-1024x683.jpg",
+    "name": "סטריפ LED 13W/m IP20 — D241600CT",
+    "img": "strips/A41D24160CT-1024x683.webp",
     "desc": "הספק: 13W/m | 24V | עד 170 lm/W | 2120-2230 Lm/m | גוון: 2700K-6500K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -788,8 +788,8 @@
   },
   {
     "id": "qlt-d241608",
-    "name": "D241608",
-    "img": "strips/A41D241615-1024x683.jpg",
+    "name": "סטריפ LED 8W/m IP20 — D241608",
+    "img": "strips/A41D241615-1024x683.webp",
     "desc": "הספק: 8W/m | 24V | עד 200 lm/W | 1440-1590 Lm/m | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -807,8 +807,8 @@
   },
   {
     "id": "qlt-d241610",
-    "name": "D241610",
-    "img": "strips/A41D241615-1024x683.jpg",
+    "name": "סטריפ LED 10W/m IP20 — D241610",
+    "img": "strips/A41D241615-1024x683.webp",
     "desc": "הספק: 10W/m | 24V | עד 200 lm/W | 1690-1790 Lm/m | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -826,8 +826,8 @@
   },
   {
     "id": "qlt-d241610ct",
-    "name": "D241610CT",
-    "img": "strips/A41D24160CT-1024x683.jpg",
+    "name": "סטריפ LED 10W/m IP20 — D241610CT",
+    "img": "strips/A41D24160CT-1024x683.webp",
     "desc": "הספק: 10W/m | 24V | עד 170 lm/W | 1620-1720 Lm/m | גוון: 2700K-6500K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -845,8 +845,8 @@
   },
   {
     "id": "qlt-d241615",
-    "name": "D241615",
-    "img": "strips/A41D241615-1024x683.jpg",
+    "name": "סטריפ LED 15W/m IP20 — D241615",
+    "img": "strips/A41D241615-1024x683.webp",
     "desc": "הספק: 15W/m | 24V | עד 200 lm/W | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -864,8 +864,8 @@
   },
   {
     "id": "qlt-d242006-2",
-    "name": "D242006",
-    "img": "strips/D200-3-1024x683.jpg",
+    "name": "סטריפ LED 6W/m IP20 — D242006",
+    "img": "strips/D200-3-1024x683.webp",
     "desc": "הספק: 6W/m | 24V | עד 195 lm/W | 1010-1160 Lm/m | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -883,8 +883,8 @@
   },
   {
     "id": "qlt-d242008",
-    "name": "D242008",
-    "img": "strips/D200-3-1024x683.jpg",
+    "name": "סטריפ LED 8W/m IP20 — D242008",
+    "img": "strips/D200-3-1024x683.webp",
     "desc": "הספק: 8W/m | 24V | עד 195 lm/W | 1360-1410 Lm/m | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -902,8 +902,8 @@
   },
   {
     "id": "qlt-d242011",
-    "name": "D242011",
-    "img": "strips/D200-3-1024x683.jpg",
+    "name": "סטריפ LED 11.5W/m IP20 — D242011",
+    "img": "strips/D200-3-1024x683.webp",
     "desc": "הספק: 11.5W/m | 24V | עד 195 lm/W | 1930-2020 Lm/m | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -921,8 +921,8 @@
   },
   {
     "id": "qlt-2428-2",
-    "name": "DOB2428",
-    "img": "strips/DOB-288S-5-1024x683.jpg",
+    "name": "סטריפ LED COB 15W/m IP20 — DOB2428",
+    "img": "strips/DOB-288S-5-1024x683.webp",
     "desc": "הספק: 15W/m | 24V | עד 150 lm/W | 2100-2280 Lm/m | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "COB",
@@ -940,8 +940,8 @@
   },
   {
     "id": "qlt-dob2432-tw",
-    "name": "DOB2432 TW",
-    "img": "strips/FOTO-SELEZIONATA-1024x683.jpg",
+    "name": "סטריפ LED COB טמפרטורה משתנה 14W/m IP20 — DOB2432 TW",
+    "img": "strips/FOTO-SELEZIONATA-1024x683.webp",
     "desc": "הספק: 14W/m | 24V | גוון: 2700K-6500K | IP20",
     "category": "סטריפ LED",
     "subCategory": "COB",
@@ -959,8 +959,8 @@
   },
   {
     "id": "qlt-dob2433-rgbw",
-    "name": "DOB2433 RGB+W",
-    "img": "strips/DOB-RGBW-1024x683.jpg",
+    "name": "סטריפ LED COB 14W/m IP62 — DOB2433 RGB+W",
+    "img": "strips/DOB-RGBW-1024x683.webp",
     "desc": "הספק: 14W/m | 24V | גוון: RGBW | IP62",
     "category": "סטריפ LED",
     "subCategory": "RGB",
@@ -978,8 +978,8 @@
   },
   {
     "id": "qlt-dobg288",
-    "name": "DOBG288",
-    "img": "strips/FOTO-SELEZIONATA-1024x683.jpg",
+    "name": "סטריפ LED COB 10W/m IP20 — DOBG288",
+    "img": "strips/FOTO-SELEZIONATA-1024x683.webp",
     "desc": "הספק: 10W/m | 24V | עד 125 lm/W | 1230-1250 Lm/m | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "COB",
@@ -997,8 +997,8 @@
   },
   {
     "id": "qlt-dw242027w",
-    "name": "DW242027W",
-    "img": "strips/striscia-LED-DIMMTOWARM-1024x683.jpg",
+    "name": "סטריפ LED 15W/m IP20 — DW242027W",
+    "img": "strips/striscia-LED-DIMMTOWARM-1024x683.webp",
     "desc": "הספק: 15W/m | 24V | עד 95 lm/W | 1360 Lm/m | גוון: 2000K-2700K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1016,8 +1016,8 @@
   },
   {
     "id": "qlt-es24120",
-    "name": "ES24120",
-    "img": "strips/Led-A41ES2424030-IP20-1024x465.jpg",
+    "name": "סטריפ LED 9.6W/m IP20 — ES24120",
+    "img": "strips/Led-A41ES2424030-IP20-1024x465.webp",
     "desc": "הספק: 9.6W/m | 24V | עד 120 lm/W | 1050-1120 Lm/m | גוון: 3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1035,8 +1035,8 @@
   },
   {
     "id": "qlt-es24180",
-    "name": "ES24180",
-    "img": "strips/Led-A41ES2424030-IP20-1024x465.jpg",
+    "name": "סטריפ LED 14.4W/m IP20 — ES24180",
+    "img": "strips/Led-A41ES2424030-IP20-1024x465.webp",
     "desc": "הספק: 14.4W/m | 24V | עד 120 lm/W | 1550-1630 Lm/m | גוון: 3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1054,8 +1054,8 @@
   },
   {
     "id": "qlt-es24240",
-    "name": "ES24240",
-    "img": "strips/Led-A41ES2424030-IP20-1024x465.jpg",
+    "name": "סטריפ LED 19.2W/m IP20 — ES24240",
+    "img": "strips/Led-A41ES2424030-IP20-1024x465.webp",
     "desc": "הספק: 19.2W/m | 24V | עד 120 lm/W | 2060-2160 Lm/m | גוון: 3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1073,8 +1073,8 @@
   },
   {
     "id": "qlt-es2460",
-    "name": "ES2460",
-    "img": "strips/Led-A41ES2424030-IP20-1024x465.jpg",
+    "name": "סטריפ LED 4.8W/m IP20 — ES2460",
+    "img": "strips/Led-A41ES2424030-IP20-1024x465.webp",
     "desc": "הספק: 4.8W/m | 24V | עד 120 lm/W | גוון: 3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1092,8 +1092,8 @@
   },
   {
     "id": "qlt-f241445",
-    "name": "F241445",
-    "img": "strips/A41F24210840-1024x486.jpg",
+    "name": "סטריפ LED 8W/m IP20 — F241445",
+    "img": "strips/A41F24210840-1024x486.webp",
     "desc": "הספק: 8W/m | 24V | עד 145 lm/W | 1080-1140 Lm/m | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1111,8 +1111,8 @@
   },
   {
     "id": "qlt-f241811",
-    "name": "F241811",
-    "img": "strips/A41F24210840-1-1024x486.jpg",
+    "name": "סטריפ LED 11W/m IP20 — F241811",
+    "img": "strips/A41F24210840-1-1024x486.webp",
     "desc": "הספק: 11W/m | 24V | עד 145 lm/W | 1070 Lm/m | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1130,8 +1130,8 @@
   },
   {
     "id": "qlt-f241820",
-    "name": "F241820",
-    "img": "strips/A41F241820-1024x683.jpg",
+    "name": "סטריפ LED 11.5W/m IP20 — F241820",
+    "img": "strips/A41F241820-1024x683.webp",
     "desc": "הספק: 11.5W/m | 24V | עד 100 lm/w | 1130-1180 Lm/m | גוון: 3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1149,8 +1149,8 @@
   },
   {
     "id": "qlt-f242108",
-    "name": "F242108",
-    "img": "strips/A41F24210840-1024x486.jpg",
+    "name": "סטריפ LED 4.5W/m IP20 — F242108",
+    "img": "strips/A41F24210840-1024x486.webp",
     "desc": "הספק: 4.5W/m | 24V | עד 145 lm/W | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1168,8 +1168,8 @@
   },
   {
     "id": "qlt-h1260",
-    "name": "H12060",
-    "img": "strips/A41H12120040_IP20_IP65-1024x516.jpg",
+    "name": "סטריפ LED 4.8W/m 12V IP20 — H12060",
+    "img": "strips/A41H12120040_IP20_IP65-1024x516.webp",
     "desc": "הספק: 4.8W/m | 12V | עד 125 lm/W | גוון: 2700K/3000K/4000K/6000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1187,8 +1187,8 @@
   },
   {
     "id": "qlt-h1260a-2",
-    "name": "H12060A",
-    "img": "strips/A41H12120040_IP20_IP65-1024x516.jpg",
+    "name": "סטריפ LED 4.8W/m 12V IP65 — H12060A",
+    "img": "strips/A41H12120040_IP20_IP65-1024x516.webp",
     "desc": "הספק: 4.8W/m | 12V | עד 125 lm/W | גוון: 2700K/3000K/4000K/6000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1206,8 +1206,8 @@
   },
   {
     "id": "qlt-h12120",
-    "name": "H12120",
-    "img": "strips/A41H12120040_IP20_IP65-1024x516.jpg",
+    "name": "סטריפ LED 9.6W/m 12V IP20 — H12120",
+    "img": "strips/A41H12120040_IP20_IP65-1024x516.webp",
     "desc": "הספק: 9.6W/m | 12V | עד 125 lm/W | 1080-1180 Lm/m | גוון: 2700K/3000K/4000K/6000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1225,8 +1225,8 @@
   },
   {
     "id": "qlt-h12120a",
-    "name": "H12120A",
-    "img": "strips/A41H12120040_IP20_IP65-1024x516.jpg",
+    "name": "סטריפ LED 9.6W/m 12V IP65 — H12120A",
+    "img": "strips/A41H12120040_IP20_IP65-1024x516.webp",
     "desc": "הספק: 9.6W/m | 12V | עד 115 lm/W | 1040-1060 Lm/m | גוון: 2700K/3000K/4000K/6000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1244,8 +1244,8 @@
   },
   {
     "id": "qlt-h24070",
-    "name": "H24070",
-    "img": "strips/A41H24252040-1024x683.jpg",
+    "name": "סטריפ LED 4.8W/m IP20 — H24070",
+    "img": "strips/A41H24252040-1024x683.webp",
     "desc": "הספק: 4.8W/m | 24V | עד 180 lm/W | גוון: 2700K/3000K/4000K/6000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1263,8 +1263,8 @@
   },
   {
     "id": "qlt-h24070a",
-    "name": "H24070A",
-    "img": "strips/Led-A41H24210A40-IP65-1024x486.jpg",
+    "name": "סטריפ LED 4.8W/m IP65 — H24070A",
+    "img": "strips/Led-A41H24210A40-IP65-1024x486.webp",
     "desc": "הספק: 4.8W/m | 24V | עד 140 lm/W | גוון: 2400K/2700K/3000K/4000K/6000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1282,8 +1282,8 @@
   },
   {
     "id": "qlt-h24070i",
-    "name": "H24070I",
-    "img": "strips/Led-A41H24210A40-IP65-1024x486.jpg",
+    "name": "סטריפ LED 4.8W/m IP68 — H24070I",
+    "img": "strips/Led-A41H24210A40-IP65-1024x486.webp",
     "desc": "הספק: 4.8W/m | 24V | עד 135 lm/W | גוון: 2700K/3000K/4000K/6000K | IP68",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1301,8 +1301,8 @@
   },
   {
     "id": "qlt-h24140",
-    "name": "H24140",
-    "img": "strips/A41H24252040-1024x683.jpg",
+    "name": "סטריפ LED 9.6W/m IP20 — H24140",
+    "img": "strips/A41H24252040-1024x683.webp",
     "desc": "הספק: 9.6W/m | 24V | עד 180 lm/W | 1250-1380 Lm/m | גוון: 2400K/2700K/3000K/4000K/6000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1320,8 +1320,8 @@
   },
   {
     "id": "qlt-h24140a",
-    "name": "H24140A",
-    "img": "strips/A41H24252040-1024x683.jpg",
+    "name": "סטריפ LED 9.6W/m IP65 — H24140A",
+    "img": "strips/A41H24252040-1024x683.webp",
     "desc": "הספק: 9.6W/m | 24V | עד 140 lm/W | 1130-1290 Lm/m | גוון: 2700K/3000K/4000K/6000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1339,8 +1339,8 @@
   },
   {
     "id": "qlt-h24140i",
-    "name": "H24140I",
-    "img": "strips/A41H24252040-1024x683.jpg",
+    "name": "סטריפ LED 9.6W/m IP68 — H24140I",
+    "img": "strips/A41H24252040-1024x683.webp",
     "desc": "הספק: 9.6W/m | 24V | עד 135 lm/W | 1080-1240 Lm/m | גוון: 2700K/3000K/4000K/6000K | IP68",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1358,8 +1358,8 @@
   },
   {
     "id": "qlt-h24210",
-    "name": "H24210",
-    "img": "strips/A41H24252040-1024x683.jpg",
+    "name": "סטריפ LED 14.4W/m IP20 — H24210",
+    "img": "strips/A41H24252040-1024x683.webp",
     "desc": "הספק: 14.4W/m | 24V | עד 180 lm/W | 1890-2210 Lm/m | גוון: 2700K/3000K/4000K/6000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1377,8 +1377,8 @@
   },
   {
     "id": "qlt-h24210a",
-    "name": "H24210A",
-    "img": "strips/A41H24252040-1024x683.jpg",
+    "name": "סטריפ LED 14.4W/m IP65 — H24210A",
+    "img": "strips/A41H24252040-1024x683.webp",
     "desc": "הספק: 14.4W/m | 24V | עד 140 lm/W | 1610-1890 Lm/m | גוון: 2700K/3000K/4000K/6000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1396,8 +1396,8 @@
   },
   {
     "id": "qlt-h24210i",
-    "name": "H24210I",
-    "img": "strips/A41H24252040-1024x683.jpg",
+    "name": "סטריפ LED 14.4W/m IP68 — H24210I",
+    "img": "strips/A41H24252040-1024x683.webp",
     "desc": "הספק: 14.4W/m | 24V | עד 135 lm/W | 1600-1860 Lm/m | גוון: 2700K/3000K/4000K/6000K | IP68",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1415,8 +1415,8 @@
   },
   {
     "id": "qlt-h24252",
-    "name": "H24252",
-    "img": "strips/A41H24252040-1024x683.jpg",
+    "name": "סטריפ LED 18W/m IP20 — H24252",
+    "img": "strips/A41H24252040-1024x683.webp",
     "desc": "הספק: 18W/m | 24V | עד 180 lm/W | 2320 Lm/m | גוון: 2700K/3000K/4000K/6000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1434,8 +1434,8 @@
   },
   {
     "id": "qlt-h48140-2",
-    "name": "H48140",
-    "img": "strips/A41H24252040-1024x683.jpg",
+    "name": "סטריפ LED 14.4W/m 48V IP20 — H48140",
+    "img": "strips/A41H24252040-1024x683.webp",
     "desc": "הספק: 14.4W/m | 48V | עד 130 lm/W | 1870-1885 Lm/m | גוון: 3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1453,8 +1453,8 @@
   },
   {
     "id": "qlt-h48140a-2",
-    "name": "H48140A",
-    "img": "strips/A41H24252040-1024x683.jpg",
+    "name": "סטריפ LED 14.4W/m 48V IP65 — H48140A",
+    "img": "strips/A41H24252040-1024x683.webp",
     "desc": "הספק: 14.4W/m | 48V | עד 130 lm/W | 1800-1825 Lm/m | גוון: 3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1472,8 +1472,8 @@
   },
   {
     "id": "qlt-hv07250",
-    "name": "HV07250",
-    "img": "strips/HV-1024x683.jpg",
+    "name": "סטריפ LED 14W/m 230V IP65 — HV07250",
+    "img": "strips/HV-1024x683.webp",
     "desc": "הספק: 14W/m | 230V | 1320-1400 Lm/m | גוון: 2700K/3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1491,8 +1491,8 @@
   },
   {
     "id": "qlt-k24120-2",
-    "name": "K24120",
-    "img": "strips/K24200-foto-1024x683.jpg",
+    "name": "סטריפ LED 4.8W/m IP20 — K24120",
+    "img": "strips/K24200-foto-1024x683.webp",
     "desc": "הספק: 4.8W/m | 24V | עד 140 lm/W | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1510,8 +1510,8 @@
   },
   {
     "id": "qlt-k24120a",
-    "name": "K24120A",
-    "img": "strips/K24200-foto-1024x683.jpg",
+    "name": "סטריפ LED 4.8W/m IP65 — K24120A",
+    "img": "strips/K24200-foto-1024x683.webp",
     "desc": "הספק: 4.8W/m | 24V | עד 140 lm/W | גוון: 2700K/3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1529,8 +1529,8 @@
   },
   {
     "id": "qlt-k24160",
-    "name": "K24160",
-    "img": "strips/K24200-foto-1024x683.jpg",
+    "name": "סטריפ LED 9.6W/m IP20 — K24160",
+    "img": "strips/K24200-foto-1024x683.webp",
     "desc": "הספק: 9.6W/m | 24V | עד 140 lm/W | 1200-1240 Lm/m | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1548,8 +1548,8 @@
   },
   {
     "id": "qlt-k24160a",
-    "name": "K24160A",
-    "img": "strips/K24200-foto-1024x683.jpg",
+    "name": "סטריפ LED 9.6W/m IP65 — K24160A",
+    "img": "strips/K24200-foto-1024x683.webp",
     "desc": "הספק: 9.6W/m | 24V | עד 140 lm/W | 1270-1340 Lm/m | גוון: 2700K/3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1567,8 +1567,8 @@
   },
   {
     "id": "qlt-k24200",
-    "name": "K24200",
-    "img": "strips/K24200-foto-1024x683.jpg",
+    "name": "סטריפ LED 16.8W/m IP20 — K24200",
+    "img": "strips/K24200-foto-1024x683.webp",
     "desc": "הספק: 16.8W/m | 24V | עד 140 lm/W | 2150-2100 Lm/m | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1586,8 +1586,8 @@
   },
   {
     "id": "qlt-k24200a",
-    "name": "K24200A",
-    "img": "strips/K24200-foto-1024x683.jpg",
+    "name": "סטריפ LED 16.8W/m IP65 — K24200A",
+    "img": "strips/K24200-foto-1024x683.webp",
     "desc": "הספק: 16.8W/m | 24V | עד 140 lm/W | 2110-2180 Lm/m | גוון: 2700K/3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1605,8 +1605,8 @@
   },
   {
     "id": "qlt-k24240",
-    "name": "K24240",
-    "img": "strips/K24200-foto-1024x683.jpg",
+    "name": "סטריפ LED 22W/m IP20 — K24240",
+    "img": "strips/K24200-foto-1024x683.webp",
     "desc": "הספק: 22W/m | 24V | עד 140 lm/W | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1624,8 +1624,8 @@
   },
   {
     "id": "qlt-k24240a",
-    "name": "K24240A",
-    "img": "strips/K24200-foto-1024x683.jpg",
+    "name": "סטריפ LED 22W/m IP65 — K24240A",
+    "img": "strips/K24200-foto-1024x683.webp",
     "desc": "הספק: 22W/m | 24V | עד 140 lm/W | גוון: 2700K/3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1643,8 +1643,8 @@
   },
   {
     "id": "qlt-n2412b0rg",
-    "name": "N2412B0RG",
-    "img": "strips/A41N2412BRGB-1024x683.jpg",
+    "name": "נאון סטריפ LED 14.4W/m IP67 — N2412B0RG",
+    "img": "strips/A41N2412BRGB-1024x683.webp",
     "desc": "הספק: 14.4W/m | 24V | גוון: RGB | IP67",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1662,8 +1662,8 @@
   },
   {
     "id": "qlt-n2412b1rg",
-    "name": "N2412B1RG",
-    "img": "strips/A41N2412BRGB-1024x683.jpg",
+    "name": "נאון סטריפ LED 8W/m IP67 — N2412B1RG",
+    "img": "strips/A41N2412BRGB-1024x683.webp",
     "desc": "הספק: 8W/m | 24V | 180 Lm/m | גוון: RGB | IP67",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1681,8 +1681,8 @@
   },
   {
     "id": "qlt-n2412f",
-    "name": "N2412F",
-    "img": "strips/NEONF-1024x683.jpg",
+    "name": "נאון סטריפ LED 18W/m IP67 — N2412F",
+    "img": "strips/NEONF-1024x683.webp",
     "desc": "הספק: 18W/m | 24V | גוון: 2700K/3000K/4000K | IP67",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1700,8 +1700,8 @@
   },
   {
     "id": "qlt-n2412l",
-    "name": "N2412L",
-    "img": "strips/NEON-L_NEON4X10-1024x597.jpg",
+    "name": "נאון סטריפ LED 18W/m IP67 — N2412L",
+    "img": "strips/NEON-L_NEON4X10-1024x597.webp",
     "desc": "הספק: 18W/m | 24V | גוון: 2700K/3000K/4000K | IP67",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1719,8 +1719,8 @@
   },
   {
     "id": "qlt-n2414h0rg",
-    "name": "N2414H0RG",
-    "img": "strips/NEON-RGB-nuova-1024x683.jpg",
+    "name": "נאון סטריפ LED 14W/m IP67 — N2414H0RG",
+    "img": "strips/NEON-RGB-nuova-1024x683.webp",
     "desc": "הספק: 14W/m | 24V | גוון: RGB | IP67",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1738,8 +1738,8 @@
   },
   {
     "id": "qlt-n2414h1",
-    "name": "N2414H1",
-    "img": "strips/N2416H-1024x683.jpg",
+    "name": "נאון סטריפ LED 11.52W/m IP67 — N2414H1",
+    "img": "strips/N2416H-1024x683.webp",
     "desc": "הספק: 11.52W/m | 24V | 1010 Lm/m | גוון: 2700K/3000K/4000K | IP67",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1757,8 +1757,8 @@
   },
   {
     "id": "qlt-n2414h1rg",
-    "name": "N2414H1RG",
-    "img": "strips/NEON-RGB-nuova-1024x683.jpg",
+    "name": "נאון סטריפ LED 8W/m IP67 — N2414H1RG",
+    "img": "strips/NEON-RGB-nuova-1024x683.webp",
     "desc": "הספק: 8W/m | 24V | גוון: RGB | IP67",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1776,8 +1776,8 @@
   },
   {
     "id": "qlt-n2416h",
-    "name": "N2416H",
-    "img": "strips/N2416H-1024x683.jpg",
+    "name": "נאון סטריפ LED 14.4W/m IP67 — N2416H",
+    "img": "strips/N2416H-1024x683.webp",
     "desc": "הספק: 14.4W/m | 24V | 1400-1490 Lm/m | גוון: 2700K/3000K/4000K | IP67",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1795,8 +1795,8 @@
   },
   {
     "id": "qlt-n3x8-mini-neon",
-    "name": "N3X8 MINI NEON",
-    "img": "strips/N0308-1024x683.jpg",
+    "name": "נאון סטריפ LED 6W/m IP67 — N3X8 MINI NEON",
+    "img": "strips/N0308-1024x683.webp",
     "desc": "הספק: 6W/m | 24V | 105-120 Lm/m | גוון: 2700K/3000K/4000K | IP67",
     "category": "סטריפ LED",
     "subCategory": "Neon",
@@ -1814,8 +1814,8 @@
   },
   {
     "id": "qlt-n4x10",
-    "name": "N4x10",
-    "img": "strips/N4X10-1024x444.jpg",
+    "name": "נאון סטריפ LED 10W/m IP67 — N4x10",
+    "img": "strips/N4X10-1024x444.webp",
     "desc": "הספק: 10W/m | 24V | גוון: 3000K/4000K | IP67",
     "category": "סטריפ LED",
     "subCategory": "Neon",
@@ -1833,8 +1833,8 @@
   },
   {
     "id": "qlt-n4x10t",
-    "name": "N4X10T",
-    "img": "strips/0410T_6J9A0119.jpg",
+    "name": "נאון סטריפ LED 9.6W/m IP67 — N4X10T",
+    "img": "strips/0410T_6J9A0119.webp",
     "desc": "הספק: 9.6W/m | 24V | גוון: 2700K/3000K/4000K | IP67",
     "category": "סטריפ LED",
     "subCategory": "Neon",
@@ -1852,8 +1852,8 @@
   },
   {
     "id": "qlt-n3x8",
-    "name": "N8X8 NEON 3D",
-    "img": "strips/0808_6J9A0486-1024x683.jpg",
+    "name": "נאון סטריפ LED 6W/m IP67 — N8X8 NEON 3D",
+    "img": "strips/0808_6J9A0486-1024x683.webp",
     "desc": "הספק: 6W/m | 24V | גוון: 2700K/3000K/4000K | IP67",
     "category": "סטריפ LED",
     "subCategory": "Neon",
@@ -1871,8 +1871,8 @@
   },
   {
     "id": "qlt-np2436834",
-    "name": "NP2436834",
-    "img": "strips/A41NP2436834-1024x683.jpg",
+    "name": "סטריפ LED 11W/m IP20 — NP2436834",
+    "img": "strips/A41NP2436834-1024x683.webp",
     "desc": "הספק: 11+11W/m | 24V | עד 100 lm/w | 1060-1120 Lm/m | גוון: 3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1890,8 +1890,8 @@
   },
   {
     "id": "qlt-nt1811-360-strip-neon-led-tube",
-    "name": "NT1811 360° strip NEON LED TUBE",
-    "img": "strips/O23MM_FEN14WR-P5-G1-28AH9x-24V280D-R23L052-1024x683.jpg",
+    "name": "נאון סטריפ LED 11W/m IP65 — NT1811 360° strip NEON LED TUBE",
+    "img": "strips/O23MM_FEN14WR-P5-G1-28AH9x-24V280D-R23L052-1024x683.webp",
     "desc": "הספק: 11W/m | 24V | גוון: 3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "Neon",
@@ -1909,8 +1909,8 @@
   },
   {
     "id": "qlt-nt2314-360-strip-neon-led-tube",
-    "name": "NT2314 360° strip NEON LED TUBE",
-    "img": "strips/O23MM_FEN14WR-P5-G1-28AH9x-24V280D-R23L052-1024x683.jpg",
+    "name": "נאון סטריפ LED 14W/m IP65 — NT2314 360° strip NEON LED TUBE",
+    "img": "strips/O23MM_FEN14WR-P5-G1-28AH9x-24V280D-R23L052-1024x683.webp",
     "desc": "הספק: 14W/m | 24V | 1000 Lm/m | גוון: 3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "Neon",
@@ -1928,8 +1928,8 @@
   },
   {
     "id": "qlt-ntr2416-neon-triangle",
-    "name": "NTR2416 NEON TRIANGLE",
-    "img": "strips/triangle-1-1-1024x576.jpg",
+    "name": "נאון סטריפ LED 5.5W/m IP65 — NTR2416 NEON TRIANGLE",
+    "img": "strips/triangle-1-1-1024x576.webp",
     "desc": "הספק: 5.5W/m | 24V | גוון: 3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "Neon",
@@ -1947,8 +1947,8 @@
   },
   {
     "id": "qlt-st24120rgbw",
-    "name": "S24120RW",
-    "img": "strips/A41S24120RW0-1024x683.jpg",
+    "name": "סטריפ LED RGBW 20W/m IP20 — S24120RW",
+    "img": "strips/A41S24120RW0-1024x683.webp",
     "desc": "הספק: 20W/m | 24V | 1040 Lm/m | גוון: RGBW | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1966,8 +1966,8 @@
   },
   {
     "id": "qlt-s2412arw",
-    "name": "S2412ARW",
-    "img": "strips/A41S24120RW0-1024x683.jpg",
+    "name": "סטריפ LED RGBW 20W/m IP67 — S2412ARW",
+    "img": "strips/A41S24120RW0-1024x683.webp",
     "desc": "הספק: 20W/m | 24V | 1020 Lm/m | גוון: RGBW | IP67",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1985,8 +1985,8 @@
   },
   {
     "id": "qlt-spicob-rgbw",
-    "name": "SPI COB RGB+W",
-    "img": "strips/SPI-COB-RGBW-1024x683.jpg",
+    "name": "סטריפ LED COB 21W/m IP20 — SPI COB RGB+W",
+    "img": "strips/SPI-COB-RGBW-1024x683.webp",
     "desc": "הספק: 21W/m | 24V | גוון: RGBW | IP20",
     "category": "סטריפ LED",
     "subCategory": "RGB",
@@ -2004,8 +2004,8 @@
   },
   {
     "id": "qlt-spi-neon-rgbw",
-    "name": "SPI NEON RGB+W",
-    "img": "strips/SPI-NEON-RGBW-1024x500.jpg",
+    "name": "נאון סטריפ LED 12W/m IP67 — SPI NEON RGB+W",
+    "img": "strips/SPI-NEON-RGBW-1024x500.webp",
     "desc": "הספק: 12W/m | 24V | גוון: RGBW | IP67",
     "category": "סטריפ LED",
     "subCategory": "Neon",
@@ -2023,8 +2023,8 @@
   },
   {
     "id": "qlt-spi-neon-wh",
-    "name": "SPI NEON WH",
-    "img": "strips/SPI-NEON-WHITE-1024x683.jpg",
+    "name": "נאון סטריפ LED 12W/m IP67 — SPI NEON WH",
+    "img": "strips/SPI-NEON-WHITE-1024x683.webp",
     "desc": "הספק: 12W/m | 24V | גוון: 3000K/4000K | IP67",
     "category": "סטריפ LED",
     "subCategory": "Neon",
@@ -2042,8 +2042,8 @@
   },
   {
     "id": "qlt-spi-wh",
-    "name": "SPI WH",
-    "img": "strips/SPI-STANDARD-BIANCA-1024x683.jpg",
+    "name": "סטריפ LED SPI 14.4W/m IP20 — SPI WH",
+    "img": "strips/SPI-STANDARD-BIANCA-1024x683.webp",
     "desc": "הספק: 14.4W/m | 24V | גוון: 3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "SPI",
@@ -2061,8 +2061,8 @@
   },
   {
     "id": "qlt-st241120r",
-    "name": "ST241120R",
-    "img": "strips/A41ST241120R-1024x683.jpg",
+    "name": "סטריפ LED RGB 19.2W/m IP20 — ST241120R",
+    "img": "strips/A41ST241120R-1024x683.webp",
     "desc": "הספק: 19.2W/m | 24V | 1105 Lm/m | גוון: RGB | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -2080,8 +2080,8 @@
   },
   {
     "id": "qlt-st24112ar",
-    "name": "ST24112AR",
-    "img": "strips/A41ST24112AR-1024x683.jpg",
+    "name": "סטריפ LED RGB 19.2W/m IP67 — ST24112AR",
+    "img": "strips/A41ST24112AR-1024x683.webp",
     "desc": "הספק: 19.2W/m | 24V | 1105 Lm/m | גוון: RGB | IP67",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -2099,8 +2099,8 @@
   },
   {
     "id": "qlt-st241200r",
-    "name": "ST241200R",
-    "img": "strips/A41ST241200R-2-1024x683.jpg",
+    "name": "סטריפ LED RGB 14.4W/m IP20 — ST241200R",
+    "img": "strips/A41ST241200R-2-1024x683.webp",
     "desc": "הספק: 14.4W/m | 24V | גוון: RGB | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -2118,8 +2118,8 @@
   },
   {
     "id": "qlt-st24120ar",
-    "name": "ST24120AR",
-    "img": "strips/A41ST24120AR-1024x683.jpg",
+    "name": "סטריפ LED RGB 14.4W/m IP65 — ST24120AR",
+    "img": "strips/A41ST24120AR-1024x683.webp",
     "desc": "הספק: 14.4W/m | 24V | גוון: RGB | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -2137,8 +2137,8 @@
   },
   {
     "id": "qlt-st24560ct",
-    "name": "ST24560CT",
-    "img": "strips/A41ST24560CT-1024x683.jpg",
+    "name": "סטריפ LED 14W/m IP20 — ST24560CT",
+    "img": "strips/A41ST24560CT-1024x683.webp",
     "desc": "הספק: 14W/m | 24V | עד 85 lm/W | 1080-1190 Lm/m | גוון: 2700K-6500K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -2156,8 +2156,8 @@
   },
   {
     "id": "qlt-st2460rgb",
-    "name": "ST24600RG",
-    "img": "strips/A41ST24600RGB-1024x683.jpg",
+    "name": "סטריפ LED RGB 14.4W/m IP20 — ST24600RG",
+    "img": "strips/A41ST24600RGB-1024x683.webp",
     "desc": "הספק: 14.4W/m | 24V | גוון: RGB | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -2175,8 +2175,8 @@
   },
   {
     "id": "qlt-st2460asrgb",
-    "name": "ST2460ASR",
-    "img": "strips/A41ST2460ASR_ISR-1024x683.jpg",
+    "name": "סטריפ LED RGB 14.4W/m IP65 — ST2460ASR",
+    "img": "strips/A41ST2460ASR_ISR-1024x683.webp",
     "desc": "הספק: 14.4W/m | 24V | גוון: RGB | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -2194,8 +2194,8 @@
   },
   {
     "id": "qlt-st2460isrgb",
-    "name": "ST2460ISR",
-    "img": "strips/A41ST2460ASR_ISR-1024x683.jpg",
+    "name": "סטריפ LED RGB 14.4W/m IP68 — ST2460ISR",
+    "img": "strips/A41ST2460ASR_ISR-1024x683.webp",
     "desc": "הספק: 14.4W/m | 24V | גוון: RGB | IP68",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -2214,7 +2214,7 @@
   {
     "id": "qlt-brick060",
     "name": "BRICK060",
-    "img": "strips/BRICK-DOPPI-1024x533.jpg",
+    "img": "strips/BRICK-DOPPI-1024x533.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2234,7 +2234,7 @@
   {
     "id": "qlt-brick100",
     "name": "BRICK100",
-    "img": "strips/BRICK-DOPPI-1024x533.jpg",
+    "img": "strips/BRICK-DOPPI-1024x533.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2254,7 +2254,7 @@
   {
     "id": "qlt-brick150",
     "name": "BRICK150",
-    "img": "strips/BRICK-DOPPI-1024x533.jpg",
+    "img": "strips/BRICK-DOPPI-1024x533.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2274,7 +2274,7 @@
   {
     "id": "qlt-cc23w-multicurrent-on-off",
     "name": "CC23W MULTICURRENT ON/OFF",
-    "img": "strips/CC36-1024x784.jpg",
+    "img": "strips/CC36-1024x784.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2294,7 +2294,7 @@
   {
     "id": "qlt-cc23wd-multicurrent-dali-push-dimmable",
     "name": "CC23WD MULTICURRENT DALI/PUSH DIMMABLE",
-    "img": "strips/CC36-1024x784.jpg",
+    "img": "strips/CC36-1024x784.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2317,7 +2317,7 @@
   {
     "id": "qlt-cc36w-multicurrent-on-off",
     "name": "CC36W MULTICURRENT ON/OFF",
-    "img": "strips/CC36-1024x784.jpg",
+    "img": "strips/CC36-1024x784.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2337,7 +2337,7 @@
   {
     "id": "qlt-cc36wd-multicurrent-dali-push-dimmable",
     "name": "CC36WD MULTICURRENT DALI/PUSH DIMMABLE",
-    "img": "strips/CC36-1024x784.jpg",
+    "img": "strips/CC36-1024x784.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2360,7 +2360,7 @@
   {
     "id": "qlt-cc44w-multicurrent-on-off",
     "name": "CC44W MULTICURRENT ON/OFF",
-    "img": "strips/CC36-1024x784.jpg",
+    "img": "strips/CC36-1024x784.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2380,7 +2380,7 @@
   {
     "id": "qlt-cc44wd-multicurrent-dali-push-dimmable",
     "name": "CC44WD MULTICURRENT DALI/PUSH DIMMABLE",
-    "img": "strips/CC36-1024x784.jpg",
+    "img": "strips/CC36-1024x784.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2403,7 +2403,7 @@
   {
     "id": "qlt-cc60w-multicurrent-on-off",
     "name": "CC60W MULTICURRENT ON/OFF",
-    "img": "strips/CC36-1024x784.jpg",
+    "img": "strips/CC36-1024x784.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2423,7 +2423,7 @@
   {
     "id": "qlt-cc60wd-multicurrent-dali-push-dimmable",
     "name": "CC60WD MULTICURRENT DALI/PUSH/1",
-    "img": "strips/CC36-1024x784.jpg",
+    "img": "strips/CC36-1024x784.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2447,7 +2447,7 @@
   {
     "id": "qlt-ccbxh60-multicurrent",
     "name": "CCBXH60 MULTICURRENT",
-    "img": "strips/CCBXH60D-1024x861.jpeg",
+    "img": "strips/CCBXH60D-1024x861.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2467,7 +2467,7 @@
   {
     "id": "qlt-ccbxh60d-multicurrent-dali-push-dimmable",
     "name": "CCBXH60D MULTICURRENT DALI/PUSH DIMMABLE",
-    "img": "strips/CCBXH60D-1024x861.jpeg",
+    "img": "strips/CCBXH60D-1024x861.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2490,7 +2490,7 @@
   {
     "id": "qlt-ccbxl60-multicurrent-on-off",
     "name": "CCBXL60 MULTICURRENT ON/OFF",
-    "img": "strips/CCBXH60D-1024x861.jpeg",
+    "img": "strips/CCBXH60D-1024x861.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2510,7 +2510,7 @@
   {
     "id": "qlt-ccbxl60d-multicurrent-dali-push-dimmable",
     "name": "CCBXL60D MULTICURRENT DALI/PUSH DIMMABLE",
-    "img": "strips/CCBXH60D-1024x861.jpeg",
+    "img": "strips/CCBXH60D-1024x861.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2533,7 +2533,7 @@
   {
     "id": "qlt-ce017-dimmable",
     "name": "CE017 DIMMABLE",
-    "img": "strips/CE17-1024x699.jpg",
+    "img": "strips/CE17-1024x699.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2557,7 +2557,7 @@
   {
     "id": "qlt-ce030-dimmable",
     "name": "CE030 DIMMABLE",
-    "img": "strips/CE30-1024x640.jpg",
+    "img": "strips/CE30-1024x640.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2581,7 +2581,7 @@
   {
     "id": "qlt-cpl112",
     "name": "CPL112",
-    "img": "strips/CPL206-1024x632.jpg",
+    "img": "strips/CPL206-1024x632.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2601,7 +2601,7 @@
   {
     "id": "qlt-cpl206",
     "name": "CPL206",
-    "img": "strips/CPL206-1024x632.jpg",
+    "img": "strips/CPL206-1024x632.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2621,7 +2621,7 @@
   {
     "id": "qlt-cpl306",
     "name": "CPL306",
-    "img": "strips/CPL206-1024x632.jpg",
+    "img": "strips/CPL206-1024x632.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2641,7 +2641,7 @@
   {
     "id": "qlt-cv23w",
     "name": "CV23W",
-    "img": "strips/CW23W-1-1024x1024.jpg",
+    "img": "strips/CW23W-1-1024x1024.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2661,7 +2661,7 @@
   {
     "id": "qlt-cv36w",
     "name": "CV36W",
-    "img": "strips/CV36W-1024x1024.jpg",
+    "img": "strips/CV36W-1024x1024.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2681,7 +2681,7 @@
   {
     "id": "qlt-cv36wd-dimmable",
     "name": "CV36WD Dimmable",
-    "img": "strips/CV36WD-1024x512.jpg",
+    "img": "strips/CV36WD-1024x512.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2704,7 +2704,7 @@
   {
     "id": "qlt-dali1103",
     "name": "DALI1103 DIMMABLE INTERFACE",
-    "img": "strips/DALI1103-1024x661.jpg",
+    "img": "strips/DALI1103-1024x661.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2729,7 +2729,7 @@
   {
     "id": "qlt-dalicube-48v",
     "name": "DALICUBE 48V DIMMABLE INTERFACE",
-    "img": "strips/DDALIMASTER-1024x925.jpg",
+    "img": "strips/DDALIMASTER-1024x925.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2754,7 +2754,7 @@
   {
     "id": "qlt-dapush2",
     "name": "DAPUSH2 DALI PUSH/TIMER",
-    "img": "strips/DAPUSH2.jpg",
+    "img": "strips/DAPUSH2.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2776,7 +2776,7 @@
   {
     "id": "qlt-dase2-m",
     "name": "DASE2",
-    "img": "strips/sensore-1024x671.jpg",
+    "img": "strips/sensore-1024x671.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2798,7 +2798,7 @@
   {
     "id": "qlt-dase3",
     "name": "DASE3 Sensore PIR Broadcast",
-    "img": "strips/DALI-Sensor-Multimaster-1024x597.jpg",
+    "img": "strips/DALI-Sensor-Multimaster-1024x597.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2820,7 +2820,7 @@
   {
     "id": "qlt-dbox35-dimmable",
     "name": "DBOX35 DIMMABLE",
-    "img": "strips/Dimmer-Box30-led-controlgear-1024x677.jpg",
+    "img": "strips/Dimmer-Box30-led-controlgear-1024x677.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2842,7 +2842,7 @@
   {
     "id": "qlt-ddmaster",
     "name": "DDMASTER",
-    "img": "strips/DDALIMASTER-1024x925.jpg",
+    "img": "strips/DDALIMASTER-1024x925.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2867,7 +2867,7 @@
   {
     "id": "qlt-dimcube-24v",
     "name": "DIMCUBE 24V DIMMABLE INTERFACE",
-    "img": "strips/DDALIMASTER-1024x925.jpg",
+    "img": "strips/DDALIMASTER-1024x925.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2890,7 +2890,7 @@
   {
     "id": "qlt-dimcube-48v",
     "name": "DIMCUBE 48V DIMMABLE INTERFACE",
-    "img": "strips/DDALIMASTER-1024x925.jpg",
+    "img": "strips/DDALIMASTER-1024x925.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2913,7 +2913,7 @@
   {
     "id": "qlt-din080",
     "name": "DIN080 DIN",
-    "img": "strips/DIN80-24-1024x939.jpg",
+    "img": "strips/DIN80-24-1024x939.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2933,7 +2933,7 @@
   {
     "id": "qlt-din160",
     "name": "DIN160 DIN",
-    "img": "strips/DIN80-24-1024x939.jpg",
+    "img": "strips/DIN80-24-1024x939.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2953,7 +2953,7 @@
   {
     "id": "qlt-dmx203",
     "name": "DMX203  INTERFACE",
-    "img": "strips/DMX203.jpg",
+    "img": "strips/DMX203.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2976,7 +2976,7 @@
   {
     "id": "qlt-dmx220",
     "name": "DMX220",
-    "img": "strips/DMX200.jpg",
+    "img": "strips/DMX200.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2999,7 +2999,7 @@
   {
     "id": "qlt-dmxdali-1",
     "name": "DMXDALI 1  INTERFACE",
-    "img": "strips/DMXDALI1.jpg",
+    "img": "strips/DMXDALI1.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3022,7 +3022,7 @@
   {
     "id": "qlt-dpl110e",
     "name": "DPL110E",
-    "img": "strips/DPL110E-led-controlgear-1024x667.jpg",
+    "img": "strips/DPL110E-led-controlgear-1024x667.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3042,7 +3042,7 @@
   {
     "id": "qlt-fb036",
     "name": "FB036",
-    "img": "strips/FB36-1024x876.jpg",
+    "img": "strips/FB36-1024x876.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3062,7 +3062,7 @@
   {
     "id": "qlt-fb060",
     "name": "FB060",
-    "img": "strips/FB60D-1024x730.jpg",
+    "img": "strips/FB60D-1024x730.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3082,7 +3082,7 @@
   {
     "id": "qlt-fb060-0-10v-dimmable",
     "name": "FB060 0",
-    "img": "strips/FB60D-1024x730.jpg",
+    "img": "strips/FB60D-1024x730.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3104,7 +3104,7 @@
   {
     "id": "qlt-fb060-1-10v-dimmable",
     "name": "FB060 1",
-    "img": "strips/FB60D-1024x730.jpg",
+    "img": "strips/FB60D-1024x730.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3126,7 +3126,7 @@
   {
     "id": "qlt-flat112",
     "name": "FLAT112",
-    "img": "strips/FLAT112-1024x642.jpg",
+    "img": "strips/FLAT112-1024x642.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3146,7 +3146,7 @@
   {
     "id": "qlt-flat12",
     "name": "FLAT12",
-    "img": "strips/FLAT112-1024x642.jpg",
+    "img": "strips/FLAT112-1024x642.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3166,7 +3166,7 @@
   {
     "id": "qlt-flat30",
     "name": "FLAT30",
-    "img": "strips/FLAT112-1024x642.jpg",
+    "img": "strips/FLAT112-1024x642.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3186,7 +3186,7 @@
   {
     "id": "qlt-flat306",
     "name": "FLAT306",
-    "img": "strips/FLAT112-1024x642.jpg",
+    "img": "strips/FLAT112-1024x642.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3206,7 +3206,7 @@
   {
     "id": "qlt-flo-24-dimmable",
     "name": "FLO 24 DIMMABLE",
-    "img": "strips/FLO-1024x828.jpg",
+    "img": "strips/FLO-1024x828.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3228,7 +3228,7 @@
   {
     "id": "qlt-idndp010",
     "name": "IDNDP010 DIN",
-    "img": "strips/INTERFACCIA-DIN.jpg",
+    "img": "strips/INTERFACCIA-DIN.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3252,7 +3252,7 @@
   {
     "id": "qlt-idndp110",
     "name": "IDNDP110 DIN",
-    "img": "strips/INTERFACCIA-DIN.jpg",
+    "img": "strips/INTERFACCIA-DIN.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3276,7 +3276,7 @@
   {
     "id": "qlt-lvb250",
     "name": "LVB250",
-    "img": "strips/LV-1024x595.jpg",
+    "img": "strips/LV-1024x595.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3296,7 +3296,7 @@
   {
     "id": "qlt-lvb350",
     "name": "LVB350",
-    "img": "strips/LV-1024x595.jpg",
+    "img": "strips/LV-1024x595.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3316,7 +3316,7 @@
   {
     "id": "qlt-lvb500",
     "name": "LVB500",
-    "img": "strips/LV-1024x595.jpg",
+    "img": "strips/LV-1024x595.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3336,7 +3336,7 @@
   {
     "id": "qlt-lvb700",
     "name": "LVB700",
-    "img": "strips/LV-1024x595.jpg",
+    "img": "strips/LV-1024x595.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3356,7 +3356,7 @@
   {
     "id": "qlt-lvj",
     "name": "LVJ",
-    "img": "strips/LV-bis-1024x633.jpg",
+    "img": "strips/LV-bis-1024x633.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3376,7 +3376,7 @@
   {
     "id": "qlt-lvl",
     "name": "LVL",
-    "img": "strips/LVP-1024x701.jpg",
+    "img": "strips/LVP-1024x701.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3396,7 +3396,7 @@
   {
     "id": "qlt-lvp",
     "name": "LVP",
-    "img": "strips/LVP-1024x701.jpg",
+    "img": "strips/LVP-1024x701.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3416,7 +3416,7 @@
   {
     "id": "qlt-lvq",
     "name": "LVQ",
-    "img": "strips/LVP-1024x701.jpg",
+    "img": "strips/LVP-1024x701.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3436,7 +3436,7 @@
   {
     "id": "qlt-lvx",
     "name": "LVX",
-    "img": "strips/LV-bis-1024x633.jpg",
+    "img": "strips/LV-bis-1024x633.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3456,7 +3456,7 @@
   {
     "id": "qlt-lvxrgb",
     "name": "LVXRGB",
-    "img": "strips/167_LVXRGB-2.jpg",
+    "img": "strips/167_LVXRGB-2.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3476,7 +3476,7 @@
   {
     "id": "qlt-lvy",
     "name": "LVY",
-    "img": "strips/LV-bis-1024x633.jpg",
+    "img": "strips/LV-bis-1024x633.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3496,7 +3496,7 @@
   {
     "id": "qlt-lvz",
     "name": "LVZ",
-    "img": "strips/LV-bis-1024x633.jpg",
+    "img": "strips/LV-bis-1024x633.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3516,7 +3516,7 @@
   {
     "id": "qlt-md100",
     "name": "MD100",
-    "img": "strips/CLA_6410_MD100-1024x658.jpg",
+    "img": "strips/CLA_6410_MD100-1024x658.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3536,7 +3536,7 @@
   {
     "id": "qlt-md48320",
     "name": "MD48320 48V",
-    "img": "strips/YSL320-1024x662.jpg",
+    "img": "strips/YSL320-1024x662.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3556,7 +3556,7 @@
   {
     "id": "qlt-mde030-dimmable",
     "name": "MDE030 DIMMABLE",
-    "img": "strips/MDE30-1024x576.jpg",
+    "img": "strips/MDE30-1024x576.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3580,7 +3580,7 @@
   {
     "id": "qlt-mde060-dimmable",
     "name": "PBT100 DIMMABLE",
-    "img": "strips/PBOX200D2B-1024x736.jpg",
+    "img": "strips/PBOX200D2B-1024x736.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3604,7 +3604,7 @@
   {
     "id": "qlt-mdr45-dimmable",
     "name": "MDR45 DIMMABLE",
-    "img": "strips/MDR45-1-1024x571.jpg",
+    "img": "strips/MDR45-1-1024x571.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3627,7 +3627,7 @@
   {
     "id": "qlt-mdr60-dimmable",
     "name": "MDR60 DIMMABLE",
-    "img": "strips/MDR45-1-1024x571.jpg",
+    "img": "strips/MDR45-1-1024x571.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3650,7 +3650,7 @@
   {
     "id": "qlt-mini-track-m18",
     "name": "MINI TRACK M18",
-    "img": "strips/MINITRACK_foto-1024x230.jpg",
+    "img": "strips/MINITRACK_foto-1024x230.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3672,7 +3672,7 @@
   {
     "id": "qlt-mini-track-m18d",
     "name": "MINI TRACK M18D",
-    "img": "strips/MINITRACK_foto-1024x230.jpg",
+    "img": "strips/MINITRACK_foto-1024x230.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3694,7 +3694,7 @@
   {
     "id": "qlt-mini-track-m33",
     "name": "MINI TRACK M33",
-    "img": "strips/MINITRACK_foto-1024x230.jpg",
+    "img": "strips/MINITRACK_foto-1024x230.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3716,7 +3716,7 @@
   {
     "id": "qlt-mininice3",
     "name": "MININICE3",
-    "img": "strips/MN1-1024x806.jpg",
+    "img": "strips/MN1-1024x806.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3736,7 +3736,7 @@
   {
     "id": "qlt-mininice4",
     "name": "MININICE4",
-    "img": "strips/MN1-1024x806.jpg",
+    "img": "strips/MN1-1024x806.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3756,7 +3756,7 @@
   {
     "id": "qlt-mininice5",
     "name": "MININICE5",
-    "img": "strips/MN1-1024x806.jpg",
+    "img": "strips/MN1-1024x806.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3776,7 +3776,7 @@
   {
     "id": "qlt-mip054",
     "name": "MIP054",
-    "img": "strips/MIP160-1024x833.jpg",
+    "img": "strips/MIP160-1024x833.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3796,7 +3796,7 @@
   {
     "id": "qlt-mip070",
     "name": "MIP070",
-    "img": "strips/MIP160-1024x833.jpg",
+    "img": "strips/MIP160-1024x833.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3816,7 +3816,7 @@
   {
     "id": "qlt-mip110",
     "name": "MIP110",
-    "img": "strips/MIP160-1024x833.jpg",
+    "img": "strips/MIP160-1024x833.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3836,7 +3836,7 @@
   {
     "id": "qlt-mip160",
     "name": "MIP160",
-    "img": "strips/MIP160-1024x833.jpg",
+    "img": "strips/MIP160-1024x833.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3856,7 +3856,7 @@
   {
     "id": "qlt-mpi1",
     "name": "MPI1",
-    "img": "strips/MPI-1024x775.jpg",
+    "img": "strips/MPI-1024x775.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3876,7 +3876,7 @@
   {
     "id": "qlt-mpi3",
     "name": "MPI3",
-    "img": "strips/MPI-1024x775.jpg",
+    "img": "strips/MPI-1024x775.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3896,7 +3896,7 @@
   {
     "id": "qlt-mpi4",
     "name": "MPI4",
-    "img": "strips/MPI-1024x775.jpg",
+    "img": "strips/MPI-1024x775.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3916,7 +3916,7 @@
   {
     "id": "qlt-mpl1",
     "name": "MPL1",
-    "img": "strips/MPL3-1024x819.jpg",
+    "img": "strips/MPL3-1024x819.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3936,7 +3936,7 @@
   {
     "id": "qlt-mpl3",
     "name": "MPL3",
-    "img": "strips/MPL3-1024x819.jpg",
+    "img": "strips/MPL3-1024x819.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3956,7 +3956,7 @@
   {
     "id": "qlt-mpl4",
     "name": "MPL4",
-    "img": "strips/MPL3-1024x819.jpg",
+    "img": "strips/MPL3-1024x819.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3976,7 +3976,7 @@
   {
     "id": "qlt-mpl5",
     "name": "MPL5",
-    "img": "strips/MPL3-1024x819.jpg",
+    "img": "strips/MPL3-1024x819.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3996,7 +3996,7 @@
   {
     "id": "qlt-mt30",
     "name": "MT30 LED",
-    "img": "strips/MT30-1024x721.jpg",
+    "img": "strips/MT30-1024x721.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4016,7 +4016,7 @@
   {
     "id": "qlt-nice110",
     "name": "NICE110",
-    "img": "strips/NICE110-led-controgear-1024x755.jpg",
+    "img": "strips/NICE110-led-controgear-1024x755.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4036,7 +4036,7 @@
   {
     "id": "qlt-nice206",
     "name": "NICE206",
-    "img": "strips/NICE110-led-controgear-1024x755.jpg",
+    "img": "strips/NICE110-led-controgear-1024x755.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4056,7 +4056,7 @@
   {
     "id": "qlt-nice303",
     "name": "NICE303",
-    "img": "strips/NICE110-led-controgear-1024x755.jpg",
+    "img": "strips/NICE110-led-controgear-1024x755.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4076,7 +4076,7 @@
   {
     "id": "qlt-nip109",
     "name": "NIP109",
-    "img": "strips/CLA_6413_NIP103-1024x869.jpg",
+    "img": "strips/CLA_6413_NIP103-1024x869.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4096,7 +4096,7 @@
   {
     "id": "qlt-nip206",
     "name": "NIP206",
-    "img": "strips/CLA_6413_NIP103-1024x869.jpg",
+    "img": "strips/CLA_6413_NIP103-1024x869.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4116,7 +4116,7 @@
   {
     "id": "qlt-nip303",
     "name": "NIP303",
-    "img": "strips/CLA_6413_NIP103-1024x869.jpg",
+    "img": "strips/CLA_6413_NIP103-1024x869.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4136,7 +4136,7 @@
   {
     "id": "qlt-pbf060",
     "name": "PBF060",
-    "img": "strips/PBF100-1024x537.jpg",
+    "img": "strips/PBF100-1024x537.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4156,7 +4156,7 @@
   {
     "id": "qlt-pbf060d-dimmable",
     "name": "PBF060D DIMMABLE",
-    "img": "strips/PBF100D-1024x537.jpg",
+    "img": "strips/PBF100D-1024x537.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4179,7 +4179,7 @@
   {
     "id": "qlt-pbf075",
     "name": "PBF075",
-    "img": "strips/PBF100-1024x537.jpg",
+    "img": "strips/PBF100-1024x537.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4199,7 +4199,7 @@
   {
     "id": "qlt-pbf075d-dimmable",
     "name": "PBF075D DIMMABLE",
-    "img": "strips/PBF100D-1024x537.jpg",
+    "img": "strips/PBF100D-1024x537.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4222,7 +4222,7 @@
   {
     "id": "qlt-pbf100",
     "name": "PBF100",
-    "img": "strips/PBF100-1024x537.jpg",
+    "img": "strips/PBF100-1024x537.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4242,7 +4242,7 @@
   {
     "id": "qlt-pbf100d-dimmable",
     "name": "PBF100D DIMMABLE",
-    "img": "strips/PBF100D-1024x537.jpg",
+    "img": "strips/PBF100D-1024x537.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4265,7 +4265,7 @@
   {
     "id": "qlt-pbox150",
     "name": "PBOX150",
-    "img": "strips/CLA_6407_PBOX200-1024x673.jpg",
+    "img": "strips/CLA_6407_PBOX200-1024x673.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4285,7 +4285,7 @@
   {
     "id": "qlt-pbox35",
     "name": "PBOX35",
-    "img": "strips/PBOX35-1024x820.jpg",
+    "img": "strips/PBOX35-1024x820.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4305,7 +4305,7 @@
   {
     "id": "qlt-pbs060",
     "name": "PBS060",
-    "img": "strips/PBS_foto-1024x625.jpg",
+    "img": "strips/PBS_foto-1024x625.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4325,7 +4325,7 @@
   {
     "id": "qlt-pbs075",
     "name": "PBS075",
-    "img": "strips/PBS_foto-1024x625.jpg",
+    "img": "strips/PBS_foto-1024x625.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4345,7 +4345,7 @@
   {
     "id": "qlt-pbs075d-dimmable",
     "name": "PBS075D DIMMABLE",
-    "img": "strips/PBS_foto-1024x625.jpg",
+    "img": "strips/PBS_foto-1024x625.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4370,7 +4370,7 @@
   {
     "id": "qlt-pbs100",
     "name": "PBS100",
-    "img": "strips/PBS_foto-1024x625.jpg",
+    "img": "strips/PBS_foto-1024x625.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4390,7 +4390,7 @@
   {
     "id": "qlt-pbs100d-dimmable",
     "name": "PBS100D DIMMABLE",
-    "img": "strips/PBS_foto-1024x625.jpg",
+    "img": "strips/PBS_foto-1024x625.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4415,7 +4415,7 @@
   {
     "id": "qlt-pbt150-dimmable",
     "name": "PBT150 DIMMABLE",
-    "img": "strips/PBOX200D2B-1024x736.jpg",
+    "img": "strips/PBOX200D2B-1024x736.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4439,7 +4439,7 @@
   {
     "id": "qlt-pbt200-dimmable",
     "name": "PBT200 DIMMABLE",
-    "img": "strips/PBT200_1-961x1024.jpeg",
+    "img": "strips/PBT200_1-961x1024.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4463,7 +4463,7 @@
   {
     "id": "qlt-pbx100",
     "name": "PBX100",
-    "img": "strips/PBX100D-1024x736.jpg",
+    "img": "strips/PBX100D-1024x736.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4483,7 +4483,7 @@
   {
     "id": "qlt-pbx100d-dimmable",
     "name": "PBX100D DIMMABLE",
-    "img": "strips/PBX100D-1024x736.jpg",
+    "img": "strips/PBX100D-1024x736.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4508,7 +4508,7 @@
   {
     "id": "qlt-pbx100tw",
     "name": "PBX100TW",
-    "img": "strips/PBX100D-1024x736.jpg",
+    "img": "strips/PBX100D-1024x736.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4531,7 +4531,7 @@
   {
     "id": "qlt-pbx10d48-dimmable",
     "name": "PBX10D48 DIMMABLE",
-    "img": "strips/PBX100D-1024x736.jpg",
+    "img": "strips/PBX100D-1024x736.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4556,7 +4556,7 @@
   {
     "id": "qlt-pbx150",
     "name": "PBX150",
-    "img": "strips/PBX100D-1024x736.jpg",
+    "img": "strips/PBX100D-1024x736.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4576,7 +4576,7 @@
   {
     "id": "qlt-pbx15048",
     "name": "PBX15048",
-    "img": "strips/PBX100D-1024x736.jpg",
+    "img": "strips/PBX100D-1024x736.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4596,7 +4596,7 @@
   {
     "id": "qlt-pbx150d-dimmable",
     "name": "PBX150D DIMMABLE",
-    "img": "strips/PBX100D-1024x736.jpg",
+    "img": "strips/PBX100D-1024x736.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4621,7 +4621,7 @@
   {
     "id": "qlt-pbx15d48-dimmable",
     "name": "PBX15D48 DIMMABLE",
-    "img": "strips/PBX100D-1024x736.jpg",
+    "img": "strips/PBX100D-1024x736.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4646,7 +4646,7 @@
   {
     "id": "qlt-pbx200",
     "name": "PBX200",
-    "img": "strips/PBX100D-1024x736.jpg",
+    "img": "strips/PBX100D-1024x736.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4666,7 +4666,7 @@
   {
     "id": "qlt-pbx20048",
     "name": "PBX20048",
-    "img": "strips/PBX100D-1024x736.jpg",
+    "img": "strips/PBX100D-1024x736.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4686,7 +4686,7 @@
   {
     "id": "qlt-pbx7524d-dimmable",
     "name": "PBX7524D DIMMABLE",
-    "img": "strips/PBX100D-1024x736.jpg",
+    "img": "strips/PBX100D-1024x736.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4711,7 +4711,7 @@
   {
     "id": "qlt-pd312",
     "name": "PD312",
-    "img": "strips/PD-309-led-controlgear-1024x619.jpg",
+    "img": "strips/PD-309-led-controlgear-1024x619.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4731,7 +4731,7 @@
   {
     "id": "qlt-pdcvd-dimmable",
     "name": "PDCVD DIMMABLE",
-    "img": "strips/PD-CVD-1024x698.jpg",
+    "img": "strips/PD-CVD-1024x698.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4754,7 +4754,7 @@
   {
     "id": "qlt-pdlu",
     "name": "PDLU RF INTERFACE",
-    "img": "strips/PDLU-1024x600.jpg",
+    "img": "strips/PDLU-1024x600.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4776,7 +4776,7 @@
   {
     "id": "qlt-pdlusm",
     "name": "PDLUSM SMART/RF INTERFACE",
-    "img": "strips/PDLU-1024x600.jpg",
+    "img": "strips/PDLU-1024x600.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4799,7 +4799,7 @@
   {
     "id": "qlt-pdmc-multicurrent",
     "name": "PDMC MULTICURRENT",
-    "img": "strips/PDMC-1024x653.jpg",
+    "img": "strips/PDMC-1024x653.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4819,7 +4819,7 @@
   {
     "id": "qlt-pdv24",
     "name": "PDV24",
-    "img": "strips/PDV12-led-controlgear-1024x619.jpg",
+    "img": "strips/PDV12-led-controlgear-1024x619.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4839,7 +4839,7 @@
   {
     "id": "qlt-ple060-dimmable",
     "name": "PLE060 DIMMABLE",
-    "img": "strips/PLV150D-24V-150W-IP65-1024x467.jpg",
+    "img": "strips/PLV150D-24V-150W-IP65-1024x467.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4863,7 +4863,7 @@
   {
     "id": "qlt-plj106",
     "name": "PLJ106",
-    "img": "strips/PLJ110-1024x895.jpg",
+    "img": "strips/PLJ110-1024x895.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4883,7 +4883,7 @@
   {
     "id": "qlt-plj110",
     "name": "PLJ110",
-    "img": "strips/PLJ110-1024x895.jpg",
+    "img": "strips/PLJ110-1024x895.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4903,7 +4903,7 @@
   {
     "id": "qlt-plj204",
     "name": "PLJ204",
-    "img": "strips/PLJ110-1024x895.jpg",
+    "img": "strips/PLJ110-1024x895.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4923,7 +4923,7 @@
   {
     "id": "qlt-plj303",
     "name": "PLJ303",
-    "img": "strips/PLJ110-1024x895.jpg",
+    "img": "strips/PLJ110-1024x895.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4943,7 +4943,7 @@
   {
     "id": "qlt-plk110z",
     "name": "PLK110Z",
-    "img": "strips/PLK110Z-1024x636.jpg",
+    "img": "strips/PLK110Z-1024x636.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4963,7 +4963,7 @@
   {
     "id": "qlt-plk112",
     "name": "PLK112",
-    "img": "strips/PLK110Z-1024x636.jpg",
+    "img": "strips/PLK110Z-1024x636.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4983,7 +4983,7 @@
   {
     "id": "qlt-plk113",
     "name": "PLK113",
-    "img": "strips/PLK110Z-1024x636.jpg",
+    "img": "strips/PLK110Z-1024x636.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5003,7 +5003,7 @@
   {
     "id": "qlt-plk12",
     "name": "PLK12",
-    "img": "strips/PLK110Z-1024x636.jpg",
+    "img": "strips/PLK110Z-1024x636.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5023,7 +5023,7 @@
   {
     "id": "qlt-plk185",
     "name": "PLK185",
-    "img": "strips/PLK110Z-1024x636.jpg",
+    "img": "strips/PLK110Z-1024x636.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5043,7 +5043,7 @@
   {
     "id": "qlt-plk205",
     "name": "PLK205",
-    "img": "strips/PLK110Z-1024x636.jpg",
+    "img": "strips/PLK110Z-1024x636.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5063,7 +5063,7 @@
   {
     "id": "qlt-plk300",
     "name": "PLK300",
-    "img": "strips/PLK110Z-1024x636.jpg",
+    "img": "strips/PLK110Z-1024x636.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5083,7 +5083,7 @@
   {
     "id": "qlt-plk306",
     "name": "PLK306",
-    "img": "strips/PLK110Z-1024x636.jpg",
+    "img": "strips/PLK110Z-1024x636.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5103,7 +5103,7 @@
   {
     "id": "qlt-plke109-dimmable",
     "name": "PLKE109 DIMMABLE",
-    "img": "strips/PLKE-109-1024x599.jpg",
+    "img": "strips/PLKE-109-1024x599.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5127,7 +5127,7 @@
   {
     "id": "qlt-plke109-277-dimmable",
     "name": "PLKE109",
-    "img": "strips/PLKE-109-1024x599.jpg",
+    "img": "strips/PLKE-109-1024x599.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5151,7 +5151,7 @@
   {
     "id": "qlt-plke109-278-dimmable",
     "name": "PLKE109",
-    "img": "strips/PLKE-109-1024x599.jpg",
+    "img": "strips/PLKE-109-1024x599.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5175,7 +5175,7 @@
   {
     "id": "qlt-plke109-279-dimmable",
     "name": "PLKE109",
-    "img": "strips/PLKE-109-1024x599.jpg",
+    "img": "strips/PLKE-109-1024x599.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5199,7 +5199,7 @@
   {
     "id": "qlt-plke109-280-dimmable",
     "name": "PLKE109",
-    "img": "strips/PLKE-109-1024x599.jpg",
+    "img": "strips/PLKE-109-1024x599.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5223,7 +5223,7 @@
   {
     "id": "qlt-plke109-283-dimmable",
     "name": "PLKE109",
-    "img": "strips/PLKE-109-1024x599.jpg",
+    "img": "strips/PLKE-109-1024x599.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5247,7 +5247,7 @@
   {
     "id": "qlt-plke205-dimmable",
     "name": "PLKE205 DIMMABLE",
-    "img": "strips/PLKE-109-1024x599.jpg",
+    "img": "strips/PLKE-109-1024x599.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5271,7 +5271,7 @@
   {
     "id": "qlt-plke24-dimmable",
     "name": "PLKE24 DIMMABLE",
-    "img": "strips/PLKE-109-1024x599.jpg",
+    "img": "strips/PLKE-109-1024x599.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5295,7 +5295,7 @@
   {
     "id": "qlt-plke306-dimmable",
     "name": "PLKE306 DIMMABLE",
-    "img": "strips/PLKE-109-1024x599.jpg",
+    "img": "strips/PLKE-109-1024x599.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5319,7 +5319,7 @@
   {
     "id": "qlt-plp105n",
     "name": "PLP105N",
-    "img": "strips/PLP-1024x504.jpg",
+    "img": "strips/PLP-1024x504.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5339,7 +5339,7 @@
   {
     "id": "qlt-plp105t",
     "name": "PLP105T",
-    "img": "strips/PLP106-1024x532.jpg",
+    "img": "strips/PLP106-1024x532.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5359,7 +5359,7 @@
   {
     "id": "qlt-plp106n",
     "name": "PLP106N",
-    "img": "strips/PLP-1024x504.jpg",
+    "img": "strips/PLP-1024x504.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5379,7 +5379,7 @@
   {
     "id": "qlt-plp106t",
     "name": "PLP106T",
-    "img": "strips/PLP106-1024x532.jpg",
+    "img": "strips/PLP106-1024x532.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5399,7 +5399,7 @@
   {
     "id": "qlt-plp112n",
     "name": "PLP112N",
-    "img": "strips/PLP-1024x504.jpg",
+    "img": "strips/PLP-1024x504.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5419,7 +5419,7 @@
   {
     "id": "qlt-plp112t",
     "name": "PLP112T",
-    "img": "strips/PLP106-1024x532.jpg",
+    "img": "strips/PLP106-1024x532.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5439,7 +5439,7 @@
   {
     "id": "qlt-plp12n",
     "name": "PLP12N",
-    "img": "strips/PLP-1024x504.jpg",
+    "img": "strips/PLP-1024x504.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5459,7 +5459,7 @@
   {
     "id": "qlt-plp12t",
     "name": "PLP12T",
-    "img": "strips/PLP106-1024x532.jpg",
+    "img": "strips/PLP106-1024x532.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5479,7 +5479,7 @@
   {
     "id": "qlt-plp303n",
     "name": "PLP303N",
-    "img": "strips/PLP-1024x504.jpg",
+    "img": "strips/PLP-1024x504.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5499,7 +5499,7 @@
   {
     "id": "qlt-plp303t",
     "name": "PLP303T",
-    "img": "strips/PLP106-1024x532.jpg",
+    "img": "strips/PLP106-1024x532.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5519,7 +5519,7 @@
   {
     "id": "qlt-plp306n",
     "name": "PLP306N",
-    "img": "strips/PLP-1024x504.jpg",
+    "img": "strips/PLP-1024x504.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5539,7 +5539,7 @@
   {
     "id": "qlt-plp306t",
     "name": "PLP306T",
-    "img": "strips/PLP106-1024x532.jpg",
+    "img": "strips/PLP106-1024x532.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5559,7 +5559,7 @@
   {
     "id": "qlt-plr106",
     "name": "PLR106",
-    "img": "strips/PLR110-1024x797.jpg",
+    "img": "strips/PLR110-1024x797.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5579,7 +5579,7 @@
   {
     "id": "qlt-plr110",
     "name": "PLR110",
-    "img": "strips/PLR110-1024x797.jpg",
+    "img": "strips/PLR110-1024x797.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5599,7 +5599,7 @@
   {
     "id": "qlt-plr204",
     "name": "PLR204",
-    "img": "strips/PLR110-1024x797.jpg",
+    "img": "strips/PLR110-1024x797.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5619,7 +5619,7 @@
   {
     "id": "qlt-plr303",
     "name": "PLR303",
-    "img": "strips/PLR110-1024x797.jpg",
+    "img": "strips/PLR110-1024x797.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5639,7 +5639,7 @@
   {
     "id": "qlt-plv050",
     "name": "PLV050",
-    "img": "strips/PLV40-24V-40W-IP65-1024x670.jpg",
+    "img": "strips/PLV40-24V-40W-IP65-1024x670.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5659,7 +5659,7 @@
   {
     "id": "qlt-plv100",
     "name": "PLV100",
-    "img": "strips/PLV100-24V-100W-1024x580.jpg",
+    "img": "strips/PLV100-24V-100W-1024x580.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5679,7 +5679,7 @@
   {
     "id": "qlt-plv10048",
     "name": "PLV10048",
-    "img": "strips/PLV100-24V-100W-1024x580.jpg",
+    "img": "strips/PLV100-24V-100W-1024x580.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5699,7 +5699,7 @@
   {
     "id": "qlt-plv150",
     "name": "PLV150",
-    "img": "strips/PLV100-24V-100W-1024x580.jpg",
+    "img": "strips/PLV100-24V-100W-1024x580.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5719,7 +5719,7 @@
   {
     "id": "qlt-plv15048",
     "name": "PLV15048",
-    "img": "strips/PLV100-24V-100W-1024x580.jpg",
+    "img": "strips/PLV100-24V-100W-1024x580.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5739,7 +5739,7 @@
   {
     "id": "qlt-plv300",
     "name": "PLV300",
-    "img": "strips/PLV100-24V-100W-1024x580.jpg",
+    "img": "strips/PLV100-24V-100W-1024x580.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5759,7 +5759,7 @@
   {
     "id": "qlt-plv300d-dali-push",
     "name": "PLV300D  DALI/PUSH",
-    "img": "strips/PLV100-24V-100W-1024x580.jpg",
+    "img": "strips/PLV100-24V-100W-1024x580.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5782,7 +5782,7 @@
   {
     "id": "qlt-plz140",
     "name": "PLZ140",
-    "img": "strips/PLZ350-1024x597.jpg",
+    "img": "strips/PLZ350-1024x597.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5802,7 +5802,7 @@
   {
     "id": "qlt-plz350",
     "name": "PLZ350",
-    "img": "strips/PLZ350-1024x597.jpg",
+    "img": "strips/PLZ350-1024x597.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5822,7 +5822,7 @@
   {
     "id": "qlt-plz400",
     "name": "PLZ400",
-    "img": "strips/PLZ350-1024x597.jpg",
+    "img": "strips/PLZ350-1024x597.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5842,7 +5842,7 @@
   {
     "id": "qlt-plz500",
     "name": "PLZ500",
-    "img": "strips/PLZ350-1024x597.jpg",
+    "img": "strips/PLZ350-1024x597.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5862,7 +5862,7 @@
   {
     "id": "qlt-plz640",
     "name": "PLZ640",
-    "img": "strips/PLZ350-1024x597.jpg",
+    "img": "strips/PLZ350-1024x597.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5882,7 +5882,7 @@
   {
     "id": "qlt-prl12",
     "name": "PRL12",
-    "img": "strips/PRL112-1024x504.jpg",
+    "img": "strips/PRL112-1024x504.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5902,7 +5902,7 @@
   {
     "id": "qlt-prl185",
     "name": "PRL185",
-    "img": "strips/PRL112-1024x504.jpg",
+    "img": "strips/PRL112-1024x504.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5922,7 +5922,7 @@
   {
     "id": "qlt-prl300",
     "name": "PRL300",
-    "img": "strips/PRL112-1024x504.jpg",
+    "img": "strips/PRL112-1024x504.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5942,7 +5942,7 @@
   {
     "id": "qlt-ptemc24-multicurrent",
     "name": "PTEMC24 MULTICURRENT DIMMABLE",
-    "img": "strips/PTEMC112-1024x522.jpg",
+    "img": "strips/PTEMC112-1024x522.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5966,7 +5966,7 @@
   {
     "id": "qlt-pul42bb-multicurrent",
     "name": "PUL42BB MULTICURRENT DIMMABLE",
-    "img": "strips/CLA_6419_PUL042-1024x816.jpg",
+    "img": "strips/CLA_6419_PUL042-1024x816.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5990,7 +5990,7 @@
   {
     "id": "qlt-pul42be-multicurrent",
     "name": "PUL42BE MULTICURRENT DIMMABLE",
-    "img": "strips/CLA_6419_PUL042-1024x816.jpg",
+    "img": "strips/CLA_6419_PUL042-1024x816.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6013,7 +6013,7 @@
   {
     "id": "qlt-pul60ab-multicurrent",
     "name": "PUL60AB MULTICURRENT DIMMABLE",
-    "img": "strips/CLA_6419_PUL042-1024x816.jpg",
+    "img": "strips/CLA_6419_PUL042-1024x816.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6037,7 +6037,7 @@
   {
     "id": "qlt-pul60ae-multicurrent",
     "name": "PUL60AE MULTICURRENT DIMMABLE",
-    "img": "strips/CLA_6419_PUL042-1024x816.jpg",
+    "img": "strips/CLA_6419_PUL042-1024x816.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6060,7 +6060,7 @@
   {
     "id": "qlt-pwm-repeater-4channels",
     "name": "PWM REPEATER 4channels",
-    "img": "strips/PWMR-1024x659.jpg",
+    "img": "strips/PWMR-1024x659.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6080,7 +6080,7 @@
   {
     "id": "qlt-qbox-multicurrent",
     "name": "QBOX MULTICURRENT",
-    "img": "strips/QBOXD2-1-1024x692.jpg",
+    "img": "strips/QBOXD2-1-1024x692.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6100,7 +6100,7 @@
   {
     "id": "qlt-qbox110-multicurrent",
     "name": "QBOX110 MULTICURRENT 1",
-    "img": "strips/QBOXD2-1-1024x692.jpg",
+    "img": "strips/QBOXD2-1-1024x692.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6122,7 +6122,7 @@
   {
     "id": "qlt-rc309",
     "name": "RC309",
-    "img": "strips/RC312-1024x868.jpg",
+    "img": "strips/RC312-1024x868.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6142,7 +6142,7 @@
   {
     "id": "qlt-rc312",
     "name": "RC312",
-    "img": "strips/RC312-1024x868.jpg",
+    "img": "strips/RC312-1024x868.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6162,7 +6162,7 @@
   {
     "id": "qlt-rc315",
     "name": "RC315",
-    "img": "strips/RC312-1024x868.jpg",
+    "img": "strips/RC312-1024x868.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6182,7 +6182,7 @@
   {
     "id": "qlt-rcc-tw-cc",
     "name": "RCC TW CC",
-    "img": "strips/RGBOX412-75W-1024x582.jpg",
+    "img": "strips/RGBOX412-75W-1024x582.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6205,7 +6205,7 @@
   {
     "id": "qlt-rcdimct",
     "name": "RCDIMCT RF TRANSMITTER",
-    "img": "strips/RCDIMCT-1024x671.jpg",
+    "img": "strips/RCDIMCT-1024x671.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6227,7 +6227,7 @@
   {
     "id": "qlt-rcrgbw",
     "name": "RCRGBW RF TRANSMITTER",
-    "img": "strips/RCRGBW-1024x802.jpg",
+    "img": "strips/RCRGBW-1024x802.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6249,7 +6249,7 @@
   {
     "id": "qlt-rgbox35",
     "name": "RGBOX35 RGB",
-    "img": "strips/RGBOX35-1024x965.jpg",
+    "img": "strips/RGBOX35-1024x965.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6271,7 +6271,7 @@
   {
     "id": "qlt-rgbox412",
     "name": "RGBOX412 RGB",
-    "img": "strips/RGBOX412-75W-1024x582.jpg",
+    "img": "strips/RGBOX412-75W-1024x582.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6295,7 +6295,7 @@
   {
     "id": "qlt-rgbox435",
     "name": "RGBOX435 RGB+W CC",
-    "img": "strips/RGBOX412-75W-1024x582.jpg",
+    "img": "strips/RGBOX412-75W-1024x582.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6319,7 +6319,7 @@
   {
     "id": "qlt-rgbox45",
     "name": "RGBOX45 RGB",
-    "img": "strips/162_RGBox-45-2.jpg",
+    "img": "strips/162_RGBox-45-2.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6342,7 +6342,7 @@
   {
     "id": "qlt-rgbox55",
     "name": "RGBOX55 RGB",
-    "img": "strips/162_RGBox-45-2.jpg",
+    "img": "strips/162_RGBox-45-2.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6365,7 +6365,7 @@
   {
     "id": "qlt-rlz140",
     "name": "RLZ140",
-    "img": "strips/RLZ350-1024x384.jpg",
+    "img": "strips/RLZ350-1024x384.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6385,7 +6385,7 @@
   {
     "id": "qlt-rlz350",
     "name": "RLZ350",
-    "img": "strips/RLZ350-1024x384.jpg",
+    "img": "strips/RLZ350-1024x384.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6405,7 +6405,7 @@
   {
     "id": "qlt-rlz400",
     "name": "RLZ400",
-    "img": "strips/RLZ350-1024x384.jpg",
+    "img": "strips/RLZ350-1024x384.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6425,7 +6425,7 @@
   {
     "id": "qlt-rlz500",
     "name": "RLZ500",
-    "img": "strips/RLZ350-1024x384.jpg",
+    "img": "strips/RLZ350-1024x384.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6445,7 +6445,7 @@
   {
     "id": "qlt-rlz640",
     "name": "RLZ640",
-    "img": "strips/RLZ350-1024x384.jpg",
+    "img": "strips/RLZ350-1024x384.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6465,7 +6465,7 @@
   {
     "id": "qlt-rp309",
     "name": "RP309",
-    "img": "strips/RP-830x1024.jpg",
+    "img": "strips/RP-830x1024.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6485,7 +6485,7 @@
   {
     "id": "qlt-rp312",
     "name": "RP312",
-    "img": "strips/RP-830x1024.jpg",
+    "img": "strips/RP-830x1024.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6505,7 +6505,7 @@
   {
     "id": "qlt-rp315",
     "name": "RP315",
-    "img": "strips/RP-830x1024.jpg",
+    "img": "strips/RP-830x1024.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6525,7 +6525,7 @@
   {
     "id": "qlt-sc42-track-cc",
     "name": "SC42 TRACK  CC  ON/OFF",
-    "img": "strips/SC28_42.jpg",
+    "img": "strips/SC28_42.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6545,7 +6545,7 @@
   {
     "id": "qlt-sl24045",
     "name": "SL24045 Slim 24V",
-    "img": "strips/SL2475-1024x412.jpg",
+    "img": "strips/SL2475-1024x412.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6565,7 +6565,7 @@
   {
     "id": "qlt-sl24075",
     "name": "SL24075 Slim 24V",
-    "img": "strips/SL2475-1024x412.jpg",
+    "img": "strips/SL2475-1024x412.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6585,7 +6585,7 @@
   {
     "id": "qlt-sl24100",
     "name": "SL24100 Slim 24V",
-    "img": "strips/SL2475-1024x412.jpg",
+    "img": "strips/SL2475-1024x412.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6605,7 +6605,7 @@
   {
     "id": "qlt-sl24150",
     "name": "SL24150 Slim 24V",
-    "img": "strips/SL2475-1024x412.jpg",
+    "img": "strips/SL2475-1024x412.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6625,7 +6625,7 @@
   {
     "id": "qlt-sl24200",
     "name": "SL24200 Slim 24V",
-    "img": "strips/SL2475-1024x412.jpg",
+    "img": "strips/SL2475-1024x412.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6645,7 +6645,7 @@
   {
     "id": "qlt-sl2435",
     "name": "SL2435",
-    "img": "strips/SL3-1024x557.jpg",
+    "img": "strips/SL3-1024x557.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6665,7 +6665,7 @@
   {
     "id": "qlt-slimbox100",
     "name": "SLIMBOX100",
-    "img": "strips/SLBOX-Multicurrent-1024x940.jpg",
+    "img": "strips/SLBOX-Multicurrent-1024x940.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6685,7 +6685,7 @@
   {
     "id": "qlt-slimbox60",
     "name": "SLIMBOX60",
-    "img": "strips/SLBOX-Multicurrent-1024x940.jpg",
+    "img": "strips/SLBOX-Multicurrent-1024x940.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6705,7 +6705,7 @@
   {
     "id": "qlt-slimbox60-1-10v-dimmable",
     "name": "SLIMBOX60 1",
-    "img": "strips/SLBOX-Multicurrent-1024x940.jpg",
+    "img": "strips/SLBOX-Multicurrent-1024x940.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6727,7 +6727,7 @@
   {
     "id": "qlt-spi03",
     "name": "SPI03",
-    "img": "strips/SPI03.jpg",
+    "img": "strips/SPI03.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6749,7 +6749,7 @@
   {
     "id": "qlt-th24012",
     "name": "TH24012 Thin 24V",
-    "img": "strips/TH24012-1024x610.jpg",
+    "img": "strips/TH24012-1024x610.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6769,7 +6769,7 @@
   {
     "id": "qlt-th24020",
     "name": "TH24020 Thin 24V",
-    "img": "strips/YSL20F-1024x605.jpg",
+    "img": "strips/YSL20F-1024x605.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6789,7 +6789,7 @@
   {
     "id": "qlt-th24030",
     "name": "TH24030U Thin UL 24V",
-    "img": "strips/TH24030-1024x565.jpg",
+    "img": "strips/TH24030-1024x565.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6809,7 +6809,7 @@
   {
     "id": "qlt-th24030u",
     "name": "TH24030U Thin UL 24V",
-    "img": "strips/TH24030-1024x565.jpg",
+    "img": "strips/TH24030-1024x565.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6829,7 +6829,7 @@
   {
     "id": "qlt-top-lf",
     "name": "TOP LF",
-    "img": "strips/T60LF-1024x644.jpg",
+    "img": "strips/T60LF-1024x644.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6851,7 +6851,7 @@
   {
     "id": "qlt-track28",
     "name": "TRACK28",
-    "img": "strips/TRACK28-1024x556.jpg",
+    "img": "strips/TRACK28-1024x556.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6873,7 +6873,7 @@
   {
     "id": "qlt-track29",
     "name": "TRACK29",
-    "img": "strips/TRACK28-1024x556.jpg",
+    "img": "strips/TRACK28-1024x556.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6895,7 +6895,7 @@
   {
     "id": "qlt-wall-ct2",
     "name": "WALL CT2",
-    "img": "strips/WALLCT-1024x775.jpg",
+    "img": "strips/WALLCT-1024x775.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6917,7 +6917,7 @@
   {
     "id": "qlt-wall-dim2",
     "name": "WALL DIM2",
-    "img": "strips/WALLDIM-1024x934.jpg",
+    "img": "strips/WALLDIM-1024x934.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6939,7 +6939,7 @@
   {
     "id": "qlt-wall-rgb2",
     "name": "WALL RGB2",
-    "img": "strips/WALLRGB-1024x994.jpg",
+    "img": "strips/WALLRGB-1024x994.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6961,7 +6961,7 @@
   {
     "id": "qlt-wall-rgbw",
     "name": "WALL RGBW",
-    "img": "strips/WALLRGB-1024x994.jpg",
+    "img": "strips/WALLRGB-1024x994.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6983,7 +6983,7 @@
   {
     "id": "qlt-wallwp86k",
     "name": "WALLWP86K",
-    "img": "strips/WALLWP86K-1024x458.jpg",
+    "img": "strips/WALLWP86K-1024x458.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7005,7 +7005,7 @@
   {
     "id": "qlt-zbdali",
     "name": "ZBDALI INTERFACE ZIGBEE/BLE a DALI",
-    "img": "strips/ZCUBE-1-1024x824.jpg",
+    "img": "strips/ZCUBE-1-1024x824.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7029,7 +7029,7 @@
   {
     "id": "qlt-zbx100",
     "name": "ZBX100 ALIMENTATORE ZIGBEE/BLE/PUSH",
-    "img": "strips/ZBX-1024x509.jpg",
+    "img": "strips/ZBX-1024x509.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7053,7 +7053,7 @@
   {
     "id": "qlt-zbx10048",
     "name": "ZBX10048 ALIMENTATORE ZIGBEE/BLE/PUSH",
-    "img": "strips/ZBX-1024x509.jpg",
+    "img": "strips/ZBX-1024x509.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7077,7 +7077,7 @@
   {
     "id": "qlt-zbx150",
     "name": "ZBX150 ALIMENTATORE ZIGBEE/BLE/PUSH",
-    "img": "strips/ZBX-1024x509.jpg",
+    "img": "strips/ZBX-1024x509.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7101,7 +7101,7 @@
   {
     "id": "qlt-zccbxh60-multicurrent-zigbee-ble-push",
     "name": "ZCCBXH60 MULTICURRENT ZIGBEE/BLE/PUSH",
-    "img": "strips/ZCCBXH60-1024x714.jpg",
+    "img": "strips/ZCCBXH60-1024x714.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7125,7 +7125,7 @@
   {
     "id": "qlt-zccbxl60-multicurrent-zigbee-ble-push",
     "name": "ZCCBXL60 MULTICURRENT ZIGBEE/BLE/PUSH",
-    "img": "strips/ZCCBXH60-1024x714.jpg",
+    "img": "strips/ZCCBXH60-1024x714.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7149,7 +7149,7 @@
   {
     "id": "qlt-zcube24-interface-24v-zigbee-ble-push",
     "name": "ZCUBE24 INTERFACE 24V ZIGBEE/BLE/PUSH",
-    "img": "strips/ZCUBE-1024x824.jpg",
+    "img": "strips/ZCUBE-1024x824.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7173,7 +7173,7 @@
   {
     "id": "qlt-zcube48-interface-48v-zigbee-ble-push",
     "name": "ZCUBE48 INTERFACE 48V ZIGBEE/BLE/PUSH",
-    "img": "strips/ZCUBE-1024x824.jpg",
+    "img": "strips/ZCUBE-1024x824.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7197,7 +7197,7 @@
   {
     "id": "qlt-zipb-interface-12-24v-zigbee-ble-push-2",
     "name": "ZIPB INTERFACE 12/24V ZIGBEE/BLE/PUSH",
-    "img": "strips/ZIPB-1-1024x522.jpg",
+    "img": "strips/ZIPB-1-1024x522.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7221,7 +7221,7 @@
   {
     "id": "qlt-zipb-interface-12-24v-zigbee-ble-push",
     "name": "ZIDLK INTERFACE ZIGBEE/BLE a DALI",
-    "img": "strips/ZIDLK-1024x461.jpg",
+    "img": "strips/ZIDLK-1024x461.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7245,7 +7245,7 @@
   {
     "id": "qlt-zmc013-multicurrent-zigbee-ble-push",
     "name": "ZMC013 MULTICURRENT ZIGBEE/BLE/PUSH",
-    "img": "strips/ZMC13-1024x507.jpg",
+    "img": "strips/ZMC13-1024x507.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7269,7 +7269,7 @@
   {
     "id": "qlt-zpb4-interface-4-push-to-zigbee-ble",
     "name": "ZPB4 INTERFACE 4",
-    "img": "strips/ZCUBE-1-1024x824.jpg",
+    "img": "strips/ZCUBE-1-1024x824.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7293,7 +7293,7 @@
   {
     "id": "qlt-bk100",
     "name": "BK100",
-    "img": "strips/BK100-24-bis-1024x853.jpg",
+    "img": "strips/BK100-24-bis-1024x853.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7313,7 +7313,7 @@
   {
     "id": "qlt-bps2",
     "name": "BPS2",
-    "img": "strips/BPS2-1024x702.jpg",
+    "img": "strips/BPS2-1024x702.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7333,7 +7333,7 @@
   {
     "id": "qlt-bps3",
     "name": "BPS3",
-    "img": "strips/BPS3-1024x437.jpg",
+    "img": "strips/BPS3-1024x437.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
