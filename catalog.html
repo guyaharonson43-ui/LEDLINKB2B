@@ -1325,11 +1325,26 @@
     var state = { mode:'I', vertices:[], feedIndex:0, feedSelected:false, inputs:[], color:'BLK', cct:'3000K', lightingType:'מרכזית', installType:'שקוע', locked:false };
 
     // 4. Helpers
-    function goToStep(n) {
+    function goToStep(n, silent) {
       rootEl.querySelectorAll('.cfg-step').forEach(function(p){ p.classList.remove('active'); });
       rootEl.querySelector('#cfg-step-'+n).classList.add('active');
       if (n === 2) resize();
+      if(!silent) history.pushState({cfgStep: n}, '');
     }
+    history.pushState({cfgStep: 1}, '');
+    function onPopState() {
+      var active = rootEl.querySelector('.cfg-step.active');
+      if(!active) { window.removeEventListener('popstate', onPopState); return; }
+      var n = parseInt(active.id.replace('cfg-step-', ''));
+      if(n > 1) {
+        goToStep(n - 1, true);
+      } else {
+        window.removeEventListener('popstate', onPopState);
+        onCloseFn();
+      }
+    }
+    window.addEventListener('popstate', onPopState);
+    return function() { window.removeEventListener('popstate', onPopState); };
 
     function resize() {
       canvas.width  = container.clientWidth;

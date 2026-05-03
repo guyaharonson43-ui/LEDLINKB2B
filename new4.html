@@ -296,11 +296,20 @@
     
     let state = { mode: 'I', vertices: [], feedIndex: 0, feedSelected: false, inputs: [], color: 'BLK', cct: '3000K', lightingType: 'מרכזית', installType: 'שקוע', locked: false };
 
-    function goToStep(n) {
+    function goToStep(n, silent) {
         document.querySelectorAll('.step-pane').forEach(p => p.classList.remove('active'));
         document.getElementById(`step-${n}`).classList.add('active');
         if(n === 2) resize();
+        if(!silent) history.pushState({cfgStep: n}, '');
     }
+    history.replaceState({cfgStep: 1}, '');
+    window.addEventListener('popstate', function(e) {
+        const active = document.querySelector('.step-pane.active');
+        if(!active) return;
+        const n = parseInt(active.id.replace('step-', ''));
+        if(n > 1) goToStep(n - 1, true);
+        else history.back();
+    });
 
     function selectTemplate(t) {
         state.mode = t; state.locked = (t !== 'FREE'); state.inputs = []; state.feedIndex = 0;
