@@ -1463,7 +1463,7 @@
     }
 
     function processFreehand() {
-      var simplified=rdp(rawPoints,55);
+      var simplified=rdp(rawPoints,35);
       if(simplified.length<2) return;
       var v=[simplified[0]];
       for(var i=1;i<simplified.length;i++){
@@ -1472,10 +1472,10 @@
       }
       var clean=[v[0]];
       for(var j=1;j<v.length;j++){
-        if(Math.hypot(v[j].x-clean[clean.length-1].x,v[j].y-clean[clean.length-1].y)>30) clean.push(v[j]);
+        if(Math.hypot(v[j].x-clean[clean.length-1].x,v[j].y-clean[clean.length-1].y)>25) clean.push(v[j]);
       }
       var closed=false;
-      if(clean.length>2&&Math.hypot(clean[clean.length-1].x-clean[0].x,clean[clean.length-1].y-clean[0].y)<22){
+      if(clean.length>2&&Math.hypot(clean[clean.length-1].x-clean[0].x,clean[clean.length-1].y-clean[0].y)<80){
         clean[clean.length-1]=clean[0]; closed=true;
       }
       // Only when auto-closed: remove collinear intermediate points
