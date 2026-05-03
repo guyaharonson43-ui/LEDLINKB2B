@@ -71,6 +71,17 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     }
 
+    @keyframes shimmer {
+      0% { background-position: -400px 0; }
+      100% { background-position: 400px 0; }
+    }
+    .skeleton-pulse {
+      background: linear-gradient(90deg, #EBEBEB 25%, #F4F4F0 50%, #EBEBEB 75%);
+      background-size: 800px 100%;
+      animation: shimmer 1.4s infinite linear;
+      border-radius: 6px;
+    }
+
     .filter-chip {
       border: 1px solid #D0CCC4;
       border-radius: 6px;

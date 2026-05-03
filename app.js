@@ -162,6 +162,19 @@ const SpecTags = ({ product }) => {
 
 };
 
+// ── Skeleton Card ──
+const SkeletonCard = () =>
+  React.createElement("div", { className: "product-card", style: { pointerEvents: 'none' } },
+    React.createElement("div", { className: "skeleton-pulse", style: { height: 180 } }),
+    React.createElement("div", { style: { padding: '12px 14px 14px' } },
+      React.createElement("div", { className: "skeleton-pulse", style: { height: 10, width: '40%', marginBottom: 8 } }),
+      React.createElement("div", { className: "skeleton-pulse", style: { height: 13, width: '90%', marginBottom: 6 } }),
+      React.createElement("div", { className: "skeleton-pulse", style: { height: 13, width: '70%', marginBottom: 14 } }),
+      React.createElement("div", { className: "skeleton-pulse", style: { height: 10, width: '55%', marginBottom: 12 } }),
+      React.createElement("div", { className: "skeleton-pulse", style: { height: 30, width: '100%' } })
+    )
+  );
+
 // ── Product Card ──
 const ProductCard = ({ product, onClick }) => /*#__PURE__*/
 React.createElement("div", { className: "product-card", onClick: () => onClick(product) }, /*#__PURE__*/
@@ -668,12 +681,14 @@ const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showCfg, setShowCfg] = useState(false);
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     if (window.__PRODUCTS__) {
       const loaded = window.__PRODUCTS__.map((p) => ({ ...p, name: cleanName(p.name) }));
       setProducts(loaded);
+      setLoading(false);
       const productId = params.get('product');
       if (productId) {
         const found = loaded.find((p) => p.id === decodeURIComponent(productId));
@@ -876,6 +891,10 @@ const App = () => {
     )
     ),
 
+    loading ? /*#__PURE__*/
+    React.createElement("div", { className: "products-grid" },
+      Array.from({ length: 12 }).map((_, i) => React.createElement(SkeletonCard, { key: i }))
+    ) :
     filtered.length === 0 ? /*#__PURE__*/
     React.createElement("div", { style: { textAlign: 'center', padding: '80px 0', color: '#BBBBBB' } }, /*#__PURE__*/
     React.createElement("div", { style: { fontSize: 48, marginBottom: 16 } }, "\u25EF"), /*#__PURE__*/
