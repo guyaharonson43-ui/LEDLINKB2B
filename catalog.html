@@ -262,8 +262,8 @@
     @media (max-width: 480px) { .footer-top { grid-template-columns: 1fr; } }
 
     /* ── Profile Configurator Modal ── */
-    .cfg-overlay { position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:2000;display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(6px);overflow-y:auto; }
-    .cfg-card { width:100%;max-width:700px;background:#FFFFFF;border-radius:20px;box-shadow:0 8px 40px rgba(0,0,0,0.15);overflow:hidden;border:1px solid #E0DDD6;font-family:'Heebo',sans-serif; }
+    .cfg-overlay { position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:2000;display:flex;align-items:flex-start;justify-content:center;padding:16px;padding-top:max(16px,env(safe-area-inset-top));backdrop-filter:blur(6px);overflow-y:auto; }
+    .cfg-card { width:100%;max-width:min(700px,calc(100vw - 32px));background:#FFFFFF;border-radius:20px;box-shadow:0 8px 40px rgba(0,0,0,0.15);overflow:hidden;border:1px solid #E0DDD6;font-family:'Heebo',sans-serif;margin:auto; }
     .cfg-header { text-align:center;padding:22px;border-bottom:1px solid #E0DDD6;background:#F8F7F4; }
     .cfg-header h2 { margin:0;color:#1C1C1C;font-size:20px;font-weight:900; }
     .cfg-header p  { margin:4px 0 0;font-size:10px;color:#777777;text-transform:uppercase;letter-spacing:2px; }
@@ -277,13 +277,14 @@
     .cfg-opt.selected { border-color:#E8A020;background:rgba(232,160,32,.08); }
     .cfg-opt-icon { font-size:28px;margin-bottom:8px;display:block; }
     .cfg-canvas-wrap { position:relative;width:100%;height:360px;background:#0b1120;border-radius:14px;border:1px solid #E0DDD6;overflow:hidden; }
+    @media (max-width:480px) { .cfg-canvas-wrap { height:220px; } }
     .cfg-canvas-wrap canvas { display:block;width:100%;height:100%;touch-action:none;cursor:crosshair; }
     .cfg-ui-layer { position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:10; }
     .cfg-tools { position:absolute;top:10px;left:10px;display:flex;gap:8px;z-index:20; }
     .cfg-tool-btn { background:#F0EDE8;color:#1C1C1C;border:1px solid #E0DDD6;padding:7px 10px;border-radius:7px;font-size:11px;cursor:pointer;transition:.2s;display:none;font-family:'Heebo',sans-serif; }
     .cfg-tool-btn:hover { background:#E8E4DE; }
     .cfg-status { position:absolute;top:12px;right:12px;font-size:10px;color:#94a3b8;background:rgba(0,0,0,.5);padding:3px 8px;border-radius:8px;pointer-events:none; }
-    .cfg-measure-input { position:absolute;transform:translate(-50%,-50%);width:66px;padding:7px;text-align:center;font-weight:700;border:2px solid #E8A020;border-radius:7px;background:#fff;color:#000;font-size:12px;outline:none;pointer-events:auto;z-index:15;font-family:'Heebo',sans-serif; }
+    .cfg-measure-input { position:absolute;transform:translate(-50%,-50%) scale(0.75);transform-origin:center;width:88px;padding:7px;text-align:center;font-weight:700;border:2px solid #E8A020;border-radius:7px;background:#fff;color:#000;font-size:16px;outline:none;pointer-events:auto;z-index:15;font-family:'Heebo',sans-serif; }
     .cfg-seg-hit { position:absolute;height:40px;transform-origin:0 50%;pointer-events:auto;cursor:pointer; }
     .cfg-nav { display:flex;gap:10px;margin-top:20px; }
     .cfg-btn { flex:1;padding:13px;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;transition:.18s;font-family:'Heebo',sans-serif; }
@@ -1329,6 +1330,8 @@
       rootEl.querySelector('#cfg-step-'+n).classList.add('active');
       if (n === 2) resize();
       if(!silent) history.pushState({cfgStep: n}, '');
+      var overlay = rootEl.closest('.cfg-overlay');
+      if(overlay) overlay.scrollTop = 0;
     }
     history.pushState({cfgStep: 1}, '');
     function onPopState() {
