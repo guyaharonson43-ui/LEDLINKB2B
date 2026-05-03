@@ -1474,18 +1474,22 @@
       for(var j=1;j<v.length;j++){
         if(Math.hypot(v[j].x-clean[clean.length-1].x,v[j].y-clean[clean.length-1].y)>25) clean.push(v[j]);
       }
-      if(clean.length>2&&Math.hypot(clean[clean.length-1].x-clean[0].x,clean[clean.length-1].y-clean[0].y)<80)
-        clean[clean.length-1]=clean[0];
-      // Merge consecutive collinear segments (same axis) to avoid duplicate inputs
-      var merged=[clean[0]];
-      for(var k=1;k<clean.length-1;k++){
-        var pv=merged[merged.length-1],cv=clean[k],nv=clean[k+1];
-        var colX=Math.abs(pv.x-cv.x)<2&&Math.abs(cv.x-nv.x)<2;
-        var colY=Math.abs(pv.y-cv.y)<2&&Math.abs(cv.y-nv.y)<2;
-        if(!colX&&!colY) merged.push(cv);
+      var closed=false;
+      if(clean.length>2&&Math.hypot(clean[clean.length-1].x-clean[0].x,clean[clean.length-1].y-clean[0].y)<80){
+        clean[clean.length-1]=clean[0]; closed=true;
       }
-      merged.push(clean[clean.length-1]);
-      clean=merged;
+      // Only when auto-closed: remove collinear points near the closing junction
+      if(closed){
+        var changed=true;
+        while(changed&&clean.length>3){
+          changed=false;
+          var n=clean.length;
+          var pv=clean[n-3],cv=clean[n-2],nv=clean[n-1];
+          var colX=Math.abs(pv.x-cv.x)<2&&Math.abs(cv.x-nv.x)<2;
+          var colY=Math.abs(pv.y-cv.y)<2&&Math.abs(cv.y-nv.y)<2;
+          if(colX||colY){ clean.splice(n-2,1); changed=true; }
+        }
+      }
       state.vertices=clean; state.locked=true;
       state.feedSelected=(state.vertices.length-1===1);
       toolRotate.style.display='block'; toolClear.style.display='block'; statusEl.innerText='';
