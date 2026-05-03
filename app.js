@@ -545,10 +545,6 @@ const Navbar = ({ activeTab, setActiveTab }) => {
     React.createElement("span", { className: "hamburger-line" }), /*#__PURE__*/
     React.createElement("span", { className: "hamburger-line" })
     ), /*#__PURE__*/
-    React.createElement("a", { href: `https://wa.me/972524444470?text=${encodeURIComponent('שלום LEDLink, אשמח לשמוע על המוצרים והשירותים שלכם.')}`, target: "_blank", rel: "noopener noreferrer",
-      className: "btn-gold", style: { fontSize: 13, padding: '8px 18px', display: 'flex', alignItems: 'center', gap: 6, textDecoration: 'none', borderRadius: 6, fontWeight: 700 } },
-    Icons.wa, " \u05E9\u05DC\u05D7 \u05D4\u05D5\u05D3\u05E2\u05D4"
-    )
     )
     ), /*#__PURE__*/
 
