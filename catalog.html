@@ -1478,8 +1478,9 @@
       if(clean.length>2&&Math.hypot(clean[clean.length-1].x-clean[0].x,clean[clean.length-1].y-clean[0].y)<80){
         clean[clean.length-1]=clean[0]; closed=true;
       }
-      // Only when auto-closed: remove collinear points near the closing junction
+      // Only when auto-closed: remove collinear intermediate points
       if(closed){
+        // 1. Check end-of-array: [n-3, n-2, n-1=A] collinear → remove n-2
         var changed=true;
         while(changed&&clean.length>3){
           changed=false;
@@ -1488,6 +1489,16 @@
           var colX=Math.abs(pv.x-cv.x)<2&&Math.abs(cv.x-nv.x)<2;
           var colY=Math.abs(pv.y-cv.y)<2&&Math.abs(cv.y-nv.y)<2;
           if(colX||colY){ clean.splice(n-2,1); changed=true; }
+        }
+        // 2. Check wrap-around junction: [n-2=E, 0=A, 1=B] collinear → merge E→A→B into E→B
+        if(clean.length>3){
+          var n=clean.length;
+          var eP=clean[n-2], aP=clean[0], bP=clean[1];
+          var wColX=Math.abs(eP.x-aP.x)<2&&Math.abs(aP.x-bP.x)<2;
+          var wColY=Math.abs(eP.y-aP.y)<2&&Math.abs(aP.y-bP.y)<2;
+          if(wColX||wColY){
+            clean[0]=eP; clean[clean.length-1]=eP; clean.splice(n-2,1);
+          }
         }
       }
       state.vertices=clean; state.locked=true;
