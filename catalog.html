@@ -1040,15 +1040,25 @@
       rootEl.querySelector('#cfg-snapshot').src=buildExportCanvas().toDataURL('image/png');
     }
 
+    var isIOS = /iPhone|iPad/i.test(navigator.userAgent) && !/CriOS|Chrome/i.test(navigator.userAgent);
+
+    function showIOSSaveOverlay(dataURL, onClose) {
+      var o = document.createElement('div');
+      o.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:999999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px;box-sizing:border-box;';
+      o.innerHTML = '<div style="color:#E8A020;font-family:Heebo,sans-serif;font-size:15px;font-weight:700;text-align:center;">לחץ לחיצה ארוכה על השרטוט ← "שמור תמונה"</div>'
+        + '<img src="'+dataURL+'" style="max-width:100%;max-height:55vh;border-radius:10px;border:2px solid #E8A020;">'
+        + '<button style="background:#E8A020;color:#111;border:none;border-radius:10px;padding:13px 32px;font-family:Heebo,sans-serif;font-size:16px;font-weight:700;cursor:pointer;">סגרתי — המשך לוואטסאפ</button>';
+      o.querySelector('button').onclick = function(){ document.body.removeChild(o); if(onClose) onClose(); };
+      document.body.appendChild(o);
+    }
+
     function downloadSnapshot() {
       var dataURL = buildExportCanvas().toDataURL('image/png');
-      var isIOS = /iPhone|iPad/i.test(navigator.userAgent) && !/CriOS|Chrome/i.test(navigator.userAgent);
       if (isIOS) {
-        // iOS Safari אינו תומך בהורדת data URL — פותחים בטאב חדש לשמירה ידנית
-        window.open(dataURL, '_blank');
+        showIOSSaveOverlay(dataURL, null);
         return;
       }
-      // Android + Desktop: המרה ל-Blob לאמינות מקסימלית
+      // Android + Desktop: המרה ל-Blob
       var arr=dataURL.split(','), mime=arr[0].match(/:(.*?);/)[1], bstr=atob(arr[1]), n=bstr.length, u8=new Uint8Array(n);
       while(n--){ u8[n]=bstr.charCodeAt(n); }
       var blobUrl=URL.createObjectURL(new Blob([u8],{type:mime}));
@@ -1125,14 +1135,19 @@
       + '<div style="font-size:32px;margin-bottom:12px">📎</div>'
       + '<div style="font-size:16px;font-weight:700;color:#E8A020;margin-bottom:10px">רגע לפני השליחה</div>'
       + '<div style="font-size:14px;color:#E0DDD6;line-height:1.7">השרטוט שלך יורד אוטומטית.<br>צרף אותו להודעת הוואטסאפ כדי שנוכל לעבד את ההזמנה מהר יותר.</div>'
-      + (/iPhone|iPad|Safari/.test(navigator.userAgent)&&!/Chrome/.test(navigator.userAgent) ? '<div style="font-size:12px;color:#aaa;margin-top:10px;line-height:1.6">📱 במכשיר Apple: השרטוט ייפתח בטאב חדש — לחץ לחיצה ארוכה על התמונה ובחר "שמור תמונה".</div>' : '')
+      + (isIOS ? '<div style="font-size:12px;color:#aaa;margin-top:10px;line-height:1.6">📱 בשלב הבא תראה את השרטוט — לחץ לחיצה ארוכה לשמירה, ואז לחץ "פתח וואטסאפ".</div>' : '')
       + '</div>';
     document.body.appendChild(waOverlay);
 
     function dismissWaOverlay() {
       waOverlay.style.display = 'none';
-      downloadSnapshot();
-      window.open(waUrl, '_blank');
+      if (isIOS) {
+        var dataURL = buildExportCanvas().toDataURL('image/png');
+        showIOSSaveOverlay(dataURL, function(){ window.open(waUrl, '_blank'); });
+      } else {
+        downloadSnapshot();
+        window.open(waUrl, '_blank');
+      }
     }
     waLink.onclick = function() { waOverlay.style.display = 'flex'; };
     waOverlay.querySelector('#cfg-wa-close-btn').onclick = dismissWaOverlay;
