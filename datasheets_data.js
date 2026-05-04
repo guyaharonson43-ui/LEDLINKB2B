@@ -1,11 +1,19 @@
 ﻿const PRODUCT_DATASHEETS = {
-  '3535':      [{ label: 'LINK 3535 — דף נתונים', file: 'attachments/LEDLINK_LINK 3535.pdf' }],
-  '3030 \u05e4\u05d9\u05e0\u05ea\u05d9': [{ label: 'LINK 3030 — דף נתונים', file: 'attachments/LEDLINK_LINK 3030.pdf' }],
-  '2020':      [{ label: 'LINK 2020 — דף נתונים', file: 'attachments/LEDLINK_LINK 2020.pdf' }],
-  '5075':      [{ label: 'LINK 5075N — דף נתונים', file: 'attachments/LEDLINK_LINK 5075N.pdf' }],
-  'טיובה 60':  [
-    { label: 'LINK R60 — דף נתונים', file: 'attachments/LEDLINK_LINK R60.pdf' },
-  ],
+  // פרופילים — דפי נתונים HTML
+  'ledlink-tuba30':  [{ label: 'LINK R30 — דף נתונים', file: 'DATASHEET/LINKR30.html' }],
+  'ledlink-tuba60':  [{ label: 'LINK R60 — דף נתונים', file: 'DATASHEET/LINKR60.html' }],
+  'ledlink-1013':    [{ label: 'LINK 1013 — דף נתונים', file: 'DATASHEET/LINK1013.html' }],
+  'ledlink-1616':    [{ label: 'LINK 1616 — דף נתונים', file: 'DATASHEET/LINK1616.html' }],
+  'ledlink-1707':    [{ label: 'LINK 1707 — דף נתונים', file: 'DATASHEET/LINK1707.html' }],
+  'ledlink-1713':    [{ label: 'LINK 1713 — דף נתונים', file: 'DATASHEET/LINK1713.html' }],
+  'ledlink-1715':    [{ label: 'LINK 1715 — דף נתונים', file: 'DATASHEET/LINK1715.html' }],
+  'ledlink-2020':    [{ label: 'LINK 2020 — דף נתונים', file: 'DATASHEET/LINK2020.html' }],
+  'ledlink-2415':    [{ label: 'LINK 2415 — דף נתונים', file: 'DATASHEET/LINK2415.html' }],
+  'ledlink-3020':    [{ label: 'LINK 3020 — דף נתונים', file: 'DATASHEET/LINK3020.html' }],
+  'ledlink-3535p':   [{ label: 'LINK 3535 — דף נתונים', file: 'DATASHEET/LINK3535.html' }],
+  'ledlink-4435':    [{ label: 'LINK 4435 — דף נתונים', file: 'DATASHEET/LINK4435.html' }],
+  'ledlink-5213':    [{ label: 'LINK 5213 — דף נתונים', file: 'DATASHEET/LINK5213.html' }],
+  // שמירת רשומות PDF קיימות
   // סטריפ LED — מקוריים (LEDLink)
   "סטריפ LED זיגזג 4.8W": [{ label: "דף קטלוגי — 3D Series", file: "datasheets/3D.pdf" }, { label: "דף נתונים — D", file: "datasheets/DS_3D.pdf" }],
   "סטריפ LED דיגיטלי 24V": [{ label: "דף קטלוגי — ST24560CT", file: "datasheets/ST24560CT.pdf" }, { label: "דף נתונים — T24560CT", file: "datasheets/DS_ST24560CT.pdf" }],

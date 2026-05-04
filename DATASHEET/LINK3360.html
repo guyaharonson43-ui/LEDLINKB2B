@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEDLink | לינק 3360 — Datasheet</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: #F4F4F0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      background: #ffffff;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* HEADER */
+    .header {
+      background: #1A1A1A;
+      color: white;
+      padding: 36px 40px 32px;
+    }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 32px;
+    }
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .logo span { color: #E8A020; }
+    .logo-sub {
+      font-size: 9px;
+      font-weight: 700;
+      color: #E8A020;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-top: 4px;
+    }
+    .badge {
+      background: #E8A020;
+      color: #1A1A1A;
+      font-size: 9px;
+      font-weight: 900;
+      padding: 5px 12px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .header-title {
+      border-right: 4px solid #E8A020;
+      padding-right: 20px;
+    }
+    .product-name {
+      font-size: 52px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .product-sub {
+      font-size: 14px;
+      color: #999;
+      margin-top: 8px;
+      font-weight: 400;
+    }
+
+    /* CONTENT */
+    .content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      flex: 1;
+    }
+
+    /* LEFT — specs */
+    .specs-panel {
+      padding: 36px 40px;
+      border-left: 1px solid #EBEBEB;
+    }
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 3px;
+      background: #E8A020;
+      flex-shrink: 0;
+    }
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .specs-table tr { border-bottom: 1px solid #F0EFE9; }
+    .specs-table tr:last-child { border-bottom: none; }
+    .spec-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 12px 0 12px 16px;
+      white-space: nowrap;
+    }
+    .spec-value {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1C1C1C;
+      padding: 12px 0;
+      text-align: right;
+    }
+
+    /* RIGHT — drawing */
+    .drawing-panel {
+      background: #F4F4F0;
+      padding: 36px 40px;
+      padding-top: 72px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .drawing-box {
+      background: white;
+      border: 1px solid #DDDDD8;
+      border-radius: 8px;
+      padding: 16px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      min-height: 150px;
+    }
+    .drawing-box img {
+      max-width: 100%;
+      max-height: 140px;
+      object-fit: contain;
+    }
+    .drawing-box--schematic {
+      margin-top: 12px;
+      background: #F4F4F0;
+    }
+    .drawing-label {
+      margin-top: 14px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      text-align: center;
+    }
+    .dims-badge {
+      margin-top: 14px;
+      background: white;
+      border: 1px solid #DDDDD8;
+      border-radius: 50px;
+      padding: 7px 22px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #1C1C1C;
+      letter-spacing: -0.5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #1A1A1A;
+      color: #777;
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .footer-logo { color: white; font-weight: 900; font-size: 13px; }
+    .footer-logo span { color: #E8A020; }
+    .footer-sep { color: #444; margin: 0 4px; }
+
+    @media print {
+      body { background: none; padding: 0; }
+      .page { box-shadow: none; width: 100%; min-height: 100vh; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header class="header">
+      <div class="header-top">
+        <div>
+          <div class="logo">LED<span>L</span>INK</div>
+          <div class="logo-sub">Professional Lighting Solutions</div>
+        </div>
+        <div class="badge">Technical Datasheet</div>
+      </div>
+      <div class="header-title">
+        <div class="product-name">לינק 3360</div>
+        <div class="product-sub">פרופיל אלומיניום ליניארי | Surface Mounted Linear Profile</div>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="specs-panel">
+        <div class="section-title">מפרט טכני</div>
+        <table class="specs-table">
+          
+    <tr>
+      <td class="spec-label">הספק</td>
+      <td class="spec-value">15W / 30W</td>
+    </tr>
+    <tr>
+      <td class="spec-label">מתח</td>
+      <td class="spec-value">24V</td>
+    </tr>
+    <tr>
+      <td class="spec-label">לומן</td>
+      <td class="spec-value">2000lm / 4000lm</td>
+    </tr>
+    <tr>
+      <td class="spec-label">גוון אור</td>
+      <td class="spec-value">2700K / 3000K / 4000K / 6000K</td>
+    </tr>
+    <tr>
+      <td class="spec-label">רמת אטימות</td>
+      <td class="spec-value">IP20</td>
+    </tr>
+    <tr>
+      <td class="spec-label">רוחב</td>
+      <td class="spec-value">33 מ"מ</td>
+    </tr>
+    <tr>
+      <td class="spec-label">גובה</td>
+      <td class="spec-value">60 מ"מ</td>
+    </tr>
+    <tr>
+      <td class="spec-label">כיסוי</td>
+      <td class="spec-value">חלבי PMMA</td>
+    </tr>
+    <tr>
+      <td class="spec-label">צבע פרופיל</td>
+      <td class="spec-value">לבן / שחור / RAL</td>
+    </tr>
+        </table>
+      </div>
+
+      <div class="drawing-panel">
+        <div class="drawing-box">
+          <img src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8QDw8OEBIQDxANDw4PEBAQDw8NDxAPFREWFhURFR8YHSggGBolHRUVITEjJTU3Li4uFyAzODMtNygtLisBCgoKDQ0ODg0NDi0ZHxkrKysrKysrKysrKysrKzcrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALEBHAMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABAUBAgMGB//EADkQAAICAQEFBQUIAQMFAAAAAAABAgMRBAUSEyFRMUFhcZEGIjKBoQcUIzNCUmKx0XKS4RUWJKLB/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwD6WAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK/V7Z01XxWRyv0x/Elnp7vZ8yk1ntiuympv+VjwvSP8AkD1ZG1m0KaVm2yFfhKS3n5LtZ8/1u3tXblOxwT/TX+GvVc/VlTKGXl82+194Httf7b6eCfChO5pdr/Ch9ef0Lue19NG3gSupjd734XFhxOXa2s5XYfKrIcn5M39tts6CWv1lOr0OnsjVfKvi0ynpNW933d+c45Vj78SXQD6+mZPA7G2zGWhhHZknV9102M7VjdVRwapqDsjZD8HeTsSb5d2cJcrbZu2dfTp3LaOknXKq6Fc7q7dPKmVUozk9S25RhGEd1J88+8uXcB6gFdsrbul1UrYae2Fzo4fEcMuMd/e3efY87kuzoWIAAAAAAAAAAAAAAAAAAAAAAAAAA5XXwhznKMfNpN+XUDqCo1G36o/ApWP/AGR+vP6FXqdu3y5R3a14Lel6sD1M5KKy2kl2ttJFbqtv6eHZJ2PpWt76vkeUulObzOUpvrJuX9nPhgW+q9qLHyrhGHjJucv/AIkU2r119v5lk5J/pziPouRnhjhFRDdZq6ybwhwgIPDMOoncIxwgK6yrk/JlD9omz76Np626zT2V136q2Vd9lclVYm8rdljD5d2c8j106eT8meM+0Hbklqtr7P3cwt2kr95zfuSr31iMeznxOb/igqqr21bGqyhXWqm5btlMJyhVNcu1Zw+wtLfbfVSsjfV/49+ErbaZ2V/eMQjCLujvOEmlHGcLOefYjx0Wd4ZA+2fZdtj71HWOdOnhdGWmdl1NUKJXxlG3d4igknJOMuffveHP3R8++yfY12l++O3hPjQ2fOPDurtklKu2xKcU96D3bIPEks55ZPoJAAAAAAAAAAAAAAAAABhvHN8kR7NbWu/e/wBKz9ewCSCss2hN/DFLxfvP/giWzsn8Um107F6LkBbXayuHxSWei95/Qg37aX6IN+Mnj6IgcEw6SjGo2jfP9TiukPd+vaQZV55vm32k51GOEEQeEOETeEOEBC4Q4JN4RnhAQeCOCT+EZ4QFfwRwCx4Q4QFdwBwCx4Q4QFbKjk/I8t7e6bS2/wDWFp6b5ayO1tGrHKNVzbktTngbkd9J7jbi89i5s91Ko87TratFtLbdupjFTlrKNXpIWzlS5ur7z+JWm4qb/ESSbSe83z3cEV8Zjau5ZO1dkuiXyyej1uxNBbOUtJqo6eMlHdo1dV8dzEUnmyO+nlpvnjtO+yPY9ztpV11LpslfGyzT6iqca1GpOqblzS3rJKOGs8n15B7X7Io3xt2lHUb3FVeyW9+SnLhui11c03y4fDx0WF3H0k8j7GXWLV7R01sKoS0lWxq241Vwt3vuOJQsnHnZutNJtvGWk8YPXAAAAAAAAAAaSsiu/n0XN/Q0dz7l6v8AwB2NZzS7Wl5vBwe++/Hl7v8AyYjpwNp6tdyb/wDVfXmcZX2PsxHyWX9SQtObqgCvdTfN5fm2/wCzKoLFUmeCBXcAcAseEYdQFc6DV0Fi6jV1AVzpNHSWLrObrAgOkxwic6zVwKiHwjPCJe4NwCMqjPCJO4Z3AI3CHDJO4Z3QIvDHDJO6YcQIsqz5x9odGo1EtRZB8RbP1+1ePm6G/RRN6bhvdlLe4eVPG6sJ57D6fKJ8r9ptYqLdve4pvX62zRtuW7w4puyUv5PHLHL4k+7DivBvUR/c3/pR302omm3CuPvRlBuxRn7sliSWVyysrl3NrvNIJdiS+S5k7S6SbcXKOI7ycnNqKxnn2gfVPsxjKX3rVW2Vyu1sNHOVVdXChTVU9Rp6sY5c1S1hdm6u3J7s8f7GSj992nGqNMdPStDVplRnhuh/eLlJZbzl3SeVy6JHsAAAAAAAAAMRoOkaCYqzZVgRFSbqklqsyoARVUZ4RK3BugRuGOGSd0w4gRnA1cCS4mjiBGcDRxJLRzkgI8onOUSRJHOSAjuJq4naRo0BywMGzMAYwZwE/n4Lm/oIvPwre8syX0zj5gZwMG8aLH3bvm0n9M5+hutH1lnyWF9c/QCO2vTtxzx5milnsWfL3l6rKXzJ33aPbjOO+WZNfN9hX6nbmkg2ndCUlycKs6iafRqtNr5gb8Kb7sebWfRZz6oia7YWluT4tVc96U5yzHfTnOcpylibeG3OX9dhl7Vun+RpbZdJXShpoPxXxP6GPu2us+O6rTp91NXEml0bsyvRAVlvsRoWmo18Nfwbrx/saPNbQ9k9lxbxqZ76/TXJ6mafcmkpy9T3H/blEud8rdT4XWynDPhHsXyLHT6SqtYrhCGP2xSA8/7F7M4PGsXEUbIaWtcSDrlLgxnHfxjsalH5p8kenAAAAAAAAAAtkjZIwjZAEjOAZAxgYNjAGuDGDYwwNGjSSOjNGBzkcpHSySXa0v7I7vTeIpyfSKba812gJHKR2Wnul+lR/wBT/rHP1R0jsxv4pt+EUl8nnKfoBAk+7v6drOccy+FOXkm8eeMtF1DQVpfCmlz973kvHnyXyIOq9oNFW3F3QlKPLcpzqJp9Gq02vmBxjorH3KPm0vTGfqjtHZq/VLPkkvXOfpgiT2/ZL8jS2y6SvnDTQfisb0vVI4Tnr7Piuq06fdRSpzS6OVuU/NJAW60cEvhTx+7M8eWewg6rbukrbTuhKS5OFWdRNPo1Wm18yBLYlU+d8rdTzzi+2dsM+EW92PyJ1GnhBYhGMEv2xSAjS2zbP8jS2y6SvlDTQa6r4pfRHOUNfZ8V1WnT7qKuJNeDdmV6IsgBVS2BTPne7dT34vtnZDPhH4V8ifRpq61iEIwS/bFI7AAAAAAAAAAAAAAAAAC1TNkzipG6YHVMzk5OaXNtLzeDnLVwTwsyfSKy35dQJOTOSMp2y+GGPGbwvmuTRstLZL4rMeEFhryf+UB0nNLtaXm0jhLWQzhZk+kU2/Q7x2fWubW91c3lPzXYQ7/aDQ1e5xoScXjh0J6iSfRqtPHzA6p3S+GCj4zfL/K9DZaGcvjsa8IJJrwz2P0K2z2ktl+RpLH/AC1FkNNBrqsb0vVIjWanaFnxX16ddy09KlPHRyt3k/NJAeghs+qKy4p973nleeHyRC1HtDoavd40JOPLh0p6iafRqtPHzKSeyK587pW6l5z+PbO2KfVRb3V8kTKaIQWIRjFLujFR/oDez2jsl+RpLZdJaicNNBrqsb0vVIjWX7QszvX1addy09KnNLo5W7yfmkiUAK2exqp875W6l5zi+2dsE/CLe7H5E6miEFiEYwS/bFROgAAAAAAAAAAAAAAAAAAAAAAAAAAACXDiPsg14y5Y808P0OsdJY/iml4RX9PkV0tv2y/J0tj/AJaiyGni11SjvSfk0jjO/XWfFfXQumnpTljo5Wb3qkgL2GgrXN5l1cn3eOMIh27f0NWYq2EmnhwojLUST6NVJ4+ZTT2TVPnc7NQ85/HtndFPqk3ur5ImVVRisRjGK6RSj/QHSftFbL8jSWP+Woshp4NdVu70n5NIj2ajX2fFfXQumnpTljo5Wb3qkjuAK+eyKp87nZqXnP49s7op9VFvdXyRMqpjBYjGMV0ilH+joAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/9k=" alt="תמונת לינק 3360">
+        </div>
+        
+        <div class="dims-badge">33 מ"מ × 60 מ"מ</div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <span class="footer-logo">LED<span>L</span>INK</span>
+      <span class="footer-sep">|</span>
+      <span>📞 08-632-6059</span>
+      <span class="footer-sep">|</span>
+      <span>רחוב היצירה 19, רחובות</span>
+      <span class="footer-sep">|</span>
+      <span>www.ledlink.co.il</span>
+    </footer>
+
+  </div>
+</body>
+</html>
