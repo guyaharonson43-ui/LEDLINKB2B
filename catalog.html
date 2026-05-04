@@ -1041,12 +1041,21 @@
     }
 
     function downloadSnapshot() {
+      var dataURL = buildExportCanvas().toDataURL('image/png');
+      var isIOS = /iPhone|iPad/i.test(navigator.userAgent) && !/CriOS|Chrome/i.test(navigator.userAgent);
+      if (isIOS) {
+        // iOS Safari אינו תומך בהורדת data URL — פותחים בטאב חדש לשמירה ידנית
+        window.open(dataURL, '_blank');
+        return;
+      }
+      // Android + Desktop: המרה ל-Blob לאמינות מקסימלית
+      var arr=dataURL.split(','), mime=arr[0].match(/:(.*?);/)[1], bstr=atob(arr[1]), n=bstr.length, u8=new Uint8Array(n);
+      while(n--){ u8[n]=bstr.charCodeAt(n); }
+      var blobUrl=URL.createObjectURL(new Blob([u8],{type:mime}));
       var link=document.createElement('a');
-      link.download='LEDLink-Drawing-'+Date.now()+'.png';
-      link.href=buildExportCanvas().toDataURL('image/png');
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      link.href=blobUrl; link.download='LEDLink-Drawing-'+Date.now()+'.png';
+      document.body.appendChild(link); link.click(); document.body.removeChild(link);
+      setTimeout(function(){ URL.revokeObjectURL(blobUrl); }, 1000);
     }
 
     function generateFinalBOM() {
@@ -1122,8 +1131,8 @@
 
     function dismissWaOverlay() {
       waOverlay.style.display = 'none';
-      window.open(waUrl, '_blank');
       downloadSnapshot();
+      window.open(waUrl, '_blank');
     }
     waLink.onclick = function() { waOverlay.style.display = 'flex'; };
     waOverlay.querySelector('#cfg-wa-close-btn').onclick = dismissWaOverlay;
