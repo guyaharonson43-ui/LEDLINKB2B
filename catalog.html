@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>if(location.protocol==='file:'){location.replace('http://localhost:8000/catalog.html'+location.search+location.hash);}</script>
-  <!-- Google Analytics -->
+<!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EFYL6ZDMW"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0EFYL6ZDMW');</script>
   <!-- Microsoft Clarity -->
@@ -320,8 +319,8 @@
   </style>
 
   <!-- React (pre-compiled, no Babel needed) -->
-  <script crossorigin src="libs/react.production.min.js"></script>
-  <script crossorigin src="libs/react-dom.production.min.js"></script>
+  <script src="libs/react.production.min.js"></script>
+  <script src="libs/react-dom.production.min.js"></script>
   <style>
     .wa-float{position:fixed;bottom:84px;left:20px;z-index:999;background:#25D366;color:#fff;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,0.4);transition:transform .2s,box-shadow .2s;text-decoration:none;}
     .wa-float:hover{transform:scale(1.08);box-shadow:0 6px 24px rgba(37,211,102,0.5);}
@@ -949,19 +948,21 @@
       var cw=canvas.width, ch=canvas.height;
       var HDR=54, FTR=34;
       var oc=document.createElement('canvas'); oc.width=cw; oc.height=ch+HDR+FTR;
+      oc.style.direction='rtl';
+      document.body.appendChild(oc);
       var ox=oc.getContext('2d');
 
       // ── HEADER (dark bar) ──
       ox.fillStyle='#1C1C1C'; ox.fillRect(0,0,cw,HDR);
       // Logo: LED (gold bold) + LINK (white light)
       ox.textBaseline='middle'; ox.textAlign='right';
-      ox.font='900 18px Heebo,sans-serif'; ox.fillStyle='#E8A020';
-      ox.fillText('LED', cw-14, HDR/2);
-      var ledW=ox.measureText('LED').width;
       ox.font='300 18px Heebo,sans-serif'; ox.fillStyle='#FFFFFF';
-      ox.fillText('LINK', cw-14-ledW, HDR/2);
+      ox.fillText('LINK', cw-14, HDR/2);
+      var linkW=ox.measureText('LINK').width;
+      ox.font='900 18px Heebo,sans-serif'; ox.fillStyle='#E8A020';
+      ox.fillText('LED', cw-14-linkW, HDR/2);
       // Subtitle
-      ox.font='12px Heebo,sans-serif'; ox.fillStyle='#666'; ox.textAlign='left';
+      ox.font='12px Heebo,sans-serif'; ox.fillStyle='#666'; ox.textAlign='end';
       ox.fillText('תכנון פרופיל LED אישי', 14, HDR/2);
       // Gold bottom line
       ox.fillStyle='#E8A020'; ox.fillRect(0,HDR-2,cw,2);
@@ -1027,10 +1028,11 @@
       // ── FOOTER ──
       ox.fillStyle='#E8A020'; ox.fillRect(0,HDR+ch,cw,2);
       ox.fillStyle='#F4F4F0'; ox.fillRect(0,HDR+ch+2,cw,FTR-2);
+      ox.direction='rtl';
       ox.font='10px Heebo,sans-serif'; ox.textAlign='center'; ox.textBaseline='middle';
       ox.fillStyle='#666';
       ox.fillText(state.installType+' · '+state.lightingType+' · '+state.cct+' · '+state.color, cw/2, HDR+ch+2+(FTR-2)/2);
-
+      document.body.removeChild(oc);
       return oc;
     }
 
