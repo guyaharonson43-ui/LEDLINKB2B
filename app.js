@@ -382,7 +382,8 @@ const ProductModal = ({ product, onClose }) => {
     ), /*#__PURE__*/
 
     React.createElement("div", null,
-    renderSpecs()
+    renderSpecs(),
+    window.NeonSchematic && React.createElement(window.NeonSchematic, { product })
     )
     ),
 

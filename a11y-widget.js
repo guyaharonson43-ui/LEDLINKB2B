@@ -9,6 +9,7 @@
       transition: background 0.2s, transform 0.2s;
     }
     #a11y-btn:hover { background: #0046A0; transform: scale(1.08); }
+    #a11y-btn:focus-visible { outline: 3px solid #FFD700; outline-offset: 3px; }
     #a11y-btn svg { width: 28px; height: 28px; fill: #fff; }
 
     #a11y-panel {
@@ -37,7 +38,7 @@
     .a11y-size-label { font-size: 14px; color: #333; font-weight: 500; }
     .a11y-size-btns { display: flex; gap: 6px; }
     .a11y-size-btn {
-      width: 30px; height: 30px; border-radius: 6px;
+      width: 44px; height: 44px; border-radius: 6px;
       border: 2px solid #D0D0D0; background: #F4F4F4;
       cursor: pointer; display: flex; align-items: center; justify-content: center;
       color: #444; font-weight: 800; font-family: 'Heebo', sans-serif;
@@ -48,6 +49,7 @@
     .a11y-size-btn:nth-child(3) { font-size: 16px; }
     .a11y-size-btn.active { border-color: #0057B8; background: #E8F0FC; color: #0057B8; }
     .a11y-size-btn:hover { border-color: #0057B8; }
+    .a11y-size-btn:focus-visible { outline: 3px solid #FFD700; outline-offset: 2px; }
 
     /* שורות toggle */
     .a11y-toggle-row {
@@ -56,13 +58,14 @@
     }
     .a11y-toggle-label { font-size: 14px; color: #333; font-weight: 500; }
     .a11y-toggle-btn {
-      min-width: 52px; height: 26px; border-radius: 6px;
+      min-width: 52px; height: 30px; border-radius: 6px;
       border: 1px solid #ccc; background: #F4F4F4;
       cursor: pointer; font-size: 12px; font-weight: 700;
       font-family: 'Heebo', sans-serif; color: #888;
       transition: all 0.15s; padding: 0 8px;
     }
     .a11y-toggle-btn.active { background: #0057B8; border-color: #0057B8; color: #fff; }
+    .a11y-toggle-btn:focus-visible { outline: 3px solid #FFD700; outline-offset: 2px; }
 
     #a11y-reset {
       width: 100%; padding: 9px; border-radius: 8px;
@@ -71,17 +74,25 @@
       margin-top: 12px; transition: background 0.15s;
     }
     #a11y-reset:hover { background: #333; }
+    #a11y-reset:focus-visible { outline: 3px solid #FFD700; outline-offset: 2px; }
 
     #a11y-acc-link {
       display: block; text-align: center; margin-top: 10px;
       font-size: 12px; color: #0057B8; text-decoration: underline;
       cursor: pointer;
     }
+    #a11y-acc-link:focus-visible { outline: 3px solid #FFD700; outline-offset: 2px; }
+
+    #a11y-contact {
+      margin-top: 10px; padding-top: 10px;
+      border-top: 1px solid #F0F0F0;
+      font-size: 11px; color: #666; text-align: center; line-height: 1.6;
+    }
+    #a11y-contact a { color: #0057B8; }
 
     /* ── Effects ── */
-    html.a11y-text-sm body  { zoom: 1.0; }
-    html.a11y-text-md body  { zoom: 1.2; }
-    html.a11y-text-lg body  { zoom: 1.4; }
+    html.a11y-text-md { font-size: 120%; }
+    html.a11y-text-lg { font-size: 140%; }
     html.a11y-high-contrast { filter: contrast(2); }
     html.a11y-grayscale     { filter: grayscale(1); }
     html.a11y-highlight-links a { outline: 3px solid #FFD700 !important; background: #FFF9C4 !important; }
@@ -98,50 +109,61 @@
   /* ── Panel HTML ── */
   const panel = document.createElement('div');
   panel.id = 'a11y-panel';
+  panel.setAttribute('role', 'dialog');
+  panel.setAttribute('aria-label', 'הגדרות נגישות');
+  panel.setAttribute('aria-modal', 'true');
   panel.innerHTML = `
     <div id="a11y-panel-header">
-      <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="4" r="2"/><path d="M19 8h-6l-1 5 3 2v5h-2v-4l-3-2-1 6H7l1.5-8L6 8H4V6h16v2z"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4" r="2"/><path d="M19 8h-6l-1 5 3 2v5h-2v-4l-3-2-1 6H7l1.5-8L6 8H4V6h16v2z"/></svg>
       הגדרות נגישות
     </div>
 
     <div class="a11y-size-row">
-      <span class="a11y-size-label">גודל טקסט</span>
-      <div class="a11y-size-btns">
-        <button class="a11y-size-btn" data-size="sm">A</button>
-        <button class="a11y-size-btn" data-size="md">A</button>
-        <button class="a11y-size-btn" data-size="lg">A</button>
+      <span class="a11y-size-label" id="a11y-size-label">גודל טקסט</span>
+      <div class="a11y-size-btns" role="group" aria-labelledby="a11y-size-label">
+        <button class="a11y-size-btn" data-size="sm" aria-pressed="false" aria-label="טקסט קטן">A</button>
+        <button class="a11y-size-btn" data-size="md" aria-pressed="false" aria-label="טקסט בינוני">A</button>
+        <button class="a11y-size-btn" data-size="lg" aria-pressed="false" aria-label="טקסט גדול">A</button>
       </div>
     </div>
 
     <div class="a11y-toggle-row">
       <span class="a11y-toggle-label">ניגודיות גבוהה</span>
-      <button class="a11y-toggle-btn" data-action="high-contrast">כבוי</button>
+      <button class="a11y-toggle-btn" data-action="high-contrast" aria-pressed="false">כבוי</button>
     </div>
     <div class="a11y-toggle-row">
       <span class="a11y-toggle-label">גווני אפור</span>
-      <button class="a11y-toggle-btn" data-action="grayscale">כבוי</button>
+      <button class="a11y-toggle-btn" data-action="grayscale" aria-pressed="false">כבוי</button>
     </div>
     <div class="a11y-toggle-row">
       <span class="a11y-toggle-label">הדגשת קישורים</span>
-      <button class="a11y-toggle-btn" data-action="highlight-links">כבוי</button>
+      <button class="a11y-toggle-btn" data-action="highlight-links" aria-pressed="false">כבוי</button>
     </div>
     <div class="a11y-toggle-row">
       <span class="a11y-toggle-label">פונט קריא (דיסלקציה)</span>
-      <button class="a11y-toggle-btn" data-action="readable">כבוי</button>
+      <button class="a11y-toggle-btn" data-action="readable" aria-pressed="false">כבוי</button>
     </div>
     <div class="a11y-toggle-row">
       <span class="a11y-toggle-label">עצור אנימציות</span>
-      <button class="a11y-toggle-btn" data-action="no-anim">כבוי</button>
+      <button class="a11y-toggle-btn" data-action="no-anim" aria-pressed="false">כבוי</button>
     </div>
 
     <button id="a11y-reset">↺ אפס הכל</button>
     <a id="a11y-acc-link" href="accessibility.html">הצהרת נגישות</a>
+
+    <div id="a11y-contact">
+      רכז נגישות: <strong>גיא אהרונסון</strong><br>
+      <a href="tel:+972501234567">050-123-4567</a> |
+      <a href="mailto:info@ledlink.co.il">info@ledlink.co.il</a>
+    </div>
   `;
 
   const btn = document.createElement('button');
   btn.id = 'a11y-btn';
   btn.setAttribute('aria-label', 'פתח הגדרות נגישות');
-  btn.innerHTML = `<svg viewBox="0 0 24 24"><circle cx="12" cy="4" r="2"/><path d="M19 8h-6l-1 5 3 2v5h-2v-4l-3-2-1 6H7l1.5-8L6 8H4V6h16v2z"/></svg>`;
+  btn.setAttribute('aria-expanded', 'false');
+  btn.setAttribute('aria-haspopup', 'dialog');
+  btn.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4" r="2"/><path d="M19 8h-6l-1 5 3 2v5h-2v-4l-3-2-1 6H7l1.5-8L6 8H4V6h16v2z"/></svg>`;
 
   document.body.appendChild(panel);
   document.body.appendChild(btn);
@@ -151,13 +173,32 @@
   const toggleActions = ['high-contrast','grayscale','highlight-links','readable','no-anim'];
   const sizeClasses = ['a11y-text-sm','a11y-text-md','a11y-text-lg'];
 
+  function openPanel() {
+    panel.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    const firstFocusable = panel.querySelector('button, a');
+    if (firstFocusable) firstFocusable.focus();
+  }
+
+  function closePanel() {
+    panel.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.focus();
+  }
+
   function setSize(size) {
     sizeClasses.forEach(c => root.classList.remove(c));
-    panel.querySelectorAll('.a11y-size-btn').forEach(b => b.classList.remove('active'));
+    panel.querySelectorAll('.a11y-size-btn').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-pressed', 'false');
+    });
     if (size) {
       root.classList.add('a11y-text-' + size);
       const activeBtn = panel.querySelector(`[data-size="${size}"]`);
-      if (activeBtn) activeBtn.classList.add('active');
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+        activeBtn.setAttribute('aria-pressed', 'true');
+      }
     }
     saveState();
   }
@@ -170,6 +211,7 @@
       const on = root.classList.contains(cls);
       tb.classList.toggle('active', on);
       tb.textContent = on ? 'פעיל' : 'כבוי';
+      tb.setAttribute('aria-pressed', on ? 'true' : 'false');
     }
     saveState();
   }
@@ -194,15 +236,19 @@
     toggleActions.forEach(a => {
       root.classList.remove('a11y-' + a);
       const tb = panel.querySelector(`[data-action="${a}"]`);
-      if (tb) { tb.classList.remove('active'); tb.textContent = 'כבוי'; }
+      if (tb) { tb.classList.remove('active'); tb.textContent = 'כבוי'; tb.setAttribute('aria-pressed', 'false'); }
     });
-    panel.querySelectorAll('.a11y-size-btn').forEach(b => b.classList.remove('active'));
+    panel.querySelectorAll('.a11y-size-btn').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-pressed', 'false');
+    });
     localStorage.removeItem('a11y');
   }
 
   /* Events */
   btn.addEventListener('click', () => {
-    panel.classList.toggle('open');
+    if (panel.classList.contains('open')) closePanel();
+    else openPanel();
   });
 
   panel.querySelectorAll('.a11y-size-btn').forEach(b => {
@@ -218,9 +264,13 @@
 
   document.getElementById('a11y-reset').addEventListener('click', resetAll);
 
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
+  });
+
   document.addEventListener('click', e => {
     if (!panel.contains(e.target) && !btn.contains(e.target)) {
-      panel.classList.remove('open');
+      if (panel.classList.contains('open')) closePanel();
     }
   });
 
