@@ -52,12 +52,11 @@ function getStripMeta(p) {
     color = 'לבן';
   }
   let type = d.type;
-  if (!p.desc) {
+  if (type === 'סטנדרט') {
     if (sub === 'COB' || /COB|DOB/i.test(name)) type = 'COB';else
     if (sub === 'Neon' || /NEON/i.test(name) || /נאון/.test(name)) type = 'נאון';else
     if (sub === 'SPI' || /\bSPI\b/i.test(name)) type = 'דיגיטלי';else
-    if (/3D/i.test(name)) type = 'זיגזג';else
-    type = 'סטנדרט';
+    if (/3D/i.test(name)) type = 'זיגזג';
   }
   const voltage = p.specs?.voltage || p.specs?.inputVoltage || (
   (p.desc || '').match(/\b(12|24|48)V\b/)?.[0] ?? '');
@@ -678,6 +677,10 @@ const App = () => {
   const [activeTab, setActiveTab] = useState('דרייברים');
   const [selected, setSelected] = useState(null);
   const [search, setSearch] = useState('');
+  const [recentSearches, setRecentSearches] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('ledlink_recent_searches') || '[]'); }
+    catch { return []; }
+  });
   const [stripF, setStripF] = useState({ ...INIT_STRIP });
   const [psF, setPsF] = useState({ ...INIT_PS });
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -721,6 +724,24 @@ const App = () => {
     };
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
+  }, []);
+
+  const saveSearch = useCallback((q) => {
+    q = (q || '').trim();
+    if (q.length < 2) return;
+    setRecentSearches((prev) => {
+      const next = [q, ...prev.filter((s) => s !== q)].slice(0, 5);
+      localStorage.setItem('ledlink_recent_searches', JSON.stringify(next));
+      return next;
+    });
+  }, []);
+
+  const removeRecent = useCallback((q) => {
+    setRecentSearches((prev) => {
+      const next = prev.filter((s) => s !== q);
+      localStorage.setItem('ledlink_recent_searches', JSON.stringify(next));
+      return next;
+    });
   }, []);
 
   // Switch tab: reset search + filters + pushState
@@ -850,8 +871,21 @@ const App = () => {
       placeholder: `חיפוש ב${tabInfo.label}...`,
       value: search,
       onChange: (e) => setSearch(e.target.value),
+      onBlur: () => saveSearch(search),
+      onKeyDown: (e) => e.key === 'Enter' && saveSearch(search),
       className: "search-input" }
     ), /*#__PURE__*/
+    search && React.createElement("button", {
+      onClick: () => { saveSearch(search); setSearch(''); },
+      style: { position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)',
+        background: 'none', border: 'none', cursor: 'pointer', color: '#AAAAAA',
+        padding: 4, display: 'flex', alignItems: 'center', lineHeight: 1 },
+      'aria-label': 'נקה חיפוש'
+    },
+    React.createElement("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.5" },
+      React.createElement("line", { x1: "18", y1: "6", x2: "6", y2: "18" }),
+      React.createElement("line", { x1: "6", y1: "6", x2: "18", y2: "18" })
+    )), /*#__PURE__*/
     React.createElement("span", { style: { position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: '#BBBBBB', pointerEvents: 'none' } },
     Icons.search
     )
@@ -864,6 +898,30 @@ const App = () => {
     Icons.filter, " \u05E1\u05D9\u05E0\u05D5\u05DF"
     )
 
+    ), /*#__PURE__*/
+
+    !search && recentSearches.length > 0 && React.createElement("div", {
+      style: { display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20, flexWrap: 'wrap' }
+    },
+      React.createElement("span", { style: { fontSize: 12, color: '#999999', flexShrink: 0 } }, "חיפושים אחרונים:"),
+      recentSearches.map((q) => React.createElement("span", {
+        key: q,
+        onClick: () => setSearch(q),
+        style: { display: 'inline-flex', alignItems: 'center', gap: 4, background: '#FFFFFF',
+          border: '1px solid #E0DDD6', borderRadius: 20, padding: '3px 10px 3px 6px',
+          fontSize: 12, color: '#555555', cursor: 'pointer' }
+      },
+        q,
+        React.createElement("button", {
+          onClick: (e) => { e.stopPropagation(); removeRecent(q); },
+          style: { background: 'none', border: 'none', cursor: 'pointer', color: '#BBBBBB',
+            padding: 0, display: 'flex', alignItems: 'center', marginRight: 2 },
+          'aria-label': 'הסר'
+        }, React.createElement("svg", { width: "10", height: "10", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.5" },
+          React.createElement("line", { x1: "18", y1: "6", x2: "6", y2: "18" }),
+          React.createElement("line", { x1: "6", y1: "6", x2: "18", y2: "18" })
+        ))
+      ))
     ), /*#__PURE__*/
 
 
