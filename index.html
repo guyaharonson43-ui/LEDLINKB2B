@@ -921,22 +921,22 @@
     })();
 
     const PROJECT_IMAGES = [
-      { src: 'projects/project_01.jpg', label: 'תאורת לד פנים' },
-      { src: 'projects/project_02.jpg', label: 'פרופיל תאורה' },
-      { src: 'projects/project_03.jpg', label: 'תאורה ליניארית' },
-      { src: 'projects/project_04.jpg', label: 'פרויקט מגורים' },
-      { src: 'projects/project_05.jpg', label: 'תאורה מסחרית' },
-      { src: 'projects/project_06.jpg', label: 'פרויקט יוקרה' },
-      { src: 'projects/project_07.jpg', label: 'תאורת פנים' },
-      { src: 'projects/project_08.jpg', label: 'תאורה שקועה' },
-      { src: 'projects/project_09.jpg', label: 'תאורת חוץ' },
-      { src: 'projects/project_10.jpg', label: 'גופי תאורה' },
-      { src: 'projects/project_11.jpg', label: 'פרופיל LINK' },
-      { src: 'projects/project_12.jpg', label: 'תאורת חלל' },
-      { src: 'projects/project_13.jpg', label: 'לובי ומסדרון' },
-      { src: 'projects/project_14.jpg', label: 'תאורה עיצובית' },
-      { src: 'projects/project_15.jpg', label: 'תאורת LED' },
-      { src: 'projects/project_16.jpg', label: 'פרויקט מסחרי' },
+      { src: 'projects/led-cove-living-room-residential.jpg', label: 'תאורת cove בסלון מגורים' },
+      { src: 'projects/led-strip-kitchen-dark-cabinets.jpg', label: 'סטריפ LED במטבח' },
+      { src: 'projects/led-office-towers-cornice-night.jpg', label: 'תאורת כותר 4 מגדלי משרדים' },
+      { src: 'projects/led-outdoor-gazebo-circular-warm.jpg', label: 'תאורת גזיבו חוץ' },
+      { src: 'projects/led-garden-tree-uplighting-night.jpg', label: 'הארת עץ בגינה' },
+      { src: 'projects/led-cove-white-residential-room.jpg', label: 'תאורת cove חדר לבן' },
+      { src: 'projects/led-lobby-reception-wood-strip.jpg', label: 'תאורת לובי וקבלה' },
+      { src: 'projects/led-glass-staircase-exterior-night.jpg', label: 'מדרגות זכוכית חוץ' },
+      { src: 'projects/led-facade-curved-building-night.jpg', label: 'תאורת חזית בניין' },
+      { src: 'projects/led-linear-office-pendant-commercial.jpg', label: 'תאורה לינארית משרד' },
+      { src: 'projects/led-recessed-conference-room.jpg', label: 'תאורה שקועה חדר ישיבות' },
+      { src: 'projects/led-cove-corner-white-room.jpg', label: 'תאורת cove פינת חדר' },
+      { src: 'projects/led-ceiling-strip-restaurant-parallel.jpg', label: 'מסילות LED תקרת מסעדה' },
+      { src: 'projects/led-staircase-interior-strip.jpg', label: 'תאורת מדרגות פנים' },
+      { src: 'projects/led-outdoor-rocks-garden-uplighting.jpg', label: 'תאורת גינה ואבנים' },
+      { src: 'projects/led-kitchen-under-cabinet-spotlights.jpg', label: 'תאורה תחתית ארונות מטבח' },
     ];
 
     let lbIndex = 0;
@@ -950,23 +950,16 @@
       btn.innerHTML = `
         <img src="${p.src}" alt="${p.label}" loading="lazy" decoding="async"
           style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s; display:block;" />
-        <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 60%);
+        <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 60%);
                     opacity:0; transition:opacity 0.3s;"></div>
-        <span style="position:absolute; bottom:10px; right:12px; left:12px; color:#fff; font-size:12px;
-                     font-weight:700; letter-spacing:1px; transform:translateY(8px); transition:transform 0.3s;
-                     opacity:0;">${p.label}</span>
       `;
       btn.addEventListener('mouseenter', () => {
         btn.querySelector('img').style.transform = 'scale(1.07)';
         btn.querySelector('div').style.opacity = '1';
-        btn.querySelector('span').style.opacity = '1';
-        btn.querySelector('span').style.transform = 'translateY(0)';
       });
       btn.addEventListener('mouseleave', () => {
         btn.querySelector('img').style.transform = 'scale(1)';
         btn.querySelector('div').style.opacity = '0';
-        btn.querySelector('span').style.opacity = '0';
-        btn.querySelector('span').style.transform = 'translateY(8px)';
       });
       btn.addEventListener('click', () => openLightbox(i));
       grid.appendChild(btn);
@@ -990,7 +983,7 @@
     function updateLightbox() {
       document.getElementById('lb-img').src = PROJECT_IMAGES[lbIndex].src;
       document.getElementById('lb-img').alt = PROJECT_IMAGES[lbIndex].label;
-      document.getElementById('lb-label').textContent = PROJECT_IMAGES[lbIndex].label;
+      document.getElementById('lb-label').textContent = '';
       document.getElementById('lb-count').textContent = `${lbIndex + 1} / ${PROJECT_IMAGES.length}`;
     }
     function toggleProjects() {
