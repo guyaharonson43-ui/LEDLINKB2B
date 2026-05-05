@@ -788,7 +788,10 @@ const App = () => {
     if (activeTab === 'דרייברים') {
       r = r.filter((p) => {
         const s = p.specs || {};
-        if (psF.voltage !== 'הכל' && s.voltage !== psF.voltage) return false;
+        if (psF.voltage !== 'הכל') {
+          if (s.outputMode === 'CC') return false;
+          if (s.voltage !== psF.voltage) return false;
+        }
         if (psF.ip !== 'הכל' && s.ip !== psF.ip) return false;
         if (psF.output !== 'הכל' && s.outputMode !== psF.output) return false;
         if (psF.dimming !== 'הכל' && !(s.dimming || []).some((d) => d.toLowerCase().includes(psF.dimming.toLowerCase()))) return false;
