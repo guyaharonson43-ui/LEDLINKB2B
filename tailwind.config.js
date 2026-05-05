@@ -1,5 +1,5 @@
-module.exports = {
-  content: ['./catalog.html', './app.js', './index.html'],
+export default {
+  content: ['./catalog.html', './index.html', './src/**/*.{jsx,js}'],
   theme: {
     extend: {
       colors: {
@@ -17,10 +17,8 @@ module.exports = {
         'ink-soft':    '#555555',
         'ink-faint':   '#999999',
       },
-      fontFamily: {
-        sans: ['Heebo', 'sans-serif'],
-      },
-    }
+      fontFamily: { sans: ['Heebo', 'sans-serif'] },
+    },
   },
   plugins: [],
-}
+};

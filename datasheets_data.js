@@ -1,4 +1,4 @@
-﻿const PRODUCT_DATASHEETS = {
+﻿const PRODUCT_DATASHEETS = { // eslint-disable-line no-unused-vars
   // פרופילים — דפי נתונים HTML
   'ledlink-tuba30':  [{ label: 'LINK R30 — דף נתונים', file: 'DATASHEET/LINKR30.html' }],
   'ledlink-tuba60':  [{ label: 'LINK R60 — דף נתונים', file: 'DATASHEET/LINKR60.html' }],
@@ -383,3 +383,4 @@
   "ZMC013 MULTICURRENT ZIGBEE/BLE/PUSH": [{ label: "דף קטלוגי — ZMC013", file: "datasheets/ZMC013.pdf" }, { label: "דף נתונים — ZMC13", file: "datasheets/DS_ZMC13.pdf" }, { label: "הוראות הפעלה", file: "datasheets/I_ZMC13.pdf" }],
   "ZPB4 INTERFACE 4": [{ label: "דף קטלוגי — ZPB4", file: "datasheets/ZPB4.pdf" }, { label: "דף נתונים — ZPB4", file: "datasheets/DS_ZPB4.pdf" }, { label: "הוראות הפעלה", file: "datasheets/I_ZPB4.pdf" }],
 };
+export default PRODUCT_DATASHEETS;

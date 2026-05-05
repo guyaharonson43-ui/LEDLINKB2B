@@ -1,4 +1,4 @@
-﻿window.__PRODUCTS__ = [
+﻿const __PRODUCTS__ = [
   {
     "id": "ledlink-tuba30",
     "name": "טיובה 30",
@@ -7351,3 +7351,5 @@
     }
   }
 ];
+if (typeof window !== 'undefined') window.__PRODUCTS__ = __PRODUCTS__;
+export default __PRODUCTS__;
