@@ -77,8 +77,9 @@ const STRIP_LMW_RANGES = [
 { label: '100–150', min: 100, max: 150 }, { label: '150–200', min: 150, max: 200 }, { label: '200+', min: 200, max: 99999 }];
 
 const PS_VOLTAGE_OPTIONS = ['הכל', '12V', '24V', '48V'];
+const PS_INPUT_VOLTAGE_OPTIONS = ['הכל', '12V', '24V', '48V', '110V', '230V'];
 const PS_IP_OPTIONS = ['הכל', 'IP20', 'IP65', 'IP67', 'IP68'];
-const PS_OUTPUT_OPTIONS = ['הכל', 'CV', 'CC', 'CV+CC'];
+const PS_OUTPUT_OPTIONS = ['הכל', 'CV', 'CC', 'DALI', 'DMX'];
 const PS_DIMMING_OPTIONS = ['הכל', 'DALI', '0-10V', 'PWM', 'TRIAC', 'Resistor', 'Push'];
 const PS_POWER_RANGES = [
 { label: 'הכל', min: 0, max: 99999 }, { label: 'עד 30W', min: 0, max: 30 },
@@ -86,7 +87,7 @@ const PS_POWER_RANGES = [
 { label: '100–200W', min: 100, max: 200 }, { label: '200W+', min: 200, max: 99999 }];
 
 const INIT_STRIP = { ip: 'הכל', type: 'הכל', color: 'הכל', voltage: 'הכל', power: 'הכל', lmw: 'הכל' };
-const INIT_PS = { voltage: 'הכל', ip: 'הכל', output: 'הכל', dimming: 'הכל', power: 'הכל' };
+const INIT_PS = { voltage: 'הכל', inputVoltage: 'הכל', ip: 'הכל', output: 'הכל', dimming: 'הכל', power: 'הכל' };
 
 // ── SVG Icons ──
 const Icons = {
@@ -246,9 +247,10 @@ const DriverFilters = ({ filters, setFilters, count }) => {
     hasActive && /*#__PURE__*/React.createElement("button", { onClick: () => setFilters({ ...INIT_PS }), style: { fontSize: 12, color: '#E8A020', background: 'none', border: 'none', cursor: 'pointer' } }, "\u05D0\u05D9\u05E4\u05D5\u05E1")
     ),
     [
-    { title: 'מתח פלט', options: PS_VOLTAGE_OPTIONS, key: 'voltage' },
-    { title: 'הגנה (IP)', options: PS_IP_OPTIONS, key: 'ip' },
-    { title: 'מצב פלט', options: PS_OUTPUT_OPTIONS, key: 'output' }].
+    { title: 'מתח כניסה', options: PS_INPUT_VOLTAGE_OPTIONS, key: 'inputVoltage' },
+    { title: 'מצב פלט', options: PS_OUTPUT_OPTIONS, key: 'output' },
+    { title: 'מתח פלט (CV)', options: PS_VOLTAGE_OPTIONS, key: 'voltage' },
+    { title: 'הגנה (IP)', options: PS_IP_OPTIONS, key: 'ip' }].
     map(({ title, options, key }) => /*#__PURE__*/
     React.createElement("div", { key: key, style: { marginBottom: 20 } }, /*#__PURE__*/
     React.createElement("div", { style: { fontSize: 11, fontWeight: 700, color: '#999999', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 8 } }, title), /*#__PURE__*/
@@ -792,8 +794,17 @@ const App = () => {
           if (s.outputMode === 'CC') return false;
           if (s.voltage !== psF.voltage) return false;
         }
+        if (psF.inputVoltage !== 'הכל' && s.inputVoltage !== psF.inputVoltage) return false;
         if (psF.ip !== 'הכל' && s.ip !== psF.ip) return false;
-        if (psF.output !== 'הכל' && s.outputMode !== psF.output) return false;
+        if (psF.output !== 'הכל') {
+          if (psF.output === 'DMX') {
+            if (!(s.dimming || []).includes('DMX') && s.outputMode !== 'DMX') return false;
+          } else if (psF.output === 'DALI') {
+            if (s.outputMode !== 'DALI') return false;
+          } else {
+            if (s.outputMode !== psF.output) return false;
+          }
+        }
         if (psF.dimming !== 'הכל' && !(s.dimming || []).some((d) => d.toLowerCase().includes(psF.dimming.toLowerCase()))) return false;
         if (psF.power !== 'הכל') {
           const range = PS_POWER_RANGES.find((x) => x.label === psF.power);
