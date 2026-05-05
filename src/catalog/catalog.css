@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Guarantee swap behaviour for any locally-cached Heebo variant */
+@font-face {
+  font-family: 'Heebo';
+  font-display: swap;
+  src: local('Heebo');
+}
+
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scrollbar-gutter: stable; }
 @view-transition { navigation: auto; }
