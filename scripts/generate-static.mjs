@@ -1,8 +1,11 @@
 /**
- * Post-build script: injects static SEO content into dist/catalog.html
- * and generates dist/sitemap.xml + dist/robots.txt
+ * Post-build script — runs after `vite build`:
+ *  1. Copies all static asset directories and files to dist/
+ *  2. Injects Schema.org ItemList + noscript product fallback into dist/catalog.html
+ *  3. Generates dist/sitemap.xml and dist/robots.txt
  */
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync, copyFileSync, existsSync,
+         mkdirSync, readdirSync, statSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -11,58 +14,108 @@ const ROOT = join(__dirname, '..');
 const DIST = join(ROOT, 'dist');
 const BASE_URL = 'https://ledlink.co.il';
 
-// Load products data — strip only the ES export line, keep window assignment
+// ── 1. Copy static assets that Vite doesn't know about ──────────────────────
+
+function copyRecursive(src, dest) {
+  if (!existsSync(src)) return;
+  const stat = statSync(src);
+  if (stat.isDirectory()) {
+    mkdirSync(dest, { recursive: true });
+    for (const entry of readdirSync(src)) {
+      copyRecursive(join(src, entry), join(dest, entry));
+    }
+  } else {
+    copyFileSync(src, dest);
+  }
+}
+
+function copyDir(name) {
+  const src = join(ROOT, name);
+  const dest = join(DIST, name);
+  if (!existsSync(src)) return;
+  copyRecursive(src, dest);
+  console.log(`generate-static: copied  /${name}  →  dist/${name}`);
+}
+
+function copyFile(name) {
+  const src = join(ROOT, name);
+  const dest = join(DIST, name);
+  if (!existsSync(src)) return;
+  copyFileSync(src, dest);
+  console.log(`generate-static: copied  ${name}  →  dist/${name}`);
+}
+
+// Image + asset directories
+copyDir('strips');
+copyDir('projects');
+copyDir('DATASHEET');
+copyDir('datasheets');
+
+// JS libraries used by non-Vite pages (tools.html, guides.html …)
+copyDir('libs');
+
+// Root-level static files
+for (const f of [
+  'manifest.json', 'CNAME', 'hero.jpg', 'hero.webp',
+  'a11y-widget.js', 'products_data.js', 'datasheets_data.js',
+]) copyFile(f);
+
+// Static HTML pages (served as-is; they use libs/ + CDN scripts, not Vite bundles)
+for (const f of [
+  'about.html', 'tools.html', 'guides.html', 'faq.html',
+  'takanon.html', 'privacy.html', 'accessibility.html',
+]) copyFile(f);
+
+// ── 2. Load products ─────────────────────────────────────────────────────────
+
 const raw = readFileSync(join(ROOT, 'products_data.js'), 'utf8');
 const stripped = raw.replace(/^export\s+default\s+\S+\s*;?\s*$/gm, '');
 const fn = new Function('window', stripped + '\nreturn window.__PRODUCTS__;');
-const fakeWindow = {};
-const products = fn(fakeWindow);
+const products = fn({});
 
 if (!Array.isArray(products) || products.length === 0) {
   console.error('generate-static: could not load products');
   process.exit(1);
 }
 
-// Clean HTML entities from name
 function cleanName(s) {
   return s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
           .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ');
 }
 
-// ── 1. Per-product Product schema (all products) ────────────────────────────
-const productSchemas = products.map(p => ({
-  '@context': 'https://schema.org',
-  '@type': 'Product',
-  name: cleanName(p.name),
-  description: p.desc ? cleanName(p.desc.split('|')[0].trim()) : '',
-  brand: { '@type': 'Brand', name: 'LEDLink' },
-  ...(p.url ? { url: p.url } : {}),
-  ...(p.img ? { image: `${BASE_URL}/${p.img}` } : {}),
-  offers: {
-    '@type': 'Offer',
-    availability: 'https://schema.org/InStock',
-    priceCurrency: 'ILS',
-    seller: { '@type': 'Organization', name: 'LEDLink Components' }
-  }
-}));
+// ── 3. Schema.org ItemList (all 373 products) ────────────────────────────────
 
-// Combine into a single ItemList schema to keep the HTML compact
 const itemListSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   name: 'קטלוג מוצרי LEDLink',
   numberOfItems: products.length,
-  itemListElement: productSchemas.map((s, i) => ({
+  itemListElement: products.map((p, i) => ({
     '@type': 'ListItem',
     position: i + 1,
-    item: s
+    item: {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: cleanName(p.name),
+      description: p.desc ? cleanName(p.desc.split('|')[0].trim()) : '',
+      brand: { '@type': 'Brand', name: 'LEDLink' },
+      ...(p.url ? { url: p.url }                    : {}),
+      ...(p.img ? { image: `${BASE_URL}/${p.img}` } : {}),
+      offers: {
+        '@type': 'Offer',
+        availability: 'https://schema.org/InStock',
+        priceCurrency: 'ILS',
+        seller: { '@type': 'Organization', name: 'LEDLink Components' }
+      }
+    }
   }))
 };
 
 const schemaBlock =
   `<script type="application/ld+json">\n${JSON.stringify(itemListSchema)}\n</script>`;
 
-// ── 2. Noscript static HTML fallback (all 373 products) ─────────────────────
+// ── 4. Noscript fallback (all products) ──────────────────────────────────────
+
 const byCategory = {};
 for (const p of products) {
   const cat = p.category || 'אחר';
@@ -83,7 +136,8 @@ for (const [cat, items] of Object.entries(byCategory)) {
 }
 noscriptHtml += '</div></noscript>';
 
-// ── 3. Patch dist/catalog.html ───────────────────────────────────────────────
+// ── 5. Patch dist/catalog.html ───────────────────────────────────────────────
+
 const htmlPath = join(DIST, 'catalog.html');
 let html = readFileSync(htmlPath, 'utf8');
 
@@ -91,36 +145,34 @@ html = html.replace(
   '<!-- Per-product Product schema injected here by generate-static.mjs at build time -->',
   schemaBlock
 );
-
 html = html.replace(
   /<div id="root">\s*<!--[^>]*-->\s*<\/div>/,
   `<div id="root">${noscriptHtml}</div>`
 );
 
 writeFileSync(htmlPath, html, 'utf8');
-console.log(`generate-static: injected ItemList schema (${products.length} products) + noscript list → dist/catalog.html`);
+console.log(`generate-static: schema (${products.length} products) + noscript  →  dist/catalog.html`);
 
-// ── 4. sitemap.xml ───────────────────────────────────────────────────────────
+// ── 6. sitemap.xml ───────────────────────────────────────────────────────────
+
 const today = new Date().toISOString().slice(0, 10);
 
-const staticPages = [
-  { loc: `${BASE_URL}/`,              priority: '1.0', changefreq: 'weekly'  },
-  { loc: `${BASE_URL}/catalog.html`,  priority: '0.9', changefreq: 'daily'   },
-  { loc: `${BASE_URL}/tools.html`,    priority: '0.7', changefreq: 'monthly' },
-  { loc: `${BASE_URL}/guides.html`,   priority: '0.6', changefreq: 'monthly' },
-  { loc: `${BASE_URL}/about.html`,    priority: '0.5', changefreq: 'yearly'  },
-  { loc: `${BASE_URL}/faq.html`,      priority: '0.5', changefreq: 'monthly' },
+const sitemapStatic = [
+  { loc: `${BASE_URL}/`,             priority: '1.0', changefreq: 'weekly'  },
+  { loc: `${BASE_URL}/catalog.html`, priority: '0.9', changefreq: 'daily'   },
+  { loc: `${BASE_URL}/tools.html`,   priority: '0.7', changefreq: 'monthly' },
+  { loc: `${BASE_URL}/guides.html`,  priority: '0.6', changefreq: 'monthly' },
+  { loc: `${BASE_URL}/about.html`,   priority: '0.5', changefreq: 'yearly'  },
+  { loc: `${BASE_URL}/faq.html`,     priority: '0.5', changefreq: 'monthly' },
 ];
-
-const productUrls = products
+const sitemapProducts = products
   .filter(p => p.url)
   .map(p => ({ loc: p.url, priority: '0.8', changefreq: 'monthly' }));
 
-const allUrls = [...staticPages, ...productUrls];
-
+const sitemapAll = [...sitemapStatic, ...sitemapProducts];
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${allUrls.map(u => `  <url>
+${sitemapAll.map(u => `  <url>
     <loc>${u.loc}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>${u.changefreq}</changefreq>
@@ -129,14 +181,13 @@ ${allUrls.map(u => `  <url>
 </urlset>`;
 
 writeFileSync(join(DIST, 'sitemap.xml'), sitemapXml, 'utf8');
-console.log(`generate-static: sitemap.xml → ${allUrls.length} URLs (${productUrls.length} products + ${staticPages.length} static pages)`);
+console.log(`generate-static: sitemap.xml  →  ${sitemapAll.length} URLs`);
 
-// ── 5. robots.txt ────────────────────────────────────────────────────────────
-const robotsTxt = `User-agent: *
-Allow: /
+// ── 7. robots.txt ────────────────────────────────────────────────────────────
 
-Sitemap: ${BASE_URL}/sitemap.xml
-`;
-
-writeFileSync(join(DIST, 'robots.txt'), robotsTxt, 'utf8');
-console.log('generate-static: robots.txt → dist/robots.txt');
+writeFileSync(
+  join(DIST, 'robots.txt'),
+  `User-agent: *\nAllow: /\n\nSitemap: ${BASE_URL}/sitemap.xml\n`,
+  'utf8'
+);
+console.log('generate-static: robots.txt  →  dist/robots.txt');
