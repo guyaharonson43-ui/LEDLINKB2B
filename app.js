@@ -893,8 +893,8 @@ const App = () => {
     ),
     showFilters && /*#__PURE__*/
     React.createElement("button", { onClick: () => setSidebarOpen((o) => !o),
-      className: "btn-outline",
-      style: { display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, display: 'none' },
+      className: "btn-outline mobile-filter-btn",
+      style: { alignItems: 'center', gap: 8, fontSize: 13 },
       id: "mobile-filter-btn" },
     Icons.filter, " \u05E1\u05D9\u05E0\u05D5\u05DF"
     )
@@ -936,6 +936,28 @@ const App = () => {
     React.createElement("span", { style: { fontSize: 13, fontWeight: 700, color: '#1C1C1C' } }, "\u05E1\u05D9\u05E0\u05D5\u05DF")
     ),
     renderSidebar()
+    ), /*#__PURE__*/
+
+    showFilters && sidebarOpen && /*#__PURE__*/
+    React.createElement("div", { className: "mobile-filter-drawer" }, /*#__PURE__*/
+      React.createElement("div", { className: "mobile-filter-backdrop", onClick: () => setSidebarOpen(false) }),
+      React.createElement("div", { className: "mobile-filter-panel" }, /*#__PURE__*/
+        React.createElement("div", { style: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, paddingBottom: 14, borderBottom: '1px solid #E8E5E0' } }, /*#__PURE__*/
+          React.createElement("div", { style: { display: 'flex', alignItems: 'center', gap: 8 } }, /*#__PURE__*/
+            React.createElement("span", { style: { color: '#E8A020' } }, Icons.filter),
+            React.createElement("span", { style: { fontSize: 15, fontWeight: 700, color: '#1C1C1C' } }, "\u05E1\u05D9\u05E0\u05D5\u05DF")
+          ),
+          React.createElement("button", {
+            onClick: () => setSidebarOpen(false),
+            style: { background: 'none', border: 'none', cursor: 'pointer', fontSize: 22, color: '#888', padding: '0 4px', lineHeight: 1 }
+          }, "\u00D7")
+        ),
+        renderSidebar(),
+        React.createElement("button", {
+          onClick: () => setSidebarOpen(false),
+          style: { width: '100%', marginTop: 20, padding: '14px', background: '#E8A020', color: '#fff', border: 'none', borderRadius: 10, fontSize: 15, fontWeight: 700, cursor: 'pointer' }
+        }, "\u05D4\u05E6\u05D2 \u05EA\u05D5\u05E6\u05D0\u05D5\u05EA")
+      )
     ), /*#__PURE__*/
 
 

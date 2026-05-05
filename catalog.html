@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>if(location.protocol==='file:'){location.replace('http://localhost:8000/catalog.html'+location.search+location.hash);}</script>
 <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EFYL6ZDMW"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0EFYL6ZDMW');</script>
@@ -259,9 +260,36 @@
     .mm-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #444; padding: 16px 24px 4px; }
     .mm-divider { height: 1px; background: #252525; margin: 8px 0; }
 
+    .mobile-filter-btn { display: none; }
+    .mobile-filter-drawer { display: none; }
+
     @media (max-width: 768px) {
       .sidebar-mobile-hidden { display: none; }
       .catalog-layout.with-sidebar { grid-template-columns: 1fr; }
+      .mobile-filter-btn { display: flex !important; }
+      .mobile-filter-drawer {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+      }
+    }
+    .mobile-filter-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+    }
+    .mobile-filter-panel {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #FFFFFF;
+      border-radius: 16px 16px 0 0;
+      padding: 24px 20px 32px;
+      max-height: 80vh;
+      overflow-y: auto;
+      direction: rtl;
     }
     @media (max-width: 900px) {
       .nav-desktop-links { display: none !important; }
