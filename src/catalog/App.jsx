@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback, lazy, Suspense } from 'react';
 import productsData from '../../products_data';
 import { cleanName, trackEvent }    from './utils/helpers';
 import { getStripMeta }             from './utils/stripMeta';
@@ -10,14 +10,16 @@ import {
 import Navbar            from './components/Navbar';
 import CategoryHeader    from './components/CategoryHeader';
 import ProductCard       from './components/ProductCard';
-import ProductModal      from './components/ProductModal';
 import StripFilters      from './components/StripFilters';
 import DriverFilters     from './components/DriverFilters';
 import ProfileFilters    from './components/ProfileFilters';
 import SkeletonCard      from './components/SkeletonCard';
-import ConfiguratorModal from './components/ConfiguratorModal';
 import Footer            from './components/Footer';
 import { Icons }         from './components/Icons';
+
+// Heavy components — loaded only when first needed
+const ProductModal      = lazy(() => import('./components/ProductModal'));
+const ConfiguratorModal = lazy(() => import('./components/ConfiguratorModal'));
 
 const TABS = [
   { id: 'דרייברים',  label: 'דרייברים',  desc: 'ספקי מתח LED מאירופה — קבוע מתח, קבוע זרם, עמעום' },
@@ -382,13 +384,19 @@ export default function App() {
       <button id="scroll-top-btn" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="חזרה לראש העמוד">↑</button>
 
       {selected && (
-        <ProductModal product={selected} onClose={() => {
-          setSelected(null);
-          history.replaceState(null, '', location.pathname + (activeTab ? '?tab=' + encodeURIComponent(activeTab) : ''));
-        }} />
+        <Suspense fallback={null}>
+          <ProductModal product={selected} onClose={() => {
+            setSelected(null);
+            history.replaceState(null, '', location.pathname + (activeTab ? '?tab=' + encodeURIComponent(activeTab) : ''));
+          }} />
+        </Suspense>
       )}
 
-      {showCfg && <ConfiguratorModal onClose={() => setShowCfg(false)} />}
+      {showCfg && (
+        <Suspense fallback={null}>
+          <ConfiguratorModal onClose={() => setShowCfg(false)} />
+        </Suspense>
+      )}
     </div>
   );
 }
