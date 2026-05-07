@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import datasheets    from '../../../datasheets_data';
 import { trackEvent, pdfSrc } from '../utils/helpers';
 import { getStripMeta }       from '../utils/stripMeta';
@@ -7,9 +7,22 @@ import NeonSchematic          from './NeonSchematics';
 import { Icons }              from './Icons';
 
 export default function ProductModal({ product, onClose }) {
-  const ds  = (datasheets[product.id] || datasheets[product.name] || []);
-  const cat = product.category;
+  const ds       = (datasheets[product.id] || datasheets[product.name] || []);
+  const cat      = product.category;
   const [copied, setCopied] = useState(false);
+  const closeRef = useRef(null);
+
+  useEffect(() => {
+    closeRef.current?.focus();
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const onKey = e => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [onClose]);
 
   const copyLink = () => {
     const url = `${location.href.split('?')[0]}?product=${encodeURIComponent(product.id)}`;
@@ -28,7 +41,7 @@ export default function ProductModal({ product, onClose }) {
             ['מתח כניסה', s.inputVoltage], ['עמעום', s.dimming?.join(', ')]
           ].filter(([, v]) => v).map(([k, v]) => (
             <div key={k} style={{ background: '#F4F4F0', borderRadius: 6, padding: '10px 14px', border: '1px solid #E0DDD6' }}>
-              <div style={{ fontSize: 10, color: '#999999', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 4 }}>{k}</div>
+              <div style={{ fontSize: 10, color: '#767676', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 4 }}>{k}</div>
               <div style={{ fontSize: 14, fontWeight: 700, color: '#1C1C1C' }}>{v}</div>
             </div>
           ))}
@@ -55,7 +68,7 @@ export default function ProductModal({ product, onClose }) {
             ['טמפרטורת צבע', kelvinM ? kelvinM[1] + 'K' : null],
           ].filter(([, v]) => v).map(([k, v]) => (
             <div key={k} style={{ background: '#F4F4F0', borderRadius: 6, padding: '10px 14px', border: '1px solid #E0DDD6' }}>
-              <div style={{ fontSize: 10, color: '#999999', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 4 }}>{k}</div>
+              <div style={{ fontSize: 10, color: '#767676', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 4 }}>{k}</div>
               <div style={{ fontSize: 14, fontWeight: 700, color: '#1C1C1C' }}>{v}</div>
             </div>
           ))}
@@ -77,18 +90,20 @@ export default function ProductModal({ product, onClose }) {
   };
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-box" onClick={e => e.stopPropagation()}>
+    <div className="modal-overlay" onClick={onClose} role="presentation">
+      <div className="modal-box" role="dialog" aria-modal="true" aria-labelledby="product-modal-title"
+        onClick={e => e.stopPropagation()}>
 
         {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', padding: '20px 24px', borderBottom: '1px solid #E8E5E0' }}>
           <div>
-            <div style={{ fontSize: 11, color: '#999999', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 4 }}>
+            <div style={{ fontSize: 11, color: '#767676', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 4 }}>
               {product.subCategory || product.category}
             </div>
-            <h2 style={{ fontSize: 20, fontWeight: 800, color: '#1C1C1C', margin: 0 }}>{product.name}</h2>
+            <h2 id="product-modal-title" style={{ fontSize: 20, fontWeight: 800, color: '#1C1C1C', margin: 0 }}>{product.name}</h2>
           </div>
-          <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#AAAAAA', padding: 4, marginTop: 2 }}>
+          <button ref={closeRef} onClick={onClose} aria-label="סגור"
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#AAAAAA', padding: 4, marginTop: 2 }}>
             {Icons.close}
           </button>
         </div>
@@ -107,14 +122,14 @@ export default function ProductModal({ product, onClose }) {
 
           {product.desc && cat !== 'פרופילים' && (
             <div style={{ marginTop: 20, background: '#F4F4F0', borderRadius: 8, padding: '14px 16px', border: '1px solid #E0DDD6' }}>
-              <div style={{ fontSize: 11, color: '#999999', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 8 }}>תיאור</div>
+              <div style={{ fontSize: 11, color: '#767676', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 8 }}>תיאור</div>
               <p style={{ fontSize: 13, color: '#555555', lineHeight: 1.7, margin: 0 }}>{product.desc}</p>
             </div>
           )}
 
           {ds.length > 0 && (
             <div style={{ marginTop: 20 }}>
-              <div style={{ fontSize: 11, color: '#999999', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 10 }}>מסמכים טכניים</div>
+              <div style={{ fontSize: 11, color: '#767676', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 10 }}>מסמכים טכניים</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {ds.map((d, i) => (
                   <a key={i} href={pdfSrc(d.file)} target="_blank" rel="noopener noreferrer"

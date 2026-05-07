@@ -70,7 +70,7 @@ button, input, select, textarea { font-family: 'Heebo', sans-serif; }
   white-space: nowrap;
 }
 .filter-chip:hover { border-color: #E8A020; color: #E8A020; }
-.filter-chip.active { border-color: #E8A020; color: #FFFFFF; background: #E8A020; }
+.filter-chip.active { border-color: #E8A020; color: #1C1C1C; background: #E8A020; }
 
 .spec-tag {
   background: #F0EDE8;
@@ -103,7 +103,7 @@ button, input, select, textarea { font-family: 'Heebo', sans-serif; }
 
 .btn-gold {
   background: #E8A020;
-  color: #FFFFFF;
+  color: #1C1C1C;
   font-weight: 700;
   border-radius: 8px;
   padding: 10px 20px;
@@ -141,7 +141,7 @@ button, input, select, textarea { font-family: 'Heebo', sans-serif; }
   transition: border-color 0.15s;
   box-shadow: 0 1px 4px rgba(0,0,0,0.04);
 }
-.search-input:focus { outline: none; border-color: #E8A020; }
+.search-input:focus { outline: 2px solid #E8A020; outline-offset: 2px; border-color: #E8A020; }
 .search-input::placeholder { color: #AAAAAA; }
 
 .no-img-placeholder {
@@ -311,6 +311,20 @@ button, input, select, textarea { font-family: 'Heebo', sans-serif; }
 .cfg-header { position:relative; }
 .cfg-cta-card { background:#FFFFFF;border:1px solid #E8A020;border-radius:10px;padding:18px 20px;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:20px; }
 .cfg-cta-card:hover { transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,160,32,.18); }
+
+/* Focus visible — keyboard users */
+:focus-visible {
+  outline: 2px solid #E8A020;
+  outline-offset: 2px;
+}
+button:focus-visible,
+a:focus-visible,
+[role="tab"]:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid #E8A020;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
