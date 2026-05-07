@@ -199,7 +199,7 @@ export default function App() {
                 aria-controls="products-panel"
                 onClick={() => switchTab(t.id)} className="tab-button"
                 style={{ padding: '16px 24px', border: 'none', borderBottom: active ? '2px solid #E8A020' : '2px solid transparent',
-                  background: 'none', cursor: 'pointer', color: active ? '#1C1C1C' : '#777777',
+                  background: 'none', cursor: 'pointer', color: active ? '#1C1C1C' : '#595959',
                   fontFamily: 'Heebo,sans-serif', fontSize: 14, fontWeight: 700, transition: 'all 0.15s',
                   display: 'flex', alignItems: 'center', gap: 8 }}>
                 {t.label}
@@ -337,7 +337,7 @@ export default function App() {
                       display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, flexShrink: 0 }}>✏️</div>
                     <div style={{ flex: 1 }}>
                       <div style={{ fontSize: 14, fontWeight: 800, color: '#1C1C1C', marginBottom: 3 }}>תכנן פרופיל בהתאמה אישית</div>
-                      <div style={{ fontSize: 12, color: '#777777', lineHeight: 1.4 }}>שרטוט מידות, בחירת גימור ו-BOM אוטומטי — ארבעה שלבים פשוטים</div>
+                      <div style={{ fontSize: 12, color: '#595959', lineHeight: 1.4 }}>שרטוט מידות, בחירת גימור ו-BOM אוטומטי — ארבעה שלבים פשוטים</div>
                     </div>
                     <div style={{ color: '#E8A020', fontSize: 22, flexShrink: 0 }}>←</div>
                   </div>
