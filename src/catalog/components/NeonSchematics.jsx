@@ -268,7 +268,7 @@ export default function NeonSchematic({ product }) {
       <div onClick={() => setOpen(true)} title="לחץ להגדלה"
         style={{ marginTop: 12, background: '#F8F8F6', border: '1px solid #E0DDD6', borderRadius: 8,
           padding: '10px 16px 6px', textAlign: 'center', cursor: 'zoom-in' }}>
-        <div style={{ fontSize: 10, color: '#999999', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 6 }}>חתך רוחב</div>
+        <div style={{ fontSize: 10, color: '#595959', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 6 }}>חתך רוחב</div>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',
           transform: 'scale(0.62)', transformOrigin: 'center top', marginBottom: '-30px' }}>
           {profile.svg}
@@ -286,7 +286,7 @@ export default function NeonSchematic({ product }) {
             <button onClick={() => setOpen(false)}
               style={{ position: 'absolute', top: 12, left: 16, background: 'none', border: 'none',
                 cursor: 'pointer', color: '#999', fontSize: 22, lineHeight: 1, padding: 4 }}>✕</button>
-            <div style={{ fontSize: 11, color: '#999999', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 16 }}>חתך רוחב</div>
+            <div style={{ fontSize: 11, color: '#595959', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 16 }}>חתך רוחב</div>
             <div style={{ display: 'flex', justifyContent: 'center', transform: 'scale(1.6)', transformOrigin: 'center top', marginBottom: 60 }}>
               {profile.svg}
             </div>

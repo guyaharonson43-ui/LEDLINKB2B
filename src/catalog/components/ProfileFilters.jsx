@@ -3,7 +3,7 @@ import { Icons } from './Icons';
 export default function ProfileFilters({ count }) {
   return (
     <div>
-      <div style={{ fontSize: 12, color: '#999999', marginBottom: 20 }}>{count} פרופילים</div>
+      <div style={{ fontSize: 12, color: '#595959', marginBottom: 20 }}>{count} פרופילים</div>
       <div style={{ fontSize: 13, color: '#666666', lineHeight: 1.8 }}>
         <p>פרופילי LED מיוצרים בהזמנה אישית — אורך, צבע גימור (לבן/שחור/RAL), ודגם לפי בחירה.</p>
         <p style={{ marginTop: 12 }}>לייעוץ ובחירת פרופיל:</p>
