@@ -214,7 +214,7 @@ export default function App() {
       </div>
 
       {/* Main content */}
-      <div className="catalog-content-pad" style={{ maxWidth: 1280, margin: '0 auto', padding: '40px 24px' }}>
+      <main className="catalog-content-pad" style={{ maxWidth: 1280, margin: '0 auto', padding: '40px 24px' }}>
         <CategoryHeader label={tabInfo.label} count={filtered.length} desc={tabInfo.desc} />
 
         {/* Search + mobile filter button */}
@@ -376,7 +376,7 @@ export default function App() {
             )}
           </div>
         </div>
-      </div>
+      </main>
 
       <Footer />
 
