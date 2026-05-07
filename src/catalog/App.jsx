@@ -189,19 +189,22 @@ export default function App() {
 
       {/* Tab bar */}
       <div style={{ borderBottom: '1px solid #E0DDD6', background: '#FFFFFF', position: 'sticky', top: 64, zIndex: 90, boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', display: 'flex', gap: 0 }}>
+        <div role="tablist" aria-label="קטגוריות מוצרים"
+          style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', display: 'flex', gap: 0 }}>
           {TABS.map(t => {
             const cnt    = products.filter(p => p.category === t.id).length;
             const active = activeTab === t.id;
             return (
-              <button key={t.id} onClick={() => switchTab(t.id)} className="tab-button"
+              <button key={t.id} role="tab" aria-selected={active} id={`tab-${t.id}`}
+                aria-controls="products-panel"
+                onClick={() => switchTab(t.id)} className="tab-button"
                 style={{ padding: '16px 24px', border: 'none', borderBottom: active ? '2px solid #E8A020' : '2px solid transparent',
-                  background: 'none', cursor: 'pointer', color: active ? '#E8A020' : '#777777',
+                  background: 'none', cursor: 'pointer', color: active ? '#1C1C1C' : '#777777',
                   fontFamily: 'Heebo,sans-serif', fontSize: 14, fontWeight: 700, transition: 'all 0.15s',
                   display: 'flex', alignItems: 'center', gap: 8 }}>
                 {t.label}
                 <span style={{ fontSize: 11, background: active ? 'rgba(232,160,32,0.12)' : '#F0EDE8',
-                  color: active ? '#E8A020' : '#999999', padding: '1px 7px', borderRadius: 20, fontWeight: 700 }}>
+                  color: active ? '#1C1C1C' : '#595959', padding: '1px 7px', borderRadius: 20, fontWeight: 700 }}>
                   {cnt}
                 </span>
               </button>
@@ -211,7 +214,7 @@ export default function App() {
       </div>
 
       {/* Main content */}
-      <div className="catalog-content-pad" style={{ maxWidth: 1280, margin: '0 auto', padding: '40px 24px' }}>
+      <main className="catalog-content-pad" style={{ maxWidth: 1280, margin: '0 auto', padding: '40px 24px' }}>
         <CategoryHeader label={tabInfo.label} count={filtered.length} desc={tabInfo.desc} />
 
         {/* Search + mobile filter button */}
@@ -219,6 +222,7 @@ export default function App() {
           <div style={{ position: 'relative', flex: 1, maxWidth: 400 }}>
             <input
               type="text"
+              aria-label={`חיפוש ב${tabInfo.label}`}
               placeholder={`חיפוש ב${tabInfo.label}...`}
               value={search}
               onChange={e => setSearch(e.target.value)}
@@ -244,6 +248,7 @@ export default function App() {
 
           {showFilters && (
             <button onClick={() => setSidebarOpen(o => !o)} className="btn-outline mobile-filter-btn"
+              aria-expanded={sidebarOpen} aria-controls="mobile-filter-panel"
               style={{ alignItems: 'center', gap: 8, fontSize: 13 }} id="mobile-filter-btn">
               {Icons.filter} סינון
             </button>
@@ -253,17 +258,19 @@ export default function App() {
         {/* Recent searches */}
         {!search && recentSearches.length > 0 && (
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20, flexWrap: 'wrap' }}>
-            <span style={{ fontSize: 12, color: '#999999', flexShrink: 0 }}>חיפושים אחרונים:</span>
+            <span style={{ fontSize: 12, color: '#595959', flexShrink: 0 }}>חיפושים אחרונים:</span>
             {recentSearches.map(q => (
-              <span key={q} onClick={() => setSearch(q)}
-                style={{ display: 'inline-flex', alignItems: 'center', gap: 4, background: '#FFFFFF',
-                  border: '1px solid #E0DDD6', borderRadius: 20, padding: '3px 10px 3px 6px',
-                  fontSize: 12, color: '#555555', cursor: 'pointer' }}>
-                {q}
-                <button onClick={e => { e.stopPropagation(); removeRecent(q); }}
-                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#BBBBBB',
-                    padding: 0, display: 'flex', alignItems: 'center', marginRight: 2 }}
-                  aria-label="הסר">
+              <span key={q} style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                <button onClick={() => setSearch(q)}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: 4, background: '#FFFFFF',
+                    border: '1px solid #E0DDD6', borderRadius: 20, padding: '3px 10px 3px 10px',
+                    fontSize: 12, color: '#555555', cursor: 'pointer', fontFamily: 'Heebo,sans-serif' }}>
+                  {q}
+                </button>
+                <button onClick={() => removeRecent(q)}
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#767676',
+                    padding: 0, display: 'flex', alignItems: 'center' }}
+                  aria-label={`הסר חיפוש ${q}`}>
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
                   </svg>
@@ -293,14 +300,15 @@ export default function App() {
           {showFilters && sidebarOpen && (
             <div className="mobile-filter-drawer">
               <div className="mobile-filter-backdrop" onClick={() => setSidebarOpen(false)} />
-              <div className="mobile-filter-panel">
+              <div id="mobile-filter-panel" className="mobile-filter-panel"
+                role="dialog" aria-modal="true" aria-label="סינון מוצרים">
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                   marginBottom: 20, paddingBottom: 14, borderBottom: '1px solid #E8E5E0' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     <span style={{ color: '#E8A020' }}>{Icons.filter}</span>
                     <span style={{ fontSize: 15, fontWeight: 700, color: '#1C1C1C' }}>סינון</span>
                   </div>
-                  <button onClick={() => setSidebarOpen(false)}
+                  <button onClick={() => setSidebarOpen(false)} aria-label="סגור סינון"
                     style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 22, color: '#888', padding: '0 4px', lineHeight: 1 }}>
                     ×
                   </button>
@@ -316,12 +324,14 @@ export default function App() {
           )}
 
           {/* Products + configurator CTA */}
-          <div>
+          <div id="products-panel" role="tabpanel" aria-labelledby={`tab-${activeTab}`}>
             {activeTab === 'פרופילים' && (
               <div style={{ marginBottom: 24, background: '#FFFFFF', border: '1px solid #E0DDD6',
                 borderRadius: 10, padding: '20px 24px', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
                 <ProfileFilters count={filtered.length} />
-                <div className="cfg-cta-card" onClick={() => setShowCfg(true)}>
+                <div className="cfg-cta-card" role="button" tabIndex={0}
+                  onClick={() => setShowCfg(true)}
+                  onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && setShowCfg(true)}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
                     <div style={{ width: 44, height: 44, background: 'rgba(232,160,32,0.15)', borderRadius: 10,
                       display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, flexShrink: 0 }}>✏️</div>
@@ -366,7 +376,7 @@ export default function App() {
             )}
           </div>
         </div>
-      </div>
+      </main>
 
       <Footer />
 

@@ -41,8 +41,9 @@ export default function Navbar({ activeTab, setActiveTab, onOpenConfigurator }) 
           <div className="nav-desktop-links" style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
             {/* Catalog dropdown */}
             <div style={{ position: 'relative' }} onMouseEnter={() => setOpenDrop('catalog')} onMouseLeave={() => setOpenDrop(null)}>
-              <button style={{ display: 'flex', alignItems: 'center', gap: 4, color: '#E8A020', background: 'rgba(232,160,32,0.1)', border: 'none', cursor: 'pointer', fontSize: 15, fontWeight: 700, padding: '6px 14px', borderRadius: 6, fontFamily: 'Heebo,sans-serif' }}>
-                קטלוג מוצרים <span style={{ fontSize: 10, transition: 'transform 0.2s', display: 'inline-block', transform: openDrop === 'catalog' ? 'rotate(180deg)' : 'none' }}>▾</span>
+              <button aria-haspopup="true" aria-expanded={openDrop === 'catalog'}
+                style={{ display: 'flex', alignItems: 'center', gap: 4, color: '#E8A020', background: 'rgba(232,160,32,0.1)', border: 'none', cursor: 'pointer', fontSize: 15, fontWeight: 700, padding: '6px 14px', borderRadius: 6, fontFamily: 'Heebo,sans-serif' }}>
+                קטלוג מוצרים <span aria-hidden="true" style={{ fontSize: 10, transition: 'transform 0.2s', display: 'inline-block', transform: openDrop === 'catalog' ? 'rotate(180deg)' : 'none' }}>▾</span>
               </button>
               {openDrop === 'catalog' && (
                 <div style={dropBox}>
@@ -57,8 +58,9 @@ export default function Navbar({ activeTab, setActiveTab, onOpenConfigurator }) 
 
             {/* Tools dropdown */}
             <div style={{ position: 'relative' }} onMouseEnter={() => setOpenDrop('tools')} onMouseLeave={() => setOpenDrop(null)}>
-              <a href="tools.html" style={{ display: 'flex', alignItems: 'center', gap: 4, color: '#AAAAAA', textDecoration: 'none', fontSize: 15, fontWeight: 500, padding: '6px 14px', borderRadius: 6 }}>
-                כלי תכנון <span style={{ fontSize: 10, transition: 'transform 0.2s', display: 'inline-block', transform: openDrop === 'tools' ? 'rotate(180deg)' : 'none' }}>▾</span>
+              <a href="tools.html" aria-haspopup="true" aria-expanded={openDrop === 'tools'}
+                style={{ display: 'flex', alignItems: 'center', gap: 4, color: '#AAAAAA', textDecoration: 'none', fontSize: 15, fontWeight: 500, padding: '6px 14px', borderRadius: 6 }}>
+                כלי תכנון <span aria-hidden="true" style={{ fontSize: 10, transition: 'transform 0.2s', display: 'inline-block', transform: openDrop === 'tools' ? 'rotate(180deg)' : 'none' }}>▾</span>
               </a>
               {openDrop === 'tools' && (
                 <div style={dropBox}>
@@ -96,15 +98,15 @@ export default function Navbar({ activeTab, setActiveTab, onOpenConfigurator }) 
 
         <div className="mm-label">קטלוג מוצרים</div>
         {CATALOG.map(item => (
-          <span key={item.tab} className={activeTab === item.tab ? 'mm-link active' : 'mm-link'}
+          <button key={item.tab} className={activeTab === item.tab ? 'mm-link active' : 'mm-link'}
             onClick={() => { setActiveTab(item.tab); setMenuOpen(false); }}>
             {item.label}
-          </span>
+          </button>
         ))}
-        <span className="mm-link sub" style={{ color: '#E8A020', display: 'flex', alignItems: 'center', gap: 8 }}
+        <button className="mm-link sub" style={{ color: '#E8A020', display: 'flex', alignItems: 'center', gap: 8 }}
           onClick={() => { setActiveTab('פרופילים'); onOpenConfigurator(); setMenuOpen(false); }}>
           ✏️ תכנן פרופיל בהתאמה אישית
-        </span>
+        </button>
 
         <div className="mm-divider" />
         <div className="mm-label">כלים ומדריכים</div>

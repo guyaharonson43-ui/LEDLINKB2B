@@ -10,7 +10,7 @@
   "dir": "rtl",
   "icons": [
     {
-      "src": "hero.webp",
+      "src": "/hero.webp",
       "sizes": "any",
       "type": "image/webp"
     }
