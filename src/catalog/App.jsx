@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback, lazy, Suspense } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import productsData from '../../products_data';
 import { cleanName, trackEvent }    from './utils/helpers';
 import { getStripMeta }             from './utils/stripMeta';
@@ -16,10 +16,8 @@ import ProfileFilters    from './components/ProfileFilters';
 import SkeletonCard      from './components/SkeletonCard';
 import Footer            from './components/Footer';
 import { Icons }         from './components/Icons';
-
-// Heavy components — loaded only when first needed
-const ProductModal      = lazy(() => import('./components/ProductModal'));
-const ConfiguratorModal = lazy(() => import('./components/ConfiguratorModal'));
+import ProductModal      from './components/ProductModal';
+import ConfiguratorModal from './components/ConfiguratorModal';
 
 const TABS = [
   { id: 'דרייברים',  label: 'דרייברים',  desc: 'ספקי מתח LED מאירופה — קבוע מתח, קבוע זרם, עמעום' },
@@ -384,18 +382,14 @@ export default function App() {
       <button id="scroll-top-btn" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="חזרה לראש העמוד">↑</button>
 
       {selected && (
-        <Suspense fallback={null}>
-          <ProductModal product={selected} onClose={() => {
-            setSelected(null);
-            history.replaceState(null, '', location.pathname + (activeTab ? '?tab=' + encodeURIComponent(activeTab) : ''));
-          }} />
-        </Suspense>
+        <ProductModal product={selected} onClose={() => {
+          setSelected(null);
+          history.replaceState(null, '', location.pathname + (activeTab ? '?tab=' + encodeURIComponent(activeTab) : ''));
+        }} />
       )}
 
       {showCfg && (
-        <Suspense fallback={null}>
-          <ConfiguratorModal onClose={() => setShowCfg(false)} />
-        </Suspense>
+        <ConfiguratorModal onClose={() => setShowCfg(false)} />
       )}
     </div>
   );
