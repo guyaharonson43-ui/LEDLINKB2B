@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEDLink — דף לא נמצא</title>
+  <script>
+    // Smart redirect — route old/broken URLs to the correct page
+    (function () {
+      var path = window.location.pathname.toLowerCase();
+      var search = window.location.search || '';
+      var dest;
+
+      // Catalog / product-related paths → catalog
+      if (/catalog|product|strip|profile|driver|led|profil/.test(path)) {
+        dest = '/catalog.html' + search;
+      }
+      // Tool / guide pages
+      else if (/tool|guide|calc|מחשב/.test(path)) {
+        dest = '/tools.html';
+      }
+      // About / FAQ / legal
+      else if (/about|faq|privacy|takanon|access/.test(path)) {
+        dest = '/' + path.split('/').filter(Boolean).pop();
+      }
+      // Default → home
+      else {
+        dest = '/';
+      }
+
+      // 301-style client redirect (replaces history entry so back-button works)
+      window.location.replace(dest);
+    })();
+  </script>
+  <!-- Fallback for JS-disabled browsers -->
+  <meta http-equiv="refresh" content="3;url=/">
+  <style>
+    body { font-family: 'Heebo', sans-serif; direction: rtl; text-align: center;
+           padding: 60px 20px; background: #F4F4F0; color: #333; }
+    a { color: #E8A020; }
+  </style>
+</head>
+<body>
+  <p>הדף לא נמצא — מפנה אותך...</p>
+  <p><a href="/">חזרה לדף הבית</a> | <a href="/catalog.html">קטלוג מוצרים</a></p>
+</body>
+</html>

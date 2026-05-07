@@ -62,6 +62,7 @@ for (const f of [
 
 // Static HTML pages (served as-is; they use libs/ + CDN scripts, not Vite bundles)
 for (const f of [
+  '404.html',
   'about.html', 'tools.html', 'guides.html', 'faq.html',
   'takanon.html', 'privacy.html', 'accessibility.html',
 ]) copyFile(f);
