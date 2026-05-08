@@ -17,7 +17,7 @@ export default function GuideArticle({ guide, onClose }) {
     const onKey = e => { if (e.key === 'Escape') onClose(); };
     window.addEventListener('keydown', onKey);
     return () => { document.body.style.overflow = prev; window.removeEventListener('keydown', onKey); };
-  }, []);
+  }, [onClose]);
 
   return (
     <>

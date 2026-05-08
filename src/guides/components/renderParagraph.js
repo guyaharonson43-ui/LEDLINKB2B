@@ -1,6 +1,4 @@
 // src/guides/components/renderParagraph.js
-import React from 'react';
-
 export function renderParagraph(text, links) {
   if (!links || links.length === 0) return text;
   let parts = [text];
