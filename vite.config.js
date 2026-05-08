@@ -10,6 +10,7 @@ export default defineConfig({
       input: {
         catalog: 'catalog.html',
         index: 'index.html',
+        guides: 'guides.html',
       },
     },
   },
