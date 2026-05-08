@@ -1,5 +1,12 @@
+// tailwind.config.js
 export default {
-  content: ['./catalog.html', './index.html', './src/**/*.{jsx,js}'],
+  content: [
+    './catalog.html',
+    './index.html',
+    './tools.html',
+    './guides.html',
+    './src/**/*.{jsx,js}',
+  ],
   theme: {
     extend: {
       colors: {
@@ -16,6 +23,7 @@ export default {
         ink:           '#1C1C1C',
         'ink-soft':    '#555555',
         'ink-faint':   '#999999',
+        muted:         '#777777',
       },
       fontFamily: { sans: ['Heebo', 'sans-serif'] },
     },
