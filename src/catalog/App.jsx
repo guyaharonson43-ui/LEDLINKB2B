@@ -140,6 +140,13 @@ export default function App() {
     if (activeTab === 'דרייברים') {
       r = r.filter(p => {
         const s = p.specs || {};
+        if (psF.smartType === 'מוצרים חכמים') {
+          const dimming = s.dimming || [];
+          if (!dimming.some(d => /ZIGBEE|BLE|RF|SMART/i.test(d))) return false;
+        }
+        if (psF.smartType === 'קונברטורים') {
+          if (!p.name.toUpperCase().includes('INTERFACE')) return false;
+        }
         if (psF.voltage !== 'הכל') {
           if (s.outputMode === 'CC') return false;
           if (s.voltage !== psF.voltage) return false;
@@ -325,6 +332,26 @@ export default function App() {
 
           {/* Products + configurator CTA */}
           <div id="products-panel" role="tabpanel" aria-labelledby={`tab-${activeTab}`}>
+            {activeTab === 'דרייברים' && (
+              <div style={{ display: 'flex', gap: 8, marginBottom: 20 }}>
+                {[
+                  { label: 'הכל', value: 'הכל' },
+                  { label: 'מוצרים חכמים', value: 'מוצרים חכמים' },
+                  { label: 'קונברטורים', value: 'קונברטורים' },
+                ].map(({ label, value }) => (
+                  <button key={value} onClick={() => setPsF(f => ({ ...f, smartType: value }))}
+                    style={{
+                      padding: '8px 18px', borderRadius: 8, fontSize: 13, fontWeight: 700,
+                      fontFamily: 'Heebo, sans-serif', cursor: 'pointer', transition: 'all 0.15s',
+                      border: psF.smartType === value ? 'none' : '1.5px solid #E0DDD6',
+                      background: psF.smartType === value ? '#1C1C1C' : '#FFFFFF',
+                      color: psF.smartType === value ? '#FFFFFF' : '#595959',
+                    }}>
+                    {label}
+                  </button>
+                ))}
+              </div>
+            )}
             {activeTab === 'פרופילים' && (
               <div style={{ marginBottom: 24, background: '#FFFFFF', border: '1px solid #E0DDD6',
                 borderRadius: 10, padding: '20px 24px', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>

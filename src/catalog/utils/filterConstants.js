@@ -32,4 +32,4 @@ export const PS_POWER_RANGES = [
 ];
 
 export const INIT_STRIP = { ip: 'הכל', type: 'הכל', color: 'הכל', voltage: 'הכל', power: 'הכל', lmw: 'הכל' };
-export const INIT_PS    = { voltage: 'הכל', inputVoltage: 'הכל', ip: 'הכל', output: 'הכל', dimming: 'הכל', power: 'הכל' };
+export const INIT_PS    = { smartType: 'הכל', voltage: 'הכל', inputVoltage: 'הכל', ip: 'הכל', output: 'הכל', dimming: 'הכל', power: 'הכל' };
