@@ -11,7 +11,7 @@ import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
-const DIST = join(ROOT, 'dist');h
+const DIST = join(ROOT, 'dist');
 const BASE_URL = 'https://ledlink.co.il';
 
 // ── 1. Copy static assets that Vite doesn't know about ──────────────────────
