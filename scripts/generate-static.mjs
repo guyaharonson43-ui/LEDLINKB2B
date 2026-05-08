@@ -51,19 +51,16 @@ copyDir('projects');
 copyDir('DATASHEET');
 copyDir('datasheets');
 
-// JS libraries used by non-Vite pages (tools.html, guides.html …)
-copyDir('libs');
-
 // Root-level static files
 for (const f of [
   'manifest.json', 'CNAME', 'hero.jpg', 'hero.webp',
   'a11y-widget.js', 'products_data.js', 'datasheets_data.js',
 ]) copyFile(f);
 
-// Static HTML pages (served as-is; they use libs/ + CDN scripts, not Vite bundles)
+// Static HTML pages (served as-is; not Vite-built)
 for (const f of [
   '404.html',
-  'about.html', 'tools.html', 'guides.html', 'faq.html',
+  'about.html', 'faq.html',
   'takanon.html', 'privacy.html', 'accessibility.html',
 ]) copyFile(f);
 
