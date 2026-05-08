@@ -50,6 +50,7 @@ copyDir('strips');
 copyDir('projects');
 copyDir('DATASHEET');
 copyDir('datasheets');
+copyDir('libs');
 
 // Root-level static files
 for (const f of [
