@@ -62,6 +62,7 @@ for (const f of [
   '404.html',
   'about.html', 'faq.html',
   'takanon.html', 'privacy.html', 'accessibility.html',
+  'tools.html',
 ]) copyFile(f);
 
 // ── 2. Load products ─────────────────────────────────────────────────────────
