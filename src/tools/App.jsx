@@ -1,16 +1,17 @@
 // src/tools/App.jsx
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import ToolsNavbar from './components/ToolsNavbar';
 import ToolsFooter from './components/ToolsFooter';
 import TabBar, { TOOLS } from './components/TabBar';
 import { WA_NUMBER, WaIcon } from './components/ContactRow';
-import VoltageDropCalc from './components/VoltageDropCalc';
-import LumenCalc from './components/LumenCalc';
-import EnergyCalc from './components/EnergyCalc';
-import BeamLinearCalc from './components/BeamLinearCalc';
-import CircadianCalc from './components/CircadianCalc';
-import LinearProfileCalc from './components/LinearProfileCalc';
-import PowerCalc from './components/PowerCalc';
+
+const VoltageDropCalc   = lazy(() => import('./components/VoltageDropCalc'));
+const LumenCalc         = lazy(() => import('./components/LumenCalc'));
+const EnergyCalc        = lazy(() => import('./components/EnergyCalc'));
+const BeamLinearCalc    = lazy(() => import('./components/BeamLinearCalc'));
+const CircadianCalc     = lazy(() => import('./components/CircadianCalc'));
+const LinearProfileCalc = lazy(() => import('./components/LinearProfileCalc'));
+const PowerCalc         = lazy(() => import('./components/PowerCalc'));
 
 export default function App() {
   const [tool, setTool] = useState(() => {
@@ -83,22 +84,24 @@ export default function App() {
           </div>
         </div>
 
-        {tool === 'voltage'     && <VoltageDropCalc />}
-        {tool === 'lumen'       && <LumenCalc
-          preset={lumenPreset}
-          onGoBack={lumenPreset ? () => { setLumenPreset(null); goToTool('circadian'); } : null}
-          fromLabel="מחשבון ביולוגי"
-          onGoToLinear={(p) => { setLinearPreset(p); goToTool('linear'); }}
-        />}
-        {tool === 'roi'         && <EnergyCalc />}
-        {tool === 'beam-linear' && <BeamLinearCalc />}
-        {tool === 'circadian'   && <CircadianCalc onGoToLumen={(room) => { setLumenPreset(room); goToTool('lumen'); }} />}
-        {tool === 'linear'      && <LinearProfileCalc
-          preset={linearPreset}
-          onGoBack={linearPreset ? () => { setLinearPreset(null); goToTool('lumen'); } : null}
-          fromLabel="מחשבון לומן לחלל"
-        />}
-        {tool === 'power'       && <PowerCalc />}
+        <Suspense fallback={<div style={{ padding: 40, textAlign: 'center', color: '#888' }}>טוען...</div>}>
+          {tool === 'voltage'     && <VoltageDropCalc />}
+          {tool === 'lumen'       && <LumenCalc
+            preset={lumenPreset}
+            onGoBack={lumenPreset ? () => { setLumenPreset(null); goToTool('circadian'); } : null}
+            fromLabel="מחשבון ביולוגי"
+            onGoToLinear={(p) => { setLinearPreset(p); goToTool('linear'); }}
+          />}
+          {tool === 'roi'         && <EnergyCalc />}
+          {tool === 'beam-linear' && <BeamLinearCalc />}
+          {tool === 'circadian'   && <CircadianCalc onGoToLumen={(room) => { setLumenPreset(room); goToTool('lumen'); }} />}
+          {tool === 'linear'      && <LinearProfileCalc
+            preset={linearPreset}
+            onGoBack={linearPreset ? () => { setLinearPreset(null); goToTool('lumen'); } : null}
+            fromLabel="מחשבון לומן לחלל"
+          />}
+          {tool === 'power'       && <PowerCalc />}
+        </Suspense>
       </div>
 
       <ToolsFooter />
