@@ -11,7 +11,7 @@ import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
-const DIST = join(ROOT, 'dist');
+const DIST = join(ROOT, 'dist');h
 const BASE_URL = 'https://ledlink.co.il';
 
 // ── 1. Copy static assets that Vite doesn't know about ──────────────────────
@@ -164,7 +164,7 @@ const sitemapStatic = [
   { loc: `${BASE_URL}/faq.html`,     priority: '0.5', changefreq: 'monthly' },
 ];
 const sitemapProducts = products
-  .filter(p => p.url)
+  .filter(p => p.url && p.url.startsWith(`${BASE_URL}/`))
   .map(p => ({ loc: p.url, priority: '0.8', changefreq: 'monthly' }));
 
 const sitemapAll = [...sitemapStatic, ...sitemapProducts];
