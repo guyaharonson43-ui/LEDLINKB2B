@@ -1,4 +1,4 @@
-// src/guides/components/renderParagraph.js
+// src/guides/components/renderParagraph.jsx
 export function renderParagraph(text, links) {
   if (!links || links.length === 0) return text;
   let parts = [text];
