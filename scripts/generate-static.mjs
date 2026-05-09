@@ -59,11 +59,11 @@ for (const f of [
 ]) copyFile(f);
 
 // Static HTML pages (served as-is; not Vite-built)
+// Note: tools.html is now Vite-built — do NOT copy it here
 for (const f of [
   '404.html',
   'about.html', 'faq.html',
   'takanon.html', 'privacy.html', 'accessibility.html',
-  'tools.html',
 ]) copyFile(f);
 
 // ── 2. Load products ─────────────────────────────────────────────────────────

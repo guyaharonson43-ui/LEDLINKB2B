@@ -9,8 +9,9 @@ export default defineConfig({
     rollupOptions: {
       input: {
         catalog: 'catalog.html',
-        index: 'index.html',
-        guides: 'guides.html',
+        index:   'index.html',
+        guides:  'guides.html',
+        tools:   'tools.html',
       },
     },
   },

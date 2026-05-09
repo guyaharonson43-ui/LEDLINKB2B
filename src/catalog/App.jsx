@@ -1,5 +1,4 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import productsData from '../../products_data';
 import { cleanName, trackEvent }    from './utils/helpers';
 import { getStripMeta }             from './utils/stripMeta';
 import {
@@ -43,23 +42,25 @@ export default function App() {
   const [page, setPage]         = useState(1);
   const [loading, setLoading]   = useState(true);
 
-  // Load products from imported module
+  // Load products dynamically — keeps products_data out of the main bundle
   useEffect(() => {
-    const params  = new URLSearchParams(window.location.search);
-    const loaded  = productsData.map(p => ({ ...p, name: cleanName(p.name) }));
-    setProducts(loaded);
-    setLoading(false);
+    import('../../products_data').then(m => {
+      const params  = new URLSearchParams(window.location.search);
+      const loaded  = m.default.map(p => ({ ...p, name: cleanName(p.name) }));
+      setProducts(loaded);
+      setLoading(false);
 
-    const productId = params.get('product');
-    if (productId) {
-      const found = loaded.find(p => p.id === decodeURIComponent(productId));
-      if (found) { setSelected(found); setActiveTab(found.category); }
-    }
+      const productId = params.get('product');
+      if (productId) {
+        const found = loaded.find(p => p.id === decodeURIComponent(productId));
+        if (found) { setSelected(found); setActiveTab(found.category); }
+      }
 
-    const tab     = params.get('tab');
-    const initTab = tab || 'דרייברים';
-    if (tab) setActiveTab(tab);
-    window.history.replaceState({ tab: initTab }, '', window.location.href);
+      const tab     = params.get('tab');
+      const initTab = tab || 'דרייברים';
+      if (tab) setActiveTab(tab);
+      window.history.replaceState({ tab: initTab }, '', window.location.href);
+    });
   }, []);
 
   // Browser back/forward
