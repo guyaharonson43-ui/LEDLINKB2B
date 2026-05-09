@@ -27,7 +27,7 @@ export default function GuideArticle({ guide, onClose }) {
 
           {/* Hero image */}
           <div style={{ position: 'relative', aspectRatio: '21/9', overflow: 'hidden', maxHeight: 280 }}>
-            <img src={guide.img} alt={guide.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img src={guide.img} alt={guide.title} loading="lazy" decoding="async" width="760" height="327" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)' }} />
             <div style={{ position: 'absolute', bottom: 0, right: 0, left: 0, padding: '32px' }}>
               <span style={{ display: 'inline-block', background: '#E8A020', color: '#fff', fontSize: 10, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', padding: '3px 12px', borderRadius: 4, marginBottom: 12 }}>
