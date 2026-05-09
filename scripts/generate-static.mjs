@@ -50,7 +50,7 @@ copyDir('strips');
 copyDir('projects');
 copyDir('DATASHEET');
 copyDir('datasheets');
-copyDir('libs');
+// libs/ (CDN fallbacks) removed — tools.html is now Vite-built, no CDN deps needed
 
 // Root-level static files
 for (const f of [
