@@ -17,6 +17,10 @@ import Footer            from './components/Footer';
 import { Icons }         from './components/Icons';
 import ProductModal      from './components/ProductModal';
 import ConfiguratorModal from './components/ConfiguratorModal';
+import productsDataRaw   from '../../products_data';
+
+// Pre-process once at module init — products are available before first render
+const allProducts = productsDataRaw.map(p => ({ ...p, name: cleanName(p.name) }));
 
 const TABS = [
   { id: 'דרייברים',  label: 'דרייברים',  desc: 'ספקי מתח LED מאירופה — קבוע מתח, קבוע זרם, עמעום' },
@@ -27,9 +31,21 @@ const TABS = [
 const PAGE_SIZE = 30;
 
 export default function App() {
-  const [products, setProducts]           = useState([]);
-  const [activeTab, setActiveTab]         = useState('דרייברים');
-  const [selected, setSelected]           = useState(null);
+  const [products]              = useState(allProducts);
+  const [activeTab, setActiveTab] = useState(() => {
+    const p = new URLSearchParams(window.location.search);
+    const productId = p.get('product');
+    if (productId) {
+      const found = allProducts.find(q => q.id === decodeURIComponent(productId));
+      if (found) return found.category;
+    }
+    return p.get('tab') || 'דרייברים';
+  });
+  const [selected, setSelected] = useState(() => {
+    const productId = new URLSearchParams(window.location.search).get('product');
+    if (!productId) return null;
+    return allProducts.find(p => p.id === decodeURIComponent(productId)) || null;
+  });
   const [search, setSearch]               = useState('');
   const [recentSearches, setRecentSearches] = useState(() => {
     try { return JSON.parse(localStorage.getItem('ledlink_recent_searches') || '[]'); }
@@ -40,29 +56,13 @@ export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showCfg, setShowCfg]   = useState(false);
   const [page, setPage]         = useState(1);
-  const [loading, setLoading]   = useState(true);
+  const [loading]               = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  // Load products dynamically — keeps products_data out of the main bundle
+  // Sync history state once on mount
   useEffect(() => {
-    import('../../products_data').then(m => {
-      const params  = new URLSearchParams(window.location.search);
-      const loaded  = m.default.map(p => ({ ...p, name: cleanName(p.name) }));
-      setProducts(loaded);
-      setLoading(false);
-
-      const productId = params.get('product');
-      if (productId) {
-        const found = loaded.find(p => p.id === decodeURIComponent(productId));
-        if (found) { setSelected(found); setActiveTab(found.category); }
-      }
-
-      const tab     = params.get('tab');
-      const initTab = tab || 'דרייברים';
-      if (tab) setActiveTab(tab);
-      window.history.replaceState({ tab: initTab }, '', window.location.href);
-    });
-  }, []);
+    window.history.replaceState({ tab: activeTab }, '', window.location.href);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Browser back/forward
   useEffect(() => {
@@ -408,7 +408,7 @@ export default function App() {
             ) : (
               <div>
                 <div className="products-grid">
-                  {visibleProducts.map(p => <ProductCard key={p.id} product={p} onClick={openProduct} />)}
+                  {visibleProducts.map((p, i) => <ProductCard key={p.id} product={p} onClick={openProduct} priority={i === 0} />)}
                 </div>
                 {hasMore && (
                   <div style={{ textAlign: 'center', padding: '32px 0 16px' }}>
