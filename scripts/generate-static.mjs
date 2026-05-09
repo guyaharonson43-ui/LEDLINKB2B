@@ -150,8 +150,17 @@ html = html.replace(
   `<div id="root">${noscriptHtml}</div>`
 );
 
+// Inject preload for the first LCP image (first product of the default tab)
+const DEFAULT_TAB = 'דרייברים';
+const firstLcp = products.find(p => p.category === DEFAULT_TAB && p.img);
+if (firstLcp) {
+  const preloadTag = `  <link rel="preload" as="image" href="/${firstLcp.img}" fetchpriority="high">`;
+  html = html.replace('</head>', `${preloadTag}\n</head>`);
+}
+
 writeFileSync(htmlPath, html, 'utf8');
 console.log(`generate-static: schema (${products.length} products) + noscript  →  dist/catalog.html`);
+if (firstLcp) console.log(`generate-static: LCP preload injected → /${firstLcp.img}`);
 
 // ── 6. sitemap.xml ───────────────────────────────────────────────────────────
 

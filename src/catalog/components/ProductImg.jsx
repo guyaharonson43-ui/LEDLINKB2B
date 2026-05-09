@@ -20,6 +20,8 @@ export default function ProductImg({ src, name, tall, priority }) {
       <img
         src={imgSrc(src)}
         alt={name}
+        width={tall ? 200 : 200}
+        height={tall ? 150 : 130}
         loading={priority ? 'eager' : 'lazy'}
         fetchpriority={priority ? 'high' : undefined}
         decoding={priority ? 'sync' : 'async'}
