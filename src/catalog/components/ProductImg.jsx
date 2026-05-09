@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { imgSrc } from '../utils/helpers';
 
-export default function ProductImg({ src, name, tall }) {
+export default function ProductImg({ src, name, tall, priority }) {
   const [err, setErr] = useState(false);
   const pt = tall ? '75%' : '65%';
 
@@ -20,8 +20,9 @@ export default function ProductImg({ src, name, tall }) {
       <img
         src={imgSrc(src)}
         alt={name}
-        loading="lazy"
-        decoding="async"
+        loading={priority ? 'eager' : 'lazy'}
+        fetchpriority={priority ? 'high' : undefined}
+        decoding={priority ? 'sync' : 'async'}
         onError={() => setErr(true)}
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', padding: '12px' }}
       />

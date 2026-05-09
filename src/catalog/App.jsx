@@ -408,7 +408,7 @@ export default function App() {
             ) : (
               <div>
                 <div className="products-grid">
-                  {visibleProducts.map(p => <ProductCard key={p.id} product={p} onClick={openProduct} />)}
+                  {visibleProducts.map((p, i) => <ProductCard key={p.id} product={p} onClick={openProduct} priority={i === 0} />)}
                 </div>
                 {hasMore && (
                   <div style={{ textAlign: 'center', padding: '32px 0 16px' }}>
