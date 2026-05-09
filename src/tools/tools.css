@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* src/tools/tools.css */
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
