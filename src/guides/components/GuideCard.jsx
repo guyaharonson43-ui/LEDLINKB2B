@@ -7,7 +7,7 @@ export default function GuideCard({ g, onOpen }) {
     <article onClick={() => onOpen(g)} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
       style={{ background: '#fff', borderRadius: 12, border: '1px solid #E0DDD6', overflow: 'hidden', cursor: 'pointer', transition: 'transform 0.25s, box-shadow 0.25s', transform: hovered ? 'translateY(-4px)' : 'none', boxShadow: hovered ? '0 12px 32px rgba(0,0,0,0.1)' : 'none' }}>
       <div style={{ aspectRatio: '16/10', overflow: 'hidden', background: '#F0EDE8', position: 'relative' }}>
-        <img src={g.img} alt={g.title} loading="lazy"
+        <img src={g.img} alt={g.title} loading="lazy" decoding="async" width="500" height="312"
           style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s', transform: hovered ? 'scale(1.05)' : 'scale(1)' }}
           onError={e => { e.target.src = 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=500&q=80'; }} />
         <div style={{ position: 'absolute', top: 12, right: 12 }}>
