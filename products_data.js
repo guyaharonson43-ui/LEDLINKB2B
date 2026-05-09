@@ -5112,7 +5112,7 @@
     "isFlagship": false,
     "scarcity": null,
     "specs": {
-      "power": "95W",
+      "power": "9.5W",
       "ip": "IP20",
       "outputMode": "CC",
       "voltage": "350MA",
@@ -5136,7 +5136,7 @@
     "isFlagship": false,
     "scarcity": null,
     "specs": {
-      "power": "57W",
+      "power": "5.7W",
       "ip": "IP20",
       "outputMode": "CC",
       "voltage": "150MA",
@@ -5160,7 +5160,7 @@
     "isFlagship": false,
     "scarcity": null,
     "specs": {
-      "power": "76W",
+      "power": "7.6W",
       "ip": "IP20",
       "outputMode": "CC",
       "voltage": "200MA",
@@ -5184,7 +5184,7 @@
     "isFlagship": false,
     "scarcity": null,
     "specs": {
-      "power": "95W",
+      "power": "9.5W",
       "ip": "IP20",
       "outputMode": "CC",
       "voltage": "250MA",
@@ -5232,7 +5232,7 @@
     "isFlagship": false,
     "scarcity": null,
     "specs": {
-      "power": "104W",
+      "power": "10.4W",
       "ip": "IP20",
       "outputMode": "CC",
       "voltage": "400MA",
