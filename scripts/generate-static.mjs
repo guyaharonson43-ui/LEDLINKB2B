@@ -185,9 +185,29 @@ console.log(`generate-static: sitemap.xml  →  ${sitemapAll.length} URLs`);
 
 // ── 7. robots.txt ────────────────────────────────────────────────────────────
 
-writeFileSync(
-  join(DIST, 'robots.txt'),
-  `User-agent: *\nAllow: /\n\nSitemap: ${BASE_URL}/sitemap.xml\n`,
-  'utf8'
-);
+const robotsTxt = `\
+User-agent: *
+Allow: /
+
+# Block query parameters that generate duplicate content.
+# ?tab= and ?tool= are allowed (meaningful navigation, canonical tag handles dedup).
+Disallow: /*?q=
+Disallow: /*?filter=
+Disallow: /*?search=
+Disallow: /*?ip=
+Disallow: /*?voltage=
+Disallow: /*?power=
+Disallow: /*?color=
+Disallow: /*?type=
+Disallow: /*?lmw=
+Disallow: /*?dimming=
+Disallow: /*?output=
+Disallow: /*?%D7%A2%D7%9E%D7%A2%D7%95%D7%9D=
+Disallow: /*?%D7%94%D7%A1%D7%A4%D7%A7=
+Disallow: /*?עמעום=
+Disallow: /*?הספק=
+
+Sitemap: ${BASE_URL}/sitemap.xml
+`;
+writeFileSync(join(DIST, 'robots.txt'), robotsTxt, 'utf8');
 console.log('generate-static: robots.txt  →  dist/robots.txt');

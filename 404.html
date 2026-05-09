@@ -11,21 +11,36 @@
   <script>
     // Smart redirect — route old/broken URLs to the correct page
     (function () {
-      var path = window.location.pathname.toLowerCase();
+      var path = window.location.pathname;
+      var pathLower = path.toLowerCase();
       var search = window.location.search || '';
       var dest;
 
+      // ── Exact matches for known stale Google-indexed URLs ──────────────────
+      var EXACT = {
+        '/product/magnetic-linear-rotate': '/catalog.html',
+        '/product/1715':                   '/catalog.html',
+        '/product/meanwell-60w-ip67':      '/catalog.html',
+        '/product/%D7%9E%D7%97%D7%91%D7%A8-%D7%99%D7%A9%D7%A8': '/catalog.html',
+        '/product/מחבר-ישר':              '/catalog.html',
+      };
+      if (EXACT[path]) {
+        window.location.replace(EXACT[path]);
+        return;
+      }
+
+      // ── Pattern-based fallbacks ────────────────────────────────────────────
       // Catalog / product-related paths → catalog
-      if (/catalog|product|strip|profile|driver|led|profil/.test(path)) {
+      if (/catalog|product|strip|profile|driver|led|profil/.test(pathLower)) {
         dest = '/catalog.html' + search;
       }
       // Tool / guide pages
-      else if (/tool|guide|calc|מחשב/.test(path)) {
+      else if (/tool|guide|calc|מחשב/.test(pathLower)) {
         dest = '/tools.html';
       }
       // About / FAQ / legal
-      else if (/about|faq|privacy|takanon|access/.test(path)) {
-        dest = '/' + path.split('/').filter(Boolean).pop();
+      else if (/about|faq|privacy|takanon|access/.test(pathLower)) {
+        dest = '/' + pathLower.split('/').filter(Boolean).pop();
       }
       // Default → home
       else {

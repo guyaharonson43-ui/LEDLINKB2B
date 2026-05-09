@@ -41,6 +41,7 @@ export default function App() {
   const [showCfg, setShowCfg]   = useState(false);
   const [page, setPage]         = useState(1);
   const [loading, setLoading]   = useState(true);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   // Load products dynamically — keeps products_data out of the main bundle
   useEffect(() => {
@@ -77,6 +78,12 @@ export default function App() {
     };
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => setShowScrollTop(window.scrollY > 400);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const saveSearch = useCallback(q => {
@@ -172,6 +179,12 @@ export default function App() {
     return r;
   }, [products, activeTab, search, stripF, psF]);
 
+  const activeFilterCount = useMemo(() => {
+    if (activeTab === 'סטריפ LED') return Object.values(stripF).filter(v => v !== 'הכל').length;
+    if (activeTab === 'דרייברים')  return Object.values(psF).filter(v => v !== 'הכל').length;
+    return 0;
+  }, [activeTab, stripF, psF]);
+
   useEffect(() => { setPage(1); }, [filtered]);
 
   const visibleProducts = filtered.slice(0, page * PAGE_SIZE);
@@ -255,10 +268,15 @@ export default function App() {
           </div>
 
           {showFilters && (
-            <button onClick={() => setSidebarOpen(o => !o)} className="btn-outline mobile-filter-btn"
+            <button onClick={() => setSidebarOpen(o => !o)}
+              className={`mobile-filter-btn${activeFilterCount > 0 ? ' has-filters' : ''}`}
               aria-expanded={sidebarOpen} aria-controls="mobile-filter-panel"
-              style={{ alignItems: 'center', gap: 8, fontSize: 13 }} id="mobile-filter-btn">
-              {Icons.filter} סינון
+              id="mobile-filter-btn">
+              {Icons.filter}
+              סינון
+              {activeFilterCount > 0 && (
+                <span className="filter-count-badge">{activeFilterCount}</span>
+              )}
             </button>
           )}
         </div>
@@ -324,8 +342,9 @@ export default function App() {
                 {renderSidebar()}
                 <button onClick={() => setSidebarOpen(false)}
                   style={{ width: '100%', marginTop: 20, padding: '14px', background: '#E8A020',
-                    color: '#fff', border: 'none', borderRadius: 10, fontSize: 15, fontWeight: 700, cursor: 'pointer' }}>
-                  הצג תוצאות
+                    color: '#1C1C1C', border: 'none', borderRadius: 10, fontSize: 15, fontWeight: 800, cursor: 'pointer',
+                    fontFamily: 'Heebo, sans-serif' }}>
+                  הצג {filtered.length} מוצרים
                 </button>
               </div>
             </div>
@@ -417,7 +436,9 @@ export default function App() {
       </a>
 
       {/* Scroll-to-top */}
-      <button id="scroll-top-btn" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="חזרה לראש העמוד">↑</button>
+      <button id="scroll-top-btn" className={showScrollTop ? 'visible' : ''}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label="חזרה לראש העמוד">↑</button>
 
       {selected && (
         <ProductModal product={selected} onClose={() => {
