@@ -179,6 +179,73 @@ function runQ(idx) {
   });
 }
 
-// ── PLACEHOLDER: Tasks 3-5 will be appended here ─────────────────────────
+// ── Recommendation Engine ────────────────────────────────────────────────
+
+function getColorResult(answers) {
+  var confirm = answers.colorConfirm || '';
+  if (confirm.indexOf('3000K') !== -1) return { k: '3000K', label: 'אור חם',     chosen: true };
+  if (confirm.indexOf('4000K') !== -1) return { k: '4000K', label: 'אור ניטרלי', chosen: true };
+  if (confirm.indexOf('6000K') !== -1) return { k: '6000K', label: 'אור קר',     chosen: true };
+  var rec = COLOR_TEMP[answers.roomType] || COLOR_TEMP['אחר'];
+  return { k: rec.k, label: rec.label, chosen: false };
+}
+
+function getProfileRecs(answers) {
+  var ceiling = answers.ceilingType || 'בטון/טיח';
+  var ipAns   = answers.ipNeeded   || '';
+  var isWet   = ipAns.indexOf('כן') !== -1;
+  var key     = isWet ? 'wet' : 'dry';
+
+  var rules = PROFILE_RULES[ceiling] || PROFILE_RULES['בטון/טיח'];
+  var ids   = rules[key] || rules['dry'];
+
+  var productMap = (window.__PRODUCTS__ || []).reduce(function (m, p) {
+    m[p.id] = p; return m;
+  }, {});
+
+  return ids.map(function (id) {
+    var p    = productMap[id] || {};
+    var meta = PROFILE_META[id] || {};
+    return { id: id, name: p.name || '', img: p.img || '', url: p.url || '#', why: meta.why || '', note: meta.note || '' };
+  }).filter(function (p) { return p.name !== ''; });
+}
+
+function calcPower(answers) {
+  var room    = answers.roomType || 'אחר';
+  var sizeKey = answers.roomSize || 'בינוני — 12–25מ"ר';
+  var areaM2  = ROOM_SIZE[sizeKey] || 18;
+  var tbl     = LUX_TABLE[room]    || LUX_TABLE['אחר'];
+
+  var totalLm  = Math.round(tbl.lux * areaM2);
+  var stripLmM = Math.round(tbl.wpm * tbl.eff);
+  var stripM   = Math.ceil(totalLm / stripLmM);
+  var totalW   = Math.round(tbl.wpm * stripM);
+
+  var PSU_SIZES = [25, 50, 75, 100, 150, 200, 350];
+  var minPsu    = Math.ceil(totalW * 1.25);
+  var psuW      = PSU_SIZES.filter(function (s) { return s >= minPsu; })[0] || 350;
+
+  return { lux: tbl.lux, wpm: tbl.wpm, areaM2: areaM2, totalLm: totalLm, stripM: stripM, totalW: totalW, psuW: psuW };
+}
+
+function buildWAText(answers, colorRes, profiles, power) {
+  var main = profiles[0] || {};
+  var alt  = profiles[1] ? '\n   חלופה: ' + profiles[1].name : '';
+  return 'שלום LEDLink! 🌟\n'
+    + 'יועץ התאורה המליץ לי על:\n\n'
+    + '📍 חדר: '            + (answers.roomType    || '') + '\n'
+    + '🌡️ גוון: '           + colorRes.k + ' — '  + colorRes.label + '\n'
+    + '🏗️ תקרה: '           + (answers.ceilingType || '') + '\n'
+    + '📐 פרופיל מומלץ: '   + (main.name          || '') + alt + '\n\n'
+    + '⚡ חישוב הספק:\n'
+    + '   שטח: '            + power.areaM2  + 'מ"ר\n'
+    + '   עוצמת סטריפ: '    + power.wpm    + ' W/m\n'
+    + '   אורך סטריפ נדרש: ~' + power.stripM + ' מטר\n'
+    + '   הספק כולל: '      + power.totalW  + 'W\n'
+    + '   ספק כוח מינימלי: ' + power.psuW   + 'W\n\n'
+    + 'אשמח לייעוץ ואישור הזמנה 🙏';
+}
+
+// ── PLACEHOLDER: Tasks 4-5 will be appended here ─────────────────────────
 
 })(); // end IIFE
