@@ -110,6 +110,75 @@ var PROFILE_META = {
   }
 };
 
-// ── PLACEHOLDER: Tasks 2-5 will be appended here ─────────────────────────
+// ── Questions ────────────────────────────────────────────────────────────
+var QUESTIONS = [
+  {
+    id: 'roomType',
+    text: 'שלום! אני לינק, יועץ התאורה של LEDLink 💡\n\nמה סוג החדר שברצונכם לתאור?',
+    opts: ['סלון', 'חדר שינה', 'מטבח', 'משרד', 'מסדרון', 'שירותים/מקלחת', 'חנות', 'חוץ', 'אחר']
+  },
+  {
+    id: 'colorConfirm',
+    text: '__COLOR_REC__',   // replaced dynamically in runQ()
+    opts: ['✅ מסכים עם ההמלצה', '3000K — אור חם', '4000K — אור ניטרלי', '6000K — אור קר']
+  },
+  {
+    id: 'ceilingType',
+    text: 'מה סוג התקרה בחדר?',
+    opts: ['גבס', 'בטון/טיח', 'עץ', 'תקרה חשופה / בטון גלוי']
+  },
+  {
+    id: 'roomSize',
+    text: 'מה גודל החדר בערך?\n(נשתמש בזה לחישוב ההספק הנדרש)',
+    opts: ['קטן — עד 12מ"ר', 'בינוני — 12–25מ"ר', 'גדול — מעל 25מ"ר']
+  },
+  {
+    id: 'ipNeeded',
+    text: 'האם הפרופיל יהיה קרוב למקור מים?\n(מקלחת, אדים, שפריץ ישיר)',
+    opts: ['כן — מגע/אדים ממים', 'לא — אזור יבש'],
+    skip: function (ans) {
+      var wet = ['מטבח', 'שירותים/מקלחת', 'חוץ'];
+      return wet.indexOf(ans.roomType) === -1;
+    }
+  }
+];
+
+// ── Flow State ───────────────────────────────────────────────────────────
+var st = { open: false, answers: {} };
+
+function startFlow() {
+  st.answers = {};
+  el('llcb-msgs').innerHTML = '';
+  runQ(0);
+}
+
+function runQ(idx) {
+  // skip questions whose skip() returns true
+  while (idx < QUESTIONS.length && QUESTIONS[idx].skip && QUESTIONS[idx].skip(st.answers)) {
+    idx++;
+  }
+  if (idx >= QUESTIONS.length) { renderResult(); return; }
+
+  var q    = QUESTIONS[idx];
+  var text = q.text;
+
+  if (q.id === 'colorConfirm') {
+    var rec = COLOR_TEMP[st.answers.roomType] || COLOR_TEMP['אחר'];
+    text = 'לחדר מסוג **' + st.answers.roomType + '** אנחנו ממליצים על:\n\n'
+      + '🌡️ **' + rec.k + ' — ' + rec.label + '**\n'
+      + rec.reason + '.'
+      + (rec.alt ? '\n\n💡 חלופה אפשרית: ' + rec.alt : '')
+      + '\n\nהאם אתם מסכימים עם ההמלצה?';
+  }
+
+  botSay(text).then(function () {
+    showOpts(q.opts, function (val) {
+      st.answers[q.id] = val;
+      runQ(idx + 1);
+    });
+  });
+}
+
+// ── PLACEHOLDER: Tasks 3-5 will be appended here ─────────────────────────
 
 })(); // end IIFE
