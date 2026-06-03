@@ -246,6 +246,115 @@ function buildWAText(answers, colorRes, profiles, power) {
     + 'אשמח לייעוץ ואישור הזמנה 🙏';
 }
 
-// ── PLACEHOLDER: Tasks 4-5 will be appended here ─────────────────────────
+// ── Result Renderer ──────────────────────────────────────────────────────
+
+function renderResult() {
+  var colorRes = getColorResult(st.answers);
+  var profiles = getProfileRecs(st.answers);
+  var power    = calcPower(st.answers);
+  var main     = profiles[0];
+  var alts     = profiles.slice(1);
+  var waText   = buildWAText(st.answers, colorRes, profiles, power);
+  var msgs     = el('llcb-msgs');
+
+  botSay('מצאתי את הפתרון עבורכם 🎉 הנה הסיכום:').then(function () {
+
+    // ── Layer A: Color temperature card ──
+    var colorCard = document.createElement('div');
+    colorCard.className = 'llcb-info-card';
+    colorCard.innerHTML =
+      '<div class="llcb-info-title">🌡️ גוון מומלץ: ' + colorRes.k + ' — ' + colorRes.label + '</div>'
+      + '<div class="llcb-info-body">'
+      + ((COLOR_TEMP[st.answers.roomType] || COLOR_TEMP['אחר']).reason) + '.'
+      + '</div>';
+    msgs.appendChild(colorCard);
+    msgs.scrollTop = msgs.scrollHeight;
+
+    // ── Layer B: Profile card ──
+    if (!main) {
+      botSay('לא נמצא פרופיל מתאים — פנו אלינו לייעוץ אישי!').then(function () {
+        addWAOnlyBtn(waText);
+        addRestartBtn();
+      });
+      return;
+    }
+
+    var profCard = document.createElement('div');
+    profCard.className = 'llcb-card';
+    profCard.innerHTML =
+      '<img class="llcb-card-img" src="' + IMG_BASE + main.img + '" alt="' + main.name + '" onerror="this.style.display=\'none\'">'
+      + '<div class="llcb-card-body">'
+      +   '<div class="llcb-section-label">🔧 פרופיל מומלץ</div>'
+      +   '<div class="llcb-card-name">' + main.name + '</div>'
+      +   '<div class="llcb-card-why">✅ ' + main.why + '</div>'
+      +   (main.note ? '<div class="llcb-card-note">📌 ' + main.note + '</div>' : '')
+      +   '<div class="llcb-card-btns">'
+      +     '<a class="llcb-btn-g" href="' + main.url + '" target="_blank">לדף המוצר</a>'
+      +     '<a class="llcb-btn-w" href="https://wa.me/' + WA_NUM + '?text=' + encodeURIComponent(waText) + '" target="_blank">WhatsApp</a>'
+      +   '</div>'
+      + '</div>';
+    msgs.appendChild(profCard);
+
+    // Alternative mini cards
+    if (alts.length) {
+      var altLabel = document.createElement('div');
+      altLabel.className = 'llcb-section-label';
+      altLabel.style.padding = '4px 14px 6px';
+      altLabel.textContent = 'חלופות מומלצות:';
+      msgs.appendChild(altLabel);
+
+      var row = document.createElement('div');
+      row.className = 'llcb-mini-row';
+      alts.forEach(function (p) {
+        var a = document.createElement('a');
+        a.className = 'llcb-mini';
+        a.href = p.url; a.target = '_blank';
+        a.innerHTML =
+          '<img src="' + IMG_BASE + p.img + '" alt="' + p.name + '" onerror="this.style.display=\'none\'">'
+          + '<div class="llcb-mini-nm">' + p.name + '</div>'
+          + (p.why ? '<div class="llcb-mini-why">' + p.why.split('—')[0].trim() + '</div>' : '');
+        row.appendChild(a);
+      });
+      msgs.appendChild(row);
+    }
+
+    // ── Layer C: Power calculation card ──
+    var pwCard = document.createElement('div');
+    pwCard.className = 'llcb-info-card llcb-power-card';
+    pwCard.innerHTML =
+      '<div class="llcb-info-title">⚡ חישוב הספק לחדרכם</div>'
+      + '<div class="llcb-power-grid">'
+      +   '<div class="llcb-pw-item"><span class="llcb-pw-label">תאורה נדרשת</span><span class="llcb-pw-val">' + power.lux + ' lux</span></div>'
+      +   '<div class="llcb-pw-item"><span class="llcb-pw-label">שטח החדר</span><span class="llcb-pw-val">' + power.areaM2 + ' מ"ר</span></div>'
+      +   '<div class="llcb-pw-item"><span class="llcb-pw-label">עוצמת סטריפ</span><span class="llcb-pw-val">' + power.wpm + ' W/m</span></div>'
+      +   '<div class="llcb-pw-item"><span class="llcb-pw-label">אורך סטריפ נדרש</span><span class="llcb-pw-val">~' + power.stripM + ' מ\'</span></div>'
+      +   '<div class="llcb-pw-item llcb-pw-highlight"><span class="llcb-pw-label">הספק כולל</span><span class="llcb-pw-val">' + power.totalW + 'W</span></div>'
+      +   '<div class="llcb-pw-item llcb-pw-highlight"><span class="llcb-pw-label">ספק כוח מינימלי</span><span class="llcb-pw-val">' + power.psuW + 'W</span></div>'
+      + '</div>'
+      + '<a class="llcb-tool-link" href="calcpowerlast.html" target="_blank">🔧 לכלי חישוב ספק הכוח ←</a>';
+    msgs.appendChild(pwCard);
+    msgs.scrollTop = msgs.scrollHeight;
+
+    addRestartBtn();
+  });
+}
+
+function addWAOnlyBtn(waText) {
+  var d = document.createElement('div');
+  d.style.padding = '0 14px 10px';
+  d.innerHTML = '<a class="llcb-btn-w" style="text-decoration:none;display:block;text-align:center;padding:10px;border-radius:12px;"'
+    + ' href="https://wa.me/' + WA_NUM + '?text=' + encodeURIComponent(waText) + '" target="_blank">פנו אלינו ב-WhatsApp</a>';
+  el('llcb-msgs').appendChild(d);
+}
+
+function addRestartBtn() {
+  var d = document.createElement('div');
+  d.className = 'llcb-restart';
+  d.innerHTML = '<button onclick="window._llcbRestart()">🔄 התחל שיחה חדשה</button>';
+  el('llcb-msgs').appendChild(d);
+  el('llcb-msgs').scrollTop = el('llcb-msgs').scrollHeight;
+}
+
+// ── PLACEHOLDER: Task 5 will be appended here ─────────────────────────────
 
 })(); // end IIFE
