@@ -31,5 +31,7 @@ export const PS_POWER_RANGES = [
   { label: '200W+',   min: 200, max: 99999 },
 ];
 
-export const INIT_STRIP = { ip: 'הכל', type: 'הכל', color: 'הכל', voltage: 'הכל', power: 'הכל', lmw: 'הכל' };
+export const STRIP_CRI_OPTIONS = ['הכל', '>80', '>90', '>94', '>95'];
+
+export const INIT_STRIP = { ip: 'הכל', type: 'הכל', color: 'הכל', voltage: 'הכל', cri: 'הכל', power: 'הכל', lmw: 'הכל' };
 export const INIT_PS    = { smartType: 'הכל', voltage: 'הכל', inputVoltage: 'הכל', ip: 'הכל', output: 'הכל', dimming: 'הכל', power: 'הכל' };

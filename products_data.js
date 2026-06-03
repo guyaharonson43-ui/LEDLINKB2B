@@ -417,6 +417,7 @@
     "url": "https://www.qlt.it/en/products/3d2460/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 90,
     "specs": {
       "power": "4.8W/m",
       "voltage": "24V",
@@ -436,6 +437,7 @@
     "url": "https://www.qlt.it/en/products/a241120/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 94,
     "specs": {
       "power": "16.8W/m",
       "voltage": "24V",
@@ -455,6 +457,7 @@
     "url": "https://www.qlt.it/en/products/a2411c/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 95,
     "specs": {
       "power": "10W/m",
       "voltage": "24V",
@@ -474,6 +477,7 @@
     "url": "https://www.qlt.it/en/products/a2411ca/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 95,
     "specs": {
       "power": "10W/m",
       "voltage": "24V",
@@ -493,6 +497,7 @@
     "url": "https://www.qlt.it/en/products/a2411ci/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 95,
     "specs": {
       "power": "10W/m",
       "voltage": "24V",
@@ -512,6 +517,7 @@
     "url": "https://www.qlt.it/en/products/a2416c0/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 95,
     "specs": {
       "power": "14.4W/m",
       "voltage": "24V",
@@ -531,6 +537,7 @@
     "url": "https://www.qlt.it/en/products/a2416c/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 95,
     "specs": {
       "power": "14.4W/m",
       "voltage": "24V",
@@ -550,6 +557,7 @@
     "url": "https://www.qlt.it/en/products/a2416ci/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 95,
     "specs": {
       "power": "14.4W/m",
       "voltage": "24V",
@@ -569,6 +577,7 @@
     "url": "https://www.qlt.it/en/products/a2424c/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 95,
     "specs": {
       "power": "21.6W/m",
       "voltage": "24V",
@@ -588,6 +597,7 @@
     "url": "https://www.qlt.it/en/products/a2424ca/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 95,
     "specs": {
       "power": "21.6W/m",
       "voltage": "24V",
@@ -607,6 +617,7 @@
     "url": "https://www.qlt.it/en/products/b24080/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "12W/m",
       "voltage": "24V",
@@ -626,6 +637,7 @@
     "url": "https://www.qlt.it/en/products/b24080a/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "12W/m",
       "voltage": "24V",
@@ -645,6 +657,7 @@
     "url": "https://www.qlt.it/en/products/b24128/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "16W/m",
       "voltage": "24V",
@@ -664,6 +677,7 @@
     "url": "https://www.qlt.it/en/products/b24128a/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "16W/m",
       "voltage": "24V",
@@ -683,6 +697,7 @@
     "url": "https://www.qlt.it/en/products/b24160/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "20W/m",
       "voltage": "24V",
@@ -702,6 +717,7 @@
     "url": "https://www.qlt.it/en/products/b24160a/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "20W/m",
       "voltage": "24V",
@@ -721,6 +737,7 @@
     "url": "https://www.qlt.it/en/products/cob2488/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 90,
     "specs": {
       "power": "8W/m",
       "voltage": "24V",
@@ -740,6 +757,7 @@
     "url": "https://www.qlt.it/en/products/cob2415/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 90,
     "specs": {
       "power": "15W/m",
       "voltage": "24V",
@@ -759,6 +777,7 @@
     "url": "https://www.qlt.it/en/products/cob845a/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 90,
     "specs": {
       "power": "12W/m",
       "voltage": "24V",
@@ -778,6 +797,7 @@
     "url": "https://www.qlt.it/en/products/d241600ct/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "13W/m",
       "voltage": "24V",
@@ -797,6 +817,7 @@
     "url": "https://www.qlt.it/en/products/d241608/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "8W/m",
       "voltage": "24V",
@@ -816,6 +837,7 @@
     "url": "https://www.qlt.it/en/products/d241610/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "10W/m",
       "voltage": "24V",
@@ -835,6 +857,7 @@
     "url": "https://www.qlt.it/en/products/d241610ct/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "10W/m",
       "voltage": "24V",
@@ -854,6 +877,7 @@
     "url": "https://www.qlt.it/en/products/d241615/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "15/m",
       "voltage": "24V",
@@ -873,6 +897,7 @@
     "url": "https://www.qlt.it/en/products/d242006-2/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "6W/m",
       "voltage": "24V",
@@ -892,6 +917,7 @@
     "url": "https://www.qlt.it/en/products/d242008/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "8W/m",
       "voltage": "24V",
@@ -911,6 +937,7 @@
     "url": "https://www.qlt.it/en/products/d242011/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "11.5W/m",
       "voltage": "24V",
@@ -930,6 +957,7 @@
     "url": "https://www.qlt.it/en/products/2428-2/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 90,
     "specs": {
       "power": "15W/m",
       "voltage": "24V",
@@ -949,6 +977,7 @@
     "url": "https://www.qlt.it/en/products/dob2432-tw/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 90,
     "specs": {
       "power": "14W/m",
       "voltage": "24V",
@@ -968,6 +997,7 @@
     "url": "https://www.qlt.it/en/products/dob2433-rgbw/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 90,
     "specs": {
       "power": "14W/m",
       "voltage": "24V",
@@ -987,6 +1017,7 @@
     "url": "https://www.qlt.it/en/products/dobg288/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 90,
     "specs": {
       "power": "10W/m",
       "voltage": "24V",
@@ -1006,6 +1037,7 @@
     "url": "https://www.qlt.it/en/products/dw242027w/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 90,
     "specs": {
       "power": "15W/m",
       "voltage": "24V",
@@ -1025,6 +1057,7 @@
     "url": "https://www.qlt.it/en/products/es24120/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "9.6W/m",
       "voltage": "24V",
@@ -1044,6 +1077,7 @@
     "url": "https://www.qlt.it/en/products/es24180/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "14.4W/m",
       "voltage": "24V",
@@ -1063,6 +1097,7 @@
     "url": "https://www.qlt.it/en/products/es24240/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "19.2W/m",
       "voltage": "24V",
@@ -1082,6 +1117,7 @@
     "url": "https://www.qlt.it/en/products/es2460/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "4.8W/m",
       "voltage": "24V",
@@ -1101,6 +1137,7 @@
     "url": "https://www.qlt.it/en/products/f241445/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "8W/m",
       "voltage": "24V",
@@ -1120,6 +1157,7 @@
     "url": "https://www.qlt.it/en/products/f241811/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 90,
     "specs": {
       "power": "11W/m",
       "voltage": "24V",
@@ -1139,6 +1177,7 @@
     "url": "https://www.qlt.it/en/products/f241820/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 90,
     "specs": {
       "power": "11.5W/m",
       "voltage": "24V",
@@ -1158,6 +1197,7 @@
     "url": "https://www.qlt.it/en/products/f242108/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "4.5W/m",
       "voltage": "24V",
@@ -1177,6 +1217,7 @@
     "url": "https://www.qlt.it/en/products/h1260/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "4.8W/m",
       "voltage": "12V",
@@ -1196,6 +1237,7 @@
     "url": "https://www.qlt.it/en/products/h1260a-2/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "4.8W/m",
       "voltage": "12V",
@@ -1215,6 +1257,7 @@
     "url": "https://www.qlt.it/en/products/h12120/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "9.6W/m",
       "voltage": "12V",
@@ -1234,6 +1277,7 @@
     "url": "https://www.qlt.it/en/products/h12120a/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "9.6W/m",
       "voltage": "12V",
@@ -1253,6 +1297,7 @@
     "url": "https://www.qlt.it/en/products/h24070/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "4.8W/m",
       "voltage": "24V",
@@ -1272,6 +1317,7 @@
     "url": "https://www.qlt.it/en/products/h24070a/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "4.8W/m",
       "voltage": "24V",
@@ -1291,6 +1337,7 @@
     "url": "https://www.qlt.it/en/products/h24070i/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "4.8W/m",
       "voltage": "24V",
@@ -1310,6 +1357,7 @@
     "url": "https://www.qlt.it/en/products/h24140/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "9.6W/m",
       "voltage": "24V",
@@ -1329,6 +1377,7 @@
     "url": "https://www.qlt.it/en/products/h24140a/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "9.6W/m",
       "voltage": "24V",
@@ -1348,6 +1397,7 @@
     "url": "https://www.qlt.it/en/products/h24140i/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "9.6W/m",
       "voltage": "24V",
@@ -1367,6 +1417,7 @@
     "url": "https://www.qlt.it/en/products/h24210/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "14.4W/m",
       "voltage": "24V",
@@ -1386,6 +1437,7 @@
     "url": "https://www.qlt.it/en/products/h24210a/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "14.4W/m",
       "voltage": "24V",
@@ -1405,6 +1457,7 @@
     "url": "https://www.qlt.it/en/products/h24210i/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "14.4W/m",
       "voltage": "24V",
@@ -1424,6 +1477,7 @@
     "url": "https://www.qlt.it/en/products/h24252/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "18W/m",
       "voltage": "24V",
@@ -1443,6 +1497,7 @@
     "url": "https://www.qlt.it/en/products/h48140-2/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "14.4W/m",
       "voltage": "48V",
@@ -1462,6 +1517,7 @@
     "url": "https://www.qlt.it/en/products/h48140a-2/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "14.4W/m",
       "voltage": "48V",
@@ -1481,6 +1537,7 @@
     "url": "https://www.qlt.it/en/products/hv07250/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "14/m",
       "voltage": "230V",
@@ -1500,6 +1557,7 @@
     "url": "https://www.qlt.it/en/products/k24120-2/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 95,
     "specs": {
       "power": "4.8W/m",
       "voltage": "24V",
@@ -1519,6 +1577,7 @@
     "url": "https://www.qlt.it/en/products/k24120a/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 95,
     "specs": {
       "power": "4.8W/m",
       "voltage": "24V",
@@ -1538,6 +1597,7 @@
     "url": "https://www.qlt.it/en/products/k24160/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 95,
     "specs": {
       "power": "9.6W/m",
       "voltage": "24V",
@@ -1557,6 +1617,7 @@
     "url": "https://www.qlt.it/en/products/k24160a/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 95,
     "specs": {
       "power": "9.6W/m",
       "voltage": "24V",
@@ -1576,6 +1637,7 @@
     "url": "https://www.qlt.it/en/products/k24200/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 95,
     "specs": {
       "power": "16.8W/m",
       "voltage": "24V",
@@ -1595,6 +1657,7 @@
     "url": "https://www.qlt.it/en/products/k24200a/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 95,
     "specs": {
       "power": "16.8W/m",
       "voltage": "24V",
@@ -1614,6 +1677,7 @@
     "url": "https://www.qlt.it/en/products/k24240/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 95,
     "specs": {
       "power": "22W/m",
       "voltage": "24V",
@@ -1633,6 +1697,7 @@
     "url": "https://www.qlt.it/en/products/k24240a/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 95,
     "specs": {
       "power": "22W/m",
       "voltage": "24V",
@@ -1652,6 +1717,7 @@
     "url": "https://www.qlt.it/en/products/n2412b0rg/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "14.4W/m",
       "voltage": "24V",
@@ -1671,6 +1737,7 @@
     "url": "https://www.qlt.it/en/products/n2412b1rg/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "8W/m",
       "voltage": "24V",
@@ -1690,6 +1757,7 @@
     "url": "https://www.qlt.it/en/products/n2412f/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "18W/m",
       "voltage": "24V",
@@ -1709,6 +1777,7 @@
     "url": "https://www.qlt.it/en/products/n2412l/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "18W/m",
       "voltage": "24V",
@@ -1728,6 +1797,7 @@
     "url": "https://www.qlt.it/en/products/n2414h0rg/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": null,
     "specs": {
       "power": "14W/m",
       "voltage": "24V",
@@ -1747,6 +1817,7 @@
     "url": "https://www.qlt.it/en/products/n2414h1/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "11.52W/m",
       "voltage": "24V",
@@ -1766,6 +1837,7 @@
     "url": "https://www.qlt.it/en/products/n2414h1rg/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": null,
     "specs": {
       "power": "8W/m",
       "voltage": "24V",
@@ -1785,6 +1857,7 @@
     "url": "https://www.qlt.it/en/products/n2416h/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "14.4W/m",
       "voltage": "24V",
@@ -1804,6 +1877,7 @@
     "url": "https://www.qlt.it/en/products/n3x8-mini-neon/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 90,
     "specs": {
       "power": "6W/m",
       "voltage": "24V",
@@ -1823,6 +1897,7 @@
     "url": "https://www.qlt.it/en/products/n4x10/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 90,
     "specs": {
       "power": "10W/m",
       "voltage": "24V",
@@ -1842,6 +1917,7 @@
     "url": "https://www.qlt.it/en/products/n4x10t/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 90,
     "specs": {
       "power": "9.6W/m",
       "voltage": "24V",
@@ -1861,6 +1937,7 @@
     "url": "https://www.qlt.it/en/products/n3x8/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 90,
     "specs": {
       "power": "6W/m",
       "voltage": "24V",
@@ -1880,6 +1957,7 @@
     "url": "https://www.qlt.it/en/products/np2436834/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 90,
     "specs": {
       "power": "11+11W/m",
       "voltage": "24V",
@@ -1899,6 +1977,7 @@
     "url": "https://www.qlt.it/en/products/nt1811-360-strip-neon-led-tube/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 90,
     "specs": {
       "power": "11W/m",
       "voltage": "24V",
@@ -1918,6 +1997,7 @@
     "url": "https://www.qlt.it/en/products/nt2314-360-strip-neon-led-tube/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 90,
     "specs": {
       "power": "14W/m",
       "voltage": "24V",
@@ -1937,6 +2017,7 @@
     "url": "https://www.qlt.it/en/products/ntr2416-neon-triangle/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 90,
     "specs": {
       "power": "5.5W/m",
       "voltage": "24V",
@@ -1956,6 +2037,7 @@
     "url": "https://www.qlt.it/en/products/st24120rgbw/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": null,
     "specs": {
       "power": "20W/m",
       "voltage": "24V",
@@ -1975,6 +2057,7 @@
     "url": "https://www.qlt.it/en/products/s2412arw/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": null,
     "specs": {
       "power": "20W/m",
       "voltage": "24V",
@@ -1994,6 +2077,7 @@
     "url": "https://www.qlt.it/en/products/spicob-rgbw/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": null,
     "specs": {
       "power": "21W/m",
       "voltage": "24V",
@@ -2013,6 +2097,7 @@
     "url": "https://www.qlt.it/en/products/spi-neon-rgbw/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "12W/m",
       "voltage": "24V",
@@ -2032,6 +2117,7 @@
     "url": "https://www.qlt.it/en/products/spi-neon-wh/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 90,
     "specs": {
       "power": "12W/m",
       "voltage": "24V",
@@ -2051,6 +2137,7 @@
     "url": "https://www.qlt.it/en/products/spi-wh/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 80,
     "specs": {
       "power": "14.4W/m",
       "voltage": "24V",
@@ -2070,6 +2157,7 @@
     "url": "https://www.qlt.it/en/products/st241120r/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": null,
     "specs": {
       "power": "19.2W/m",
       "voltage": "24V",
@@ -2089,6 +2177,7 @@
     "url": "https://www.qlt.it/en/products/st24112ar/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": null,
     "specs": {
       "power": "19.2W/m",
       "voltage": "24V",
@@ -2108,6 +2197,7 @@
     "url": "https://www.qlt.it/en/products/st241200r/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": null,
     "specs": {
       "power": "14.4W/m",
       "voltage": "24V",
@@ -2127,6 +2217,7 @@
     "url": "https://www.qlt.it/en/products/st24120ar/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": null,
     "specs": {
       "power": "14.4W/m",
       "voltage": "24V",
@@ -2146,6 +2237,7 @@
     "url": "https://www.qlt.it/en/products/st24560ct/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": 90,
     "specs": {
       "power": "14W/m",
       "voltage": "24V",
@@ -2165,6 +2257,7 @@
     "url": "https://www.qlt.it/en/products/st2460rgb/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": null,
     "specs": {
       "power": "14.4W/m",
       "voltage": "24V",
@@ -2184,6 +2277,7 @@
     "url": "https://www.qlt.it/en/products/st2460asrgb/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": null,
     "specs": {
       "power": "14.4W/m",
       "voltage": "24V",
@@ -2203,6 +2297,7 @@
     "url": "https://www.qlt.it/en/products/st2460isrgb/",
     "isFlagship": false,
     "scarcity": null,
+    "cri": null,
     "specs": {
       "power": "14.4W/m",
       "voltage": "24V",
