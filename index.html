@@ -580,7 +580,11 @@
     }
     @media (max-width: 480px) {
       .footer-top { grid-template-columns: 1fr; }
-      .hero-title { font-size: clamp(26px, 8vw, 34px); }
+    }
+    @media (max-width: 600px) {
+      .nav-cta-btn { display: none !important; }
+      .hero-eyebrow { font-size: 11px; letter-spacing: 1px; }
+      .hero-title { font-size: clamp(22px, 6vw, 28px); }
       .hero-subtitle { font-size: 15px; }
       .hero-bullets { flex-direction: column; gap: 10px; }
       .hero-actions { flex-direction: column; }
@@ -637,7 +641,7 @@
         <a href="#contact" class="nav-link">צור קשר</a>
       </div>
       <div class="nav-spacer"></div>
-      <a href="https://ledlink-pcm.web.app" target="_blank" style="background:#E8A020;color:#1a1a1a;font-weight:700;font-size:13px;padding:8px 18px;border-radius:6px;text-decoration:none;white-space:nowrap;margin-left:8px;">כניסת לקוחות ⚡</a>
+      <a href="https://ledlink-pcm.web.app" target="_blank" class="nav-cta-btn" style="background:#E8A020;color:#1a1a1a;font-weight:700;font-size:13px;padding:8px 18px;border-radius:6px;text-decoration:none;white-space:nowrap;margin-left:8px;">כניסת לקוחות ⚡</a>
       <button class="hamburger" id="hamburger" aria-label="תפריט" onclick="toggleMobileMenu()">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
