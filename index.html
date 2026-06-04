@@ -580,6 +580,12 @@
     }
     @media (max-width: 480px) {
       .footer-top { grid-template-columns: 1fr; }
+      .hero-title { font-size: clamp(26px, 8vw, 34px); }
+      .hero-subtitle { font-size: 15px; }
+      .hero-bullets { flex-direction: column; gap: 10px; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn-primary,
+      .hero-actions .btn-secondary { width: 100%; justify-content: center; }
     }
 
     /* ── Reduced motion ── */
