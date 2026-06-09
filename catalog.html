@@ -23,37 +23,36 @@
   <meta name="twitter:description" content="קטלוג מוצרי LED מקצועי — פרופילים, סטריפ LED ודרייברים">
   <meta name="twitter:image" content="https://ledlink.co.il/hero.webp">
 
-  <!-- Organization + WebSite schema (static, always crawlable) -->
+  <!-- Organization + WebSite + ItemList schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://ledlink.co.il/#organization",
-        "name": "LEDLink Components",
+        "@id": "https://ledlink.co.il/#business",
+        "name": "LEDLink",
         "url": "https://ledlink.co.il",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://ledlink.co.il/hero.webp",
-          "width": 1200,
-          "height": 630
+          "url": "https://ledlink.co.il/logo.png"
         },
-        "description": "ספק מקצועי של רכיבי LED — פרופילים אלומיניום, סטריפ LED ודרייברים",
+        "telephone": "08-6326059",
+        "description": "ייצור ויבוא רכיבי תאורת LED — פרופילים, סטריפ ודרייברים לקבלנים ומעצבים בישראל",
         "contactPoint": {
           "@type": "ContactPoint",
-          "telephone": "+972-52-444-4470",
-          "contactType": "customer service",
-          "availableLanguage": "he"
+          "telephone": "08-6326059",
+          "contactType": "sales",
+          "availableLanguage": "Hebrew"
         }
       },
       {
         "@type": "WebSite",
         "@id": "https://ledlink.co.il/#website",
         "url": "https://ledlink.co.il",
-        "name": "LEDLink Components",
+        "name": "LEDLink",
         "inLanguage": "he",
-        "publisher": { "@id": "https://ledlink.co.il/#organization" },
+        "publisher": { "@id": "https://ledlink.co.il/#business" },
         "potentialAction": {
           "@type": "SearchAction",
           "target": {
@@ -62,6 +61,36 @@
           },
           "query-input": "required name=search_term_string"
         }
+      },
+      {
+        "@type": "ItemList",
+        "name": "קטלוג רכיבי LED — LEDLink",
+        "description": "קטלוג מלא של רכיבי תאורת LED מקצועיים: פרופילים, סטריפ ודרייברים",
+        "url": "https://ledlink.co.il/catalog.html",
+        "numberOfItems": 3,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "פרופילי אלומיניום LED",
+            "description": "פרופילי אלומיניום לסטריפ LED — שקועים, פנימיים, חיצוניים ומיוחדים. ייצור לפי מידה.",
+            "url": "https://ledlink.co.il/catalog.html#פרופילים"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "סטריפ LED",
+            "description": "רצועות LED מקצועיות — COB, SMD, IP65, 12V ו-24V, CRI גבוה, גוונים שונים.",
+            "url": "https://ledlink.co.il/catalog.html#סטריפ-LED"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "דרייברים וספקי מתח",
+            "description": "דרייברי LED מקצועיים עם תמיכה ב-DALI, 0-10V, PWM. מגוון הספקים ורמות IP.",
+            "url": "https://ledlink.co.il/catalog.html#דרייברים"
+          }
+        ]
       }
     ]
   }

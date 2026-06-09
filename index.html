@@ -602,6 +602,57 @@
       @view-transition { navigation: none; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["LocalBusiness", "Manufacturer"],
+        "@id": "https://ledlink.co.il/#business",
+        "name": "LEDLink",
+        "url": "https://ledlink.co.il",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ledlink.co.il/logo.png"
+        },
+        "image": "https://ledlink.co.il/hero.webp",
+        "telephone": "08-6326059",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "רחובות",
+          "addressCountry": "IL"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Sunday"],
+            "opens": "08:00",
+            "closes": "17:00"
+          }
+        ],
+        "description": "ייצור ויבוא רכיבי תאורת LED — פרופילים, סטריפ ודרייברים לקבלנים ומעצבים בישראל",
+        "knowsAbout": ["פרופילי אלומיניום LED", "סטריפ LED", "דרייברים", "תאורת LED", "COB LED"],
+        "areaServed": { "@type": "Country", "name": "Israel" },
+        "sameAs": ["https://ledlink.co.il"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://ledlink.co.il/#website",
+        "url": "https://ledlink.co.il",
+        "name": "LEDLink",
+        "publisher": { "@id": "https://ledlink.co.il/#business" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://ledlink.co.il/catalog.html?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
