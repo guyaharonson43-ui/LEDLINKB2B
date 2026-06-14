@@ -52,6 +52,7 @@ export default function Navbar({ activeTab, setActiveTab, onOpenConfigurator }) 
                       {item.label}
                     </button>
                   ))}
+                  <a href="lighting.html" className="nav-drop-item" style={{ borderTop: '1px solid rgba(255,255,255,0.08)', marginTop: 4, paddingTop: 10, textDecoration: 'none', display: 'block' }}>גופי תאורה ✦</a>
                 </div>
               )}
             </div>
@@ -103,6 +104,7 @@ export default function Navbar({ activeTab, setActiveTab, onOpenConfigurator }) 
             {item.label}
           </button>
         ))}
+        <a href="lighting.html" className="mm-link sub" style={{ color: '#E8A020', textDecoration: 'none' }}>גופי תאורה ✦</a>
         <button className="mm-link sub" style={{ color: '#E8A020', display: 'flex', alignItems: 'center', gap: 8 }}
           onClick={() => { setActiveTab('פרופילים'); onOpenConfigurator(); setMenuOpen(false); }}>
           ✏️ תכנן פרופיל בהתאמה אישית
