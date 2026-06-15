@@ -64,9 +64,9 @@ llcData.cats.forEach((cat) => {
 
 /* ---- manufacturing samples ---- */
 const MFG_CATS = [
-  { id: 'profiles', t: 'פרופילים', n: llcData.mfgCounts.profiles, d: 'פרופילי אלומיניום לסטריפ LED — ייצור לפי מידה, גוון וסגנון. תוך 24 שעות.' },
-  { id: 'strip',    t: 'סטריפ LED', n: llcData.mfgCounts.strip,    d: 'White, COB, Neon, RGB, SPI. 12V / 24V / 48V. IP20 עד IP68.' },
-  { id: 'drivers',  t: 'דרייברים',  n: llcData.mfgCounts.drivers,  d: 'ספקי מתח אירופאים. קבוע מתח (CV), קבוע זרם (CC). DALI, 0-10V, PWM.' },
+  { id: 'profiles', t: 'פרופילים', n: llcData.mfgCounts.profiles, d: 'פרופילי אלומיניום לסטריפ LED — ייצור לפי מידה, גוון וסגנון. תוך 24 שעות.', catalogTab: 'פרופילים' },
+  { id: 'strip',    t: 'סטריפ LED', n: llcData.mfgCounts.strip,    d: 'White, COB, Neon, RGB, SPI. 12V / 24V / 48V. IP20 עד IP68.',            catalogTab: 'סטריפ LED' },
+  { id: 'drivers',  t: 'דרייברים',  n: llcData.mfgCounts.drivers,  d: 'ספקי מתח אירופאים. קבוע מתח (CV), קבוע זרם (CC). DALI, 0-10V, PWM.',  catalogTab: 'דרייברים' },
 ];
 
 const MFG_SAMPLES = {
@@ -470,16 +470,26 @@ function DomainsFull({ onNav }) {
         <div key={grp.g} className="ig-group">
           <div className="ig-group__label">{grp.g}</div>
           <div className="ll-domains">
-            {grp.cats.map((it) => (
-              <button key={it.id} className="ll-domain" onClick={() => onNav('catalog', it.id)}>
-                <CatPhoto it={it} />
-                <div className="ll-domain__body">
-                  <h3 className="ll-domain__t">{it.t}</h3>
-                  <p className="ll-domain__d">{it.d}</p>
-                  <span className="ll-domain__link">צפייה בקטלוג <Icon name="arrow" size={15} /></span>
-                </div>
-              </button>
-            ))}
+            {grp.cats.map((it) =>
+              it.catalogTab
+                ? <a key={it.id} className="ll-domain" style={{ textDecoration: 'none' }}
+                    href={`index.html?tab=${encodeURIComponent(it.catalogTab)}`}>
+                    <CatPhoto it={it} />
+                    <div className="ll-domain__body">
+                      <h3 className="ll-domain__t">{it.t}</h3>
+                      <p className="ll-domain__d">{it.d}</p>
+                      <span className="ll-domain__link">צפייה בקטלוג <Icon name="arrow" size={15} /></span>
+                    </div>
+                  </a>
+                : <button key={it.id} className="ll-domain" onClick={() => onNav('catalog', it.id)}>
+                    <CatPhoto it={it} />
+                    <div className="ll-domain__body">
+                      <h3 className="ll-domain__t">{it.t}</h3>
+                      <p className="ll-domain__d">{it.d}</p>
+                      <span className="ll-domain__link">צפייה בקטלוג <Icon name="arrow" size={15} /></span>
+                    </div>
+                  </button>
+            )}
           </div>
         </div>
       ))}
@@ -489,7 +499,7 @@ function DomainsFull({ onNav }) {
 
 /* ---- CatalogFull (catalog screen) ---- */
 function CatalogFull({ onNav, initialCat }) {
-  const [cat, setCat] = useState(initialCat || 'profiles');
+  const [cat, setCat] = useState(initialCat || llcData.cats[0].id);
   const [fam, setFam] = useState('all');
   const [q, setQ] = useState('');
 
@@ -551,11 +561,17 @@ function CatalogFull({ onNav, initialCat }) {
               <div key={grp.g} className="ig-tabgroup">
                 <span className="ig-tabgroup__label">{grp.g}</span>
                 <div className="ll-tabs ig-tabs">
-                  {grp.cats.map((c) => (
-                    <button key={c.id} className={`ll-tab ${cat === c.id ? 'is-active' : ''}`} onClick={() => pick(c.id)}>
-                      {c.t} <span className="ll-tab__c">{c.n}</span>
-                    </button>
-                  ))}
+                  {grp.cats.map((c) =>
+                    c.catalogTab
+                      ? <a key={c.id} className="ll-tab"
+                          href={`index.html?tab=${encodeURIComponent(c.catalogTab)}`}
+                          style={{ textDecoration: 'none' }}>
+                          {c.t} <span className="ll-tab__c">{c.n}</span>
+                        </a>
+                      : <button key={c.id} className={`ll-tab ${cat === c.id ? 'is-active' : ''}`} onClick={() => pick(c.id)}>
+                          {c.t} <span className="ll-tab__c">{c.n}</span>
+                        </button>
+                  )}
                 </div>
               </div>
             ))}
@@ -604,7 +620,7 @@ function CatalogFull({ onNav, initialCat }) {
 /* ---- App ---- */
 function App() {
   const [screen, setScreen] = useState('home');
-  const [cat, setCat] = useState('profiles');
+  const [cat, setCat] = useState('');
   const scrollRef = useRef(null);
 
   // URL param: ?cat=track opens catalog directly
