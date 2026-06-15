@@ -48,13 +48,14 @@
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
 <script src="lighting_data.js"></script>
+<script src="lighting_products.js"></script>
 
 <script type="text/babel">
 const { useState, useEffect, useMemo, useRef } = React;
 const WA = '972524444470';
 const llcData = window.LL_CATALOG;
 
-/* ---- enrich data with counts ---- */
+/* ---- enrich lighting data with counts ---- */
 llcData.cats.forEach((cat) => {
   cat.families.forEach((fam) => {
     fam.n = fam.sections.reduce((a, s) => a + s.products.length, 0);
@@ -62,33 +63,26 @@ llcData.cats.forEach((cat) => {
   cat.n = cat.families.reduce((a, f) => a + f.n, 0);
 });
 
-/* ---- manufacturing samples ---- */
-const MFG_CATS = [
-  { id: 'profiles', t: 'פרופילים', n: llcData.mfgCounts.profiles, d: 'פרופילי אלומיניום לסטריפ LED — ייצור לפי מידה, גוון וסגנון. תוך 24 שעות.' },
-  { id: 'strip',    t: 'סטריפ LED', n: llcData.mfgCounts.strip,    d: 'White, COB, Neon, RGB, SPI. 12V / 24V / 48V. IP20 עד IP68.' },
-  { id: 'drivers',  t: 'דרייברים',  n: llcData.mfgCounts.drivers,  d: 'ספקי מתח אירופאים. קבוע מתח (CV), קבוע זרם (CC). DALI, 0-10V, PWM.' },
-];
+/* ---- exclude בקרה וחיישנים for now ---- */
+llcData.cats = llcData.cats.filter((c) => c.id !== 'control');
 
-const MFG_SAMPLES = {
-  profiles: [
-    { sku: 'PRF-2507', t: 'פרופיל שקוע צר',    specs: ['25×7mm','שקוע'], tone: 'ok',   stock: 'במלאי' },
-    { sku: 'PRF-S45',  t: 'פרופיל פינתי 45°',  specs: ['פינה','תלוי'],  tone: 'ok',   stock: 'במלאי' },
-    { sku: 'PRF-OUT',  t: 'פרופיל חוץ IP67',   specs: ['IP67','חוץ'],   tone: 'warn', stock: '24H ייצור' },
-    { sku: 'PRF-W20',  t: 'פרופיל צמוד רחב',   specs: ['20mm','צמוד'],  tone: 'ok',   stock: 'במלאי' },
-  ],
-  strip: [
-    { sku: 'STR-COB24', t: 'COB 24V 3000K',       specs: ['24V','CRI>90'], tone: 'ok',   stock: 'במלאי' },
-    { sku: 'STR-RGB',   t: 'RGBW 24V',             specs: ['24V','RGBW'],  tone: 'ok',   stock: 'במלאי' },
-    { sku: 'STR-N68',   t: 'Neon Flex IP68',       specs: ['24V','IP68'],  tone: 'warn', stock: '24H ייצור' },
-    { sku: 'STR-SPI',   t: 'SPI Addressable',      specs: ['5V','SPI'],    tone: 'ok',   stock: 'במלאי' },
-  ],
-  drivers: [
-    { sku: 'DRV-CV150', t: 'דרייבר CV 150W 24V',  specs: ['CV','150W'],   tone: 'ok',   stock: 'במלאי' },
-    { sku: 'DRV-DALI',  t: 'דרייבר DALI עמעום',   specs: ['DALI','100W'], tone: 'ok',   stock: 'במלאי' },
-    { sku: 'DRV-IP67',  t: 'דרייבר אטום IP67',    specs: ['CV','200W'],   tone: 'warn', stock: '24H ייצור' },
-    { sku: 'DRV-010',   t: 'דרייבר 0-10V',         specs: ['0-10V','75W'], tone: 'ok',   stock: 'במלאי' },
-  ],
+/* ---- real manufacturing products from products_data.js ---- */
+const cleanName = (s) => String(s)
+  .replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ')
+  .replace(/&lrm;/g, '').replace(/&#(\d+);/g, (_, n) => String.fromCharCode(n));
+
+const allMfgProducts = window.__PRODUCTS__ || [];
+const MFG_BY_CAT = {
+  profiles: allMfgProducts.filter((p) => p.category === 'פרופילים'),
+  strip:    allMfgProducts.filter((p) => p.category === 'סטריפ LED'),
+  drivers:  allMfgProducts.filter((p) => p.category === 'דרייברים'),
 };
+
+const MFG_CATS = [
+  { id: 'profiles', t: 'פרופילים', n: MFG_BY_CAT.profiles.length, d: 'פרופילי אלומיניום לסטריפ LED — ייצור לפי מידה, גוון וסגנון. תוך 24 שעות.' },
+  { id: 'strip',    t: 'סטריפ LED', n: MFG_BY_CAT.strip.length,    d: 'White, COB, Neon, RGB, SPI. 12V / 24V / 48V. IP20 עד IP68.' },
+  { id: 'drivers',  t: 'דרייברים',  n: MFG_BY_CAT.drivers.length,  d: 'ספקי מתח אירופאים. קבוע מתח (CV), קבוע זרם (CC). DALI, 0-10V, PWM.' },
+];
 
 const LLC_IMG  = 'https://www.eurolux.co.il/Media/Resize/250_250/';
 const LLC_SHOW_PRICES = false;
@@ -409,17 +403,22 @@ function CatPhoto({ it }) {
 }
 
 function MfgCard({ p }) {
+  const name = cleanName(p.name);
+  const chips = (p.desc || '').split('|').slice(1, 3).map((s) => s.trim()).filter(Boolean);
+  const waText = `שלום, אני מעוניין בהצעת מחיר עבור ${p.id} — ${name}`;
   return (
-    <div className="ll-pcard">
-      <div className="ll-pcard__photo" style={{ backgroundImage: 'url(assets/hero.png)' }}>
-        <Badge tone={p.tone}>{p.stock}</Badge>
+    <div className="ll-pcard ll-pcard--real">
+      <div className={`ll-pcard__rphoto ${p.img ? '' : 'is-empty'}`}>
+        {p.img
+          ? <img src={p.img} alt={name} loading="lazy" onError={(e) => { e.target.style.display = 'none'; }} />
+          : <LampGlyph />}
       </div>
       <div className="ll-pcard__body">
-        <span className="ll-pcard__sku">{p.sku}</span>
-        <h3 className="ll-pcard__t">{p.t}</h3>
-        <div className="ll-pcard__specs">{p.specs.map((s) => <SpecChip key={s}>{s}</SpecChip>)}</div>
+        <span className="ll-pcard__sku">{p.id.replace('ledlink-', '')}</span>
+        <h3 className="ll-pcard__t ll-pcard__t--clamp" title={name}>{name}</h3>
+        {chips.length > 0 && <div className="ll-pcard__specs">{chips.map((s) => <SpecChip key={s}>{s}</SpecChip>)}</div>}
         <a className="ll-pcard__cta" style={{ display: 'block', textAlign: 'center', textDecoration: 'none' }}
-          href={`https://wa.me/${WA}?text=שלום, אני מעוניין בהצעת מחיר עבור ${p.sku} — ${p.t}`}
+          href={`https://wa.me/${WA}?text=${encodeURIComponent(waText)}`}
           target="_blank" rel="noopener">בקש הצעת מחיר ←</a>
       </div>
     </div>
@@ -508,7 +507,7 @@ function CatalogFull({ onNav, initialCat }) {
 
   const index = useMemo(() => {
     const rows = [];
-    MFG_CATS.forEach((c) => MFG_SAMPLES[c.id].forEach((p) => rows.push({ p, cat: c.t, mfg: true })));
+    MFG_CATS.forEach((c) => (MFG_BY_CAT[c.id] || []).forEach((p) => rows.push({ p, cat: c.t, mfg: true })));
     llcData.cats.forEach((c) => c.families.forEach((f) => f.sections.forEach((s) =>
       s.products.forEach((p) => rows.push({ p, cat: c.t, fam: f.t })))));
     return rows;
@@ -602,14 +601,9 @@ function CatalogFull({ onNav, initialCat }) {
               ))}
             </React.Fragment>
           ) : (
-            <React.Fragment>
-              <div className="igf-note">
-                מדגם מייצג מקו הייצור — הקטלוג המלא כולל <b>{MFG_CATS.find((c) => c.id === cat).n} דגמים</b>.
-                לקבלת מפרט מלא — <a href={`https://wa.me/${WA}`} target="_blank" rel="noopener"
-                  style={{ color: 'var(--led-ember)', fontWeight: 700 }}>דברו איתנו בוואטסאפ</a>.
-              </div>
-              <div className="ll-grid">{MFG_SAMPLES[cat].map((p) => <MfgCard key={p.sku} p={p} />)}</div>
-            </React.Fragment>
+            <div className="ll-grid">
+              {(MFG_BY_CAT[cat] || []).map((p) => <MfgCard key={p.id} p={p} />)}
+            </div>
           )}
         </React.Fragment>
       )}
