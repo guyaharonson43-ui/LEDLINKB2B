@@ -131,6 +131,11 @@ export default function App() {
         if (stripF.type !== 'הכל' && m.type !== stripF.type) return false;
         if (stripF.color !== 'הכל' && m.color !== stripF.color) return false;
         if (stripF.voltage !== 'הכל' && m.voltage !== stripF.voltage) return false;
+        if (stripF.cri !== 'הכל') {
+          const pCri = p.cri ?? null;
+          const minCri = parseInt(stripF.cri.replace('>', ''), 10);
+          if (pCri === null || pCri < minCri) return false;
+        }
         if (stripF.power !== 'הכל') {
           const range = STRIP_POWER_RANGES.find(x => x.label === stripF.power);
           if (range && (m.power === null || m.power < range.min || m.power > range.max)) return false;

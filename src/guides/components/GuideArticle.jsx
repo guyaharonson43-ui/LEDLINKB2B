@@ -50,6 +50,28 @@ export default function GuideArticle({ guide, onClose }) {
               if (block.type === 'h') return (
                 <h3 key={i} style={{ fontSize: 18, fontWeight: 900, color: '#1C1C1C', marginTop: 32, marginBottom: 8 }}>{block.text}</h3>
               );
+              if (block.type === 'table') return (
+                <div key={i} style={{ overflowX: 'auto', marginTop: 24, marginBottom: 8 }}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14, direction: 'rtl' }}>
+                    <thead>
+                      <tr style={{ background: '#F4F4F0', borderBottom: '2px solid #E8A020' }}>
+                        {block.headers.map((h, hi) => (
+                          <th key={hi} style={{ padding: '10px 14px', fontWeight: 700, color: '#1C1C1C', textAlign: 'right', whiteSpace: 'nowrap' }}>{h}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {block.rows.map((row, ri) => (
+                        <tr key={ri} style={{ borderBottom: '1px solid #E8E8E4', background: ri % 2 === 1 ? '#FAFAF8' : '#fff' }}>
+                          {row.map((cell, ci) => (
+                            <td key={ci} style={{ padding: '10px 14px', color: '#444', lineHeight: 1.5 }}>{cell}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              );
               if (block.type === 'tip') return (
                 <div key={i} style={{ background: 'rgba(232,160,32,0.08)', borderRight: '4px solid #E8A020', borderRadius: 8, padding: 20, marginTop: 24 }}>
                   <p style={{ fontSize: 14, color: '#555', lineHeight: 1.7, margin: 0 }}><span style={{ fontWeight: 700, color: '#E8A020', marginLeft: 6 }}>💡</span>{block.text}</p>

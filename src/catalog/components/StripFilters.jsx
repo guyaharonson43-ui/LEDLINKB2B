@@ -1,7 +1,7 @@
 import Chip from './Chip';
 import {
   STRIP_IP_OPTIONS, STRIP_TYPE_OPTIONS, STRIP_COLOR_OPTIONS, STRIP_VOLTAGE_OPTIONS,
-  STRIP_POWER_RANGES, STRIP_LMW_RANGES, INIT_STRIP,
+  STRIP_CRI_OPTIONS, STRIP_POWER_RANGES, STRIP_LMW_RANGES, INIT_STRIP,
 } from '../utils/filterConstants';
 
 export default function StripFilters({ filters, setFilters, count }) {
@@ -24,6 +24,7 @@ export default function StripFilters({ filters, setFilters, count }) {
         { title: 'מתח',       options: STRIP_VOLTAGE_OPTIONS, key: 'voltage' },
         { title: 'הגנה (IP)', options: STRIP_IP_OPTIONS,      key: 'ip'      },
         { title: 'צבע',       options: STRIP_COLOR_OPTIONS,   key: 'color'   },
+        { title: 'CRI',       options: STRIP_CRI_OPTIONS,     key: 'cri'     },
       ].map(({ title, options, key }) => (
         <div key={key} style={{ marginBottom: 20 }}>
           <div style={{ fontSize: 11, fontWeight: 700, color: '#595959', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 8 }}>{title}</div>

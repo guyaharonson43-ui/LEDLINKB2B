@@ -238,7 +238,7 @@ const NEON_ID_MAP = {
   'ledlink-neon-rgb':     'h-top',
   'qlt-n2412b0rg':        'l-side',
   'qlt-n2412b1rg':        'l-side',
-  'qlt-n2412f':           'f-front',
+  'qlt-n2412f':           'l-side',
   'qlt-n2412l':           'l-side',
   'qlt-n2414h0rg':        'h-top',
   'qlt-n2414h1':          'h-top',
@@ -255,6 +255,17 @@ const NEON_ID_MAP = {
   'qlt-spi-neon-rgbw':    '4x10',
   'qlt-spi-neon-wh':      '4x10',
 };
+
+// Returns short dimension label for card badge, e.g. "3×8mm" or "Ø18mm"
+export function getNeonDimLabel(productId) {
+  const key = NEON_ID_MAP[productId];
+  if (!key) return null;
+  const profile = NEON_PROFILES[key];
+  if (!profile) return null;
+  // Extract the part after "— " from the label
+  const match = profile.label.match(/—\s*(.+)$/);
+  return match ? match[1] : null;
+}
 
 export default function NeonSchematic({ product }) {
   const [open, setOpen] = useState(false);
