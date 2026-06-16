@@ -1,4 +1,4 @@
-// LEDLink Profile Configurator v9.4
+﻿// LEDLink Profile Configurator v9.4
 // Vanilla-JS wizard: template selection → canvas drawing → design options → BOM
 // Interface: initConfigurator(rootEl, onCloseFn) → cleanup function
 
@@ -486,8 +486,8 @@ export function initConfigurator(rootEl, onCloseFn) {
             + '\nספקים: ' + psuText + '\n📌 הזנה: צלע ' + (state.feedIndex + 1) + '\n\n*נא לצרף את תמונת השרטוט ששמרתם.*';
     var isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
     waUrl = isMobile
-      ? 'https://wa.me/972524444470?text=' + encodeURIComponent(msg)
-      : 'https://web.whatsapp.com/send?phone=972524444470&text=' + encodeURIComponent(msg);
+      ? 'https://wa.me/972504722550?text=' + encodeURIComponent(msg)
+      : 'https://web.whatsapp.com/send?phone=972504722550&text=' + encodeURIComponent(msg);
     goToStep(4);
   }
 

@@ -1,0 +1,418 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl" style="background:#1A1A1A">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>פרופילי LED וגופי תאורה – אספקה תוך 48 שעות | LEDLink</title>
+  <meta name="description" content="פרופילי LED וגופי תאורה מקצועיים — אספקה תוך 24–48 שעות. מהזמנה עד דלת, מהר יותר מכל מקום אחר.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Heebo', sans-serif; background: #F4F4F0; color: #1C1C1C; direction: rtl; }
+
+    /* ── Navbar ── */
+    .navbar {
+      background: #1A1A1A;
+      position: fixed; top: 0; right: 0; left: 0; z-index: 100;
+      height: 64px;
+      display: flex; align-items: center;
+      border-bottom: 1px solid #2A2A2A;
+    }
+    .navbar-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%;
+    }
+    .logo { display: flex; align-items: center; gap: 4px; text-decoration: none; }
+    .logo-led { font-size: 22px; font-weight: 900; color: #E8A020; }
+    .logo-link { font-size: 22px; font-weight: 300; color: #FFFFFF; }
+    .navbar-phone a {
+      color: #E8A020; text-decoration: none; font-size: 17px; font-weight: 700;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .navbar-phone a:hover { color: #fff; }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1A1A1A 0%, #2A2010 60%, #1A1A1A 100%);
+      display: flex; align-items: center; justify-content: center;
+      padding: 100px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 40%, rgba(232,160,32,0.12) 0%, transparent 70%);
+    }
+    .hero-content { position: relative; max-width: 780px; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(232,160,32,0.15);
+      border: 1px solid rgba(232,160,32,0.4);
+      color: #E8A020;
+      font-size: 13px; font-weight: 600;
+      padding: 6px 18px; border-radius: 20px;
+      margin-bottom: 28px; letter-spacing: 0.5px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 68px);
+      font-weight: 900;
+      color: #FFFFFF;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .hero h1 span { color: #E8A020; }
+    .hero-sub {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: #BBBBBB;
+      font-weight: 400;
+      line-height: 1.6;
+      margin-bottom: 40px;
+      max-width: 580px;
+      margin-left: auto; margin-right: auto;
+    }
+    .hero-ctas {
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: #E8A020; color: #1A1A1A;
+      font-size: 17px; font-weight: 800;
+      padding: 16px 36px; border-radius: 8px;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: #C4880A; transform: translateY(-2px); }
+    .btn-secondary {
+      background: transparent; color: #FFFFFF;
+      font-size: 17px; font-weight: 600;
+      padding: 16px 36px; border-radius: 8px;
+      text-decoration: none; border: 2px solid rgba(255,255,255,0.3); cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-secondary:hover { border-color: #E8A020; color: #E8A020; transform: translateY(-2px); }
+
+    /* ── Stats ── */
+    .stats {
+      background: #1A1A1A;
+      padding: 48px 24px;
+    }
+    .stats-inner {
+      max-width: 900px; margin: 0 auto;
+      display: flex; justify-content: center; gap: 0;
+      flex-wrap: wrap;
+    }
+    .stat {
+      text-align: center; padding: 24px 48px;
+      border-left: 1px solid #2A2A2A;
+      flex: 1; min-width: 180px;
+    }
+    .stat:last-child { border-left: none; }
+    .stat-num {
+      font-size: 44px; font-weight: 900; color: #E8A020;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 14px; color: #888; margin-top: 6px; font-weight: 500;
+    }
+
+    /* ── Categories ── */
+    .categories {
+      padding: 80px 24px;
+      background: #F4F4F0;
+    }
+    .section-header {
+      text-align: center; margin-bottom: 48px;
+    }
+    .section-label {
+      font-size: 12px; font-weight: 700; color: #E8A020;
+      letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(26px, 4vw, 40px); font-weight: 900; color: #1C1C1C;
+    }
+    .cats-grid {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    }
+    .cat-card {
+      background: #1A1A1A;
+      border-radius: 16px; overflow: hidden;
+      text-decoration: none;
+      position: relative; min-height: 280px;
+      display: flex; align-items: flex-end;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
+    .cat-card-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      opacity: 0.45;
+      transition: opacity 0.3s;
+    }
+    .cat-card:hover .cat-card-bg { opacity: 0.55; }
+    .cat-card-bg--profiles {
+      background-image: url('assets/cat-profile.png');
+    }
+    .cat-card-bg--lighting {
+      background-image: url('assets/cat-lighting.png');
+      background-color: #222;
+    }
+    .cat-card-body {
+      position: relative; padding: 28px;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+      width: 100%;
+    }
+    .cat-tag {
+      font-size: 11px; font-weight: 700; color: #E8A020;
+      letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;
+    }
+    .cat-title {
+      font-size: 26px; font-weight: 900; color: #FFFFFF; margin-bottom: 6px;
+    }
+    .cat-desc {
+      font-size: 14px; color: #BBBBBB; line-height: 1.5; margin-bottom: 16px;
+    }
+    .cat-link {
+      font-size: 14px; font-weight: 700; color: #E8A020;
+    }
+
+    /* ── Lead Form ── */
+    .lead {
+      background: #1C1C1C;
+      padding: 80px 24px;
+    }
+    .lead-inner {
+      max-width: 560px; margin: 0 auto; text-align: center;
+    }
+    .lead h2 {
+      font-size: clamp(26px, 4vw, 38px); font-weight: 900; color: #FFFFFF;
+      margin-bottom: 12px;
+    }
+    .lead-sub {
+      font-size: 16px; color: #888; margin-bottom: 40px;
+    }
+    .form-group { margin-bottom: 16px; text-align: right; }
+    .form-group label {
+      display: block; font-size: 13px; font-weight: 600;
+      color: #AAAAAA; margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: #2A2A2A; border: 1px solid #3A3A3A;
+      color: #FFFFFF; font-family: 'Heebo', sans-serif;
+      font-size: 15px; padding: 14px 16px;
+      border-radius: 8px; outline: none;
+      transition: border-color 0.2s;
+      direction: rtl;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: #E8A020; }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      width: 100%; margin-top: 8px;
+      background: #25D366; color: #fff;
+      font-size: 17px; font-weight: 800;
+      padding: 16px; border-radius: 8px;
+      border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: background 0.2s, transform 0.15s;
+      text-decoration: none;
+    }
+    .form-submit:hover { background: #1da853; transform: translateY(-2px); }
+    .form-divider {
+      display: flex; align-items: center; gap: 12px;
+      margin: 20px 0; color: #555; font-size: 13px;
+    }
+    .form-divider::before, .form-divider::after {
+      content: ''; flex: 1; height: 1px; background: #333;
+    }
+    .btn-call {
+      width: 100%;
+      background: transparent; color: #FFFFFF;
+      font-size: 17px; font-weight: 700;
+      padding: 16px; border-radius: 8px;
+      border: 2px solid #3A3A3A; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-call:hover { border-color: #E8A020; color: #E8A020; }
+
+    /* ── WhatsApp Float ── */
+    .wa-float {
+      position: fixed; bottom: 24px; left: 20px; z-index: 999;
+      background: #25D366; color: #fff;
+      width: 54px; height: 54px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+      transition: transform 0.2s;
+      text-decoration: none;
+    }
+    .wa-float:hover { transform: scale(1.08); }
+
+    /* ── Footer ── */
+    .footer {
+      background: #111;
+      padding: 32px 24px;
+      text-align: center;
+      color: #555; font-size: 14px;
+    }
+    .footer a { color: #888; text-decoration: none; }
+    .footer a:hover { color: #E8A020; }
+
+    /* ── Mobile ── */
+    @media (max-width: 640px) {
+      .cats-grid { grid-template-columns: 1fr; }
+      .stat { padding: 20px 24px; border-left: none; border-bottom: 1px solid #2A2A2A; }
+      .stat:last-child { border-bottom: none; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-led">LED</span><span class="logo-link">link</span>
+      </a>
+      <div class="navbar-phone">
+        <a href="tel:+97286326059">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+          08-6326059
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">מענה מהיר לקבלנים ויחידנים</div>
+      <h1>פרופילי LED וגופי תאורה<br><span>תוך 48 שעות.</span></h1>
+      <p class="hero-sub">מהזמנה עד קבלה — מהר יותר מכל מקום אחר.<br>600+ מוצרים מקצועיים לכל פרויקט.</p>
+      <div class="hero-ctas">
+        <a href="catalog.html?tab=פרופילים" class="btn-primary">כניסה לקטלוג →</a>
+        <a href="#lead" class="btn-secondary">קבל הצעת מחיר</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="stats-inner">
+      <div class="stat">
+        <div class="stat-num">48</div>
+        <div class="stat-label">שעות עד אספקה</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">600+</div>
+        <div class="stat-label">מוצרים בקטלוג</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">ייצור מקצועי</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="categories">
+    <div class="section-header">
+      <div class="section-label">הקטלוג שלנו</div>
+      <h2 class="section-title">בחר את מה שאתה צריך</h2>
+    </div>
+    <div class="cats-grid">
+      <a href="catalog.html?tab=פרופילים" class="cat-card">
+        <div class="cat-card-bg cat-card-bg--profiles"></div>
+        <div class="cat-card-body">
+          <div class="cat-tag">20 דגמים</div>
+          <div class="cat-title">פרופילים</div>
+          <div class="cat-desc">פרופילי אלומיניום לסטריפ LED — לפי מידה, גוון וסגנון. צמוד, שקוע, תלוי, חוץ.</div>
+          <div class="cat-link">לקטלוג הפרופילים ←</div>
+        </div>
+      </a>
+      <a href="catalog.html?tab=גופי תאורה" class="cat-card">
+        <div class="cat-card-bg cat-card-bg--lighting"></div>
+        <div class="cat-card-body">
+          <div class="cat-tag">245 דגמים</div>
+          <div class="cat-title">גופי תאורה</div>
+          <div class="cat-desc">מגוון רחב של גופי תאורה מקצועיים — לכל שימוש ולכל פרויקט.</div>
+          <div class="cat-link">לקטלוג גופי התאורה ←</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Lead Form -->
+  <section class="lead" id="lead">
+    <div class="lead-inner">
+      <div class="section-label" style="color:#E8A020">צור קשר</div>
+      <h2>רוצה הצעת מחיר?<br>נחזור אליך בהקדם.</h2>
+      <p class="lead-sub">השאר פרטים ונדאג לכל השאר</p>
+
+      <div class="form-group">
+        <label>שם מלא</label>
+        <input type="text" id="f-name" placeholder="ישראל ישראלי">
+      </div>
+      <div class="form-group">
+        <label>טלפון</label>
+        <input type="tel" id="f-phone" placeholder="05X-XXXXXXX">
+      </div>
+      <div class="form-group">
+        <label>מה אתה צריך? (אופציונלי)</label>
+        <textarea id="f-msg" placeholder="לדוגמה: פרופילים לפרויקט של 200 מ&quot;ר..."></textarea>
+      </div>
+
+      <a href="#" class="form-submit" id="wa-submit" onclick="sendWA(event)">
+        <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.526 5.858L0 24l6.335-1.502A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.032-1.373l-.36-.214-3.733.885.936-3.626-.235-.373A9.836 9.836 0 012.118 12C2.118 6.532 6.532 2.118 12 2.118c5.467 0 9.882 4.414 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>
+        שלח בוואטסאפ
+      </a>
+
+      <div class="form-divider">או</div>
+
+      <a href="tel:+97286326059" class="btn-call">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+        התקשר עכשיו — 08-6326059
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>LEDLink &copy; 2025 — רחובות | <a href="index.html">חזרה לקטלוג</a></p>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/972504722550" target="_blank" class="wa-float" aria-label="WhatsApp">
+    <svg width="26" height="26" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.526 5.858L0 24l6.335-1.502A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.032-1.373l-.36-.214-3.733.885.936-3.626-.235-.373A9.836 9.836 0 012.118 12C2.118 6.532 6.532 2.118 12 2.118c5.467 0 9.882 4.414 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>
+  </a>
+
+  <script>
+    function sendWA(e) {
+      e.preventDefault();
+      const name = document.getElementById('f-name').value.trim();
+      const phone = document.getElementById('f-phone').value.trim();
+      const msg = document.getElementById('f-msg').value.trim();
+      if (!name || !phone) {
+        alert('נא למלא שם וטלפון');
+        return;
+      }
+      const text = `שלום, אני ${name} (${phone}).\nאני מעוניין בהצעת מחיר לפרופילי LED / גופי תאורה.${msg ? '\n\n' + msg : ''}`;
+      window.open('https://wa.me/972504722550?text=' + encodeURIComponent(text), '_blank');
+    }
+  </script>
+
+</body>
+</html>
