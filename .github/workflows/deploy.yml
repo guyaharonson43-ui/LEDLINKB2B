@@ -36,7 +36,7 @@ jobs:
       - name: Copy landing page to dist
         run: |
           cp landing.html dist/landing.html
-          cp -rn assets dist/assets 2>/dev/null || true
+          rsync -a --ignore-existing assets/ dist/assets/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
