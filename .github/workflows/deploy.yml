@@ -33,6 +33,11 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Copy landing page to dist
+        run: |
+          cp landing.html dist/landing.html
+          cp -rn assets dist/assets 2>/dev/null || true
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
