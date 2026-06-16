@@ -1,0 +1,32 @@
+<svg width="200" height="44" viewBox="0 0 200 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- LED — geometric gold -->
+  <!-- L -->
+  <line x1="3"  y1="7"  x2="3"  y2="37" stroke="#E8A020" stroke-width="3" stroke-linecap="square"/>
+  <line x1="3"  y1="37" x2="16" y2="37" stroke="#E8A020" stroke-width="3" stroke-linecap="square"/>
+  <!-- E -->
+  <line x1="21" y1="7"  x2="21" y2="37" stroke="#E8A020" stroke-width="3" stroke-linecap="square"/>
+  <line x1="21" y1="7"  x2="34" y2="7"  stroke="#E8A020" stroke-width="3" stroke-linecap="square"/>
+  <line x1="21" y1="22" x2="32" y2="22" stroke="#E8A020" stroke-width="3" stroke-linecap="square"/>
+  <line x1="21" y1="37" x2="34" y2="37" stroke="#E8A020" stroke-width="3" stroke-linecap="square"/>
+  <!-- D -->
+  <line x1="39" y1="7"  x2="39" y2="37" stroke="#E8A020" stroke-width="3" stroke-linecap="square"/>
+  <line x1="39" y1="7"  x2="48" y2="7"  stroke="#E8A020" stroke-width="3" stroke-linecap="square"/>
+  <line x1="48" y1="7"  x2="56" y2="22" stroke="#E8A020" stroke-width="3" stroke-linecap="square"/>
+  <line x1="56" y1="22" x2="48" y2="37" stroke="#E8A020" stroke-width="3" stroke-linecap="square"/>
+  <line x1="39" y1="37" x2="48" y2="37" stroke="#E8A020" stroke-width="3" stroke-linecap="square"/>
+
+  <!-- LINK — geometric white -->
+  <!-- L + I combined frame -->
+  <line x1="64" y1="7"  x2="64" y2="37" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="64" y1="37" x2="80" y2="37" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="80" y1="37" x2="80" y2="13" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="80" cy="8" r="3" fill="#FFFFFF"/>
+  <!-- N -->
+  <line x1="87" y1="7"  x2="87" y2="37" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="87" y1="7"  x2="100" y2="37" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="100" y1="7" x2="100" y2="37" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- K -->
+  <line x1="107" y1="7"  x2="107" y2="37" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="107" y1="22" x2="120" y2="7"  stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="107" y1="22" x2="120" y2="37" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+</svg>
