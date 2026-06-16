@@ -7,6 +7,13 @@ const CATALOG = [
   { label: 'פרופילים',  tab: 'פרופילים'  },
 ];
 
+const LIGHTING_SUBS = [
+  { label: 'פסי צבירה ומסילות', sub: 'פסי צבירה ומסילות' },
+  { label: 'ספוטים ושקועים',    sub: 'ספוטים ושקועים'    },
+  { label: 'צמודי תקרה',        sub: 'צמודי תקרה'        },
+  { label: 'בקרה וחיישנים',     sub: 'בקרה וחיישנים'     },
+];
+
 const TOOLS = [
   { label: '⚡ מפל מתח',        url: 'tools.html?tool=voltage'    },
   { label: '💡 לומן לחלל',      url: 'tools.html?tool=lumen'      },
@@ -52,7 +59,23 @@ export default function Navbar({ activeTab, setActiveTab, onOpenConfigurator }) 
                       {item.label}
                     </button>
                   ))}
-                  <a href="lighting.html" className="nav-drop-item" style={{ borderTop: '1px solid rgba(255,255,255,0.08)', marginTop: 4, paddingTop: 10, textDecoration: 'none', display: 'block' }}>גופי תאורה ✦</a>
+                  <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', marginTop: 4, paddingTop: 6 }}>
+                    <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '.1em', color: '#E8A020', padding: '2px 16px 6px', textTransform: 'uppercase' }}>גופי תאורה</div>
+                    {LIGHTING_SUBS.map(item => (
+                      <button key={item.sub} className="nav-drop-item"
+                        onClick={() => {
+                          setActiveTab('גופי תאורה');
+                          setOpenDrop(null);
+                          const url = new URL(window.location.href);
+                          url.searchParams.set('tab', 'גופי תאורה');
+                          url.searchParams.set('sub', item.sub);
+                          window.history.pushState({}, '', url.toString());
+                          window.dispatchEvent(new PopStateEvent('popstate', { state: { tab: 'גופי תאורה', sub: item.sub } }));
+                        }}>
+                        {item.label}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -104,7 +127,21 @@ export default function Navbar({ activeTab, setActiveTab, onOpenConfigurator }) 
             {item.label}
           </button>
         ))}
-        <a href="lighting.html" className="mm-link sub" style={{ color: '#E8A020', textDecoration: 'none' }}>גופי תאורה ✦</a>
+        <div className="mm-label" style={{ fontSize: 11, color: '#E8A020', paddingTop: 4 }}>גופי תאורה</div>
+        {LIGHTING_SUBS.map(item => (
+          <button key={item.sub} className="mm-link sub"
+            onClick={() => {
+              setActiveTab('גופי תאורה');
+              setMenuOpen(false);
+              const url = new URL(window.location.href);
+              url.searchParams.set('tab', 'גופי תאורה');
+              url.searchParams.set('sub', item.sub);
+              window.history.pushState({}, '', url.toString());
+              window.dispatchEvent(new PopStateEvent('popstate', { state: { tab: 'גופי תאורה', sub: item.sub } }));
+            }}>
+            {item.label}
+          </button>
+        ))}
         <button className="mm-link sub" style={{ color: '#E8A020', display: 'flex', alignItems: 'center', gap: 8 }}
           onClick={() => { setActiveTab('פרופילים'); onOpenConfigurator(); setMenuOpen(false); }}>
           ✏️ תכנן פרופיל בהתאמה אישית

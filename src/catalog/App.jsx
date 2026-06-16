@@ -17,15 +17,16 @@ import Footer            from './components/Footer';
 import { Icons }         from './components/Icons';
 import ProductModal      from './components/ProductModal';
 import ConfiguratorModal from './components/ConfiguratorModal';
-import productsDataRaw   from '../../products_data';
+import productsDataRaw   from '../../products_data_with_lighting';
 
 // Pre-process once at module init — products are available before first render
 const allProducts = productsDataRaw.map(p => ({ ...p, name: cleanName(p.name) }));
 
 const TABS = [
-  { id: 'דרייברים',  label: 'דרייברים',  desc: 'ספקי מתח LED מאירופה — קבוע מתח, קבוע זרם, עמעום' },
-  { id: 'סטריפ LED', label: 'סטריפ LED', desc: 'סטריפ LED באיכות גבוהה לכל שימוש — COB, Neon, RGB ועוד' },
-  { id: 'פרופילים',  label: 'פרופילים',  desc: 'פרופילי אלומיניום לסטריפ LED — ייצור בהזמנה אישית' },
+  { id: 'דרייברים',    label: 'דרייברים',    desc: 'ספקי מתח LED מאירופה — קבוע מתח, קבוע זרם, עמעום' },
+  { id: 'סטריפ LED',  label: 'סטריפ LED',   desc: 'סטריפ LED באיכות גבוהה לכל שימוש — COB, Neon, RGB ועוד' },
+  { id: 'פרופילים',   label: 'פרופילים',    desc: 'פרופילי אלומיניום לסטריפ LED — ייצור בהזמנה אישית' },
+  { id: 'גופי תאורה', label: 'גופי תאורה', desc: 'פסי צבירה, ספוטים ושקועים, בקרה וחיישנים' },
 ];
 
 const PAGE_SIZE = 30;
@@ -53,6 +54,9 @@ export default function App() {
   });
   const [stripF, setStripF]     = useState({ ...INIT_STRIP });
   const [psF, setPsF]           = useState({ ...INIT_PS });
+  const [lightingSubCat, setLightingSubCat] = useState(() =>
+    new URLSearchParams(window.location.search).get('sub') || 'הכל'
+  );
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showCfg, setShowCfg]   = useState(false);
   const [page, setPage]         = useState(1);
@@ -67,10 +71,11 @@ export default function App() {
   // Browser back/forward
   useEffect(() => {
     const onPop = e => {
-      const id = (e.state && e.state.tab)
-        || new URLSearchParams(window.location.search).get('tab')
-        || 'דרייברים';
+      const p   = new URLSearchParams(window.location.search);
+      const id  = (e.state && e.state.tab) || p.get('tab') || 'דרייברים';
+      const sub = (e.state && e.state.sub) || p.get('sub') || 'הכל';
       setActiveTab(id);
+      setLightingSubCat(sub);
       setSearch('');
       setStripF({ ...INIT_STRIP });
       setPsF({ ...INIT_PS });
@@ -109,6 +114,7 @@ export default function App() {
     setSearch('');
     setStripF({ ...INIT_STRIP });
     setPsF({ ...INIT_PS });
+    setLightingSubCat('הכל');
     setSidebarOpen(false);
     setPage(1);
     const url = new URL(window.location.href);
@@ -181,14 +187,19 @@ export default function App() {
       });
     }
 
+    if (activeTab === 'גופי תאורה') {
+      if (lightingSubCat !== 'הכל') r = r.filter(p => p.subCategory === lightingSubCat);
+    }
+
     return r;
-  }, [products, activeTab, search, stripF, psF]);
+  }, [products, activeTab, search, stripF, psF, lightingSubCat]);
 
   const activeFilterCount = useMemo(() => {
-    if (activeTab === 'סטריפ LED') return Object.values(stripF).filter(v => v !== 'הכל').length;
-    if (activeTab === 'דרייברים')  return Object.values(psF).filter(v => v !== 'הכל').length;
+    if (activeTab === 'סטריפ LED')   return Object.values(stripF).filter(v => v !== 'הכל').length;
+    if (activeTab === 'דרייברים')    return Object.values(psF).filter(v => v !== 'הכל').length;
+    if (activeTab === 'גופי תאורה') return lightingSubCat !== 'הכל' ? 1 : 0;
     return 0;
-  }, [activeTab, stripF, psF]);
+  }, [activeTab, stripF, psF, lightingSubCat]);
 
   useEffect(() => { setPage(1); }, [filtered]);
 
@@ -203,10 +214,29 @@ export default function App() {
   const tabInfo    = TABS.find(t => t.id === activeTab);
   const showFilters = activeTab !== 'פרופילים';
 
+  const lightingSubCats = useMemo(() =>
+    activeTab === 'גופי תאורה'
+      ? ['הכל', ...new Set(products.filter(p => p.category === 'גופי תאורה').map(p => p.subCategory).filter(Boolean))]
+      : [],
+  [products, activeTab]);
+
   const renderSidebar = () => {
-    if (activeTab === 'פרופילים') return <ProfileFilters count={filtered.length} />;
-    if (activeTab === 'סטריפ LED') return <StripFilters filters={stripF} setFilters={setStripF} count={filtered.length} />;
-    if (activeTab === 'דרייברים')  return <DriverFilters filters={psF}    setFilters={setPsF}    count={filtered.length} />;
+    if (activeTab === 'פרופילים')   return <ProfileFilters count={filtered.length} />;
+    if (activeTab === 'סטריפ LED')  return <StripFilters filters={stripF} setFilters={setStripF} count={filtered.length} />;
+    if (activeTab === 'דרייברים')   return <DriverFilters filters={psF}    setFilters={setPsF}    count={filtered.length} />;
+    if (activeTab === 'גופי תאורה') return (
+      <div style={{ padding: '20px 0' }}>
+        <div style={{ fontSize: 12, fontWeight: 800, letterSpacing: '.08em', color: '#595959', marginBottom: 12 }}>קטגוריה</div>
+        {lightingSubCats.map(sc => (
+          <button key={sc} onClick={() => setLightingSubCat(sc)}
+            style={{ display: 'block', width: '100%', textAlign: 'right', background: 'none', border: 'none',
+              padding: '8px 0', cursor: 'pointer', fontFamily: 'Heebo,sans-serif', fontSize: 14,
+              color: lightingSubCat === sc ? '#E8A020' : '#1C1C1C', fontWeight: lightingSubCat === sc ? 700 : 400 }}>
+            {sc}
+          </button>
+        ))}
+      </div>
+    );
   };
 
   return (
