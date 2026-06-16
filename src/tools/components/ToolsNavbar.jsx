@@ -3,9 +3,10 @@ import { useState } from 'react';
 import { TOOLS } from './TabBar';
 
 const CATALOG = [
-  { label: 'דרייברים',  url: 'catalog.html?tab=דרייברים'  },
-  { label: 'סטריפ LED', url: 'catalog.html?tab=סטריפ LED' },
-  { label: 'פרופילים',  url: 'catalog.html?tab=פרופילים'  },
+  { label: 'דרייברים',   url: 'catalog.html?tab=דרייברים'  },
+  { label: 'סטריפ LED',  url: 'catalog.html?tab=סטריפ LED' },
+  { label: 'פרופילים',   url: 'catalog.html?tab=פרופילים'  },
+  { label: 'גופי תאורה ✦', url: 'lighting.html'            },
 ];
 
 const dropBox = {
@@ -88,6 +89,7 @@ export default function ToolsNavbar({ onGoToTool }) {
         <a href="catalog.html?tab=דרייברים" className="mm-link sub">דרייברים</a>
         <a href="catalog.html?tab=סטריפ LED" className="mm-link sub">סטריפ LED</a>
         <a href="catalog.html?tab=פרופילים" className="mm-link sub">פרופילים</a>
+        <a href="lighting.html" className="mm-link sub" style={{ color: '#E8A020' }}>גופי תאורה ✦</a>
         <div className="mm-divider"></div>
         <div className="mm-label">כלים ומדריכים</div>
         <span className="mm-link active" style={{ cursor: 'default' }}>כלי תכנון</span>

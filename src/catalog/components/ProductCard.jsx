@@ -1,10 +1,26 @@
-import ProductImg from './ProductImg';
-import SpecTags   from './SpecTags';
+import ProductImg              from './ProductImg';
+import SpecTags               from './SpecTags';
+import { getNeonDimLabel }    from './NeonSchematics';
 
 export default function ProductCard({ product, onClick, priority }) {
+  const neonDim = getNeonDimLabel(product.id);
+
   return (
     <article className="product-card">
-      <ProductImg src={product.img} name={product.name} priority={priority} />
+      <div style={{ position: 'relative' }}>
+        <ProductImg src={product.img} name={product.name} priority={priority} />
+        {neonDim && (
+          <div style={{
+            position: 'absolute', bottom: 8, left: 8,
+            background: 'rgba(28,28,28,0.78)', color: '#FFFFFF',
+            fontSize: 11, fontWeight: 700, padding: '3px 8px',
+            borderRadius: 6, letterSpacing: 0.5, backdropFilter: 'blur(4px)',
+            fontFamily: 'Heebo, sans-serif', pointerEvents: 'none',
+          }}>
+            {neonDim}
+          </div>
+        )}
+      </div>
       <div style={{ padding: '12px 14px 14px' }}>
         <div style={{ fontSize: 12, color: '#767676', marginBottom: 4, letterSpacing: 1, textTransform: 'uppercase' }}>
           {product.subCategory || product.category}

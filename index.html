@@ -282,54 +282,16 @@
       box-shadow: 0 20px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(232,160,32,0.5);
     }
 
-    /* shared light layer */
-    .cat-card::before {
-      content: '';
-      position: absolute; inset: 0; z-index: 1;
-      transition: opacity 0.35s;
+    /* תמונות אמיתיות בכרטיסים */
+    .cat-card img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.35;
+      transition: opacity 0.3s; z-index: 1;
     }
-    .cat-card:hover::before { filter: brightness(1.25); }
-
-    /* ── פרופילים: קו זהב אופקי יחיד, כמו פרופיל שפולט אור ── */
-    .cat-card--profiles { background: #0a0904; }
-    .cat-card--profiles::before {
-      background:
-        radial-gradient(ellipse 100% 18% at 50% 40%, rgba(232,160,32,0.18) 0%, transparent 100%),
-        linear-gradient(180deg,
-          transparent 37%,
-          rgba(232,160,32,0.08) 38.5%,
-          rgba(232,160,32,0.45) 39.5%,
-          rgba(255,210,80,0.95) 40.2%,
-          rgba(232,160,32,0.45) 41%,
-          rgba(232,160,32,0.08) 42%,
-          transparent 43.5%
-        );
-    }
-
-    /* ── סטריפ LED: שלושה קווים מקבילים — שורת LEDs ── */
-    .cat-card--strips { background: #09090a; }
-    .cat-card--strips::before {
-      background:
-        radial-gradient(ellipse 90% 50% at 50% 40%, rgba(232,160,32,0.07) 0%, transparent 100%),
-        linear-gradient(180deg,
-          transparent 22%,
-          rgba(232,160,32,0.08) 23%, rgba(255,200,60,0.8) 23.8%, rgba(232,160,32,0.08) 24.5%, transparent 26%,
-          transparent 36%,
-          rgba(232,160,32,0.06) 37%, rgba(255,200,60,0.65) 37.8%, rgba(232,160,32,0.06) 38.5%, transparent 40%,
-          transparent 50%,
-          rgba(232,160,32,0.04) 51%, rgba(255,200,60,0.45) 51.8%, rgba(232,160,32,0.04) 52.5%, transparent 54%
-        );
-    }
-
-    /* ── דרייברים: נקודת אור שמתפשטת — פלט כוח ── */
-    .cat-card--drivers { background: #080808; }
-    .cat-card--drivers::before {
-      background:
-        radial-gradient(circle 18px  at 50% 38%, rgba(255,230,120,1)    0%, transparent 100%),
-        radial-gradient(circle 60px  at 50% 38%, rgba(232,160,32,0.55)  0%, transparent 100%),
-        radial-gradient(circle 130px at 50% 38%, rgba(232,160,32,0.18)  0%, transparent 100%),
-        radial-gradient(circle 240px at 50% 38%, rgba(232,160,32,0.06)  0%, transparent 100%);
-    }
+    .cat-card:hover img { opacity: 0.5; }
+    .cat-card--profiles { background: #0b0b0b; }
+    .cat-card--strips   { background: #0b0b0b; }
+    .cat-card--drivers  { background: #0b0b0b; }
 
     .cat-card-body {
       position: absolute;
@@ -354,6 +316,50 @@
       font-size: 13px; font-weight: 700; color: #E8A020;
       display: flex; align-items: center; gap: 6px;
     }
+
+    /* ── גופי תאורה sub-cats ── */
+    .lighting-section { margin-top: 48px; }
+    .lighting-section-label {
+      font-size: 11px; font-weight: 800; letter-spacing: .12em;
+      text-transform: uppercase; color: #E8A020; margin-bottom: 16px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .lighting-section-label::before {
+      content: ''; flex: 1; height: 1px; background: rgba(232,160,32,0.25);
+    }
+    .lighting-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 900px) { .lighting-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .lighting-grid { grid-template-columns: 1fr 1fr; } }
+    .light-card {
+      position: relative; height: 360px; border-radius: 12px;
+      overflow: hidden; text-decoration: none; display: block;
+      background: #0b0b0b;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .light-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(232,160,32,0.5);
+    }
+    .light-card img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.35;
+      transition: opacity 0.3s;
+    }
+    .light-card:hover img { opacity: 0.5; }
+    .light-card-body {
+      position: absolute; bottom: 0; right: 0; left: 0;
+      padding: 28px 24px;
+      background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 55%, transparent 100%);
+      z-index: 2;
+    }
+    .light-card-count { font-size: 11px; color: #E8A020; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+    .light-card-name  { font-size: 26px; font-weight: 900; color: #fff; margin-bottom: 8px; }
+    .light-card-desc  { font-size: 15px; color: rgba(255,255,255,0.88); line-height: 1.6; margin-bottom: 18px; }
+    .light-card-link  { font-size: 13px; font-weight: 700; color: #E8A020; display: flex; align-items: center; gap: 6px; }
 
     /* ── Benefits ── */
     .benefits-section { background: #FFF8EE; }
@@ -581,6 +587,16 @@
     @media (max-width: 480px) {
       .footer-top { grid-template-columns: 1fr; }
     }
+    @media (max-width: 600px) {
+      .nav-cta-btn { display: none !important; }
+      .hero-eyebrow { font-size: 11px; letter-spacing: 1px; }
+      .hero-title { font-size: clamp(22px, 6vw, 28px); }
+      .hero-subtitle { font-size: 15px; }
+      .hero-bullets { flex-direction: column; gap: 10px; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn-primary,
+      .hero-actions .btn-secondary { width: 100%; justify-content: center; }
+    }
 
     /* ── Reduced motion ── */
     @media (prefers-reduced-motion: reduce) {
@@ -592,6 +608,57 @@
       @view-transition { navigation: none; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["LocalBusiness", "Manufacturer"],
+        "@id": "https://ledlink.co.il/#business",
+        "name": "LEDLink",
+        "url": "https://ledlink.co.il",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ledlink.co.il/logo.png"
+        },
+        "image": "https://ledlink.co.il/hero.webp",
+        "telephone": "08-6326059",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "רחובות",
+          "addressCountry": "IL"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Sunday"],
+            "opens": "08:00",
+            "closes": "17:00"
+          }
+        ],
+        "description": "ייצור ויבוא רכיבי תאורת LED — פרופילים, סטריפ ודרייברים לקבלנים ומעצבים בישראל",
+        "knowsAbout": ["פרופילי אלומיניום LED", "סטריפ LED", "דרייברים", "תאורת LED", "COB LED"],
+        "areaServed": { "@type": "Country", "name": "Israel" },
+        "sameAs": ["https://ledlink.co.il"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://ledlink.co.il/#website",
+        "url": "https://ledlink.co.il",
+        "name": "LEDLink",
+        "publisher": { "@id": "https://ledlink.co.il/#business" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://ledlink.co.il/catalog.html?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -610,6 +677,13 @@
             <a href="catalog.html?tab=דרייברים" class="nav-drop-item">דרייברים</a>
             <a href="catalog.html?tab=סטריפ LED" class="nav-drop-item">סטריפ LED</a>
             <a href="catalog.html?tab=פרופילים" class="nav-drop-item">פרופילים</a>
+            <div style="border-top:1px solid rgba(255,255,255,0.08);margin-top:4px;padding-top:6px;">
+              <div style="font-size:10px;font-weight:800;letter-spacing:.1em;color:#E8A020;padding:2px 16px 6px;text-transform:uppercase;">גופי תאורה</div>
+              <a href="catalog.html?tab=גופי תאורה&sub=פסי צבירה ומסילות" class="nav-drop-item">פסי צבירה ומסילות</a>
+              <a href="catalog.html?tab=גופי תאורה&sub=ספוטים ושקועים" class="nav-drop-item">ספוטים ושקועים</a>
+              <a href="catalog.html?tab=גופי תאורה&sub=צמודי תקרה" class="nav-drop-item">צמודי תקרה</a>
+              <a href="catalog.html?tab=גופי תאורה&sub=בקרה וחיישנים" class="nav-drop-item">בקרה וחיישנים</a>
+            </div>
           </div>
         </div>
         <div class="nav-dropdown">
@@ -631,6 +705,7 @@
         <a href="#contact" class="nav-link">צור קשר</a>
       </div>
       <div class="nav-spacer"></div>
+      <a href="https://ledlink-pcm.web.app" target="_blank" class="nav-cta-btn" style="background:#E8A020;color:#1a1a1a;font-weight:700;font-size:13px;padding:8px 18px;border-radius:6px;text-decoration:none;white-space:nowrap;margin-left:8px;">כניסת לקוחות ⚡</a>
       <button class="hamburger" id="hamburger" aria-label="תפריט" onclick="toggleMobileMenu()">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
@@ -656,6 +731,11 @@
     <a href="catalog.html?tab=דרייברים" class="mm-link sub">דרייברים</a>
     <a href="catalog.html?tab=סטריפ LED" class="mm-link sub">סטריפ LED</a>
     <a href="catalog.html?tab=פרופילים" class="mm-link sub">פרופילים</a>
+    <div class="mm-label" style="font-size:11px;color:#E8A020;padding-top:4px;">גופי תאורה</div>
+    <a href="catalog.html?tab=גופי תאורה&sub=פסי צבירה ומסילות" class="mm-link sub">פסי צבירה ומסילות</a>
+    <a href="catalog.html?tab=גופי תאורה&sub=ספוטים ושקועים" class="mm-link sub">ספוטים ושקועים</a>
+    <a href="catalog.html?tab=גופי תאורה&sub=צמודי תקרה" class="mm-link sub">צמודי תקרה</a>
+    <a href="catalog.html?tab=גופי תאורה&sub=בקרה וחיישנים" class="mm-link sub">בקרה וחיישנים</a>
     <div class="mm-divider"></div>
     <div class="mm-label">כלים ומדריכים</div>
     <a href="tools.html" class="mm-link">כלי תכנון</a>
@@ -670,6 +750,8 @@
     <div class="mm-divider"></div>
     <a href="about.html" class="mm-link">אודות</a>
     <a href="#contact" class="mm-link" onclick="closeMobileMenu()">צור קשר</a>
+    <div class="mm-divider"></div>
+    <a href="https://ledlink-pcm.web.app" target="_blank" class="mm-link" style="color:#E8A020;font-weight:700;">כניסת לקוחות ⚡</a>
   </div>
 
   <!-- ── Hero ── -->
@@ -772,13 +854,14 @@
   <section class="section">
     <div class="section-inner">
       <div class="section-label">הקטלוג המקצועי</div>
-      <h2 class="section-title">שלושה תחומים. מענה אחד מלא.</h2>
-      <p class="section-desc">כל מה שצריך לפרויקט תאורת LED מקצועי – מהפרופיל ועד הדרייבר – ממקום אחד.</p>
+      <h2 class="section-title">תחומים רבים. פתרון אחד.</h2>
+      <p class="section-desc">כל מה שצריך לפרויקט תאורת LED מקצועי – מהרכיב ועד גוף התאורה – ממקום אחד.</p>
       <div class="gold-line"></div>
       <div class="cats-grid">
 
         <!-- פרופילים -->
         <a href="catalog.html?tab=פרופילים" class="cat-card cat-card--profiles">
+          <img src="strips/R30.webp" alt="פרופילים">
           <div class="cat-card-body">
             <div class="cat-count">20 דגמים</div>
             <div class="cat-name">פרופילים</div>
@@ -789,6 +872,7 @@
 
         <!-- סטריפ LED -->
         <a href="catalog.html?tab=סטריפ LED" class="cat-card cat-card--strips">
+          <img src="strips/COB-1024x683.webp" alt="סטריפ LED">
           <div class="cat-card-body">
             <div class="cat-count">112 דגמים</div>
             <div class="cat-name">סטריפ LED</div>
@@ -799,6 +883,7 @@
 
         <!-- דרייברים -->
         <a href="catalog.html?tab=דרייברים" class="cat-card cat-card--drivers">
+          <img src="strips/CC36-1024x784.webp" alt="דרייברים">
           <div class="cat-card-body">
             <div class="cat-count">241 דגמים</div>
             <div class="cat-name">דרייברים</div>
@@ -808,6 +893,55 @@
         </a>
 
       </div>
+
+      <!-- גופי תאורה -->
+      <div class="lighting-section">
+        <div class="lighting-section-label">גופי תאורה</div>
+        <div class="lighting-grid">
+
+          <a href="catalog.html?tab=גופי תאורה&sub=פסי צבירה ומסילות" class="light-card">
+            <img src="https://www.eurolux.co.il/Media/Resize/250_250/TKM-ROPE30.jpg" alt="פסי צבירה ומסילות" loading="lazy">
+            <div class="light-card-body">
+              <div class="light-card-count">96 דגמים</div>
+              <div class="light-card-name">פסי צבירה ומסילות</div>
+              <div class="light-card-desc">פס מגנטי 48V, ספוטים ולינארי למסילה, פסי צבירה 230V ומסילות HiLINE.</div>
+              <div class="light-card-link">צפייה בקטלוג ←</div>
+            </div>
+          </a>
+
+          <a href="catalog.html?tab=גופי תאורה&sub=ספוטים ושקועים" class="light-card">
+            <img src="https://www.eurolux.co.il/Media/Resize/250_250/HI-D66(4).jpg" alt="ספוטים ושקועים" loading="lazy">
+            <div class="light-card-body">
+              <div class="light-card-count">63 דגמים</div>
+              <div class="light-card-name">ספוטים ושקועים</div>
+              <div class="light-card-desc">שקועי תקרה מקצועיים, צמודי קיר ואדריכליים — לכל חלל בפרויקט.</div>
+              <div class="light-card-link">צפייה בקטלוג ←</div>
+            </div>
+          </a>
+
+          <a href="catalog.html?tab=גופי תאורה&sub=צמודי תקרה" class="light-card">
+            <img src="https://www.eurolux.co.il/Media/Resize/250_250/CL-M101_WH.png" alt="צמודי תקרה" loading="lazy">
+            <div class="light-card-body">
+              <div class="light-card-count">45 דגמים</div>
+              <div class="light-card-name">צמודי תקרה</div>
+              <div class="light-card-desc">גופי תאורה צמודי תקרה — עגולים ומרובעים, לבן ושחור, לכל סגנון עיצובי.</div>
+              <div class="light-card-link">צפייה בקטלוג ←</div>
+            </div>
+          </a>
+
+          <a href="catalog.html?tab=גופי תאורה&sub=בקרה וחיישנים" class="light-card">
+            <img src="https://www.eurolux.co.il/Media/Resize/250_250/EB-EP1439-BK.jpg" alt="בקרה וחיישנים" loading="lazy">
+            <div class="light-card-body">
+              <div class="light-card-count">41 דגמים</div>
+              <div class="light-card-name">בקרה וחיישנים</div>
+              <div class="light-card-desc">מפסקים אלחוטיים, פיקוד חכם, חיישני נוכחות ואור — בקרה ללא סוללה.</div>
+              <div class="light-card-link">צפייה בקטלוג ←</div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
     </div>
   </section>
 

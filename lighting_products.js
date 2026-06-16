@@ -7447,4 +7447,3 @@
   }
 ];
 if (typeof window !== 'undefined') window.__PRODUCTS__ = __PRODUCTS__;
-export default __PRODUCTS__;

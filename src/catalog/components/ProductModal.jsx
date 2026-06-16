@@ -5,11 +5,69 @@ import { getStripMeta }       from '../utils/stripMeta';
 import ProductImg             from './ProductImg';
 import NeonSchematic          from './NeonSchematics';
 import { Icons }              from './Icons';
+import drawings              from '../data/drawings';
+
+// ניסיון לטעון גרסת (2) → (1) → בסיסית
+function bestImgSrc(url) {
+  // הוסף (2) לפני הסיומת: TKM-ROPE30.jpg → TKM-ROPE30(2).jpg
+  return url.replace(/(\.[^.]+)$/, '(2)$1');
+}
+
+function Lightbox({ src, alt, onClose }) {
+  const [imgSrc, setImgSrc] = useState(bestImgSrc(src));
+  const fallbacks = [
+    src.replace(/(\.[^.]+)$/, '(1)$1'),
+    src,
+  ];
+  const [fallbackIdx, setFallbackIdx] = useState(0);
+
+  useEffect(() => {
+    setImgSrc(bestImgSrc(src));
+    setFallbackIdx(0);
+  }, [src]);
+
+  useEffect(() => {
+    const onKey = e => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [onClose]);
+
+  const handleError = () => {
+    if (fallbackIdx < fallbacks.length) {
+      setImgSrc(fallbacks[fallbackIdx]);
+      setFallbackIdx(i => i + 1);
+    }
+  };
+
+  return (
+    <div onClick={onClose} style={{
+      position: 'fixed', inset: 0, zIndex: 9999,
+      background: 'rgba(0,0,0,0.88)', display: 'flex',
+      alignItems: 'center', justifyContent: 'center', cursor: 'zoom-out'
+    }}>
+      <img src={imgSrc} alt={alt} onError={handleError} onClick={e => e.stopPropagation()}
+        style={{ width: '60vw', height: '60vh', objectFit: 'contain', borderRadius: 8, boxShadow: '0 8px 40px rgba(0,0,0,0.6)', cursor: 'default' }} />
+      <button onClick={onClose} style={{
+        position: 'absolute', top: 20, left: 20,
+        background: 'rgba(255,255,255,0.15)', border: 'none',
+        color: '#fff', fontSize: 28, width: 44, height: 44,
+        borderRadius: '50%', cursor: 'pointer', lineHeight: 1
+      }}>✕</button>
+    </div>
+  );
+}
+
+function fullImg(url) {
+  return url ? url.replace(/\/Media\/Resize\/[^/]+\//, '/Media/Uploads/') : url;
+}
 
 export default function ProductModal({ product, onClose }) {
   const ds       = (datasheets[product.id] || datasheets[product.name] || []);
+  const drawing  = drawings[product.id] || null;
+  const productImgFull = fullImg(product.img);
   const cat      = product.category;
   const [copied, setCopied] = useState(false);
+  const [lightbox, setLightbox] = useState(null);
   const closeRef = useRef(null);
 
   useEffect(() => {
@@ -33,6 +91,54 @@ export default function ProductModal({ product, onClose }) {
   };
 
   const renderSpecs = () => {
+    if (cat === 'גופי תאורה') {
+      const ex   = product.extractedSpecs || {};
+      const tags = product.specTags || [];
+      const rows = Object.entries(ex);
+      // add any specTags not already captured
+      tags.forEach(t => {
+        const already = rows.some(([, v]) => v === t);
+        if (!already) rows.push([t, t]);
+      });
+      return (
+        <div style={{ marginTop: 0 }}>
+          {product.sku && (
+            <div style={{ marginBottom: 12, display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ fontSize: 11, color: '#767676', letterSpacing: 1, textTransform: 'uppercase' }}>מק"ט</span>
+              <span style={{ fontSize: 13, fontWeight: 700, color: '#1C1C1C', fontFamily: 'monospace' }}>{product.sku}</span>
+            </div>
+          )}
+          {rows.length > 0 && (
+            <>
+              <div style={{ fontSize: 11, color: '#767676', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 10 }}>מפרט טכני</div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+                {rows.map(([k, v]) => (
+                  <div key={k} style={{ background: '#F4F4F0', borderRadius: 6, padding: '10px 14px', border: '1px solid #E0DDD6' }}>
+                    <div style={{ fontSize: 10, color: '#767676', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 4 }}>{k}</div>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: '#1C1C1C' }}>{v}</div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+          {(product.family || product.subCategory) && (
+            <div style={{ marginTop: 14, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              {product.subCategory && (
+                <span style={{ fontSize: 12, background: '#1A1A1A', color: '#E8A020', padding: '3px 10px', borderRadius: 20, fontWeight: 700 }}>
+                  {product.subCategory}
+                </span>
+              )}
+              {product.family && product.family !== product.subCategory && (
+                <span style={{ fontSize: 12, background: '#F0EDE8', color: '#555', padding: '3px 10px', borderRadius: 20 }}>
+                  {product.family}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+      );
+    }
+
     if (cat === 'דרייברים' && product.specs) {
       const s = product.specs;
       return (
@@ -90,6 +196,7 @@ export default function ProductModal({ product, onClose }) {
   };
 
   return (
+    <>
     <div className="modal-overlay" onClick={onClose} role="presentation">
       <div className="modal-box" role="dialog" aria-modal="true" aria-labelledby="product-modal-title"
         onClick={e => e.stopPropagation()}>
@@ -111,8 +218,21 @@ export default function ProductModal({ product, onClose }) {
         {/* Body */}
         <div style={{ padding: '24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, alignItems: 'start' }}>
-            <div style={{ borderRadius: 8, overflow: 'hidden', border: '1px solid #E0DDD6' }}>
-              <ProductImg src={product.img} name={product.name} tall />
+            <div>
+              <div onClick={() => setLightbox({ src: productImgFull, alt: product.name })}
+                style={{ borderRadius: 8, overflow: 'hidden', border: '1px solid #E0DDD6', cursor: 'zoom-in' }}>
+                <ProductImg src={productImgFull} name={product.name} tall />
+              </div>
+              {drawing && (
+                <div style={{ marginTop: 12 }}>
+                  <div style={{ fontSize: 11, color: '#767676', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 8 }}>שרטוט טכני</div>
+                  <div onClick={() => setLightbox({ src: drawing, alt: `שרטוט ${product.name}` })}
+                    style={{ borderRadius: 8, overflow: 'hidden', border: '1px solid #E0DDD6', background: '#fff', cursor: 'zoom-in' }}>
+                    <img src={drawing} alt={`שרטוט ${product.name}`}
+                      style={{ width: '100%', height: 'auto', display: 'block' }} />
+                  </div>
+                </div>
+              )}
             </div>
             <div>
               {renderSpecs()}
@@ -163,5 +283,7 @@ export default function ProductModal({ product, onClose }) {
         </div>
       </div>
     </div>
+    {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
+    </>
   );
 }

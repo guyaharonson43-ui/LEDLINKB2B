@@ -1,4 +1,7 @@
-﻿const __PRODUCTS__ = [
+// קובץ preview — נוצר אוטומטית ע"י build_preview_data.js
+// אין לערוך ידנית. לעדכון הרץ: node build_preview_data.js
+// מוצרים מקוריים: 373 | גופי תאורה: 245 | סה"כ: 618
+const __PRODUCTS__ = [
   {
     "id": "ledlink-tuba30",
     "name": "טיובה 30",
@@ -7444,7 +7447,5137 @@
       "dimming": [],
       "inputVoltage": "100÷250V AC"
     }
+  },
+  {
+    "id": "ll-light-tkm-rope30-ww",
+    "sku": "TKM-ROPE30/WW",
+    "name": "חבל אור סיליקון לפס מגנטי 3מ 48VDC 10W IP20 2700K",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-ROPE30.jpg",
+    "desc": "10W | 2700K | IP20",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 271.4,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "10W",
+      "2700K",
+      "IP20"
+    ],
+    "extractedSpecs": {
+      "הספק": "10W",
+      "גוון אור": "2700K",
+      "אטימה": "IP20"
+    }
+  },
+  {
+    "id": "ll-light-tkm-flat090wh-ww",
+    "sku": "TKM-FLAT090WH/WW",
+    "name": "FLAT לפס מגנטי 36W חלבי 970 מ\"מ לבן, 3240Lm 3000K, פנימי",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-FLAT90.webp",
+    "desc": "36W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 413,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "36W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "36W",
+      "גוון אור": "3000K",
+      "עוצמה": "3240 Lm",
+      "מידה": "970 מ\"מ",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tkm-flat090bk-ww",
+    "sku": "TKM-FLAT090BK/WW",
+    "name": "FLAT לפס מגנטי 36W חלבי 970 מ\"מ שחור, 3240Lm 3000K, פנימי",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-FLAT090BK.jpg",
+    "desc": "36W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 413,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "36W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "36W",
+      "גוון אור": "3000K",
+      "עוצמה": "3240 Lm",
+      "מידה": "970 מ\"מ",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tkm-eye033bk-ww",
+    "sku": "TKM-EYE033BK/WW",
+    "name": "EYE לפס מגנטי 18X1W שחור, 1620Lm 3000K 24°",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-EYE033BK_Edit.jpg",
+    "desc": "1W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 153.4,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "1W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "1W",
+      "גוון אור": "3000K",
+      "זווית": "24°",
+      "עוצמה": "1620 Lm",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tkm-flat030wh-ww",
+    "sku": "TKM-FLAT030WH/WW",
+    "name": "FLAT לפס מגנטי 24W חלבי 436 מ\"מ לבן, 2160Lm 3000K, פנימי",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-FLAT30.webp",
+    "desc": "24W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 192.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "24W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "24W",
+      "גוון אור": "3000K",
+      "עוצמה": "2160 Lm",
+      "מידה": "436 מ\"מ",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tkm-flat030bk-ww",
+    "sku": "TKM-FLAT030BK/WW",
+    "name": "FLAT לפס מגנטי 24W חלבי 436 מ\"מ שחור, 2160Lm 3000K, פנימי",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-FLAT090B_Edit.jpg",
+    "desc": "24W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 192.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "24W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "24W",
+      "גוון אור": "3000K",
+      "עוצמה": "2160 Lm",
+      "מידה": "436 מ\"מ",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tkm-flat122wh-ww",
+    "sku": "TKM-FLAT122WH/WW",
+    "name": "FLAT לפס מגנטי פס 12W חלבי 220 מ\"מ לבן, 1080Lm 3000K, מתכוונן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-FLAT122(3).webp",
+    "desc": "12W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 232.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "12W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "12W",
+      "גוון אור": "3000K",
+      "עוצמה": "1080 Lm",
+      "מידה": "220 מ\"מ",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tkm-flat122bk-ww",
+    "sku": "TKM-FLAT122BK/WW",
+    "name": "FLAT לפס מגנטי פס 12W חלבי 220 מ\"מ שחור, 1080Lm 3000K, מתכוונן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-FLAT122BK_Edit.jpg",
+    "desc": "12W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 232.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "12W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "12W",
+      "גוון אור": "3000K",
+      "עוצמה": "1080 Lm",
+      "מידה": "220 מ\"מ",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tkm-eye122bk-ww",
+    "sku": "TKM-EYE122BK/WW",
+    "name": "EYE לפס מגנטי 12X1W שחור 1080Lm 3000K 24°, מתכוונן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-EYE122BK_Edit(3).jpg",
+    "desc": "1W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 232.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "1W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "1W",
+      "גוון אור": "3000K",
+      "זווית": "24°",
+      "עוצמה": "1080 Lm",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tkm-55cob120wh-ww",
+    "sku": "TKM-55COB120WH/WW",
+    "name": "ספוט לפס מגנטי 15W 55x120 מ\"מ לבן, 1350Lm 3000K 24°",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-55COB120__TKM-35COB80_WH_Edit(3).jpg",
+    "desc": "15W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 192.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "15W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "15W",
+      "גוון אור": "3000K",
+      "זווית": "24°",
+      "עוצמה": "1350 Lm",
+      "מידה": "120 מ\"מ",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tkm-55cob120bk-ww",
+    "sku": "TKM-55COB120BK/WW",
+    "name": "ספוט לפס מגנטי 15W 55x120 מ\"מ שחור, 1350Lm 3000K 24°",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-55COB120__TKM-35COB80_BK_Edit.jpg",
+    "desc": "15W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 192.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "15W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "15W",
+      "גוון אור": "3000K",
+      "זווית": "24°",
+      "עוצמה": "1350 Lm",
+      "מידה": "120 מ\"מ",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tkm-35cob80wh-ww",
+    "sku": "TKM-35COB80WH/WW",
+    "name": "ספוט לפס מגנטי 5W 35x80 מ\"מ לבן, 350Lm 3000K 24°",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-55COB120__TKM-35COB80_WH_Edit.jpg",
+    "desc": "5W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 153.4,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "5W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "5W",
+      "גוון אור": "3000K",
+      "זווית": "24°",
+      "עוצמה": "350 Lm",
+      "מידה": "80 מ\"מ",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tkm-35cob80bk-ww",
+    "sku": "TKM-35COB80BK/WW",
+    "name": "ספוט לפס מגנטי 5W 35x80 מ\"מ שחור, 350Lm 3000K 24°",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-55COB120__TKM-35COB80_BK_Edit(3).jpg",
+    "desc": "5W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 153.4,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "5W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "5W",
+      "גוון אור": "3000K",
+      "זווית": "24°",
+      "עוצמה": "350 Lm",
+      "מידה": "80 מ\"מ",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tkm-glob95wh-ww",
+    "sku": "TKM-GLOB95WH/WW",
+    "name": "GLOB לפס מגנטי 95 מ\"מ לבן, 7W 900Lm 3000K, תלוי 2 מטר",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-GLOB95WH_Edit.jpg",
+    "desc": "7W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 365.8,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "גוון אור": "3000K",
+      "עוצמה": "900 Lm",
+      "מידה": "95 מ\"מ",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tkm-c30-wh",
+    "sku": "TKM-C30/WH",
+    "name": "פס מגנטי צמוד/תלוי לבן 3מ, כולל סופיות והתקן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-C30WH.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 472,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tkm-c30-bk",
+    "sku": "TKM-C30/BK",
+    "name": "פס מגנטי צמוד/תלוי שחור 3מ, כולל סופיות",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-C30BK.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 472,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tkm-r30-wh",
+    "sku": "TKM-R30/WH",
+    "name": "פס מגנטי שקוע לבן 3מ, כולל סופיות",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-R30WH.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 431.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tkm-r30-bk",
+    "sku": "TKM-R30/BK",
+    "name": "פס מגנטי שקוע שחור 3מ, כולל סופיות",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-R30BK.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 472,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tkm-t30-wh",
+    "sku": "TKM-T30/WH",
+    "name": "פס מגנטי TRIMLESS לבן 3 מטר כולל סופיות",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-T30WH.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 431.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tkm-t30-bk",
+    "sku": "TKM-T30/BK",
+    "name": "פס מגנטי TRIMLESS שחור 3 מטר כולל סופיות",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-T30BK.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 431.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tkm-p150",
+    "sku": "TKM-P150",
+    "name": "דרייבר 150W לפס מגנטי",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/led-driver150.jpg",
+    "desc": "150W",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 590,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "150W"
+    ],
+    "extractedSpecs": {
+      "הספק": "150W"
+    }
+  },
+  {
+    "id": "ll-light-tkm-p250",
+    "sku": "TKM-P250",
+    "name": "דרייבר 250W לפס מגנטי",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/led-driver250.jpg",
+    "desc": "250W",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 667.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "250W"
+    ],
+    "extractedSpecs": {
+      "הספק": "250W"
+    }
+  },
+  {
+    "id": "ll-light-tkm-s20-wh",
+    "sku": "TKM-S20/WH",
+    "name": "פס מגנטי מחבר הזנה לבן 200 ס\"מ 2x1.5mm² + תקשורת",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-S05_TKM-S20_WH.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 50.7,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "מידה": "1.5 מ\"מ",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tkm-s20-bk",
+    "sku": "TKM-S20/BK",
+    "name": "פס מגנטי מחבר הזנה שחור 200 ס\"מ 2x1.5mm² + תקשורת",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-S05_TKM-S20_BK.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 50.7,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "מידה": "1.5 מ\"מ",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tkm-atc-wh",
+    "sku": "TKM-ATC/WH",
+    "name": "מחבר מכני ומחבר חשמלי לבן לפס מגנטי",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-ATC-WH.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 59,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tkm-atc-bk",
+    "sku": "TKM-ATC/BK",
+    "name": "מחבר מכני ומחבר חשמלי שחור לפס מגנטי",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-ATC-BK.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 59,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tkm-aec-bk",
+    "sku": "TKM-AEC/BK",
+    "name": "זוג סופיות לפרופיל מסילה מגנטי שחור",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-AEC-BK.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 11.8,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tkm-aec-wh",
+    "sku": "TKM-AEC/WH",
+    "name": "זוג סופיות לפרופיל מסילה מגנטי לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-AEC-WH.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 11.8,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tkm-tcc-wh",
+    "sku": "TKM-TCC/WH",
+    "name": "פס מגנטי זווית-תקרה חור לבן כולל מחברי חשמל ומחבר מכני",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-TCC-WH.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 109.7,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tkm-tcc-bk",
+    "sku": "TKM-TCC/BK",
+    "name": "פס מגנטי זווית-תקרה חור שחור כולל מחברי חשמל ומחבר מכני",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-TCC-BK.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 109.7,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tkm-rcc-wh",
+    "sku": "TKM-RCC/WH",
+    "name": "פס מגנטי זווית-תקרה שקוע לבן כולל מחברי חשמל ומחבר מכני",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-RCC-WH.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 109.7,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tkm-rcc-bk",
+    "sku": "TKM-RCC/BK",
+    "name": "פס מגנטי זווית-תקרה שקוע שחור כולל מחברי חשמל ומחבר מכני",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-RCC-BK.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 109.7,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tkm-ccc-wh",
+    "sku": "TKM-CCC/WH",
+    "name": "פרופיל מסילה מגנטי זווית-תקרה צמוד/תלוי לבן כולל מחברים",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-CCC-WH.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 109.7,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tkm-ccc-bk",
+    "sku": "TKM-CCC/BK",
+    "name": "פרופיל מסילה מגנטי זווית-תקרה צמוד/תלוי שחור כולל מחברים",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-CCC-BK.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פס מגנטי 48V",
+    "price": 109.7,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-hiprofile150bk-ww",
+    "sku": "HiPROFILE150BK/WW",
+    "name": "הייפרופיל שחור 150 BridgeLUX 3000K 60° 50W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiPROFILE150BK(5).jpg",
+    "desc": "50W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 774.1,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "50W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "50W",
+      "גוון אור": "3000K",
+      "זווית": "60°",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-hiprofile150wh-ww",
+    "sku": "HiPROFILE150WH/WW",
+    "name": "הייפרופיל צמוד תקרה לבן 150 BridgeLUX 3000K 60° 50W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiPROFILE150WH.jpg",
+    "desc": "50W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 774.1,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "50W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "50W",
+      "גוון אור": "3000K",
+      "זווית": "60°",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-hiprofile150bk-cw-ho",
+    "sku": "HiPROFILE150BK/CW-HO",
+    "name": "הייפרופיל שחור 150 BridgeLUX 4000K 60° 80W 9440lm",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiPROFILE150BK.jpg",
+    "desc": "80W | 4000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 903.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "80W",
+      "4000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "80W",
+      "גוון אור": "4000K",
+      "זווית": "60°",
+      "עוצמה": "9440 Lm",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-hiprofile120bk-cw-ho",
+    "sku": "HiPROFILE120BK/CW-HO",
+    "name": "הייפרופיל שחור 120 BridgeLUX 7080Lm 4000K 60° 64W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiPROFILE120BK(9).jpg",
+    "desc": "64W | 4000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 781.2,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "64W",
+      "4000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "64W",
+      "גוון אור": "4000K",
+      "זווית": "60°",
+      "עוצמה": "7080 Lm",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-hiprofile120wh-cw",
+    "sku": "HiPROFILE120WH/CW",
+    "name": "הייפרופיל לבן 120 BridgeLUX 4000K 60° 40W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiPROFILE120WH(8).jpg",
+    "desc": "40W | 4000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 656.1,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "40W",
+      "4000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "40W",
+      "גוון אור": "4000K",
+      "זווית": "60°",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-hiwing-bk-cw-track",
+    "sku": "HIWING-BK/CW-TRACK",
+    "name": "מנורת פס צבירה לד מתקפל גוף שחור 50W 4000K",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiWING_Side(1).jpg",
+    "desc": "50W | 4000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 754,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "50W",
+      "4000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "50W",
+      "גוון אור": "4000K",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-hiwing-wh-ww-track",
+    "sku": "HIWING-WH/WW-TRACK",
+    "name": "מנורת פס צבירה לד מתקפל גוף לבן 50W 3000K",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiWING-WH_Side(1).jpg",
+    "desc": "50W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 754,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "50W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "50W",
+      "גוון אור": "3000K",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tk-50cob150wh",
+    "sku": "TK-50COB150WH",
+    "name": "רול.5 לפס צבירה לבן 62x170 מ\"מ Hongli 36° 870Lm 90CRi 8W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-50COB150wh(6).jpg",
+    "desc": "8W | 36°",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 217.1,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "8W",
+      "36°"
+    ],
+    "extractedSpecs": {
+      "הספק": "8W",
+      "זווית": "36°",
+      "עוצמה": "870 Lm",
+      "מידה": "170 מ\"מ",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tk-50cob150bk-ww",
+    "sku": "TK-50COB150BK/WW",
+    "name": "רול.5 8W לפס צבירה שחור 3000K 36° 870Lm 90CRi",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-50COB150BK.jpg",
+    "desc": "8W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 217.1,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "8W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "8W",
+      "גוון אור": "3000K",
+      "זווית": "36°",
+      "עוצמה": "870 Lm",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tk-62cob170wh",
+    "sku": "TK-62COB170WH",
+    "name": "רול.6 לפס צבירה לבן 62x170 מ\"מ Hongli 36° 1,900Lm 90CRi 18W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-62COB170WH(6).jpg",
+    "desc": "18W | 36°",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 283.2,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "18W",
+      "36°"
+    ],
+    "extractedSpecs": {
+      "הספק": "18W",
+      "זווית": "36°",
+      "עוצמה": "900 Lm",
+      "מידה": "170 מ\"מ",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tk-62cob170bk",
+    "sku": "TK-62COB170BK",
+    "name": "רול.6 לפס צבירה שחור 62x170 מ\"מ Hongli 36° 1,900Lm 90CRi 18W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-62COB170BK(6).jpg",
+    "desc": "18W | 36°",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 214.8,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "18W",
+      "36°"
+    ],
+    "extractedSpecs": {
+      "הספק": "18W",
+      "זווית": "36°",
+      "עוצמה": "900 Lm",
+      "מידה": "170 מ\"מ",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tk-80cob190bk",
+    "sku": "TK-80COB190BK",
+    "name": "רול.8 לפס צבירה שחור 80x188 מ\"מ Hongli 36° 3,240Lm 90CRi 30W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-80COB190BK(6).jpg",
+    "desc": "30W | 36°",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 259.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "30W",
+      "36°"
+    ],
+    "extractedSpecs": {
+      "הספק": "30W",
+      "זווית": "36°",
+      "עוצמה": "240 Lm",
+      "מידה": "188 מ\"מ",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tk-94cob190wh",
+    "sku": "TK-94COB190WH",
+    "name": "רול.9 לפס צבירה לבן 94x188 מ\"מ Hongli 36° 4,320Lm 90CRi 40W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-94COB190(12).jpg",
+    "desc": "40W | 36°",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 335.1,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "40W",
+      "36°"
+    ],
+    "extractedSpecs": {
+      "הספק": "40W",
+      "זווית": "36°",
+      "עוצמה": "320 Lm",
+      "מידה": "188 מ\"מ",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tk-94cob190bk",
+    "sku": "TK-94COB190BK",
+    "name": "רול.9 לפס צבירה שחור 94x188 מ\"מ Hongli 36° 4,320Lm 90CRi 40W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-94COB190BK(6).jpg",
+    "desc": "40W | 36°",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 335.1,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "40W",
+      "36°"
+    ],
+    "extractedSpecs": {
+      "הספק": "40W",
+      "זווית": "36°",
+      "עוצמה": "320 Lm",
+      "מידה": "188 מ\"מ",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-50cob60wh-track",
+    "sku": "CL-50COB60WH-Track",
+    "name": "רול.5 לפס צבירה לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-50COB60WH(8).png",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 146.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-cl-50cob60bk-track",
+    "sku": "CL-50COB60BK-Track",
+    "name": "רול.5 לפס צבירה שחור",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-50COB60BK(8).png",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 146.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-50cob60bg-ww-track",
+    "sku": "CL-50COB60BG/WW-Track",
+    "name": "רול.5 לפס צבירה פליז 50x60 מ\"מ 3000K 38° 8W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-50COB60BG(1).png",
+    "desc": "8W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 167.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "8W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "8W",
+      "גוון אור": "3000K",
+      "זווית": "38°",
+      "מידה": "60 מ\"מ"
+    }
+  },
+  {
+    "id": "ll-light-cl-60gu130wh-track",
+    "sku": "CL-60GU130WH/Track",
+    "name": "רול.6 לפס צבירה לבן 60x130 מ\"מ GU10",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU130WH_Track(2).png",
+    "desc": "GU10",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 96.8,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "מידה": "130 מ\"מ",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-cl-60gu130bk-track",
+    "sku": "CL-60GU130BK/Track",
+    "name": "רול.6 לפס צבירה שחור 60x130 מ\"מ GU10",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU130BK_Track(3).png",
+    "desc": "GU10",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 96.8,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "מידה": "130 מ\"מ",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-60gu130bg-track",
+    "sku": "CL-60GU130BG/Track",
+    "name": "רול.6 לפס צבירה פליז 60x130 מ\"מ GU10",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU130BG_Track.jpg",
+    "desc": "GU10",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 120.4,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "מידה": "130 מ\"מ"
+    }
+  },
+  {
+    "id": "ll-light-cl-10gubk-track",
+    "sku": "CL-10GUBK/Track",
+    "name": "ספוט GU10 לפס צבירה שחור",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-GU10BK-Track(1).jpg",
+    "desc": "GU10",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 55.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-10e27bk-track",
+    "sku": "CL-10E27BK/Track",
+    "name": "ספוט E27 לפס צבירה שחור",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-10E27BK-Track.png",
+    "desc": "E27",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 55.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "E27"
+    ],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-10e27wh-track",
+    "sku": "CL-10E27WH/Track",
+    "name": "ספוט E27 לפס צבירה לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-10E27WH-Track(1).jpg",
+    "desc": "E27",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 55.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "E27"
+    ],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-cl-100ed180bk-track",
+    "sku": "CL-100ED180BK/Track",
+    "name": "ספוט לפס צבירה E27 שחור 80x150 מ\"מ (כולל נורה)",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-100ED-BK(1).png",
+    "desc": "E27",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 233.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "E27"
+    ],
+    "extractedSpecs": {
+      "מידה": "150 מ\"מ",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-55guwh-track",
+    "sku": "CL-55GUWH/Track",
+    "name": "פלוטו לפס צבירה לבן Ø9x12.8 ס\"מ כולל נורה GU10 7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-55GUWH-Track.jpg",
+    "desc": "7W | GU10",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 182.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W",
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-cl-55gubk-pendant",
+    "sku": "CL-55GUBK/Pendant",
+    "name": "פלוטו תלוי תקרה 2.0 מטר שחור Ø9x200 ס\"מ כולל GU10 7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-55GUBK-Pendant.jpg",
+    "desc": "7W | GU10",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 249,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W",
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-55guwh-pendant",
+    "sku": "CL-55GUWH/Pendant",
+    "name": "פלוטו תלוי תקרה 2.0 מטר לבן Ø9x200 ס\"מ כולל GU10 7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-55GUWH-Pendant.jpg",
+    "desc": "7W | GU10",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 249,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W",
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-cl-56gubk-pendant",
+    "sku": "CL-56GUBK/Pendant",
+    "name": "קונוס תלוי תקרה 1.70 מטר שחור Ø9x170 ס\"מ כולל GU10 7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-56GUBK-Pendant.jpg",
+    "desc": "7W | GU10",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 259.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W",
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-56guwh-pendant",
+    "sku": "CL-56GUWH/Pendant",
+    "name": "קונוס תלוי תקרה 1.70 מטר לבן Ø9x170 ס\"מ כולל GU10 7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-56GUWH-Pendant.jpg",
+    "desc": "7W | GU10",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 259.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W",
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tk-c10-wh",
+    "sku": "TK-C10/WH",
+    "name": "פרופיל 1 מטר פס צבירה צמוד תקרה לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-c10_wh.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 34.2,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tk-c10-bk-f",
+    "sku": "TK-C10/BK-F",
+    "name": "פרופיל 1 מטר שחור כולל סופיות והזנה",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-C10-20-30BK_CloseUP(1).jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 57.8,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tk-c20-bk-f",
+    "sku": "TK-C20/BK-F",
+    "name": "פרופיל 2 מטר שחור כולל סופיות וחיבור לחשמל",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-C10-20-30BK_CloseUP.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 115.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tk-c30-bk-f",
+    "sku": "TK-C30/BK-F",
+    "name": "פרופיל 3 מטר שחור כולל סופיות וחיבור לחשמל",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-C10-20-30BK_CloseUP(2).jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 169.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tk-c20-wh-f",
+    "sku": "TK-C20/WH-F",
+    "name": "פרופיל 2 מטר לבן כולל סופיות והזנה",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-C10-20-30WH_CloseUP(1).jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 115.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tk-c30-wh-f",
+    "sku": "TK-C30/WH-F",
+    "name": "פרופיל 3 מטר לבן כולל סופיות והזנה",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-C10-20-30WH_CloseUP(2).jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 169.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tk-p08-bk",
+    "sku": "TK-P08/BK",
+    "name": "מתאם כבל לפס צבירה שחור",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-P08-BK2(3).jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 41.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tk-p08-wh",
+    "sku": "TK-P08/WH",
+    "name": "מתאם כבל לפס צבירה לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-P08-WH2(6).jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 41.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tk-cec-bk",
+    "sku": "TK-CEC/BK",
+    "name": "סופית צמוד תקרה שחור",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-cec_bk.png",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 2.4,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tk-cec-wh",
+    "sku": "TK-CEC/WH",
+    "name": "סופית צמוד תקרה לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-CEC_WH21(3).jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 2.4,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tk-ccc-bk",
+    "sku": "TK-CCC/BK",
+    "name": "מאריך צמוד תקרה שחור",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-ccc_bk_new(1).jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 13,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tk-ccc-wh",
+    "sku": "TK-CCC/WH",
+    "name": "מאריך צמוד תקרה לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-ccc_wh(3).jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 13,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tk-cll-bk",
+    "sku": "TK-CLL/BK",
+    "name": "זוויתי שמאלי 90° צמוד שחור",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-CLL_BK(1).jpg",
+    "desc": "90°",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 26,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "90°"
+    ],
+    "extractedSpecs": {
+      "זווית": "90°",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tk-clr-bk",
+    "sku": "TK-CLR/BK",
+    "name": "זוויתי ימני 90° צמוד שחור",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-CLR_BK.jpg",
+    "desc": "90°",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 26,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "90°"
+    ],
+    "extractedSpecs": {
+      "זווית": "90°",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tk-cll-wh",
+    "sku": "TK-CLL/WH",
+    "name": "זוויתי שמאלי 90° צמוד לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-CLL_WH(1).jpg",
+    "desc": "90°",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 26,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "90°"
+    ],
+    "extractedSpecs": {
+      "זווית": "90°",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tk-clr-wh",
+    "sku": "TK-CLR/WH",
+    "name": "זוויתי ימני 90° צמוד לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-CLR_WH.jpg",
+    "desc": "90°",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 26,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "90°"
+    ],
+    "extractedSpecs": {
+      "זווית": "90°",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tk-cmc-wh",
+    "sku": "TK-CMC/WH",
+    "name": "הזנה אמצעית צמוד לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-cmc_wh.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 26,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tk-cmc-bk",
+    "sku": "TK-CMC/BK",
+    "name": "הזנה אמצעית צמוד שחור",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-cmc_bk(4).jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 26,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tk-cfr-wh",
+    "sku": "TK-CFR/WH",
+    "name": "הזנה ימנית צמוד לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-CFR_WH.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 13,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tk-cfl-wh",
+    "sku": "TK-CFL/WH",
+    "name": "הזנה שמאלית צמוד לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-CFL_WH.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 13,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tk-cfr-bk",
+    "sku": "TK-CFR/BK",
+    "name": "הזנה ימנית צמוד שחור",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-cfr_bk.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 13,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tk-cfl-bk",
+    "sku": "TK-CFL/BK",
+    "name": "הזנה שמאלית צמוד שחור",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-cfl_bk.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 13,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tk-rmc-bk",
+    "sku": "TK-RMC/BK",
+    "name": "הזנה אמצעית שקוע שחור",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-rmc_bk(3).jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 27.1,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tk-rmc-wh",
+    "sku": "TK-RMC/WH",
+    "name": "הזנה אמצעית שקוע לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-rmc_wh.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 27.1,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tk-rlr-bk",
+    "sku": "TK-RLR/BK",
+    "name": "זוויתי ימני 90° שקוע שחור",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-rlr_bk(4).jpg",
+    "desc": "90°",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 26,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "90°"
+    ],
+    "extractedSpecs": {
+      "זווית": "90°",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-tk-rll-wh",
+    "sku": "TK-RLL/WH",
+    "name": "זוויתי שמאלי 90° שקוע לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-rll_wh(1).jpg",
+    "desc": "90°",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 26,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "90°"
+    ],
+    "extractedSpecs": {
+      "זווית": "90°",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tk-rlr-wh",
+    "sku": "TK-RLR/WH",
+    "name": "זוויתי ימני 90° שקוע לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-rlr_wh(1).jpg",
+    "desc": "90°",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 26,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "90°"
+    ],
+    "extractedSpecs": {
+      "זווית": "90°",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tk-rfl-wh",
+    "sku": "TK-RFL/WH",
+    "name": "הזנה שמאלית שקוע לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-rfl_wh1.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 15.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-tk-rfl-bk",
+    "sku": "TK-RFL/BK",
+    "name": "הזנה שמאלית שקוע שחור",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-rfl_bk1.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "פסי צבירה 230V",
+    "price": 15.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-hiline18s6wh",
+    "sku": "HiLINE18S6WH",
+    "name": "תאורת מסילות HiLINE לבן 180 ס\"מ 120W IP43 125Lm/W 60°",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiLINE180_WH_(9).jpg",
+    "desc": "120W | IP43",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "מסילות HiLINE",
+    "price": 1257.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "120W",
+      "IP43"
+    ],
+    "extractedSpecs": {
+      "הספק": "120W",
+      "אטימה": "IP43",
+      "זווית": "60°",
+      "עוצמה": "125 Lm",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-hiline18s6bk",
+    "sku": "HiLINE18S6BK",
+    "name": "תאורת מסילות HiLINE שחור 180 ס\"מ 120W IP43 125Lm/W 60°",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiLINE180_BK_(9).jpg",
+    "desc": "120W | IP43",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "מסילות HiLINE",
+    "price": 1257.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "120W",
+      "IP43"
+    ],
+    "extractedSpecs": {
+      "הספק": "120W",
+      "אטימה": "IP43",
+      "זווית": "60°",
+      "עוצמה": "125 Lm",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-hiline09s6wh",
+    "sku": "HiLINE09S6WH",
+    "name": "תאורת מסילות HiLINE לבן 90 ס\"מ 60W IP43 125Lm/W 60°",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiLINE90_WH_(17).jpg",
+    "desc": "60W | IP43",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "מסילות HiLINE",
+    "price": 628.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "60W",
+      "IP43"
+    ],
+    "extractedSpecs": {
+      "הספק": "60W",
+      "אטימה": "IP43",
+      "זווית": "60°",
+      "עוצמה": "125 Lm",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-hiline09s6bk",
+    "sku": "HiLINE09S6BK",
+    "name": "תאורת מסילות HiLINE שחור 90 ס\"מ 60W IP43 125Lm/W 60°",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiLINE90_BK_(12).jpg",
+    "desc": "60W | IP43",
+    "category": "גופי תאורה",
+    "subCategory": "פסי צבירה ומסילות",
+    "family": "מסילות HiLINE",
+    "price": 628.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "60W",
+      "IP43"
+    ],
+    "extractedSpecs": {
+      "הספק": "60W",
+      "אטימה": "IP43",
+      "זווית": "60°",
+      "עוצמה": "125 Lm",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-hi-d66wh-cta",
+    "sku": "Hi-D66WH/CTA",
+    "name": "שקוע מקצועי 30W IP54 Advance 40°+120° לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HI-D66(4).jpg",
+    "desc": "30W | IP54",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 154.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "30W",
+      "IP54"
+    ],
+    "extractedSpecs": {
+      "הספק": "30W",
+      "אטימה": "IP54",
+      "זווית": "40°",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-hi-d68wh-cta",
+    "sku": "Hi-D68WH/CTA",
+    "name": "שקוע מקצועי 40W IP54 Advance 40°+120° לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HI-D68.jpg",
+    "desc": "40W | IP54",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 197.1,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "40W",
+      "IP54"
+    ],
+    "extractedSpecs": {
+      "הספק": "40W",
+      "אטימה": "IP54",
+      "זווית": "40°",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-dl-bb010bk-ct",
+    "sku": "DL-BB010BK/CT",
+    "name": "שקוע \"BB\" מקצועי עגול שחור 10W CCT",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-BB10-bk.jpg",
+    "desc": "10W | CCT",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 81.4,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "10W",
+      "CCT"
+    ],
+    "extractedSpecs": {
+      "הספק": "10W",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-dl-bb010wh-ct",
+    "sku": "DL-BB010WH/CT",
+    "name": "שקוע \"BB\" מקצועי עגול לבן 10W CCT",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-BB10-WH.jpg",
+    "desc": "10W | CCT",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 81.4,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "10W",
+      "CCT"
+    ],
+    "extractedSpecs": {
+      "הספק": "10W",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-dl-bb020bk-ct",
+    "sku": "DL-BB020BK/CT",
+    "name": "שקוע \"BB\" מקצועי עגול שחור 20W CCT",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-BB20-bk.jpg",
+    "desc": "20W | CCT",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 133.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "20W",
+      "CCT"
+    ],
+    "extractedSpecs": {
+      "הספק": "20W",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-dl-bb020wh-ct",
+    "sku": "DL-BB020WH/CT",
+    "name": "שקוע \"BB\" מקצועי עגול לבן 20W CCT",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-BB20_WH.jpg",
+    "desc": "20W | CCT",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 133.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "20W",
+      "CCT"
+    ],
+    "extractedSpecs": {
+      "הספק": "20W",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-dl-bb030bk-ct",
+    "sku": "DL-BB030BK/CT",
+    "name": "שקוע \"BB\" מקצועי עגול שחור 30W CCT",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-BB30_BK.jpg",
+    "desc": "30W | CCT",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 156.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "30W",
+      "CCT"
+    ],
+    "extractedSpecs": {
+      "הספק": "30W",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-dl-bb030wh-ct",
+    "sku": "DL-BB030WH/CT",
+    "name": "שקוע \"BB\" מקצועי עגול לבן 30W CCT",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-BB-30_WH.jpg",
+    "desc": "30W | CCT",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 156.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "30W",
+      "CCT"
+    ],
+    "extractedSpecs": {
+      "הספק": "30W",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-dl-bb040bk-ct",
+    "sku": "DL-BB040BK/CT",
+    "name": "שקוע \"BB\" מקצועי עגול שחור 40W CCT",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-BB40_BK.jpg",
+    "desc": "40W | CCT",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 178.2,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "40W",
+      "CCT"
+    ],
+    "extractedSpecs": {
+      "הספק": "40W",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-dl-bb040wh-ct",
+    "sku": "DL-BB040WH/CT",
+    "name": "שקוע \"BB\" מקצועי עגול לבן 40W CCT",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-BB-40_WH.jpg",
+    "desc": "40W | CCT",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 178.2,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "40W",
+      "CCT"
+    ],
+    "extractedSpecs": {
+      "הספק": "40W",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-d64-bk",
+    "sku": "D64-BK",
+    "name": "שקוע \"D\" מקצועי 18W עגול שחור IP44 Ø140 125Lm/w 100°",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/D64-BK_NEW(6).jpg",
+    "desc": "18W | IP44",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 115.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "18W",
+      "IP44"
+    ],
+    "extractedSpecs": {
+      "הספק": "18W",
+      "אטימה": "IP44",
+      "זווית": "100°",
+      "עוצמה": "125 Lm",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-d66-bk",
+    "sku": "D66-BK",
+    "name": "DownLight מקצועי עגול שחור Ø190 IP44 28W 125Lm/w 100°",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/D66-BK_NEW(6).jpg",
+    "desc": "28W | IP44",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 141.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "28W",
+      "IP44"
+    ],
+    "extractedSpecs": {
+      "הספק": "28W",
+      "אטימה": "IP44",
+      "זווית": "100°",
+      "עוצמה": "125 Lm",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-d68-bk",
+    "sku": "D68-BK",
+    "name": "שקוע \"D\" מקצועי עגול שחור IP44 Ø230 36W 125Lm/w 100°",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/D68-BK_NEW(6).jpg",
+    "desc": "36W | IP44",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": null,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "36W",
+      "IP44"
+    ],
+    "extractedSpecs": {
+      "הספק": "36W",
+      "אטימה": "IP44",
+      "זווית": "100°",
+      "עוצמה": "125 Lm",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-d66-wh-22w",
+    "sku": "D66-WH/22W",
+    "name": "שקוע \"D\" מקצועי עגול לבן IP44 Ø190 28W 125Lm/w 100°",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/D-66-22w.jpg",
+    "desc": "28W | IP44",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 141.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "28W",
+      "IP44"
+    ],
+    "extractedSpecs": {
+      "הספק": "28W",
+      "אטימה": "IP44",
+      "זווית": "100°",
+      "עוצמה": "125 Lm",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-d68-wh-36w",
+    "sku": "D68-WH/36W",
+    "name": "DownLight מקצועי עגול IP44 Ø225 36W 125Lm/w 100°",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/D-68-36w.jpg",
+    "desc": "36W | IP44",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 180.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "36W",
+      "IP44"
+    ],
+    "extractedSpecs": {
+      "הספק": "36W",
+      "אטימה": "IP44",
+      "זווית": "100°",
+      "עוצמה": "125 Lm"
+    }
+  },
+  {
+    "id": "ll-light-dl-2026-wh",
+    "sku": "DL-2026/WH",
+    "name": "שקוע מיני קוני דארק לייט MR11, לבן, 230V",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2026-WH.jpg",
+    "desc": "230V | MR11",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 34.2,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "230V",
+      "MR11"
+    ],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-dl-2026-bk",
+    "sku": "DL-2026/BK",
+    "name": "שקוע מיני קוני דארק לייט MR11, שחור, 230V",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2026-BK.jpg",
+    "desc": "230V | MR11",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 34.2,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "230V",
+      "MR11"
+    ],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-dl-2025-wh",
+    "sku": "DL-2025/WH",
+    "name": "שקוע קוני דארק לייט MR11, לבן, 230V",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2025-WH.jpg",
+    "desc": "230V | MR11",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 26,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "230V",
+      "MR11"
+    ],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-dl-2025-bk",
+    "sku": "DL-2025/BK",
+    "name": "שקוע קוני דארק לייט MR11, שחור, 230V",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2025-BK.jpg",
+    "desc": "230V | MR11",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 26,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "230V",
+      "MR11"
+    ],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-dl-2014-sh",
+    "sku": "DL-2014/SH",
+    "name": "שקוע עגול MR16 ישר מתכוונן ניקל מט",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2014-SH.jpg",
+    "desc": "MR16",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 47.2,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "MR16"
+    ],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-dl-2014-w",
+    "sku": "DL-2014/W",
+    "name": "שקוע עגול MR16 ישר מתכוונן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2014-WH.jpg",
+    "desc": "MR16",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 42.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "MR16"
+    ],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-dl-2016-sh",
+    "sku": "DL-2016/SH",
+    "name": "שקוע עגול MR16 ישר פשוט ניקל מאט",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2016-SH.jpg",
+    "desc": "MR16",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 28.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "MR16"
+    ],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-dl-2016-w",
+    "sku": "DL-2016-W",
+    "name": "שקוע עגול MR16 ישר פשוט לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2016-WH.jpg",
+    "desc": "MR16",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 27.1,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "MR16"
+    ],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-dl-2023-bg",
+    "sku": "DL-2023/BG",
+    "name": "שקוע עגול MR16 מתכוונן 4 אינטש פליז",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2023BG.jpg",
+    "desc": "MR16",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 44.8,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "MR16"
+    ],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-dl-2023-sh",
+    "sku": "DL-2023/SH",
+    "name": "שקוע עגול MR16 מתכוונן 4 אינטש ניקל מאט",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2023SH(6).jpg",
+    "desc": "MR16",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 42.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "MR16"
+    ],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-dl-2023-w",
+    "sku": "DL-2023/W",
+    "name": "שקוע עגול MR16 מתכוונן 4 אינטש לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2023W(1).jpg",
+    "desc": "MR16",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 37.8,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "MR16"
+    ],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-dl-2013-w",
+    "sku": "DL-2013/W",
+    "name": "שקוע עגול MR16 ישר לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2013W(6).jpg",
+    "desc": "MR16",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 34.2,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "MR16"
+    ],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-dl-wl158-sh",
+    "sku": "DL-WL158/SH",
+    "name": "שקוע מרובע MR16 מתכוונן ניקל מאט",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-WL158SH(3).jpg",
+    "desc": "MR16",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 38.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "MR16"
+    ],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-dl-wl158-w",
+    "sku": "DL-WL158/W",
+    "name": "שקוע מרובע MR16 מתכוונן לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-WL158W(3).jpg",
+    "desc": "MR16",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 36.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "MR16"
+    ],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-dl-0354",
+    "sku": "DL-0354",
+    "name": "שקוע גבס MR16 עגול 130 מ\"מ מעוגל",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-0354-130mm.jpg",
+    "desc": "MR16",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 61.4,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "MR16"
+    ],
+    "extractedSpecs": {
+      "מידה": "130 מ\"מ"
+    }
+  },
+  {
+    "id": "ll-light-dl-0829",
+    "sku": "DL-0829",
+    "name": "שקוע גבס MR16 עגול 130 מ\"מ",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-0829-130mm.jpg",
+    "desc": "MR16",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 59,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "MR16"
+    ],
+    "extractedSpecs": {
+      "מידה": "130 מ\"מ"
+    }
+  },
+  {
+    "id": "ll-light-dl-0830",
+    "sku": "DL-0830",
+    "name": "שקוע גבס MR16 מרובע 120X120 מ\"מ",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-0830-120.jpg",
+    "desc": "MR16",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "שקועי תקרה",
+    "price": 59,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "MR16"
+    ],
+    "extractedSpecs": {
+      "מידה": "120 מ\"מ"
+    }
+  },
+  {
+    "id": "ll-light-cl-m101-wh",
+    "sku": "CL-M101/WH",
+    "name": "צילינדר שקוע גבס, סדרת טריניטי, מתכוונן, לבן, כולל נורה HPE 5-7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-M101_WH.png",
+    "desc": "7W",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 133.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-cl-m101-bk",
+    "sku": "CL-M101/BK",
+    "name": "צילינדר שקוע גבס, סדרת טריניטי, מתכוונן, שחור, כולל נורה HPE 5-7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-M101_BK.png",
+    "desc": "7W",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 133.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-m105-wh",
+    "sku": "CL-M105/WH",
+    "name": "צילינדר על טיח, סדרת אגינייט, מתכוונן, לבן, כולל נורה HPE 5-7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-M105_HW.png",
+    "desc": "7W",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 141.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-cl-m105-bk",
+    "sku": "CL-M105/BK",
+    "name": "צילינדר על טיח, סדרת אגינייט, מתכוונן, שחור, כולל נורה HPE 5-7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-M105_BK.png",
+    "desc": "7W",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 141.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-m106-wh",
+    "sku": "CL-M106/WH",
+    "name": "בריק צמוד, סדרת טריניטי, מתכוונן, לבן ושחור, כולל נורה HPE 5-7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-M106_WH.png",
+    "desc": "7W",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 141.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-cl-m106-bk",
+    "sku": "CL-M106/BK",
+    "name": "בריק צמוד, סדרת טריניטי, מתכוונן, שחור מלא, כולל נורה HPE 5-7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-M106_BK.png",
+    "desc": "7W",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 141.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-dl-m509w-wh",
+    "sku": "DL-M509W/WH",
+    "name": "צילינדר צמוד, סדרת טריניטי, מתכוונן, לבן + רפלקטור לבן מאט, כולל נורה HPE 5-7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-M509W_WH.png",
+    "desc": "7W",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 83.8,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-dl-m509b-bk",
+    "sku": "DL-M509B/BK",
+    "name": "צילינדר צמוד, סדרת טריניטי, מתכוונן, שחור + רפלקטור שחור מאט, כולל נורה HPE 5-7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-M509B_BK.png",
+    "desc": "7W",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 83.8,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-dl-0887-wh",
+    "sku": "DL-0887/WH",
+    "name": "צמוד תקרה צילינדר ECO, לנורות GU10, מתכוונן DARK לבן, כולל נורה HPE 5-7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-08871_WH.jpg",
+    "desc": "7W | GU10",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 59,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W",
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-dl-0889-bk",
+    "sku": "DL-0889/BK",
+    "name": "צמוד תקרה צילינדר ECO, לנורות GU10, מתכוונן שחור, כולל נורה HPE 5-7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-08891_BK.jpg",
+    "desc": "7W | GU10",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 59,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W",
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-60gu80wh-1",
+    "sku": "CL-60GU80WH-1",
+    "name": "רול.6 צמוד תקרה מתכוונן גוף לבן 60x80 מ\"מ כולל נורה GU10 7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU80_WH.jpg",
+    "desc": "7W | GU10",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 73.2,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W",
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "מידה": "80 מ\"מ",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-cl-60gu80bk-1",
+    "sku": "CL-60GU80BK-1",
+    "name": "רול.6 צמוד תקרה מתכוונן גוף שחור 60x80 מ\"מ כולל נורה GU10 7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU80_BK.jpg",
+    "desc": "7W | GU10",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 73.2,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W",
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "מידה": "80 מ\"מ",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-60gu80bg-1",
+    "sku": "CL-60GU80BG-1",
+    "name": "רול.6 צמוד תקרה מתכוונן גוף פליז 60x80 מ\"מ כולל נורה GU10 7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU80_BG.jpg",
+    "desc": "7W | GU10",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 88.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W",
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "מידה": "80 מ\"מ"
+    }
+  },
+  {
+    "id": "ll-light-cl-60gu80wh-2",
+    "sku": "CL-60GU80WH-2",
+    "name": "רול.6 זוג פס צמוד תקרה מתכוונן גוף לבן 250x112 מ\"מ GU10",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU80WH-2_NEW.jpg",
+    "desc": "GU10",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 141.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "מידה": "112 מ\"מ",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-cl-60gu80bk-3",
+    "sku": "CL-60GU80BK-3",
+    "name": "רול.6 שלישיה פס צמוד תקרה מתכוונן גוף שחור 450x112 מ\"מ GU10",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU80BK-3.jpg",
+    "desc": "GU10",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 199.4,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "מידה": "112 מ\"מ",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-60gu80bg-3",
+    "sku": "CL-60GU80BG-3",
+    "name": "רול.6 שלישיה פס צמוד תקרה מתכוונן גוף פליז 450x112 מ\"מ GU10",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU80BG-3.jpg",
+    "desc": "GU10",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 259.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "מידה": "112 מ\"מ"
+    }
+  },
+  {
+    "id": "ll-light-cl-60gu80wh-r4",
+    "sku": "CL-60GU80WH-R4",
+    "name": "רול.6 רביעייה עגולה פס צמוד תקרה מתכוונן גוף לבן Ø300 מ\"מ GU10",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU80WH-4R.jpg",
+    "desc": "GU10",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 322.1,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "מידה": "300 מ\"מ",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-cl-60gu80bk-5",
+    "sku": "CL-60GU80BK-5",
+    "name": "רול.6 חמישייה פס צמוד תקרה מתכוונן גוף שחור 850x112 מ\"מ GU10",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU80BK-5(1).jpg",
+    "desc": "GU10",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 361.1,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "מידה": "112 מ\"מ",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-60gu130wh-tilt",
+    "sku": "CL-60GU130WH/Tilt",
+    "name": "רול.6 צמוד תקרה מתכוונן לבן 60x130 מ\"מ כולל נורה GU10 7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU130WH_Tilt(1).jpg",
+    "desc": "7W | GU10",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 120.4,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W",
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "מידה": "130 מ\"מ",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-cl-60gu130bk-ceiling",
+    "sku": "CL-60GU130BK/Ceiling",
+    "name": "רול.6 צמוד תקרה שחור 60x130 מ\"מ כולל נורה GU10 7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU130BK_ceiling(1).jpg",
+    "desc": "7W | GU10",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 115.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W",
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "מידה": "130 מ\"מ",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-60gu130bg-tilt",
+    "sku": "CL-60GU130BG/Tilt",
+    "name": "רול.6 צמוד תקרה מתכוונן גוף פליז 60x130 מ\"מ כולל נורה GU10 7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL60GU130-BG-TILT(1).jpg",
+    "desc": "7W | GU10",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 146.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W",
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "מידה": "130 מ\"מ"
+    }
+  },
+  {
+    "id": "ll-light-cl-80cob150-wh",
+    "sku": "CL-80COB150/WH",
+    "name": "רול.8 צמוד תקרה לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-80COB150WH-CW.png",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 348.1,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-cl-80cob150-bk",
+    "sku": "CL-80COB150/BK",
+    "name": "רול.8 צמוד תקרה שחור",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-80COB150BK-CW.png",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 348.1,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-6rwh-ct",
+    "sku": "CL-6RWH/CT",
+    "name": "צמוד תקרה Tri-Color סדרת ארנה ARENA IP20 לבן 3000-6000K",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-6R32-40(8).jpg",
+    "desc": "Tri-Color | IP20",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 60.2,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "Tri-Color",
+      "IP20"
+    ],
+    "extractedSpecs": {
+      "גוון אור": "6000K",
+      "אטימה": "IP20",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-cl-6rbk-ct",
+    "sku": "CL-6RBK/CT",
+    "name": "צמוד תקרה Tri-Color סדרת ארנה ARENA IP20 שחור 3000-6000K",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-6R18BK(6).jpg",
+    "desc": "Tri-Color | IP20",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 60.2,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "Tri-Color",
+      "IP20"
+    ],
+    "extractedSpecs": {
+      "גוון אור": "6000K",
+      "אטימה": "IP20",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-7rwh-ct",
+    "sku": "CL-7RWH/CT",
+    "name": "צמוד תקרה סדרת AURA עגול Tri-Color IP65 גוף לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-7Rwh-30-250px(2).jpg",
+    "desc": "Tri-Color | IP65",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 57.8,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "Tri-Color",
+      "IP65"
+    ],
+    "extractedSpecs": {
+      "אטימה": "IP65",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-cl-7rbk-ct",
+    "sku": "CL-7RBK/CT",
+    "name": "צמוד תקרה סדרת AURA עגול Tri-Color IP65 גוף שחור",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-7RBK-30-250px(2).jpg",
+    "desc": "Tri-Color | IP65",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 57.8,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "Tri-Color",
+      "IP65"
+    ],
+    "extractedSpecs": {
+      "אטימה": "IP65",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-aa",
+    "sku": "CL-AA",
+    "name": "צמוד תקרה לד עגול IP44",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-AA4_125(6).webp",
+    "desc": "IP44",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 34.2,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "IP44"
+    ],
+    "extractedSpecs": {
+      "אטימה": "IP44"
+    }
+  },
+  {
+    "id": "ll-light-cl-3qr",
+    "sku": "CL-3QR",
+    "name": "צמוד תקרה/קיר Tri-Color סדרת HOOP הופ IP54",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-3QR18(3).jpg",
+    "desc": "Tri-Color | IP54",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 115.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "Tri-Color",
+      "IP54"
+    ],
+    "extractedSpecs": {
+      "אטימה": "IP54"
+    }
+  },
+  {
+    "id": "ll-light-cl-2rwh-ct",
+    "sku": "CL-2RWH/CT",
+    "name": "צמוד תקרה/קיר עגול בצבע לבן CCT",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-2R30-WH-CT(6).jpg",
+    "desc": "CCT",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 115.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "CCT"
+    ],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-cl-4rwh-ct",
+    "sku": "CL-4RWH/CT",
+    "name": "צמוד תקרה עגול סדרת סטייג' לבן Tri-Color IP40",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/cl-4r70-wh(11).jpg",
+    "desc": "Tri-Color | IP40",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": null,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "Tri-Color",
+      "IP40"
+    ],
+    "extractedSpecs": {
+      "אטימה": "IP40",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-cl-4rbg-ct",
+    "sku": "CL-4RBG/CT",
+    "name": "צמוד תקרה עגול סדרת סטייג' פליז Tri-Color IP40",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-4R-BG(10).jpg",
+    "desc": "Tri-Color | IP40",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": null,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "Tri-Color",
+      "IP40"
+    ],
+    "extractedSpecs": {
+      "אטימה": "IP40"
+    }
+  },
+  {
+    "id": "ll-light-cl-3r18-cw-em",
+    "sku": "CL-3R18/CW-EM",
+    "name": "צמוד תקרה דו-תכליתי חירום \"ברייט\" עגול 18W+2W IP54 Ф280",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-3R18(30).jpg",
+    "desc": "18W+2W | IP54",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 335.1,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "18W+2W",
+      "IP54"
+    ],
+    "extractedSpecs": {
+      "הספק": "18W",
+      "אטימה": "IP54"
+    }
+  },
+  {
+    "id": "ll-light-cl-2rd10wh-ww",
+    "sku": "CL-2RD10WH/WW",
+    "name": "צמוד תקרה ROLL שיר 1000LM לבן 60° IP54 10W 3000K",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-2RD10WH.jpg",
+    "desc": "10W | 3000K | IP54",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 146.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "10W",
+      "3000K",
+      "IP54"
+    ],
+    "extractedSpecs": {
+      "הספק": "10W",
+      "גוון אור": "3000K",
+      "אטימה": "IP54",
+      "זווית": "60°",
+      "עוצמה": "1000 Lm",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-cl-2rd20bk-ww",
+    "sku": "CL-2RD20BK/WW",
+    "name": "צמוד תקרה ROLL שיר 2000LM שחור 60° IP54 20W 3000K",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-2RD20BK(13).jpg",
+    "desc": "20W | 3000K | IP54",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 274.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "20W",
+      "3000K",
+      "IP54"
+    ],
+    "extractedSpecs": {
+      "הספק": "20W",
+      "גוון אור": "3000K",
+      "אטימה": "IP54",
+      "זווית": "60°",
+      "עוצמה": "2000 Lm",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-1rd-bk",
+    "sku": "CL-1RD/BK",
+    "name": "צמוד תקרה ROLL סדרת SHIR שחור",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-1RD20_BK(2).png",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 306.8,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-upr-wh",
+    "sku": "CL-UPR/WH",
+    "name": "צמוד תקרה דגם ספייס עגול גוף לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-UPR_WH(15).png",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 259.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-cl-upr-bg",
+    "sku": "CL-UPR/BG",
+    "name": "צמוד תקרה דגם ספייס עגול גוף זהב מוברש",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-UPR_BG(9).png",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 429.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "זהב"
+    }
+  },
+  {
+    "id": "ll-light-cl-upr-bz",
+    "sku": "CL-UPR/BZ",
+    "name": "צמוד תקרה דגם ספייס עגול גוף ברונזה",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-UPR_BZ(9).png",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 328,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-cl-ups60bk-ct",
+    "sku": "CL-UPS60BK/CT",
+    "name": "צמוד תקרה דגם ספייס מלבני שחור Tri-Color IP40 300x1200 מ\"מ 60W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-UPS60BK-ct.png",
+    "desc": "60W | Tri-Color | IP40",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 704.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "60W",
+      "Tri-Color",
+      "IP40"
+    ],
+    "extractedSpecs": {
+      "הספק": "60W",
+      "אטימה": "IP40",
+      "מידה": "1200 מ\"מ",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-5r-wh",
+    "sku": "CL-5R/WH",
+    "name": "צמוד תקרה עגול סדרת טורוס גוף לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-5R60WH(2).png",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": null,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-cl-21080bk",
+    "sku": "CL-21080BK",
+    "name": "לינארי כפול לתקרה סדרת מוד שחור 150 ס\"מ 80W IP44 4000K",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-21060_BK17.jpg",
+    "desc": "80W | 4000K | IP44",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 818.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "80W",
+      "4000K",
+      "IP44"
+    ],
+    "extractedSpecs": {
+      "הספק": "80W",
+      "גוון אור": "4000K",
+      "אטימה": "IP44",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-21080wh",
+    "sku": "CL-21080WH",
+    "name": "לינארי כפול לתקרה סדרת מוד לבן 150 ס\"מ 80W IP44 4000K",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-21080_WH(11).jpg",
+    "desc": "80W | 4000K | IP44",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 818.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "80W",
+      "4000K",
+      "IP44"
+    ],
+    "extractedSpecs": {
+      "הספק": "80W",
+      "גוון אור": "4000K",
+      "אטימה": "IP44",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-cl-21060bk",
+    "sku": "CL-21060BK",
+    "name": "לינארי כפול לתקרה סדרת מוד שחור 120 ס\"מ 60W IP44 4000K",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-21060_BK(17).jpg",
+    "desc": "60W | 4000K | IP44",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 666.7,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "60W",
+      "4000K",
+      "IP44"
+    ],
+    "extractedSpecs": {
+      "הספק": "60W",
+      "גוון אור": "4000K",
+      "אטימה": "IP44",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-21040wh",
+    "sku": "CL-21040WH",
+    "name": "לינארי כפול סדרת מוד MOOD לבן 90 ס\"מ 40W IP44",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-21040_WH(18).jpg",
+    "desc": "40W | IP44",
+    "category": "גופי תאורה",
+    "subCategory": "צמודי תקרה",
+    "family": "צמודי תקרה",
+    "price": 472,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "40W",
+      "IP44"
+    ],
+    "extractedSpecs": {
+      "הספק": "40W",
+      "אטימה": "IP44",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-wl-804rc-lwbk-27",
+    "sku": "WL-804RC-LWBK/27",
+    "name": "צמוד קיר קריאה עם מנגנון שבת ותאורה אחורית 2700K 3W+6W IP20",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-804RC-LWBK27(5).jpg",
+    "desc": "3W+6W | 2700K | IP20",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 240.7,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "3W+6W",
+      "2700K",
+      "IP20"
+    ],
+    "extractedSpecs": {
+      "הספק": "3W",
+      "גוון אור": "2700K",
+      "אטימה": "IP20"
+    }
+  },
+  {
+    "id": "ll-light-wl-804rc-lwwh-27",
+    "sku": "WL-804RC-LWWH/27",
+    "name": "צמוד קיר קריאה עם מנגנון שבת ותאורה אחורית 2700K 3W+6W IP20",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-804RC-LWWH27(8).jpg",
+    "desc": "3W+6W | 2700K | IP20",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 240.7,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "3W+6W",
+      "2700K",
+      "IP20"
+    ],
+    "extractedSpecs": {
+      "הספק": "3W",
+      "גוון אור": "2700K",
+      "אטימה": "IP20"
+    }
+  },
+  {
+    "id": "ll-light-wl-804rc-bk-27",
+    "sku": "WL-804RC-BK/27",
+    "name": "מנורת צמוד קיר קריאה עגולה 3W+6W IP20 גוף שחור אור חם + מנגנון שבת",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-804RC-BK-27.jpg",
+    "desc": "3W+6W | IP20",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 219.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "3W+6W",
+      "IP20"
+    ],
+    "extractedSpecs": {
+      "הספק": "3W",
+      "אטימה": "IP20",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-wl-804r-wh-27",
+    "sku": "WL-804R-WH/27",
+    "name": "מנורת צמוד קיר קריאה עגולה 3W+6W IP20 גוף לבן אור חם",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-804R-WH27-1.jpg",
+    "desc": "3W+6W | IP20",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 219.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "3W+6W",
+      "IP20"
+    ],
+    "extractedSpecs": {
+      "הספק": "3W",
+      "אטימה": "IP20",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-wl-804s-bk-27",
+    "sku": "WL-804S-BK/27",
+    "name": "מנורת צמוד קיר קריאה מרובעת 3W+6W IP20 גוף שחור אור חם",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-804S-BK.jpg",
+    "desc": "3W+6W | IP20",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 219.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "3W+6W",
+      "IP20"
+    ],
+    "extractedSpecs": {
+      "הספק": "3W",
+      "אטימה": "IP20",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-wl-802bkbg-27",
+    "sku": "WL-802BKBG/27",
+    "name": "מנורת צמוד קיר קריאה 3W IP20 גוף בסיס שחור + גוף זהב אור חם",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-802-BKBG.jpg",
+    "desc": "3W | IP20",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 173.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "3W",
+      "IP20"
+    ],
+    "extractedSpecs": {
+      "הספק": "3W",
+      "אטימה": "IP20",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-wl-801bk-27",
+    "sku": "WL-801BK/27",
+    "name": "צמוד קיר מתכוונן סדרת POINTER אור חם 3W + שקע USB",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-801BK-27.jpg",
+    "desc": "3W",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 206.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "3W"
+    ],
+    "extractedSpecs": {
+      "הספק": "3W"
+    }
+  },
+  {
+    "id": "ll-light-wl-805bk-ww",
+    "sku": "WL-805BK/WW",
+    "name": "צמוד קיר מתכוונן סדרת POINTER זרוע גמישה לחצן הפעלה 3000K 3W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-805BK.jpg",
+    "desc": "3W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 92,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "3W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "3W",
+      "גוון אור": "3000K"
+    }
+  },
+  {
+    "id": "ll-light-wl-807r-wh-ww",
+    "sku": "WL-807R-WH/WW",
+    "name": "צמוד קיר קריאה סדרה פוינטר 3W+6W 3000K",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-807R_WH.jpg",
+    "desc": "3W+6W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 223,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "3W+6W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "3W",
+      "גוון אור": "3000K"
+    }
+  },
+  {
+    "id": "ll-light-wl-pa07g9-lw",
+    "sku": "WL-PA07G9/LW",
+    "name": "מנורת קיר למיטה עץ בהיר (אהיל מטה) מפסק משיכה כולל G9",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-PA07G9LW_ON_Clean(3).jpg",
+    "desc": "G9",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 499.1,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "G9"
+    ],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-wl-pa08g9-bk",
+    "sku": "WL-PA08G9/BK",
+    "name": "מנורת קיר למיטה עץ שחור (אהיל למעלה) מפסק משיכה כולל G9",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-PA08G9BK_ON_Clean(3).jpg",
+    "desc": "G9",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 499.1,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "G9"
+    ],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-wl-806s-bk-ww",
+    "sku": "WL-806S-BK/WW",
+    "name": "צמוד קיר קאפהד יחיד עם מתג / סדרה BELL / מתכוונן / 3000K / 6W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-70COB80-יחיד-שחור.jpg",
+    "desc": "6W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 180.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "6W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "6W",
+      "גוון אור": "3000K"
+    }
+  },
+  {
+    "id": "ll-light-wl-806s-bg-ww",
+    "sku": "WL-806S-BG/WW",
+    "name": "צמוד קיר קאפהד יחיד עם מתג / סדרה BELL / פליז / 3000K / 6W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-70COB80-יחיד-פליז.jpg",
+    "desc": "6W | 3000K",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 199.4,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "6W",
+      "3000K"
+    ],
+    "extractedSpecs": {
+      "הספק": "6W",
+      "גוון אור": "3000K"
+    }
+  },
+  {
+    "id": "ll-light-cl-70cob80bk-2-ct",
+    "sku": "CL-70COB80BK-2/CT",
+    "name": "צמוד קיר קאפהד זוג / סדרה BELL / מתכוונן / CCT / 12W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-70COB80BK-זוגי-שחור.jpg",
+    "desc": "12W | CCT",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 233.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "12W",
+      "CCT"
+    ],
+    "extractedSpecs": {
+      "הספק": "12W"
+    }
+  },
+  {
+    "id": "ll-light-cl-70cob80bk-3-ct",
+    "sku": "CL-70COB80BK-3/CT",
+    "name": "צמוד קיר קאפהד שלישיה / סדרה BELL / מתכוונן / CCT / 18W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-70COB80BK-שלישיה-שחור.jpg",
+    "desc": "18W | CCT",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 311.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "18W",
+      "CCT"
+    ],
+    "extractedSpecs": {
+      "הספק": "18W"
+    }
+  },
+  {
+    "id": "ll-light-cl-70cob80bg-5-ct",
+    "sku": "CL-70COB80BG-5/CT",
+    "name": "צמוד קיר קאפהד חמישייה / סדרה BELL / פליז / CCT / 28W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-70COB80BG-חמישיה-פליז.jpg",
+    "desc": "28W | CCT",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 521.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "28W",
+      "CCT"
+    ],
+    "extractedSpecs": {
+      "הספק": "28W"
+    }
+  },
+  {
+    "id": "ll-light-wl-021bk-ww",
+    "sku": "WL-021BK/WW",
+    "name": "מנורת קיר סדרת HELIOS / מתכווננת / IP20 / 18W / 3000K",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-021BK.jpg",
+    "desc": "18W | 3000K | IP20",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 233.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "18W",
+      "3000K",
+      "IP20"
+    ],
+    "extractedSpecs": {
+      "הספק": "18W",
+      "גוון אור": "3000K",
+      "אטימה": "IP20"
+    }
+  },
+  {
+    "id": "ll-light-wl-020bk-ww",
+    "sku": "WL-020BK/WW",
+    "name": "מנורת קיר סדרת HELIOS / מתכווננת / IP20 / 10W / 3000K",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-020WH.jpg",
+    "desc": "10W | 3000K | IP20",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 167.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "10W",
+      "3000K",
+      "IP20"
+    ],
+    "extractedSpecs": {
+      "הספק": "10W",
+      "גוון אור": "3000K",
+      "אטימה": "IP20"
+    }
+  },
+  {
+    "id": "ll-light-wl-210bk-ct",
+    "sku": "WL-210BK/CT",
+    "name": "מנורת קיר סדרת מוד גוף שחור 18W/24W IP44 CCT",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-21018BK_250.jpg",
+    "desc": "18W | CCT | IP44",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 296.2,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "18W",
+      "CCT",
+      "IP44"
+    ],
+    "extractedSpecs": {
+      "הספק": "18W",
+      "אטימה": "IP44",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-wl-210bg-ct",
+    "sku": "WL-210BG/CT",
+    "name": "מנורת קיר סדרת מוד גוף פליז 18W/24W IP44 CCT",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-21018BG-250(1).jpg",
+    "desc": "18W | CCT | IP44",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 350.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "18W",
+      "CCT",
+      "IP44"
+    ],
+    "extractedSpecs": {
+      "הספק": "18W",
+      "אטימה": "IP44"
+    }
+  },
+  {
+    "id": "ll-light-wl-387l-wh-ww",
+    "sku": "WL-387L-WH/WW",
+    "name": "צמוד קיר Ambient פינות לבן IP20 20W 3000K",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-387L-WH(3).jpg",
+    "desc": "20W | 3000K | IP20",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 335.1,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "20W",
+      "3000K",
+      "IP20"
+    ],
+    "extractedSpecs": {
+      "הספק": "20W",
+      "גוון אור": "3000K",
+      "אטימה": "IP20",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-wl-385l-wh-ww",
+    "sku": "WL-385L-WH/WW",
+    "name": "צמוד קיר Ambient מדרגות לבן IP20 12W 3000K",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-385L-WH1.jpg",
+    "desc": "12W | 3000K | IP20",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 274.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "12W",
+      "3000K",
+      "IP20"
+    ],
+    "extractedSpecs": {
+      "הספק": "12W",
+      "גוון אור": "3000K",
+      "אטימה": "IP20",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-wl-382l-dw-ct",
+    "sku": "WL-382L-DW/CT",
+    "name": "צמוד קיר עץ מכופף דגם נועם, עץ כהה 13W HONGLITRONIC CCT",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-382L-dw(10).jpg",
+    "desc": "13W | CCT",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 395.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "13W",
+      "CCT"
+    ],
+    "extractedSpecs": {
+      "הספק": "13W"
+    }
+  },
+  {
+    "id": "ll-light-wl-382l-lw-ct",
+    "sku": "WL-382L-LW/CT",
+    "name": "צמוד קיר עץ מכופף דגם נועם, עץ בהיר 13W HONGLITRONIC CCT",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-382L-lw(7).jpg",
+    "desc": "13W | CCT",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 395.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "13W",
+      "CCT"
+    ],
+    "extractedSpecs": {
+      "הספק": "13W"
+    }
+  },
+  {
+    "id": "ll-light-wl-3830lw-ww",
+    "sku": "WL-3830LW/WW",
+    "name": "צמוד קיר עץ בהיר מלבן צר",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/תמונות_לאתר5.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 311.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-wl-3832lw-ww",
+    "sku": "WL-3832LW/WW",
+    "name": "צמוד קיר עץ בהיר מרובע",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/תמונות_לאתר.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 364.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-cl-61gu80bk-1",
+    "sku": "CL-61GU80BK-1",
+    "name": "רול.6 מנורת קיר מתכוונן (עם מפסק) גוף שחור 60x80 מ\"מ כולל GU10 7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-61GU-BK.jpg",
+    "desc": "7W | GU10",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 92,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W",
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "מידה": "80 מ\"מ",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-cl-61gu80bg-1",
+    "sku": "CL-61GU80BG-1",
+    "name": "רול.6 מנורת קיר מתכוונן (עם מפסק) גוף פליז 60x80 מ\"מ כולל GU10 7W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-61GU-BG.jpg",
+    "desc": "7W | GU10",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 115.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "7W",
+      "GU10"
+    ],
+    "extractedSpecs": {
+      "הספק": "7W",
+      "מידה": "80 מ\"מ"
+    }
+  },
+  {
+    "id": "ll-light-lh-wlbkbk27",
+    "sku": "LH-WLBKBK27",
+    "name": "צמוד קיר בית נורה שחור מוברש, כיסוי קיר שחור (כולל טבעת) E27",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-WLBKBK27.jpg",
+    "desc": "E27",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 102.7,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "E27"
+    ],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-wl-lh2241bk-e27",
+    "sku": "WL-LH2241BK/E27",
+    "name": "מנורת קיר מוגנת גוף שחור E27 (כולל נורה GLF-T30/LZ)",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-LH2241BK27.jpg",
+    "desc": "E27",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 214.8,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "E27"
+    ],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-wl-tb27-ab",
+    "sku": "WL-TB27/AB",
+    "name": "מנורת צמוד קיר בית נורה E27 חום עתיק",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-TB27-BZ-U.jpg",
+    "desc": "E27",
+    "category": "גופי תאורה",
+    "subCategory": "ספוטים ושקועים",
+    "family": "צמודי קיר",
+    "price": 236,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "E27"
+    ],
+    "extractedSpecs": {
+      "צבע": "חום"
+    }
+  },
+  {
+    "id": "ll-light-eb-ep1439-bk",
+    "sku": "EB-EP1439/BK",
+    "name": "לחצן יחיד שחור מיני RF-Kinetic",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/EB-EP1439-BK.jpg",
+    "desc": "RF-Kinetic",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "מפסקים אלחוטיים",
+    "price": 156.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "RF-Kinetic"
+    ],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-eb-ep1439-wh",
+    "sku": "EB-EP1439/WH",
+    "name": "לחצן יחיד לבן מיני RF-Kinetic",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/EB-EP1439-WH.jpg",
+    "desc": "RF-Kinetic",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "מפסקים אלחוטיים",
+    "price": 156.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "RF-Kinetic"
+    ],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-eb-erc301",
+    "sku": "EB-ERC301",
+    "name": "מגען אלקטרוני אלחוטי, עמעום 10-100% RF 433Mhz 1.5A, 300W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SW(34).jpg",
+    "desc": "300W | RF 433MHz",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "מפסקים אלחוטיים",
+    "price": 167.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "300W",
+      "RF 433MHz"
+    ],
+    "extractedSpecs": {
+      "הספק": "300W"
+    }
+  },
+  {
+    "id": "ll-light-eb-erc901",
+    "sku": "EB-ERC901",
+    "name": "מגען אלקטרוני מיני אלחוטי, עמעום 10-100% RF 433Mhz 0.5A, 100W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/EB-ERC901(6).jpg",
+    "desc": "100W | RF 433MHz",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "מפסקים אלחוטיים",
+    "price": 109.7,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "100W",
+      "RF 433MHz"
+    ],
+    "extractedSpecs": {
+      "הספק": "100W"
+    }
+  },
+  {
+    "id": "ll-light-erc302",
+    "sku": "ERC302",
+    "name": "מגען אלחוטי, יציאה אחת RF 433Mhz 10A",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SW(31).jpg",
+    "desc": "RF 433MHz",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "מפסקים אלחוטיים",
+    "price": 122.7,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "RF 433MHz"
+    ],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-erc303",
+    "sku": "ERC303",
+    "name": "מגען אלחוטי, שתי יציאות RF 433Mhz 2x5A",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SW(28).jpg",
+    "desc": "RF 433MHz",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "מפסקים אלחוטיים",
+    "price": 167.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "RF 433MHz"
+    ],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-eb-es2222-bg",
+    "sku": "EB-ES2222/BG",
+    "name": "לחצן כפול זהב מאט RF-Kinetic IP67",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/ES2222GB.jpg",
+    "desc": "IP67 | RF-Kinetic",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "מפסקים אלחוטיים",
+    "price": 156.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "IP67",
+      "RF-Kinetic"
+    ],
+    "extractedSpecs": {
+      "אטימה": "IP67",
+      "צבע": "זהב"
+    }
+  },
+  {
+    "id": "ll-light-eb-es2122-wh",
+    "sku": "EB-ES2122/WH",
+    "name": "לחצן יחיד לבן מאט RF-Kinetic IP67",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/ES2122WH.jpg",
+    "desc": "IP67 | RF-Kinetic",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "מפסקים אלחוטיים",
+    "price": 118,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "IP67",
+      "RF-Kinetic"
+    ],
+    "extractedSpecs": {
+      "אטימה": "IP67",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-eb-es2222-wh",
+    "sku": "EB-ES2222/WH",
+    "name": "לחצן כפול לבן מאט RF-Kinetic IP67",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/ES2222WH.jpg",
+    "desc": "IP67 | RF-Kinetic",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "מפסקים אלחוטיים",
+    "price": 156.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "IP67",
+      "RF-Kinetic"
+    ],
+    "extractedSpecs": {
+      "אטימה": "IP67",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-eb-es2322-wh",
+    "sku": "EB-ES2322/WH",
+    "name": "לחצן שלישיה לבן מאט RF-Kinetic IP67",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/ES2322WH.jpg",
+    "desc": "IP67 | RF-Kinetic",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "מפסקים אלחוטיים",
+    "price": 175.8,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "IP67",
+      "RF-Kinetic"
+    ],
+    "extractedSpecs": {
+      "אטימה": "IP67",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-ee0254",
+    "sku": "EE0254",
+    "name": "מפסק כפול לבן מאט RF-Kinetic",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/EE0254.jpg",
+    "desc": "RF-Kinetic",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "מפסקים אלחוטיים",
+    "price": 118,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "RF-Kinetic"
+    ],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-eb-es2122-bk",
+    "sku": "EB-ES2122/BK",
+    "name": "לחצן יחיד שחור מאט RF-Kinetic IP67",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/ES2122BK(3).jpg",
+    "desc": "IP67 | RF-Kinetic",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "מפסקים אלחוטיים",
+    "price": 118,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "IP67",
+      "RF-Kinetic"
+    ],
+    "extractedSpecs": {
+      "אטימה": "IP67",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-eb-es2222-bk",
+    "sku": "EB-ES2222/BK",
+    "name": "לחצן כפול שחור מאט RF-Kinetic IP67",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/ES2222BK(4).jpg",
+    "desc": "IP67 | RF-Kinetic",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "מפסקים אלחוטיים",
+    "price": 156.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "IP67",
+      "RF-Kinetic"
+    ],
+    "extractedSpecs": {
+      "אטימה": "IP67",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-eb-es2322-bk",
+    "sku": "EB-ES2322/BK",
+    "name": "לחצן שלישיה שחור מאט RF-Kinetic IP67",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/ES2322BK(3).jpg",
+    "desc": "IP67 | RF-Kinetic",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "מפסקים אלחוטיים",
+    "price": 175.8,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "IP67",
+      "RF-Kinetic"
+    ],
+    "extractedSpecs": {
+      "אטימה": "IP67",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-eb-erc2206bk-kit",
+    "sku": "EB-ERC2206BK/KIT",
+    "name": "קיט מגען אלקטרוני מיני למנועים RF 433Mhz 1.7A + מפסק שחור, 350W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/EB-EP1439-bkEBERC2206.jpg",
+    "desc": "350W | RF 433MHz",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "מפסקים אלחוטיים",
+    "price": 468.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "350W",
+      "RF 433MHz"
+    ],
+    "extractedSpecs": {
+      "הספק": "350W",
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-eb-erc2206wh-kit",
+    "sku": "EB-ERC2206WH/KIT",
+    "name": "קיט מגען אלקטרוני מיני למנועים RF 433Mhz 1.7A + מפסק לבן, 350W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/EB-EP1439-whEBERC2206.jpg",
+    "desc": "350W | RF 433MHz",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "מפסקים אלחוטיים",
+    "price": 468.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "350W",
+      "RF 433MHz"
+    ],
+    "extractedSpecs": {
+      "הספק": "350W",
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-eb-erc2206",
+    "sku": "EB-ERC2206",
+    "name": "מגען אלקטרוני מיני למנועים RF 433Mhz 1.7A",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/EB-ERC2206.jpg",
+    "desc": "RF 433MHz",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "מפסקים אלחוטיים",
+    "price": 337.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "RF 433MHz"
+    ],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-eb-eq2154-eu",
+    "sku": "EB-EQ2154-EU",
+    "name": "פעמון אלחוטי קינטי - מגוון צלצולים",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/EB-EQ2154-EU.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "מפסקים אלחוטיים",
+    "price": 109.7,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-sd-rk1",
+    "sku": "SD-RK1",
+    "name": "שלט שחור עמעום סיבובי [שולחני] למערכת SKYDANCE",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-RK1.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "פיקוד חכם",
+    "price": 330.4,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-sd-rt6-bk",
+    "sku": "SD-RT6/BK",
+    "name": "שלט שחור עמעום מגע למערכת SKYDANCE ארבע אזורים | 4 תרחישים",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-RT6-BK.webp",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "פיקוד חכם",
+    "price": 193.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-sd-pk1-bk",
+    "sku": "SD-PK1/BK",
+    "name": "שלט שחור עמעום סיבובי [דמוי קיר 55] למערכת SKYDANCE",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-PK1-BK.webp",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "פיקוד חכם",
+    "price": 141.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-sd-pk1-wh",
+    "sku": "SD-PK1/WH",
+    "name": "שלט לבן עמעום סיבובי [דמוי קיר 55] למערכת SKYDANCE",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-PK1-WH.webp",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "פיקוד חכם",
+    "price": 141.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-sd-r11-bk",
+    "sku": "SD-R11/BK",
+    "name": "שלט שחור עמעום מגע למערכת SKYDANCE",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-R11-BK.webp",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "פיקוד חכם",
+    "price": 165.2,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-sd-r11-wh",
+    "sku": "SD-R11/WH",
+    "name": "שלט לבן עמעום מגע למערכת SKYDANCE",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-R11-WH.webp",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "פיקוד חכם",
+    "price": 165.2,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
+  },
+  {
+    "id": "ll-light-sd-r11-module",
+    "sku": "SD-R11/Module",
+    "name": "שלט ללחצנים חיצוניים למערכת SKYDANCE סוללה",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-R11-Module.webp",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "פיקוד חכם",
+    "price": 133.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-sd-s1b",
+    "sku": "SD-S1B",
+    "name": "בקר עמעום Triac למערכת SKYDANCE עמעום פאזה עד 250W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-S1B.webp",
+    "desc": "250W | Triac",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "פיקוד חכם",
+    "price": 225.4,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "250W",
+      "Triac"
+    ],
+    "extractedSpecs": {
+      "הספק": "250W"
+    }
+  },
+  {
+    "id": "ll-light-sd-sk1",
+    "sku": "SD-SK1",
+    "name": "בקר עמעום Triac לפסי DIN למערכת SKYDANCE עמעום פאזה עד 1200W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-SK1.webp",
+    "desc": "1200W | Triac",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "פיקוד חכם",
+    "price": 1126.9,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "1200W",
+      "Triac"
+    ],
+    "extractedSpecs": {
+      "הספק": "1200W"
+    }
+  },
+  {
+    "id": "ll-light-sd-ssa-module",
+    "sku": "SD-SSA/Module",
+    "name": "שלט ללחצנים חיצוניים למערכת SKYDANCE מתח רשת",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-SSA-MODULE.webp",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "פיקוד חכם",
+    "price": 188.8,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-sd-da-m",
+    "sku": "SD-DA-M",
+    "name": "בקר עמעום DALI DT6 למערכת SKYDANCE עמעום דיגיטלי",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-DA-M.webp",
+    "desc": "DALI",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "פיקוד חכם",
+    "price": 178.2,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "DALI"
+    ],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-sd-ehm",
+    "sku": "SD-EHM",
+    "name": "חיישן תנועה MicroWave למערכת SKYDANCE הפעלה ועמעום",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-EHM.webp",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "פיקוד חכם",
+    "price": 283.2,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-sd-ehr",
+    "sku": "SD-EHR",
+    "name": "חיישן תנועה PIR למערכת SKYDANCE הפעלה ועמעום",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-EHR.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "פיקוד חכם",
+    "price": 259.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-sd-l1",
+    "sku": "SD-L1",
+    "name": "בקר עמעום 0/1-10V למערכת SKYDANCE עמעום אנלוגי",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-L1.webp",
+    "desc": "0-10V",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "פיקוד חכם",
+    "price": 225.4,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "0-10V"
+    ],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-sd-t21-bk",
+    "sku": "SD-T21/BK",
+    "name": "שלט פנל שחור עמעום מגע למערכת SKYDANCE ארבע אזורים | תרחישים",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-T21-BK.webp",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "פיקוד חכם",
+    "price": 290.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-sd-tr1",
+    "sku": "SD-TR1",
+    "name": "בקר עמעום Triac לפסי DIN למערכת SKYDANCE עמעום פאזה עד 400W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-TR1-WH.webp",
+    "desc": "400W | Triac",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "פיקוד חכם",
+    "price": 380,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "400W",
+      "Triac"
+    ],
+    "extractedSpecs": {
+      "הספק": "400W"
+    }
+  },
+  {
+    "id": "ll-light-sd-v1lp",
+    "sku": "SD-V1LP",
+    "name": "בקר עמעום 12-48V 15A PWM למערכת SKYDANCE עמעום מתח נמוך",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-V1LP.webp",
+    "desc": "48V",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "פיקוד חכם",
+    "price": 225.4,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "48V"
+    ],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-ms06",
+    "sku": "MS06",
+    "name": "חיישן נוכחות (2 מוצרים באחד) תקרה / גומחה 2000W/1000W 360°",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/ms06sensor.webp",
+    "desc": "2000W | 360°",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "חיישנים",
+    "price": 173.5,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "2000W",
+      "360°"
+    ],
+    "extractedSpecs": {
+      "הספק": "2000W",
+      "זווית": "360°"
+    }
+  },
+  {
+    "id": "ll-light-ms08",
+    "sku": "MS08",
+    "name": "חיישן תנועה אינפרא אדום למרחק 12 מטר",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/MS08_1.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "חיישנים",
+    "price": 44.8,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-ms09",
+    "sku": "MS09",
+    "name": "חיישן תנועה ואור משולב חיצוני על קיר 5A, עד 1200W",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/MS09.jpg",
+    "desc": "1200W",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "חיישנים",
+    "price": 44.8,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [
+      "1200W"
+    ],
+    "extractedSpecs": {
+      "הספק": "1200W"
+    }
+  },
+  {
+    "id": "ll-light-ms10",
+    "sku": "MS10",
+    "name": "חיישן פוטוצל 10A",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/MS-710_NEW.jpg",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "חיישנים",
+    "price": 28.3,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {}
+  },
+  {
+    "id": "ll-light-f-play-bk-sen",
+    "sku": "F-PLAY/BK-Sen",
+    "name": "חיישן תנועה | חיישן אור מתוכנת לסדרת PLAY כולל שלט, שחור",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/f-play-Sensor-BK.webp",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "חיישנים",
+    "price": 49.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "שחור"
+    }
+  },
+  {
+    "id": "ll-light-f-play-wh-sen",
+    "sku": "F-PLAY/WH-Sen",
+    "name": "חיישן תנועה | חיישן אור מתוכנת לסדרת PLAY כולל שלט, לבן",
+    "img": "https://www.eurolux.co.il/Media/Resize/250_250/f-play-Sensor-WH.webp",
+    "desc": "",
+    "category": "גופי תאורה",
+    "subCategory": "בקרה וחיישנים",
+    "family": "חיישנים",
+    "price": 49.6,
+    "url": null,
+    "isFlagship": false,
+    "scarcity": null,
+    "specTags": [],
+    "extractedSpecs": {
+      "צבע": "לבן"
+    }
   }
 ];
+
 if (typeof window !== 'undefined') window.__PRODUCTS__ = __PRODUCTS__;
 export default __PRODUCTS__;
