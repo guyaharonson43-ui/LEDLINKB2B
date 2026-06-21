@@ -69,10 +69,18 @@ for (const f of [
 
 // ── 2. Load products ─────────────────────────────────────────────────────────
 
-const raw = readFileSync(join(ROOT, 'products_data.js'), 'utf8');
-const stripped = raw.replace(/^export\s+default\s+\S+\s*;?\s*$/gm, '');
-const fn = new Function('window', stripped + '\nreturn window.__PRODUCTS__;');
-const products = fn({});
+function loadProducts(filename) {
+  const src = readFileSync(join(ROOT, filename), 'utf8');
+  const stripped = src.replace(/^export\s+default\s+\S+\s*;?\s*$/gm, '');
+  const fn = new Function('window', stripped + '\nreturn window.__PRODUCTS__;');
+  return fn({}) || [];
+}
+
+// Use the combined file (373 base + 245 lighting) when it exists, else fall back
+const withLighting = join(ROOT, 'products_data_with_lighting.js');
+const products = existsSync(withLighting)
+  ? loadProducts('products_data_with_lighting.js')
+  : loadProducts('products_data.js');
 
 if (!Array.isArray(products) || products.length === 0) {
   console.error('generate-static: could not load products');
@@ -206,7 +214,9 @@ function buildSharePage(p) {
   const name    = escHtml(cleanName(p.name));
   const rawDesc = p.desc ? cleanName(p.desc.split('|')[0].trim()) : '';
   const desc    = escHtml(rawDesc);
-  const imgUrl  = p.img ? `${BASE_URL}/${p.img}` : `${BASE_URL}/hero.webp`;
+  const imgUrl  = p.img
+    ? (p.img.startsWith('http') ? p.img : `${BASE_URL}/${p.img}`)
+    : `${BASE_URL}/hero.webp`;
   const pageUrl = `${BASE_URL}/share/${p.id}.html`;
   const target  = `${BASE_URL}/catalog.html?product=${encodeURIComponent(p.id)}`;
 
