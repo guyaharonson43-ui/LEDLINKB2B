@@ -83,7 +83,8 @@ export default function ProductModal({ product, onClose }) {
   }, [onClose]);
 
   const copyLink = () => {
-    const url = `${location.href.split('?')[0]}?product=${encodeURIComponent(product.id)}`;
+    const base = location.href.split('?')[0].replace(/\/catalog\.html$/, '');
+    const url = `${base}/share/${encodeURIComponent(product.id)}.html`;
     navigator.clipboard.writeText(url).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);

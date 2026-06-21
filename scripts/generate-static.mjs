@@ -3,6 +3,7 @@
  *  1. Copies all static asset directories and files to dist/
  *  2. Injects Schema.org ItemList + noscript product fallback into dist/catalog.html
  *  3. Generates dist/sitemap.xml and dist/robots.txt
+ *  4. Generates dist/share/{id}.html — OG-rich share pages for WhatsApp/social previews
  */
 import { readFileSync, writeFileSync, copyFileSync, existsSync,
          mkdirSync, readdirSync, statSync } from 'fs';
@@ -192,7 +193,63 @@ ${sitemapAll.map(u => `  <url>
 writeFileSync(join(DIST, 'sitemap.xml'), sitemapXml, 'utf8');
 console.log(`generate-static: sitemap.xml  →  ${sitemapAll.length} URLs`);
 
-// ── 7. robots.txt ────────────────────────────────────────────────────────────
+// ── 7. Share pages (dist/share/{id}.html) ───────────────────────────────────
+
+const shareDir = join(DIST, 'share');
+mkdirSync(shareDir, { recursive: true });
+
+function escHtml(s) {
+  return s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function buildSharePage(p) {
+  const name    = escHtml(cleanName(p.name));
+  const rawDesc = p.desc ? cleanName(p.desc.split('|')[0].trim()) : '';
+  const desc    = escHtml(rawDesc);
+  const imgUrl  = p.img ? `${BASE_URL}/${p.img}` : `${BASE_URL}/hero.webp`;
+  const pageUrl = `${BASE_URL}/share/${p.id}.html`;
+  const target  = `${BASE_URL}/catalog.html?product=${encodeURIComponent(p.id)}`;
+
+  return `<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="0;url=${target}">
+<link rel="canonical" href="${target}">
+<title>${name} — LEDLink</title>
+<meta name="robots" content="noindex">
+
+<!-- Open Graph -->
+<meta property="og:type" content="product">
+<meta property="og:url" content="${pageUrl}">
+<meta property="og:title" content="${name} — LEDLink">
+<meta property="og:description" content="${desc || 'רכיב LED מקצועי — LEDLink'}">
+<meta property="og:image" content="${imgUrl}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="he_IL">
+<meta property="og:site_name" content="LEDLink">
+
+<!-- Twitter / WhatsApp fallback -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${name} — LEDLink">
+<meta name="twitter:description" content="${desc || 'רכיב LED מקצועי — LEDLink'}">
+<meta name="twitter:image" content="${imgUrl}">
+</head>
+<body>
+<p style="font-family:sans-serif;direction:rtl;padding:16px">
+  מועבר לדף המוצר… <a href="${target}">${name}</a>
+</p>
+</body>
+</html>`;
+}
+
+for (const p of products) {
+  writeFileSync(join(shareDir, `${p.id}.html`), buildSharePage(p), 'utf8');
+}
+console.log(`generate-static: share pages  →  dist/share/  (${products.length} files)`);
+
+// ── 8. robots.txt ────────────────────────────────────────────────────────────
 
 const robotsTxt = `\
 User-agent: *
