@@ -2811,7 +2811,7 @@ const __PRODUCTS__ = [
     "isFlagship": false,
     "scarcity": null,
     "specs": {
-      "power": "144W",
+      "power": "288W",
       "ip": "IP20",
       "outputMode": "CV",
       "voltage": "24V",
