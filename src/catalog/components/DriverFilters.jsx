@@ -1,7 +1,7 @@
 import Chip from './Chip';
 import {
   PS_VOLTAGE_OPTIONS, PS_INPUT_VOLTAGE_OPTIONS, PS_IP_OPTIONS,
-  PS_OUTPUT_OPTIONS, PS_DIMMING_OPTIONS, PS_POWER_RANGES, INIT_PS,
+  PS_DIMMING_OPTIONS, PS_POWER_RANGES, INIT_PS,
 } from '../utils/filterConstants';
 
 export default function DriverFilters({ filters, setFilters, count }) {
@@ -21,7 +21,6 @@ export default function DriverFilters({ filters, setFilters, count }) {
 
       {[
         { title: 'מתח כניסה', options: PS_INPUT_VOLTAGE_OPTIONS, key: 'inputVoltage' },
-        { title: 'מצב פלט',  options: PS_OUTPUT_OPTIONS,        key: 'output'       },
         { title: 'מתח פלט (CV)', options: PS_VOLTAGE_OPTIONS,   key: 'voltage'      },
         { title: 'הגנה (IP)', options: PS_IP_OPTIONS,            key: 'ip'           },
       ].map(({ title, options, key }) => (

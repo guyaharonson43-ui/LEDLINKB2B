@@ -185,11 +185,6 @@ export default function App() {
         }
         if (psF.inputVoltage !== 'הכל' && s.inputVoltage !== psF.inputVoltage) return false;
         if (psF.ip !== 'הכל' && s.ip !== psF.ip) return false;
-        if (psF.output !== 'הכל') {
-          if (psF.output === 'DMX')  { if (!(s.dimming || []).includes('DMX') && s.outputMode !== 'DMX') return false; }
-          else if (psF.output === 'DALI') { if (s.outputMode !== 'DALI') return false; }
-          else { if (s.outputMode !== psF.output) return false; }
-        }
         if (psF.dimming !== 'הכל' && !(s.dimming || []).some(d => d.toLowerCase().includes(psF.dimming.toLowerCase()))) return false;
         if (psF.power !== 'הכל') {
           const range = PS_POWER_RANGES.find(x => x.label === psF.power);
