@@ -92,32 +92,56 @@ function cleanName(s) {
           .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ');
 }
 
-// ── 3. Schema.org ItemList (all 373 products) ────────────────────────────────
+// Canonical own-site URL for a product — never points off-domain (e.g. supplier sites),
+// so every product gets a real, unique, crawlable page under our own domain.
+function canonicalUrl(p) {
+  return `${BASE_URL}/product/${p.id}/`;
+}
+
+function imageUrl(p) {
+  if (!p.img) return `${BASE_URL}/hero.webp`;
+  return p.img.startsWith('http') ? p.img : `${BASE_URL}/${p.img}`;
+}
+
+// Only emit `offers` when we have a real price — omitting it (rather than
+// fabricating a value) keeps the Product schema valid instead of invalid.
+function offersFor(p, url) {
+  if (typeof p.price !== 'number' || p.price <= 0) return null;
+  return {
+    '@type': 'Offer',
+    price: p.price,
+    priceCurrency: 'ILS',
+    availability: 'https://schema.org/InStock',
+    url,
+    seller: { '@type': 'Organization', name: 'LEDLink Components' }
+  };
+}
+
+// ── 3. Schema.org ItemList (all products) ────────────────────────────────────
 
 const itemListSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   name: 'קטלוג מוצרי LEDLink',
   numberOfItems: products.length,
-  itemListElement: products.map((p, i) => ({
-    '@type': 'ListItem',
-    position: i + 1,
-    item: {
-      '@context': 'https://schema.org',
-      '@type': 'Product',
-      name: cleanName(p.name),
-      description: p.desc ? cleanName(p.desc.split('|')[0].trim()) : '',
-      brand: { '@type': 'Brand', name: 'LEDLink' },
-      ...(p.url ? { url: p.url }                    : {}),
-      ...(p.img ? { image: `${BASE_URL}/${p.img}` } : {}),
-      offers: {
-        '@type': 'Offer',
-        availability: 'https://schema.org/InStock',
-        priceCurrency: 'ILS',
-        seller: { '@type': 'Organization', name: 'LEDLink Components' }
+  itemListElement: products.map((p, i) => {
+    const url = canonicalUrl(p);
+    const offers = offersFor(p, url);
+    return {
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name: cleanName(p.name),
+        description: p.desc ? cleanName(p.desc.split('|')[0].trim()) : '',
+        brand: { '@type': 'Brand', name: 'LEDLink' },
+        url,
+        image: imageUrl(p),
+        ...(offers ? { offers } : {})
       }
-    }
-  }))
+    };
+  })
 };
 
 const schemaBlock =
@@ -184,8 +208,7 @@ const sitemapStatic = [
   { loc: `${BASE_URL}/faq.html`,     priority: '0.5', changefreq: 'monthly' },
 ];
 const sitemapProducts = products
-  .filter(p => p.url && p.url.startsWith(`${BASE_URL}/`))
-  .map(p => ({ loc: p.url, priority: '0.8', changefreq: 'monthly' }));
+  .map(p => ({ loc: canonicalUrl(p), priority: '0.8', changefreq: 'monthly' }));
 
 const sitemapAll = [...sitemapStatic, ...sitemapProducts];
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -201,14 +224,77 @@ ${sitemapAll.map(u => `  <url>
 writeFileSync(join(DIST, 'sitemap.xml'), sitemapXml, 'utf8');
 console.log(`generate-static: sitemap.xml  →  ${sitemapAll.length} URLs`);
 
-// ── 7. Share pages (dist/share/{id}.html) ───────────────────────────────────
-
-const shareDir = join(DIST, 'share');
-mkdirSync(shareDir, { recursive: true });
-
 function escHtml(s) {
   return s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
+
+// ── 7. Per-product pages (dist/product/{id}/index.html) ─────────────────────
+// Real, individually-indexable pages — each with its own Product schema, so
+// Google can discover/validate every product on its own instead of relying
+// on the single ItemList blob in catalog.html.
+
+const productDir = join(DIST, 'product');
+
+function buildProductPage(p) {
+  const url        = canonicalUrl(p);
+  const name        = escHtml(cleanName(p.name));
+  const rawDesc     = p.desc ? cleanName(p.desc) : '';
+  const shortDesc   = p.desc ? cleanName(p.desc.split('|')[0].trim()) : cleanName(p.name);
+  const desc        = escHtml(shortDesc);
+  const imgUrl      = imageUrl(p);
+  const catalogLink = `${BASE_URL}/catalog.html?product=${encodeURIComponent(p.id)}`;
+  const offers      = offersFor(p, url);
+
+  const productSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: cleanName(p.name),
+    description: shortDesc,
+    image: imgUrl,
+    brand: { '@type': 'Brand', name: 'LEDLink' },
+    url,
+    ...(offers ? { offers } : {})
+  };
+
+  return `<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${name} — LEDLink</title>
+<meta name="description" content="${desc}">
+<link rel="canonical" href="${url}">
+<script type="application/ld+json">${JSON.stringify(productSchema)}</script>
+<style>
+  body{font-family:'Heebo',sans-serif;direction:rtl;background:#F4F4F0;color:#1C1C1C;margin:0;padding:24px}
+  main{max-width:720px;margin:0 auto}
+  img{max-width:100%;border-radius:12px;margin:16px 0}
+  a.btn{display:inline-block;margin-top:16px;padding:12px 24px;background:#E8A020;color:#1C1C1C;text-decoration:none;border-radius:8px;font-weight:700}
+  h1{font-size:24px}
+</style>
+</head>
+<body>
+<main>
+  <h1>${name}</h1>
+  <img src="${imgUrl}" alt="${name}" loading="lazy">
+  <p>${escHtml(rawDesc)}</p>
+  <a class="btn" href="${catalogLink}">צפייה בקטלוג המלא</a>
+</main>
+</body>
+</html>`;
+}
+
+for (const p of products) {
+  const dir = join(productDir, p.id);
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(join(dir, 'index.html'), buildProductPage(p), 'utf8');
+}
+console.log(`generate-static: product pages  →  dist/product/  (${products.length} pages)`);
+
+// ── 8. Share pages (dist/share/{id}.html) ───────────────────────────────────
+
+const shareDir = join(DIST, 'share');
+mkdirSync(shareDir, { recursive: true });
 
 function buildSharePage(p) {
   const name    = escHtml(cleanName(p.name));
@@ -259,7 +345,7 @@ for (const p of products) {
 }
 console.log(`generate-static: share pages  →  dist/share/  (${products.length} files)`);
 
-// ── 8. robots.txt ────────────────────────────────────────────────────────────
+// ── 9. robots.txt ────────────────────────────────────────────────────────────
 
 const robotsTxt = `\
 User-agent: *
