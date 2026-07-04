@@ -163,6 +163,26 @@
       border: 1px solid rgba(255,255,255,0.3);
     }
     .btn-secondary:hover { border-color: rgba(255,255,255,0.7); }
+    .hero-search-form {
+      display: flex; align-items: center; gap: 0;
+      margin-top: 22px; max-width: 420px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 8px; overflow: hidden;
+      backdrop-filter: blur(4px);
+    }
+    .hero-search-input {
+      flex: 1; background: transparent; border: none; outline: none;
+      color: #fff; font-family: 'Heebo', sans-serif; font-size: 14px;
+      padding: 12px 16px; direction: rtl;
+    }
+    .hero-search-input::placeholder { color: rgba(255,255,255,0.45); }
+    .hero-search-btn {
+      background: transparent; border: none; border-right: 1px solid rgba(255,255,255,0.15);
+      color: #E8A020; cursor: pointer; padding: 12px 16px;
+      display: flex; align-items: center; transition: color 0.15s;
+    }
+    .hero-search-btn:hover { color: #fff; }
 
     /* ── Scroll indicator ── */
     .scroll-indicator {
@@ -596,6 +616,7 @@
       .hero-actions { flex-direction: column; }
       .hero-actions .btn-primary,
       .hero-actions .btn-secondary { width: 100%; justify-content: center; }
+      .hero-search-form { max-width: 100%; }
     }
 
     /* ── Reduced motion ── */
@@ -705,7 +726,7 @@
         <a href="#contact" class="nav-link">צור קשר</a>
       </div>
       <div class="nav-spacer"></div>
-      <a href="https://ledlink-pcm.web.app" target="_blank" class="nav-cta-btn" style="background:#E8A020;color:#1a1a1a;font-weight:700;font-size:13px;padding:8px 18px;border-radius:6px;text-decoration:none;white-space:nowrap;margin-left:8px;">כניסת לקוחות ⚡</a>
+      <a href="https://ledlink-pcm.web.app" target="_blank" class="nav-cta-btn" style="background:transparent;color:#AAAAAA;font-weight:600;font-size:13px;padding:7px 16px;border-radius:6px;border:1px solid #333;text-decoration:none;white-space:nowrap;margin-left:8px;">כניסת לקוחות</a>
       <button class="hamburger" id="hamburger" aria-label="תפריט" onclick="toggleMobileMenu()">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
@@ -751,7 +772,7 @@
     <a href="about.html" class="mm-link">אודות</a>
     <a href="#contact" class="mm-link" onclick="closeMobileMenu()">צור קשר</a>
     <div class="mm-divider"></div>
-    <a href="https://ledlink-pcm.web.app" target="_blank" class="mm-link" style="color:#E8A020;font-weight:700;">כניסת לקוחות ⚡</a>
+    <a href="https://ledlink-pcm.web.app" target="_blank" class="mm-link" style="color:#888;font-weight:600;">כניסת לקוחות</a>
   </div>
 
   <!-- ── Hero ── -->
@@ -791,6 +812,12 @@
           שלח הודעה
         </a>
       </div>
+      <form action="catalog.html" method="get" class="hero-search-form">
+        <button type="submit" class="hero-search-btn" aria-label="חיפוש">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <input type="text" name="q" class="hero-search-input" placeholder="חיפוש מוצר לפי דגם או שם... לדוגמה: פרופיל 3020" autocomplete="off">
+      </form>
     </div>
   </section>
 

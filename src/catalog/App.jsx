@@ -40,23 +40,34 @@ export default function App() {
       const found = allProducts.find(q => q.id === decodeURIComponent(productId));
       if (found) return found.category;
     }
-    return p.get('tab') || 'דרייברים';
+    const qParam = p.get('q');
+    if (qParam) {
+      const term = qParam.trim().toLowerCase();
+      const match = allProducts.find(pr => pr.name.toLowerCase().includes(term) || (pr.desc || '').toLowerCase().includes(term));
+      if (match) return match.category;
+    }
+    // Bare landing (e.g. hero "view catalog" button) — send visitors into an
+    // approachable, visual category instead of the filter-heavy "דרייברים" tab.
+    return p.get('tab') || 'גופי תאורה';
   });
   const [selected, setSelected] = useState(() => {
     const productId = new URLSearchParams(window.location.search).get('product');
     if (!productId) return null;
     return allProducts.find(p => p.id === decodeURIComponent(productId)) || null;
   });
-  const [search, setSearch]               = useState('');
+  const [search, setSearch] = useState(() => new URLSearchParams(window.location.search).get('q') || '');
   const [recentSearches, setRecentSearches] = useState(() => {
     try { return JSON.parse(localStorage.getItem('ledlink_recent_searches') || '[]'); }
     catch { return []; }
   });
   const [stripF, setStripF]     = useState({ ...INIT_STRIP });
   const [psF, setPsF]           = useState({ ...INIT_PS });
-  const [lightingSubCat, setLightingSubCat] = useState(() =>
-    new URLSearchParams(window.location.search).get('sub') || 'הכל'
-  );
+  const [lightingSubCat, setLightingSubCat] = useState(() => {
+    const p = new URLSearchParams(window.location.search);
+    if (p.get('sub')) return p.get('sub');
+    if (!p.get('tab') && !p.get('q') && !p.get('product')) return 'פסי צבירה ומסילות';
+    return 'הכל';
+  });
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showCfg, setShowCfg]   = useState(false);
   const [page, setPage]         = useState(1);
@@ -72,7 +83,7 @@ export default function App() {
   useEffect(() => {
     const onPop = e => {
       const p   = new URLSearchParams(window.location.search);
-      const id  = (e.state && e.state.tab) || p.get('tab') || 'דרייברים';
+      const id  = (e.state && e.state.tab) || p.get('tab') || 'גופי תאורה';
       const sub = (e.state && e.state.sub) || p.get('sub') || 'הכל';
       setActiveTab(id);
       setLightingSubCat(sub);
