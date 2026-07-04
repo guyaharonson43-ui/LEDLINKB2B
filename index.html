@@ -287,7 +287,7 @@
     /* ── Category Cards ── */
     .cats-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 20px;
     }
     .cat-card {
@@ -341,23 +341,7 @@
       display: flex; align-items: center; gap: 6px;
     }
 
-    /* ── גופי תאורה sub-cats ── */
-    .lighting-section { margin-top: 48px; }
-    .lighting-section-label {
-      font-size: 11px; font-weight: 800; letter-spacing: .12em;
-      text-transform: uppercase; color: #E8A020; margin-bottom: 16px;
-      display: flex; align-items: center; gap: 14px;
-    }
-    .lighting-section-label::before {
-      content: ''; flex: 1; height: 1px; background: rgba(232,160,32,0.25);
-    }
-    .lighting-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-    @media (max-width: 900px) { .lighting-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 520px) { .lighting-grid { grid-template-columns: 1fr 1fr; } }
+    /* ── גופי תאורה sub-cats (share the .cats-grid layout) ── */
     .light-card {
       position: relative; height: 360px; border-radius: 12px;
       overflow: hidden; text-decoration: none; display: block;
@@ -590,7 +574,7 @@
 
     /* ── Responsive ── */
     @media (max-width: 900px) {
-      .cats-grid { grid-template-columns: 1fr; }
+      .cats-grid { grid-template-columns: repeat(2, 1fr); }
       .benefits-grid { grid-template-columns: repeat(2, 1fr); }
       .nav-links { display: none !important; }
       .hamburger { display: flex; }
@@ -935,22 +919,16 @@
           </div>
         </a>
 
-      </div>
-
-      <!-- גופי תאורה -->
-      <div class="lighting-section">
-        <div class="lighting-section-label">גופי תאורה</div>
-        <div class="lighting-grid">
-
-          <a href="catalog.html?tab=גופי תאורה&sub=פסי צבירה ומסילות" class="light-card">
-            <img src="https://www.eurolux.co.il/Media/Resize/250_250/TKM-ROPE30.jpg" alt="פסי צבירה ומסילות" loading="lazy">
-            <div class="light-card-body">
-              <div class="light-card-count">96 דגמים</div>
-              <div class="light-card-name">פסי צבירה ומסילות</div>
-              <div class="light-card-desc">פס מגנטי 48V, ספוטים ולינארי למסילה, פסי צבירה 230V ומסילות HiLINE.</div>
-              <div class="light-card-link">צפייה בקטלוג ←</div>
-            </div>
-          </a>
+        <!-- גופי תאורה -->
+        <a href="catalog.html?tab=גופי תאורה&sub=פסי צבירה ומסילות" class="light-card">
+          <img src="https://www.eurolux.co.il/Media/Resize/250_250/TKM-ROPE30.jpg" alt="פסי צבירה ומסילות" loading="lazy">
+          <div class="light-card-body">
+            <div class="light-card-count">96 דגמים</div>
+            <div class="light-card-name">פסי צבירה ומסילות</div>
+            <div class="light-card-desc">פס מגנטי 48V, ספוטים ולינארי למסילה, פסי צבירה 230V ומסילות HiLINE.</div>
+            <div class="light-card-link">צפייה בקטלוג ←</div>
+          </div>
+        </a>
 
           <a href="catalog.html?tab=גופי תאורה&sub=ספוטים ושקועים" class="light-card">
             <img src="https://www.eurolux.co.il/Media/Resize/250_250/HI-D66(4).jpg" alt="ספוטים ושקועים" loading="lazy">
@@ -992,7 +970,6 @@
             </div>
           </a>
 
-        </div>
       </div>
 
     </div>
