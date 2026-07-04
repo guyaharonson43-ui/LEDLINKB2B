@@ -860,9 +860,9 @@
         <div class="stat-sub">בתחום רכיבי LED</div>
       </div>
       <div class="stat">
-        <div class="stat-num" data-count="373" data-suffix="">373</div>
+        <div class="stat-num" data-count="692" data-suffix="+">692+</div>
         <div class="stat-label">מוצרים בקטלוג</div>
-        <div class="stat-sub">פרופילים, סטריפ, דרייברים</div>
+        <div class="stat-sub">פרופילים, סטריפ, דרייברים וגופי תאורה</div>
       </div>
       <div class="stat">
         <div class="stat-num" data-count="24" data-suffix="H">24H</div>
@@ -1151,11 +1151,11 @@
       ov.style.display = 'flex';
       document.body.style.overflow = 'hidden';
     }
-    function closeLightbox() {
+    window.closeLightbox = function closeLightbox() {
       document.getElementById('lb-overlay').style.display = 'none';
       document.body.style.overflow = '';
     }
-    function moveLightbox(dir) {
+    window.moveLightbox = function moveLightbox(dir) {
       lbIndex = (lbIndex + dir + PROJECT_IMAGES.length) % PROJECT_IMAGES.length;
       updateLightbox();
     }
@@ -1165,7 +1165,7 @@
       document.getElementById('lb-label').textContent = '';
       document.getElementById('lb-count').textContent = `${lbIndex + 1} / ${PROJECT_IMAGES.length}`;
     }
-    function toggleProjects() {
+    window.toggleProjects = function toggleProjects() {
       projectsExpanded = !projectsExpanded;
       const btns = grid.querySelectorAll('button');
       btns.forEach((btn, i) => {
