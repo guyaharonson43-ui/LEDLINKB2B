@@ -29,6 +29,8 @@ const TABS = [
   { id: 'גופי תאורה', label: 'גופי תאורה', desc: 'פסי צבירה, ספוטים ושקועים, בקרה וחיישנים' },
 ];
 
+const LIGHTING_SUBCAT_ORDER = ['פסי צבירה ומסילות', 'ספוטים ושקועים', 'צמודי תקרה', 'גופי תלייה', 'בקרה וחיישנים'];
+
 const PAGE_SIZE = 30;
 
 export default function App() {
@@ -225,11 +227,13 @@ export default function App() {
   const tabInfo    = TABS.find(t => t.id === activeTab);
   const showFilters = activeTab !== 'פרופילים';
 
-  const lightingSubCats = useMemo(() =>
-    activeTab === 'גופי תאורה'
-      ? ['הכל', ...new Set(products.filter(p => p.category === 'גופי תאורה').map(p => p.subCategory).filter(Boolean))]
-      : [],
-  [products, activeTab]);
+  const lightingSubCats = useMemo(() => {
+    if (activeTab !== 'גופי תאורה') return [];
+    const present = new Set(products.filter(p => p.category === 'גופי תאורה').map(p => p.subCategory).filter(Boolean));
+    const ordered = LIGHTING_SUBCAT_ORDER.filter(sc => present.has(sc));
+    const extra   = [...present].filter(sc => !LIGHTING_SUBCAT_ORDER.includes(sc));
+    return ['הכל', ...ordered, ...extra];
+  }, [products, activeTab]);
 
   const renderSidebar = () => {
     if (activeTab === 'פרופילים')   return <ProfileFilters count={filtered.length} />;

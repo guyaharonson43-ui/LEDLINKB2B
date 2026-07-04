@@ -2433,8 +2433,731 @@ window.LL_CATALOG = {
     }
    ],
    "n": 41
+  },
+  {
+   "id": "pendant",
+   "t": "גופי תלייה",
+   "d": "גופי תאורה תלויים — לד משולב וקלאסי E27, מגוון סגנונות לתלייה מהתקרה.",
+   "families": [
+    {
+     "id": "pendant-led",
+     "t": "תלויות LED משולבות",
+     "sections": [
+      {
+       "t": "גופי תאורה",
+       "products": [
+        {
+         "sku": "CL-104WH/CT",
+         "t": "תלוי תקרה גוף לבן סדרת פנסיל באורך 1.28 מטר CCT 30W",
+         "specs": [
+          "30W",
+          "CCT"
+         ],
+         "price": 959.3,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-104WH.jpg"
+        },
+        {
+         "sku": "CL-EYE5BK/WW-Pendant",
+         "t": "תלוי תקרה לד מובנה VISION - חמישייה - כבל 2 מטר עם מנגנון כיונון קל 3000K שחור 24W",
+         "specs": [
+          "24W",
+          "3000K"
+         ],
+         "price": 898,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-EYE5BK_WW-Pendant.jpg"
+        },
+        {
+         "sku": "CL-EYE5WH/WW-Pendant",
+         "t": "תלוי תקרה לד מובנה VISION - חמישייה - כבל 2 מטר עם מנגנון כיונון קל 3000K לבן 24W",
+         "specs": [
+          "24W",
+          "3000K"
+         ],
+         "price": 898,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-EYE5WH_WW-Pendant.jpg"
+        },
+        {
+         "sku": "CL-EYE3BK/WW-Pendant",
+         "t": "תלוי תקרה לד מובנה VISION - שלישייה - כבל 2 מטר עם מנגנון כיונון קל 3000K שחור 15W",
+         "specs": [
+          "15W",
+          "3000K"
+         ],
+         "price": 641.9,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-EYE3BK_WW-Pendant.jpg"
+        },
+        {
+         "sku": "CL-EYE3WH/WW-Pendant",
+         "t": "תלוי תקרה לד מובנה VISION - שלישייה - כבל 2 מטר עם מנגנון כיונון קל 3000K לבן 15W",
+         "specs": [
+          "15W",
+          "3000K"
+         ],
+         "price": 641.9,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-EYE3WH_WW-Pendant.jpg"
+        },
+        {
+         "sku": "CL-EYE1BK/WW-Pendant",
+         "t": "תלוי תקרה לד מובנה VISION -יחיד- כבל 2 מטר עם מנגנון כיונון קל 3000K שחור 6W",
+         "specs": [
+          "6W",
+          "3000K"
+         ],
+         "price": 199.4,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-EYE1BK_WW-Pendant.jpg"
+        },
+        {
+         "sku": "CL-EYE1WH/WW-Pendant",
+         "t": "תלוי תקרה לד מובנה VISION -יחיד- כבל 2 מטר עם מנגנון כיונון קל 3000K לבן 6W",
+         "specs": [
+          "6W",
+          "3000K"
+         ],
+         "price": 199.4,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-EYE1WH_WW-Pendant-.jpg"
+        },
+        {
+         "sku": "CL-ET5BK/WW-Pendant",
+         "t": "תלוי תקרה לד מובנה ETOS -חמישייה - כבל 2 מטר עם מנגנון כיונון קל 3000K שחור 32W",
+         "specs": [
+          "32W",
+          "3000K"
+         ],
+         "price": 1558.8,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-ET5BK_WW-PENDANTWW.jpg"
+        },
+        {
+         "sku": "CL-ET3BK/WW-Pendant",
+         "t": "תלוי תקרה לד מובנה ETOS - שלישייה - כבל 2 מטר עם מנגנון כיונון קל 3000K שחור 20W",
+         "specs": [
+          "20W",
+          "3000K"
+         ],
+         "price": 914.5,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-ET3BK_WW-PENDANT.jpg"
+        },
+        {
+         "sku": "CL-ET1BK/WW-Pendant",
+         "t": "תלוי תקרה לד מובנה ETOS  יחיד - כבל 2 מטר עם מנגנון כיונון קל 3000K שחור 8W",
+         "specs": [
+          "8W",
+          "3000K"
+         ],
+         "price": 337.5,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-ET1BK_WW-PENDANT.jpg"
+        },
+        {
+         "sku": "CL-40COB600WH/WW-Pendant",
+         "t": "רול.4 תלוי תקרה 2 מטר לבן 40x600 מ\"מ BridgeLUX 3000K 38° 8W",
+         "specs": [
+          "8W",
+          "3000K",
+          "38°"
+         ],
+         "price": 270.2,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-40COB600WHWW-P(1).jpg"
+        },
+        {
+         "sku": "CL-60GU130BG/Pendant",
+         "t": "▪▪ רול.6 תלוי תקרה 1.5 מטר גוף פליז 60x130 מ\"מ GU10",
+         "specs": [
+          "GU10"
+         ],
+         "price": 131,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU130BG-Pendant(4).jpg"
+        },
+        {
+         "sku": "CL-40COB300BG/WW-Pendant",
+         "t": "רול.4 תלוי תקרה 2 מטר זהב מוברש 40x300 מ\"מ BridgeLUX 3000K 38° 8W",
+         "specs": [
+          "8W",
+          "3000K",
+          "38°"
+         ],
+         "price": 285.6,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-40COB300BG-P(1).jpg"
+        },
+        {
+         "sku": "CL-106BK/WW",
+         "t": "תלוי תקרה גוף שחור סדרת אולטרה 2700K 20W",
+         "specs": [
+          "20W",
+          "2700K"
+         ],
+         "price": 405.9,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-106BK1.jpg"
+        },
+        {
+         "sku": "CL-104BK/CT",
+         "t": "תלוי תקרה גוף שחור סדרת פנסיל באורך 1.28 מטר CCT 30W",
+         "specs": [
+          "30W",
+          "CCT"
+         ],
+         "price": 959.3,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-104BK(4).jpg"
+        },
+        {
+         "sku": "CL-80COB150WH/Pendant",
+         "t": "רול.8 תלוי תקרה 2 מטר לבן 80x150 מ\"מ BridgeLUX 18W",
+         "specs": [
+          "18W"
+         ],
+         "price": 102.7,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-80COB150WH-PENDANT(4).jpg"
+        },
+        {
+         "sku": "CL-80COB150BK/WW-Pendant",
+         "t": "** רול.8 תלוי תקרה 2 מטר שחור 80x150 מ\"מ BridgeLUX 3000K 45° 18W",
+         "specs": [
+          "18W",
+          "3000K",
+          "45°"
+         ],
+         "price": 287.9,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-80COB150BK-PENDANT(1).jpg"
+        },
+        {
+         "sku": "CL-60GU130BK/Pendant",
+         "t": "רול.6 תלוי תקרה 1.5 מטר שחור 60x130 מ\"מ GU10",
+         "specs": [
+          "GU10"
+         ],
+         "price": 96.8,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU130_BK_Pendant(1).jpg"
+        },
+        {
+         "sku": "CL-40COB300BK/WW-Pendant",
+         "t": "רול.4 תלוי תקרה 2 מטר שחור 40x300 מ\"מ BridgeLUX 3000K 38° 8W",
+         "specs": [
+          "8W",
+          "3000K",
+          "38°"
+         ],
+         "price": 240.7,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-40COB300BKWW-2p(1).jpg"
+        },
+        {
+         "sku": "CL-40COB600BK/WW-Pendant",
+         "t": "רול.4 תלוי תקרה 2 מטר שחור 40x600 מ\"מ BridgeLUX 3000K 38° 8W",
+         "specs": [
+          "8W",
+          "3000K",
+          "38°"
+         ],
+         "price": 270.2,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-40COB600BKWW-P(1).jpg"
+        }
+       ]
+      }
+     ],
+     "n": 20
+    },
+    {
+     "id": "pendant-e27",
+     "t": "תלויות קלאסיות E27",
+     "sections": [
+      {
+       "t": "גופי תאורה",
+       "products": [
+        {
+         "sku": "GLN-FLEX120/2K",
+         "t": "סדרת GLOW FLEX / חבל לדים 120 ס\"מ / הברגה E27 / מגנטי 10 וואט 2200K לעמעום",
+         "specs": [
+          "2200K",
+          "E27"
+         ],
+         "price": 309.2,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/GLN-FLEX-120.jpg"
+        },
+        {
+         "sku": "GLN-FLEX090/2K",
+         "t": "סדרת GLOW FLEX / חבל לדים 90 ס\"מ / הברגה E27 / מגנטי 8 וואט 2200K לעמעום",
+         "specs": [
+          "2200K",
+          "E27"
+         ],
+         "price": 259.6,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/GLN-FLEX-90.jpg"
+        },
+        {
+         "sku": "GLN-FLEX060/2K",
+         "t": "סדרת GLOW FLEX / חבל לדים 60 ס\"מ / הברגה E27  / מגנטי 6 וואט 2200K לעמעום",
+         "specs": [
+          "2200K",
+          "E27"
+         ],
+         "price": 206.5,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/GLN-FLEX-60.jpg"
+        },
+        {
+         "sku": "LH-7027BKBG-R3",
+         "t": "** גוף תלייה עגול, שחור עם פליז, שלישיה E27 , כבל מצופה בד 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 266.7,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027BKBG-R3.jpg"
+        },
+        {
+         "sku": "LH-7027BK-R3",
+         "t": "גוף תלייה עגול שחור שלישיה E27 כבל מצופה בד 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 246.6,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027BK-R3.jpg"
+        },
+        {
+         "sku": "LH-7027WH-R3",
+         "t": "גוף תלייה עגול לבן, שלישיה E27 , כבל מצופה בד 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 246.6,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027WH-R3_v2.jpg"
+        },
+        {
+         "sku": "LH-7027WHBG-R3",
+         "t": "גוף תלייה ישר, לבן עם פליז, שלישיה E27 , כבל מצופה בד 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 266.7,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027WHBG-R3.jpg"
+        },
+        {
+         "sku": "LH-7027BKBG-L3",
+         "t": "גוף תלייה ישר, שחור עם פליז, שלישיה E27 , כבל מצופה בד 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 233.6,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027BKBG-L3.jpg"
+        },
+        {
+         "sku": "LH-7027WHBG-L3",
+         "t": "** גוף תלייה ישר, לבן עם פליז, שלישיה E27 כבל מצופה בד 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 233.6,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027WHBG-L3(6).jpg"
+        },
+        {
+         "sku": "LH-7027BK-L3",
+         "t": "** גוף תלייה ישר שחור, שלישיה E27 כבל מצופה בד 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 212.4,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027BK-L3.jpg"
+        },
+        {
+         "sku": "LH-7027WH-L3",
+         "t": "גוף תלייה ישר לבן, שלישיה E27 , כבל מצופה בד 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 212.4,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027WH-L3(2).jpg"
+        },
+        {
+         "sku": "LH-7027BKBG-L5",
+         "t": "גוף תלייה ישר, שחור עם פליז, חמישייה E27 , כבל מצופה בד 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 382.3,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027BKBG-L5.jpg"
+        },
+        {
+         "sku": "LH-7027BK-L5",
+         "t": "גוף תלייה ישר שחור, חמישייה E27 כבל מצופה בד 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 345.7,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027BK-L5.jpg"
+        },
+        {
+         "sku": "LH-7027WH-L5",
+         "t": "גוף תלייה ישר לבן, חמישייה E27 , כבל מצופה בד 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 345.7,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027-L5-03(1).jpg"
+        },
+        {
+         "sku": "LH-7027WHBG-L5",
+         "t": "גוף תלייה ישר, לבן עם פליז, חמישייה E27 , כבל מצופה בד 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 382.3,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027WHBG-L5.jpg"
+        },
+        {
+         "sku": "LH-7027/R5",
+         "t": "גוף תלייה עגול, E27 כבל מצופה בד 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 435.4,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027-R5-4colors.gif"
+        },
+        {
+         "sku": "LH-M6/1",
+         "t": "מנורת תליה כדור רשת מתכת-שחור E27 מסדרת LUSTER כבל 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 448.4,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-M6-1.webp"
+        },
+        {
+         "sku": "LH-M6L/3",
+         "t": "גוף תלייה ישר, שלישייה E27 כדור רשת מתכת-שחור E27 מסדרת \"LUSTER\" כבל 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 667.9,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-M6L-3.webp"
+        },
+        {
+         "sku": "LH-M6R/3",
+         "t": "גוף תלייה עגול, שלישייה E27 כדור רשת מתכת-שחור E27 מסדרת \"LUSTER\" כבל 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 639.6,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-M6R-3.webp"
+        },
+        {
+         "sku": "LH-STYLE/1",
+         "t": "מנורת תליה כדורים צבעוניים דקורטיבים E27 מסדרת \"STYLE\" כבל 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 358.7,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-STYLE-1.webp"
+        },
+        {
+         "sku": "LH-STYLE/3",
+         "t": "גוף תלייה ישר, שלישייה E27 כדורים צבעוניים דקורטיבים מסדרת \"STYLE\" כבל 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 1019.5,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-STYLE-3.webp"
+        },
+        {
+         "sku": "LH-STYLE/5",
+         "t": "גוף תלייה ישר, חמישייה E27 כדורים צבעוניים דקורטיבים מסדרת \"STYLE\" כבל 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 1692.1,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-STYLE-5.webp"
+        },
+        {
+         "sku": "LH-M48BK",
+         "t": "מנורת תליה E27 בטון מסדרת \"מאש\" - כבל 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 149.9,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-M48BK_NEW.jpg"
+        },
+        {
+         "sku": "LH-M49BK",
+         "t": "מנורת תליה E27 בטון מסדרת \"מאש\" - כבל 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 149.9,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-M49BK.jpg"
+        },
+        {
+         "sku": "LH-M50BK",
+         "t": "מנורת תליה E27 בטון מסדרת \"מאש\" - כבל 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 149.9,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-M50BK_long.jpg"
+        },
+        {
+         "sku": "LH-M51BK",
+         "t": "מנורת תליה E27 בטון מסדרת \"מאש\" - כבל 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 149.9,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-M51BK.jpg"
+        },
+        {
+         "sku": "LH-M52BK",
+         "t": "מנורת תליה E27 בטון מסדרת \"מאש\" - כבל 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 149.9,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-M52BK.jpg"
+        },
+        {
+         "sku": "LH-M53BK",
+         "t": "מנורת תליה E27 בטון מסדרת \"מאש\" - כבל 2 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 149.9,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-M53BK.jpg"
+        },
+        {
+         "sku": "LH-ROD50/BG",
+         "t": "מנורת תליה E27 מסדרת \"רוד\" כבל 2 מטר גוף פליז",
+         "specs": [
+          "E27"
+         ],
+         "price": 154.6,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-ROD50-BG_Edit.jpg"
+        },
+        {
+         "sku": "LH-ROD50/BK",
+         "t": "מנורת תליה E27 מסדרת \"רוד\" כבל 2 מטר גוף שחור",
+         "specs": [
+          "E27"
+         ],
+         "price": 154.6,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-ROD50-BK_Edit.jpg"
+        },
+        {
+         "sku": "LH-ROD50/WH",
+         "t": "מנורת תליה E27 מסדרת \"רוד\" כבל 2 מטר גוף לבן",
+         "specs": [
+          "E27"
+         ],
+         "price": 154.6,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-ROD50-WH_Edit.jpg"
+        },
+        {
+         "sku": "LH-DECO50/BK",
+         "t": "גוף תליה שחור+פליז E27 (כולל חרוזים דיקורטיבי) כבל שחור 2.0 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 206.5,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LHDECO50-BK_Edit.jpg"
+        },
+        {
+         "sku": "LH-DECO50/WH",
+         "t": "גוף תליה לבן+פליז E27 (כולל חרוזים דיקורטיבי) כבל שחור 2.0 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 206.5,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LHDECO50-WH_Edit.jpg"
+        },
+        {
+         "sku": "LH-VBB27BK",
+         "t": "גוף תליה שחור סדרת וינטג' E27 כבל שחור 2.0 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 96.8,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-VBB27BK-1.jpg"
+        },
+        {
+         "sku": "LH-VB3",
+         "t": "גוף תליה כבל שחור 2.0 מטר מוברש עתיק E27",
+         "specs": [
+          "E27"
+         ],
+         "price": 225.4,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-VB3(5).jpg"
+        },
+        {
+         "sku": "LH-VB1",
+         "t": "גוף תליה כבל שחור 2.0 מטר מוברש עתיק E27",
+         "specs": [
+          "E27"
+         ],
+         "price": 225.4,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-VB1(3).jpg"
+        },
+        {
+         "sku": "LH-VB3/BK",
+         "t": "גוף תליה כבל שחור 2.0 מטר גוף שחור E27",
+         "specs": [
+          "E27"
+         ],
+         "price": 225.4,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-VB3_BK.jpg"
+        },
+        {
+         "sku": "LH-VB2/BK",
+         "t": "גוף תליה כבל שחור 2.0 מטר גוף שחור E27",
+         "specs": [
+          "E27"
+         ],
+         "price": 225.4,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-VB2_BK.jpg"
+        },
+        {
+         "sku": "LH-VB1/BK",
+         "t": "גוף תליה כבל שחור 2.0 מטר גוף שחור E27",
+         "specs": [
+          "E27"
+         ],
+         "price": 225.4,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-VB1_BK.jpg"
+        },
+        {
+         "sku": "LH-VBB27RB",
+         "t": "גוף תליה \"וינטג'\" זהב מט E27 כבל שחור 2.0 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 102.7,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-VBB27RB.jpg"
+        },
+        {
+         "sku": "LH-EYU27/BB",
+         "t": "כבל תליה ברונזה 2.0 מטר שחור E27",
+         "specs": [
+          "E27"
+         ],
+         "price": 180.5,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-EYU27-BB.jpg"
+        },
+        {
+         "sku": "LH-EYU27/BG",
+         "t": "כבל תליה פליז 2.0 מטר שחור E27",
+         "specs": [
+          "E27"
+         ],
+         "price": 162.8,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-EYU27-BG.jpg"
+        },
+        {
+         "sku": "LH-EYU27/BK",
+         "t": "כבל תליה שחור 2.0 מטר שחור E27",
+         "specs": [
+          "E27"
+         ],
+         "price": 141.6,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-EYU27-BK.jpg"
+        },
+        {
+         "sku": "LH-EYU27/WH",
+         "t": "כבל תליה לבן 2.0 מטר לבן E27",
+         "specs": [
+          "E27"
+         ],
+         "price": 141.6,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-EYU27-WH.jpg"
+        },
+        {
+         "sku": "LH-TCH27/BG",
+         "t": "▪▪ גוף תליה ברונזה E27 ( זכוכית ענבר ישרה)",
+         "specs": [
+          "E27"
+         ],
+         "price": 407.1,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-TCH27BG(1).jpg"
+        },
+        {
+         "sku": "LH-TCH27/CH",
+         "t": "▪▪ גוף תליה כרום E27 (זכוכית שקופה ישרה)",
+         "specs": [
+          "E27"
+         ],
+         "price": 389.4,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-TCH27CH(1).jpg"
+        },
+        {
+         "sku": "LH-TDH27/BG",
+         "t": "▪▪ גוף תליה ברונזה E27 (זכוכית עמבר קונוס)",
+         "specs": [
+          "E27"
+         ],
+         "price": 513.3,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-TDH27BG-R_NEW(1).jpg"
+        },
+        {
+         "sku": "LH-15027/BK",
+         "t": "כבל שחור 1.5 מטר מודרני שחור מאט E27",
+         "specs": [
+          "E27"
+         ],
+         "price": 35.4,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-15027-BK(7).jpg"
+        },
+        {
+         "sku": "LH-RB27BB",
+         "t": "גוף תליה \"רטרו\" ברונזה מוברש E27 (כולל טבעת באריזה) כבל שחור 2.00 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 75.5,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-RB27RB-Retro.jpg"
+        },
+        {
+         "sku": "LH-VBB27DM/BK",
+         "t": "ג\"ת \"יהלום\" עם כבל 1.50 מטר E27 בצבע שחור מט",
+         "specs": [
+          "E27"
+         ],
+         "price": 167.6,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/Diamond(3).jpg"
+        },
+        {
+         "sku": "LH-RB27RB",
+         "t": "גוף תליה \"רטרו\" \"זהב מוברש\" E27 כבל שחור 2.00 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 75.5,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-RB27RB - Retro.jpg"
+        },
+        {
+         "sku": "LH-RB27BK",
+         "t": "גוף תליה שחור מאט E27 (כולל טבעת באריזה) כבל שחור 2.0 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 75.5,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-RB27BK_NEW(1).jpg"
+        },
+        {
+         "sku": "LH-RB27WH",
+         "t": "גוף תליה לבן מאט E27 (כולל טבעת באריזה) כבל לבן 2.0 מטר",
+         "specs": [
+          "E27"
+         ],
+         "price": 75.5,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-RB27WH_NEW(1).jpg"
+        },
+        {
+         "sku": "LH-TDH27/CH",
+         "t": "●● גוף תליה כרום E27 (זכוכית שקופה קונוס)",
+         "specs": [
+          "E27"
+         ],
+         "price": 487.3,
+         "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-TDH27CH(2).png"
+        }
+       ]
+      }
+     ],
+     "n": 54
+    }
+   ],
+   "n": 74
   }
  ],
- "realTotal": 245,
- "grandTotal": 618
+ "realTotal": 319,
+ "grandTotal": 692
 };
