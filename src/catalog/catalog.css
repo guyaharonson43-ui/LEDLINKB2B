@@ -39,6 +39,8 @@ button, input, select, textarea { font-family: 'Heebo', sans-serif; }
   transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
   min-height: 320px;
+  display: flex;
+  flex-direction: column;
 }
 .product-card:hover {
   border-color: #E8A020;

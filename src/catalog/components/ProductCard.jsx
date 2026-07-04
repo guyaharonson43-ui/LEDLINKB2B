@@ -21,16 +21,19 @@ export default function ProductCard({ product, onClick, priority }) {
           </div>
         )}
       </div>
-      <div style={{ padding: '12px 14px 14px' }}>
+      <div style={{ padding: '12px 14px 14px', display: 'flex', flexDirection: 'column', flex: 1 }}>
         <div style={{ fontSize: 12, color: '#767676', marginBottom: 4, letterSpacing: 1, textTransform: 'uppercase' }}>
           {product.subCategory || product.category}
         </div>
-        <div style={{ fontSize: 14, fontWeight: 700, color: '#1C1C1C', lineHeight: 1.3, minHeight: 36 }}>
+        <div style={{
+          fontSize: 14, fontWeight: 700, color: '#1C1C1C', lineHeight: 1.3, minHeight: 36,
+          display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden',
+        }}>
           {product.name}
         </div>
         <SpecTags product={product} />
         <button className="btn-outline" onClick={() => onClick(product)}
-          style={{ marginTop: 12, width: '100%', fontSize: 13, padding: '7px 0' }}>
+          style={{ marginTop: 'auto', width: '100%', fontSize: 13, padding: '7px 0' }}>
           פרטים נוספים
         </button>
       </div>
