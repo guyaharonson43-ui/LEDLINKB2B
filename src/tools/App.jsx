@@ -13,6 +13,16 @@ const CircadianCalc     = lazy(() => import('./components/CircadianCalc'));
 const LinearProfileCalc = lazy(() => import('./components/LinearProfileCalc'));
 const PowerCalc         = lazy(() => import('./components/PowerCalc'));
 
+const TOOL_BASIS = {
+  voltage:     'נוסחאות מפל מתח מקובלות (חוק אוהם) עם פרמטרים ממוצעים לכבל',
+  lumen:       'נוסחאות תקן EN 12464 עם פרמטרים ממוצעים',
+  roi:         'הערכת צריכת חשמל וחיסכון כלכלי המבוססת על פרמטרים ממוצעים',
+  'beam-linear': 'נוסחאות גיאומטריה פוטומטרית מקובלות עם פרמטרים ממוצעים',
+  circadian:   'נוסחאות תקן CIE S 026 למדידת אור מלנופי עם פרמטרים ממוצעים',
+  linear:      'חישובי מידות ותצורת פרופיל המבוססים על פרמטרים ממוצעים',
+  power:       'נוסחאות הספק חשמלי מקובלות עם מקדם ביטחון ממוצע',
+};
+
 export default function App() {
   const [tool, setTool] = useState(() => {
     const t = new URLSearchParams(window.location.search).get('tool');
@@ -79,7 +89,7 @@ export default function App() {
           <div>
             <p className="font-bold text-sm mb-1" style={{ color: '#C4880A' }}>כלי תכנון — להערכה ראשונית בלבד</p>
             <p className="text-xs leading-relaxed" style={{ color: '#5a4a1a' }}>
-              החישובים מבוססים על נוסחאות תקן EN 12464 עם פרמטרים ממוצעים. התוצאות אינן תחליף לתכנון תאורה מקצועי ואינן מהוות התחייבות מצד LEDLink לתוצאות בשטח.
+              החישובים מבוססים על {TOOL_BASIS[tool] || 'נוסחאות הנדסיות מקובלות עם פרמטרים ממוצעים'}. התוצאות אינן תחליף לתכנון/ייעוץ הנדסי מקצועי ואינן מהוות התחייבות מצד LEDLink לתוצאות בשטח.
             </p>
           </div>
         </div>
