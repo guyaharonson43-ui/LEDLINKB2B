@@ -176,6 +176,17 @@
     "scarcity": null
   },
   {
+    "id": "ledlink-4050",
+    "name": "4050",
+    "img": "strips/4050.jpg",
+    "desc": "מקט: 4050 | פרופיל | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
+    "category": "פרופילים",
+    "price": null,
+    "url": "https://ledlink.co.il/product/4050/",
+    "isFlagship": false,
+    "scarcity": null
+  },
+  {
     "id": "ledlink-4435",
     "name": "4435",
     "img": "strips/4435-600x600.webp",

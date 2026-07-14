@@ -1,6 +1,6 @@
 // קובץ preview — נוצר אוטומטית ע"י build_preview_data.js
 // אין לערוך ידנית. לעדכון הרץ: node build_preview_data.js
-// מוצרים מקוריים: 373 | גופי תאורה: 319 | סה"כ: 692
+// מוצרים מקוריים: 374 | גופי תאורה: 319 | סה"כ: 693
 const __PRODUCTS__ = [
   {
     "id": "ledlink-tuba30",
@@ -175,6 +175,17 @@ const __PRODUCTS__ = [
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/3535/",
+    "isFlagship": false,
+    "scarcity": null
+  },
+  {
+    "id": "ledlink-4050",
+    "name": "4050",
+    "img": "strips/4050.jpg",
+    "desc": "מקט: 4050 | פרופיל | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
+    "category": "פרופילים",
+    "price": null,
+    "url": "https://ledlink.co.il/product/4050/",
     "isFlagship": false,
     "scarcity": null
   },
