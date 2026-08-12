@@ -42,7 +42,7 @@ export default function GuidesFooter() {
           </div>
           <div>
             <div className="footer-col-title">שעות פעילות</div>
-            <div className="footer-hours-row"><span className="hours-day">ראשון – חמישי</span><span className="hours-open">15:00 – 07:00</span></div>
+            <div className="footer-hours-row"><span className="hours-day">ראשון – חמישי</span><span className="hours-open">07:00 – 15:00</span></div>
             <div className="footer-hours-row"><span className="hours-day">שישי</span><span className="hours-closed">סגור</span></div>
             <div className="footer-hours-row"><span className="hours-day">שבת</span><span className="hours-closed">סגור</span></div>
           </div>
