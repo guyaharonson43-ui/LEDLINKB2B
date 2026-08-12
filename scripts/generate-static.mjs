@@ -87,6 +87,16 @@ if (!Array.isArray(products) || products.length === 0) {
   process.exit(1);
 }
 
+// datasheets_data.js: `const PRODUCT_DATASHEETS = {...}; export default PRODUCT_DATASHEETS;`
+// Same lookup order as ProductModal.jsx: by product.id first, then product.name.
+const datasheetsSrc = readFileSync(join(ROOT, 'datasheets_data.js'), 'utf8')
+  .replace(/^export\s+default\s+\S+\s*;?\s*$/gm, '');
+const datasheets = new Function(datasheetsSrc + '\nreturn PRODUCT_DATASHEETS;')();
+
+function datasheetsFor(p) {
+  return datasheets[p.id] || datasheets[p.name] || [];
+}
+
 function cleanName(s) {
   return s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
           .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ');
@@ -207,16 +217,22 @@ const sitemapStatic = [
   { loc: `${BASE_URL}/about.html`,   priority: '0.5', changefreq: 'yearly'  },
   { loc: `${BASE_URL}/faq.html`,     priority: '0.5', changefreq: 'monthly' },
 ];
+// Product pages don't have a real per-product last-modified date to report —
+// stamping all ~700 of them with today's build date is a false-freshness
+// signal search engines flag as suspicious. Omit <lastmod> for those; keep it
+// only on the handful of static pages where "today" is a reasonable proxy.
 const sitemapProducts = products
   .map(p => ({ loc: canonicalUrl(p), priority: '0.8', changefreq: 'monthly' }));
 
-const sitemapAll = [...sitemapStatic, ...sitemapProducts];
+const sitemapAll = [
+  ...sitemapStatic.map(u => ({ ...u, lastmod: today })),
+  ...sitemapProducts,
+];
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${sitemapAll.map(u => `  <url>
     <loc>${u.loc}</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>${u.changefreq}</changefreq>
+${u.lastmod ? `    <lastmod>${u.lastmod}</lastmod>\n` : ''}    <changefreq>${u.changefreq}</changefreq>
     <priority>${u.priority}</priority>
   </url>`).join('\n')}
 </urlset>`;
@@ -235,15 +251,25 @@ function escHtml(s) {
 
 const productDir = join(DIST, 'product');
 
+// desc fields are free-text, pipe-separated (e.g. "הספק: 12W/m | 24V | IP20").
+// Splitting into a real bullet list gives search engines actual structured
+// content instead of one flat, often very short, paragraph.
+function specListItems(desc) {
+  if (!desc) return [];
+  return cleanName(desc).split('|').map(s => s.trim()).filter(Boolean);
+}
+
 function buildProductPage(p) {
   const url        = canonicalUrl(p);
   const name        = escHtml(cleanName(p.name));
-  const rawDesc     = p.desc ? cleanName(p.desc) : '';
   const shortDesc   = p.desc ? cleanName(p.desc.split('|')[0].trim()) : cleanName(p.name);
   const desc        = escHtml(shortDesc);
   const imgUrl      = imageUrl(p);
   const catalogLink = `${BASE_URL}/catalog.html?product=${encodeURIComponent(p.id)}`;
   const offers      = offersFor(p, url);
+  const specs       = specListItems(p.desc);
+  const ds          = datasheetsFor(p);
+  const sku         = cleanName(p.name).includes('—') ? cleanName(p.name).split('—').pop().trim() : null;
 
   const productSchema = {
     '@context': 'https://schema.org',
@@ -252,6 +278,8 @@ function buildProductPage(p) {
     description: shortDesc,
     image: imgUrl,
     brand: { '@type': 'Brand', name: 'LEDLink' },
+    category: p.category,
+    ...(sku ? { sku } : {}),
     url,
     ...(offers ? { offers } : {})
   };
@@ -270,15 +298,24 @@ function buildProductPage(p) {
   main{max-width:720px;margin:0 auto}
   img{max-width:100%;border-radius:12px;margin:16px 0}
   a.btn{display:inline-block;margin-top:16px;padding:12px 24px;background:#E8A020;color:#1C1C1C;text-decoration:none;border-radius:8px;font-weight:700}
-  h1{font-size:24px}
+  h1{font-size:24px;margin-bottom:4px}
+  .cat{color:#C4880A;font-weight:700;font-size:13px;letter-spacing:.5px;margin-bottom:12px}
+  .specs{list-style:none;padding:0;margin:16px 0;display:grid;gap:8px}
+  .specs li{background:#fff;border:1px solid #E0DDD6;border-radius:6px;padding:10px 14px;font-size:14px}
+  h2{font-size:15px;margin:24px 0 8px}
+  .docs{display:flex;flex-direction:column;gap:8px}
+  .docs a{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#fff;border:1px solid #E0DDD6;border-radius:6px;color:#C4880A;text-decoration:none;font-weight:600;font-size:14px}
 </style>
 </head>
 <body>
 <main>
+  <div class="cat">${escHtml(p.category)}${p.subCategory ? ' · ' + escHtml(p.subCategory) : ''}</div>
   <h1>${name}</h1>
   <img src="${imgUrl}" alt="${name}" loading="lazy">
-  <p>${escHtml(rawDesc)}</p>
-  <a class="btn" href="${catalogLink}">צפייה בקטלוג המלא</a>
+  ${specs.length ? `<ul class="specs">${specs.map(s => `<li>${escHtml(s)}</li>`).join('')}</ul>` : ''}
+  ${ds.length ? `<h2>מסמכים טכניים</h2>
+  <div class="docs">${ds.map(d => `<a href="${BASE_URL}/${d.file}" target="_blank" rel="noopener noreferrer">${escHtml(d.label)}</a>`).join('')}</div>` : ''}
+  <a class="btn" href="${catalogLink}">צפייה בקטלוג המלא ובמוצרים דומים</a>
 </main>
 </body>
 </html>`;
