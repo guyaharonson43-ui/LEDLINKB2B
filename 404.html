@@ -23,6 +23,19 @@
         '/product/meanwell-60w-ip67':      '/catalog.html',
         '/product/%D7%9E%D7%97%D7%91%D7%A8-%D7%99%D7%A9%D7%A8': '/catalog.html',
         '/product/מחבר-ישר':              '/catalog.html',
+
+        // Old WordPress-era datasheet PDFs → same file, new location.
+        // Confirmed 1:1 (identical filename still present under /datasheets/):
+        '/wp-content/uploads/2022/10/N2412L.pdf': '/datasheets/N2412L.pdf',
+        '/wp-content/uploads/2022/10/PUL.pdf':    '/datasheets/PUL.pdf',
+        '/wp-content/uploads/2022/10/SLBOX.pdf':  '/datasheets/SLBOX.pdf',
+        '/wp-content/uploads/2022/10/SLBOXD.pdf': '/datasheets/SLBOXD.pdf',
+        // Confirmed by naming convention (I = IP68, A = IP65, 1103 replaces 1102):
+        '/wp-content/uploads/2022/10/H24I.pdf':     '/datasheets/H24_IP68.pdf',
+        '/wp-content/uploads/2022/10/B24A.pdf':     '/datasheets/B24_IP65.pdf',
+        '/wp-content/uploads/2022/10/DALI1102.pdf': '/datasheets/DALI1103.pdf',
+        // Confirmed via product qlt-3d2460's known datasheet mapping:
+        '/wp-content/uploads/2022/10/3D2460.pdf':   '/datasheets/DS_3D.pdf',
       };
       if (EXACT[path]) {
         window.location.replace(EXACT[path]);
@@ -42,17 +55,22 @@
       else if (/about|faq|privacy|takanon|access/.test(pathLower)) {
         dest = '/' + pathLower.split('/').filter(Boolean).pop();
       }
-      // Default → home
+      // Anything else (discontinued products/files, /shop/, unrecognized paths)
+      // has no real destination — redirecting it to the homepage/catalog anyway
+      // reads to search engines as a "soft 404" (a broken URL that quietly
+      // resolves to live content). Leave it as a genuine not-found page instead.
       else {
-        dest = '/';
+        dest = null;
       }
 
-      // 301-style client redirect (replaces history entry so back-button works)
-      window.location.replace(dest);
+      // Matched cases redirect immediately (before the page is read); unmatched
+      // cases leave the static "not found" message below as-is — also serves
+      // JS-disabled clients and crawlers that don't execute redirects.
+      if (dest) {
+        window.location.replace(dest);
+      }
     })();
   </script>
-  <!-- Fallback for JS-disabled browsers -->
-  <meta http-equiv="refresh" content="3;url=/">
   <style>
     body { font-family: 'Heebo', sans-serif; direction: rtl; text-align: center;
            padding: 60px 20px; background: #F4F4F0; color: #333; }
@@ -60,7 +78,9 @@
   </style>
 </head>
 <body>
-  <p>הדף לא נמצא — מפנה אותך...</p>
-  <p><a href="/">חזרה לדף הבית</a> | <a href="/catalog.html">קטלוג מוצרים</a></p>
+  <p>
+    הדף שחיפשת לא קיים באתר.<br>
+    <a href="/">חזרה לדף הבית</a> | <a href="/catalog.html">קטלוג מוצרים</a>
+  </p>
 </body>
 </html>
