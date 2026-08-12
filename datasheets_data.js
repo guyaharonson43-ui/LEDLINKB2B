@@ -11,6 +11,7 @@
   'ledlink-2415':    [{ label: 'LINK 2415 — דף נתונים', file: 'DATASHEET/LINK2415.html' }],
   'ledlink-3020':    [{ label: 'LINK 3020 — דף נתונים', file: 'DATASHEET/LINK3020.html' }],
   'ledlink-3535p':   [{ label: 'LINK 3535 — דף נתונים', file: 'DATASHEET/LINK3535.html' }],
+  'ledlink-4050':    [{ label: 'LINK 4050 — דף נתונים', file: 'DATASHEET/LINK4050.html' }],
   'ledlink-4435':    [{ label: 'LINK 4435 — דף נתונים', file: 'DATASHEET/LINK4435.html' }],
   'ledlink-5213':    [{ label: 'LINK 5213 — דף נתונים', file: 'DATASHEET/LINK5213.html' }],
   // שמירת רשומות PDF קיימות
