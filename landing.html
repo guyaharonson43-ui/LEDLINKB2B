@@ -8,6 +8,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EFYL6ZDMW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0EFYL6ZDMW');
+  </script>
   <!-- Meta Pixel -->
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -236,6 +244,7 @@
     .cat-card-bg--profiles { background-image: url('assets/cat-profile.png'); }
     .cat-card-bg--strip { background-image: url('assets/cat-strip.png'); }
     .cat-card-bg--lighting { background-color: #2A2A1A; }
+    .cat-card-bg--driver { background-color: #2A1A0A; }
     .cat-card-body {
       position: relative; padding: 32px;
       background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
@@ -459,6 +468,24 @@
           <span class="cat-cta">לקטלוג ←</span>
         </div>
       </a>
+      <a href="catalog.html?tab=סטריפ LED" class="cat-card">
+        <div class="cat-card-bg cat-card-bg--strip"></div>
+        <div class="cat-card-body">
+          <div class="cat-tag">112 דגמים</div>
+          <div class="cat-title">סטריפ LED</div>
+          <div class="cat-desc">סטריפים איכותיים לכל שימוש — COB, ניאון, RGB ועוד.</div>
+          <span class="cat-cta">לקטלוג ←</span>
+        </div>
+      </a>
+      <a href="catalog.html?tab=דרייברים" class="cat-card">
+        <div class="cat-card-bg cat-card-bg--driver"></div>
+        <div class="cat-card-body">
+          <div class="cat-tag">241 דגמים</div>
+          <div class="cat-title">דרייברים</div>
+          <div class="cat-desc">ספקי כוח ודרייברים מיובאים מאירופה — לכל סוגי העמעום.</div>
+          <span class="cat-cta">לקטלוג ←</span>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -513,9 +540,18 @@
       const phone = document.getElementById('f-phone').value.trim();
       const msg = document.getElementById('f-msg').value.trim();
       if (!name || !phone) { alert('נא למלא שם וטלפון'); return; }
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { lead_source: 'whatsapp_form' });
       const text = `שלום, אני ${name} (${phone}).\nאני מעוניין בהצעת מחיר לפרופילי LED / גופי תאורה.${msg ? '\n\n' + msg : ''}`;
       window.open('https://wa.me/972504722550?text=' + encodeURIComponent(text), '_blank');
     }
+
+    document.querySelectorAll('a.wa-float, a[href^="tel:"]').forEach(function(el){
+      el.addEventListener('click', function(){
+        if (typeof gtag !== 'function') return;
+        const source = el.classList.contains('wa-float') ? 'whatsapp_float' : 'phone_click';
+        gtag('event', 'generate_lead', { lead_source: source });
+      });
+    });
   </script>
 
 </body>
