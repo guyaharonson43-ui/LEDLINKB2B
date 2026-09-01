@@ -6,7 +6,7 @@ import GuideArticle from './components/GuideArticle';
 import GuidesNavbar from './components/GuidesNavbar';
 import GuidesFooter from './components/GuidesFooter';
 
-const WA_NUMBER = '972524444470';
+const WA_NUMBER = '972504722550';
 
 const WaIcon = () => (
   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">

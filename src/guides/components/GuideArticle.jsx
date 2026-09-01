@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import { renderParagraph } from './renderParagraph';
 
-const WA_NUMBER = '972524444470';
+const WA_NUMBER = '972504722550';
 
 const WaIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">

@@ -1,5 +1,5 @@
 // src/tools/components/ContactRow.jsx
-export const WA_NUMBER = '972524444470';
+export const WA_NUMBER = '972504722550';
 export const PHONE_HREF = 'tel:+97286326059';
 export const waLink = (text) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
 

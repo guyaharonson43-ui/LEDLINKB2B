@@ -101,7 +101,7 @@ React app בקובץ HTML אחד, ללא pre-transpile:
 3. **`cleanName()`** — מנקה HTML entities משמות מוצרים (עברית)
 4. **סינון סטריפ** — משלב `desc` ו-`specs` דרך `getStripMeta()`
 5. **Datasheet lookup** — ראשית לפי `product.id`, אחר כך לפי `product.name`
-6. **WhatsApp number** — `972524444470` קבוע ב-`WA_NUMBER` בכל דף
+6. **WhatsApp number** — `972504722550` קבוע ב-`WA_NUMBER` בכל דף
 7. **React CDN** — אין build, Babel standalone הופך JSX בדפדפן
 8. **URL parameters** — `tools.html?tool=circadian` לפתיחת מחשבון ספציפי, `catalog.html?tab=סטריפ LED`
 
