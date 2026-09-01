@@ -4,3 +4,6 @@ dist/
 # עמוד קטלוג תאורה ישן — הוחלף ב-catalog.html?tab=גופי תאורה.
 # נשאר בתיקייה המקומית לשימוש עתידי, מחוץ לריפו ומחוץ לבילד.
 lighting.html
+lighting-kit.css
+lighting-tokens.css
+lighting_data.js
