@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/generate-static.mjs",
+    "build": "node scripts/generate-datasheet-manifest.mjs && vite build && node scripts/generate-static.mjs",
     "preview": "vite preview"
   },
   "repository": {

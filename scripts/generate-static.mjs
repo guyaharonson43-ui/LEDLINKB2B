@@ -94,8 +94,18 @@ const datasheetsSrc = readFileSync(join(ROOT, 'datasheets_data.js'), 'utf8')
   .replace(/^export\s+default\s+\S+\s*;?\s*$/gm, '');
 const datasheets = new Function(datasheetsSrc + '\nreturn PRODUCT_DATASHEETS;')();
 
+// אותו סינון כמו בקטלוג: לינק לקובץ שאינו קיים מחזיר 404, וגרוע מהיעדר
+// לינק. הדפים הסטטיים משרתים גם את מנועי החיפוש, ולכן חשוב שלא יפרסמו
+// הפניות שבורות.
+const existingFiles = new Set(
+  ['datasheets', 'DATASHEET']
+    .filter(dir => existsSync(join(ROOT, dir)))
+    .flatMap(dir => readdirSync(join(ROOT, dir)).map(f => dir + '/' + f))
+);
+
 function datasheetsFor(p) {
-  return datasheets[p.id] || datasheets[p.name] || [];
+  const list = datasheets[p.id] || datasheets[p.name] || [];
+  return list.filter(d => existingFiles.has(d.file));
 }
 
 function cleanName(s) {

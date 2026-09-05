@@ -469,29 +469,47 @@ button, input, select, textarea { font-family: 'Heebo', sans-serif; }
 
 @media (max-width: 600px) {
   .catalog-content-pad { padding: 24px 16px !important; }
-  /* ארבעת הטאבים לא נכנסו לרוחב הטלפון, והגלילה האופקית שהחליפה אותם לא
-     רמזה על עצמה — נראה כאילו יש שתי קטגוריות בלבד. כאן הם נערכים מחדש
-     לרשת של ארבע עמודות שוות, והמונה יורד מתחת לשם במקום לצדו. כך כל
-     ארבע הקטגוריות נראות יחד גם ב-320px, בלי גלילה בכלל. */
+  /* רשת ארבע-עמודות קצצה את השמות ל"סטריף …" ו"גופי תא…", והמונה מתחת
+     לשם תפס שורה שלמה. המונה יורד במובייל — הוא מידע משני שגזל את המקום
+     שהשם היה צריך — וארבעת השמות המלאים נכנסים בשורה אחת.
+
+     גלילה אופקית כבר נוסתה כאן בעבר ובוטלה, כי היא לא רמזה על עצמה ונראה
+     היה שיש שתי קטגוריות בלבד. הפעם היא נשארת כרשת ביטחון בלבד: בלי
+     המונים ארבעת השמות נכנסים במסך של 375px בלי גלילה כלל. מתחת לזה,
+     שני מנגנוני רמז מונעים את הבעיה הישנה — הצללה בקצה שמסמנת שיש המשך,
+     והטאב הפעיל נגלל אוטומטית לתצוגה (ב-App.jsx). */
   .tab-strip {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    padding: 0 6px;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0 4px;
+  }
+  .tab-strip::-webkit-scrollbar { display: none; }
+  /* הרמז שחסר בפעם הקודמת: הקצה נמוג כשיש עוד טאבים מעבר לו, ונאטם
+     כשמגיעים לסוף. background-attachment: local על שכבות הרקע נותן את
+     ההתנהגות הזו מה-CSS בלבד — הצללה שמופיעה ונעלמת עם הגלילה, בלי JS
+     ובלי מאזין scroll. עובד לשני הכיוונים ולכן תקין גם ב-RTL. */
+  .tab-strip {
+    background:
+      linear-gradient(to right, #FFFFFF 30%, rgba(255,255,255,0)) left center,
+      linear-gradient(to left,  #FFFFFF 30%, rgba(255,255,255,0)) right center,
+      radial-gradient(farthest-side at 0 50%, rgba(0,0,0,0.13), rgba(0,0,0,0)) left center,
+      radial-gradient(farthest-side at 100% 50%, rgba(0,0,0,0.13), rgba(0,0,0,0)) right center;
+    background-repeat: no-repeat;
+    background-size: 34px 100%, 34px 100%, 13px 100%, 13px 100%;
+    background-attachment: local, local, scroll, scroll;
   }
   .tab-button {
-    flex-direction: column;
-    justify-content: center;
-    gap: 3px;
-    padding: 9px 2px 7px;
-    font-size: 12.5px;
-    min-width: 0;
+    gap: 0;
+    padding: 12px 11px 10px;
+    font-size: 13px;
+    scroll-snap-align: center;
   }
-  .tab-label {
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .tab-count { font-size: 11px; padding: 0 6px; }
+  /* המונה יורד במובייל בלבד; בדסקטופ יש לו מקום והוא נשאר */
+  .tab-count { display: none; }
   .products-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 18px; }
 }
 
