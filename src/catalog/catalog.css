@@ -68,6 +68,22 @@ button, input, select, textarea { font-family: 'Heebo', sans-serif; }
   white-space: nowrap;
 }
 .filter-chip:hover { border-color: #E8A020; color: #E8A020; }
+
+/* ערך שהצטמצם לאפס בגלל ציר סינון אחר. הצ'יפ נשאר במקומו ולא נעלם —
+   הסתרה מקפיצה את שאר הצ'יפים מתחת לאצבע בכל לחיצה. */
+.filter-chip:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+  border-color: #E0DDD6;
+}
+.filter-chip:disabled:hover { border-color: #E0DDD6; color: inherit; }
+
+/* תג "זרם נבחר" — סימון שהנתון חלקי, לא מפרט. שקט יותר משאר התגיות. */
+.spec-tag.muted {
+  background: transparent;
+  border: 1px dashed #C4880A;
+  color: #C4880A;
+}
 .filter-chip.active { border-color: #E8A020; color: #1C1C1C; background: #E8A020; }
 
 /* משטח תמונת המוצר.
@@ -284,6 +300,47 @@ button, input, select, textarea { font-family: 'Heebo', sans-serif; }
 .nav-drop-item:hover { color: #E8A020; background: rgba(255,255,255,0.04); border-right-color: #E8A020; }
 
 .catalog-layout { display: grid; gap: 40px; align-items: start; }
+
+/* פאנל הסינון גולל בעצמו.
+   בלי max-height הפאנל גבוה מהמסך, ולכן גלגלת מעליו הזיזה את הדף עד
+   שתחתית הפאנל נכנסה לתצוגה — ורק אז התחילה לגלול את הסינון. הגובה חסום
+   לגובה החלון פחות ה-sticky top, וה-overscroll-behavior מונע מהגלילה
+   לזלוג לדף כשמגיעים לקצה. 130px = ה-top של הפאנל, 24px = אוויר בתחתית. */
+.catalog-sidebar {
+  /* max() מונע קריסה לגובה אפסי במסך נמוך: הפאנל לא יורד מ-320px גם אם
+     החישוב יוצא קטן מזה, ואז הוא פשוט גולל יותר. */
+  max-height: max(320px, calc(100vh - 130px - 24px));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #D0CCC4 transparent;
+}
+.catalog-sidebar::-webkit-scrollbar { width: 8px; }
+.catalog-sidebar::-webkit-scrollbar-track { background: transparent; }
+.catalog-sidebar::-webkit-scrollbar-thumb { background: #D0CCC4; border-radius: 4px; }
+.catalog-sidebar::-webkit-scrollbar-thumb:hover { background: #B5B0A6; }
+
+/* המגירה במובייל היא אותו סיפור — גלילה משלה, בלי לזלוג לדף שמאחוריה */
+.mobile-filter-panel { overscroll-behavior: contain; }
+
+/* מתג סוג הדרייבר בראש פאנל הסינון */
+.driver-group-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Heebo', sans-serif;
+  text-align: start;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+.driver-group-btn[aria-pressed="false"]:hover { border-color: #E8A020; color: #1C1C1C; }
 .catalog-layout.with-sidebar { grid-template-columns: 240px 1fr; }
 .catalog-layout.no-sidebar   { grid-template-columns: 1fr; }
 
@@ -379,7 +436,7 @@ button, input, select, textarea { font-family: 'Heebo', sans-serif; }
   .hamburger { display: flex; }
 }
 .products-grid { display: grid; gap: 56px 30px; grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); }
-/* ── שורת הקטגוריות ────────────────────────────────────
+/* ── שורת הקטגוריות ────────────────────────────────────────────────────
    כל הפריסה כאן ולא ב-inline, כדי ש-media query יוכל לארגן אותה מחדש. */
 .tab-strip { display: flex; gap: 0; padding: 0 24px; }
 .tab-button {

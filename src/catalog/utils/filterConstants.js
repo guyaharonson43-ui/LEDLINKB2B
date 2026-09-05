@@ -17,18 +17,10 @@ export const STRIP_LMW_RANGES = [
   { label: '200+',   min: 200, max: 99999 },
 ];
 
-export const PS_VOLTAGE_OPTIONS       = ['הכל', '12V', '24V', '48V'];
-export const PS_INPUT_VOLTAGE_OPTIONS = ['הכל', '12V', '24V', '48V', '110V', '230V'];
-export const PS_IP_OPTIONS            = ['הכל', 'IP20', 'IP65', 'IP67', 'IP68'];
-export const PS_DIMMING_OPTIONS       = ['הכל', 'DALI', '0-10V', 'PWM', 'TRIAC', 'Resistor', 'Push'];
-export const PS_POWER_RANGES = [
-  { label: 'הכל',     min: 0,   max: 99999 },
-  { label: 'עד 30W',  min: 0,   max: 30    },
-  { label: '30–60W',  min: 30,  max: 60    },
-  { label: '60–100W', min: 60,  max: 100   },
-  { label: '100–200W', min: 100, max: 200  },
-  { label: '200W+',   min: 200, max: 99999 },
-];
+// צירי הדרייברים אינם מוגדרים כאן. הם נגזרים מהנתונים בזמן ריצה
+// ב-driverFacets.js, כי הרשימות הכתובות ביד נסחפו: הן הציעו IP67, IP68
+// ו-Resistor שאין להם אף מוצר, ושכחו את IGBT, MOSFET, 1-10V, BLE, ZIGBEE,
+// RF ו-DMX. ראו docs/superpowers/specs/2026-09-05-driver-filters-design.md
 
 export const STRIP_CRI_OPTIONS = ['הכל', '>80', '>90', '>94', '>95'];
 
@@ -48,4 +40,6 @@ export const SUBCATEGORY_ALIASES = { 'פסי צבירה ומסילות': 'פסי
 export const INIT_TRACK = { type: 'הכל' };
 
 export const INIT_STRIP = { ip: 'הכל', type: 'הכל', color: 'הכל', voltage: 'הכל', cri: 'הכל', power: 'הכל', lmw: 'הכל' };
-export const INIT_PS    = { smartType: 'הכל', voltage: 'הכל', inputVoltage: 'הכל', ip: 'הכל', dimming: 'הכל', power: 'הכל' };
+// מחרוזת = בחירה יחידה (בלעדית מטבעה), מערך = רב-בחירה (OR בתוך הציר).
+// group נבחר במתג שמעל הגריד, לא בסיידבר, ולכן אינו מאופס ב"איפוס".
+export const INIT_PS    = { group: 'הכל', voltage: 'הכל', current: [], inputVoltage: 'הכל', ip: [], dimming: [], power: 'הכל' };

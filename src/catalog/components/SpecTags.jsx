@@ -1,15 +1,23 @@
-import { getStripMeta } from '../utils/stripMeta';
+import { getStripMeta }  from '../utils/stripMeta';
+import { getDriverMeta } from '../utils/driverMeta';
 
 export default function SpecTags({ product }) {
   const cat  = product.category;
   const tags = [];
 
   if (cat === 'דרייברים') {
-    if (product.specs?.power)      tags.push({ label: product.specs.power, hi: true });
-    if (product.specs?.voltage)    tags.push({ label: product.specs.voltage });
-    if (product.specs?.ip)         tags.push({ label: product.specs.ip });
-    if (product.specs?.outputMode) tags.push({ label: product.specs.outputMode });
-    if (product.specs?.dimming?.length) tags.push({ label: product.specs.dimming[0] });
+    const m = getDriverMeta(product);
+    if (m.power != null)      tags.push({ label: m.power + 'W', hi: true });
+    // ב-CC ערך היציאה הוא זרם ולא מתח. specs.voltage מחזיק את שניהם, ולכן
+    // התגית נגזרת מהמפרט המנורמל ולא מהשדה הגולמי.
+    if (m.outputCurrent != null) tags.push({ label: m.outputCurrent + 'mA' });
+    else if (m.outputVoltage)    tags.push({ label: m.outputVoltage });
+    if (m.ip)                 tags.push({ label: m.ip });
+    // הזרם נבחר בהתקנה והקטלוג מציג ערך אחד בלבד — מסומן כדי שהמשתמש לא
+    // יסיק מהתג שזה הערך היחיד שהדרייבר תומך בו.
+    if (m.multiCurrent)       tags.push({ label: 'זרם נבחר', muted: true,
+                                          title: 'הזרם נבחר בדרייבר; הקטלוג מציג ערך אחד בלבד' });
+    if (m.dimming.length)     tags.push({ label: m.dimming[0] });
   } else if (cat === 'סטריפ LED') {
     const m = getStripMeta(product);
     if (m.power)              tags.push({ label: m.power + 'W/m', hi: true });
@@ -38,7 +46,8 @@ export default function SpecTags({ product }) {
   return (
     <div className="spec-tags">
       {tags.slice(0, 4).map((t, i) => (
-        <span key={i} className={`spec-tag${t.hi ? ' highlight' : ''}`}>{t.label}</span>
+        <span key={i} title={t.title}
+          className={`spec-tag${t.hi ? ' highlight' : ''}${t.muted ? ' muted' : ''}`}>{t.label}</span>
       ))}
     </div>
   );
