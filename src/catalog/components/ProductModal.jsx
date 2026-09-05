@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import datasheets    from '../../../datasheets_data';
 import { trackEvent, pdfSrc } from '../utils/helpers';
+import { getDriverMeta } from '../utils/driverMeta';
 import { getStripMeta }       from '../utils/stripMeta';
 import ProductImg             from './ProductImg';
 import NeonSchematic          from './NeonSchematics';
@@ -135,12 +136,22 @@ export default function ProductModal({ product: initialProduct, variants, onClos
     }
 
     if (cat === 'דרייברים' && product.specs) {
-      const s = product.specs;
+      // מהמפרט המנורמל ולא מ-specs הגולמי: שם השדה voltage מחזיק וולט במתח-קבוע
+      // ומיליאמפר בזרם-קבוע, ותגית outputMode שגויה ב-27 מוצרים. בלי זה החלון
+      // היה מציג "מתח: 350MA", ו"מצב יציאה: CC" על דרייבר 24V.
+      const m = getDriverMeta(product);
+      const isCC = m.outputCurrent != null;
       return (
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginTop: 16 }}>
-          {[['הספק', s.power], ['מתח', s.voltage], ['IP', s.ip], ['מצב פלט', s.outputMode],
-            ['מתח כניסה', s.inputVoltage], ['עמעום', s.dimming?.join(', ')]
-          ].filter(([, v]) => v).map(([k, v]) => (
+          {[['הספק', m.power != null ? m.power + 'W' : null],
+            [isCC ? 'זרם יציאה' : 'מתח יציאה', isCC ? m.outputCurrent + 'mA' : m.outputVoltage],
+            ['IP', m.ip],
+            ['מצב יציאה', m.group],
+            ['מתח כניסה', m.inputVoltage],
+            ['עמעום', m.dimming.length ? m.dimming.join(', ') : 'ללא'],
+            // הזרם נבחר בהתקנה; הקטלוג מציג ערך אחד מתוך כמה שהדרייבר תומך בהם
+            m.multiCurrent ? ['הערה', 'זרם נבחר בדרייבר — מוצג ערך אחד בלבד'] : null,
+          ].filter(Boolean).filter(([, v]) => v).map(([k, v]) => (
             <div key={k} style={{ background: '#F4F4F0', borderRadius: 6, padding: '10px 14px', border: '1px solid #E0DDD6' }}>
               <div style={{ fontSize: 10, color: '#767676', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 4 }}>{k}</div>
               <div style={{ fontSize: 14, fontWeight: 700, color: '#1C1C1C' }}>{v}</div>

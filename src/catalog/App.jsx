@@ -4,9 +4,10 @@ import { getStripMeta }             from './utils/stripMeta';
 import {
   INIT_STRIP, INIT_PS, INIT_TRACK,
   STRIP_POWER_RANGES, STRIP_LMW_RANGES,
-  PS_POWER_RANGES,
   TRACK_TYPE_OPTIONS, TRACK_SUBCATEGORY, SUBCATEGORY_ALIASES,
 } from './utils/filterConstants';
+import { GROUPS }                          from './utils/driverMeta';
+import { buildDriverFacets, matchesDriver } from './utils/driverFacets';
 import Navbar            from './components/Navbar';
 import CategoryHeader    from './components/CategoryHeader';
 import ProductCard       from './components/ProductCard';
@@ -25,7 +26,7 @@ import productsDataRaw   from '../../products_data_with_lighting';
 const allProducts = productsDataRaw.map(p => ({ ...p, name: cleanName(p.name) }));
 
 const TABS = [
-  { id: 'דרייברים',    label: 'דרייברים',    desc: 'ספקי מתח LED מאירופה — קבוע מתח, קבוע זרם, עמעום' },
+  { id: 'דרייברים',    label: 'דרייברים',    desc: 'ספקי מתח LED מאירופה — מתח קבוע, זרם קבוע, עמעום' },
   { id: 'סטריפ LED',  label: 'סטריפ LED',   desc: 'סטריפ LED באיכות גבוהה לכל שימוש — COB, Neon, RGB ועוד' },
   { id: 'פרופילים',   label: 'פרופילים',    desc: 'פרופילי אלומיניום לסטריפ LED — ייצור בהזמנה אישית' },
   { id: 'גופי תאורה', label: 'גופי תאורה', desc: 'פסי צבירה, ספוטים ושקועים, בקרה וחיישנים' },
@@ -198,30 +199,10 @@ export default function App() {
       });
     }
 
+    // כל לוגיקת הסינון של הדרייברים יושבת ב-driverFacets, כדי שאותו כלל
+    // בדיוק ישרת גם את הסינון וגם את חישוב המונים שליד כל צ'יפ.
     if (activeTab === 'דרייברים') {
-      r = r.filter(p => {
-        const s = p.specs || {};
-        if (psF.smartType === 'מוצרים חכמים') {
-          const dimming = s.dimming || [];
-          if (!dimming.some(d => /ZIGBEE|BLE|RF|SMART/i.test(d))) return false;
-        }
-        if (psF.smartType === 'קונברטורים') {
-          if (!p.name.toUpperCase().includes('INTERFACE')) return false;
-        }
-        if (psF.voltage !== 'הכל') {
-          if (s.outputMode === 'CC') return false;
-          if (s.voltage !== psF.voltage) return false;
-        }
-        if (psF.inputVoltage !== 'הכל' && s.inputVoltage !== psF.inputVoltage) return false;
-        if (psF.ip !== 'הכל' && s.ip !== psF.ip) return false;
-        if (psF.dimming !== 'הכל' && !(s.dimming || []).some(d => d.toLowerCase().includes(psF.dimming.toLowerCase()))) return false;
-        if (psF.power !== 'הכל') {
-          const range = PS_POWER_RANGES.find(x => x.label === psF.power);
-          const pw    = s.power ? parseFloat(s.power) : null;
-          if (range && (pw === null || pw < range.min || pw > range.max)) return false;
-        }
-        return true;
-      });
+      r = r.filter(p => matchesDriver(p, psF));
     }
 
     if (activeTab === 'גופי תאורה') {
@@ -256,9 +237,26 @@ export default function App() {
     return acc;
   }, {}), [trackBase]);
 
+  // כל הדרייברים אחרי החיפוש החופשי בלבד — הבסיס שממנו נבנים הצירים והמונים,
+  // לפני שהצירים עצמם מסננים. אחרת כל בחירה הייתה מוחקת את שאר האפשרויות.
+  const driverBase = useMemo(() => {
+    let r = products.filter(p => p.category === 'דרייברים');
+    if (search.trim()) {
+      const q = search.trim().toLowerCase();
+      r = r.filter(p => p.name.toLowerCase().includes(q) || (p.desc || '').toLowerCase().includes(q));
+    }
+    return r;
+  }, [products, search]);
+
+  const driverFacets = useMemo(() => buildDriverFacets(driverBase, psF), [driverBase, psF]);
+
   const activeFilterCount = useMemo(() => {
     if (activeTab === 'סטריפ LED')   return Object.values(stripF).filter(v => v !== 'הכל').length;
-    if (activeTab === 'דרייברים')    return Object.values(psF).filter(v => v !== 'הכל').length;
+    if (activeTab === 'דרייברים') {
+      // group נבחר במתג שמעל הגריד ולא בסיידבר, ולכן אינו נספר כאן.
+      return Object.entries(psF).filter(([k, v]) =>
+        k !== 'group' && (Array.isArray(v) ? v.length > 0 : v !== 'הכל')).length;
+    }
     if (activeTab === 'גופי תאורה') {
       return (lightingSubCat !== 'הכל' ? 1 : 0)
         + (showTrackFilters ? Object.values(trackF).filter(v => v !== 'הכל').length : 0);
@@ -350,7 +348,7 @@ export default function App() {
   const renderSidebar = () => {
     if (activeTab === 'פרופילים')   return <ProfileFilters count={filtered.length} />;
     if (activeTab === 'סטריפ LED')  return <StripFilters filters={stripF} setFilters={setStripF} count={filtered.length} />;
-    if (activeTab === 'דרייברים')   return <DriverFilters filters={psF}    setFilters={setPsF}    count={filtered.length} />;
+    if (activeTab === 'דרייברים')   return <DriverFilters filters={psF} setFilters={setPsF} facets={driverFacets} count={filtered.length} />;
     if (activeTab === 'גופי תאורה') return (
       <div style={{ padding: '20px 0' }}>
         <div style={{ fontSize: 12, fontWeight: 800, letterSpacing: '.08em', color: '#595959', marginBottom: 12 }}>קטגוריה</div>
@@ -373,25 +371,22 @@ export default function App() {
       {/* Tab bar */}
       <div style={{ borderBottom: '1px solid #E0DDD6', background: '#FFFFFF', position: 'sticky', top: 64, zIndex: 90, boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
         <div role="tablist" aria-label="קטגוריות מוצרים" className="tab-strip"
-          style={{ maxWidth: 1280, margin: '0 auto', display: 'flex', gap: 0 }}>
+          style={{ maxWidth: 1280, margin: '0 auto' }}>
           {TABS.map(t => {
             // סופר כרטיסים ולא מק"טים, כדי שהמונה בטאב יתאים למה שנספר בכותרת
             // הקטגוריה ולמה שבאמת מוצג ברשת
             const cnt    = products.filter(p => p.category === t.id && (!p.variantFamily || p.variantPrimary)).length;
             const active = activeTab === t.id;
+            // הפריסה כולה ב-CSS ולא ב-inline: במסך צר ארבעת הטאבים נערכים
+            // מחדש לרשת של ארבע עמודות עם המונה מתחת לשם, וזה אפשרי רק אם
+            // media query יכול לגעת בהם.
             return (
               <button key={t.id} role="tab" aria-selected={active} id={`tab-${t.id}`}
                 aria-controls="products-panel"
-                onClick={() => switchTab(t.id)} className="tab-button"
-                style={{ padding: '16px 24px', border: 'none', borderBottom: active ? '2px solid #E8A020' : '2px solid transparent',
-                  background: 'none', cursor: 'pointer', color: active ? '#1C1C1C' : '#595959',
-                  fontFamily: 'Heebo,sans-serif', fontSize: 14, fontWeight: 700, transition: 'all 0.15s',
-                  display: 'flex', alignItems: 'center', gap: 8 }}>
-                {t.label}
-                <span style={{ fontSize: 12, background: active ? 'rgba(232,160,32,0.12)' : '#F0EDE8',
-                  color: active ? '#1C1C1C' : '#595959', padding: '1px 7px', borderRadius: 20, fontWeight: 400 }}>
-                  {cnt}
-                </span>
+                onClick={() => switchTab(t.id)}
+                className={active ? 'tab-button active' : 'tab-button'}>
+                <span className="tab-label">{t.label}</span>
+                <span className="tab-count">{cnt}</span>
               </button>
             );
           })}
@@ -485,7 +480,7 @@ export default function App() {
 
           {/* Desktop sidebar */}
           {showFilters && (
-            <div className="sidebar-mobile-hidden"
+            <div className="sidebar-mobile-hidden catalog-sidebar"
               style={{ background: '#FFFFFF', border: '1px solid #E0DDD6', borderRadius: 10,
                 padding: '24px 20px', position: 'sticky', top: 130, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 24, paddingBottom: 16, borderBottom: '1px solid #E8E5E0' }}>
@@ -526,26 +521,6 @@ export default function App() {
 
           {/* Products + configurator CTA */}
           <div id="products-panel" role="tabpanel" aria-labelledby={`tab-${activeTab}`}>
-            {activeTab === 'דרייברים' && (
-              <div style={{ display: 'flex', gap: 8, marginBottom: 20 }}>
-                {[
-                  { label: 'הכל', value: 'הכל' },
-                  { label: 'מוצרים חכמים', value: 'מוצרים חכמים' },
-                  { label: 'קונברטורים', value: 'קונברטורים' },
-                ].map(({ label, value }) => (
-                  <button key={value} onClick={() => setPsF(f => ({ ...f, smartType: value }))}
-                    style={{
-                      padding: '8px 18px', borderRadius: 8, fontSize: 13, fontWeight: 700,
-                      fontFamily: 'Heebo, sans-serif', cursor: 'pointer', transition: 'all 0.15s',
-                      border: psF.smartType === value ? 'none' : '1.5px solid #E0DDD6',
-                      background: psF.smartType === value ? '#1C1C1C' : '#FFFFFF',
-                      color: psF.smartType === value ? '#FFFFFF' : '#595959',
-                    }}>
-                    {label}
-                  </button>
-                ))}
-              </div>
-            )}
             {activeTab === 'פרופילים' && (
               <div style={{ marginBottom: 24, background: '#FFFFFF', border: '1px solid #E0DDD6',
                 borderRadius: 10, padding: '20px 24px', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>

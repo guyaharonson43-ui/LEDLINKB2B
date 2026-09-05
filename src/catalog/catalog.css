@@ -68,6 +68,22 @@ button, input, select, textarea { font-family: 'Heebo', sans-serif; }
   white-space: nowrap;
 }
 .filter-chip:hover { border-color: #E8A020; color: #E8A020; }
+
+/* ערך שהצטמצם לאפס בגלל ציר סינון אחר. הצ'יפ נשאר במקומו ולא נעלם —
+   הסתרה מקפיצה את שאר הצ'יפים מתחת לאצבע בכל לחיצה. */
+.filter-chip:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+  border-color: #E0DDD6;
+}
+.filter-chip:disabled:hover { border-color: #E0DDD6; color: inherit; }
+
+/* תג "זרם נבחר" — סימון שהנתון חלקי, לא מפרט. שקט יותר משאר התגיות. */
+.spec-tag.muted {
+  background: transparent;
+  border: 1px dashed #C4880A;
+  color: #C4880A;
+}
 .filter-chip.active { border-color: #E8A020; color: #1C1C1C; background: #E8A020; }
 
 /* משטח תמונת המוצר.
@@ -284,6 +300,47 @@ button, input, select, textarea { font-family: 'Heebo', sans-serif; }
 .nav-drop-item:hover { color: #E8A020; background: rgba(255,255,255,0.04); border-right-color: #E8A020; }
 
 .catalog-layout { display: grid; gap: 40px; align-items: start; }
+
+/* פאנל הסינון גולל בעצמו.
+   בלי max-height הפאנל גבוה מהמסך, ולכן גלגלת מעליו הזיזה את הדף עד
+   שתחתית הפאנל נכנסה לתצוגה — ורק אז התחילה לגלול את הסינון. הגובה חסום
+   לגובה החלון פחות ה-sticky top, וה-overscroll-behavior מונע מהגלילה
+   לזלוג לדף כשמגיעים לקצה. 130px = ה-top של הפאנל, 24px = אוויר בתחתית. */
+.catalog-sidebar {
+  /* max() מונע קריסה לגובה אפסי במסך נמוך: הפאנל לא יורד מ-320px גם אם
+     החישוב יוצא קטן מזה, ואז הוא פשוט גולל יותר. */
+  max-height: max(320px, calc(100vh - 130px - 24px));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #D0CCC4 transparent;
+}
+.catalog-sidebar::-webkit-scrollbar { width: 8px; }
+.catalog-sidebar::-webkit-scrollbar-track { background: transparent; }
+.catalog-sidebar::-webkit-scrollbar-thumb { background: #D0CCC4; border-radius: 4px; }
+.catalog-sidebar::-webkit-scrollbar-thumb:hover { background: #B5B0A6; }
+
+/* המגירה במובייל היא אותו סיפור — גלילה משלה, בלי לזלוג לדף שמאחוריה */
+.mobile-filter-panel { overscroll-behavior: contain; }
+
+/* מתג סוג הדרייבר בראש פאנל הסינון */
+.driver-group-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Heebo', sans-serif;
+  text-align: start;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+.driver-group-btn[aria-pressed="false"]:hover { border-color: #E8A020; color: #1C1C1C; }
 .catalog-layout.with-sidebar { grid-template-columns: 240px 1fr; }
 .catalog-layout.no-sidebar   { grid-template-columns: 1fr; }
 
@@ -379,20 +436,63 @@ button, input, select, textarea { font-family: 'Heebo', sans-serif; }
   .hamburger { display: flex; }
 }
 .products-grid { display: grid; gap: 56px 30px; grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); }
+/* ── שורת הקטגוריות ────────────────────────────────────────────────────
+   כל הפריסה כאן ולא ב-inline, כדי ש-media query יוכל לארגן אותה מחדש. */
+.tab-strip { display: flex; gap: 0; padding: 0 24px; }
+.tab-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  cursor: pointer;
+  font-family: 'Heebo', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #595959;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 0.15s, border-color 0.15s;
+}
+.tab-button.active { color: #1C1C1C; border-bottom-color: #E8A020; }
+.tab-count {
+  font-size: 12px;
+  font-weight: 400;
+  background: #F0EDE8;
+  color: #595959;
+  padding: 1px 7px;
+  border-radius: 20px;
+}
+.tab-button.active .tab-count { background: rgba(232,160,32,0.12); color: #1C1C1C; }
+
 @media (max-width: 600px) {
   .catalog-content-pad { padding: 24px 16px !important; }
-  /* ארבעת הטאבים רחבים מ-390px ביחד וגלשו מהמסך. כאן הם מצטמצמים כדי
-     להיכנס ברוב הטלפונים, ובמסכים צרים מזה השורה נגללת אופקית במקום
-     להרחיב את העמוד כולו. */
+  /* ארבעת הטאבים לא נכנסו לרוחב הטלפון, והגלילה האופקית שהחליפה אותם לא
+     רמזה על עצמה — נראה כאילו יש שתי קטגוריות בלבד. כאן הם נערכים מחדש
+     לרשת של ארבע עמודות שוות, והמונה יורד מתחת לשם במקום לצדו. כך כל
+     ארבע הקטגוריות נראות יחד גם ב-320px, בלי גלילה בכלל. */
   .tab-strip {
-    padding: 0 12px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0 6px;
   }
-  .tab-strip::-webkit-scrollbar { display: none; }
+  .tab-button {
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+    padding: 9px 2px 7px;
+    font-size: 12.5px;
+    min-width: 0;
+  }
+  .tab-label {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .tab-count { font-size: 11px; padding: 0 6px; }
   .products-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 18px; }
-  .tab-button { padding: 12px 9px !important; gap: 4px !important; font-size: 13px !important; }
 }
 
 .pulse-gold {
@@ -596,11 +696,6 @@ a:focus-visible,
 .product-card:hover .product-img[src*="strips/"] { transform: scale(1.05); }
 
 .mobile-filter-btn { border-radius: 0; }
-
-/* שורת הטאבים: הריווח כאן ולא ב-inline, כדי ש-media query יוכל לצמצם אותו.
-   התוויות לא נשברות — טאב שנשבר לשתי שורות שובר את גובה השורה כולה. */
-.tab-strip { padding: 0 24px; }
-.tab-button { white-space: nowrap; flex-shrink: 0; }
 
 /* ── רצפת הרוחב של הכרטיס ──────────────────────────────────────────────
    פריט ברשת מקבל min-width:auto, כלומר הוא מסרב להצטמצם מתחת לרוחב

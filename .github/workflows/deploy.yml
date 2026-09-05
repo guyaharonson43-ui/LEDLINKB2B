@@ -3,6 +3,10 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  # PRs מריצים בנייה בלבד, בלי דיפלוי — כדי שבילד שבור יתגלה לפני
+  # המיזוג ולא על האתר החי.
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -11,8 +15,11 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  # קבוצה לכל ref בנפרד: קודם כל ה-PRs חלקו את התור עם הדיפלוי ל-main
+  # ויכלו לעכב אותו. דיפלויים של main עדיין מסתדרים בטור ולא נקטעים;
+  # בנייה של PR כן נקטעת כשנדחפת גרסה חדשה יותר לאותו PR.
+  group: pages-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
@@ -39,12 +46,15 @@ jobs:
           rsync -a --ignore-existing assets/ dist/assets/
 
       - name: Upload artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
   deploy:
     needs: build
+    # בלי השורה הזו כל PR היה מדפלוי את עצמו לאתר החי.
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
