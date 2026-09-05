@@ -1,237 +1,323 @@
-// קובץ preview — נוצר אוטומטית ע"י build_preview_data.js
-// אין לערוך ידנית. לעדכון הרץ: node build_preview_data.js
+// קטלוג המוצרים המלא של האתר — מקור האמת לכל הדפים (window.__PRODUCTS__).
+// הקובץ נוצר במקור ע"י build_preview_data.js, שכבר אינו קיים בריפו; מאז הוא
+// מתוחזק ידנית ובאמצעות הסקריפטים שב-scripts/ (למשל add-pendant-lighting.mjs,
+// classify-track-products.mjs). עריכה ידנית מותרת — שמרו על CRLF ועל הזחה של 2.
 // מוצרים מקוריים: 374 | גופי תאורה: 319 | סה"כ: 693
 const __PRODUCTS__ = [
   {
     "id": "ledlink-tuba30",
     "name": "טיובה 30",
-    "img": "strips/R30.webp",
+    "img": "product-images/ledlink-tuba30.webp",
     "desc": "מקט: R30 | פרופיל צמוד/תלייה | אורך יחידה: עד 6 מטר",
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/%d7%98%d7%99%d7%95%d7%91%d7%94-30/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/R30.webp",
+    "imgCutout": true,
+    "imgWidth": 0.943,
+    "imgScale": 0.85
   },
   {
     "id": "ledlink-tuba60",
     "name": "טיובה 60",
-    "img": "strips/R60.webp",
+    "img": "product-images/ledlink-tuba60.webp",
     "desc": "מקט: R60 | פרופיל צמוד/תלייה | אורך יחידה: עד 6 מטר",
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/%d7%98%d7%99%d7%95%d7%91%d7%94-60/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/R60.webp",
+    "imgCutout": true,
+    "imgWidth": 0.978,
+    "imgScale": 0.84
   },
   {
     "id": "ledlink-irgul3528",
     "name": "עירגול 3528",
-    "img": "strips/3528.webp",
+    "img": "product-images/ledlink-irgul3528.webp",
     "desc": "מקט: 3528 | פרופיל עגול | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/%d7%a2%d7%99%d7%a8%d7%92%d7%95%d7%9c-3528/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/3528.webp",
+    "imgCutout": true,
+    "imgWidth": 0.914,
+    "imgScale": 0.86
   },
   {
     "id": "ledlink-1808",
     "name": "פרופיל מוגן מים 1808",
-    "img": "strips/1808.webp",
+    "img": "product-images/ledlink-1808.webp",
     "desc": "מקט: 1808 | IP65 | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/%d7%a4%d7%a8%d7%95%d7%a4%d7%99%d7%9c-%d7%92%d7%9e%d7%99%d7%a9-1808/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/1808.webp",
+    "imgCutout": true,
+    "imgWidth": 0.975,
+    "imgScale": 0.84
   },
   {
     "id": "ledlink-1813",
     "name": "פרופיל מוגן מים 1813",
-    "img": "strips/1813.webp",
+    "img": "product-images/ledlink-1813.webp",
     "desc": "מקט: 1813 | IP65 | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/%d7%a4%d7%a8%d7%95%d7%a4%d7%99%d7%9c-%d7%9e%d7%95%d7%92%d7%9f-%d7%9e%d7%99%d7%9d-1813/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/1813.webp",
+    "imgCutout": true,
+    "imgWidth": 0.978,
+    "imgScale": 0.83
   },
   {
     "id": "ledlink-1013",
     "name": "1013",
-    "img": "strips/1013.webp",
+    "img": "product-images/ledlink-1013.webp",
     "desc": "מקט: 1013 | פרופיל צמוד | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/1013/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/1013.webp",
+    "imgCutout": true,
+    "imgWidth": 0.885,
+    "imgScale": 0.85
   },
   {
     "id": "ledlink-1616",
     "name": "1616 פינתי",
-    "img": "strips/1616.webp",
+    "img": "product-images/ledlink-1616.webp",
     "desc": "מקט: 1616 | פרופיל פינתי | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/1616-%d7%a4%d7%99%d7%a0%d7%aa%d7%99/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/1616.webp",
+    "imgCutout": true,
+    "imgWidth": 0.807,
+    "imgScale": 1.02
   },
   {
     "id": "ledlink-1707",
     "name": "1707",
-    "img": "strips/1707.webp",
+    "img": "product-images/ledlink-1707.webp",
     "desc": "מקט: 1707 | פרופיל דק | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/1707/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/1707.webp",
+    "imgCutout": true,
+    "imgWidth": 0.935,
+    "imgScale": 0.88
   },
   {
     "id": "ledlink-1713",
     "name": "1713",
-    "img": "strips/1713.webp",
+    "img": "product-images/ledlink-1713.webp",
     "desc": "מקט: 1713 | פרופיל | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/1713/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/1713.webp",
+    "imgCutout": true,
+    "imgWidth": 0.855,
+    "imgScale": 0.82
   },
   {
     "id": "ledlink-1715",
     "name": "1715",
-    "img": "strips/1715.webp",
+    "img": "product-images/ledlink-1715.webp",
     "desc": "מקט: 1715 | פרופיל | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/1715/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/1715.webp",
+    "imgCutout": true,
+    "imgWidth": 0.914,
+    "imgScale": 0.9
   },
   {
     "id": "ledlink-2010",
     "name": "2010",
-    "img": "strips/2010.webp",
+    "img": "product-images/ledlink-2010.webp",
     "desc": "מקט: 2010 | פרופיל | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/2010/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/2010.webp",
+    "imgCutout": true,
+    "imgWidth": 0.923,
+    "imgScale": 0.89
   },
   {
     "id": "ledlink-2020",
     "name": "2020",
-    "img": "strips/2020.webp",
+    "img": "product-images/ledlink-2020.webp",
     "desc": "מקט: 2020 | פרופיל | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/2020/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/2020.webp",
+    "imgCutout": true,
+    "imgWidth": 0.818,
+    "imgScale": 0.91
   },
   {
     "id": "ledlink-2415",
     "name": "2415",
-    "img": "strips/2417.webp",
+    "img": "product-images/ledlink-2415.webp",
     "desc": "מקט: 2415 | פרופיל | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/2415/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/2417.webp",
+    "imgCutout": true,
+    "imgWidth": 0.918,
+    "imgScale": 0.89
   },
   {
     "id": "ledlink-3020",
     "name": "3020",
-    "img": "strips/3020.webp",
+    "img": "product-images/ledlink-3020.webp",
     "desc": "מקט: 3020 | פרופיל | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/3020/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/3020.webp",
+    "imgCutout": true,
+    "imgWidth": 0.936,
+    "imgScale": 0.88
   },
   {
     "id": "ledlink-3030",
     "name": "3030 פינתי",
-    "img": "strips/3030.webp",
+    "img": "product-images/ledlink-3030.webp",
     "desc": "מקט: 3030 | פרופיל פינתי | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/3030-%d7%a4%d7%99%d7%a0%d7%aa%d7%99/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/3030.webp",
+    "imgCutout": true,
+    "imgWidth": 0.783,
+    "imgScale": 0.93
   },
   {
     "id": "ledlink-3535p",
     "name": "3535",
-    "img": "strips/35351.webp",
+    "img": "product-images/ledlink-3535p.webp",
     "desc": "מקט: 3535 | פרופיל | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/3535/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/35351.webp",
+    "imgCutout": true,
+    "imgWidth": 0.882,
+    "imgScale": 0.92
   },
   {
     "id": "ledlink-4050",
     "name": "4050",
-    "img": "strips/4050.jpg",
+    "img": "product-images/ledlink-4050.webp",
     "desc": "מקט: 4050 | פרופיל | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/4050/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/4050.jpg",
+    "imgCutout": true,
+    "imgWidth": 0.84,
+    "imgScale": 0.93
   },
   {
     "id": "ledlink-4435",
     "name": "4435",
-    "img": "strips/4435-600x600.webp",
+    "img": "product-images/ledlink-4435.webp",
     "desc": "מקט: 4435 | פרופיל רחב | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/4435/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/4435-600x600.webp",
+    "imgCutout": true,
+    "imgWidth": 0.695,
+    "imgScale": 1.08
   },
   {
     "id": "ledlink-5075",
     "name": "5075",
-    "img": "strips/5075-1.webp",
+    "img": "product-images/ledlink-5075.webp",
     "desc": "מקט: 5075 | פרופיל גדול | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/5075/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/5075-1.webp",
+    "imgCutout": true,
+    "imgWidth": 0.898,
+    "imgScale": 0.87
   },
   {
     "id": "ledlink-5213",
     "name": "5213 שקוע גבס",
-    "img": "strips/5213.webp",
+    "img": "product-images/ledlink-5213.webp",
     "desc": "מקט: 5213 | פרופיל שקוע גבס | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/5213/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/5213.webp",
+    "imgCutout": true,
+    "imgWidth": 0.905,
+    "imgScale": 0.91
   },
   {
     "id": "ledlink-6114",
     "name": "6114 שקוע גבס",
-    "img": "strips/6114.webp",
+    "img": "product-images/ledlink-6114.webp",
     "desc": "מקט: 6114 | פרופיל שקוע גבס רחב | צבע: שחור/לבן/RAL | אורך עד 6 מטר",
     "category": "פרופילים",
     "price": null,
     "url": "https://ledlink.co.il/product/6114/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/6114.webp",
+    "imgCutout": true,
+    "imgWidth": 0.972,
+    "imgScale": 0.84
   },
   {
     "id": "ledlink-strip-zigzag",
@@ -258,57 +344,82 @@ const __PRODUCTS__ = [
   {
     "id": "ledlink-strip-10w",
     "name": "סטריפ LED 10W IP20",
-    "img": "strips/D24160.webp",
+    "img": "product-images/ledlink-strip-10w.webp",
     "desc": "הספק: 10W | 24V | 155-170 Lm/W | 1550-1700Lm/m | גוון: 3000/4000K | IP20",
     "category": "סטריפ LED",
     "price": null,
     "url": "https://ledlink.co.il/product/%d7%a1%d7%98%d7%a8%d7%99%d7%a4-%d7%9c%d7%93-10%d7%95%d7%95%d7%90%d7%98/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/D24160.webp",
+    "imgCutout": true,
+    "imgWidth": 0.982,
+    "imgScale": 0.84,
+    "imgBase": 0.764
   },
   {
     "id": "ledlink-strip-15w",
     "name": "סטריפ LED 15W IP20",
-    "img": "strips/D24160.webp",
+    "img": "product-images/ledlink-strip-10w.webp",
     "desc": "הספק: 15W | 24V | 173-186 Lm/W | 2600-2790Lm/m | גוון: 3000/4000K | IP20",
     "category": "סטריפ LED",
     "price": null,
     "url": "https://ledlink.co.il/product/%d7%a1%d7%98%d7%a8%d7%99%d7%a4-%d7%9c%d7%93-15%d7%95%d7%95%d7%90%d7%98/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/D24160.webp",
+    "imgCutout": true,
+    "imgWidth": 0.982,
+    "imgScale": 0.84,
+    "imgBase": 0.764
   },
   {
     "id": "ledlink-strip-ip65-12w",
     "name": "סטריפ LED 12W IP65",
-    "img": "strips/B24A.webp",
+    "img": "product-images/ledlink-strip-ip65-12w.webp",
     "desc": "הספק: 12W | 24V | 142-152 Lm/W | 1700-1820Lm/m | גוון: 2700/3000/4000K | IP65",
     "category": "סטריפ LED",
     "price": null,
     "url": "https://ledlink.co.il/product/%d7%a1%d7%98%d7%a8%d7%99%d7%a4-%d7%9c%d7%93-150lm-w-ip65-12w-24v/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/B24A.webp",
+    "imgCutout": true,
+    "imgWidth": 0.982,
+    "imgScale": 0.84,
+    "imgBase": 0.62
   },
   {
     "id": "ledlink-strip-ip65-16w",
     "name": "סטריפ LED 16W IP65",
-    "img": "strips/B24A.webp",
+    "img": "product-images/ledlink-strip-ip65-12w.webp",
     "desc": "הספק: 16W | 24V | 141-153 Lm/W | 2260-2450Lm/m | גוון: 2700/3000/4000K | IP65",
     "category": "סטריפ LED",
     "price": null,
     "url": "https://ledlink.co.il/product/%d7%a1%d7%98%d7%a8%d7%99%d7%a4-%d7%9c%d7%93-150lm-w-ip65-16w-24v/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/B24A.webp",
+    "imgCutout": true,
+    "imgWidth": 0.982,
+    "imgScale": 0.84,
+    "imgBase": 0.62
   },
   {
     "id": "ledlink-strip-ip65-20w",
     "name": "סטריפ LED 20W IP65",
-    "img": "strips/B24A.webp",
+    "img": "product-images/ledlink-strip-ip65-12w.webp",
     "desc": "הספק: 20W | 24V | 143-153 Lm/W | 2850-3050Lm/m | גוון: 2700/3000/4000K | IP65",
     "category": "סטריפ LED",
     "price": null,
     "url": "https://ledlink.co.il/product/%d7%a1%d7%98%d7%a8%d7%99%d7%a4-%d7%9c%d7%93-20%d7%95%d7%95%d7%90%d7%98-ip65/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/B24A.webp",
+    "imgCutout": true,
+    "imgWidth": 0.982,
+    "imgScale": 0.84,
+    "imgBase": 0.62
   },
   {
     "id": "ledlink-strip-50w",
@@ -324,13 +435,18 @@ const __PRODUCTS__ = [
   {
     "id": "ledlink-strip-dob",
     "name": "סטריפ LED DOB 15W IP20",
-    "img": "strips/D24160.webp",
+    "img": "product-images/ledlink-strip-10w.webp",
     "desc": "הספק: 15W | 24V | 152 Lm/W | 2280Lm/m | גוון: 2700/3000/4000K | IP20 | DOB",
     "category": "סטריפ LED",
     "price": null,
     "url": "https://ledlink.co.il/product/%d7%a1%d7%98%d7%a8%d7%99%d7%a4-%d7%9c%d7%93-ip20-15w-24v-dob/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/D24160.webp",
+    "imgCutout": true,
+    "imgWidth": 0.982,
+    "imgScale": 0.84,
+    "imgBase": 0.764
   },
   {
     "id": "ledlink-strip-rgbw-ip20",
@@ -346,35 +462,50 @@ const __PRODUCTS__ = [
   {
     "id": "ledlink-strip-ip68-14w",
     "name": "סטריפ LED 14.4W IP68",
-    "img": "strips/H24I.webp",
+    "img": "product-images/ledlink-strip-ip68-14w.webp",
     "desc": "הספק: 14.4W | 24V | 122-140 Lm/W | 1760-2020Lm/m | גוון: 2700/3000/4000/6000K | IP68",
     "category": "סטריפ LED",
     "price": null,
     "url": "https://ledlink.co.il/product/%d7%a1%d7%98%d7%a8%d7%99%d7%a4-%d7%9c%d7%93-ip68-14-4%d7%95%d7%95%d7%90%d7%98/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/H24I.webp",
+    "imgCutout": true,
+    "imgWidth": 0.914,
+    "imgScale": 0.9,
+    "imgBase": 0.616
   },
   {
     "id": "ledlink-strip-ip68-9w",
     "name": "סטריפ LED 9.6W IP68",
-    "img": "strips/H24I.webp",
+    "img": "product-images/ledlink-strip-ip68-14w.webp",
     "desc": "הספק: 9.6W | 24V | 124-142 Lm/W | 1190-1360Lm/m | גוון: 2700/3000/4000/6000K | IP68",
     "category": "סטריפ LED",
     "price": null,
     "url": "https://ledlink.co.il/product/%d7%a1%d7%98%d7%a8%d7%99%d7%a4-%d7%9c%d7%93-ip68-9-6%d7%95%d7%95%d7%90%d7%98/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/H24I.webp",
+    "imgCutout": true,
+    "imgWidth": 0.914,
+    "imgScale": 0.9,
+    "imgBase": 0.616
   },
   {
     "id": "ledlink-neon-top",
     "name": "נאון סטריפ LED TOP 14.4W IP67",
-    "img": "strips/N2424H.webp",
+    "img": "product-images/ledlink-neon-top.webp",
     "desc": "הספק: 14.4W | 24V | 80-83 Lm/W | 1150-1200Lm/m | גוון: 2700/3000/4000K | IP67 | TOP",
     "category": "סטריפ LED",
     "price": null,
     "url": "https://ledlink.co.il/product/%d7%a1%d7%98%d7%a8%d7%99%d7%a4-%d7%a0%d7%90%d7%95%d7%9f/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/N2424H.webp",
+    "imgCutout": true,
+    "imgWidth": 0.976,
+    "imgScale": 0.84,
+    "imgBase": 0.776
   },
   {
     "id": "ledlink-strip-cob",
@@ -390,24 +521,34 @@ const __PRODUCTS__ = [
   {
     "id": "ledlink-neon-side",
     "name": "נאון סטריפ LED SIDE 18W IP67",
-    "img": "strips/N2412L.webp",
+    "img": "product-images/ledlink-neon-side.webp",
     "desc": "הספק: 18W | 24V | 42-47 Lm/W | 760-840Lm/m | גוון: 2700/3000/4000K | IP67 | SIDE",
     "category": "סטריפ LED",
     "price": null,
     "url": "https://ledlink.co.il/product/%d7%a1%d7%98%d7%a8%d7%99%d7%a4-side-%d7%a0%d7%90%d7%95%d7%9f/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/N2412L.webp",
+    "imgCutout": true,
+    "imgWidth": 0.986,
+    "imgScale": 0.83,
+    "imgBase": 0.838
   },
   {
     "id": "ledlink-neon-rgb",
     "name": "סטריפ LED RGB IP67 14.4W",
-    "img": "strips/N2412BRG.webp",
+    "img": "product-images/ledlink-neon-rgb.webp",
     "desc": "הספק: 14.4W | 24V | RGB | 180 Lm/m | IP67",
     "category": "סטריפ LED",
     "price": null,
     "url": "https://ledlink.co.il/product/rgb-%d7%a1%d7%98%d7%a8%d7%99%d7%a4-%d7%a0%d7%90%d7%95%d7%9f/",
     "isFlagship": false,
-    "scarcity": null
+    "scarcity": null,
+    "imgSource": "strips/N2412BRG.webp",
+    "imgCutout": true,
+    "imgWidth": 0.978,
+    "imgScale": 0.84,
+    "imgBase": 0.7
   },
   {
     "id": "ledlink-strip-rgbw-ip65",
@@ -423,7 +564,7 @@ const __PRODUCTS__ = [
   {
     "id": "qlt-3d2460",
     "name": "סטריפ LED 4.8W/m IP20 — 3D2460",
-    "img": "strips/A413D126000W-1024x683.webp",
+    "img": "product-images/qlt-3d2460.webp",
     "desc": "הספק: 4.8W/m | 24V | עד 90 lm/w | עד 432 Lm/m | גוון: 3000K/4000K/6000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -438,12 +579,17 @@ const __PRODUCTS__ = [
       "ip": "IP20",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/A413D126000W-1024x683.webp",
+    "imgCutout": true,
+    "imgWidth": 0.995,
+    "imgScale": 0.82,
+    "imgBase": 0.755
   },
   {
     "id": "qlt-a241120",
     "name": "סטריפ LED 16.8W/m IP20 — A24112",
-    "img": "strips/FOOD-DISPLAY.webp",
+    "img": "product-images/qlt-a241120.webp",
     "desc": "הספק: 16.8W/m | 24V | עד 110 lm/W | 1520-1900 Lm/m | גוון: 2500K/2900K/3000K/5000K/7500K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -458,7 +604,12 @@ const __PRODUCTS__ = [
       "ip": "IP20",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/FOOD-DISPLAY.webp",
+    "imgCutout": true,
+    "imgWidth": 0.992,
+    "imgScale": 0.83,
+    "imgBase": 1
   },
   {
     "id": "qlt-a2411c",
@@ -643,7 +794,7 @@ const __PRODUCTS__ = [
   {
     "id": "qlt-b24080a",
     "name": "סטריפ LED 12W/m IP65 — B24080A",
-    "img": "strips/Led-A41B24160A30-IP65-1024x503.webp",
+    "img": "product-images/qlt-b24080a.webp",
     "desc": "הספק: 12W/m | 24V | עד 140 lm/W | 1460-1690 Lm/m | גוון: 2700K/3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -658,7 +809,12 @@ const __PRODUCTS__ = [
       "ip": "IP65",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/Led-A41B24160A30-IP65-1024x503.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.744
   },
   {
     "id": "qlt-b24128",
@@ -683,7 +839,7 @@ const __PRODUCTS__ = [
   {
     "id": "qlt-b24128a",
     "name": "סטריפ LED 16W/m IP65 — B24128A",
-    "img": "strips/Led-A41B24160A30-IP65-1024x503.webp",
+    "img": "product-images/qlt-b24080a.webp",
     "desc": "הספק: 16W/m | 24V | עד 140 lm/W | 2040-2260 Lm/m | גוון: 2700K/3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -698,7 +854,12 @@ const __PRODUCTS__ = [
       "ip": "IP65",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/Led-A41B24160A30-IP65-1024x503.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.744
   },
   {
     "id": "qlt-b24160",
@@ -723,7 +884,7 @@ const __PRODUCTS__ = [
   {
     "id": "qlt-b24160a",
     "name": "סטריפ LED 20W/m IP65 — B24160A",
-    "img": "strips/Led-A41B24160A30-IP65-1024x503.webp",
+    "img": "product-images/qlt-b24080a.webp",
     "desc": "הספק: 20W/m | 24V | עד 140 lm/W | עד 2800 Lm/m | גוון: 2700K/3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -738,12 +899,17 @@ const __PRODUCTS__ = [
       "ip": "IP65",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/Led-A41B24160A30-IP65-1024x503.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.744
   },
   {
     "id": "qlt-cob2488",
     "name": "סטריפ LED COB 8W/m IP20 — COB2488",
-    "img": "strips/COB-1024x683.webp",
+    "img": "product-images/qlt-cob2488.webp",
     "desc": "הספק: 8W/m | 24V | עד 110 lm/W | עד 880 Lm/m | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "COB",
@@ -758,12 +924,17 @@ const __PRODUCTS__ = [
       "ip": "IP20",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/COB-1024x683.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.735
   },
   {
     "id": "qlt-cob2415",
     "name": "סטריפ LED COB 15W/m IP20 — COB2L15",
-    "img": "strips/COB-1024x683.webp",
+    "img": "product-images/qlt-cob2488.webp",
     "desc": "הספק: 15W/m | 24V | עד 125 lm/W | 1760-1610 Lm/m | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "COB",
@@ -778,7 +949,12 @@ const __PRODUCTS__ = [
       "ip": "IP20",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/COB-1024x683.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.735
   },
   {
     "id": "qlt-cob845a",
@@ -1063,7 +1239,7 @@ const __PRODUCTS__ = [
   {
     "id": "qlt-es24120",
     "name": "סטריפ LED 9.6W/m IP20 — ES24120",
-    "img": "strips/Led-A41ES2424030-IP20-1024x465.webp",
+    "img": "product-images/qlt-es24120.webp",
     "desc": "הספק: 9.6W/m | 24V | עד 120 lm/W | 1050-1120 Lm/m | גוון: 3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1078,12 +1254,17 @@ const __PRODUCTS__ = [
       "ip": "IP20",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/Led-A41ES2424030-IP20-1024x465.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.774
   },
   {
     "id": "qlt-es24180",
     "name": "סטריפ LED 14.4W/m IP20 — ES24180",
-    "img": "strips/Led-A41ES2424030-IP20-1024x465.webp",
+    "img": "product-images/qlt-es24120.webp",
     "desc": "הספק: 14.4W/m | 24V | עד 120 lm/W | 1550-1630 Lm/m | גוון: 3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1098,12 +1279,17 @@ const __PRODUCTS__ = [
       "ip": "IP20",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/Led-A41ES2424030-IP20-1024x465.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.774
   },
   {
     "id": "qlt-es24240",
     "name": "סטריפ LED 19.2W/m IP20 — ES24240",
-    "img": "strips/Led-A41ES2424030-IP20-1024x465.webp",
+    "img": "product-images/qlt-es24120.webp",
     "desc": "הספק: 19.2W/m | 24V | עד 120 lm/W | 2060-2160 Lm/m | גוון: 3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1118,12 +1304,17 @@ const __PRODUCTS__ = [
       "ip": "IP20",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/Led-A41ES2424030-IP20-1024x465.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.774
   },
   {
     "id": "qlt-es2460",
     "name": "סטריפ LED 4.8W/m IP20 — ES2460",
-    "img": "strips/Led-A41ES2424030-IP20-1024x465.webp",
+    "img": "product-images/qlt-es24120.webp",
     "desc": "הספק: 4.8W/m | 24V | עד 120 lm/W | עד 576 Lm/m | גוון: 3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1138,12 +1329,17 @@ const __PRODUCTS__ = [
       "ip": "IP20",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/Led-A41ES2424030-IP20-1024x465.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.774
   },
   {
     "id": "qlt-f241445",
     "name": "סטריפ LED 8W/m IP20 — F241445",
-    "img": "strips/A41F24210840-1024x486.webp",
+    "img": "product-images/qlt-f241445.webp",
     "desc": "הספק: 8W/m | 24V | עד 145 lm/W | 1080-1140 Lm/m | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1158,12 +1354,17 @@ const __PRODUCTS__ = [
       "ip": "IP20",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/A41F24210840-1024x486.webp",
+    "imgCutout": true,
+    "imgWidth": 0.969,
+    "imgScale": 0.85,
+    "imgBase": 0.79
   },
   {
     "id": "qlt-f241811",
     "name": "סטריפ LED 11W/m IP20 — F241811",
-    "img": "strips/A41F24210840-1-1024x486.webp",
+    "img": "product-images/qlt-f241811.webp",
     "desc": "הספק: 11W/m | 24V | עד 145 lm/W | 1070 Lm/m | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1178,7 +1379,12 @@ const __PRODUCTS__ = [
       "ip": "IP20",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/A41F24210840-1-1024x486.webp",
+    "imgCutout": true,
+    "imgWidth": 0.969,
+    "imgScale": 0.85,
+    "imgBase": 0.79
   },
   {
     "id": "qlt-f241820",
@@ -1203,7 +1409,7 @@ const __PRODUCTS__ = [
   {
     "id": "qlt-f242108",
     "name": "סטריפ LED 4.5W/m IP20 — F242108",
-    "img": "strips/A41F24210840-1024x486.webp",
+    "img": "product-images/qlt-f241445.webp",
     "desc": "הספק: 4.5W/m | 24V | עד 145 lm/W | עד 653 Lm/m | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1218,12 +1424,17 @@ const __PRODUCTS__ = [
       "ip": "IP20",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/A41F24210840-1024x486.webp",
+    "imgCutout": true,
+    "imgWidth": 0.969,
+    "imgScale": 0.85,
+    "imgBase": 0.79
   },
   {
     "id": "qlt-h1260",
     "name": "סטריפ LED 4.8W/m 12V IP20 — H12060",
-    "img": "strips/A41H12120040_IP20_IP65-1024x516.webp",
+    "img": "product-images/qlt-h1260.webp",
     "desc": "הספק: 4.8W/m | 12V | עד 125 lm/W | עד 600 Lm/m | גוון: 2700K/3000K/4000K/6000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1238,12 +1449,17 @@ const __PRODUCTS__ = [
       "ip": "IP20",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/A41H12120040_IP20_IP65-1024x516.webp",
+    "imgCutout": true,
+    "imgWidth": 0.928,
+    "imgScale": 0.88,
+    "imgBase": 0.798
   },
   {
     "id": "qlt-h1260a-2",
     "name": "סטריפ LED 4.8W/m 12V IP65 — H12060A",
-    "img": "strips/A41H12120040_IP20_IP65-1024x516.webp",
+    "img": "product-images/qlt-h1260.webp",
     "desc": "הספק: 4.8W/m | 12V | עד 125 lm/W | עד 600 Lm/m | גוון: 2700K/3000K/4000K/6000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1258,12 +1474,17 @@ const __PRODUCTS__ = [
       "ip": "IP65",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/A41H12120040_IP20_IP65-1024x516.webp",
+    "imgCutout": true,
+    "imgWidth": 0.928,
+    "imgScale": 0.88,
+    "imgBase": 0.798
   },
   {
     "id": "qlt-h12120",
     "name": "סטריפ LED 9.6W/m 12V IP20 — H12120",
-    "img": "strips/A41H12120040_IP20_IP65-1024x516.webp",
+    "img": "product-images/qlt-h1260.webp",
     "desc": "הספק: 9.6W/m | 12V | עד 125 lm/W | 1080-1180 Lm/m | גוון: 2700K/3000K/4000K/6000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1278,12 +1499,17 @@ const __PRODUCTS__ = [
       "ip": "IP20",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/A41H12120040_IP20_IP65-1024x516.webp",
+    "imgCutout": true,
+    "imgWidth": 0.928,
+    "imgScale": 0.88,
+    "imgBase": 0.798
   },
   {
     "id": "qlt-h12120a",
     "name": "סטריפ LED 9.6W/m 12V IP65 — H12120A",
-    "img": "strips/A41H12120040_IP20_IP65-1024x516.webp",
+    "img": "product-images/qlt-h1260.webp",
     "desc": "הספק: 9.6W/m | 12V | עד 115 lm/W | 1040-1060 Lm/m | גוון: 2700K/3000K/4000K/6000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1298,7 +1524,12 @@ const __PRODUCTS__ = [
       "ip": "IP65",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/A41H12120040_IP20_IP65-1024x516.webp",
+    "imgCutout": true,
+    "imgWidth": 0.928,
+    "imgScale": 0.88,
+    "imgBase": 0.798
   },
   {
     "id": "qlt-h24070",
@@ -1323,7 +1554,7 @@ const __PRODUCTS__ = [
   {
     "id": "qlt-h24070a",
     "name": "סטריפ LED 4.8W/m IP65 — H24070A",
-    "img": "strips/Led-A41H24210A40-IP65-1024x486.webp",
+    "img": "product-images/qlt-h24070a.webp",
     "desc": "הספק: 4.8W/m | 24V | עד 140 lm/W | עד 672 Lm/m | גוון: 2400K/2700K/3000K/4000K/6000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1338,12 +1569,17 @@ const __PRODUCTS__ = [
       "ip": "IP65",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/Led-A41H24210A40-IP65-1024x486.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.712
   },
   {
     "id": "qlt-h24070i",
     "name": "סטריפ LED 4.8W/m IP68 — H24070I",
-    "img": "strips/Led-A41H24210A40-IP65-1024x486.webp",
+    "img": "product-images/qlt-h24070a.webp",
     "desc": "הספק: 4.8W/m | 24V | עד 135 lm/W | עד 648 Lm/m | גוון: 2700K/3000K/4000K/6000K | IP68",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1358,7 +1594,12 @@ const __PRODUCTS__ = [
       "ip": "IP68",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/Led-A41H24210A40-IP65-1024x486.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.712
   },
   {
     "id": "qlt-h24140",
@@ -1543,7 +1784,7 @@ const __PRODUCTS__ = [
   {
     "id": "qlt-hv07250",
     "name": "סטריפ LED 14W/m 230V IP65 — HV07250",
-    "img": "strips/HV-1024x683.webp",
+    "img": "product-images/qlt-hv07250.webp",
     "desc": "הספק: 14W/m | 230V | 1320-1400 Lm/m | גוון: 2700K/3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1558,12 +1799,17 @@ const __PRODUCTS__ = [
       "ip": "IP65",
       "inputVoltage": "230V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/HV-1024x683.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.848
   },
   {
     "id": "qlt-k24120-2",
     "name": "סטריפ LED 4.8W/m IP20 — K24120",
-    "img": "strips/K24200-foto-1024x683.webp",
+    "img": "product-images/qlt-k24120-2.webp",
     "desc": "הספק: 4.8W/m | 24V | עד 140 lm/W | עד 672 Lm/m | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1578,12 +1824,17 @@ const __PRODUCTS__ = [
       "ip": "IP20",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/K24200-foto-1024x683.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.738
   },
   {
     "id": "qlt-k24120a",
     "name": "סטריפ LED 4.8W/m IP65 — K24120A",
-    "img": "strips/K24200-foto-1024x683.webp",
+    "img": "product-images/qlt-k24120-2.webp",
     "desc": "הספק: 4.8W/m | 24V | עד 140 lm/W | עד 672 Lm/m | גוון: 2700K/3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1598,12 +1849,17 @@ const __PRODUCTS__ = [
       "ip": "IP65",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/K24200-foto-1024x683.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.738
   },
   {
     "id": "qlt-k24160",
     "name": "סטריפ LED 9.6W/m IP20 — K24160",
-    "img": "strips/K24200-foto-1024x683.webp",
+    "img": "product-images/qlt-k24120-2.webp",
     "desc": "הספק: 9.6W/m | 24V | עד 140 lm/W | 1200-1240 Lm/m | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1618,12 +1874,17 @@ const __PRODUCTS__ = [
       "ip": "IP20",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/K24200-foto-1024x683.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.738
   },
   {
     "id": "qlt-k24160a",
     "name": "סטריפ LED 9.6W/m IP65 — K24160A",
-    "img": "strips/K24200-foto-1024x683.webp",
+    "img": "product-images/qlt-k24120-2.webp",
     "desc": "הספק: 9.6W/m | 24V | עד 140 lm/W | 1270-1340 Lm/m | גוון: 2700K/3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1638,12 +1899,17 @@ const __PRODUCTS__ = [
       "ip": "IP65",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/K24200-foto-1024x683.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.738
   },
   {
     "id": "qlt-k24200",
     "name": "סטריפ LED 16.8W/m IP20 — K24200",
-    "img": "strips/K24200-foto-1024x683.webp",
+    "img": "product-images/qlt-k24120-2.webp",
     "desc": "הספק: 16.8W/m | 24V | עד 140 lm/W | 2150-2100 Lm/m | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1658,12 +1924,17 @@ const __PRODUCTS__ = [
       "ip": "IP20",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/K24200-foto-1024x683.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.738
   },
   {
     "id": "qlt-k24200a",
     "name": "סטריפ LED 16.8W/m IP65 — K24200A",
-    "img": "strips/K24200-foto-1024x683.webp",
+    "img": "product-images/qlt-k24120-2.webp",
     "desc": "הספק: 16.8W/m | 24V | עד 140 lm/W | 2110-2180 Lm/m | גוון: 2700K/3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1678,12 +1949,17 @@ const __PRODUCTS__ = [
       "ip": "IP65",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/K24200-foto-1024x683.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.738
   },
   {
     "id": "qlt-k24240",
     "name": "סטריפ LED 22W/m IP20 — K24240",
-    "img": "strips/K24200-foto-1024x683.webp",
+    "img": "product-images/qlt-k24120-2.webp",
     "desc": "הספק: 22W/m | 24V | עד 140 lm/W | עד 3080 Lm/m | גוון: 2700K/3000K/4000K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1698,12 +1974,17 @@ const __PRODUCTS__ = [
       "ip": "IP20",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/K24200-foto-1024x683.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.738
   },
   {
     "id": "qlt-k24240a",
     "name": "סטריפ LED 22W/m IP65 — K24240A",
-    "img": "strips/K24200-foto-1024x683.webp",
+    "img": "product-images/qlt-k24120-2.webp",
     "desc": "הספק: 22W/m | 24V | עד 140 lm/W | עד 3080 Lm/m | גוון: 2700K/3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1718,12 +1999,17 @@ const __PRODUCTS__ = [
       "ip": "IP65",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/K24200-foto-1024x683.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.738
   },
   {
     "id": "qlt-n2412b0rg",
     "name": "נאון סטריפ LED 14.4W/m IP67 — N2412B0RG",
-    "img": "strips/A41N2412BRGB-1024x683.webp",
+    "img": "product-images/qlt-n2412b0rg.webp",
     "desc": "הספק: 14.4W/m | 24V | 324 Lm/m | גוון: RGB | IP67",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1738,12 +2024,17 @@ const __PRODUCTS__ = [
       "ip": "IP67",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/A41N2412BRGB-1024x683.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.811
   },
   {
     "id": "qlt-n2412b1rg",
     "name": "נאון סטריפ LED 8W/m IP67 — N2412B1RG",
-    "img": "strips/A41N2412BRGB-1024x683.webp",
+    "img": "product-images/qlt-n2412b0rg.webp",
     "desc": "הספק: 8W/m | 24V | 180 Lm/m | גוון: RGB | IP67",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1758,7 +2049,12 @@ const __PRODUCTS__ = [
       "ip": "IP67",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/A41N2412BRGB-1024x683.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.811
   },
   {
     "id": "qlt-n2412f",
@@ -2183,7 +2479,7 @@ const __PRODUCTS__ = [
   {
     "id": "qlt-st24112ar",
     "name": "סטריפ LED RGB 19.2W/m IP67 — ST24112AR",
-    "img": "strips/A41ST24112AR-1024x683.webp",
+    "img": "product-images/qlt-st24112ar.webp",
     "desc": "הספק: 19.2W/m | 24V | 1105 Lm/m | גוון: RGB | IP67",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -2198,12 +2494,17 @@ const __PRODUCTS__ = [
       "ip": "IP67",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/A41ST24112AR-1024x683.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.75
   },
   {
     "id": "qlt-st241200r",
     "name": "סטריפ LED RGB 14.4W/m IP20 — ST241200R",
-    "img": "strips/A41ST241200R-2-1024x683.webp",
+    "img": "product-images/qlt-st241200r.webp",
     "desc": "הספק: 14.4W/m | 24V | 828 Lm/m | גוון: RGB | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -2218,12 +2519,17 @@ const __PRODUCTS__ = [
       "ip": "IP20",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/A41ST241200R-2-1024x683.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.729
   },
   {
     "id": "qlt-st24120ar",
     "name": "סטריפ LED RGB 14.4W/m IP65 — ST24120AR",
-    "img": "strips/A41ST24120AR-1024x683.webp",
+    "img": "product-images/qlt-st24120ar.webp",
     "desc": "הספק: 14.4W/m | 24V | 828 Lm/m | גוון: RGB | IP65",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -2238,12 +2544,17 @@ const __PRODUCTS__ = [
       "ip": "IP65",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/A41ST24120AR-1024x683.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.832
   },
   {
     "id": "qlt-st24560ct",
     "name": "סטריפ LED 14W/m IP20 — ST24560CT",
-    "img": "strips/A41ST24560CT-1024x683.webp",
+    "img": "product-images/qlt-st24560ct.webp",
     "desc": "הספק: 14W/m | 24V | עד 85 lm/W | 1080-1190 Lm/m | גוון: 2700K-6500K | IP20",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -2258,7 +2569,12 @@ const __PRODUCTS__ = [
       "ip": "IP20",
       "inputVoltage": "24V",
       "dimming": []
-    }
+    },
+    "imgSource": "strips/A41ST24560CT-1024x683.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 0.922
   },
   {
     "id": "qlt-st2460rgb",
@@ -2323,7 +2639,7 @@ const __PRODUCTS__ = [
   {
     "id": "qlt-brick060",
     "name": "BRICK060",
-    "img": "strips/BRICK-DOPPI-1024x533.webp",
+    "img": "product-images/qlt-brick060.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2338,12 +2654,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/BRICK-DOPPI-1024x533.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 0.997,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-brick100",
     "name": "BRICK100",
-    "img": "strips/BRICK-DOPPI-1024x533.webp",
+    "img": "product-images/qlt-brick060.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2358,12 +2679,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/BRICK-DOPPI-1024x533.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 0.997,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-brick150",
     "name": "BRICK150",
-    "img": "strips/BRICK-DOPPI-1024x533.webp",
+    "img": "product-images/qlt-brick060.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2378,12 +2704,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/BRICK-DOPPI-1024x533.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 0.997,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-cc23w-multicurrent-on-off",
     "name": "CC23W MULTICURRENT ON/OFF",
-    "img": "strips/CC36-1024x784.webp",
+    "img": "product-images/qlt-cc23w-multicurrent-on-off.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2398,12 +2729,17 @@ const __PRODUCTS__ = [
       "voltage": "100MA",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CC36-1024x784.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-cc23wd-multicurrent-dali-push-dimmable",
     "name": "CC23WD MULTICURRENT DALI/PUSH DIMMABLE",
-    "img": "strips/CC36-1024x784.webp",
+    "img": "product-images/qlt-cc23w-multicurrent-on-off.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2421,12 +2757,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CC36-1024x784.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-cc36w-multicurrent-on-off",
     "name": "CC36W MULTICURRENT ON/OFF",
-    "img": "strips/CC36-1024x784.webp",
+    "img": "product-images/qlt-cc23w-multicurrent-on-off.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2441,12 +2782,17 @@ const __PRODUCTS__ = [
       "voltage": "150MA",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CC36-1024x784.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-cc36wd-multicurrent-dali-push-dimmable",
     "name": "CC36WD MULTICURRENT DALI/PUSH DIMMABLE",
-    "img": "strips/CC36-1024x784.webp",
+    "img": "product-images/qlt-cc23w-multicurrent-on-off.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2464,12 +2810,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CC36-1024x784.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-cc44w-multicurrent-on-off",
     "name": "CC44W MULTICURRENT ON/OFF",
-    "img": "strips/CC36-1024x784.webp",
+    "img": "product-images/qlt-cc23w-multicurrent-on-off.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2484,12 +2835,17 @@ const __PRODUCTS__ = [
       "voltage": "850MA",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CC36-1024x784.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-cc44wd-multicurrent-dali-push-dimmable",
     "name": "CC44WD MULTICURRENT DALI/PUSH DIMMABLE",
-    "img": "strips/CC36-1024x784.webp",
+    "img": "product-images/qlt-cc23w-multicurrent-on-off.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2507,12 +2863,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CC36-1024x784.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-cc60w-multicurrent-on-off",
     "name": "CC60W MULTICURRENT ON/OFF",
-    "img": "strips/CC36-1024x784.webp",
+    "img": "product-images/qlt-cc23w-multicurrent-on-off.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2527,12 +2888,17 @@ const __PRODUCTS__ = [
       "voltage": "1350MA",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CC36-1024x784.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-cc60wd-multicurrent-dali-push-dimmable",
     "name": "CC60WD MULTICURRENT DALI/PUSH/1",
-    "img": "strips/CC36-1024x784.webp",
+    "img": "product-images/qlt-cc23w-multicurrent-on-off.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2551,12 +2917,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CC36-1024x784.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-ccbxh60-multicurrent",
     "name": "CCBXH60 MULTICURRENT",
-    "img": "strips/CCBXH60D-1024x861.webp",
+    "img": "product-images/qlt-ccbxh60-multicurrent.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2571,12 +2942,17 @@ const __PRODUCTS__ = [
       "voltage": "800MA",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CCBXH60D-1024x861.webp",
+    "imgCutout": true,
+    "imgBase": 0.985,
+    "imgWidth": 0.912,
+    "imgScale": 0.86
   },
   {
     "id": "qlt-ccbxh60d-multicurrent-dali-push-dimmable",
     "name": "CCBXH60D MULTICURRENT DALI/PUSH DIMMABLE",
-    "img": "strips/CCBXH60D-1024x861.webp",
+    "img": "product-images/qlt-ccbxh60-multicurrent.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2594,12 +2970,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CCBXH60D-1024x861.webp",
+    "imgCutout": true,
+    "imgBase": 0.985,
+    "imgWidth": 0.912,
+    "imgScale": 0.86
   },
   {
     "id": "qlt-ccbxl60-multicurrent-on-off",
     "name": "CCBXL60 MULTICURRENT ON/OFF",
-    "img": "strips/CCBXH60D-1024x861.webp",
+    "img": "product-images/qlt-ccbxh60-multicurrent.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2614,12 +2995,17 @@ const __PRODUCTS__ = [
       "voltage": "250MA",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CCBXH60D-1024x861.webp",
+    "imgCutout": true,
+    "imgBase": 0.985,
+    "imgWidth": 0.912,
+    "imgScale": 0.86
   },
   {
     "id": "qlt-ccbxl60d-multicurrent-dali-push-dimmable",
     "name": "CCBXL60D MULTICURRENT DALI/PUSH DIMMABLE",
-    "img": "strips/CCBXH60D-1024x861.webp",
+    "img": "product-images/qlt-ccbxh60-multicurrent.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2637,12 +3023,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CCBXH60D-1024x861.webp",
+    "imgCutout": true,
+    "imgBase": 0.985,
+    "imgWidth": 0.912,
+    "imgScale": 0.86
   },
   {
     "id": "qlt-ce017-dimmable",
     "name": "CE017 DIMMABLE",
-    "img": "strips/CE17-1024x699.webp",
+    "img": "product-images/qlt-ce017-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2661,12 +3052,17 @@ const __PRODUCTS__ = [
         "TRIAC"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CE17-1024x699.webp",
+    "imgCutout": true,
+    "imgBase": 0.937,
+    "imgWidth": 0.904,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-ce030-dimmable",
     "name": "CE030 DIMMABLE",
-    "img": "strips/CE30-1024x640.webp",
+    "img": "product-images/qlt-ce030-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2685,12 +3081,17 @@ const __PRODUCTS__ = [
         "TRIAC"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CE30-1024x640.webp",
+    "imgCutout": true,
+    "imgBase": 0.998,
+    "imgWidth": 0.964,
+    "imgScale": 0.85
   },
   {
     "id": "qlt-cpl112",
     "name": "CPL112",
-    "img": "strips/CPL206-1024x632.webp",
+    "img": "product-images/qlt-cpl112.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2705,12 +3106,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/CPL206-1024x632.webp",
+    "imgCutout": true,
+    "imgBase": 0.905,
+    "imgWidth": 0.887,
+    "imgScale": 0.92
   },
   {
     "id": "qlt-cpl206",
     "name": "CPL206",
-    "img": "strips/CPL206-1024x632.webp",
+    "img": "product-images/qlt-cpl112.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2725,12 +3131,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/CPL206-1024x632.webp",
+    "imgCutout": true,
+    "imgBase": 0.905,
+    "imgWidth": 0.887,
+    "imgScale": 0.92
   },
   {
     "id": "qlt-cpl306",
     "name": "CPL306",
-    "img": "strips/CPL206-1024x632.webp",
+    "img": "product-images/qlt-cpl112.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2745,12 +3156,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/CPL206-1024x632.webp",
+    "imgCutout": true,
+    "imgBase": 0.905,
+    "imgWidth": 0.887,
+    "imgScale": 0.92
   },
   {
     "id": "qlt-cv23w",
     "name": "CV23W",
-    "img": "strips/CW23W-1-1024x1024.webp",
+    "img": "product-images/qlt-cv23w.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2765,12 +3181,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CW23W-1-1024x1024.webp",
+    "imgCutout": true,
+    "imgBase": 0.681,
+    "imgWidth": 0.929,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-cv36w",
     "name": "CV36W",
-    "img": "strips/CV36W-1024x1024.webp",
+    "img": "product-images/qlt-cv36w.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2785,12 +3206,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CV36W-1024x1024.webp",
+    "imgCutout": true,
+    "imgBase": 0.681,
+    "imgWidth": 0.929,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-cv36wd-dimmable",
     "name": "CV36WD Dimmable",
-    "img": "strips/CV36WD-1024x512.webp",
+    "img": "product-images/qlt-cv36wd-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2808,12 +3234,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CV36WD-1024x512.webp",
+    "imgCutout": true,
+    "imgBase": 0.801,
+    "imgWidth": 0.875,
+    "imgScale": 0.94
   },
   {
     "id": "qlt-dali1103",
     "name": "DALI1103 DIMMABLE INTERFACE",
-    "img": "strips/DALI1103-1024x661.webp",
+    "img": "product-images/qlt-dali1103.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2833,12 +3264,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "24V"
-    }
+    },
+    "imgSource": "strips/DALI1103-1024x661.webp",
+    "imgCutout": true,
+    "imgBase": 0.956,
+    "imgWidth": 0.916,
+    "imgScale": 0.9
   },
   {
     "id": "qlt-dalicube-48v",
     "name": "DALICUBE 48V DIMMABLE INTERFACE",
-    "img": "strips/DDALIMASTER-1024x925.webp",
+    "img": "product-images/qlt-dalicube-48v.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2858,12 +3294,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "48V"
-    }
+    },
+    "imgSource": "strips/DDALIMASTER-1024x925.webp",
+    "imgCutout": true,
+    "imgBase": 0.999,
+    "imgWidth": 0.999,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-dapush2",
     "name": "DAPUSH2 DALI PUSH/TIMER",
-    "img": "strips/DAPUSH2.webp",
+    "img": "product-images/qlt-dapush2.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2880,12 +3321,17 @@ const __PRODUCTS__ = [
         "DALI"
       ],
       "inputVoltage": "DALI"
-    }
+    },
+    "imgSource": "strips/DAPUSH2.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-dase2-m",
     "name": "DASE2",
-    "img": "strips/sensore-1024x671.webp",
+    "img": "product-images/qlt-dase2-m.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2902,12 +3348,17 @@ const __PRODUCTS__ = [
         "DALI"
       ],
       "inputVoltage": "DALI"
-    }
+    },
+    "imgSource": "strips/sensore-1024x671.webp",
+    "imgCutout": true,
+    "imgBase": 0.908,
+    "imgWidth": 0.903,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-dase3",
     "name": "DASE3 Sensore PIR Broadcast",
-    "img": "strips/DALI-Sensor-Multimaster-1024x597.webp",
+    "img": "product-images/qlt-dase3.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2924,12 +3375,17 @@ const __PRODUCTS__ = [
         "DALI"
       ],
       "inputVoltage": "DALI"
-    }
+    },
+    "imgSource": "strips/DALI-Sensor-Multimaster-1024x597.webp",
+    "imgCutout": true,
+    "imgBase": 0.893,
+    "imgWidth": 0.888,
+    "imgScale": 0.92
   },
   {
     "id": "qlt-dbox35-dimmable",
     "name": "DBOX35 DIMMABLE",
-    "img": "strips/Dimmer-Box30-led-controlgear-1024x677.webp",
+    "img": "product-images/qlt-dbox35-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2946,12 +3402,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/Dimmer-Box30-led-controlgear-1024x677.webp",
+    "imgCutout": true,
+    "imgBase": 0.913,
+    "imgWidth": 0.877,
+    "imgScale": 0.94
   },
   {
     "id": "qlt-ddmaster",
     "name": "DDMASTER",
-    "img": "strips/DDALIMASTER-1024x925.webp",
+    "img": "product-images/qlt-dalicube-48v.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2971,12 +3432,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "DALI"
-    }
+    },
+    "imgSource": "strips/DDALIMASTER-1024x925.webp",
+    "imgCutout": true,
+    "imgBase": 0.999,
+    "imgWidth": 0.999,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-dimcube-24v",
     "name": "DIMCUBE 24V DIMMABLE INTERFACE",
-    "img": "strips/DDALIMASTER-1024x925.webp",
+    "img": "product-images/qlt-dalicube-48v.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -2994,12 +3460,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "48V"
-    }
+    },
+    "imgSource": "strips/DDALIMASTER-1024x925.webp",
+    "imgCutout": true,
+    "imgBase": 0.999,
+    "imgWidth": 0.999,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-dimcube-48v",
     "name": "DIMCUBE 48V DIMMABLE INTERFACE",
-    "img": "strips/DDALIMASTER-1024x925.webp",
+    "img": "product-images/qlt-dalicube-48v.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3017,12 +3488,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "48V"
-    }
+    },
+    "imgSource": "strips/DDALIMASTER-1024x925.webp",
+    "imgCutout": true,
+    "imgBase": 0.999,
+    "imgWidth": 0.999,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-din080",
     "name": "DIN080 DIN",
-    "img": "strips/DIN80-24-1024x939.webp",
+    "img": "product-images/qlt-din080.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3037,12 +3513,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/DIN80-24-1024x939.webp",
+    "imgCutout": true,
+    "imgBase": 0.954,
+    "imgWidth": 0.885,
+    "imgScale": 0.92
   },
   {
     "id": "qlt-din160",
     "name": "DIN160 DIN",
-    "img": "strips/DIN80-24-1024x939.webp",
+    "img": "product-images/qlt-din080.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3057,12 +3538,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/DIN80-24-1024x939.webp",
+    "imgCutout": true,
+    "imgBase": 0.954,
+    "imgWidth": 0.885,
+    "imgScale": 0.92
   },
   {
     "id": "qlt-dmx203",
     "name": "DMX203  INTERFACE",
-    "img": "strips/DMX203.webp",
+    "img": "product-images/qlt-dmx203.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3080,12 +3566,17 @@ const __PRODUCTS__ = [
         "DMX"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/DMX203.webp",
+    "imgCutout": true,
+    "imgBase": 0.848,
+    "imgWidth": 0.976,
+    "imgScale": 0.84
   },
   {
     "id": "qlt-dmx220",
     "name": "DMX220",
-    "img": "strips/DMX200.webp",
+    "img": "product-images/qlt-dmx220.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3103,12 +3594,17 @@ const __PRODUCTS__ = [
         "DMX"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/DMX200.webp",
+    "imgCutout": true,
+    "imgBase": 0.79,
+    "imgWidth": 0.922,
+    "imgScale": 0.89
   },
   {
     "id": "qlt-dmxdali-1",
     "name": "DMXDALI 1  INTERFACE",
-    "img": "strips/DMXDALI1.webp",
+    "img": "product-images/qlt-dmxdali-1.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3126,12 +3622,17 @@ const __PRODUCTS__ = [
         "DMX"
       ],
       "inputVoltage": ""
-    }
+    },
+    "imgSource": "strips/DMXDALI1.webp",
+    "imgCutout": true,
+    "imgBase": 0.854,
+    "imgWidth": 0.878,
+    "imgScale": 0.93
   },
   {
     "id": "qlt-dpl110e",
     "name": "DPL110E",
-    "img": "strips/DPL110E-led-controlgear-1024x667.webp",
+    "img": "product-images/qlt-dpl110e.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3146,12 +3647,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/DPL110E-led-controlgear-1024x667.webp",
+    "imgCutout": true,
+    "imgBase": 0.838,
+    "imgWidth": 0.798,
+    "imgScale": 1.03
   },
   {
     "id": "qlt-fb036",
     "name": "FB036",
-    "img": "strips/FB36-1024x876.webp",
+    "img": "product-images/qlt-fb036.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3166,12 +3672,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/FB36-1024x876.webp",
+    "imgCutout": true,
+    "imgBase": 0.927,
+    "imgWidth": 0.928,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-fb060",
     "name": "FB060",
-    "img": "strips/FB60D-1024x730.webp",
+    "img": "product-images/qlt-fb060.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3186,12 +3697,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/FB60D-1024x730.webp",
+    "imgCutout": true,
+    "imgBase": 0.941,
+    "imgWidth": 0.896,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-fb060-0-10v-dimmable",
     "name": "FB060 0",
-    "img": "strips/FB60D-1024x730.webp",
+    "img": "product-images/qlt-fb060.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3208,12 +3724,17 @@ const __PRODUCTS__ = [
         "0-10V"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/FB60D-1024x730.webp",
+    "imgCutout": true,
+    "imgBase": 0.941,
+    "imgWidth": 0.896,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-fb060-1-10v-dimmable",
     "name": "FB060 1",
-    "img": "strips/FB60D-1024x730.webp",
+    "img": "product-images/qlt-fb060.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3230,12 +3751,17 @@ const __PRODUCTS__ = [
         "1-10V"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/FB60D-1024x730.webp",
+    "imgCutout": true,
+    "imgBase": 0.941,
+    "imgWidth": 0.896,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-flat112",
     "name": "FLAT112",
-    "img": "strips/FLAT112-1024x642.webp",
+    "img": "product-images/qlt-flat112.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3250,12 +3776,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/FLAT112-1024x642.webp",
+    "imgCutout": true,
+    "imgBase": 0.838,
+    "imgWidth": 0.832,
+    "imgScale": 0.99
   },
   {
     "id": "qlt-flat12",
     "name": "FLAT12",
-    "img": "strips/FLAT112-1024x642.webp",
+    "img": "product-images/qlt-flat112.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3270,12 +3801,17 @@ const __PRODUCTS__ = [
       "voltage": "12V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/FLAT112-1024x642.webp",
+    "imgCutout": true,
+    "imgBase": 0.838,
+    "imgWidth": 0.832,
+    "imgScale": 0.99
   },
   {
     "id": "qlt-flat30",
     "name": "FLAT30",
-    "img": "strips/FLAT112-1024x642.webp",
+    "img": "product-images/qlt-flat112.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3290,12 +3826,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/FLAT112-1024x642.webp",
+    "imgCutout": true,
+    "imgBase": 0.838,
+    "imgWidth": 0.832,
+    "imgScale": 0.99
   },
   {
     "id": "qlt-flat306",
     "name": "FLAT306",
-    "img": "strips/FLAT112-1024x642.webp",
+    "img": "product-images/qlt-flat112.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3310,12 +3851,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/FLAT112-1024x642.webp",
+    "imgCutout": true,
+    "imgBase": 0.838,
+    "imgWidth": 0.832,
+    "imgScale": 0.99
   },
   {
     "id": "qlt-flo-24-dimmable",
     "name": "FLO 24 DIMMABLE",
-    "img": "strips/FLO-1024x828.webp",
+    "img": "product-images/qlt-flo-24-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3332,12 +3878,17 @@ const __PRODUCTS__ = [
         "DALI"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/FLO-1024x828.webp",
+    "imgCutout": true,
+    "imgBase": 0.948,
+    "imgWidth": 0.911,
+    "imgScale": 0.9
   },
   {
     "id": "qlt-idndp010",
     "name": "IDNDP010 DIN",
-    "img": "strips/INTERFACCIA-DIN.webp",
+    "img": "product-images/qlt-idndp010.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3356,12 +3907,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "24V"
-    }
+    },
+    "imgSource": "strips/INTERFACCIA-DIN.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-idndp110",
     "name": "IDNDP110 DIN",
-    "img": "strips/INTERFACCIA-DIN.webp",
+    "img": "product-images/qlt-idndp010.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3380,12 +3936,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "24V"
-    }
+    },
+    "imgSource": "strips/INTERFACCIA-DIN.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-lvb250",
     "name": "LVB250",
-    "img": "strips/LV-1024x595.webp",
+    "img": "product-images/qlt-lvb250.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3400,12 +3961,17 @@ const __PRODUCTS__ = [
       "voltage": "250MA",
       "dimming": [],
       "inputVoltage": "24V"
-    }
+    },
+    "imgSource": "strips/LV-1024x595.webp",
+    "imgCutout": true,
+    "imgBase": 0.874,
+    "imgWidth": 0.897,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-lvb350",
     "name": "LVB350",
-    "img": "strips/LV-1024x595.webp",
+    "img": "product-images/qlt-lvb250.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3420,12 +3986,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "24V"
-    }
+    },
+    "imgSource": "strips/LV-1024x595.webp",
+    "imgCutout": true,
+    "imgBase": 0.874,
+    "imgWidth": 0.897,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-lvb500",
     "name": "LVB500",
-    "img": "strips/LV-1024x595.webp",
+    "img": "product-images/qlt-lvb250.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3440,12 +4011,17 @@ const __PRODUCTS__ = [
       "voltage": "500MA",
       "dimming": [],
       "inputVoltage": "24V"
-    }
+    },
+    "imgSource": "strips/LV-1024x595.webp",
+    "imgCutout": true,
+    "imgBase": 0.874,
+    "imgWidth": 0.897,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-lvb700",
     "name": "LVB700",
-    "img": "strips/LV-1024x595.webp",
+    "img": "product-images/qlt-lvb250.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3460,12 +4036,17 @@ const __PRODUCTS__ = [
       "voltage": "700MA",
       "dimming": [],
       "inputVoltage": "24V"
-    }
+    },
+    "imgSource": "strips/LV-1024x595.webp",
+    "imgCutout": true,
+    "imgBase": 0.874,
+    "imgWidth": 0.897,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-lvj",
     "name": "LVJ",
-    "img": "strips/LV-bis-1024x633.webp",
+    "img": "product-images/qlt-lvj.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3480,12 +4061,17 @@ const __PRODUCTS__ = [
       "voltage": "1000MA",
       "dimming": [],
       "inputVoltage": "12V"
-    }
+    },
+    "imgSource": "strips/LV-bis-1024x633.webp",
+    "imgCutout": true,
+    "imgBase": 0.823,
+    "imgWidth": 0.888,
+    "imgScale": 0.92
   },
   {
     "id": "qlt-lvl",
     "name": "LVL",
-    "img": "strips/LVP-1024x701.webp",
+    "img": "product-images/qlt-lvl.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3500,12 +4086,17 @@ const __PRODUCTS__ = [
       "voltage": "500MA",
       "dimming": [],
       "inputVoltage": "12V"
-    }
+    },
+    "imgSource": "strips/LVP-1024x701.webp",
+    "imgCutout": true,
+    "imgBase": 0.857,
+    "imgWidth": 0.662,
+    "imgScale": 1.12
   },
   {
     "id": "qlt-lvp",
     "name": "LVP",
-    "img": "strips/LVP-1024x701.webp",
+    "img": "product-images/qlt-lvl.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3520,12 +4111,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "12V"
-    }
+    },
+    "imgSource": "strips/LVP-1024x701.webp",
+    "imgCutout": true,
+    "imgBase": 0.857,
+    "imgWidth": 0.662,
+    "imgScale": 1.12
   },
   {
     "id": "qlt-lvq",
     "name": "LVQ",
-    "img": "strips/LVP-1024x701.webp",
+    "img": "product-images/qlt-lvl.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3540,12 +4136,17 @@ const __PRODUCTS__ = [
       "voltage": "700MA",
       "dimming": [],
       "inputVoltage": "12V"
-    }
+    },
+    "imgSource": "strips/LVP-1024x701.webp",
+    "imgCutout": true,
+    "imgBase": 0.857,
+    "imgWidth": 0.662,
+    "imgScale": 1.12
   },
   {
     "id": "qlt-lvx",
     "name": "LVX",
-    "img": "strips/LV-bis-1024x633.webp",
+    "img": "product-images/qlt-lvj.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3560,12 +4161,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "12V"
-    }
+    },
+    "imgSource": "strips/LV-bis-1024x633.webp",
+    "imgCutout": true,
+    "imgBase": 0.823,
+    "imgWidth": 0.888,
+    "imgScale": 0.92
   },
   {
     "id": "qlt-lvxrgb",
     "name": "LVXRGB",
-    "img": "strips/167_LVXRGB-2.webp",
+    "img": "product-images/qlt-lvxrgb.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3580,12 +4186,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "12V"
-    }
+    },
+    "imgSource": "strips/167_LVXRGB-2.webp",
+    "imgCutout": true,
+    "imgBase": 0.92,
+    "imgWidth": 0.959,
+    "imgScale": 0.86
   },
   {
     "id": "qlt-lvy",
     "name": "LVY",
-    "img": "strips/LV-bis-1024x633.webp",
+    "img": "product-images/qlt-lvj.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3600,12 +4211,17 @@ const __PRODUCTS__ = [
       "voltage": "700MA",
       "dimming": [],
       "inputVoltage": "12V"
-    }
+    },
+    "imgSource": "strips/LV-bis-1024x633.webp",
+    "imgCutout": true,
+    "imgBase": 0.823,
+    "imgWidth": 0.888,
+    "imgScale": 0.92
   },
   {
     "id": "qlt-lvz",
     "name": "LVZ",
-    "img": "strips/LV-bis-1024x633.webp",
+    "img": "product-images/qlt-lvj.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3620,12 +4236,17 @@ const __PRODUCTS__ = [
       "voltage": "500MA",
       "dimming": [],
       "inputVoltage": "12V"
-    }
+    },
+    "imgSource": "strips/LV-bis-1024x633.webp",
+    "imgCutout": true,
+    "imgBase": 0.823,
+    "imgWidth": 0.888,
+    "imgScale": 0.92
   },
   {
     "id": "qlt-md100",
     "name": "MD100",
-    "img": "strips/CLA_6410_MD100-1024x658.webp",
+    "img": "product-images/qlt-md100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3640,12 +4261,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CLA_6410_MD100-1024x658.webp",
+    "imgCutout": true,
+    "imgBase": 0.945,
+    "imgWidth": 0.938,
+    "imgScale": 0.87
   },
   {
     "id": "qlt-md48320",
     "name": "MD48320 48V",
-    "img": "strips/YSL320-1024x662.webp",
+    "img": "product-images/qlt-md48320.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3660,12 +4286,17 @@ const __PRODUCTS__ = [
       "voltage": "48V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/YSL320-1024x662.webp",
+    "imgCutout": true,
+    "imgBase": 0.949,
+    "imgWidth": 0.955,
+    "imgScale": 0.86
   },
   {
     "id": "qlt-mde030-dimmable",
     "name": "MDE030 DIMMABLE",
-    "img": "strips/MDE30-1024x576.webp",
+    "img": "product-images/qlt-mde030-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3684,12 +4315,17 @@ const __PRODUCTS__ = [
         "TRIAC"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/MDE30-1024x576.webp",
+    "imgCutout": true,
+    "imgBase": 0.955,
+    "imgWidth": 0.896,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-mde060-dimmable",
     "name": "PBT100 DIMMABLE",
-    "img": "strips/PBOX200D2B-1024x736.webp",
+    "img": "product-images/qlt-mde060-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3708,12 +4344,17 @@ const __PRODUCTS__ = [
         "TRIAC"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/PBOX200D2B-1024x736.webp",
+    "imgCutout": true,
+    "imgBase": 0.959,
+    "imgWidth": 0.934,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-mdr45-dimmable",
     "name": "MDR45 DIMMABLE",
-    "img": "strips/MDR45-1-1024x571.webp",
+    "img": "product-images/qlt-mdr45-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3731,12 +4372,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/MDR45-1-1024x571.webp",
+    "imgCutout": true,
+    "imgBase": 0.904,
+    "imgWidth": 0.89,
+    "imgScale": 0.92
   },
   {
     "id": "qlt-mdr60-dimmable",
     "name": "MDR60 DIMMABLE",
-    "img": "strips/MDR45-1-1024x571.webp",
+    "img": "product-images/qlt-mdr45-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3754,12 +4400,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/MDR45-1-1024x571.webp",
+    "imgCutout": true,
+    "imgBase": 0.904,
+    "imgWidth": 0.89,
+    "imgScale": 0.92
   },
   {
     "id": "qlt-mini-track-m18",
     "name": "MINI TRACK M18",
-    "img": "strips/MINITRACK_foto-1024x230.webp",
+    "img": "product-images/qlt-mini-track-m18.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3776,12 +4427,17 @@ const __PRODUCTS__ = [
         "PWM-250-400HZ"
       ],
       "inputVoltage": "48V"
-    }
+    },
+    "imgSource": "strips/MINITRACK_foto-1024x230.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-mini-track-m18d",
     "name": "MINI TRACK M18D",
-    "img": "strips/MINITRACK_foto-1024x230.webp",
+    "img": "product-images/qlt-mini-track-m18.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3798,12 +4454,17 @@ const __PRODUCTS__ = [
         "PWM-250-400HZ"
       ],
       "inputVoltage": "48V"
-    }
+    },
+    "imgSource": "strips/MINITRACK_foto-1024x230.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-mini-track-m33",
     "name": "MINI TRACK M33",
-    "img": "strips/MINITRACK_foto-1024x230.webp",
+    "img": "product-images/qlt-mini-track-m18.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3820,12 +4481,17 @@ const __PRODUCTS__ = [
         "PWM-250-400HZ"
       ],
       "inputVoltage": "48V"
-    }
+    },
+    "imgSource": "strips/MINITRACK_foto-1024x230.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-mininice3",
     "name": "MININICE3",
-    "img": "strips/MN1-1024x806.webp",
+    "img": "product-images/qlt-mininice3.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3840,12 +4506,17 @@ const __PRODUCTS__ = [
       "voltage": "12V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/MN1-1024x806.webp",
+    "imgCutout": true,
+    "imgBase": 0.877,
+    "imgWidth": 0.743,
+    "imgScale": 1.1
   },
   {
     "id": "qlt-mininice4",
     "name": "MININICE4",
-    "img": "strips/MN1-1024x806.webp",
+    "img": "product-images/qlt-mininice3.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3860,12 +4531,17 @@ const __PRODUCTS__ = [
       "voltage": "700MA",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/MN1-1024x806.webp",
+    "imgCutout": true,
+    "imgBase": 0.877,
+    "imgWidth": 0.743,
+    "imgScale": 1.1
   },
   {
     "id": "qlt-mininice5",
     "name": "MININICE5",
-    "img": "strips/MN1-1024x806.webp",
+    "img": "product-images/qlt-mininice3.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3880,12 +4556,17 @@ const __PRODUCTS__ = [
       "voltage": "500MA",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/MN1-1024x806.webp",
+    "imgCutout": true,
+    "imgBase": 0.877,
+    "imgWidth": 0.743,
+    "imgScale": 1.1
   },
   {
     "id": "qlt-mip054",
     "name": "MIP054",
-    "img": "strips/MIP160-1024x833.webp",
+    "img": "product-images/qlt-mip054.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3900,12 +4581,17 @@ const __PRODUCTS__ = [
       "voltage": "12V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/MIP160-1024x833.webp",
+    "imgCutout": true,
+    "imgBase": 0.962,
+    "imgWidth": 0.902,
+    "imgScale": 0.9
   },
   {
     "id": "qlt-mip070",
     "name": "MIP070",
-    "img": "strips/MIP160-1024x833.webp",
+    "img": "product-images/qlt-mip054.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3920,12 +4606,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/MIP160-1024x833.webp",
+    "imgCutout": true,
+    "imgBase": 0.962,
+    "imgWidth": 0.902,
+    "imgScale": 0.9
   },
   {
     "id": "qlt-mip110",
     "name": "MIP110",
-    "img": "strips/MIP160-1024x833.webp",
+    "img": "product-images/qlt-mip054.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3940,12 +4631,17 @@ const __PRODUCTS__ = [
       "voltage": "12V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/MIP160-1024x833.webp",
+    "imgCutout": true,
+    "imgBase": 0.962,
+    "imgWidth": 0.902,
+    "imgScale": 0.9
   },
   {
     "id": "qlt-mip160",
     "name": "MIP160",
-    "img": "strips/MIP160-1024x833.webp",
+    "img": "product-images/qlt-mip054.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3960,12 +4656,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/MIP160-1024x833.webp",
+    "imgCutout": true,
+    "imgBase": 0.962,
+    "imgWidth": 0.902,
+    "imgScale": 0.9
   },
   {
     "id": "qlt-mpi1",
     "name": "MPI1",
-    "img": "strips/MPI-1024x775.webp",
+    "img": "product-images/qlt-mpi1.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -3980,12 +4681,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/MPI-1024x775.webp",
+    "imgCutout": true,
+    "imgBase": 0.839,
+    "imgWidth": 0.777,
+    "imgScale": 1.05
   },
   {
     "id": "qlt-mpi3",
     "name": "MPI3",
-    "img": "strips/MPI-1024x775.webp",
+    "img": "product-images/qlt-mpi1.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4000,12 +4706,17 @@ const __PRODUCTS__ = [
       "voltage": "12V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/MPI-1024x775.webp",
+    "imgCutout": true,
+    "imgBase": 0.839,
+    "imgWidth": 0.777,
+    "imgScale": 1.05
   },
   {
     "id": "qlt-mpi4",
     "name": "MPI4",
-    "img": "strips/MPI-1024x775.webp",
+    "img": "product-images/qlt-mpi1.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4020,12 +4731,17 @@ const __PRODUCTS__ = [
       "voltage": "700MA",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/MPI-1024x775.webp",
+    "imgCutout": true,
+    "imgBase": 0.839,
+    "imgWidth": 0.777,
+    "imgScale": 1.05
   },
   {
     "id": "qlt-mpl1",
     "name": "MPL1",
-    "img": "strips/MPL3-1024x819.webp",
+    "img": "product-images/qlt-mpl1.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4040,12 +4756,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/MPL3-1024x819.webp",
+    "imgCutout": true,
+    "imgBase": 0.866,
+    "imgWidth": 0.702,
+    "imgScale": 1.17
   },
   {
     "id": "qlt-mpl3",
     "name": "MPL3",
-    "img": "strips/MPL3-1024x819.webp",
+    "img": "product-images/qlt-mpl1.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4060,12 +4781,17 @@ const __PRODUCTS__ = [
       "voltage": "12V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/MPL3-1024x819.webp",
+    "imgCutout": true,
+    "imgBase": 0.866,
+    "imgWidth": 0.702,
+    "imgScale": 1.17
   },
   {
     "id": "qlt-mpl4",
     "name": "MPL4",
-    "img": "strips/MPL3-1024x819.webp",
+    "img": "product-images/qlt-mpl1.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4080,12 +4806,17 @@ const __PRODUCTS__ = [
       "voltage": "700MA",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/MPL3-1024x819.webp",
+    "imgCutout": true,
+    "imgBase": 0.866,
+    "imgWidth": 0.702,
+    "imgScale": 1.17
   },
   {
     "id": "qlt-mpl5",
     "name": "MPL5",
-    "img": "strips/MPL3-1024x819.webp",
+    "img": "product-images/qlt-mpl1.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4100,12 +4831,17 @@ const __PRODUCTS__ = [
       "voltage": "500MA",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/MPL3-1024x819.webp",
+    "imgCutout": true,
+    "imgBase": 0.866,
+    "imgWidth": 0.702,
+    "imgScale": 1.17
   },
   {
     "id": "qlt-mt30",
     "name": "MT30 LED",
-    "img": "strips/MT30-1024x721.webp",
+    "img": "product-images/qlt-mt30.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4120,12 +4856,17 @@ const __PRODUCTS__ = [
       "voltage": "12V",
       "dimming": [],
       "inputVoltage": ""
-    }
+    },
+    "imgSource": "strips/MT30-1024x721.webp",
+    "imgCutout": true,
+    "imgBase": 0.914,
+    "imgWidth": 0.873,
+    "imgScale": 0.94
   },
   {
     "id": "qlt-nice110",
     "name": "NICE110",
-    "img": "strips/NICE110-led-controgear-1024x755.webp",
+    "img": "product-images/qlt-nice110.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4140,12 +4881,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/NICE110-led-controgear-1024x755.webp",
+    "imgCutout": true,
+    "imgBase": 0.891,
+    "imgWidth": 0.841,
+    "imgScale": 0.98
   },
   {
     "id": "qlt-nice206",
     "name": "NICE206",
-    "img": "strips/NICE110-led-controgear-1024x755.webp",
+    "img": "product-images/qlt-nice110.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4160,12 +4906,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/NICE110-led-controgear-1024x755.webp",
+    "imgCutout": true,
+    "imgBase": 0.891,
+    "imgWidth": 0.841,
+    "imgScale": 0.98
   },
   {
     "id": "qlt-nice303",
     "name": "NICE303",
-    "img": "strips/NICE110-led-controgear-1024x755.webp",
+    "img": "product-images/qlt-nice110.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4180,12 +4931,17 @@ const __PRODUCTS__ = [
       "voltage": "12V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/NICE110-led-controgear-1024x755.webp",
+    "imgCutout": true,
+    "imgBase": 0.891,
+    "imgWidth": 0.841,
+    "imgScale": 0.98
   },
   {
     "id": "qlt-nip109",
     "name": "NIP109",
-    "img": "strips/CLA_6413_NIP103-1024x869.webp",
+    "img": "product-images/qlt-nip109.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4200,12 +4956,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/CLA_6413_NIP103-1024x869.webp",
+    "imgCutout": true,
+    "imgBase": 0.928,
+    "imgWidth": 0.791,
+    "imgScale": 0.99
   },
   {
     "id": "qlt-nip206",
     "name": "NIP206",
-    "img": "strips/CLA_6413_NIP103-1024x869.webp",
+    "img": "product-images/qlt-nip109.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4220,12 +4981,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/CLA_6413_NIP103-1024x869.webp",
+    "imgCutout": true,
+    "imgBase": 0.928,
+    "imgWidth": 0.791,
+    "imgScale": 0.99
   },
   {
     "id": "qlt-nip303",
     "name": "NIP303",
-    "img": "strips/CLA_6413_NIP103-1024x869.webp",
+    "img": "product-images/qlt-nip109.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4240,12 +5006,17 @@ const __PRODUCTS__ = [
       "voltage": "700MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/CLA_6413_NIP103-1024x869.webp",
+    "imgCutout": true,
+    "imgBase": 0.928,
+    "imgWidth": 0.791,
+    "imgScale": 0.99
   },
   {
     "id": "qlt-pbf060",
     "name": "PBF060",
-    "img": "strips/PBF100-1024x537.webp",
+    "img": "product-images/qlt-pbf060.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4260,12 +5031,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBF100-1024x537.webp",
+    "imgCutout": true,
+    "imgBase": 0.946,
+    "imgWidth": 0.943,
+    "imgScale": 0.87
   },
   {
     "id": "qlt-pbf060d-dimmable",
     "name": "PBF060D DIMMABLE",
-    "img": "strips/PBF100D-1024x537.webp",
+    "img": "product-images/qlt-pbf060d-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4283,12 +5059,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBF100D-1024x537.webp",
+    "imgCutout": true,
+    "imgBase": 0.948,
+    "imgWidth": 0.941,
+    "imgScale": 0.87
   },
   {
     "id": "qlt-pbf075",
     "name": "PBF075",
-    "img": "strips/PBF100-1024x537.webp",
+    "img": "product-images/qlt-pbf060.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4303,12 +5084,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBF100-1024x537.webp",
+    "imgCutout": true,
+    "imgBase": 0.946,
+    "imgWidth": 0.943,
+    "imgScale": 0.87
   },
   {
     "id": "qlt-pbf075d-dimmable",
     "name": "PBF075D DIMMABLE",
-    "img": "strips/PBF100D-1024x537.webp",
+    "img": "product-images/qlt-pbf060d-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4326,12 +5112,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBF100D-1024x537.webp",
+    "imgCutout": true,
+    "imgBase": 0.948,
+    "imgWidth": 0.941,
+    "imgScale": 0.87
   },
   {
     "id": "qlt-pbf100",
     "name": "PBF100",
-    "img": "strips/PBF100-1024x537.webp",
+    "img": "product-images/qlt-pbf060.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4346,12 +5137,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBF100-1024x537.webp",
+    "imgCutout": true,
+    "imgBase": 0.946,
+    "imgWidth": 0.943,
+    "imgScale": 0.87
   },
   {
     "id": "qlt-pbf100d-dimmable",
     "name": "PBF100D DIMMABLE",
-    "img": "strips/PBF100D-1024x537.webp",
+    "img": "product-images/qlt-pbf060d-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4369,12 +5165,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBF100D-1024x537.webp",
+    "imgCutout": true,
+    "imgBase": 0.948,
+    "imgWidth": 0.941,
+    "imgScale": 0.87
   },
   {
     "id": "qlt-pbox150",
     "name": "PBOX150",
-    "img": "strips/CLA_6407_PBOX200-1024x673.webp",
+    "img": "product-images/qlt-pbox150.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4389,12 +5190,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/CLA_6407_PBOX200-1024x673.webp",
+    "imgCutout": true,
+    "imgBase": 0.957,
+    "imgWidth": 0.899,
+    "imgScale": 0.9
   },
   {
     "id": "qlt-pbox35",
     "name": "PBOX35",
-    "img": "strips/PBOX35-1024x820.webp",
+    "img": "product-images/qlt-pbox35.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4409,12 +5215,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBOX35-1024x820.webp",
+    "imgCutout": true,
+    "imgBase": 0.963,
+    "imgWidth": 0.92,
+    "imgScale": 0.89
   },
   {
     "id": "qlt-pbs060",
     "name": "PBS060",
-    "img": "strips/PBS_foto-1024x625.webp",
+    "img": "product-images/qlt-pbs060.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4429,12 +5240,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBS_foto-1024x625.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-pbs075",
     "name": "PBS075",
-    "img": "strips/PBS_foto-1024x625.webp",
+    "img": "product-images/qlt-pbs060.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4449,12 +5265,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBS_foto-1024x625.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-pbs075d-dimmable",
     "name": "PBS075D DIMMABLE",
-    "img": "strips/PBS_foto-1024x625.webp",
+    "img": "product-images/qlt-pbs060.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4474,12 +5295,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBS_foto-1024x625.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-pbs100",
     "name": "PBS100",
-    "img": "strips/PBS_foto-1024x625.webp",
+    "img": "product-images/qlt-pbs060.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4494,12 +5320,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBS_foto-1024x625.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-pbs100d-dimmable",
     "name": "PBS100D DIMMABLE",
-    "img": "strips/PBS_foto-1024x625.webp",
+    "img": "product-images/qlt-pbs060.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4519,12 +5350,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBS_foto-1024x625.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-pbt150-dimmable",
     "name": "PBT150 DIMMABLE",
-    "img": "strips/PBOX200D2B-1024x736.webp",
+    "img": "product-images/qlt-mde060-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4543,12 +5379,17 @@ const __PRODUCTS__ = [
         "TRIAC"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/PBOX200D2B-1024x736.webp",
+    "imgCutout": true,
+    "imgBase": 0.959,
+    "imgWidth": 0.934,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-pbt200-dimmable",
     "name": "PBT200 DIMMABLE",
-    "img": "strips/PBT200_1-961x1024.webp",
+    "img": "product-images/qlt-pbt200-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4567,12 +5408,17 @@ const __PRODUCTS__ = [
         "TRIAC"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/PBT200_1-961x1024.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-pbx100",
     "name": "PBX100",
-    "img": "strips/PBX100D-1024x736.webp",
+    "img": "product-images/qlt-pbx100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4587,12 +5433,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBX100D-1024x736.webp",
+    "imgCutout": true,
+    "imgBase": 0.959,
+    "imgWidth": 0.934,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-pbx100d-dimmable",
     "name": "PBX100D DIMMABLE",
-    "img": "strips/PBX100D-1024x736.webp",
+    "img": "product-images/qlt-pbx100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4612,12 +5463,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBX100D-1024x736.webp",
+    "imgCutout": true,
+    "imgBase": 0.959,
+    "imgWidth": 0.934,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-pbx100tw",
     "name": "PBX100TW",
-    "img": "strips/PBX100D-1024x736.webp",
+    "img": "product-images/qlt-pbx100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4635,12 +5491,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBX100D-1024x736.webp",
+    "imgCutout": true,
+    "imgBase": 0.959,
+    "imgWidth": 0.934,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-pbx10d48-dimmable",
     "name": "PBX10D48 DIMMABLE",
-    "img": "strips/PBX100D-1024x736.webp",
+    "img": "product-images/qlt-pbx100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4660,12 +5521,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBX100D-1024x736.webp",
+    "imgCutout": true,
+    "imgBase": 0.959,
+    "imgWidth": 0.934,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-pbx150",
     "name": "PBX150",
-    "img": "strips/PBX100D-1024x736.webp",
+    "img": "product-images/qlt-pbx100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4680,12 +5546,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBX100D-1024x736.webp",
+    "imgCutout": true,
+    "imgBase": 0.959,
+    "imgWidth": 0.934,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-pbx15048",
     "name": "PBX15048",
-    "img": "strips/PBX100D-1024x736.webp",
+    "img": "product-images/qlt-pbx100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4700,12 +5571,17 @@ const __PRODUCTS__ = [
       "voltage": "48V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBX100D-1024x736.webp",
+    "imgCutout": true,
+    "imgBase": 0.959,
+    "imgWidth": 0.934,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-pbx150d-dimmable",
     "name": "PBX150D DIMMABLE",
-    "img": "strips/PBX100D-1024x736.webp",
+    "img": "product-images/qlt-pbx100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4725,12 +5601,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBX100D-1024x736.webp",
+    "imgCutout": true,
+    "imgBase": 0.959,
+    "imgWidth": 0.934,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-pbx15d48-dimmable",
     "name": "PBX15D48 DIMMABLE",
-    "img": "strips/PBX100D-1024x736.webp",
+    "img": "product-images/qlt-pbx100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4750,12 +5631,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBX100D-1024x736.webp",
+    "imgCutout": true,
+    "imgBase": 0.959,
+    "imgWidth": 0.934,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-pbx200",
     "name": "PBX200",
-    "img": "strips/PBX100D-1024x736.webp",
+    "img": "product-images/qlt-pbx100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4770,12 +5656,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBX100D-1024x736.webp",
+    "imgCutout": true,
+    "imgBase": 0.959,
+    "imgWidth": 0.934,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-pbx20048",
     "name": "PBX20048",
-    "img": "strips/PBX100D-1024x736.webp",
+    "img": "product-images/qlt-pbx100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4790,12 +5681,17 @@ const __PRODUCTS__ = [
       "voltage": "48V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBX100D-1024x736.webp",
+    "imgCutout": true,
+    "imgBase": 0.959,
+    "imgWidth": 0.934,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-pbx7524d-dimmable",
     "name": "PBX7524D DIMMABLE",
-    "img": "strips/PBX100D-1024x736.webp",
+    "img": "product-images/qlt-pbx100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4815,12 +5711,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PBX100D-1024x736.webp",
+    "imgCutout": true,
+    "imgBase": 0.959,
+    "imgWidth": 0.934,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-pd312",
     "name": "PD312",
-    "img": "strips/PD-309-led-controlgear-1024x619.webp",
+    "img": "product-images/qlt-pd312.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4835,12 +5736,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PD-309-led-controlgear-1024x619.webp",
+    "imgCutout": true,
+    "imgBase": 0.872,
+    "imgWidth": 0.841,
+    "imgScale": 0.98
   },
   {
     "id": "qlt-pdcvd-dimmable",
     "name": "PDCVD DIMMABLE",
-    "img": "strips/PD-CVD-1024x698.webp",
+    "img": "product-images/qlt-pdcvd-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4858,12 +5764,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PD-CVD-1024x698.webp",
+    "imgCutout": true,
+    "imgBase": 0.933,
+    "imgWidth": 0.909,
+    "imgScale": 0.9
   },
   {
     "id": "qlt-pdlu",
     "name": "PDLU RF INTERFACE",
-    "img": "strips/PDLU-1024x600.webp",
+    "img": "product-images/qlt-pdlu.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4880,12 +5791,17 @@ const __PRODUCTS__ = [
         "RF-24GHZ"
       ],
       "inputVoltage": "12V"
-    }
+    },
+    "imgSource": "strips/PDLU-1024x600.webp",
+    "imgCutout": true,
+    "imgBase": 0.94,
+    "imgWidth": 0.897,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-pdlusm",
     "name": "PDLUSM SMART/RF INTERFACE",
-    "img": "strips/PDLU-1024x600.webp",
+    "img": "product-images/qlt-pdlu.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4903,12 +5819,17 @@ const __PRODUCTS__ = [
         "SMART"
       ],
       "inputVoltage": "12V"
-    }
+    },
+    "imgSource": "strips/PDLU-1024x600.webp",
+    "imgCutout": true,
+    "imgBase": 0.94,
+    "imgWidth": 0.897,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-pdmc-multicurrent",
     "name": "PDMC MULTICURRENT",
-    "img": "strips/PDMC-1024x653.webp",
+    "img": "product-images/qlt-pdmc-multicurrent.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4923,12 +5844,17 @@ const __PRODUCTS__ = [
       "voltage": "250MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PDMC-1024x653.webp",
+    "imgCutout": true,
+    "imgBase": 0.913,
+    "imgWidth": 0.917,
+    "imgScale": 0.89
   },
   {
     "id": "qlt-pdv24",
     "name": "PDV24",
-    "img": "strips/PDV12-led-controlgear-1024x619.webp",
+    "img": "product-images/qlt-pdv24.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4943,12 +5869,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PDV12-led-controlgear-1024x619.webp",
+    "imgCutout": true,
+    "imgBase": 0.872,
+    "imgWidth": 0.841,
+    "imgScale": 0.98
   },
   {
     "id": "qlt-ple060-dimmable",
     "name": "PLE060 DIMMABLE",
-    "img": "strips/PLV150D-24V-150W-IP65-1024x467.webp",
+    "img": "product-images/qlt-ple060-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4967,12 +5898,17 @@ const __PRODUCTS__ = [
         "TRIAC"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/PLV150D-24V-150W-IP65-1024x467.webp",
+    "imgCutout": true,
+    "imgBase": 0.927,
+    "imgWidth": 0.95,
+    "imgScale": 0.86
   },
   {
     "id": "qlt-plj106",
     "name": "PLJ106",
-    "img": "strips/PLJ110-1024x895.webp",
+    "img": "product-images/qlt-plj106.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -4987,12 +5923,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLJ110-1024x895.webp",
+    "imgCutout": true,
+    "imgBase": 0.858,
+    "imgWidth": 0.78,
+    "imgScale": 1.05
   },
   {
     "id": "qlt-plj110",
     "name": "PLJ110",
-    "img": "strips/PLJ110-1024x895.webp",
+    "img": "product-images/qlt-plj106.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5007,12 +5948,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLJ110-1024x895.webp",
+    "imgCutout": true,
+    "imgBase": 0.858,
+    "imgWidth": 0.78,
+    "imgScale": 1.05
   },
   {
     "id": "qlt-plj204",
     "name": "PLJ204",
-    "img": "strips/PLJ110-1024x895.webp",
+    "img": "product-images/qlt-plj106.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5027,12 +5973,17 @@ const __PRODUCTS__ = [
       "voltage": "500MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLJ110-1024x895.webp",
+    "imgCutout": true,
+    "imgBase": 0.858,
+    "imgWidth": 0.78,
+    "imgScale": 1.05
   },
   {
     "id": "qlt-plj303",
     "name": "PLJ303",
-    "img": "strips/PLJ110-1024x895.webp",
+    "img": "product-images/qlt-plj106.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5047,12 +5998,17 @@ const __PRODUCTS__ = [
       "voltage": "12V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLJ110-1024x895.webp",
+    "imgCutout": true,
+    "imgBase": 0.858,
+    "imgWidth": 0.78,
+    "imgScale": 1.05
   },
   {
     "id": "qlt-plk110z",
     "name": "PLK110Z",
-    "img": "strips/PLK110Z-1024x636.webp",
+    "img": "product-images/qlt-plk110z.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5067,12 +6023,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLK110Z-1024x636.webp",
+    "imgCutout": true,
+    "imgBase": 0.915,
+    "imgWidth": 0.907,
+    "imgScale": 0.9
   },
   {
     "id": "qlt-plk112",
     "name": "PLK112",
-    "img": "strips/PLK110Z-1024x636.webp",
+    "img": "product-images/qlt-plk110z.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5087,12 +6048,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLK110Z-1024x636.webp",
+    "imgCutout": true,
+    "imgBase": 0.915,
+    "imgWidth": 0.907,
+    "imgScale": 0.9
   },
   {
     "id": "qlt-plk113",
     "name": "PLK113",
-    "img": "strips/PLK110Z-1024x636.webp",
+    "img": "product-images/qlt-plk110z.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5107,12 +6073,17 @@ const __PRODUCTS__ = [
       "voltage": "240MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLK110Z-1024x636.webp",
+    "imgCutout": true,
+    "imgBase": 0.915,
+    "imgWidth": 0.907,
+    "imgScale": 0.9
   },
   {
     "id": "qlt-plk12",
     "name": "PLK12",
-    "img": "strips/PLK110Z-1024x636.webp",
+    "img": "product-images/qlt-plk110z.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5127,12 +6098,17 @@ const __PRODUCTS__ = [
       "voltage": "12V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLK110Z-1024x636.webp",
+    "imgCutout": true,
+    "imgBase": 0.915,
+    "imgWidth": 0.907,
+    "imgScale": 0.9
   },
   {
     "id": "qlt-plk185",
     "name": "PLK185",
-    "img": "strips/PLK110Z-1024x636.webp",
+    "img": "product-images/qlt-plk110z.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5147,12 +6123,17 @@ const __PRODUCTS__ = [
       "voltage": "185MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLK110Z-1024x636.webp",
+    "imgCutout": true,
+    "imgBase": 0.915,
+    "imgWidth": 0.907,
+    "imgScale": 0.9
   },
   {
     "id": "qlt-plk205",
     "name": "PLK205",
-    "img": "strips/PLK110Z-1024x636.webp",
+    "img": "product-images/qlt-plk110z.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5167,12 +6148,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLK110Z-1024x636.webp",
+    "imgCutout": true,
+    "imgBase": 0.915,
+    "imgWidth": 0.907,
+    "imgScale": 0.9
   },
   {
     "id": "qlt-plk300",
     "name": "PLK300",
-    "img": "strips/PLK110Z-1024x636.webp",
+    "img": "product-images/qlt-plk110z.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5187,12 +6173,17 @@ const __PRODUCTS__ = [
       "voltage": "300MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLK110Z-1024x636.webp",
+    "imgCutout": true,
+    "imgBase": 0.915,
+    "imgWidth": 0.907,
+    "imgScale": 0.9
   },
   {
     "id": "qlt-plk306",
     "name": "PLK306",
-    "img": "strips/PLK110Z-1024x636.webp",
+    "img": "product-images/qlt-plk110z.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5207,12 +6198,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLK110Z-1024x636.webp",
+    "imgCutout": true,
+    "imgBase": 0.915,
+    "imgWidth": 0.907,
+    "imgScale": 0.9
   },
   {
     "id": "qlt-plke109-dimmable",
     "name": "PLKE109 DIMMABLE",
-    "img": "strips/PLKE-109-1024x599.webp",
+    "img": "product-images/qlt-plke109-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5231,12 +6227,17 @@ const __PRODUCTS__ = [
         "TRIAC"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/PLKE-109-1024x599.webp",
+    "imgCutout": true,
+    "imgBase": 0.927,
+    "imgWidth": 0.902,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-plke109-277-dimmable",
     "name": "PLKE109",
-    "img": "strips/PLKE-109-1024x599.webp",
+    "img": "product-images/qlt-plke109-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5255,12 +6256,17 @@ const __PRODUCTS__ = [
         "TRIAC"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/PLKE-109-1024x599.webp",
+    "imgCutout": true,
+    "imgBase": 0.927,
+    "imgWidth": 0.902,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-plke109-278-dimmable",
     "name": "PLKE109",
-    "img": "strips/PLKE-109-1024x599.webp",
+    "img": "product-images/qlt-plke109-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5279,12 +6285,17 @@ const __PRODUCTS__ = [
         "TRIAC"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/PLKE-109-1024x599.webp",
+    "imgCutout": true,
+    "imgBase": 0.927,
+    "imgWidth": 0.902,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-plke109-279-dimmable",
     "name": "PLKE109",
-    "img": "strips/PLKE-109-1024x599.webp",
+    "img": "product-images/qlt-plke109-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5303,12 +6314,17 @@ const __PRODUCTS__ = [
         "TRIAC"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/PLKE-109-1024x599.webp",
+    "imgCutout": true,
+    "imgBase": 0.927,
+    "imgWidth": 0.902,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-plke109-280-dimmable",
     "name": "PLKE109",
-    "img": "strips/PLKE-109-1024x599.webp",
+    "img": "product-images/qlt-plke109-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5327,12 +6343,17 @@ const __PRODUCTS__ = [
         "TRIAC"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/PLKE-109-1024x599.webp",
+    "imgCutout": true,
+    "imgBase": 0.927,
+    "imgWidth": 0.902,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-plke109-283-dimmable",
     "name": "PLKE109",
-    "img": "strips/PLKE-109-1024x599.webp",
+    "img": "product-images/qlt-plke109-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5351,12 +6372,17 @@ const __PRODUCTS__ = [
         "TRIAC"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/PLKE-109-1024x599.webp",
+    "imgCutout": true,
+    "imgBase": 0.927,
+    "imgWidth": 0.902,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-plke205-dimmable",
     "name": "PLKE205 DIMMABLE",
-    "img": "strips/PLKE-109-1024x599.webp",
+    "img": "product-images/qlt-plke109-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5375,12 +6401,17 @@ const __PRODUCTS__ = [
         "TRIAC"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/PLKE-109-1024x599.webp",
+    "imgCutout": true,
+    "imgBase": 0.927,
+    "imgWidth": 0.902,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-plke24-dimmable",
     "name": "PLKE24 DIMMABLE",
-    "img": "strips/PLKE-109-1024x599.webp",
+    "img": "product-images/qlt-plke109-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5399,12 +6430,17 @@ const __PRODUCTS__ = [
         "TRIAC"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/PLKE-109-1024x599.webp",
+    "imgCutout": true,
+    "imgBase": 0.927,
+    "imgWidth": 0.902,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-plke306-dimmable",
     "name": "PLKE306 DIMMABLE",
-    "img": "strips/PLKE-109-1024x599.webp",
+    "img": "product-images/qlt-plke109-dimmable.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5423,12 +6459,17 @@ const __PRODUCTS__ = [
         "TRIAC"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/PLKE-109-1024x599.webp",
+    "imgCutout": true,
+    "imgBase": 0.927,
+    "imgWidth": 0.902,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-plp105n",
     "name": "PLP105N",
-    "img": "strips/PLP-1024x504.webp",
+    "img": "product-images/qlt-plp105n.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5443,12 +6484,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLP-1024x504.webp",
+    "imgCutout": true,
+    "imgBase": 0.889,
+    "imgWidth": 0.917,
+    "imgScale": 0.89
   },
   {
     "id": "qlt-plp105t",
     "name": "PLP105T",
-    "img": "strips/PLP106-1024x532.webp",
+    "img": "product-images/qlt-plp105t.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5463,12 +6509,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLP106-1024x532.webp",
+    "imgCutout": true,
+    "imgBase": 0.865,
+    "imgWidth": 0.928,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-plp106n",
     "name": "PLP106N",
-    "img": "strips/PLP-1024x504.webp",
+    "img": "product-images/qlt-plp105n.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5483,12 +6534,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLP-1024x504.webp",
+    "imgCutout": true,
+    "imgBase": 0.889,
+    "imgWidth": 0.917,
+    "imgScale": 0.89
   },
   {
     "id": "qlt-plp106t",
     "name": "PLP106T",
-    "img": "strips/PLP106-1024x532.webp",
+    "img": "product-images/qlt-plp105t.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5503,12 +6559,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLP106-1024x532.webp",
+    "imgCutout": true,
+    "imgBase": 0.865,
+    "imgWidth": 0.928,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-plp112n",
     "name": "PLP112N",
-    "img": "strips/PLP-1024x504.webp",
+    "img": "product-images/qlt-plp105n.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5523,12 +6584,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLP-1024x504.webp",
+    "imgCutout": true,
+    "imgBase": 0.889,
+    "imgWidth": 0.917,
+    "imgScale": 0.89
   },
   {
     "id": "qlt-plp112t",
     "name": "PLP112T",
-    "img": "strips/PLP106-1024x532.webp",
+    "img": "product-images/qlt-plp105t.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5543,12 +6609,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLP106-1024x532.webp",
+    "imgCutout": true,
+    "imgBase": 0.865,
+    "imgWidth": 0.928,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-plp12n",
     "name": "PLP12N",
-    "img": "strips/PLP-1024x504.webp",
+    "img": "product-images/qlt-plp105n.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5563,12 +6634,17 @@ const __PRODUCTS__ = [
       "voltage": "12V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLP-1024x504.webp",
+    "imgCutout": true,
+    "imgBase": 0.889,
+    "imgWidth": 0.917,
+    "imgScale": 0.89
   },
   {
     "id": "qlt-plp12t",
     "name": "PLP12T",
-    "img": "strips/PLP106-1024x532.webp",
+    "img": "product-images/qlt-plp105t.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5583,12 +6659,17 @@ const __PRODUCTS__ = [
       "voltage": "12V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLP106-1024x532.webp",
+    "imgCutout": true,
+    "imgBase": 0.865,
+    "imgWidth": 0.928,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-plp303n",
     "name": "PLP303N",
-    "img": "strips/PLP-1024x504.webp",
+    "img": "product-images/qlt-plp105n.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5603,12 +6684,17 @@ const __PRODUCTS__ = [
       "voltage": "12V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLP-1024x504.webp",
+    "imgCutout": true,
+    "imgBase": 0.889,
+    "imgWidth": 0.917,
+    "imgScale": 0.89
   },
   {
     "id": "qlt-plp303t",
     "name": "PLP303T",
-    "img": "strips/PLP106-1024x532.webp",
+    "img": "product-images/qlt-plp105t.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5623,12 +6709,17 @@ const __PRODUCTS__ = [
       "voltage": "12V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLP106-1024x532.webp",
+    "imgCutout": true,
+    "imgBase": 0.865,
+    "imgWidth": 0.928,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-plp306n",
     "name": "PLP306N",
-    "img": "strips/PLP-1024x504.webp",
+    "img": "product-images/qlt-plp105n.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5643,12 +6734,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLP-1024x504.webp",
+    "imgCutout": true,
+    "imgBase": 0.889,
+    "imgWidth": 0.917,
+    "imgScale": 0.89
   },
   {
     "id": "qlt-plp306t",
     "name": "PLP306T",
-    "img": "strips/PLP106-1024x532.webp",
+    "img": "product-images/qlt-plp105t.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5663,12 +6759,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLP106-1024x532.webp",
+    "imgCutout": true,
+    "imgBase": 0.865,
+    "imgWidth": 0.928,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-plr106",
     "name": "PLR106",
-    "img": "strips/PLR110-1024x797.webp",
+    "img": "product-images/qlt-plr106.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5683,12 +6784,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLR110-1024x797.webp",
+    "imgCutout": true,
+    "imgBase": 0.926,
+    "imgWidth": 0.894,
+    "imgScale": 0.92
   },
   {
     "id": "qlt-plr110",
     "name": "PLR110",
-    "img": "strips/PLR110-1024x797.webp",
+    "img": "product-images/qlt-plr106.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5703,12 +6809,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLR110-1024x797.webp",
+    "imgCutout": true,
+    "imgBase": 0.926,
+    "imgWidth": 0.894,
+    "imgScale": 0.92
   },
   {
     "id": "qlt-plr204",
     "name": "PLR204",
-    "img": "strips/PLR110-1024x797.webp",
+    "img": "product-images/qlt-plr106.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5723,12 +6834,17 @@ const __PRODUCTS__ = [
       "voltage": "500MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLR110-1024x797.webp",
+    "imgCutout": true,
+    "imgBase": 0.926,
+    "imgWidth": 0.894,
+    "imgScale": 0.92
   },
   {
     "id": "qlt-plr303",
     "name": "PLR303",
-    "img": "strips/PLR110-1024x797.webp",
+    "img": "product-images/qlt-plr106.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5743,12 +6859,17 @@ const __PRODUCTS__ = [
       "voltage": "12V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLR110-1024x797.webp",
+    "imgCutout": true,
+    "imgBase": 0.926,
+    "imgWidth": 0.894,
+    "imgScale": 0.92
   },
   {
     "id": "qlt-plv050",
     "name": "PLV050",
-    "img": "strips/PLV40-24V-40W-IP65-1024x670.webp",
+    "img": "product-images/qlt-plv050.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5763,12 +6884,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/PLV40-24V-40W-IP65-1024x670.webp",
+    "imgCutout": true,
+    "imgBase": 0.955,
+    "imgWidth": 0.905,
+    "imgScale": 0.91
   },
   {
     "id": "qlt-plv100",
     "name": "PLV100",
-    "img": "strips/PLV100-24V-100W-1024x580.webp",
+    "img": "product-images/qlt-plv100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5783,12 +6909,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/PLV100-24V-100W-1024x580.webp",
+    "imgCutout": true,
+    "imgBase": 0.96,
+    "imgWidth": 0.951,
+    "imgScale": 0.86
   },
   {
     "id": "qlt-plv10048",
     "name": "PLV10048",
-    "img": "strips/PLV100-24V-100W-1024x580.webp",
+    "img": "product-images/qlt-plv100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5803,12 +6934,17 @@ const __PRODUCTS__ = [
       "voltage": "48V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/PLV100-24V-100W-1024x580.webp",
+    "imgCutout": true,
+    "imgBase": 0.96,
+    "imgWidth": 0.951,
+    "imgScale": 0.86
   },
   {
     "id": "qlt-plv150",
     "name": "PLV150",
-    "img": "strips/PLV100-24V-100W-1024x580.webp",
+    "img": "product-images/qlt-plv100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5823,12 +6959,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/PLV100-24V-100W-1024x580.webp",
+    "imgCutout": true,
+    "imgBase": 0.96,
+    "imgWidth": 0.951,
+    "imgScale": 0.86
   },
   {
     "id": "qlt-plv15048",
     "name": "PLV15048",
-    "img": "strips/PLV100-24V-100W-1024x580.webp",
+    "img": "product-images/qlt-plv100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5843,12 +6984,17 @@ const __PRODUCTS__ = [
       "voltage": "48V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/PLV100-24V-100W-1024x580.webp",
+    "imgCutout": true,
+    "imgBase": 0.96,
+    "imgWidth": 0.951,
+    "imgScale": 0.86
   },
   {
     "id": "qlt-plv300",
     "name": "PLV300",
-    "img": "strips/PLV100-24V-100W-1024x580.webp",
+    "img": "product-images/qlt-plv100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5863,12 +7009,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/PLV100-24V-100W-1024x580.webp",
+    "imgCutout": true,
+    "imgBase": 0.96,
+    "imgWidth": 0.951,
+    "imgScale": 0.86
   },
   {
     "id": "qlt-plv300d-dali-push",
     "name": "PLV300D  DALI/PUSH",
-    "img": "strips/PLV100-24V-100W-1024x580.webp",
+    "img": "product-images/qlt-plv100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5886,12 +7037,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/PLV100-24V-100W-1024x580.webp",
+    "imgCutout": true,
+    "imgBase": 0.96,
+    "imgWidth": 0.951,
+    "imgScale": 0.86
   },
   {
     "id": "qlt-plz140",
     "name": "PLZ140",
-    "img": "strips/PLZ350-1024x597.webp",
+    "img": "product-images/qlt-plz140.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5906,12 +7062,17 @@ const __PRODUCTS__ = [
       "voltage": "140MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLZ350-1024x597.webp",
+    "imgCutout": true,
+    "imgBase": 0.848,
+    "imgWidth": 0.839,
+    "imgScale": 0.98
   },
   {
     "id": "qlt-plz350",
     "name": "PLZ350",
-    "img": "strips/PLZ350-1024x597.webp",
+    "img": "product-images/qlt-plz140.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5926,12 +7087,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLZ350-1024x597.webp",
+    "imgCutout": true,
+    "imgBase": 0.848,
+    "imgWidth": 0.839,
+    "imgScale": 0.98
   },
   {
     "id": "qlt-plz400",
     "name": "PLZ400",
-    "img": "strips/PLZ350-1024x597.webp",
+    "img": "product-images/qlt-plz140.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5946,12 +7112,17 @@ const __PRODUCTS__ = [
       "voltage": "400MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLZ350-1024x597.webp",
+    "imgCutout": true,
+    "imgBase": 0.848,
+    "imgWidth": 0.839,
+    "imgScale": 0.98
   },
   {
     "id": "qlt-plz500",
     "name": "PLZ500",
-    "img": "strips/PLZ350-1024x597.webp",
+    "img": "product-images/qlt-plz140.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5966,12 +7137,17 @@ const __PRODUCTS__ = [
       "voltage": "500MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLZ350-1024x597.webp",
+    "imgCutout": true,
+    "imgBase": 0.848,
+    "imgWidth": 0.839,
+    "imgScale": 0.98
   },
   {
     "id": "qlt-plz640",
     "name": "PLZ640",
-    "img": "strips/PLZ350-1024x597.webp",
+    "img": "product-images/qlt-plz140.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -5986,12 +7162,17 @@ const __PRODUCTS__ = [
       "voltage": "640MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PLZ350-1024x597.webp",
+    "imgCutout": true,
+    "imgBase": 0.848,
+    "imgWidth": 0.839,
+    "imgScale": 0.98
   },
   {
     "id": "qlt-prl12",
     "name": "PRL12",
-    "img": "strips/PRL112-1024x504.webp",
+    "img": "product-images/qlt-prl12.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6006,12 +7187,17 @@ const __PRODUCTS__ = [
       "voltage": "12V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PRL112-1024x504.webp",
+    "imgCutout": true,
+    "imgBase": 0.938,
+    "imgWidth": 0.928,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-prl185",
     "name": "PRL185",
-    "img": "strips/PRL112-1024x504.webp",
+    "img": "product-images/qlt-prl12.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6026,12 +7212,17 @@ const __PRODUCTS__ = [
       "voltage": "185MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PRL112-1024x504.webp",
+    "imgCutout": true,
+    "imgBase": 0.938,
+    "imgWidth": 0.928,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-prl300",
     "name": "PRL300",
-    "img": "strips/PRL112-1024x504.webp",
+    "img": "product-images/qlt-prl12.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6046,12 +7237,17 @@ const __PRODUCTS__ = [
       "voltage": "300MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/PRL112-1024x504.webp",
+    "imgCutout": true,
+    "imgBase": 0.938,
+    "imgWidth": 0.928,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-ptemc24-multicurrent",
     "name": "PTEMC24 MULTICURRENT DIMMABLE",
-    "img": "strips/PTEMC112-1024x522.webp",
+    "img": "product-images/qlt-ptemc24-multicurrent.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6070,12 +7266,17 @@ const __PRODUCTS__ = [
         "TRIAC"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/PTEMC112-1024x522.webp",
+    "imgCutout": true,
+    "imgBase": 0.925,
+    "imgWidth": 0.906,
+    "imgScale": 0.9
   },
   {
     "id": "qlt-pul42bb-multicurrent",
     "name": "PUL42BB MULTICURRENT DIMMABLE",
-    "img": "strips/CLA_6419_PUL042-1024x816.webp",
+    "img": "product-images/qlt-pul42bb-multicurrent.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6094,12 +7295,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CLA_6419_PUL042-1024x816.webp",
+    "imgCutout": true,
+    "imgBase": 0.955,
+    "imgWidth": 0.889,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-pul42be-multicurrent",
     "name": "PUL42BE MULTICURRENT DIMMABLE",
-    "img": "strips/CLA_6419_PUL042-1024x816.webp",
+    "img": "product-images/qlt-pul42bb-multicurrent.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6117,12 +7323,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CLA_6419_PUL042-1024x816.webp",
+    "imgCutout": true,
+    "imgBase": 0.955,
+    "imgWidth": 0.889,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-pul60ab-multicurrent",
     "name": "PUL60AB MULTICURRENT DIMMABLE",
-    "img": "strips/CLA_6419_PUL042-1024x816.webp",
+    "img": "product-images/qlt-pul42bb-multicurrent.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6141,12 +7352,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CLA_6419_PUL042-1024x816.webp",
+    "imgCutout": true,
+    "imgBase": 0.955,
+    "imgWidth": 0.889,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-pul60ae-multicurrent",
     "name": "PUL60AE MULTICURRENT DIMMABLE",
-    "img": "strips/CLA_6419_PUL042-1024x816.webp",
+    "img": "product-images/qlt-pul42bb-multicurrent.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6164,12 +7380,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/CLA_6419_PUL042-1024x816.webp",
+    "imgCutout": true,
+    "imgBase": 0.955,
+    "imgWidth": 0.889,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-pwm-repeater-4channels",
     "name": "PWM REPEATER 4channels",
-    "img": "strips/PWMR-1024x659.webp",
+    "img": "product-images/qlt-pwm-repeater-4channels.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6184,12 +7405,17 @@ const __PRODUCTS__ = [
       "voltage": "12V",
       "dimming": [],
       "inputVoltage": "12V"
-    }
+    },
+    "imgSource": "strips/PWMR-1024x659.webp",
+    "imgCutout": true,
+    "imgBase": 0.95,
+    "imgWidth": 0.938,
+    "imgScale": 0.87
   },
   {
     "id": "qlt-qbox-multicurrent",
     "name": "QBOX MULTICURRENT",
-    "img": "strips/QBOXD2-1-1024x692.webp",
+    "img": "product-images/qlt-qbox-multicurrent.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6204,12 +7430,17 @@ const __PRODUCTS__ = [
       "voltage": "600MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/QBOXD2-1-1024x692.webp",
+    "imgCutout": true,
+    "imgBase": 0.973,
+    "imgWidth": 0.903,
+    "imgScale": 0.89
   },
   {
     "id": "qlt-qbox110-multicurrent",
     "name": "QBOX110 MULTICURRENT 1",
-    "img": "strips/QBOXD2-1-1024x692.webp",
+    "img": "product-images/qlt-qbox-multicurrent.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6226,12 +7457,17 @@ const __PRODUCTS__ = [
         "1-10V"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/QBOXD2-1-1024x692.webp",
+    "imgCutout": true,
+    "imgBase": 0.973,
+    "imgWidth": 0.903,
+    "imgScale": 0.89
   },
   {
     "id": "qlt-rc309",
     "name": "RC309",
-    "img": "strips/RC312-1024x868.webp",
+    "img": "product-images/qlt-rc309.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6246,12 +7482,17 @@ const __PRODUCTS__ = [
       "voltage": "700MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/RC312-1024x868.webp",
+    "imgCutout": true,
+    "imgBase": 0.866,
+    "imgWidth": 0.713,
+    "imgScale": 1.11
   },
   {
     "id": "qlt-rc312",
     "name": "RC312",
-    "img": "strips/RC312-1024x868.webp",
+    "img": "product-images/qlt-rc309.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6266,12 +7507,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/RC312-1024x868.webp",
+    "imgCutout": true,
+    "imgBase": 0.866,
+    "imgWidth": 0.713,
+    "imgScale": 1.11
   },
   {
     "id": "qlt-rc315",
     "name": "RC315",
-    "img": "strips/RC312-1024x868.webp",
+    "img": "product-images/qlt-rc309.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6286,12 +7532,17 @@ const __PRODUCTS__ = [
       "voltage": "500MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/RC312-1024x868.webp",
+    "imgCutout": true,
+    "imgBase": 0.866,
+    "imgWidth": 0.713,
+    "imgScale": 1.11
   },
   {
     "id": "qlt-rcc-tw-cc",
     "name": "RCC TW CC",
-    "img": "strips/RGBOX412-75W-1024x582.webp",
+    "img": "product-images/qlt-rcc-tw-cc.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6309,12 +7560,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/RGBOX412-75W-1024x582.webp",
+    "imgCutout": true,
+    "imgBase": 0.955,
+    "imgWidth": 0.938,
+    "imgScale": 0.87
   },
   {
     "id": "qlt-rcdimct",
     "name": "RCDIMCT RF TRANSMITTER",
-    "img": "strips/RCDIMCT-1024x671.webp",
+    "img": "product-images/qlt-rcdimct.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6331,12 +7587,17 @@ const __PRODUCTS__ = [
         "RF-24GHZ"
       ],
       "inputVoltage": ""
-    }
+    },
+    "imgSource": "strips/RCDIMCT-1024x671.webp",
+    "imgCutout": true,
+    "imgBase": 0.978,
+    "imgWidth": 0.947,
+    "imgScale": 0.87
   },
   {
     "id": "qlt-rcrgbw",
     "name": "RCRGBW RF TRANSMITTER",
-    "img": "strips/RCRGBW-1024x802.webp",
+    "img": "product-images/qlt-rcrgbw.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6353,12 +7614,17 @@ const __PRODUCTS__ = [
         "RF-24GHZ"
       ],
       "inputVoltage": ""
-    }
+    },
+    "imgSource": "strips/RCRGBW-1024x802.webp",
+    "imgCutout": true,
+    "imgBase": 0.954,
+    "imgWidth": 0.919,
+    "imgScale": 0.89
   },
   {
     "id": "qlt-rgbox35",
     "name": "RGBOX35 RGB",
-    "img": "strips/RGBOX35-1024x965.webp",
+    "img": "product-images/qlt-rgbox35.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6375,12 +7641,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/RGBOX35-1024x965.webp",
+    "imgCutout": true,
+    "imgBase": 0.971,
+    "imgWidth": 0.913,
+    "imgScale": 0.9
   },
   {
     "id": "qlt-rgbox412",
     "name": "RGBOX412 RGB",
-    "img": "strips/RGBOX412-75W-1024x582.webp",
+    "img": "product-images/qlt-rcc-tw-cc.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6399,12 +7670,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/RGBOX412-75W-1024x582.webp",
+    "imgCutout": true,
+    "imgBase": 0.955,
+    "imgWidth": 0.938,
+    "imgScale": 0.87
   },
   {
     "id": "qlt-rgbox435",
     "name": "RGBOX435 RGB+W CC",
-    "img": "strips/RGBOX412-75W-1024x582.webp",
+    "img": "product-images/qlt-rcc-tw-cc.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6423,12 +7699,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/RGBOX412-75W-1024x582.webp",
+    "imgCutout": true,
+    "imgBase": 0.955,
+    "imgWidth": 0.938,
+    "imgScale": 0.87
   },
   {
     "id": "qlt-rgbox45",
     "name": "RGBOX45 RGB",
-    "img": "strips/162_RGBox-45-2.webp",
+    "img": "product-images/qlt-rgbox45.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6446,12 +7727,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/162_RGBox-45-2.webp",
+    "imgCutout": true,
+    "imgBase": 0.996,
+    "imgWidth": 0.972,
+    "imgScale": 0.83
   },
   {
     "id": "qlt-rgbox55",
     "name": "RGBOX55 RGB",
-    "img": "strips/162_RGBox-45-2.webp",
+    "img": "product-images/qlt-rgbox45.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6469,12 +7755,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/162_RGBox-45-2.webp",
+    "imgCutout": true,
+    "imgBase": 0.996,
+    "imgWidth": 0.972,
+    "imgScale": 0.83
   },
   {
     "id": "qlt-rlz140",
     "name": "RLZ140",
-    "img": "strips/RLZ350-1024x384.webp",
+    "img": "product-images/qlt-rlz140.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6489,12 +7780,17 @@ const __PRODUCTS__ = [
       "voltage": "140MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/RLZ350-1024x384.webp",
+    "imgCutout": true,
+    "imgBase": 0.94,
+    "imgWidth": 0.989,
+    "imgScale": 0.83
   },
   {
     "id": "qlt-rlz350",
     "name": "RLZ350",
-    "img": "strips/RLZ350-1024x384.webp",
+    "img": "product-images/qlt-rlz140.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6509,12 +7805,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/RLZ350-1024x384.webp",
+    "imgCutout": true,
+    "imgBase": 0.94,
+    "imgWidth": 0.989,
+    "imgScale": 0.83
   },
   {
     "id": "qlt-rlz400",
     "name": "RLZ400",
-    "img": "strips/RLZ350-1024x384.webp",
+    "img": "product-images/qlt-rlz140.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6529,12 +7830,17 @@ const __PRODUCTS__ = [
       "voltage": "400MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/RLZ350-1024x384.webp",
+    "imgCutout": true,
+    "imgBase": 0.94,
+    "imgWidth": 0.989,
+    "imgScale": 0.83
   },
   {
     "id": "qlt-rlz500",
     "name": "RLZ500",
-    "img": "strips/RLZ350-1024x384.webp",
+    "img": "product-images/qlt-rlz140.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6549,12 +7855,17 @@ const __PRODUCTS__ = [
       "voltage": "500MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/RLZ350-1024x384.webp",
+    "imgCutout": true,
+    "imgBase": 0.94,
+    "imgWidth": 0.989,
+    "imgScale": 0.83
   },
   {
     "id": "qlt-rlz640",
     "name": "RLZ640",
-    "img": "strips/RLZ350-1024x384.webp",
+    "img": "product-images/qlt-rlz140.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6569,12 +7880,17 @@ const __PRODUCTS__ = [
       "voltage": "640MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/RLZ350-1024x384.webp",
+    "imgCutout": true,
+    "imgBase": 0.94,
+    "imgWidth": 0.989,
+    "imgScale": 0.83
   },
   {
     "id": "qlt-rp309",
     "name": "RP309",
-    "img": "strips/RP-830x1024.webp",
+    "img": "product-images/qlt-rp309.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6589,12 +7905,17 @@ const __PRODUCTS__ = [
       "voltage": "700MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/RP-830x1024.webp",
+    "imgCutout": true,
+    "imgBase": 0.913,
+    "imgWidth": 0.854,
+    "imgScale": 0.93
   },
   {
     "id": "qlt-rp312",
     "name": "RP312",
-    "img": "strips/RP-830x1024.webp",
+    "img": "product-images/qlt-rp309.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6609,12 +7930,17 @@ const __PRODUCTS__ = [
       "voltage": "350MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/RP-830x1024.webp",
+    "imgCutout": true,
+    "imgBase": 0.913,
+    "imgWidth": 0.854,
+    "imgScale": 0.93
   },
   {
     "id": "qlt-rp315",
     "name": "RP315",
-    "img": "strips/RP-830x1024.webp",
+    "img": "product-images/qlt-rp309.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6629,12 +7955,17 @@ const __PRODUCTS__ = [
       "voltage": "500MA",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/RP-830x1024.webp",
+    "imgCutout": true,
+    "imgBase": 0.913,
+    "imgWidth": 0.854,
+    "imgScale": 0.93
   },
   {
     "id": "qlt-sc42-track-cc",
     "name": "SC42 TRACK  CC  ON/OFF",
-    "img": "strips/SC28_42.webp",
+    "img": "product-images/qlt-sc42-track-cc.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6649,12 +7980,17 @@ const __PRODUCTS__ = [
       "voltage": "850MA",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/SC28_42.webp",
+    "imgCutout": true,
+    "imgBase": 0.924,
+    "imgWidth": 0.965,
+    "imgScale": 0.85
   },
   {
     "id": "qlt-sl24045",
     "name": "SL24045 Slim 24V",
-    "img": "strips/SL2475-1024x412.webp",
+    "img": "product-images/qlt-sl24045.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6669,12 +8005,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/SL2475-1024x412.webp",
+    "imgCutout": true,
+    "imgBase": 0.961,
+    "imgWidth": 0.96,
+    "imgScale": 0.85
   },
   {
     "id": "qlt-sl24075",
     "name": "SL24075 Slim 24V",
-    "img": "strips/SL2475-1024x412.webp",
+    "img": "product-images/qlt-sl24045.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6689,12 +8030,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/SL2475-1024x412.webp",
+    "imgCutout": true,
+    "imgBase": 0.961,
+    "imgWidth": 0.96,
+    "imgScale": 0.85
   },
   {
     "id": "qlt-sl24100",
     "name": "SL24100 Slim 24V",
-    "img": "strips/SL2475-1024x412.webp",
+    "img": "product-images/qlt-sl24045.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6709,12 +8055,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/SL2475-1024x412.webp",
+    "imgCutout": true,
+    "imgBase": 0.961,
+    "imgWidth": 0.96,
+    "imgScale": 0.85
   },
   {
     "id": "qlt-sl24150",
     "name": "SL24150 Slim 24V",
-    "img": "strips/SL2475-1024x412.webp",
+    "img": "product-images/qlt-sl24045.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6729,12 +8080,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/SL2475-1024x412.webp",
+    "imgCutout": true,
+    "imgBase": 0.961,
+    "imgWidth": 0.96,
+    "imgScale": 0.85
   },
   {
     "id": "qlt-sl24200",
     "name": "SL24200 Slim 24V",
-    "img": "strips/SL2475-1024x412.webp",
+    "img": "product-images/qlt-sl24045.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6749,12 +8105,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/SL2475-1024x412.webp",
+    "imgCutout": true,
+    "imgBase": 0.961,
+    "imgWidth": 0.96,
+    "imgScale": 0.85
   },
   {
     "id": "qlt-sl2435",
     "name": "SL2435",
-    "img": "strips/SL3-1024x557.webp",
+    "img": "product-images/qlt-sl2435.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6769,12 +8130,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/SL3-1024x557.webp",
+    "imgCutout": true,
+    "imgBase": 0.829,
+    "imgWidth": 0.845,
+    "imgScale": 0.97
   },
   {
     "id": "qlt-slimbox100",
     "name": "SLIMBOX100",
-    "img": "strips/SLBOX-Multicurrent-1024x940.webp",
+    "img": "product-images/qlt-slimbox100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6789,12 +8155,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/SLBOX-Multicurrent-1024x940.webp",
+    "imgCutout": true,
+    "imgBase": 0.998,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-slimbox60",
     "name": "SLIMBOX60",
-    "img": "strips/SLBOX-Multicurrent-1024x940.webp",
+    "img": "product-images/qlt-slimbox100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6809,12 +8180,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/SLBOX-Multicurrent-1024x940.webp",
+    "imgCutout": true,
+    "imgBase": 0.998,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-slimbox60-1-10v-dimmable",
     "name": "SLIMBOX60 1",
-    "img": "strips/SLBOX-Multicurrent-1024x940.webp",
+    "img": "product-images/qlt-slimbox100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6831,12 +8207,17 @@ const __PRODUCTS__ = [
         "1-10V"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/SLBOX-Multicurrent-1024x940.webp",
+    "imgCutout": true,
+    "imgBase": 0.998,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-spi03",
     "name": "SPI03",
-    "img": "strips/SPI03.webp",
+    "img": "product-images/qlt-spi03.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6853,12 +8234,17 @@ const __PRODUCTS__ = [
         "RF-24GHZ"
       ],
       "inputVoltage": "12V"
-    }
+    },
+    "imgSource": "strips/SPI03.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 0.996,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-th24012",
     "name": "TH24012 Thin 24V",
-    "img": "strips/TH24012-1024x610.webp",
+    "img": "product-images/qlt-th24012.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6873,12 +8259,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/TH24012-1024x610.webp",
+    "imgCutout": true,
+    "imgBase": 0.957,
+    "imgWidth": 0.964,
+    "imgScale": 0.85
   },
   {
     "id": "qlt-th24020",
     "name": "TH24020 Thin 24V",
-    "img": "strips/YSL20F-1024x605.webp",
+    "img": "product-images/qlt-th24020.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6893,12 +8284,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/YSL20F-1024x605.webp",
+    "imgCutout": true,
+    "imgBase": 0.965,
+    "imgWidth": 0.932,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-th24030",
     "name": "TH24030U Thin UL 24V",
-    "img": "strips/TH24030-1024x565.webp",
+    "img": "product-images/qlt-th24030.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6913,12 +8309,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/TH24030-1024x565.webp",
+    "imgCutout": true,
+    "imgBase": 0.956,
+    "imgWidth": 0.958,
+    "imgScale": 0.86
   },
   {
     "id": "qlt-th24030u",
     "name": "TH24030U Thin UL 24V",
-    "img": "strips/TH24030-1024x565.webp",
+    "img": "product-images/qlt-th24030.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6933,12 +8334,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/TH24030-1024x565.webp",
+    "imgCutout": true,
+    "imgBase": 0.956,
+    "imgWidth": 0.958,
+    "imgScale": 0.86
   },
   {
     "id": "qlt-top-lf",
     "name": "TOP LF",
-    "img": "strips/T60LF-1024x644.webp",
+    "img": "product-images/qlt-top-lf.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6955,12 +8361,17 @@ const __PRODUCTS__ = [
         "IGBT"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/T60LF-1024x644.webp",
+    "imgCutout": true,
+    "imgBase": 0.949,
+    "imgWidth": 0.916,
+    "imgScale": 0.9
   },
   {
     "id": "qlt-track28",
     "name": "TRACK28",
-    "img": "strips/TRACK28-1024x556.webp",
+    "img": "product-images/qlt-track28.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6977,12 +8388,17 @@ const __PRODUCTS__ = [
         "PWM-250-400HZ"
       ],
       "inputVoltage": "48V"
-    }
+    },
+    "imgSource": "strips/TRACK28-1024x556.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-track29",
     "name": "TRACK29",
-    "img": "strips/TRACK28-1024x556.webp",
+    "img": "product-images/qlt-track28.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -6999,12 +8415,17 @@ const __PRODUCTS__ = [
         "PWM-250-400HZ"
       ],
       "inputVoltage": "48V"
-    }
+    },
+    "imgSource": "strips/TRACK28-1024x556.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-wall-ct2",
     "name": "WALL CT2",
-    "img": "strips/WALLCT-1024x775.webp",
+    "img": "product-images/qlt-wall-ct2.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7021,12 +8442,17 @@ const __PRODUCTS__ = [
         "RF-24GHZ"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/WALLCT-1024x775.webp",
+    "imgCutout": true,
+    "imgBase": 0.939,
+    "imgWidth": 0.861,
+    "imgScale": 0.95
   },
   {
     "id": "qlt-wall-dim2",
     "name": "WALL DIM2",
-    "img": "strips/WALLDIM-1024x934.webp",
+    "img": "product-images/qlt-wall-dim2.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7043,12 +8469,17 @@ const __PRODUCTS__ = [
         "RF-24GHZ"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/WALLDIM-1024x934.webp",
+    "imgCutout": true,
+    "imgBase": 0.975,
+    "imgWidth": 0.837,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-wall-rgb2",
     "name": "WALL RGB2",
-    "img": "strips/WALLRGB-1024x994.webp",
+    "img": "product-images/qlt-wall-rgb2.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7065,12 +8496,17 @@ const __PRODUCTS__ = [
         "RF-24GHZ"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/WALLRGB-1024x994.webp",
+    "imgCutout": true,
+    "imgBase": 0.97,
+    "imgWidth": 0.859,
+    "imgScale": 0.9
   },
   {
     "id": "qlt-wall-rgbw",
     "name": "WALL RGBW",
-    "img": "strips/WALLRGB-1024x994.webp",
+    "img": "product-images/qlt-wall-rgb2.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7087,12 +8523,17 @@ const __PRODUCTS__ = [
         "RF-24GHZ"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/WALLRGB-1024x994.webp",
+    "imgCutout": true,
+    "imgBase": 0.97,
+    "imgWidth": 0.859,
+    "imgScale": 0.9
   },
   {
     "id": "qlt-wallwp86k",
     "name": "WALLWP86K",
-    "img": "strips/WALLWP86K-1024x458.webp",
+    "img": "product-images/qlt-wallwp86k.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7109,12 +8550,17 @@ const __PRODUCTS__ = [
         "RF-24GHZ"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/WALLWP86K-1024x458.webp",
+    "imgCutout": true,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgBase": 1
   },
   {
     "id": "qlt-zbdali",
     "name": "ZBDALI INTERFACE ZIGBEE/BLE a DALI",
-    "img": "strips/ZCUBE-1-1024x824.webp",
+    "img": "product-images/qlt-zbdali.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7133,12 +8579,17 @@ const __PRODUCTS__ = [
         "DALI"
       ],
       "inputVoltage": "48V"
-    }
+    },
+    "imgSource": "strips/ZCUBE-1-1024x824.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-zbx100",
     "name": "ZBX100 ALIMENTATORE ZIGBEE/BLE/PUSH",
-    "img": "strips/ZBX-1024x509.webp",
+    "img": "product-images/qlt-zbx100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7157,12 +8608,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/ZBX-1024x509.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-zbx10048",
     "name": "ZBX10048 ALIMENTATORE ZIGBEE/BLE/PUSH",
-    "img": "strips/ZBX-1024x509.webp",
+    "img": "product-images/qlt-zbx100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7181,12 +8637,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/ZBX-1024x509.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-zbx150",
     "name": "ZBX150 ALIMENTATORE ZIGBEE/BLE/PUSH",
-    "img": "strips/ZBX-1024x509.webp",
+    "img": "product-images/qlt-zbx100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7205,12 +8666,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/ZBX-1024x509.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-zccbxh60-multicurrent-zigbee-ble-push",
     "name": "ZCCBXH60 MULTICURRENT ZIGBEE/BLE/PUSH",
-    "img": "strips/ZCCBXH60-1024x714.webp",
+    "img": "product-images/qlt-zccbxh60-multicurrent-zigbee-ble-push.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7229,12 +8695,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/ZCCBXH60-1024x714.webp",
+    "imgCutout": true,
+    "imgBase": 0.951,
+    "imgWidth": 0.932,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-zccbxl60-multicurrent-zigbee-ble-push",
     "name": "ZCCBXL60 MULTICURRENT ZIGBEE/BLE/PUSH",
-    "img": "strips/ZCCBXH60-1024x714.webp",
+    "img": "product-images/qlt-zccbxh60-multicurrent-zigbee-ble-push.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7253,12 +8724,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/ZCCBXH60-1024x714.webp",
+    "imgCutout": true,
+    "imgBase": 0.951,
+    "imgWidth": 0.932,
+    "imgScale": 0.88
   },
   {
     "id": "qlt-zcube24-interface-24v-zigbee-ble-push",
     "name": "ZCUBE24 INTERFACE 24V ZIGBEE/BLE/PUSH",
-    "img": "strips/ZCUBE-1024x824.webp",
+    "img": "product-images/qlt-zcube24-interface-24v-zigbee-ble-push.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7277,12 +8753,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "24V"
-    }
+    },
+    "imgSource": "strips/ZCUBE-1024x824.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-zcube48-interface-48v-zigbee-ble-push",
     "name": "ZCUBE48 INTERFACE 48V ZIGBEE/BLE/PUSH",
-    "img": "strips/ZCUBE-1024x824.webp",
+    "img": "product-images/qlt-zcube24-interface-24v-zigbee-ble-push.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7301,12 +8782,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "24V"
-    }
+    },
+    "imgSource": "strips/ZCUBE-1024x824.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-zipb-interface-12-24v-zigbee-ble-push-2",
     "name": "ZIPB INTERFACE 12/24V ZIGBEE/BLE/PUSH",
-    "img": "strips/ZIPB-1-1024x522.webp",
+    "img": "product-images/qlt-zipb-interface-12-24v-zigbee-ble-push-2.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7325,12 +8811,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "12V"
-    }
+    },
+    "imgSource": "strips/ZIPB-1-1024x522.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-zipb-interface-12-24v-zigbee-ble-push",
     "name": "ZIDLK INTERFACE ZIGBEE/BLE a DALI",
-    "img": "strips/ZIDLK-1024x461.webp",
+    "img": "product-images/qlt-zipb-interface-12-24v-zigbee-ble-push.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7349,12 +8840,17 @@ const __PRODUCTS__ = [
         "DALI"
       ],
       "inputVoltage": "DALI"
-    }
+    },
+    "imgSource": "strips/ZIDLK-1024x461.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-zmc013-multicurrent-zigbee-ble-push",
     "name": "ZMC013 MULTICURRENT ZIGBEE/BLE/PUSH",
-    "img": "strips/ZMC13-1024x507.webp",
+    "img": "product-images/qlt-zmc013-multicurrent-zigbee-ble-push.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7373,12 +8869,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/ZMC13-1024x507.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-zpb4-interface-4-push-to-zigbee-ble",
     "name": "ZPB4 INTERFACE 4",
-    "img": "strips/ZCUBE-1-1024x824.webp",
+    "img": "product-images/qlt-zbdali.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7397,12 +8898,17 @@ const __PRODUCTS__ = [
         "PUSH"
       ],
       "inputVoltage": "110V"
-    }
+    },
+    "imgSource": "strips/ZCUBE-1-1024x824.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-bk100",
     "name": "BK100",
-    "img": "strips/BK100-24-bis-1024x853.webp",
+    "img": "product-images/qlt-bk100.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7417,12 +8923,17 @@ const __PRODUCTS__ = [
       "voltage": "24V",
       "dimming": [],
       "inputVoltage": "230V"
-    }
+    },
+    "imgSource": "strips/BK100-24-bis-1024x853.webp",
+    "imgCutout": true,
+    "imgBase": 0.946,
+    "imgWidth": 0.889,
+    "imgScale": 0.92
   },
   {
     "id": "qlt-bps2",
     "name": "BPS2",
-    "img": "strips/BPS2-1024x702.webp",
+    "img": "product-images/qlt-bps2.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7437,12 +8948,17 @@ const __PRODUCTS__ = [
       "voltage": "125MA",
       "dimming": [],
       "inputVoltage": "100÷250V AC"
-    }
+    },
+    "imgSource": "strips/BPS2-1024x702.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "qlt-bps3",
     "name": "BPS3",
-    "img": "strips/BPS3-1024x437.webp",
+    "img": "product-images/qlt-bps3.webp",
     "desc": "",
     "category": "דרייברים",
     "subCategory": "DIY",
@@ -7457,17 +8973,24 @@ const __PRODUCTS__ = [
       "voltage": "70MA",
       "dimming": [],
       "inputVoltage": "100÷250V AC"
-    }
+    },
+    "imgSource": "strips/BPS3-1024x437.webp",
+    "imgCutout": true,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82
   },
   {
     "id": "ll-light-tkm-rope30-ww",
     "sku": "TKM-ROPE30/WW",
     "name": "חבל אור סיליקון לפס מגנטי 3מ 48VDC 10W IP20 2700K",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-ROPE30.jpg",
+    "img": "product-images/ll-light-tkm-rope30-ww.webp",
     "desc": "10W | 2700K | IP20",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פס מגנטי 48V",
+    "trackType": "מגנטי 48V",
+    "itemKind": "גוף תאורה",
     "price": 271.4,
     "url": null,
     "isFlagship": false,
@@ -7478,45 +9001,28 @@ const __PRODUCTS__ = [
       "IP20"
     ],
     "extractedSpecs": {
+      "סוג פס": "מגנטי 48V",
       "הספק": "10W",
       "גוון אור": "2700K",
       "אטימה": "IP20"
-    }
-  },
-  {
-    "id": "ll-light-tkm-flat090wh-ww",
-    "sku": "TKM-FLAT090WH/WW",
-    "name": "FLAT לפס מגנטי 36W חלבי 970 מ\"מ לבן, 3240Lm 3000K, פנימי",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-FLAT90.webp",
-    "desc": "36W | 3000K",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פס מגנטי 48V",
-    "price": 413,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "36W",
-      "3000K"
-    ],
-    "extractedSpecs": {
-      "הספק": "36W",
-      "גוון אור": "3000K",
-      "עוצמה": "3240 Lm",
-      "מידה": "970 מ\"מ",
-      "צבע": "לבן"
-    }
+    },
+    "imgBase": 1,
+    "imgWidth": 0.48,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-ROPE30.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-tkm-flat090bk-ww",
     "sku": "TKM-FLAT090BK/WW",
     "name": "FLAT לפס מגנטי 36W חלבי 970 מ\"מ שחור, 3240Lm 3000K, פנימי",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-FLAT090BK.jpg",
+    "img": "product-images/ll-light-tkm-flat090bk-ww.webp",
     "desc": "36W | 3000K",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פס מגנטי 48V",
+    "trackType": "מגנטי 48V",
+    "itemKind": "גוף תאורה",
     "price": 413,
     "url": null,
     "isFlagship": false,
@@ -7526,22 +9032,36 @@ const __PRODUCTS__ = [
       "3000K"
     ],
     "extractedSpecs": {
+      "סוג פס": "מגנטי 48V",
       "הספק": "36W",
       "גוון אור": "3000K",
       "עוצמה": "3240 Lm",
       "מידה": "970 מ\"מ",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "tkm-flat",
+    "variantAxis": "אורך",
+    "variantLabel": "970 מ\"מ · 36W",
+    "familyName": "FLAT לפס מגנטי · חלבי שחור 3000K",
+    "variantPrimary": false,
+    "variantOrder": 2,
+    "imgBase": 0.644,
+    "imgWidth": 0.984,
+    "imgScale": 0.83,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-FLAT090BK.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-tkm-eye033bk-ww",
     "sku": "TKM-EYE033BK/WW",
     "name": "EYE לפס מגנטי 18X1W שחור, 1620Lm 3000K 24°",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-EYE033BK_Edit.jpg",
+    "img": "product-images/ll-light-tkm-eye033bk-ww.webp",
     "desc": "1W | 3000K",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פס מגנטי 48V",
+    "trackType": "מגנטי 48V",
+    "itemKind": "גוף תאורה",
     "price": 153.4,
     "url": null,
     "isFlagship": false,
@@ -7551,47 +9071,36 @@ const __PRODUCTS__ = [
       "3000K"
     ],
     "extractedSpecs": {
+      "סוג פס": "מגנטי 48V",
       "הספק": "1W",
       "גוון אור": "3000K",
       "זווית": "24°",
       "עוצמה": "1620 Lm",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tkm-flat030wh-ww",
-    "sku": "TKM-FLAT030WH/WW",
-    "name": "FLAT לפס מגנטי 24W חלבי 436 מ\"מ לבן, 2160Lm 3000K, פנימי",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-FLAT30.webp",
-    "desc": "24W | 3000K",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פס מגנטי 48V",
-    "price": 192.3,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "24W",
-      "3000K"
-    ],
-    "extractedSpecs": {
-      "הספק": "24W",
-      "גוון אור": "3000K",
-      "עוצמה": "2160 Lm",
-      "מידה": "436 מ\"מ",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "tkm-eye",
+    "variantAxis": "הספק",
+    "variantLabel": "18X1W",
+    "familyName": "EYE לפס מגנטי שחור 3000K 24°",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.736,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-EYE033BK_Edit.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-tkm-flat030bk-ww",
     "sku": "TKM-FLAT030BK/WW",
     "name": "FLAT לפס מגנטי 24W חלבי 436 מ\"מ שחור, 2160Lm 3000K, פנימי",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-FLAT090B_Edit.jpg",
+    "img": "product-images/ll-light-tkm-flat030bk-ww.webp",
     "desc": "24W | 3000K",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פס מגנטי 48V",
+    "trackType": "מגנטי 48V",
+    "itemKind": "גוף תאורה",
     "price": 192.3,
     "url": null,
     "isFlagship": false,
@@ -7601,47 +9110,36 @@ const __PRODUCTS__ = [
       "3000K"
     ],
     "extractedSpecs": {
+      "סוג פס": "מגנטי 48V",
       "הספק": "24W",
       "גוון אור": "3000K",
       "עוצמה": "2160 Lm",
       "מידה": "436 מ\"מ",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tkm-flat122wh-ww",
-    "sku": "TKM-FLAT122WH/WW",
-    "name": "FLAT לפס מגנטי פס 12W חלבי 220 מ\"מ לבן, 1080Lm 3000K, מתכוונן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-FLAT122(3).webp",
-    "desc": "12W | 3000K",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פס מגנטי 48V",
-    "price": 232.5,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "12W",
-      "3000K"
-    ],
-    "extractedSpecs": {
-      "הספק": "12W",
-      "גוון אור": "3000K",
-      "עוצמה": "1080 Lm",
-      "מידה": "220 מ\"מ",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "tkm-flat",
+    "variantAxis": "אורך",
+    "variantLabel": "436 מ\"מ · 24W",
+    "familyName": "FLAT לפס מגנטי · חלבי שחור 3000K",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.684,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-FLAT090B_Edit.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-tkm-flat122bk-ww",
     "sku": "TKM-FLAT122BK/WW",
     "name": "FLAT לפס מגנטי פס 12W חלבי 220 מ\"מ שחור, 1080Lm 3000K, מתכוונן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-FLAT122BK_Edit.jpg",
+    "img": "product-images/ll-light-tkm-flat122bk-ww.webp",
     "desc": "12W | 3000K",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פס מגנטי 48V",
+    "trackType": "מגנטי 48V",
+    "itemKind": "גוף תאורה",
     "price": 232.5,
     "url": null,
     "isFlagship": false,
@@ -7651,22 +9149,36 @@ const __PRODUCTS__ = [
       "3000K"
     ],
     "extractedSpecs": {
+      "סוג פס": "מגנטי 48V",
       "הספק": "12W",
       "גוון אור": "3000K",
       "עוצמה": "1080 Lm",
       "מידה": "220 מ\"מ",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "tkm-flat",
+    "variantAxis": "אורך",
+    "variantLabel": "220 מ\"מ · 12W",
+    "familyName": "FLAT לפס מגנטי · חלבי שחור 3000K",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.816,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-FLAT122BK_Edit.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-tkm-eye122bk-ww",
     "sku": "TKM-EYE122BK/WW",
     "name": "EYE לפס מגנטי 12X1W שחור 1080Lm 3000K 24°, מתכוונן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-EYE122BK_Edit(3).jpg",
+    "img": "product-images/ll-light-tkm-eye122bk-ww.webp",
     "desc": "1W | 3000K",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פס מגנטי 48V",
+    "trackType": "מגנטי 48V",
+    "itemKind": "גוף תאורה",
     "price": 232.5,
     "url": null,
     "isFlagship": false,
@@ -7676,48 +9188,36 @@ const __PRODUCTS__ = [
       "3000K"
     ],
     "extractedSpecs": {
+      "סוג פס": "מגנטי 48V",
       "הספק": "1W",
       "גוון אור": "3000K",
       "זווית": "24°",
       "עוצמה": "1080 Lm",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tkm-55cob120wh-ww",
-    "sku": "TKM-55COB120WH/WW",
-    "name": "ספוט לפס מגנטי 15W 55x120 מ\"מ לבן, 1350Lm 3000K 24°",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-55COB120__TKM-35COB80_WH_Edit(3).jpg",
-    "desc": "15W | 3000K",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פס מגנטי 48V",
-    "price": 192.3,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "15W",
-      "3000K"
-    ],
-    "extractedSpecs": {
-      "הספק": "15W",
-      "גוון אור": "3000K",
-      "זווית": "24°",
-      "עוצמה": "1350 Lm",
-      "מידה": "120 מ\"מ",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "tkm-eye",
+    "variantAxis": "הספק",
+    "variantLabel": "12X1W · מתכוונן",
+    "familyName": "EYE לפס מגנטי שחור 3000K 24°",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.816,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-EYE122BK_Edit(3).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-tkm-55cob120bk-ww",
     "sku": "TKM-55COB120BK/WW",
     "name": "ספוט לפס מגנטי 15W 55x120 מ\"מ שחור, 1350Lm 3000K 24°",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-55COB120__TKM-35COB80_BK_Edit.jpg",
+    "img": "product-images/ll-light-tkm-55cob120bk-ww.webp",
     "desc": "15W | 3000K",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פס מגנטי 48V",
+    "trackType": "מגנטי 48V",
+    "itemKind": "גוף תאורה",
     "price": 192.3,
     "url": null,
     "isFlagship": false,
@@ -7727,49 +9227,37 @@ const __PRODUCTS__ = [
       "3000K"
     ],
     "extractedSpecs": {
+      "סוג פס": "מגנטי 48V",
       "הספק": "15W",
       "גוון אור": "3000K",
       "זווית": "24°",
       "עוצמה": "1350 Lm",
       "מידה": "120 מ\"מ",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tkm-35cob80wh-ww",
-    "sku": "TKM-35COB80WH/WW",
-    "name": "ספוט לפס מגנטי 5W 35x80 מ\"מ לבן, 350Lm 3000K 24°",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-55COB120__TKM-35COB80_WH_Edit.jpg",
-    "desc": "5W | 3000K",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פס מגנטי 48V",
-    "price": 153.4,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "5W",
-      "3000K"
-    ],
-    "extractedSpecs": {
-      "הספק": "5W",
-      "גוון אור": "3000K",
-      "זווית": "24°",
-      "עוצמה": "350 Lm",
-      "מידה": "80 מ\"מ",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "tkm-spot",
+    "variantAxis": "גודל והספק",
+    "variantLabel": "55x120 מ\"מ · 15W",
+    "familyName": "ספוט לפס מגנטי שחור 3000K 24°",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 1,
+    "imgWidth": 0.848,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-55COB120__TKM-35COB80_BK_Edit.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-tkm-35cob80bk-ww",
     "sku": "TKM-35COB80BK/WW",
     "name": "ספוט לפס מגנטי 5W 35x80 מ\"מ שחור, 350Lm 3000K 24°",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-55COB120__TKM-35COB80_BK_Edit(3).jpg",
+    "img": "product-images/ll-light-tkm-35cob80bk-ww.webp",
     "desc": "5W | 3000K",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פס מגנטי 48V",
+    "trackType": "מגנטי 48V",
+    "itemKind": "גוף תאורה",
     "price": 153.4,
     "url": null,
     "isFlagship": false,
@@ -7779,23 +9267,37 @@ const __PRODUCTS__ = [
       "3000K"
     ],
     "extractedSpecs": {
+      "סוג פס": "מגנטי 48V",
       "הספק": "5W",
       "גוון אור": "3000K",
       "זווית": "24°",
       "עוצמה": "350 Lm",
       "מידה": "80 מ\"מ",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "tkm-spot",
+    "variantAxis": "גודל והספק",
+    "variantLabel": "35x80 מ\"מ · 5W",
+    "familyName": "ספוט לפס מגנטי שחור 3000K 24°",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 1,
+    "imgWidth": 0.848,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-55COB120__TKM-35COB80_BK_Edit(3).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-tkm-glob95wh-ww",
     "sku": "TKM-GLOB95WH/WW",
     "name": "GLOB לפס מגנטי 95 מ\"מ לבן, 7W 900Lm 3000K, תלוי 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-GLOB95WH_Edit.jpg",
+    "img": "product-images/ll-light-tkm-glob95wh-ww.webp",
     "desc": "7W | 3000K",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פס מגנטי 48V",
+    "trackType": "מגנטי 48V",
+    "itemKind": "גוף תאורה",
     "price": 365.8,
     "url": null,
     "isFlagship": false,
@@ -7805,388 +9307,222 @@ const __PRODUCTS__ = [
       "3000K"
     ],
     "extractedSpecs": {
+      "סוג פס": "מגנטי 48V",
       "הספק": "7W",
       "גוון אור": "3000K",
       "עוצמה": "900 Lm",
       "מידה": "95 מ\"מ",
       "צבע": "לבן"
-    }
+    },
+    "imgBase": 1,
+    "imgWidth": 0.292,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-GLOB95WH_Edit.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-tkm-c30-wh",
     "sku": "TKM-C30/WH",
-    "name": "פס מגנטי צמוד/תלוי לבן 3מ, כולל סופיות והתקן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-C30WH.jpg",
+    "name": "פס מגנטי צמוד/תלוי לבן, כולל סופיות והתקן",
+    "img": "product-images/ll-light-tkm-c30-wh.webp",
     "desc": "",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "אביזרים",
     "family": "פס מגנטי 48V",
+    "trackType": "מגנטי 48V",
+    "itemKind": "פס ומסילה",
     "price": 472,
     "url": null,
     "isFlagship": false,
     "scarcity": null,
     "specTags": [],
     "extractedSpecs": {
+      "סוג פס": "מגנטי 48V",
       "צבע": "לבן"
-    }
+    },
+    "variantFamily": "tkm-rail-surface",
+    "variantAxis": "צבע",
+    "variantLabel": "לבן · כולל התקן",
+    "familyName": "פס מגנטי צמוד/תלוי · כולל סופיות",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.996,
+    "imgWidth": 0.956,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-C30WH.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-tkm-c30-bk",
     "sku": "TKM-C30/BK",
-    "name": "פס מגנטי צמוד/תלוי שחור 3מ, כולל סופיות",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-C30BK.jpg",
+    "name": "פס מגנטי צמוד/תלוי שחור, כולל סופיות",
+    "img": "product-images/ll-light-tkm-c30-bk.webp",
     "desc": "",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "אביזרים",
     "family": "פס מגנטי 48V",
+    "trackType": "מגנטי 48V",
+    "itemKind": "פס ומסילה",
     "price": 472,
     "url": null,
     "isFlagship": false,
     "scarcity": null,
     "specTags": [],
     "extractedSpecs": {
+      "סוג פס": "מגנטי 48V",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "tkm-rail-surface",
+    "variantAxis": "צבע",
+    "variantLabel": "שחור",
+    "familyName": "פס מגנטי צמוד/תלוי · כולל סופיות",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 1,
+    "imgWidth": 0.964,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-C30BK.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-tkm-r30-wh",
     "sku": "TKM-R30/WH",
-    "name": "פס מגנטי שקוע לבן 3מ, כולל סופיות",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-R30WH.jpg",
+    "name": "פס מגנטי שקוע לבן, כולל סופיות",
+    "img": "product-images/ll-light-tkm-r30-wh.webp",
     "desc": "",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "אביזרים",
     "family": "פס מגנטי 48V",
+    "trackType": "מגנטי 48V",
+    "itemKind": "פס ומסילה",
     "price": 431.9,
     "url": null,
     "isFlagship": false,
     "scarcity": null,
     "specTags": [],
     "extractedSpecs": {
+      "סוג פס": "מגנטי 48V",
       "צבע": "לבן"
-    }
+    },
+    "variantFamily": "tkm-rail-recessed",
+    "variantAxis": "צבע",
+    "variantLabel": "לבן",
+    "familyName": "פס מגנטי שקוע · כולל סופיות",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 1,
+    "imgWidth": 0.94,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-R30WH.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-tkm-r30-bk",
     "sku": "TKM-R30/BK",
-    "name": "פס מגנטי שקוע שחור 3מ, כולל סופיות",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-R30BK.jpg",
+    "name": "פס מגנטי שקוע שחור, כולל סופיות",
+    "img": "product-images/ll-light-tkm-r30-bk.webp",
     "desc": "",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "אביזרים",
     "family": "פס מגנטי 48V",
+    "trackType": "מגנטי 48V",
+    "itemKind": "פס ומסילה",
     "price": 472,
     "url": null,
     "isFlagship": false,
     "scarcity": null,
     "specTags": [],
     "extractedSpecs": {
+      "סוג פס": "מגנטי 48V",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "tkm-rail-recessed",
+    "variantAxis": "צבע",
+    "variantLabel": "שחור",
+    "familyName": "פס מגנטי שקוע · כולל סופיות",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 1,
+    "imgWidth": 0.94,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-R30BK.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-tkm-t30-wh",
     "sku": "TKM-T30/WH",
-    "name": "פס מגנטי TRIMLESS לבן 3 מטר כולל סופיות",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-T30WH.jpg",
+    "name": "פס מגנטי TRIMLESS לבן כולל סופיות",
+    "img": "product-images/ll-light-tkm-t30-wh.webp",
     "desc": "",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "אביזרים",
     "family": "פס מגנטי 48V",
+    "trackType": "מגנטי 48V",
+    "itemKind": "פס ומסילה",
     "price": 431.9,
     "url": null,
     "isFlagship": false,
     "scarcity": null,
     "specTags": [],
     "extractedSpecs": {
+      "סוג פס": "מגנטי 48V",
       "צבע": "לבן"
-    }
+    },
+    "variantFamily": "tkm-rail-trimless",
+    "variantAxis": "צבע",
+    "variantLabel": "לבן",
+    "familyName": "פס מגנטי TRIMLESS · כולל סופיות",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 1,
+    "imgWidth": 0.904,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-T30WH.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-tkm-t30-bk",
     "sku": "TKM-T30/BK",
-    "name": "פס מגנטי TRIMLESS שחור 3 מטר כולל סופיות",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-T30BK.jpg",
+    "name": "פס מגנטי TRIMLESS שחור כולל סופיות",
+    "img": "product-images/ll-light-tkm-t30-bk.webp",
     "desc": "",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "אביזרים",
     "family": "פס מגנטי 48V",
+    "trackType": "מגנטי 48V",
+    "itemKind": "פס ומסילה",
     "price": 431.9,
     "url": null,
     "isFlagship": false,
     "scarcity": null,
     "specTags": [],
     "extractedSpecs": {
+      "סוג פס": "מגנטי 48V",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tkm-p150",
-    "sku": "TKM-P150",
-    "name": "דרייבר 150W לפס מגנטי",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/led-driver150.jpg",
-    "desc": "150W",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פס מגנטי 48V",
-    "price": 590,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "150W"
-    ],
-    "extractedSpecs": {
-      "הספק": "150W"
-    }
-  },
-  {
-    "id": "ll-light-tkm-p250",
-    "sku": "TKM-P250",
-    "name": "דרייבר 250W לפס מגנטי",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/led-driver250.jpg",
-    "desc": "250W",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פס מגנטי 48V",
-    "price": 667.9,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "250W"
-    ],
-    "extractedSpecs": {
-      "הספק": "250W"
-    }
-  },
-  {
-    "id": "ll-light-tkm-s20-wh",
-    "sku": "TKM-S20/WH",
-    "name": "פס מגנטי מחבר הזנה לבן 200 ס\"מ 2x1.5mm² + תקשורת",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-S05_TKM-S20_WH.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פס מגנטי 48V",
-    "price": 50.7,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "מידה": "1.5 מ\"מ",
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tkm-s20-bk",
-    "sku": "TKM-S20/BK",
-    "name": "פס מגנטי מחבר הזנה שחור 200 ס\"מ 2x1.5mm² + תקשורת",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-S05_TKM-S20_BK.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פס מגנטי 48V",
-    "price": 50.7,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "מידה": "1.5 מ\"מ",
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tkm-atc-wh",
-    "sku": "TKM-ATC/WH",
-    "name": "מחבר מכני ומחבר חשמלי לבן לפס מגנטי",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-ATC-WH.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פס מגנטי 48V",
-    "price": 59,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tkm-atc-bk",
-    "sku": "TKM-ATC/BK",
-    "name": "מחבר מכני ומחבר חשמלי שחור לפס מגנטי",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-ATC-BK.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פס מגנטי 48V",
-    "price": 59,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tkm-aec-bk",
-    "sku": "TKM-AEC/BK",
-    "name": "זוג סופיות לפרופיל מסילה מגנטי שחור",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-AEC-BK.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פס מגנטי 48V",
-    "price": 11.8,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tkm-aec-wh",
-    "sku": "TKM-AEC/WH",
-    "name": "זוג סופיות לפרופיל מסילה מגנטי לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-AEC-WH.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פס מגנטי 48V",
-    "price": 11.8,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tkm-tcc-wh",
-    "sku": "TKM-TCC/WH",
-    "name": "פס מגנטי זווית-תקרה חור לבן כולל מחברי חשמל ומחבר מכני",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-TCC-WH.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פס מגנטי 48V",
-    "price": 109.7,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tkm-tcc-bk",
-    "sku": "TKM-TCC/BK",
-    "name": "פס מגנטי זווית-תקרה חור שחור כולל מחברי חשמל ומחבר מכני",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-TCC-BK.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פס מגנטי 48V",
-    "price": 109.7,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tkm-rcc-wh",
-    "sku": "TKM-RCC/WH",
-    "name": "פס מגנטי זווית-תקרה שקוע לבן כולל מחברי חשמל ומחבר מכני",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-RCC-WH.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פס מגנטי 48V",
-    "price": 109.7,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tkm-rcc-bk",
-    "sku": "TKM-RCC/BK",
-    "name": "פס מגנטי זווית-תקרה שקוע שחור כולל מחברי חשמל ומחבר מכני",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-RCC-BK.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פס מגנטי 48V",
-    "price": 109.7,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tkm-ccc-wh",
-    "sku": "TKM-CCC/WH",
-    "name": "פרופיל מסילה מגנטי זווית-תקרה צמוד/תלוי לבן כולל מחברים",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-CCC-WH.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פס מגנטי 48V",
-    "price": 109.7,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tkm-ccc-bk",
-    "sku": "TKM-CCC/BK",
-    "name": "פרופיל מסילה מגנטי זווית-תקרה צמוד/תלוי שחור כולל מחברים",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-CCC-BK.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פס מגנטי 48V",
-    "price": 109.7,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
+    },
+    "variantFamily": "tkm-rail-trimless",
+    "variantAxis": "צבע",
+    "variantLabel": "שחור",
+    "familyName": "פס מגנטי TRIMLESS · כולל סופיות",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.936,
+    "imgWidth": 0.824,
+    "imgScale": 0.9,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/TKM-T30BK.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-hiprofile150bk-ww",
     "sku": "HiPROFILE150BK/WW",
     "name": "הייפרופיל שחור 150 BridgeLUX 3000K 60° 50W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiPROFILE150BK(5).jpg",
+    "img": "product-images/ll-light-hiprofile150bk-ww.webp",
     "desc": "50W | 3000K",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פסי צבירה 230V",
+    "trackType": "מתח גבוה 230V",
+    "itemKind": "גוף תאורה",
     "price": 774.1,
     "url": null,
     "isFlagship": false,
@@ -8196,45 +9532,35 @@ const __PRODUCTS__ = [
       "3000K"
     ],
     "extractedSpecs": {
+      "סוג פס": "מתח גבוה 230V",
       "הספק": "50W",
       "גוון אור": "3000K",
       "זווית": "60°",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-hiprofile150wh-ww",
-    "sku": "HiPROFILE150WH/WW",
-    "name": "הייפרופיל צמוד תקרה לבן 150 BridgeLUX 3000K 60° 50W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiPROFILE150WH.jpg",
-    "desc": "50W | 3000K",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 774.1,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "50W",
-      "3000K"
-    ],
-    "extractedSpecs": {
-      "הספק": "50W",
-      "גוון אור": "3000K",
-      "זווית": "60°",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "hiprofile",
+    "variantAxis": "אורך והספק",
+    "variantLabel": "150 · 50W · 3000K · שחור",
+    "familyName": "הייפרופיל · BridgeLUX 60°",
+    "variantPrimary": false,
+    "variantOrder": 2,
+    "imgBase": 0.88,
+    "imgWidth": 0.92,
+    "imgScale": 0.89,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/HiPROFILE150BK(5).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-hiprofile150bk-cw-ho",
     "sku": "HiPROFILE150BK/CW-HO",
     "name": "הייפרופיל שחור 150 BridgeLUX 4000K 60° 80W 9440lm",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiPROFILE150BK.jpg",
+    "img": "product-images/ll-light-hiprofile150bk-cw-ho.webp",
     "desc": "80W | 4000K",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פסי צבירה 230V",
+    "trackType": "מתח גבוה 230V",
+    "itemKind": "גוף תאורה",
     "price": 903.9,
     "url": null,
     "isFlagship": false,
@@ -8244,22 +9570,36 @@ const __PRODUCTS__ = [
       "4000K"
     ],
     "extractedSpecs": {
+      "סוג פס": "מתח גבוה 230V",
       "הספק": "80W",
       "גוון אור": "4000K",
       "זווית": "60°",
       "עוצמה": "9440 Lm",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "hiprofile",
+    "variantAxis": "אורך והספק",
+    "variantLabel": "150 · 80W · 4000K · שחור",
+    "familyName": "הייפרופיל · BridgeLUX 60°",
+    "variantPrimary": false,
+    "variantOrder": 3,
+    "imgBase": 0.88,
+    "imgWidth": 0.92,
+    "imgScale": 0.89,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/HiPROFILE150BK.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-hiprofile120bk-cw-ho",
     "sku": "HiPROFILE120BK/CW-HO",
     "name": "הייפרופיל שחור 120 BridgeLUX 7080Lm 4000K 60° 64W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiPROFILE120BK(9).jpg",
+    "img": "product-images/ll-light-hiprofile120bk-cw-ho.webp",
     "desc": "64W | 4000K",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פסי צבירה 230V",
+    "trackType": "מתח גבוה 230V",
+    "itemKind": "גוף תאורה",
     "price": 781.2,
     "url": null,
     "isFlagship": false,
@@ -8269,22 +9609,36 @@ const __PRODUCTS__ = [
       "4000K"
     ],
     "extractedSpecs": {
+      "סוג פס": "מתח גבוה 230V",
       "הספק": "64W",
       "גוון אור": "4000K",
       "זווית": "60°",
       "עוצמה": "7080 Lm",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "hiprofile",
+    "variantAxis": "אורך והספק",
+    "variantLabel": "120 · 64W · 4000K · שחור",
+    "familyName": "הייפרופיל · BridgeLUX 60°",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.812,
+    "imgWidth": 0.756,
+    "imgScale": 1.08,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/HiPROFILE120BK(9).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-hiprofile120wh-cw",
     "sku": "HiPROFILE120WH/CW",
     "name": "הייפרופיל לבן 120 BridgeLUX 4000K 60° 40W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiPROFILE120WH(8).jpg",
+    "img": "product-images/ll-light-hiprofile120wh-cw.webp",
     "desc": "40W | 4000K",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פסי צבירה 230V",
+    "trackType": "מתח גבוה 230V",
+    "itemKind": "גוף תאורה",
     "price": 656.1,
     "url": null,
     "isFlagship": false,
@@ -8294,21 +9648,35 @@ const __PRODUCTS__ = [
       "4000K"
     ],
     "extractedSpecs": {
+      "סוג פס": "מתח גבוה 230V",
       "הספק": "40W",
       "גוון אור": "4000K",
       "זווית": "60°",
       "צבע": "לבן"
-    }
+    },
+    "variantFamily": "hiprofile",
+    "variantAxis": "אורך והספק",
+    "variantLabel": "120 · 40W · 4000K · לבן",
+    "familyName": "הייפרופיל · BridgeLUX 60°",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.808,
+    "imgWidth": 0.748,
+    "imgScale": 1.1,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/HiPROFILE120WH(8).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-hiwing-bk-cw-track",
     "sku": "HIWING-BK/CW-TRACK",
     "name": "מנורת פס צבירה לד מתקפל גוף שחור 50W 4000K",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiWING_Side(1).jpg",
+    "img": "product-images/ll-light-hiwing-bk-cw-track.webp",
     "desc": "50W | 4000K",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פסי צבירה 230V",
+    "trackType": "מתח גבוה 230V",
+    "itemKind": "גוף תאורה",
     "price": 754,
     "url": null,
     "isFlagship": false,
@@ -8318,20 +9686,34 @@ const __PRODUCTS__ = [
       "4000K"
     ],
     "extractedSpecs": {
+      "סוג פס": "מתח גבוה 230V",
       "הספק": "50W",
       "גוון אור": "4000K",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "hiwing",
+    "variantAxis": "צבע וגוון",
+    "variantLabel": "שחור · 4000K",
+    "familyName": "מנורת פס צבירה לד מתקפל 50W",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.636,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/HiWING_Side(1).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-hiwing-wh-ww-track",
     "sku": "HIWING-WH/WW-TRACK",
     "name": "מנורת פס צבירה לד מתקפל גוף לבן 50W 3000K",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiWING-WH_Side(1).jpg",
+    "img": "product-images/ll-light-hiwing-wh-ww-track.webp",
     "desc": "50W | 3000K",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פסי צבירה 230V",
+    "trackType": "מתח גבוה 230V",
+    "itemKind": "גוף תאורה",
     "price": 754,
     "url": null,
     "isFlagship": false,
@@ -8341,45 +9723,34 @@ const __PRODUCTS__ = [
       "3000K"
     ],
     "extractedSpecs": {
+      "סוג פס": "מתח גבוה 230V",
       "הספק": "50W",
       "גוון אור": "3000K",
       "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tk-50cob150wh",
-    "sku": "TK-50COB150WH",
-    "name": "רול.5 לפס צבירה לבן 62x170 מ\"מ Hongli 36° 870Lm 90CRi 8W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-50COB150wh(6).jpg",
-    "desc": "8W | 36°",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 217.1,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "8W",
-      "36°"
-    ],
-    "extractedSpecs": {
-      "הספק": "8W",
-      "זווית": "36°",
-      "עוצמה": "870 Lm",
-      "מידה": "170 מ\"מ",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "hiwing",
+    "variantAxis": "צבע וגוון",
+    "variantLabel": "לבן · 3000K",
+    "familyName": "מנורת פס צבירה לד מתקפל 50W",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.636,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/HiWING-WH_Side(1).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-tk-50cob150bk-ww",
     "sku": "TK-50COB150BK/WW",
     "name": "רול.5 8W לפס צבירה שחור 3000K 36° 870Lm 90CRi",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-50COB150BK.jpg",
+    "img": "product-images/ll-light-tk-50cob150bk-ww.webp",
     "desc": "8W | 3000K",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פסי צבירה 230V",
+    "trackType": "מתח גבוה 230V",
+    "itemKind": "גוף תאורה",
     "price": 217.1,
     "url": null,
     "isFlagship": false,
@@ -8389,47 +9760,36 @@ const __PRODUCTS__ = [
       "3000K"
     ],
     "extractedSpecs": {
+      "סוג פס": "מתח גבוה 230V",
       "הספק": "8W",
       "גוון אור": "3000K",
       "זווית": "36°",
       "עוצמה": "870 Lm",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tk-62cob170wh",
-    "sku": "TK-62COB170WH",
-    "name": "רול.6 לפס צבירה לבן 62x170 מ\"מ Hongli 36° 1,900Lm 90CRi 18W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-62COB170WH(6).jpg",
-    "desc": "18W | 36°",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 283.2,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "18W",
-      "36°"
-    ],
-    "extractedSpecs": {
-      "הספק": "18W",
-      "זווית": "36°",
-      "עוצמה": "900 Lm",
-      "מידה": "170 מ\"מ",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "tk-cob",
+    "variantAxis": "גודל",
+    "variantLabel": "רול.5 · 8W",
+    "familyName": "רול · ספוט לפס צבירה שחור · Hongli 36° 90CRi",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.772,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/TK-50COB150BK.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-tk-62cob170bk",
     "sku": "TK-62COB170BK",
     "name": "רול.6 לפס צבירה שחור 62x170 מ\"מ Hongli 36° 1,900Lm 90CRi 18W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-62COB170BK(6).jpg",
+    "img": "product-images/ll-light-tk-62cob170bk.webp",
     "desc": "18W | 36°",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פסי צבירה 230V",
+    "trackType": "מתח גבוה 230V",
+    "itemKind": "גוף תאורה",
     "price": 214.8,
     "url": null,
     "isFlagship": false,
@@ -8439,22 +9799,36 @@ const __PRODUCTS__ = [
       "36°"
     ],
     "extractedSpecs": {
+      "סוג פס": "מתח גבוה 230V",
       "הספק": "18W",
       "זווית": "36°",
       "עוצמה": "900 Lm",
       "מידה": "170 מ\"מ",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "tk-cob",
+    "variantAxis": "גודל",
+    "variantLabel": "רול.6 · 18W",
+    "familyName": "רול · ספוט לפס צבירה שחור · Hongli 36° 90CRi",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.808,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/TK-62COB170BK(6).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-tk-80cob190bk",
     "sku": "TK-80COB190BK",
     "name": "רול.8 לפס צבירה שחור 80x188 מ\"מ Hongli 36° 3,240Lm 90CRi 30W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-80COB190BK(6).jpg",
+    "img": "product-images/ll-light-tk-80cob190bk.webp",
     "desc": "30W | 36°",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פסי צבירה 230V",
+    "trackType": "מתח גבוה 230V",
+    "itemKind": "גוף תאורה",
     "price": 259.6,
     "url": null,
     "isFlagship": false,
@@ -8464,47 +9838,36 @@ const __PRODUCTS__ = [
       "36°"
     ],
     "extractedSpecs": {
+      "סוג פס": "מתח גבוה 230V",
       "הספק": "30W",
       "זווית": "36°",
       "עוצמה": "240 Lm",
       "מידה": "188 מ\"מ",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tk-94cob190wh",
-    "sku": "TK-94COB190WH",
-    "name": "רול.9 לפס צבירה לבן 94x188 מ\"מ Hongli 36° 4,320Lm 90CRi 40W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-94COB190(12).jpg",
-    "desc": "40W | 36°",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 335.1,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "40W",
-      "36°"
-    ],
-    "extractedSpecs": {
-      "הספק": "40W",
-      "זווית": "36°",
-      "עוצמה": "320 Lm",
-      "מידה": "188 מ\"מ",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "tk-cob",
+    "variantAxis": "גודל",
+    "variantLabel": "רול.8 · 30W",
+    "familyName": "רול · ספוט לפס צבירה שחור · Hongli 36° 90CRi",
+    "variantPrimary": false,
+    "variantOrder": 2,
+    "imgBase": 0.836,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/TK-80COB190BK(6).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-tk-94cob190bk",
     "sku": "TK-94COB190BK",
     "name": "רול.9 לפס צבירה שחור 94x188 מ\"מ Hongli 36° 4,320Lm 90CRi 40W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-94COB190BK(6).jpg",
+    "img": "product-images/ll-light-tk-94cob190bk.webp",
     "desc": "40W | 36°",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פסי צבירה 230V",
+    "trackType": "מתח גבוה 230V",
+    "itemKind": "גוף תאורה",
     "price": 335.1,
     "url": null,
     "isFlagship": false,
@@ -8514,58 +9877,68 @@ const __PRODUCTS__ = [
       "36°"
     ],
     "extractedSpecs": {
+      "סוג פס": "מתח גבוה 230V",
       "הספק": "40W",
       "זווית": "36°",
       "עוצמה": "320 Lm",
       "מידה": "188 מ\"מ",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-cl-50cob60wh-track",
-    "sku": "CL-50COB60WH-Track",
-    "name": "רול.5 לפס צבירה לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-50COB60WH(8).png",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 146.3,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "tk-cob",
+    "variantAxis": "גודל",
+    "variantLabel": "רול.9 · 40W",
+    "familyName": "רול · ספוט לפס צבירה שחור · Hongli 36° 90CRi",
+    "variantPrimary": false,
+    "variantOrder": 3,
+    "imgBase": 0.848,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/TK-94COB190BK(6).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-50cob60bk-track",
     "sku": "CL-50COB60BK-Track",
     "name": "רול.5 לפס צבירה שחור",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-50COB60BK(8).png",
+    "img": "product-images/ll-light-cl-50cob60bk-track.webp",
     "desc": "",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פסי צבירה 230V",
+    "trackType": "מתח גבוה 230V",
+    "itemKind": "גוף תאורה",
     "price": 146.3,
     "url": null,
     "isFlagship": false,
     "scarcity": null,
     "specTags": [],
     "extractedSpecs": {
+      "סוג פס": "מתח גבוה 230V",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "rol5-track",
+    "variantAxis": "גימור",
+    "variantLabel": "שחור",
+    "familyName": "רול.5 ספוט לפס צבירה · 50x60 מ\"מ 8W 3000K 38°",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-50COB60BK(8).png",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-50cob60bg-ww-track",
     "sku": "CL-50COB60BG/WW-Track",
     "name": "רול.5 לפס צבירה פליז 50x60 מ\"מ 3000K 38° 8W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-50COB60BG(1).png",
+    "img": "product-images/ll-light-cl-50cob60bg-ww-track.webp",
     "desc": "8W | 3000K",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פסי צבירה 230V",
+    "trackType": "מתח גבוה 230V",
+    "itemKind": "גוף תאורה",
     "price": 167.6,
     "url": null,
     "isFlagship": false,
@@ -8575,42 +9948,35 @@ const __PRODUCTS__ = [
       "3000K"
     ],
     "extractedSpecs": {
+      "סוג פס": "מתח גבוה 230V",
       "הספק": "8W",
       "גוון אור": "3000K",
       "זווית": "38°",
       "מידה": "60 מ\"מ"
-    }
-  },
-  {
-    "id": "ll-light-cl-60gu130wh-track",
-    "sku": "CL-60GU130WH/Track",
-    "name": "רול.6 לפס צבירה לבן 60x130 מ\"מ GU10",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU130WH_Track(2).png",
-    "desc": "GU10",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 96.8,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "GU10"
-    ],
-    "extractedSpecs": {
-      "מידה": "130 מ\"מ",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "rol5-track",
+    "variantAxis": "גימור",
+    "variantLabel": "פליז",
+    "familyName": "רול.5 ספוט לפס צבירה · 50x60 מ\"מ 8W 3000K 38°",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-50COB60BG(1).png",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-60gu130bk-track",
     "sku": "CL-60GU130BK/Track",
     "name": "רול.6 לפס צבירה שחור 60x130 מ\"מ GU10",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU130BK_Track(3).png",
+    "img": "product-images/ll-light-cl-60gu130bk-track.webp",
     "desc": "GU10",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פסי צבירה 230V",
+    "trackType": "מתח גבוה 230V",
+    "itemKind": "גוף תאורה",
     "price": 96.8,
     "url": null,
     "isFlagship": false,
@@ -8619,39 +9985,27 @@ const __PRODUCTS__ = [
       "GU10"
     ],
     "extractedSpecs": {
+      "סוג פס": "מתח גבוה 230V",
       "מידה": "130 מ\"מ",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-cl-60gu130bg-track",
-    "sku": "CL-60GU130BG/Track",
-    "name": "רול.6 לפס צבירה פליז 60x130 מ\"מ GU10",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU130BG_Track.jpg",
-    "desc": "GU10",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 120.4,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "GU10"
-    ],
-    "extractedSpecs": {
-      "מידה": "130 מ\"מ"
-    }
+    },
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU130BK_Track(3).png",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-10gubk-track",
     "sku": "CL-10GUBK/Track",
     "name": "ספוט GU10 לפס צבירה שחור",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-GU10BK-Track(1).jpg",
+    "img": "product-images/ll-light-cl-10gubk-track.webp",
     "desc": "GU10",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פסי צבירה 230V",
+    "trackType": "מתח גבוה 230V",
+    "itemKind": "גוף תאורה",
     "price": 55.5,
     "url": null,
     "isFlagship": false,
@@ -8660,18 +10014,26 @@ const __PRODUCTS__ = [
       "GU10"
     ],
     "extractedSpecs": {
+      "סוג פס": "מתח גבוה 230V",
       "צבע": "שחור"
-    }
+    },
+    "imgBase": 0.772,
+    "imgWidth": 0.768,
+    "imgScale": 1.07,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-GU10BK-Track(1).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-10e27bk-track",
     "sku": "CL-10E27BK/Track",
     "name": "ספוט E27 לפס צבירה שחור",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-10E27BK-Track.png",
+    "img": "product-images/ll-light-cl-10e27bk-track.webp",
     "desc": "E27",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פסי צבירה 230V",
+    "trackType": "מתח גבוה 230V",
+    "itemKind": "גוף תאורה",
     "price": 55.5,
     "url": null,
     "isFlagship": false,
@@ -8680,38 +10042,26 @@ const __PRODUCTS__ = [
       "E27"
     ],
     "extractedSpecs": {
+      "סוג פס": "מתח גבוה 230V",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-cl-10e27wh-track",
-    "sku": "CL-10E27WH/Track",
-    "name": "ספוט E27 לפס צבירה לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-10E27WH-Track(1).jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 55.5,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
+    },
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-10E27BK-Track.png",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-100ed180bk-track",
     "sku": "CL-100ED180BK/Track",
     "name": "ספוט לפס צבירה E27 שחור 80x150 מ\"מ (כולל נורה)",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-100ED-BK(1).png",
+    "img": "product-images/ll-light-cl-100ed180bk-track.webp",
     "desc": "E27",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פסי צבירה 230V",
+    "trackType": "מתח גבוה 230V",
+    "itemKind": "גוף תאורה",
     "price": 233.6,
     "url": null,
     "isFlagship": false,
@@ -8720,19 +10070,27 @@ const __PRODUCTS__ = [
       "E27"
     ],
     "extractedSpecs": {
+      "סוג פס": "מתח גבוה 230V",
       "מידה": "150 מ\"מ",
       "צבע": "שחור"
-    }
+    },
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-100ED-BK(1).png",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-55guwh-track",
     "sku": "CL-55GUWH/Track",
     "name": "פלוטו לפס צבירה לבן Ø9x12.8 ס\"מ כולל נורה GU10 7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-55GUWH-Track.jpg",
+    "img": "product-images/ll-light-cl-55guwh-track.webp",
     "desc": "7W | GU10",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פסי צבירה 230V",
+    "trackType": "מתח גבוה 230V",
+    "itemKind": "גוף תאורה",
     "price": 182.9,
     "url": null,
     "isFlagship": false,
@@ -8742,19 +10100,27 @@ const __PRODUCTS__ = [
       "GU10"
     ],
     "extractedSpecs": {
+      "סוג פס": "מתח גבוה 230V",
       "הספק": "7W",
       "צבע": "לבן"
-    }
+    },
+    "imgBase": 0.848,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-55GUWH-Track.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-55gubk-pendant",
     "sku": "CL-55GUBK/Pendant",
     "name": "פלוטו תלוי תקרה 2.0 מטר שחור Ø9x200 ס\"מ כולל GU10 7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-55GUBK-Pendant.jpg",
+    "img": "product-images/ll-light-cl-55gubk-pendant.webp",
     "desc": "7W | GU10",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פסי צבירה 230V",
+    "trackType": "מתח גבוה 230V",
+    "itemKind": "גוף תאורה",
     "price": 249,
     "url": null,
     "isFlagship": false,
@@ -8764,41 +10130,27 @@ const __PRODUCTS__ = [
       "GU10"
     ],
     "extractedSpecs": {
+      "סוג פס": "מתח גבוה 230V",
       "הספק": "7W",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-cl-55guwh-pendant",
-    "sku": "CL-55GUWH/Pendant",
-    "name": "פלוטו תלוי תקרה 2.0 מטר לבן Ø9x200 ס\"מ כולל GU10 7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-55GUWH-Pendant.jpg",
-    "desc": "7W | GU10",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 249,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "7W",
-      "GU10"
-    ],
-    "extractedSpecs": {
-      "הספק": "7W",
-      "צבע": "לבן"
-    }
+    },
+    "imgBase": 1,
+    "imgWidth": 0.536,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-55GUBK-Pendant.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-56gubk-pendant",
     "sku": "CL-56GUBK/Pendant",
     "name": "קונוס תלוי תקרה 1.70 מטר שחור Ø9x170 ס\"מ כולל GU10 7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-56GUBK-Pendant.jpg",
+    "img": "product-images/ll-light-cl-56gubk-pendant.webp",
     "desc": "7W | GU10",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "פסי צבירה 230V",
+    "trackType": "מתח גבוה 230V",
+    "itemKind": "גוף תאורה",
     "price": 259.6,
     "url": null,
     "isFlagship": false,
@@ -8808,609 +10160,91 @@ const __PRODUCTS__ = [
       "GU10"
     ],
     "extractedSpecs": {
+      "סוג פס": "מתח גבוה 230V",
       "הספק": "7W",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-cl-56guwh-pendant",
-    "sku": "CL-56GUWH/Pendant",
-    "name": "קונוס תלוי תקרה 1.70 מטר לבן Ø9x170 ס\"מ כולל GU10 7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-56GUWH-Pendant.jpg",
-    "desc": "7W | GU10",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 259.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "7W",
-      "GU10"
-    ],
-    "extractedSpecs": {
-      "הספק": "7W",
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tk-c10-wh",
-    "sku": "TK-C10/WH",
-    "name": "פרופיל 1 מטר פס צבירה צמוד תקרה לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-c10_wh.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 34.2,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tk-c10-bk-f",
-    "sku": "TK-C10/BK-F",
-    "name": "פרופיל 1 מטר שחור כולל סופיות והזנה",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-C10-20-30BK_CloseUP(1).jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 57.8,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tk-c20-bk-f",
-    "sku": "TK-C20/BK-F",
-    "name": "פרופיל 2 מטר שחור כולל סופיות וחיבור לחשמל",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-C10-20-30BK_CloseUP.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 115.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
+    },
+    "imgBase": 1,
+    "imgWidth": 0.428,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-56GUBK-Pendant.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-tk-c30-bk-f",
     "sku": "TK-C30/BK-F",
-    "name": "פרופיל 3 מטר שחור כולל סופיות וחיבור לחשמל",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-C10-20-30BK_CloseUP(2).jpg",
+    "name": "פס צבירה שחור כולל סופיות וחיבור לחשמל",
+    "img": "product-images/ll-light-tk-c30-bk-f.webp",
     "desc": "",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "אביזרים",
     "family": "פסי צבירה 230V",
+    "trackType": "מתח גבוה 230V",
+    "itemKind": "פס ומסילה",
     "price": 169.9,
     "url": null,
     "isFlagship": false,
     "scarcity": null,
     "specTags": [],
     "extractedSpecs": {
+      "סוג פס": "מתח גבוה 230V",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tk-c20-wh-f",
-    "sku": "TK-C20/WH-F",
-    "name": "פרופיל 2 מטר לבן כולל סופיות והזנה",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-C10-20-30WH_CloseUP(1).jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 115.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "tk-rail-230",
+    "variantAxis": "צבע",
+    "variantLabel": "שחור",
+    "familyName": "פס צבירה · כולל סופיות והזנה",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.936,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/TK-C10-20-30BK_CloseUP(2).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-tk-c30-wh-f",
     "sku": "TK-C30/WH-F",
-    "name": "פרופיל 3 מטר לבן כולל סופיות והזנה",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-C10-20-30WH_CloseUP(2).jpg",
+    "name": "פס צבירה לבן כולל סופיות והזנה",
+    "img": "product-images/ll-light-tk-c30-wh-f.webp",
     "desc": "",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "אביזרים",
     "family": "פסי צבירה 230V",
+    "trackType": "מתח גבוה 230V",
+    "itemKind": "פס ומסילה",
     "price": 169.9,
     "url": null,
     "isFlagship": false,
     "scarcity": null,
     "specTags": [],
     "extractedSpecs": {
+      "סוג פס": "מתח גבוה 230V",
       "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tk-p08-bk",
-    "sku": "TK-P08/BK",
-    "name": "מתאם כבל לפס צבירה שחור",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-P08-BK2(3).jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 41.3,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tk-p08-wh",
-    "sku": "TK-P08/WH",
-    "name": "מתאם כבל לפס צבירה לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-P08-WH2(6).jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 41.3,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tk-cec-bk",
-    "sku": "TK-CEC/BK",
-    "name": "סופית צמוד תקרה שחור",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-cec_bk.png",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 2.4,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tk-cec-wh",
-    "sku": "TK-CEC/WH",
-    "name": "סופית צמוד תקרה לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-CEC_WH21(3).jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 2.4,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tk-ccc-bk",
-    "sku": "TK-CCC/BK",
-    "name": "מאריך צמוד תקרה שחור",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-ccc_bk_new(1).jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 13,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tk-ccc-wh",
-    "sku": "TK-CCC/WH",
-    "name": "מאריך צמוד תקרה לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-ccc_wh(3).jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 13,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tk-cll-bk",
-    "sku": "TK-CLL/BK",
-    "name": "זוויתי שמאלי 90° צמוד שחור",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-CLL_BK(1).jpg",
-    "desc": "90°",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 26,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "90°"
-    ],
-    "extractedSpecs": {
-      "זווית": "90°",
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tk-clr-bk",
-    "sku": "TK-CLR/BK",
-    "name": "זוויתי ימני 90° צמוד שחור",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-CLR_BK.jpg",
-    "desc": "90°",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 26,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "90°"
-    ],
-    "extractedSpecs": {
-      "זווית": "90°",
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tk-cll-wh",
-    "sku": "TK-CLL/WH",
-    "name": "זוויתי שמאלי 90° צמוד לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-CLL_WH(1).jpg",
-    "desc": "90°",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 26,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "90°"
-    ],
-    "extractedSpecs": {
-      "זווית": "90°",
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tk-clr-wh",
-    "sku": "TK-CLR/WH",
-    "name": "זוויתי ימני 90° צמוד לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-CLR_WH.jpg",
-    "desc": "90°",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 26,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "90°"
-    ],
-    "extractedSpecs": {
-      "זווית": "90°",
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tk-cmc-wh",
-    "sku": "TK-CMC/WH",
-    "name": "הזנה אמצעית צמוד לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-cmc_wh.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 26,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tk-cmc-bk",
-    "sku": "TK-CMC/BK",
-    "name": "הזנה אמצעית צמוד שחור",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-cmc_bk(4).jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 26,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tk-cfr-wh",
-    "sku": "TK-CFR/WH",
-    "name": "הזנה ימנית צמוד לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-CFR_WH.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 13,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tk-cfl-wh",
-    "sku": "TK-CFL/WH",
-    "name": "הזנה שמאלית צמוד לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/TK-CFL_WH.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 13,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tk-cfr-bk",
-    "sku": "TK-CFR/BK",
-    "name": "הזנה ימנית צמוד שחור",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-cfr_bk.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 13,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tk-cfl-bk",
-    "sku": "TK-CFL/BK",
-    "name": "הזנה שמאלית צמוד שחור",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-cfl_bk.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 13,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tk-rmc-bk",
-    "sku": "TK-RMC/BK",
-    "name": "הזנה אמצעית שקוע שחור",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-rmc_bk(3).jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 27.1,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tk-rmc-wh",
-    "sku": "TK-RMC/WH",
-    "name": "הזנה אמצעית שקוע לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-rmc_wh.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 27.1,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tk-rlr-bk",
-    "sku": "TK-RLR/BK",
-    "name": "זוויתי ימני 90° שקוע שחור",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-rlr_bk(4).jpg",
-    "desc": "90°",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 26,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "90°"
-    ],
-    "extractedSpecs": {
-      "זווית": "90°",
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-tk-rll-wh",
-    "sku": "TK-RLL/WH",
-    "name": "זוויתי שמאלי 90° שקוע לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-rll_wh(1).jpg",
-    "desc": "90°",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 26,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "90°"
-    ],
-    "extractedSpecs": {
-      "זווית": "90°",
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tk-rlr-wh",
-    "sku": "TK-RLR/WH",
-    "name": "זוויתי ימני 90° שקוע לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-rlr_wh(1).jpg",
-    "desc": "90°",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 26,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "90°"
-    ],
-    "extractedSpecs": {
-      "זווית": "90°",
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tk-rfl-wh",
-    "sku": "TK-RFL/WH",
-    "name": "הזנה שמאלית שקוע לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-rfl_wh1.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 15.3,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-tk-rfl-bk",
-    "sku": "TK-RFL/BK",
-    "name": "הזנה שמאלית שקוע שחור",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/tk-rfl_bk1.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "פסי צבירה 230V",
-    "price": 15.3,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-hiline18s6wh",
-    "sku": "HiLINE18S6WH",
-    "name": "תאורת מסילות HiLINE לבן 180 ס\"מ 120W IP43 125Lm/W 60°",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiLINE180_WH_(9).jpg",
-    "desc": "120W | IP43",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "מסילות HiLINE",
-    "price": 1257.9,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "120W",
-      "IP43"
-    ],
-    "extractedSpecs": {
-      "הספק": "120W",
-      "אטימה": "IP43",
-      "זווית": "60°",
-      "עוצמה": "125 Lm",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "tk-rail-230",
+    "variantAxis": "צבע",
+    "variantLabel": "לבן",
+    "familyName": "פס צבירה · כולל סופיות והזנה",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.98,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/TK-C10-20-30WH_CloseUP(2).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-hiline18s6bk",
     "sku": "HiLINE18S6BK",
     "name": "תאורת מסילות HiLINE שחור 180 ס\"מ 120W IP43 125Lm/W 60°",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiLINE180_BK_(9).jpg",
+    "img": "product-images/ll-light-hiline18s6bk.webp",
     "desc": "120W | IP43",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "מסילות HiLINE",
+    "trackType": "מסילה לינארית",
+    "itemKind": "גוף תאורה",
     "price": 1257.9,
     "url": null,
     "isFlagship": false,
@@ -9420,47 +10254,36 @@ const __PRODUCTS__ = [
       "IP43"
     ],
     "extractedSpecs": {
+      "סוג פס": "מסילה לינארית",
       "הספק": "120W",
       "אטימה": "IP43",
       "זווית": "60°",
       "עוצמה": "125 Lm",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-hiline09s6wh",
-    "sku": "HiLINE09S6WH",
-    "name": "תאורת מסילות HiLINE לבן 90 ס\"מ 60W IP43 125Lm/W 60°",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiLINE90_WH_(17).jpg",
-    "desc": "60W | IP43",
-    "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
-    "family": "מסילות HiLINE",
-    "price": 628.9,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "60W",
-      "IP43"
-    ],
-    "extractedSpecs": {
-      "הספק": "60W",
-      "אטימה": "IP43",
-      "זווית": "60°",
-      "עוצמה": "125 Lm",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "hiline",
+    "variantAxis": "אורך",
+    "variantLabel": "180 ס\"מ · 120W",
+    "familyName": "תאורת מסילות HiLINE שחור IP43 125Lm/W 60°",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.716,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/HiLINE180_BK_(9).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-hiline09s6bk",
     "sku": "HiLINE09S6BK",
     "name": "תאורת מסילות HiLINE שחור 90 ס\"מ 60W IP43 125Lm/W 60°",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HiLINE90_BK_(12).jpg",
+    "img": "product-images/ll-light-hiline09s6bk.webp",
     "desc": "60W | IP43",
     "category": "גופי תאורה",
-    "subCategory": "פסי צבירה ומסילות",
+    "subCategory": "פסי צבירה מגנטים ומתח גבוה",
     "family": "מסילות HiLINE",
+    "trackType": "מסילה לינארית",
+    "itemKind": "גוף תאורה",
     "price": 628.9,
     "url": null,
     "isFlagship": false,
@@ -9470,18 +10293,30 @@ const __PRODUCTS__ = [
       "IP43"
     ],
     "extractedSpecs": {
+      "סוג פס": "מסילה לינארית",
       "הספק": "60W",
       "אטימה": "IP43",
       "זווית": "60°",
       "עוצמה": "125 Lm",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "hiline",
+    "variantAxis": "אורך",
+    "variantLabel": "90 ס\"מ · 60W",
+    "familyName": "תאורת מסילות HiLINE שחור IP43 125Lm/W 60°",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.732,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/HiLINE90_BK_(12).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-hi-d66wh-cta",
     "sku": "Hi-D66WH/CTA",
     "name": "שקוע מקצועי 30W IP54 Advance 40°+120° לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HI-D66(4).jpg",
+    "img": "product-images/ll-light-hi-d66wh-cta.webp",
     "desc": "30W | IP54",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -9499,13 +10334,24 @@ const __PRODUCTS__ = [
       "אטימה": "IP54",
       "זווית": "40°",
       "צבע": "לבן"
-    }
+    },
+    "variantFamily": "hi-d",
+    "variantAxis": "הספק",
+    "variantLabel": "30W",
+    "familyName": "שקוע מקצועי IP54 Advance 40°+120° לבן",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.764,
+    "imgWidth": 0.656,
+    "imgScale": 1.25,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/HI-D66(4).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-hi-d68wh-cta",
     "sku": "Hi-D68WH/CTA",
     "name": "שקוע מקצועי 40W IP54 Advance 40°+120° לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/HI-D68.jpg",
+    "img": "product-images/ll-light-hi-d68wh-cta.webp",
     "desc": "40W | IP54",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -9523,13 +10369,23 @@ const __PRODUCTS__ = [
       "אטימה": "IP54",
       "זווית": "40°",
       "צבע": "לבן"
-    }
+    },
+    "variantFamily": "hi-d",
+    "variantAxis": "הספק",
+    "variantLabel": "40W",
+    "familyName": "שקוע מקצועי IP54 Advance 40°+120° לבן",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.812,
+    "imgWidth": 0.824,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/HI-D68.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-dl-bb010bk-ct",
     "sku": "DL-BB010BK/CT",
     "name": "שקוע \"BB\" מקצועי עגול שחור 10W CCT",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-BB10-bk.jpg",
+    "img": "product-images/ll-light-dl-bb010bk-ct.webp",
     "desc": "10W | CCT",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -9545,35 +10401,24 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "הספק": "10W",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-dl-bb010wh-ct",
-    "sku": "DL-BB010WH/CT",
-    "name": "שקוע \"BB\" מקצועי עגול לבן 10W CCT",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-BB10-WH.jpg",
-    "desc": "10W | CCT",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "שקועי תקרה",
-    "price": 81.4,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "10W",
-      "CCT"
-    ],
-    "extractedSpecs": {
-      "הספק": "10W",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "dl-bb",
+    "variantAxis": "הספק",
+    "variantLabel": "10W",
+    "familyName": "שקוע \"BB\" מקצועי עגול שחור CCT",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.716,
+    "imgWidth": 0.68,
+    "imgScale": 1.21,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/DL-BB10-bk.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-dl-bb020bk-ct",
     "sku": "DL-BB020BK/CT",
     "name": "שקוע \"BB\" מקצועי עגול שחור 20W CCT",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-BB20-bk.jpg",
+    "img": "product-images/ll-light-dl-bb020bk-ct.webp",
     "desc": "20W | CCT",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -9589,35 +10434,23 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "הספק": "20W",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-dl-bb020wh-ct",
-    "sku": "DL-BB020WH/CT",
-    "name": "שקוע \"BB\" מקצועי עגול לבן 20W CCT",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-BB20_WH.jpg",
-    "desc": "20W | CCT",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "שקועי תקרה",
-    "price": 133.3,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "20W",
-      "CCT"
-    ],
-    "extractedSpecs": {
-      "הספק": "20W",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "dl-bb",
+    "variantAxis": "הספק",
+    "variantLabel": "20W",
+    "familyName": "שקוע \"BB\" מקצועי עגול שחור CCT",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.752,
+    "imgWidth": 0.8,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/DL-BB20-bk.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-dl-bb030bk-ct",
     "sku": "DL-BB030BK/CT",
     "name": "שקוע \"BB\" מקצועי עגול שחור 30W CCT",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-BB30_BK.jpg",
+    "img": "product-images/ll-light-dl-bb030bk-ct.webp",
     "desc": "30W | CCT",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -9633,35 +10466,24 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "הספק": "30W",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-dl-bb030wh-ct",
-    "sku": "DL-BB030WH/CT",
-    "name": "שקוע \"BB\" מקצועי עגול לבן 30W CCT",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-BB-30_WH.jpg",
-    "desc": "30W | CCT",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "שקועי תקרה",
-    "price": 156.9,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "30W",
-      "CCT"
-    ],
-    "extractedSpecs": {
-      "הספק": "30W",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "dl-bb",
+    "variantAxis": "הספק",
+    "variantLabel": "30W",
+    "familyName": "שקוע \"BB\" מקצועי עגול שחור CCT",
+    "variantPrimary": false,
+    "variantOrder": 2,
+    "imgBase": 0.808,
+    "imgWidth": 0.932,
+    "imgScale": 0.88,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/DL-BB30_BK.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-dl-bb040bk-ct",
     "sku": "DL-BB040BK/CT",
     "name": "שקוע \"BB\" מקצועי עגול שחור 40W CCT",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-BB40_BK.jpg",
+    "img": "product-images/ll-light-dl-bb040bk-ct.webp",
     "desc": "40W | CCT",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -9677,35 +10499,24 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "הספק": "40W",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-dl-bb040wh-ct",
-    "sku": "DL-BB040WH/CT",
-    "name": "שקוע \"BB\" מקצועי עגול לבן 40W CCT",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-BB-40_WH.jpg",
-    "desc": "40W | CCT",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "שקועי תקרה",
-    "price": 178.2,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "40W",
-      "CCT"
-    ],
-    "extractedSpecs": {
-      "הספק": "40W",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "dl-bb",
+    "variantAxis": "הספק",
+    "variantLabel": "40W",
+    "familyName": "שקוע \"BB\" מקצועי עגול שחור CCT",
+    "variantPrimary": false,
+    "variantOrder": 3,
+    "imgBase": 0.832,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/DL-BB40_BK.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-d64-bk",
     "sku": "D64-BK",
     "name": "שקוע \"D\" מקצועי 18W עגול שחור IP44 Ø140 125Lm/w 100°",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/D64-BK_NEW(6).jpg",
+    "img": "product-images/ll-light-d64-bk.webp",
     "desc": "18W | IP44",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -9724,13 +10535,24 @@ const __PRODUCTS__ = [
       "זווית": "100°",
       "עוצמה": "125 Lm",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "d-downlight",
+    "variantAxis": "גודל והספק",
+    "variantLabel": "Ø140 · 18W · שחור",
+    "familyName": "שקוע \"D\" מקצועי עגול IP44 125Lm/w 100°",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.704,
+    "imgWidth": 0.68,
+    "imgScale": 1.21,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/D64-BK_NEW(6).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-d66-bk",
     "sku": "D66-BK",
     "name": "DownLight מקצועי עגול שחור Ø190 IP44 28W 125Lm/w 100°",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/D66-BK_NEW(6).jpg",
+    "img": "product-images/ll-light-d66-bk.webp",
     "desc": "28W | IP44",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -9749,63 +10571,23 @@ const __PRODUCTS__ = [
       "זווית": "100°",
       "עוצמה": "125 Lm",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-d68-bk",
-    "sku": "D68-BK",
-    "name": "שקוע \"D\" מקצועי עגול שחור IP44 Ø230 36W 125Lm/w 100°",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/D68-BK_NEW(6).jpg",
-    "desc": "36W | IP44",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "שקועי תקרה",
-    "price": null,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "36W",
-      "IP44"
-    ],
-    "extractedSpecs": {
-      "הספק": "36W",
-      "אטימה": "IP44",
-      "זווית": "100°",
-      "עוצמה": "125 Lm",
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-d66-wh-22w",
-    "sku": "D66-WH/22W",
-    "name": "שקוע \"D\" מקצועי עגול לבן IP44 Ø190 28W 125Lm/w 100°",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/D-66-22w.jpg",
-    "desc": "28W | IP44",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "שקועי תקרה",
-    "price": 141.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "28W",
-      "IP44"
-    ],
-    "extractedSpecs": {
-      "הספק": "28W",
-      "אטימה": "IP44",
-      "זווית": "100°",
-      "עוצמה": "125 Lm",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "d-downlight",
+    "variantAxis": "גודל והספק",
+    "variantLabel": "Ø190 · 28W · שחור",
+    "familyName": "שקוע \"D\" מקצועי עגול IP44 125Lm/w 100°",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.752,
+    "imgWidth": 0.84,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/D66-BK_NEW(6).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-d68-wh-36w",
     "sku": "D68-WH/36W",
     "name": "DownLight מקצועי עגול IP44 Ø225 36W 125Lm/w 100°",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/D-68-36w.jpg",
+    "img": "product-images/ll-light-d68-wh-36w.webp",
     "desc": "36W | IP44",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -9823,34 +10605,24 @@ const __PRODUCTS__ = [
       "אטימה": "IP44",
       "זווית": "100°",
       "עוצמה": "125 Lm"
-    }
-  },
-  {
-    "id": "ll-light-dl-2026-wh",
-    "sku": "DL-2026/WH",
-    "name": "שקוע מיני קוני דארק לייט MR11, לבן, 230V",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2026-WH.jpg",
-    "desc": "230V | MR11",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "שקועי תקרה",
-    "price": 34.2,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "230V",
-      "MR11"
-    ],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "d-downlight",
+    "variantAxis": "גודל והספק",
+    "variantLabel": "Ø225 · 36W · לבן",
+    "familyName": "שקוע \"D\" מקצועי עגול IP44 125Lm/w 100°",
+    "variantPrimary": false,
+    "variantOrder": 2,
+    "imgBase": 0.792,
+    "imgWidth": 0.848,
+    "imgScale": 0.97,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/D-68-36w.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-dl-2026-bk",
     "sku": "DL-2026/BK",
     "name": "שקוע מיני קוני דארק לייט MR11, שחור, 230V",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2026-BK.jpg",
+    "img": "product-images/ll-light-dl-2026-bk.webp",
     "desc": "230V | MR11",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -9865,34 +10637,24 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-dl-2025-wh",
-    "sku": "DL-2025/WH",
-    "name": "שקוע קוני דארק לייט MR11, לבן, 230V",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2025-WH.jpg",
-    "desc": "230V | MR11",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "שקועי תקרה",
-    "price": 26,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "230V",
-      "MR11"
-    ],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "darklight",
+    "variantAxis": "גודל",
+    "variantLabel": "מיני",
+    "familyName": "שקוע קוני דארק לייט MR11 שחור 230V",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.836,
+    "imgWidth": 0.772,
+    "imgScale": 1.06,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2026-BK.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-dl-2025-bk",
     "sku": "DL-2025/BK",
     "name": "שקוע קוני דארק לייט MR11, שחור, 230V",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2025-BK.jpg",
+    "img": "product-images/ll-light-dl-2025-bk.webp",
     "desc": "230V | MR11",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -9907,201 +10669,24 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-dl-2014-sh",
-    "sku": "DL-2014/SH",
-    "name": "שקוע עגול MR16 ישר מתכוונן ניקל מט",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2014-SH.jpg",
-    "desc": "MR16",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "שקועי תקרה",
-    "price": 47.2,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "MR16"
-    ],
-    "extractedSpecs": {}
-  },
-  {
-    "id": "ll-light-dl-2014-w",
-    "sku": "DL-2014/W",
-    "name": "שקוע עגול MR16 ישר מתכוונן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2014-WH.jpg",
-    "desc": "MR16",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "שקועי תקרה",
-    "price": 42.5,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "MR16"
-    ],
-    "extractedSpecs": {}
-  },
-  {
-    "id": "ll-light-dl-2016-sh",
-    "sku": "DL-2016/SH",
-    "name": "שקוע עגול MR16 ישר פשוט ניקל מאט",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2016-SH.jpg",
-    "desc": "MR16",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "שקועי תקרה",
-    "price": 28.3,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "MR16"
-    ],
-    "extractedSpecs": {}
-  },
-  {
-    "id": "ll-light-dl-2016-w",
-    "sku": "DL-2016-W",
-    "name": "שקוע עגול MR16 ישר פשוט לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2016-WH.jpg",
-    "desc": "MR16",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "שקועי תקרה",
-    "price": 27.1,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "MR16"
-    ],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-dl-2023-bg",
-    "sku": "DL-2023/BG",
-    "name": "שקוע עגול MR16 מתכוונן 4 אינטש פליז",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2023BG.jpg",
-    "desc": "MR16",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "שקועי תקרה",
-    "price": 44.8,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "MR16"
-    ],
-    "extractedSpecs": {}
-  },
-  {
-    "id": "ll-light-dl-2023-sh",
-    "sku": "DL-2023/SH",
-    "name": "שקוע עגול MR16 מתכוונן 4 אינטש ניקל מאט",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2023SH(6).jpg",
-    "desc": "MR16",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "שקועי תקרה",
-    "price": 42.5,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "MR16"
-    ],
-    "extractedSpecs": {}
-  },
-  {
-    "id": "ll-light-dl-2023-w",
-    "sku": "DL-2023/W",
-    "name": "שקוע עגול MR16 מתכוונן 4 אינטש לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2023W(1).jpg",
-    "desc": "MR16",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "שקועי תקרה",
-    "price": 37.8,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "MR16"
-    ],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-dl-2013-w",
-    "sku": "DL-2013/W",
-    "name": "שקוע עגול MR16 ישר לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2013W(6).jpg",
-    "desc": "MR16",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "שקועי תקרה",
-    "price": 34.2,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "MR16"
-    ],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-dl-wl158-sh",
-    "sku": "DL-WL158/SH",
-    "name": "שקוע מרובע MR16 מתכוונן ניקל מאט",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-WL158SH(3).jpg",
-    "desc": "MR16",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "שקועי תקרה",
-    "price": 38.9,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "MR16"
-    ],
-    "extractedSpecs": {}
-  },
-  {
-    "id": "ll-light-dl-wl158-w",
-    "sku": "DL-WL158/W",
-    "name": "שקוע מרובע MR16 מתכוונן לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-WL158W(3).jpg",
-    "desc": "MR16",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "שקועי תקרה",
-    "price": 36.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "MR16"
-    ],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "darklight",
+    "variantAxis": "גודל",
+    "variantLabel": "רגיל",
+    "familyName": "שקוע קוני דארק לייט MR11 שחור 230V",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.812,
+    "imgWidth": 0.96,
+    "imgScale": 0.85,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/DL-2025-BK.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-dl-0354",
     "sku": "DL-0354",
     "name": "שקוע גבס MR16 עגול 130 מ\"מ מעוגל",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-0354-130mm.jpg",
+    "img": "product-images/ll-light-dl-0354.webp",
     "desc": "MR16",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -10115,13 +10700,24 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "מידה": "130 מ\"מ"
-    }
+    },
+    "variantFamily": "gypsum-round",
+    "variantAxis": "פרופיל",
+    "variantLabel": "שפה מעוגלת",
+    "familyName": "שקוע גבס MR16 עגול 130 מ\"מ",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.948,
+    "imgWidth": 0.968,
+    "imgScale": 0.85,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/DL-0354-130mm.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-dl-0829",
     "sku": "DL-0829",
     "name": "שקוע גבס MR16 עגול 130 מ\"מ",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-0829-130mm.jpg",
+    "img": "product-images/ll-light-dl-0829.webp",
     "desc": "MR16",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -10135,13 +10731,24 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "מידה": "130 מ\"מ"
-    }
+    },
+    "variantFamily": "gypsum-round",
+    "variantAxis": "פרופיל",
+    "variantLabel": "שפה ישרה",
+    "familyName": "שקוע גבס MR16 עגול 130 מ\"מ",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.984,
+    "imgWidth": 0.984,
+    "imgScale": 0.83,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/DL-0829-130mm.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-dl-0830",
     "sku": "DL-0830",
     "name": "שקוע גבס MR16 מרובע 120X120 מ\"מ",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-0830-120.jpg",
+    "img": "product-images/ll-light-dl-0830.webp",
     "desc": "MR16",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -10155,34 +10762,18 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "מידה": "120 מ\"מ"
-    }
-  },
-  {
-    "id": "ll-light-cl-m101-wh",
-    "sku": "CL-M101/WH",
-    "name": "צילינדר שקוע גבס, סדרת טריניטי, מתכוונן, לבן, כולל נורה HPE 5-7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-M101_WH.png",
-    "desc": "7W",
-    "category": "גופי תאורה",
-    "subCategory": "צמודי תקרה",
-    "family": "צמודי תקרה",
-    "price": 133.3,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "7W"
-    ],
-    "extractedSpecs": {
-      "הספק": "7W",
-      "צבע": "לבן"
-    }
+    },
+    "imgBase": 0.896,
+    "imgWidth": 0.848,
+    "imgScale": 0.97,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/DL-0830-120.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-m101-bk",
     "sku": "CL-M101/BK",
     "name": "צילינדר שקוע גבס, סדרת טריניטי, מתכוונן, שחור, כולל נורה HPE 5-7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-M101_BK.png",
+    "img": "product-images/ll-light-cl-m101-bk.webp",
     "desc": "7W",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10197,34 +10788,18 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "הספק": "7W",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-cl-m105-wh",
-    "sku": "CL-M105/WH",
-    "name": "צילינדר על טיח, סדרת אגינייט, מתכוונן, לבן, כולל נורה HPE 5-7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-M105_HW.png",
-    "desc": "7W",
-    "category": "גופי תאורה",
-    "subCategory": "צמודי תקרה",
-    "family": "צמודי תקרה",
-    "price": 141.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "7W"
-    ],
-    "extractedSpecs": {
-      "הספק": "7W",
-      "צבע": "לבן"
-    }
+    },
+    "imgBase": 0.988,
+    "imgWidth": 0.796,
+    "imgScale": 0.84,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-M101_BK.png",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-m105-bk",
     "sku": "CL-M105/BK",
     "name": "צילינדר על טיח, סדרת אגינייט, מתכוונן, שחור, כולל נורה HPE 5-7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-M105_BK.png",
+    "img": "product-images/ll-light-cl-m105-bk.webp",
     "desc": "7W",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10239,34 +10814,18 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "הספק": "7W",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-cl-m106-wh",
-    "sku": "CL-M106/WH",
-    "name": "בריק צמוד, סדרת טריניטי, מתכוונן, לבן ושחור, כולל נורה HPE 5-7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-M106_WH.png",
-    "desc": "7W",
-    "category": "גופי תאורה",
-    "subCategory": "צמודי תקרה",
-    "family": "צמודי תקרה",
-    "price": 141.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "7W"
-    ],
-    "extractedSpecs": {
-      "הספק": "7W",
-      "צבע": "לבן"
-    }
+    },
+    "imgBase": 0.992,
+    "imgWidth": 0.78,
+    "imgScale": 0.83,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-M105_BK.png",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-m106-bk",
     "sku": "CL-M106/BK",
     "name": "בריק צמוד, סדרת טריניטי, מתכוונן, שחור מלא, כולל נורה HPE 5-7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-M106_BK.png",
+    "img": "product-images/ll-light-cl-m106-bk.webp",
     "desc": "7W",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10281,34 +10840,18 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "הספק": "7W",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-dl-m509w-wh",
-    "sku": "DL-M509W/WH",
-    "name": "צילינדר צמוד, סדרת טריניטי, מתכוונן, לבן + רפלקטור לבן מאט, כולל נורה HPE 5-7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-M509W_WH.png",
-    "desc": "7W",
-    "category": "גופי תאורה",
-    "subCategory": "צמודי תקרה",
-    "family": "צמודי תקרה",
-    "price": 83.8,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "7W"
-    ],
-    "extractedSpecs": {
-      "הספק": "7W",
-      "צבע": "לבן"
-    }
+    },
+    "imgBase": 0.992,
+    "imgWidth": 0.864,
+    "imgScale": 0.83,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-M106_BK.png",
+    "imgCutout": true
   },
   {
     "id": "ll-light-dl-m509b-bk",
     "sku": "DL-M509B/BK",
     "name": "צילינדר צמוד, סדרת טריניטי, מתכוונן, שחור + רפלקטור שחור מאט, כולל נורה HPE 5-7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-M509B_BK.png",
+    "img": "product-images/ll-light-dl-m509b-bk.webp",
     "desc": "7W",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10323,13 +10866,18 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "הספק": "7W",
       "צבע": "שחור"
-    }
+    },
+    "imgBase": 0.992,
+    "imgWidth": 0.576,
+    "imgScale": 0.83,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/DL-M509B_BK.png",
+    "imgCutout": true
   },
   {
     "id": "ll-light-dl-0887-wh",
     "sku": "DL-0887/WH",
     "name": "צמוד תקרה צילינדר ECO, לנורות GU10, מתכוונן DARK לבן, כולל נורה HPE 5-7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-08871_WH.jpg",
+    "img": "product-images/ll-light-dl-0887-wh.webp",
     "desc": "7W | GU10",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10345,13 +10893,24 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "הספק": "7W",
       "צבע": "לבן"
-    }
+    },
+    "variantFamily": "eco-cylinder",
+    "variantAxis": "צבע",
+    "variantLabel": "לבן",
+    "familyName": "צמוד תקרה צילינדר ECO · מתכוונן DARK · GU10",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 1,
+    "imgWidth": 0.76,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/DL-08871_WH.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-dl-0889-bk",
     "sku": "DL-0889/BK",
     "name": "צמוד תקרה צילינדר ECO, לנורות GU10, מתכוונן שחור, כולל נורה HPE 5-7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/DL-08891_BK.jpg",
+    "img": "product-images/ll-light-dl-0889-bk.webp",
     "desc": "7W | GU10",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10367,36 +10926,24 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "הספק": "7W",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-cl-60gu80wh-1",
-    "sku": "CL-60GU80WH-1",
-    "name": "רול.6 צמוד תקרה מתכוונן גוף לבן 60x80 מ\"מ כולל נורה GU10 7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU80_WH.jpg",
-    "desc": "7W | GU10",
-    "category": "גופי תאורה",
-    "subCategory": "צמודי תקרה",
-    "family": "צמודי תקרה",
-    "price": 73.2,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "7W",
-      "GU10"
-    ],
-    "extractedSpecs": {
-      "הספק": "7W",
-      "מידה": "80 מ\"מ",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "eco-cylinder",
+    "variantAxis": "צבע",
+    "variantLabel": "שחור",
+    "familyName": "צמוד תקרה צילינדר ECO · מתכוונן DARK · GU10",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 1,
+    "imgWidth": 0.76,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/DL-08891_BK.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-60gu80bk-1",
     "sku": "CL-60GU80BK-1",
     "name": "רול.6 צמוד תקרה מתכוונן גוף שחור 60x80 מ\"מ כולל נורה GU10 7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU80_BK.jpg",
+    "img": "product-images/ll-light-cl-60gu80bk-1.webp",
     "desc": "7W | GU10",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10413,35 +10960,24 @@ const __PRODUCTS__ = [
       "הספק": "7W",
       "מידה": "80 מ\"מ",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-cl-60gu80bg-1",
-    "sku": "CL-60GU80BG-1",
-    "name": "רול.6 צמוד תקרה מתכוונן גוף פליז 60x80 מ\"מ כולל נורה GU10 7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU80_BG.jpg",
-    "desc": "7W | GU10",
-    "category": "גופי תאורה",
-    "subCategory": "צמודי תקרה",
-    "family": "צמודי תקרה",
-    "price": 88.5,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "7W",
-      "GU10"
-    ],
-    "extractedSpecs": {
-      "הספק": "7W",
-      "מידה": "80 מ\"מ"
-    }
+    },
+    "variantFamily": "rol6-ceiling",
+    "variantAxis": "תצורה",
+    "variantLabel": "יחיד · שחור",
+    "familyName": "רול.6 פס צמוד תקרה מתכוונן · GU10",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.76,
+    "imgWidth": 0.368,
+    "imgScale": 1.25,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU80_BK.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-60gu80wh-2",
     "sku": "CL-60GU80WH-2",
     "name": "רול.6 זוג פס צמוד תקרה מתכוונן גוף לבן 250x112 מ\"מ GU10",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU80WH-2_NEW.jpg",
+    "img": "product-images/ll-light-cl-60gu80wh-2.webp",
     "desc": "GU10",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10456,13 +10992,24 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "מידה": "112 מ\"מ",
       "צבע": "לבן"
-    }
+    },
+    "variantFamily": "rol6-ceiling",
+    "variantAxis": "תצורה",
+    "variantLabel": "זוג · לבן",
+    "familyName": "רול.6 פס צמוד תקרה מתכוונן · GU10",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.772,
+    "imgWidth": 0.996,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU80WH-2_NEW.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-60gu80bk-3",
     "sku": "CL-60GU80BK-3",
     "name": "רול.6 שלישיה פס צמוד תקרה מתכוונן גוף שחור 450x112 מ\"מ GU10",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU80BK-3.jpg",
+    "img": "product-images/ll-light-cl-60gu80bk-3.webp",
     "desc": "GU10",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10477,33 +11024,24 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "מידה": "112 מ\"מ",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-cl-60gu80bg-3",
-    "sku": "CL-60GU80BG-3",
-    "name": "רול.6 שלישיה פס צמוד תקרה מתכוונן גוף פליז 450x112 מ\"מ GU10",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU80BG-3.jpg",
-    "desc": "GU10",
-    "category": "גופי תאורה",
-    "subCategory": "צמודי תקרה",
-    "family": "צמודי תקרה",
-    "price": 259.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "GU10"
-    ],
-    "extractedSpecs": {
-      "מידה": "112 מ\"מ"
-    }
+    },
+    "variantFamily": "rol6-ceiling",
+    "variantAxis": "תצורה",
+    "variantLabel": "שלישיה · שחור",
+    "familyName": "רול.6 פס צמוד תקרה מתכוונן · GU10",
+    "variantPrimary": false,
+    "variantOrder": 2,
+    "imgBase": 0.688,
+    "imgWidth": 0.988,
+    "imgScale": 0.83,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU80BK-3.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-60gu80wh-r4",
     "sku": "CL-60GU80WH-R4",
     "name": "רול.6 רביעייה עגולה פס צמוד תקרה מתכוונן גוף לבן Ø300 מ\"מ GU10",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU80WH-4R.jpg",
+    "img": "product-images/ll-light-cl-60gu80wh-r4.webp",
     "desc": "GU10",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10518,13 +11056,24 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "מידה": "300 מ\"מ",
       "צבע": "לבן"
-    }
+    },
+    "variantFamily": "rol6-ceiling",
+    "variantAxis": "תצורה",
+    "variantLabel": "רביעייה עגולה · לבן",
+    "familyName": "רול.6 פס צמוד תקרה מתכוונן · GU10",
+    "variantPrimary": false,
+    "variantOrder": 3,
+    "imgBase": 0.808,
+    "imgWidth": 0.98,
+    "imgScale": 0.84,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU80WH-4R.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-60gu80bk-5",
     "sku": "CL-60GU80BK-5",
     "name": "רול.6 חמישייה פס צמוד תקרה מתכוונן גוף שחור 850x112 מ\"מ GU10",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU80BK-5(1).jpg",
+    "img": "product-images/ll-light-cl-60gu80bk-5.webp",
     "desc": "GU10",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10539,36 +11088,24 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "מידה": "112 מ\"מ",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-cl-60gu130wh-tilt",
-    "sku": "CL-60GU130WH/Tilt",
-    "name": "רול.6 צמוד תקרה מתכוונן לבן 60x130 מ\"מ כולל נורה GU10 7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU130WH_Tilt(1).jpg",
-    "desc": "7W | GU10",
-    "category": "גופי תאורה",
-    "subCategory": "צמודי תקרה",
-    "family": "צמודי תקרה",
-    "price": 120.4,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "7W",
-      "GU10"
-    ],
-    "extractedSpecs": {
-      "הספק": "7W",
-      "מידה": "130 מ\"מ",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "rol6-ceiling",
+    "variantAxis": "תצורה",
+    "variantLabel": "חמישייה · שחור",
+    "familyName": "רול.6 פס צמוד תקרה מתכוונן · GU10",
+    "variantPrimary": false,
+    "variantOrder": 4,
+    "imgBase": 0.632,
+    "imgWidth": 0.984,
+    "imgScale": 0.83,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU80BK-5(1).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-60gu130bk-ceiling",
     "sku": "CL-60GU130BK/Ceiling",
     "name": "רול.6 צמוד תקרה שחור 60x130 מ\"מ כולל נורה GU10 7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU130BK_ceiling(1).jpg",
+    "img": "product-images/ll-light-cl-60gu130bk-ceiling.webp",
     "desc": "7W | GU10",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10585,13 +11122,24 @@ const __PRODUCTS__ = [
       "הספק": "7W",
       "מידה": "130 מ\"מ",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "rol6-ceiling-single",
+    "variantAxis": "גימור",
+    "variantLabel": "שחור",
+    "familyName": "רול.6 צמוד תקרה · 60x130 מ\"מ · כולל נורה GU10 7W",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 1,
+    "imgWidth": 0.452,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU130BK_ceiling(1).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-60gu130bg-tilt",
     "sku": "CL-60GU130BG/Tilt",
     "name": "רול.6 צמוד תקרה מתכוונן גוף פליז 60x130 מ\"מ כולל נורה GU10 7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL60GU130-BG-TILT(1).jpg",
+    "img": "product-images/ll-light-cl-60gu130bg-tilt.webp",
     "desc": "7W | GU10",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10607,31 +11155,24 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "הספק": "7W",
       "מידה": "130 מ\"מ"
-    }
-  },
-  {
-    "id": "ll-light-cl-80cob150-wh",
-    "sku": "CL-80COB150/WH",
-    "name": "רול.8 צמוד תקרה לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-80COB150WH-CW.png",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "צמודי תקרה",
-    "family": "צמודי תקרה",
-    "price": 348.1,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "rol6-ceiling-single",
+    "variantAxis": "גימור",
+    "variantLabel": "פליז · מתכוונן",
+    "familyName": "רול.6 צמוד תקרה · 60x130 מ\"מ · כולל נורה GU10 7W",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 1,
+    "imgWidth": 0.848,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL60GU130-BG-TILT(1).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-80cob150-bk",
     "sku": "CL-80COB150/BK",
     "name": "רול.8 צמוד תקרה שחור",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-80COB150BK-CW.png",
+    "img": "product-images/ll-light-cl-80cob150-bk.webp",
     "desc": "",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10643,36 +11184,18 @@ const __PRODUCTS__ = [
     "specTags": [],
     "extractedSpecs": {
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-cl-6rwh-ct",
-    "sku": "CL-6RWH/CT",
-    "name": "צמוד תקרה Tri-Color סדרת ארנה ARENA IP20 לבן 3000-6000K",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-6R32-40(8).jpg",
-    "desc": "Tri-Color | IP20",
-    "category": "גופי תאורה",
-    "subCategory": "צמודי תקרה",
-    "family": "צמודי תקרה",
-    "price": 60.2,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "Tri-Color",
-      "IP20"
-    ],
-    "extractedSpecs": {
-      "גוון אור": "6000K",
-      "אטימה": "IP20",
-      "צבע": "לבן"
-    }
+    },
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-80COB150BK-CW.png",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-6rbk-ct",
     "sku": "CL-6RBK/CT",
     "name": "צמוד תקרה Tri-Color סדרת ארנה ARENA IP20 שחור 3000-6000K",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-6R18BK(6).jpg",
+    "img": "product-images/ll-light-cl-6rbk-ct.webp",
     "desc": "Tri-Color | IP20",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10689,35 +11212,18 @@ const __PRODUCTS__ = [
       "גוון אור": "6000K",
       "אטימה": "IP20",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-cl-7rwh-ct",
-    "sku": "CL-7RWH/CT",
-    "name": "צמוד תקרה סדרת AURA עגול Tri-Color IP65 גוף לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-7Rwh-30-250px(2).jpg",
-    "desc": "Tri-Color | IP65",
-    "category": "גופי תאורה",
-    "subCategory": "צמודי תקרה",
-    "family": "צמודי תקרה",
-    "price": 57.8,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "Tri-Color",
-      "IP65"
-    ],
-    "extractedSpecs": {
-      "אטימה": "IP65",
-      "צבע": "לבן"
-    }
+    },
+    "imgBase": 0.712,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-6R18BK(6).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-7rbk-ct",
     "sku": "CL-7RBK/CT",
     "name": "צמוד תקרה סדרת AURA עגול Tri-Color IP65 גוף שחור",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-7RBK-30-250px(2).jpg",
+    "img": "product-images/ll-light-cl-7rbk-ct.webp",
     "desc": "Tri-Color | IP65",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10733,13 +11239,18 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "אטימה": "IP65",
       "צבע": "שחור"
-    }
+    },
+    "imgBase": 0.96,
+    "imgWidth": 0.792,
+    "imgScale": 1.04,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-7RBK-30-250px(2).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-aa",
     "sku": "CL-AA",
     "name": "צמוד תקרה לד עגול IP44",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-AA4_125(6).webp",
+    "img": "product-images/ll-light-cl-aa.webp",
     "desc": "IP44",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10753,13 +11264,18 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "אטימה": "IP44"
-    }
+    },
+    "imgBase": 0.704,
+    "imgWidth": 0.78,
+    "imgScale": 1.05,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-AA4_125(6).webp",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-3qr",
     "sku": "CL-3QR",
     "name": "צמוד תקרה/קיר Tri-Color סדרת HOOP הופ IP54",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-3QR18(3).jpg",
+    "img": "product-images/ll-light-cl-3qr.webp",
     "desc": "Tri-Color | IP54",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10774,13 +11290,18 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "אטימה": "IP54"
-    }
+    },
+    "imgBase": 0.66,
+    "imgWidth": 0.776,
+    "imgScale": 1.06,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-3QR18(3).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-2rwh-ct",
     "sku": "CL-2RWH/CT",
     "name": "צמוד תקרה/קיר עגול בצבע לבן CCT",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-2R30-WH-CT(6).jpg",
+    "img": "product-images/ll-light-cl-2rwh-ct.webp",
     "desc": "CCT",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10794,35 +11315,18 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-cl-4rwh-ct",
-    "sku": "CL-4RWH/CT",
-    "name": "צמוד תקרה עגול סדרת סטייג' לבן Tri-Color IP40",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/cl-4r70-wh(11).jpg",
-    "desc": "Tri-Color | IP40",
-    "category": "גופי תאורה",
-    "subCategory": "צמודי תקרה",
-    "family": "צמודי תקרה",
-    "price": null,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "Tri-Color",
-      "IP40"
-    ],
-    "extractedSpecs": {
-      "אטימה": "IP40",
-      "צבע": "לבן"
-    }
+    },
+    "imgBase": 0.888,
+    "imgWidth": 0.972,
+    "imgScale": 0.84,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-2R30-WH-CT(6).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-4rbg-ct",
     "sku": "CL-4RBG/CT",
     "name": "צמוד תקרה עגול סדרת סטייג' פליז Tri-Color IP40",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-4R-BG(10).jpg",
+    "img": "product-images/ll-light-cl-4rbg-ct.webp",
     "desc": "Tri-Color | IP40",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10837,13 +11341,18 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "אטימה": "IP40"
-    }
+    },
+    "imgBase": 0.728,
+    "imgWidth": 0.972,
+    "imgScale": 0.84,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-4R-BG(10).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-3r18-cw-em",
     "sku": "CL-3R18/CW-EM",
     "name": "צמוד תקרה דו-תכליתי חירום \"ברייט\" עגול 18W+2W IP54 Ф280",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-3R18(30).jpg",
+    "img": "product-images/ll-light-cl-3r18-cw-em.webp",
     "desc": "18W+2W | IP54",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10859,13 +11368,18 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "הספק": "18W",
       "אטימה": "IP54"
-    }
+    },
+    "imgBase": 0.796,
+    "imgWidth": 0.896,
+    "imgScale": 0.92,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-3R18(30).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-2rd10wh-ww",
     "sku": "CL-2RD10WH/WW",
     "name": "צמוד תקרה ROLL שיר 1000LM לבן 60° IP54 10W 3000K",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-2RD10WH.jpg",
+    "img": "product-images/ll-light-cl-2rd10wh-ww.webp",
     "desc": "10W | 3000K | IP54",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10886,13 +11400,24 @@ const __PRODUCTS__ = [
       "זווית": "60°",
       "עוצמה": "1000 Lm",
       "צבע": "לבן"
-    }
+    },
+    "variantFamily": "roll-shir",
+    "variantAxis": "הספק וצבע",
+    "variantLabel": "10W · 1000Lm · לבן",
+    "familyName": "צמוד תקרה ROLL סדרת SHIR שיר · IP54 60°",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 1,
+    "imgWidth": 0.664,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-2RD10WH.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-2rd20bk-ww",
     "sku": "CL-2RD20BK/WW",
     "name": "צמוד תקרה ROLL שיר 2000LM שחור 60° IP54 20W 3000K",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-2RD20BK(13).jpg",
+    "img": "product-images/ll-light-cl-2rd20bk-ww.webp",
     "desc": "20W | 3000K | IP54",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10913,13 +11438,24 @@ const __PRODUCTS__ = [
       "זווית": "60°",
       "עוצמה": "2000 Lm",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "roll-shir",
+    "variantAxis": "הספק וצבע",
+    "variantLabel": "20W · 2000Lm · שחור",
+    "familyName": "צמוד תקרה ROLL סדרת SHIR שיר · IP54 60°",
+    "variantPrimary": false,
+    "variantOrder": 2,
+    "imgBase": 1,
+    "imgWidth": 0.752,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-2RD20BK(13).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-1rd-bk",
     "sku": "CL-1RD/BK",
     "name": "צמוד תקרה ROLL סדרת SHIR שחור",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-1RD20_BK(2).png",
+    "img": "product-images/ll-light-cl-1rd-bk.webp",
     "desc": "",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10931,31 +11467,24 @@ const __PRODUCTS__ = [
     "specTags": [],
     "extractedSpecs": {
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-cl-upr-wh",
-    "sku": "CL-UPR/WH",
-    "name": "צמוד תקרה דגם ספייס עגול גוף לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-UPR_WH(15).png",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "צמודי תקרה",
-    "family": "צמודי תקרה",
-    "price": 259.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "roll-shir",
+    "variantAxis": "הספק וצבע",
+    "variantLabel": "שחור",
+    "familyName": "צמוד תקרה ROLL סדרת SHIR שיר · IP54 60°",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-1RD20_BK(2).png",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-upr-bg",
     "sku": "CL-UPR/BG",
     "name": "צמוד תקרה דגם ספייס עגול גוף זהב מוברש",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-UPR_BG(9).png",
+    "img": "product-images/ll-light-cl-upr-bg.webp",
     "desc": "",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -10967,29 +11496,18 @@ const __PRODUCTS__ = [
     "specTags": [],
     "extractedSpecs": {
       "צבע": "זהב"
-    }
-  },
-  {
-    "id": "ll-light-cl-upr-bz",
-    "sku": "CL-UPR/BZ",
-    "name": "צמוד תקרה דגם ספייס עגול גוף ברונזה",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-UPR_BZ(9).png",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "צמודי תקרה",
-    "family": "צמודי תקרה",
-    "price": 328,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {}
+    },
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-UPR_BG(9).png",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-ups60bk-ct",
     "sku": "CL-UPS60BK/CT",
     "name": "צמוד תקרה דגם ספייס מלבני שחור Tri-Color IP40 300x1200 מ\"מ 60W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-UPS60BK-ct.png",
+    "img": "product-images/ll-light-cl-ups60bk-ct.webp",
     "desc": "60W | Tri-Color | IP40",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -11008,13 +11526,18 @@ const __PRODUCTS__ = [
       "אטימה": "IP40",
       "מידה": "1200 מ\"מ",
       "צבע": "שחור"
-    }
+    },
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-UPS60BK-ct.png",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-5r-wh",
     "sku": "CL-5R/WH",
     "name": "צמוד תקרה עגול סדרת טורוס גוף לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-5R60WH(2).png",
+    "img": "product-images/ll-light-cl-5r-wh.webp",
     "desc": "",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -11026,13 +11549,18 @@ const __PRODUCTS__ = [
     "specTags": [],
     "extractedSpecs": {
       "צבע": "לבן"
-    }
+    },
+    "imgBase": 1,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-5R60WH(2).png",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-21080bk",
     "sku": "CL-21080BK",
     "name": "לינארי כפול לתקרה סדרת מוד שחור 150 ס\"מ 80W IP44 4000K",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-21060_BK17.jpg",
+    "img": "product-images/ll-light-cl-21080bk.webp",
     "desc": "80W | 4000K | IP44",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -11051,38 +11579,24 @@ const __PRODUCTS__ = [
       "גוון אור": "4000K",
       "אטימה": "IP44",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-cl-21080wh",
-    "sku": "CL-21080WH",
-    "name": "לינארי כפול לתקרה סדרת מוד לבן 150 ס\"מ 80W IP44 4000K",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-21080_WH(11).jpg",
-    "desc": "80W | 4000K | IP44",
-    "category": "גופי תאורה",
-    "subCategory": "צמודי תקרה",
-    "family": "צמודי תקרה",
-    "price": 818.9,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "80W",
-      "4000K",
-      "IP44"
-    ],
-    "extractedSpecs": {
-      "הספק": "80W",
-      "גוון אור": "4000K",
-      "אטימה": "IP44",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "mood",
+    "variantAxis": "אורך וצבע",
+    "variantLabel": "150 ס\"מ · 80W · שחור",
+    "familyName": "לינארי כפול לתקרה סדרת מוד MOOD IP44",
+    "variantPrimary": false,
+    "variantOrder": 2,
+    "imgBase": 0.632,
+    "imgWidth": 0.864,
+    "imgScale": 0.95,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-21060_BK17.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-21060bk",
     "sku": "CL-21060BK",
     "name": "לינארי כפול לתקרה סדרת מוד שחור 120 ס\"מ 60W IP44 4000K",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-21060_BK(17).jpg",
+    "img": "product-images/ll-light-cl-21060bk.webp",
     "desc": "60W | 4000K | IP44",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -11101,13 +11615,24 @@ const __PRODUCTS__ = [
       "גוון אור": "4000K",
       "אטימה": "IP44",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "mood",
+    "variantAxis": "אורך וצבע",
+    "variantLabel": "120 ס\"מ · 60W · שחור",
+    "familyName": "לינארי כפול לתקרה סדרת מוד MOOD IP44",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.632,
+    "imgWidth": 0.864,
+    "imgScale": 0.95,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-21060_BK(17).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-21040wh",
     "sku": "CL-21040WH",
     "name": "לינארי כפול סדרת מוד MOOD לבן 90 ס\"מ 40W IP44",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-21040_WH(18).jpg",
+    "img": "product-images/ll-light-cl-21040wh.webp",
     "desc": "40W | IP44",
     "category": "גופי תאורה",
     "subCategory": "צמודי תקרה",
@@ -11124,61 +11649,24 @@ const __PRODUCTS__ = [
       "הספק": "40W",
       "אטימה": "IP44",
       "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-wl-804rc-lwbk-27",
-    "sku": "WL-804RC-LWBK/27",
-    "name": "צמוד קיר קריאה עם מנגנון שבת ותאורה אחורית 2700K 3W+6W IP20",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-804RC-LWBK27(5).jpg",
-    "desc": "3W+6W | 2700K | IP20",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "צמודי קיר",
-    "price": 240.7,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "3W+6W",
-      "2700K",
-      "IP20"
-    ],
-    "extractedSpecs": {
-      "הספק": "3W",
-      "גוון אור": "2700K",
-      "אטימה": "IP20"
-    }
-  },
-  {
-    "id": "ll-light-wl-804rc-lwwh-27",
-    "sku": "WL-804RC-LWWH/27",
-    "name": "צמוד קיר קריאה עם מנגנון שבת ותאורה אחורית 2700K 3W+6W IP20",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-804RC-LWWH27(8).jpg",
-    "desc": "3W+6W | 2700K | IP20",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "צמודי קיר",
-    "price": 240.7,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "3W+6W",
-      "2700K",
-      "IP20"
-    ],
-    "extractedSpecs": {
-      "הספק": "3W",
-      "גוון אור": "2700K",
-      "אטימה": "IP20"
-    }
+    },
+    "variantFamily": "mood",
+    "variantAxis": "אורך וצבע",
+    "variantLabel": "90 ס\"מ · 40W · לבן",
+    "familyName": "לינארי כפול לתקרה סדרת מוד MOOD IP44",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.616,
+    "imgWidth": 0.736,
+    "imgScale": 1.11,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-21040_WH(18).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-wl-804rc-bk-27",
     "sku": "WL-804RC-BK/27",
     "name": "מנורת צמוד קיר קריאה עגולה 3W+6W IP20 גוף שחור אור חם + מנגנון שבת",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-804RC-BK-27.jpg",
+    "img": "product-images/ll-light-wl-804rc-bk-27.webp",
     "desc": "3W+6W | IP20",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -11195,13 +11683,24 @@ const __PRODUCTS__ = [
       "הספק": "3W",
       "אטימה": "IP20",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "reading-wall",
+    "variantAxis": "דגם",
+    "variantLabel": "עגולה שחורה · מנגנון שבת",
+    "familyName": "מנורת צמוד קיר קריאה 3W+6W IP20 אור חם",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.952,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/WL-804RC-BK-27.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-wl-804r-wh-27",
     "sku": "WL-804R-WH/27",
     "name": "מנורת צמוד קיר קריאה עגולה 3W+6W IP20 גוף לבן אור חם",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-804R-WH27-1.jpg",
+    "img": "product-images/ll-light-wl-804r-wh-27.webp",
     "desc": "3W+6W | IP20",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -11218,13 +11717,24 @@ const __PRODUCTS__ = [
       "הספק": "3W",
       "אטימה": "IP20",
       "צבע": "לבן"
-    }
+    },
+    "variantFamily": "reading-wall",
+    "variantAxis": "דגם",
+    "variantLabel": "עגולה לבנה",
+    "familyName": "מנורת צמוד קיר קריאה 3W+6W IP20 אור חם",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 1,
+    "imgWidth": 0.82,
+    "imgScale": 0.83,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/WL-804R-WH27-1.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-wl-804s-bk-27",
     "sku": "WL-804S-BK/27",
     "name": "מנורת צמוד קיר קריאה מרובעת 3W+6W IP20 גוף שחור אור חם",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-804S-BK.jpg",
+    "img": "product-images/ll-light-wl-804s-bk-27.webp",
     "desc": "3W+6W | IP20",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -11241,13 +11751,24 @@ const __PRODUCTS__ = [
       "הספק": "3W",
       "אטימה": "IP20",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "reading-wall",
+    "variantAxis": "דגם",
+    "variantLabel": "מרובעת שחורה",
+    "familyName": "מנורת צמוד קיר קריאה 3W+6W IP20 אור חם",
+    "variantPrimary": false,
+    "variantOrder": 2,
+    "imgBase": 0.988,
+    "imgWidth": 0.852,
+    "imgScale": 0.84,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/WL-804S-BK.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-wl-802bkbg-27",
     "sku": "WL-802BKBG/27",
     "name": "מנורת צמוד קיר קריאה 3W IP20 גוף בסיס שחור + גוף זהב אור חם",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-802-BKBG.jpg",
+    "img": "product-images/ll-light-wl-802bkbg-27.webp",
     "desc": "3W | IP20",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -11264,13 +11785,18 @@ const __PRODUCTS__ = [
       "הספק": "3W",
       "אטימה": "IP20",
       "צבע": "שחור"
-    }
+    },
+    "imgBase": 0.992,
+    "imgWidth": 0.776,
+    "imgScale": 0.83,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/WL-802-BKBG.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-wl-801bk-27",
     "sku": "WL-801BK/27",
     "name": "צמוד קיר מתכוונן סדרת POINTER אור חם 3W + שקע USB",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-801BK-27.jpg",
+    "img": "product-images/ll-light-wl-801bk-27.webp",
     "desc": "3W",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -11284,13 +11810,18 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "הספק": "3W"
-    }
+    },
+    "imgBase": 0.996,
+    "imgWidth": 0.72,
+    "imgScale": 0.83,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/WL-801BK-27.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-wl-805bk-ww",
     "sku": "WL-805BK/WW",
     "name": "צמוד קיר מתכוונן סדרת POINTER זרוע גמישה לחצן הפעלה 3000K 3W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-805BK.jpg",
+    "img": "product-images/ll-light-wl-805bk-ww.webp",
     "desc": "3W | 3000K",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -11306,13 +11837,18 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "הספק": "3W",
       "גוון אור": "3000K"
-    }
+    },
+    "imgBase": 0.952,
+    "imgWidth": 0.992,
+    "imgScale": 0.83,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/WL-805BK.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-wl-807r-wh-ww",
     "sku": "WL-807R-WH/WW",
     "name": "צמוד קיר קריאה סדרה פוינטר 3W+6W 3000K",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-807R_WH.jpg",
+    "img": "product-images/ll-light-wl-807r-wh-ww.webp",
     "desc": "3W+6W | 3000K",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -11328,51 +11864,18 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "הספק": "3W",
       "גוון אור": "3000K"
-    }
-  },
-  {
-    "id": "ll-light-wl-pa07g9-lw",
-    "sku": "WL-PA07G9/LW",
-    "name": "מנורת קיר למיטה עץ בהיר (אהיל מטה) מפסק משיכה כולל G9",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-PA07G9LW_ON_Clean(3).jpg",
-    "desc": "G9",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "צמודי קיר",
-    "price": 499.1,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "G9"
-    ],
-    "extractedSpecs": {}
-  },
-  {
-    "id": "ll-light-wl-pa08g9-bk",
-    "sku": "WL-PA08G9/BK",
-    "name": "מנורת קיר למיטה עץ שחור (אהיל למעלה) מפסק משיכה כולל G9",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-PA08G9BK_ON_Clean(3).jpg",
-    "desc": "G9",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "צמודי קיר",
-    "price": 499.1,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "G9"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
+    },
+    "imgBase": 0.988,
+    "imgWidth": 0.792,
+    "imgScale": 0.84,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/WL-807R_WH.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-wl-806s-bk-ww",
     "sku": "WL-806S-BK/WW",
     "name": "צמוד קיר קאפהד יחיד עם מתג / סדרה BELL / מתכוונן / 3000K / 6W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-70COB80-יחיד-שחור.jpg",
+    "img": "product-images/ll-light-wl-806s-bk-ww.webp",
     "desc": "6W | 3000K",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -11388,35 +11891,18 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "הספק": "6W",
       "גוון אור": "3000K"
-    }
-  },
-  {
-    "id": "ll-light-wl-806s-bg-ww",
-    "sku": "WL-806S-BG/WW",
-    "name": "צמוד קיר קאפהד יחיד עם מתג / סדרה BELL / פליז / 3000K / 6W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-70COB80-יחיד-פליז.jpg",
-    "desc": "6W | 3000K",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "צמודי קיר",
-    "price": 199.4,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "6W",
-      "3000K"
-    ],
-    "extractedSpecs": {
-      "הספק": "6W",
-      "גוון אור": "3000K"
-    }
+    },
+    "imgBase": 0.988,
+    "imgWidth": 0.74,
+    "imgScale": 0.84,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-70COB80-יחיד-שחור.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-70cob80bk-2-ct",
     "sku": "CL-70COB80BK-2/CT",
     "name": "צמוד קיר קאפהד זוג / סדרה BELL / מתכוונן / CCT / 12W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-70COB80BK-זוגי-שחור.jpg",
+    "img": "product-images/ll-light-cl-70cob80bk-2-ct.webp",
     "desc": "12W | CCT",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -11431,13 +11917,24 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "הספק": "12W"
-    }
+    },
+    "variantFamily": "bell-wall",
+    "variantAxis": "תצורה",
+    "variantLabel": "זוג · 12W · שחור",
+    "familyName": "צמוד קיר קאפהד · סדרה BELL · מתכוונן CCT",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.68,
+    "imgWidth": 0.984,
+    "imgScale": 0.83,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-70COB80BK-זוגי-שחור.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-70cob80bk-3-ct",
     "sku": "CL-70COB80BK-3/CT",
     "name": "צמוד קיר קאפהד שלישיה / סדרה BELL / מתכוונן / CCT / 18W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-70COB80BK-שלישיה-שחור.jpg",
+    "img": "product-images/ll-light-cl-70cob80bk-3-ct.webp",
     "desc": "18W | CCT",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -11452,13 +11949,24 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "הספק": "18W"
-    }
+    },
+    "variantFamily": "bell-wall",
+    "variantAxis": "תצורה",
+    "variantLabel": "שלישיה · 18W · שחור",
+    "familyName": "צמוד קיר קאפהד · סדרה BELL · מתכוונן CCT",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.636,
+    "imgWidth": 0.98,
+    "imgScale": 0.84,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-70COB80BK-שלישיה-שחור.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-70cob80bg-5-ct",
     "sku": "CL-70COB80BG-5/CT",
     "name": "צמוד קיר קאפהד חמישייה / סדרה BELL / פליז / CCT / 28W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-70COB80BG-חמישיה-פליז.jpg",
+    "img": "product-images/ll-light-cl-70cob80bg-5-ct.webp",
     "desc": "28W | CCT",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -11473,13 +11981,24 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "הספק": "28W"
-    }
+    },
+    "variantFamily": "bell-wall",
+    "variantAxis": "תצורה",
+    "variantLabel": "חמישייה · 28W · פליז",
+    "familyName": "צמוד קיר קאפהד · סדרה BELL · מתכוונן CCT",
+    "variantPrimary": false,
+    "variantOrder": 2,
+    "imgBase": 0.584,
+    "imgWidth": 0.988,
+    "imgScale": 0.83,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-70COB80BG-חמישיה-פליז.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-wl-021bk-ww",
     "sku": "WL-021BK/WW",
     "name": "מנורת קיר סדרת HELIOS / מתכווננת / IP20 / 18W / 3000K",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-021BK.jpg",
+    "img": "product-images/ll-light-wl-021bk-ww.webp",
     "desc": "18W | 3000K | IP20",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -11497,13 +12016,24 @@ const __PRODUCTS__ = [
       "הספק": "18W",
       "גוון אור": "3000K",
       "אטימה": "IP20"
-    }
+    },
+    "variantFamily": "helios",
+    "variantAxis": "הספק",
+    "variantLabel": "18W",
+    "familyName": "מנורת קיר סדרת HELIOS · מתכווננת · IP20 · 3000K",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.644,
+    "imgWidth": 0.992,
+    "imgScale": 0.83,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/WL-021BK.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-wl-020bk-ww",
     "sku": "WL-020BK/WW",
     "name": "מנורת קיר סדרת HELIOS / מתכווננת / IP20 / 10W / 3000K",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-020WH.jpg",
+    "img": "product-images/ll-light-wl-020bk-ww.webp",
     "desc": "10W | 3000K | IP20",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -11521,13 +12051,24 @@ const __PRODUCTS__ = [
       "הספק": "10W",
       "גוון אור": "3000K",
       "אטימה": "IP20"
-    }
+    },
+    "variantFamily": "helios",
+    "variantAxis": "הספק",
+    "variantLabel": "10W",
+    "familyName": "מנורת קיר סדרת HELIOS · מתכווננת · IP20 · 3000K",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.728,
+    "imgWidth": 0.976,
+    "imgScale": 0.84,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/WL-020WH.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-wl-210bk-ct",
     "sku": "WL-210BK/CT",
     "name": "מנורת קיר סדרת מוד גוף שחור 18W/24W IP44 CCT",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-21018BK_250.jpg",
+    "img": "product-images/ll-light-wl-210bk-ct.webp",
     "desc": "18W | CCT | IP44",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -11545,36 +12086,18 @@ const __PRODUCTS__ = [
       "הספק": "18W",
       "אטימה": "IP44",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-wl-210bg-ct",
-    "sku": "WL-210BG/CT",
-    "name": "מנורת קיר סדרת מוד גוף פליז 18W/24W IP44 CCT",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-21018BG-250(1).jpg",
-    "desc": "18W | CCT | IP44",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "צמודי קיר",
-    "price": 350.5,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "18W",
-      "CCT",
-      "IP44"
-    ],
-    "extractedSpecs": {
-      "הספק": "18W",
-      "אטימה": "IP44"
-    }
+    },
+    "imgBase": 0.964,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/WL-21018BK_250.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-wl-387l-wh-ww",
     "sku": "WL-387L-WH/WW",
     "name": "צמוד קיר Ambient פינות לבן IP20 20W 3000K",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-387L-WH(3).jpg",
+    "img": "product-images/ll-light-wl-387l-wh-ww.webp",
     "desc": "20W | 3000K | IP20",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -11593,13 +12116,18 @@ const __PRODUCTS__ = [
       "גוון אור": "3000K",
       "אטימה": "IP20",
       "צבע": "לבן"
-    }
+    },
+    "imgBase": 0.884,
+    "imgWidth": 0.739,
+    "imgScale": 1.11,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/WL-387L-WH(3).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-wl-385l-wh-ww",
     "sku": "WL-385L-WH/WW",
     "name": "צמוד קיר Ambient מדרגות לבן IP20 12W 3000K",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-385L-WH1.jpg",
+    "img": "product-images/ll-light-wl-385l-wh-ww.webp",
     "desc": "12W | 3000K | IP20",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -11618,89 +12146,18 @@ const __PRODUCTS__ = [
       "גוון אור": "3000K",
       "אטימה": "IP20",
       "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-wl-382l-dw-ct",
-    "sku": "WL-382L-DW/CT",
-    "name": "צמוד קיר עץ מכופף דגם נועם, עץ כהה 13W HONGLITRONIC CCT",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-382L-dw(10).jpg",
-    "desc": "13W | CCT",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "צמודי קיר",
-    "price": 395.3,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "13W",
-      "CCT"
-    ],
-    "extractedSpecs": {
-      "הספק": "13W"
-    }
-  },
-  {
-    "id": "ll-light-wl-382l-lw-ct",
-    "sku": "WL-382L-LW/CT",
-    "name": "צמוד קיר עץ מכופף דגם נועם, עץ בהיר 13W HONGLITRONIC CCT",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-382L-lw(7).jpg",
-    "desc": "13W | CCT",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "צמודי קיר",
-    "price": 395.3,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "13W",
-      "CCT"
-    ],
-    "extractedSpecs": {
-      "הספק": "13W"
-    }
-  },
-  {
-    "id": "ll-light-wl-3830lw-ww",
-    "sku": "WL-3830LW/WW",
-    "name": "צמוד קיר עץ בהיר מלבן צר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/תמונות_לאתר5.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "צמודי קיר",
-    "price": 311.5,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-wl-3832lw-ww",
-    "sku": "WL-3832LW/WW",
-    "name": "צמוד קיר עץ בהיר מרובע",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/תמונות_לאתר.jpg",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "צמודי קיר",
-    "price": 364.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {}
+    },
+    "imgBase": 0.812,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/WL-385L-WH1.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-61gu80bk-1",
     "sku": "CL-61GU80BK-1",
     "name": "רול.6 מנורת קיר מתכוונן (עם מפסק) גוף שחור 60x80 מ\"מ כולל GU10 7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-61GU-BK.jpg",
+    "img": "product-images/ll-light-cl-61gu80bk-1.webp",
     "desc": "7W | GU10",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -11717,55 +12174,18 @@ const __PRODUCTS__ = [
       "הספק": "7W",
       "מידה": "80 מ\"מ",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-cl-61gu80bg-1",
-    "sku": "CL-61GU80BG-1",
-    "name": "רול.6 מנורת קיר מתכוונן (עם מפסק) גוף פליז 60x80 מ\"מ כולל GU10 7W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-61GU-BG.jpg",
-    "desc": "7W | GU10",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "צמודי קיר",
-    "price": 115.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "7W",
-      "GU10"
-    ],
-    "extractedSpecs": {
-      "הספק": "7W",
-      "מידה": "80 מ\"מ"
-    }
-  },
-  {
-    "id": "ll-light-lh-wlbkbk27",
-    "sku": "LH-WLBKBK27",
-    "name": "צמוד קיר בית נורה שחור מוברש, כיסוי קיר שחור (כולל טבעת) E27",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-WLBKBK27.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "ספוטים ושקועים",
-    "family": "צמודי קיר",
-    "price": 102.7,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
+    },
+    "imgBase": 0.824,
+    "imgWidth": 0.916,
+    "imgScale": 0.9,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-61GU-BK.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-wl-lh2241bk-e27",
     "sku": "WL-LH2241BK/E27",
     "name": "מנורת קיר מוגנת גוף שחור E27 (כולל נורה GLF-T30/LZ)",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-LH2241BK27.jpg",
+    "img": "product-images/ll-light-wl-lh2241bk-e27.webp",
     "desc": "E27",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -11779,13 +12199,18 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "צבע": "שחור"
-    }
+    },
+    "imgBase": 0.98,
+    "imgWidth": 0.24,
+    "imgScale": 0.85,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/WL-LH2241BK27.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-wl-tb27-ab",
     "sku": "WL-TB27/AB",
     "name": "מנורת צמוד קיר בית נורה E27 חום עתיק",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/WL-TB27-BZ-U.jpg",
+    "img": "product-images/ll-light-wl-tb27-ab.webp",
     "desc": "E27",
     "category": "גופי תאורה",
     "subCategory": "ספוטים ושקועים",
@@ -11799,13 +12224,18 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "צבע": "חום"
-    }
+    },
+    "imgBase": 0.98,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/WL-TB27-BZ-U.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-eb-ep1439-bk",
     "sku": "EB-EP1439/BK",
     "name": "לחצן יחיד שחור מיני RF-Kinetic",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/EB-EP1439-BK.jpg",
+    "img": "product-images/ll-light-eb-ep1439-bk.webp",
     "desc": "RF-Kinetic",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -11819,33 +12249,17 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-eb-ep1439-wh",
-    "sku": "EB-EP1439/WH",
-    "name": "לחצן יחיד לבן מיני RF-Kinetic",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/EB-EP1439-WH.jpg",
-    "desc": "RF-Kinetic",
-    "category": "גופי תאורה",
-    "subCategory": "בקרה וחיישנים",
-    "family": "מפסקים אלחוטיים",
-    "price": 156.9,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "RF-Kinetic"
-    ],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
+    },
+    "imgBase": 0.916,
+    "imgWidth": 0.496,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/EB-EP1439-BK.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-eb-erc301",
     "sku": "EB-ERC301",
     "name": "מגען אלקטרוני אלחוטי, עמעום 10-100% RF 433Mhz 1.5A, 300W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SW(34).jpg",
+    "img": "product-images/ll-light-eb-erc301.webp",
     "desc": "300W | RF 433MHz",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -11860,13 +12274,24 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "הספק": "300W"
-    }
+    },
+    "variantFamily": "rf-dimmer",
+    "variantAxis": "הספק",
+    "variantLabel": "1.5A · 300W",
+    "familyName": "מגען אלקטרוני אלחוטי · עמעום 10-100% RF 433Mhz",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.708,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/SW(34).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-eb-erc901",
     "sku": "EB-ERC901",
     "name": "מגען אלקטרוני מיני אלחוטי, עמעום 10-100% RF 433Mhz 0.5A, 100W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/EB-ERC901(6).jpg",
+    "img": "product-images/ll-light-eb-erc901.webp",
     "desc": "100W | RF 433MHz",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -11881,13 +12306,24 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "הספק": "100W"
-    }
+    },
+    "variantFamily": "rf-dimmer",
+    "variantAxis": "הספק",
+    "variantLabel": "מיני · 0.5A · 100W",
+    "familyName": "מגען אלקטרוני אלחוטי · עמעום 10-100% RF 433Mhz",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.728,
+    "imgWidth": 0.979,
+    "imgScale": 0.84,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/EB-ERC901(6).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-erc302",
     "sku": "ERC302",
     "name": "מגען אלחוטי, יציאה אחת RF 433Mhz 10A",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SW(31).jpg",
+    "img": "product-images/ll-light-erc302.webp",
     "desc": "RF 433MHz",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -11899,13 +12335,24 @@ const __PRODUCTS__ = [
     "specTags": [
       "RF 433MHz"
     ],
-    "extractedSpecs": {}
+    "extractedSpecs": {},
+    "variantFamily": "rf-relay",
+    "variantAxis": "תצורה",
+    "variantLabel": "יציאה אחת · 10A",
+    "familyName": "מגען אלחוטי RF 433Mhz",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.708,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/SW(31).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-erc303",
     "sku": "ERC303",
     "name": "מגען אלחוטי, שתי יציאות RF 433Mhz 2x5A",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SW(28).jpg",
+    "img": "product-images/ll-light-erc303.webp",
     "desc": "RF 433MHz",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -11917,101 +12364,24 @@ const __PRODUCTS__ = [
     "specTags": [
       "RF 433MHz"
     ],
-    "extractedSpecs": {}
-  },
-  {
-    "id": "ll-light-eb-es2222-bg",
-    "sku": "EB-ES2222/BG",
-    "name": "לחצן כפול זהב מאט RF-Kinetic IP67",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/ES2222GB.jpg",
-    "desc": "IP67 | RF-Kinetic",
-    "category": "גופי תאורה",
-    "subCategory": "בקרה וחיישנים",
-    "family": "מפסקים אלחוטיים",
-    "price": 156.9,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "IP67",
-      "RF-Kinetic"
-    ],
-    "extractedSpecs": {
-      "אטימה": "IP67",
-      "צבע": "זהב"
-    }
-  },
-  {
-    "id": "ll-light-eb-es2122-wh",
-    "sku": "EB-ES2122/WH",
-    "name": "לחצן יחיד לבן מאט RF-Kinetic IP67",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/ES2122WH.jpg",
-    "desc": "IP67 | RF-Kinetic",
-    "category": "גופי תאורה",
-    "subCategory": "בקרה וחיישנים",
-    "family": "מפסקים אלחוטיים",
-    "price": 118,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "IP67",
-      "RF-Kinetic"
-    ],
-    "extractedSpecs": {
-      "אטימה": "IP67",
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-eb-es2222-wh",
-    "sku": "EB-ES2222/WH",
-    "name": "לחצן כפול לבן מאט RF-Kinetic IP67",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/ES2222WH.jpg",
-    "desc": "IP67 | RF-Kinetic",
-    "category": "גופי תאורה",
-    "subCategory": "בקרה וחיישנים",
-    "family": "מפסקים אלחוטיים",
-    "price": 156.9,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "IP67",
-      "RF-Kinetic"
-    ],
-    "extractedSpecs": {
-      "אטימה": "IP67",
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-eb-es2322-wh",
-    "sku": "EB-ES2322/WH",
-    "name": "לחצן שלישיה לבן מאט RF-Kinetic IP67",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/ES2322WH.jpg",
-    "desc": "IP67 | RF-Kinetic",
-    "category": "גופי תאורה",
-    "subCategory": "בקרה וחיישנים",
-    "family": "מפסקים אלחוטיים",
-    "price": 175.8,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "IP67",
-      "RF-Kinetic"
-    ],
-    "extractedSpecs": {
-      "אטימה": "IP67",
-      "צבע": "לבן"
-    }
+    "extractedSpecs": {},
+    "variantFamily": "rf-relay",
+    "variantAxis": "תצורה",
+    "variantLabel": "שתי יציאות · 2x5A",
+    "familyName": "מגען אלחוטי RF 433Mhz",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.708,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/SW(28).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-ee0254",
     "sku": "EE0254",
     "name": "מפסק כפול לבן מאט RF-Kinetic",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/EE0254.jpg",
+    "img": "product-images/ll-light-ee0254.webp",
     "desc": "RF-Kinetic",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12025,13 +12395,18 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "צבע": "לבן"
-    }
+    },
+    "imgBase": 0.98,
+    "imgWidth": 0.996,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/EE0254.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-eb-es2122-bk",
     "sku": "EB-ES2122/BK",
     "name": "לחצן יחיד שחור מאט RF-Kinetic IP67",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/ES2122BK(3).jpg",
+    "img": "product-images/ll-light-eb-es2122-bk.webp",
     "desc": "IP67 | RF-Kinetic",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12047,13 +12422,24 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "אטימה": "IP67",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "rf-buttons",
+    "variantAxis": "תצורה",
+    "variantLabel": "יחיד",
+    "familyName": "לחצן RF-Kinetic שחור מאט IP67",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.972,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/ES2122BK(3).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-eb-es2222-bk",
     "sku": "EB-ES2222/BK",
     "name": "לחצן כפול שחור מאט RF-Kinetic IP67",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/ES2222BK(4).jpg",
+    "img": "product-images/ll-light-eb-es2222-bk.webp",
     "desc": "IP67 | RF-Kinetic",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12069,13 +12455,24 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "אטימה": "IP67",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "rf-buttons",
+    "variantAxis": "תצורה",
+    "variantLabel": "כפול",
+    "familyName": "לחצן RF-Kinetic שחור מאט IP67",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.972,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/ES2222BK(4).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-eb-es2322-bk",
     "sku": "EB-ES2322/BK",
     "name": "לחצן שלישיה שחור מאט RF-Kinetic IP67",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/ES2322BK(3).jpg",
+    "img": "product-images/ll-light-eb-es2322-bk.webp",
     "desc": "IP67 | RF-Kinetic",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12091,13 +12488,24 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "אטימה": "IP67",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "rf-buttons",
+    "variantAxis": "תצורה",
+    "variantLabel": "שלישייה",
+    "familyName": "לחצן RF-Kinetic שחור מאט IP67",
+    "variantPrimary": false,
+    "variantOrder": 2,
+    "imgBase": 0.972,
+    "imgWidth": 1,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/ES2322BK(3).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-eb-erc2206bk-kit",
     "sku": "EB-ERC2206BK/KIT",
     "name": "קיט מגען אלקטרוני מיני למנועים RF 433Mhz 1.7A + מפסק שחור, 350W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/EB-EP1439-bkEBERC2206.jpg",
+    "img": "product-images/ll-light-eb-erc2206bk-kit.webp",
     "desc": "350W | RF 433MHz",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12113,35 +12521,24 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "הספק": "350W",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-eb-erc2206wh-kit",
-    "sku": "EB-ERC2206WH/KIT",
-    "name": "קיט מגען אלקטרוני מיני למנועים RF 433Mhz 1.7A + מפסק לבן, 350W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/EB-EP1439-whEBERC2206.jpg",
-    "desc": "350W | RF 433MHz",
-    "category": "גופי תאורה",
-    "subCategory": "בקרה וחיישנים",
-    "family": "מפסקים אלחוטיים",
-    "price": 468.5,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "350W",
-      "RF 433MHz"
-    ],
-    "extractedSpecs": {
-      "הספק": "350W",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "rf-motor",
+    "variantAxis": "תצורה",
+    "variantLabel": "קיט עם מפסק שחור · 350W",
+    "familyName": "מגען אלקטרוני מיני למנועים RF 433Mhz 1.7A",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.892,
+    "imgWidth": 0.888,
+    "imgScale": 0.92,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/EB-EP1439-bkEBERC2206.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-eb-erc2206",
     "sku": "EB-ERC2206",
     "name": "מגען אלקטרוני מיני למנועים RF 433Mhz 1.7A",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/EB-ERC2206.jpg",
+    "img": "product-images/ll-light-eb-erc2206.webp",
     "desc": "RF 433MHz",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12153,13 +12550,23 @@ const __PRODUCTS__ = [
     "specTags": [
       "RF 433MHz"
     ],
-    "extractedSpecs": {}
+    "extractedSpecs": {},
+    "variantFamily": "rf-motor",
+    "variantAxis": "תצורה",
+    "variantLabel": "מודול בלבד",
+    "familyName": "מגען אלקטרוני מיני למנועים RF 433Mhz 1.7A",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.88,
+    "imgWidth": 0.644,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/EB-ERC2206.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-eb-eq2154-eu",
     "sku": "EB-EQ2154-EU",
     "name": "פעמון אלחוטי קינטי - מגוון צלצולים",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/EB-EQ2154-EU.jpg",
+    "img": "product-images/ll-light-eb-eq2154-eu.webp",
     "desc": "",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12169,13 +12576,18 @@ const __PRODUCTS__ = [
     "isFlagship": false,
     "scarcity": null,
     "specTags": [],
-    "extractedSpecs": {}
+    "extractedSpecs": {},
+    "imgBase": 0.996,
+    "imgWidth": 0.972,
+    "imgScale": 0.83,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/EB-EQ2154-EU.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-sd-rk1",
     "sku": "SD-RK1",
     "name": "שלט שחור עמעום סיבובי [שולחני] למערכת SKYDANCE",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-RK1.jpg",
+    "img": "product-images/ll-light-sd-rk1.webp",
     "desc": "",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12187,13 +12599,18 @@ const __PRODUCTS__ = [
     "specTags": [],
     "extractedSpecs": {
       "צבע": "שחור"
-    }
+    },
+    "imgBase": 0.808,
+    "imgWidth": 0.928,
+    "imgScale": 0.88,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/SD-RK1.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-sd-rt6-bk",
     "sku": "SD-RT6/BK",
     "name": "שלט שחור עמעום מגע למערכת SKYDANCE ארבע אזורים | 4 תרחישים",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-RT6-BK.webp",
+    "img": "product-images/ll-light-sd-rt6-bk.webp",
     "desc": "",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12205,13 +12622,18 @@ const __PRODUCTS__ = [
     "specTags": [],
     "extractedSpecs": {
       "צבע": "שחור"
-    }
+    },
+    "imgBase": 0.968,
+    "imgWidth": 0.412,
+    "imgScale": 0.87,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/SD-RT6-BK.webp",
+    "imgCutout": true
   },
   {
     "id": "ll-light-sd-pk1-bk",
     "sku": "SD-PK1/BK",
     "name": "שלט שחור עמעום סיבובי [דמוי קיר 55] למערכת SKYDANCE",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-PK1-BK.webp",
+    "img": "product-images/ll-light-sd-pk1-bk.webp",
     "desc": "",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12223,31 +12645,18 @@ const __PRODUCTS__ = [
     "specTags": [],
     "extractedSpecs": {
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-sd-pk1-wh",
-    "sku": "SD-PK1/WH",
-    "name": "שלט לבן עמעום סיבובי [דמוי קיר 55] למערכת SKYDANCE",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-PK1-WH.webp",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "בקרה וחיישנים",
-    "family": "פיקוד חכם",
-    "price": 141.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
+    },
+    "imgBase": 0.94,
+    "imgWidth": 0.688,
+    "imgScale": 0.94,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/SD-PK1-BK.webp",
+    "imgCutout": true
   },
   {
     "id": "ll-light-sd-r11-bk",
     "sku": "SD-R11/BK",
     "name": "שלט שחור עמעום מגע למערכת SKYDANCE",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-R11-BK.webp",
+    "img": "product-images/ll-light-sd-r11-bk.webp",
     "desc": "",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12259,31 +12668,18 @@ const __PRODUCTS__ = [
     "specTags": [],
     "extractedSpecs": {
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-sd-r11-wh",
-    "sku": "SD-R11/WH",
-    "name": "שלט לבן עמעום מגע למערכת SKYDANCE",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-R11-WH.webp",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "בקרה וחיישנים",
-    "family": "פיקוד חכם",
-    "price": 165.2,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
+    },
+    "imgBase": 0.94,
+    "imgWidth": 0.22,
+    "imgScale": 0.92,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/SD-R11-BK.webp",
+    "imgCutout": true
   },
   {
     "id": "ll-light-sd-r11-module",
     "sku": "SD-R11/Module",
     "name": "שלט ללחצנים חיצוניים למערכת SKYDANCE סוללה",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-R11-Module.webp",
+    "img": "product-images/ll-light-sd-r11-module.webp",
     "desc": "",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12293,13 +12689,17 @@ const __PRODUCTS__ = [
     "isFlagship": false,
     "scarcity": null,
     "specTags": [],
-    "extractedSpecs": {}
+    "extractedSpecs": {},
+    "imgBase": 0.888,
+    "imgWidth": 0.636,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/SD-R11-Module.webp",
+    "imgCutout": true
   },
   {
     "id": "ll-light-sd-s1b",
     "sku": "SD-S1B",
     "name": "בקר עמעום Triac למערכת SKYDANCE עמעום פאזה עד 250W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-S1B.webp",
+    "img": "product-images/ll-light-sd-s1b.webp",
     "desc": "250W | Triac",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12314,13 +12714,18 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "הספק": "250W"
-    }
+    },
+    "imgBase": 0.96,
+    "imgWidth": 0.804,
+    "imgScale": 0.97,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/SD-S1B.webp",
+    "imgCutout": true
   },
   {
     "id": "ll-light-sd-sk1",
     "sku": "SD-SK1",
     "name": "בקר עמעום Triac לפסי DIN למערכת SKYDANCE עמעום פאזה עד 1200W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-SK1.webp",
+    "img": "product-images/ll-light-sd-sk1.webp",
     "desc": "1200W | Triac",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12335,13 +12740,23 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "הספק": "1200W"
-    }
+    },
+    "variantFamily": "skydance-triac",
+    "variantAxis": "הספק",
+    "variantLabel": "עד 1200W",
+    "familyName": "בקר עמעום Triac לפסי DIN למערכת SKYDANCE · עמעום פאזה",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.816,
+    "imgWidth": 0.836,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/SD-SK1.webp",
+    "imgCutout": true
   },
   {
     "id": "ll-light-sd-ssa-module",
     "sku": "SD-SSA/Module",
     "name": "שלט ללחצנים חיצוניים למערכת SKYDANCE מתח רשת",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-SSA-MODULE.webp",
+    "img": "product-images/ll-light-sd-ssa-module.webp",
     "desc": "",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12351,13 +12766,18 @@ const __PRODUCTS__ = [
     "isFlagship": false,
     "scarcity": null,
     "specTags": [],
-    "extractedSpecs": {}
+    "extractedSpecs": {},
+    "imgBase": 0.96,
+    "imgWidth": 0.804,
+    "imgScale": 0.97,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/SD-SSA-MODULE.webp",
+    "imgCutout": true
   },
   {
     "id": "ll-light-sd-da-m",
     "sku": "SD-DA-M",
     "name": "בקר עמעום DALI DT6 למערכת SKYDANCE עמעום דיגיטלי",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-DA-M.webp",
+    "img": "product-images/ll-light-sd-da-m.webp",
     "desc": "DALI",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12369,13 +12789,18 @@ const __PRODUCTS__ = [
     "specTags": [
       "DALI"
     ],
-    "extractedSpecs": {}
+    "extractedSpecs": {},
+    "imgBase": 0.916,
+    "imgWidth": 0.904,
+    "imgScale": 0.91,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/SD-DA-M.webp",
+    "imgCutout": true
   },
   {
     "id": "ll-light-sd-ehm",
     "sku": "SD-EHM",
     "name": "חיישן תנועה MicroWave למערכת SKYDANCE הפעלה ועמעום",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-EHM.webp",
+    "img": "product-images/ll-light-sd-ehm.webp",
     "desc": "",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12385,13 +12810,18 @@ const __PRODUCTS__ = [
     "isFlagship": false,
     "scarcity": null,
     "specTags": [],
-    "extractedSpecs": {}
+    "extractedSpecs": {},
+    "imgBase": 0.808,
+    "imgWidth": 0.792,
+    "imgScale": 1.04,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/SD-EHM.webp",
+    "imgCutout": true
   },
   {
     "id": "ll-light-sd-ehr",
     "sku": "SD-EHR",
     "name": "חיישן תנועה PIR למערכת SKYDANCE הפעלה ועמעום",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-EHR.jpg",
+    "img": "product-images/ll-light-sd-ehr.webp",
     "desc": "",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12401,13 +12831,18 @@ const __PRODUCTS__ = [
     "isFlagship": false,
     "scarcity": null,
     "specTags": [],
-    "extractedSpecs": {}
+    "extractedSpecs": {},
+    "imgBase": 0.812,
+    "imgWidth": 0.936,
+    "imgScale": 0.88,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/SD-EHR.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-sd-l1",
     "sku": "SD-L1",
     "name": "בקר עמעום 0/1-10V למערכת SKYDANCE עמעום אנלוגי",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-L1.webp",
+    "img": "product-images/ll-light-sd-l1.webp",
     "desc": "0-10V",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12419,13 +12854,18 @@ const __PRODUCTS__ = [
     "specTags": [
       "0-10V"
     ],
-    "extractedSpecs": {}
+    "extractedSpecs": {},
+    "imgBase": 0.972,
+    "imgWidth": 0.844,
+    "imgScale": 0.92,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/SD-L1.webp",
+    "imgCutout": true
   },
   {
     "id": "ll-light-sd-t21-bk",
     "sku": "SD-T21/BK",
     "name": "שלט פנל שחור עמעום מגע למערכת SKYDANCE ארבע אזורים | תרחישים",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-T21-BK.webp",
+    "img": "product-images/ll-light-sd-t21-bk.webp",
     "desc": "",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12437,13 +12877,18 @@ const __PRODUCTS__ = [
     "specTags": [],
     "extractedSpecs": {
       "צבע": "שחור"
-    }
+    },
+    "imgBase": 0.936,
+    "imgWidth": 0.656,
+    "imgScale": 0.93,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/SD-T21-BK.webp",
+    "imgCutout": true
   },
   {
     "id": "ll-light-sd-tr1",
     "sku": "SD-TR1",
     "name": "בקר עמעום Triac לפסי DIN למערכת SKYDANCE עמעום פאזה עד 400W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-TR1-WH.webp",
+    "img": "product-images/ll-light-sd-tr1.webp",
     "desc": "400W | Triac",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12458,13 +12903,24 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "הספק": "400W"
-    }
+    },
+    "variantFamily": "skydance-triac",
+    "variantAxis": "הספק",
+    "variantLabel": "עד 400W",
+    "familyName": "בקר עמעום Triac לפסי DIN למערכת SKYDANCE · עמעום פאזה",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.932,
+    "imgWidth": 0.864,
+    "imgScale": 0.95,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/SD-TR1-WH.webp",
+    "imgCutout": true
   },
   {
     "id": "ll-light-sd-v1lp",
     "sku": "SD-V1LP",
     "name": "בקר עמעום 12-48V 15A PWM למערכת SKYDANCE עמעום מתח נמוך",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/SD-V1LP.webp",
+    "img": "product-images/ll-light-sd-v1lp.webp",
     "desc": "48V",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12476,13 +12932,18 @@ const __PRODUCTS__ = [
     "specTags": [
       "48V"
     ],
-    "extractedSpecs": {}
+    "extractedSpecs": {},
+    "imgBase": 0.868,
+    "imgWidth": 0.964,
+    "imgScale": 0.85,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/SD-V1LP.webp",
+    "imgCutout": true
   },
   {
     "id": "ll-light-ms06",
     "sku": "MS06",
     "name": "חיישן נוכחות (2 מוצרים באחד) תקרה / גומחה 2000W/1000W 360°",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/ms06sensor.webp",
+    "img": "product-images/ll-light-ms06.webp",
     "desc": "2000W | 360°",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12498,13 +12959,18 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "הספק": "2000W",
       "זווית": "360°"
-    }
+    },
+    "imgBase": 0.936,
+    "imgWidth": 0.916,
+    "imgScale": 0.9,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/ms06sensor.webp",
+    "imgCutout": true
   },
   {
     "id": "ll-light-ms08",
     "sku": "MS08",
     "name": "חיישן תנועה אינפרא אדום למרחק 12 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/MS08_1.jpg",
+    "img": "product-images/ll-light-ms08.webp",
     "desc": "",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12514,13 +12980,17 @@ const __PRODUCTS__ = [
     "isFlagship": false,
     "scarcity": null,
     "specTags": [],
-    "extractedSpecs": {}
+    "extractedSpecs": {},
+    "imgBase": 0.844,
+    "imgWidth": 0.836,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/MS08_1.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-ms09",
     "sku": "MS09",
     "name": "חיישן תנועה ואור משולב חיצוני על קיר 5A, עד 1200W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/MS09.jpg",
+    "img": "product-images/ll-light-ms09.webp",
     "desc": "1200W",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12534,13 +13004,18 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "הספק": "1200W"
-    }
+    },
+    "imgBase": 1,
+    "imgWidth": 0.916,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/MS09.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-ms10",
     "sku": "MS10",
     "name": "חיישן פוטוצל 10A",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/MS-710_NEW.jpg",
+    "img": "product-images/ll-light-ms10.webp",
     "desc": "",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12550,13 +13025,18 @@ const __PRODUCTS__ = [
     "isFlagship": false,
     "scarcity": null,
     "specTags": [],
-    "extractedSpecs": {}
+    "extractedSpecs": {},
+    "imgBase": 1,
+    "imgWidth": 0.796,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/MS-710_NEW.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-f-play-bk-sen",
     "sku": "F-PLAY/BK-Sen",
     "name": "חיישן תנועה | חיישן אור מתוכנת לסדרת PLAY כולל שלט, שחור",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/f-play-Sensor-BK.webp",
+    "img": "product-images/ll-light-f-play-bk-sen.webp",
     "desc": "",
     "category": "גופי תאורה",
     "subCategory": "בקרה וחיישנים",
@@ -12568,53 +13048,18 @@ const __PRODUCTS__ = [
     "specTags": [],
     "extractedSpecs": {
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-f-play-wh-sen",
-    "sku": "F-PLAY/WH-Sen",
-    "name": "חיישן תנועה | חיישן אור מתוכנת לסדרת PLAY כולל שלט, לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/f-play-Sensor-WH.webp",
-    "desc": "",
-    "category": "גופי תאורה",
-    "subCategory": "בקרה וחיישנים",
-    "family": "חיישנים",
-    "price": 49.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-cl-104wh-ct",
-    "sku": "CL-104WH/CT",
-    "name": "תלוי תקרה גוף לבן סדרת פנסיל באורך 1.28 מטר CCT 30W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-104WH.jpg",
-    "desc": "30W | CCT",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות LED משולבות",
-    "price": 959.3,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "30W",
-      "CCT"
-    ],
-    "extractedSpecs": {
-      "הספק": "30W",
-      "צבע": "לבן"
-    }
+    },
+    "imgBase": 0.868,
+    "imgWidth": 0.688,
+    "imgScale": 1.11,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/f-play-Sensor-BK.webp",
+    "imgCutout": true
   },
   {
     "id": "ll-light-gln-flex120-2k",
     "sku": "GLN-FLEX120/2K",
     "name": "סדרת GLOW FLEX / חבל לדים 120 ס\"מ / הברגה E27 / מגנטי 10 וואט 2200K לעמעום",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/GLN-FLEX-120.jpg",
+    "img": "product-images/ll-light-gln-flex120-2k.webp",
     "desc": "2200K | E27",
     "category": "גופי תאורה",
     "subCategory": "גופי תלייה",
@@ -12629,13 +13074,24 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "גוון אור": "2200K"
-    }
+    },
+    "variantFamily": "glow-flex",
+    "variantAxis": "אורך",
+    "variantLabel": "120 ס\"מ · 10W",
+    "familyName": "סדרת GLOW FLEX · חבל לדים · הברגה E27 · מגנטי 2200K לעמעום",
+    "variantPrimary": false,
+    "variantOrder": 2,
+    "imgBase": 0.976,
+    "imgWidth": 0.06,
+    "imgScale": 0.84,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/GLN-FLEX-120.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-gln-flex090-2k",
     "sku": "GLN-FLEX090/2K",
     "name": "סדרת GLOW FLEX / חבל לדים 90 ס\"מ / הברגה E27 / מגנטי 8 וואט 2200K לעמעום",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/GLN-FLEX-90.jpg",
+    "img": "product-images/ll-light-gln-flex090-2k.webp",
     "desc": "2200K | E27",
     "category": "גופי תאורה",
     "subCategory": "גופי תלייה",
@@ -12650,13 +13106,24 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "גוון אור": "2200K"
-    }
+    },
+    "variantFamily": "glow-flex",
+    "variantAxis": "אורך",
+    "variantLabel": "90 ס\"מ · 8W",
+    "familyName": "סדרת GLOW FLEX · חבל לדים · הברגה E27 · מגנטי 2200K לעמעום",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.876,
+    "imgWidth": 0.06,
+    "imgScale": 0.94,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/GLN-FLEX-90.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-gln-flex060-2k",
     "sku": "GLN-FLEX060/2K",
     "name": "סדרת GLOW FLEX / חבל לדים 60 ס\"מ / הברגה E27  / מגנטי 6 וואט 2200K לעמעום",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/GLN-FLEX-60.jpg",
+    "img": "product-images/ll-light-gln-flex060-2k.webp",
     "desc": "2200K | E27",
     "category": "גופי תאורה",
     "subCategory": "גופי תלייה",
@@ -12671,13 +13138,24 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "גוון אור": "2200K"
-    }
+    },
+    "variantFamily": "glow-flex",
+    "variantAxis": "אורך",
+    "variantLabel": "60 ס\"מ · 6W",
+    "familyName": "סדרת GLOW FLEX · חבל לדים · הברגה E27 · מגנטי 2200K לעמעום",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.724,
+    "imgWidth": 0.06,
+    "imgScale": 1.13,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/GLN-FLEX-60.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-eye5bk-ww-pendant",
     "sku": "CL-EYE5BK/WW-Pendant",
     "name": "תלוי תקרה לד מובנה VISION - חמישייה - כבל 2 מטר עם מנגנון כיונון קל 3000K שחור 24W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-EYE5BK_WW-Pendant.jpg",
+    "img": "product-images/ll-light-cl-eye5bk-ww-pendant.webp",
     "desc": "24W | 3000K",
     "category": "גופי תאורה",
     "subCategory": "גופי תלייה",
@@ -12694,36 +13172,24 @@ const __PRODUCTS__ = [
       "הספק": "24W",
       "גוון אור": "3000K",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-cl-eye5wh-ww-pendant",
-    "sku": "CL-EYE5WH/WW-Pendant",
-    "name": "תלוי תקרה לד מובנה VISION - חמישייה - כבל 2 מטר עם מנגנון כיונון קל 3000K לבן 24W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-EYE5WH_WW-Pendant.jpg",
-    "desc": "24W | 3000K",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות LED משולבות",
-    "price": 898,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "24W",
-      "3000K"
-    ],
-    "extractedSpecs": {
-      "הספק": "24W",
-      "גוון אור": "3000K",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "vision-pendant",
+    "variantAxis": "תצורה",
+    "variantLabel": "חמישייה · 24W",
+    "familyName": "תלוי תקרה לד מובנה VISION · כבל 2 מטר · 3000K שחור",
+    "variantPrimary": false,
+    "variantOrder": 2,
+    "imgBase": 0.952,
+    "imgWidth": 0.732,
+    "imgScale": 0.86,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-EYE5BK_WW-Pendant.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-eye3bk-ww-pendant",
     "sku": "CL-EYE3BK/WW-Pendant",
     "name": "תלוי תקרה לד מובנה VISION - שלישייה - כבל 2 מטר עם מנגנון כיונון קל 3000K שחור 15W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-EYE3BK_WW-Pendant.jpg",
+    "img": "product-images/ll-light-cl-eye3bk-ww-pendant.webp",
     "desc": "15W | 3000K",
     "category": "גופי תאורה",
     "subCategory": "גופי תלייה",
@@ -12740,36 +13206,24 @@ const __PRODUCTS__ = [
       "הספק": "15W",
       "גוון אור": "3000K",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-cl-eye3wh-ww-pendant",
-    "sku": "CL-EYE3WH/WW-Pendant",
-    "name": "תלוי תקרה לד מובנה VISION - שלישייה - כבל 2 מטר עם מנגנון כיונון קל 3000K לבן 15W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-EYE3WH_WW-Pendant.jpg",
-    "desc": "15W | 3000K",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות LED משולבות",
-    "price": 641.9,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "15W",
-      "3000K"
-    ],
-    "extractedSpecs": {
-      "הספק": "15W",
-      "גוון אור": "3000K",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "vision-pendant",
+    "variantAxis": "תצורה",
+    "variantLabel": "שלישייה · 15W",
+    "familyName": "תלוי תקרה לד מובנה VISION · כבל 2 מטר · 3000K שחור",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.96,
+    "imgWidth": 0.788,
+    "imgScale": 0.85,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-EYE3BK_WW-Pendant.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-eye1bk-ww-pendant",
     "sku": "CL-EYE1BK/WW-Pendant",
     "name": "תלוי תקרה לד מובנה VISION -יחיד- כבל 2 מטר עם מנגנון כיונון קל 3000K שחור 6W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-EYE1BK_WW-Pendant.jpg",
+    "img": "product-images/ll-light-cl-eye1bk-ww-pendant.webp",
     "desc": "6W | 3000K",
     "category": "גופי תאורה",
     "subCategory": "גופי תלייה",
@@ -12786,36 +13240,24 @@ const __PRODUCTS__ = [
       "הספק": "6W",
       "גוון אור": "3000K",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-cl-eye1wh-ww-pendant",
-    "sku": "CL-EYE1WH/WW-Pendant",
-    "name": "תלוי תקרה לד מובנה VISION -יחיד- כבל 2 מטר עם מנגנון כיונון קל 3000K לבן 6W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-EYE1WH_WW-Pendant-.jpg",
-    "desc": "6W | 3000K",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות LED משולבות",
-    "price": 199.4,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "6W",
-      "3000K"
-    ],
-    "extractedSpecs": {
-      "הספק": "6W",
-      "גוון אור": "3000K",
-      "צבע": "לבן"
-    }
+    },
+    "variantFamily": "vision-pendant",
+    "variantAxis": "תצורה",
+    "variantLabel": "יחיד · 6W",
+    "familyName": "תלוי תקרה לד מובנה VISION · כבל 2 מטר · 3000K שחור",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 0.992,
+    "imgWidth": 0.104,
+    "imgScale": 0.84,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-EYE1BK_WW-Pendant.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-et5bk-ww-pendant",
     "sku": "CL-ET5BK/WW-Pendant",
     "name": "תלוי תקרה לד מובנה ETOS -חמישייה - כבל 2 מטר עם מנגנון כיונון קל 3000K שחור 32W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-ET5BK_WW-PENDANTWW.jpg",
+    "img": "product-images/ll-light-cl-et5bk-ww-pendant.webp",
     "desc": "32W | 3000K",
     "category": "גופי תאורה",
     "subCategory": "גופי תלייה",
@@ -12832,13 +13274,24 @@ const __PRODUCTS__ = [
       "הספק": "32W",
       "גוון אור": "3000K",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "etos-pendant",
+    "variantAxis": "תצורה",
+    "variantLabel": "חמישייה · 32W",
+    "familyName": "תלוי תקרה לד מובנה ETOS · כבל 2 מטר · 3000K שחור",
+    "variantPrimary": false,
+    "variantOrder": 2,
+    "imgBase": 0.988,
+    "imgWidth": 0.928,
+    "imgScale": 0.83,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-ET5BK_WW-PENDANTWW.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-et3bk-ww-pendant",
     "sku": "CL-ET3BK/WW-Pendant",
     "name": "תלוי תקרה לד מובנה ETOS - שלישייה - כבל 2 מטר עם מנגנון כיונון קל 3000K שחור 20W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-ET3BK_WW-PENDANT.jpg",
+    "img": "product-images/ll-light-cl-et3bk-ww-pendant.webp",
     "desc": "20W | 3000K",
     "category": "גופי תאורה",
     "subCategory": "גופי תלייה",
@@ -12855,13 +13308,24 @@ const __PRODUCTS__ = [
       "הספק": "20W",
       "גוון אור": "3000K",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "etos-pendant",
+    "variantAxis": "תצורה",
+    "variantLabel": "שלישייה · 20W",
+    "familyName": "תלוי תקרה לד מובנה ETOS · כבל 2 מטר · 3000K שחור",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 0.936,
+    "imgWidth": 0.784,
+    "imgScale": 0.88,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-ET3BK_WW-PENDANT.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-et1bk-ww-pendant",
     "sku": "CL-ET1BK/WW-Pendant",
     "name": "תלוי תקרה לד מובנה ETOS  יחיד - כבל 2 מטר עם מנגנון כיונון קל 3000K שחור 8W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-ET1BK_WW-PENDANT.jpg",
+    "img": "product-images/ll-light-cl-et1bk-ww-pendant.webp",
     "desc": "8W | 3000K",
     "category": "גופי תאורה",
     "subCategory": "גופי תלייה",
@@ -12878,581 +13342,24 @@ const __PRODUCTS__ = [
       "הספק": "8W",
       "גוון אור": "3000K",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-7027bkbg-r3",
-    "sku": "LH-7027BKBG-R3",
-    "name": "** גוף תלייה עגול, שחור עם פליז, שלישיה E27 , כבל מצופה בד 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027BKBG-R3.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 266.7,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-7027bk-r3",
-    "sku": "LH-7027BK-R3",
-    "name": "גוף תלייה עגול שחור שלישיה E27 כבל מצופה בד 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027BK-R3.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 246.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-7027wh-r3",
-    "sku": "LH-7027WH-R3",
-    "name": "גוף תלייה עגול לבן, שלישיה E27 , כבל מצופה בד 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027WH-R3_v2.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 246.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-lh-7027whbg-r3",
-    "sku": "LH-7027WHBG-R3",
-    "name": "גוף תלייה ישר, לבן עם פליז, שלישיה E27 , כבל מצופה בד 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027WHBG-R3.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 266.7,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-lh-7027bkbg-l3",
-    "sku": "LH-7027BKBG-L3",
-    "name": "גוף תלייה ישר, שחור עם פליז, שלישיה E27 , כבל מצופה בד 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027BKBG-L3.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 233.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-7027whbg-l3",
-    "sku": "LH-7027WHBG-L3",
-    "name": "** גוף תלייה ישר, לבן עם פליז, שלישיה E27 כבל מצופה בד 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027WHBG-L3(6).jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 233.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-lh-7027bk-l3",
-    "sku": "LH-7027BK-L3",
-    "name": "** גוף תלייה ישר שחור, שלישיה E27 כבל מצופה בד 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027BK-L3.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 212.4,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-7027wh-l3",
-    "sku": "LH-7027WH-L3",
-    "name": "גוף תלייה ישר לבן, שלישיה E27 , כבל מצופה בד 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027WH-L3(2).jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 212.4,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-lh-7027bkbg-l5",
-    "sku": "LH-7027BKBG-L5",
-    "name": "גוף תלייה ישר, שחור עם פליז, חמישייה E27 , כבל מצופה בד 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027BKBG-L5.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 382.3,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-7027bk-l5",
-    "sku": "LH-7027BK-L5",
-    "name": "גוף תלייה ישר שחור, חמישייה E27 כבל מצופה בד 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027BK-L5.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 345.7,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-7027wh-l5",
-    "sku": "LH-7027WH-L5",
-    "name": "גוף תלייה ישר לבן, חמישייה E27 , כבל מצופה בד 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027-L5-03(1).jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 345.7,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-lh-7027whbg-l5",
-    "sku": "LH-7027WHBG-L5",
-    "name": "גוף תלייה ישר, לבן עם פליז, חמישייה E27 , כבל מצופה בד 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027WHBG-L5.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 382.3,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-lh-7027-r5",
-    "sku": "LH-7027/R5",
-    "name": "גוף תלייה עגול, E27 כבל מצופה בד 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-7027-R5-4colors.gif",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 435.4,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {}
-  },
-  {
-    "id": "ll-light-lh-m6-1",
-    "sku": "LH-M6/1",
-    "name": "מנורת תליה כדור רשת מתכת-שחור E27 מסדרת LUSTER כבל 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-M6-1.webp",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 448.4,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-m6l-3",
-    "sku": "LH-M6L/3",
-    "name": "גוף תלייה ישר, שלישייה E27 כדור רשת מתכת-שחור E27 מסדרת \"LUSTER\" כבל 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-M6L-3.webp",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 667.9,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-m6r-3",
-    "sku": "LH-M6R/3",
-    "name": "גוף תלייה עגול, שלישייה E27 כדור רשת מתכת-שחור E27 מסדרת \"LUSTER\" כבל 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-M6R-3.webp",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 639.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-style-1",
-    "sku": "LH-STYLE/1",
-    "name": "מנורת תליה כדורים צבעוניים דקורטיבים E27 מסדרת \"STYLE\" כבל 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-STYLE-1.webp",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 358.7,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {}
-  },
-  {
-    "id": "ll-light-lh-style-3",
-    "sku": "LH-STYLE/3",
-    "name": "גוף תלייה ישר, שלישייה E27 כדורים צבעוניים דקורטיבים מסדרת \"STYLE\" כבל 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-STYLE-3.webp",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 1019.5,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {}
-  },
-  {
-    "id": "ll-light-lh-style-5",
-    "sku": "LH-STYLE/5",
-    "name": "גוף תלייה ישר, חמישייה E27 כדורים צבעוניים דקורטיבים מסדרת \"STYLE\" כבל 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-STYLE-5.webp",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 1692.1,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {}
-  },
-  {
-    "id": "ll-light-lh-m48bk",
-    "sku": "LH-M48BK",
-    "name": "מנורת תליה E27 בטון מסדרת \"מאש\" - כבל 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-M48BK_NEW.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 149.9,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {}
-  },
-  {
-    "id": "ll-light-lh-m49bk",
-    "sku": "LH-M49BK",
-    "name": "מנורת תליה E27 בטון מסדרת \"מאש\" - כבל 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-M49BK.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 149.9,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {}
-  },
-  {
-    "id": "ll-light-lh-m50bk",
-    "sku": "LH-M50BK",
-    "name": "מנורת תליה E27 בטון מסדרת \"מאש\" - כבל 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-M50BK_long.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 149.9,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {}
-  },
-  {
-    "id": "ll-light-lh-m51bk",
-    "sku": "LH-M51BK",
-    "name": "מנורת תליה E27 בטון מסדרת \"מאש\" - כבל 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-M51BK.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 149.9,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {}
-  },
-  {
-    "id": "ll-light-lh-m52bk",
-    "sku": "LH-M52BK",
-    "name": "מנורת תליה E27 בטון מסדרת \"מאש\" - כבל 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-M52BK.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 149.9,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {}
-  },
-  {
-    "id": "ll-light-lh-m53bk",
-    "sku": "LH-M53BK",
-    "name": "מנורת תליה E27 בטון מסדרת \"מאש\" - כבל 2 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-M53BK.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 149.9,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {}
-  },
-  {
-    "id": "ll-light-cl-40cob600wh-ww-pendant",
-    "sku": "CL-40COB600WH/WW-Pendant",
-    "name": "רול.4 תלוי תקרה 2 מטר לבן 40x600 מ\"מ BridgeLUX 3000K 38° 8W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-40COB600WHWW-P(1).jpg",
-    "desc": "8W | 3000K | 38°",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות LED משולבות",
-    "price": 270.2,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "8W",
-      "3000K",
-      "38°"
-    ],
-    "extractedSpecs": {
-      "הספק": "8W",
-      "גוון אור": "3000K",
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-cl-60gu130bg-pendant",
-    "sku": "CL-60GU130BG/Pendant",
-    "name": "▪▪ רול.6 תלוי תקרה 1.5 מטר גוף פליז 60x130 מ\"מ GU10",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU130BG-Pendant(4).jpg",
-    "desc": "GU10",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות LED משולבות",
-    "price": 131,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "GU10"
-    ],
-    "extractedSpecs": {
-      "צבע": "פליז"
-    }
-  },
-  {
-    "id": "ll-light-cl-40cob300bg-ww-pendant",
-    "sku": "CL-40COB300BG/WW-Pendant",
-    "name": "רול.4 תלוי תקרה 2 מטר זהב מוברש 40x300 מ\"מ BridgeLUX 3000K 38° 8W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-40COB300BG-P(1).jpg",
-    "desc": "8W | 3000K | 38°",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות LED משולבות",
-    "price": 285.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "8W",
-      "3000K",
-      "38°"
-    ],
-    "extractedSpecs": {
-      "הספק": "8W",
-      "גוון אור": "3000K",
-      "צבע": "זהב"
-    }
-  },
-  {
-    "id": "ll-light-lh-rod50-bg",
-    "sku": "LH-ROD50/BG",
-    "name": "מנורת תליה E27 מסדרת \"רוד\" כבל 2 מטר גוף פליז",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-ROD50-BG_Edit.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 154.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "פליז"
-    }
+    },
+    "variantFamily": "etos-pendant",
+    "variantAxis": "תצורה",
+    "variantLabel": "יחיד · 8W",
+    "familyName": "תלוי תקרה לד מובנה ETOS · כבל 2 מטר · 3000K שחור",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 1,
+    "imgWidth": 0.152,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-ET1BK_WW-PENDANT.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-lh-rod50-bk",
     "sku": "LH-ROD50/BK",
     "name": "מנורת תליה E27 מסדרת \"רוד\" כבל 2 מטר גוף שחור",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-ROD50-BK_Edit.jpg",
+    "img": "product-images/ll-light-lh-rod50-bk.webp",
     "desc": "E27",
     "category": "גופי תאורה",
     "subCategory": "גופי תלייה",
@@ -13466,33 +13373,18 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-rod50-wh",
-    "sku": "LH-ROD50/WH",
-    "name": "מנורת תליה E27 מסדרת \"רוד\" כבל 2 מטר גוף לבן",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-ROD50-WH_Edit.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 154.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
+    },
+    "imgBase": 1,
+    "imgWidth": 0.088,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/LH-ROD50-BK_Edit.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-106bk-ww",
     "sku": "CL-106BK/WW",
     "name": "תלוי תקרה גוף שחור סדרת אולטרה 2700K 20W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-106BK1.jpg",
+    "img": "product-images/ll-light-cl-106bk-ww.webp",
     "desc": "20W | 2700K",
     "category": "גופי תאורה",
     "subCategory": "גופי תלייה",
@@ -13509,353 +13401,18 @@ const __PRODUCTS__ = [
       "הספק": "20W",
       "גוון אור": "2700K",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-deco50-bk",
-    "sku": "LH-DECO50/BK",
-    "name": "גוף תליה שחור+פליז E27 (כולל חרוזים דיקורטיבי) כבל שחור 2.0 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LHDECO50-BK_Edit.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 206.5,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-deco50-wh",
-    "sku": "LH-DECO50/WH",
-    "name": "גוף תליה לבן+פליז E27 (כולל חרוזים דיקורטיבי) כבל שחור 2.0 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LHDECO50-WH_Edit.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 206.5,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-vbb27bk",
-    "sku": "LH-VBB27BK",
-    "name": "גוף תליה שחור סדרת וינטג' E27 כבל שחור 2.0 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-VBB27BK-1.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 96.8,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-vb3",
-    "sku": "LH-VB3",
-    "name": "גוף תליה כבל שחור 2.0 מטר מוברש עתיק E27",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-VB3(5).jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 225.4,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-vb1",
-    "sku": "LH-VB1",
-    "name": "גוף תליה כבל שחור 2.0 מטר מוברש עתיק E27",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-VB1(3).jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 225.4,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-vb3-bk",
-    "sku": "LH-VB3/BK",
-    "name": "גוף תליה כבל שחור 2.0 מטר גוף שחור E27",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-VB3_BK.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 225.4,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-vb2-bk",
-    "sku": "LH-VB2/BK",
-    "name": "גוף תליה כבל שחור 2.0 מטר גוף שחור E27",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-VB2_BK.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 225.4,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-vb1-bk",
-    "sku": "LH-VB1/BK",
-    "name": "גוף תליה כבל שחור 2.0 מטר גוף שחור E27",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-VB1_BK.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 225.4,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-vbb27rb",
-    "sku": "LH-VBB27RB",
-    "name": "גוף תליה \"וינטג'\" זהב מט E27 כבל שחור 2.0 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-VBB27RB.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 102.7,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-eyu27-bb",
-    "sku": "LH-EYU27/BB",
-    "name": "כבל תליה ברונזה 2.0 מטר שחור E27",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-EYU27-BB.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 180.5,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-eyu27-bg",
-    "sku": "LH-EYU27/BG",
-    "name": "כבל תליה פליז 2.0 מטר שחור E27",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-EYU27-BG.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 162.8,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-eyu27-bk",
-    "sku": "LH-EYU27/BK",
-    "name": "כבל תליה שחור 2.0 מטר שחור E27",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-EYU27-BK.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 141.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-eyu27-wh",
-    "sku": "LH-EYU27/WH",
-    "name": "כבל תליה לבן 2.0 מטר לבן E27",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-EYU27-WH.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 141.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-lh-tch27-bg",
-    "sku": "LH-TCH27/BG",
-    "name": "▪▪ גוף תליה ברונזה E27 ( זכוכית ענבר ישרה)",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-TCH27BG(1).jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 407.1,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "ברונזה"
-    }
-  },
-  {
-    "id": "ll-light-lh-tch27-ch",
-    "sku": "LH-TCH27/CH",
-    "name": "▪▪ גוף תליה כרום E27 (זכוכית שקופה ישרה)",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-TCH27CH(1).jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 389.4,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "כרום"
-    }
-  },
-  {
-    "id": "ll-light-lh-tdh27-bg",
-    "sku": "LH-TDH27/BG",
-    "name": "▪▪ גוף תליה ברונזה E27 (זכוכית עמבר קונוס)",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-TDH27BG-R_NEW(1).jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 513.3,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "ברונזה"
-    }
-  },
-  {
-    "id": "ll-light-lh-15027-bk",
-    "sku": "LH-15027/BK",
-    "name": "כבל שחור 1.5 מטר מודרני שחור מאט E27",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-15027-BK(7).jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 35.4,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
+    },
+    "imgBase": 0.94,
+    "imgWidth": 0.988,
+    "imgScale": 0.83,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-106BK1.jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-104bk-ct",
     "sku": "CL-104BK/CT",
     "name": "תלוי תקרה גוף שחור סדרת פנסיל באורך 1.28 מטר CCT 30W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-104BK(4).jpg",
+    "img": "product-images/ll-light-cl-104bk-ct.webp",
     "desc": "30W | CCT",
     "category": "גופי תאורה",
     "subCategory": "גופי תלייה",
@@ -13871,13 +13428,18 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "הספק": "30W",
       "צבע": "שחור"
-    }
+    },
+    "imgBase": 1,
+    "imgWidth": 0.824,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-104BK(4).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-80cob150wh-pendant",
     "sku": "CL-80COB150WH/Pendant",
     "name": "רול.8 תלוי תקרה 2 מטר לבן 80x150 מ\"מ BridgeLUX 18W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-80COB150WH-PENDANT(4).jpg",
+    "img": "product-images/ll-light-cl-80cob150wh-pendant.webp",
     "desc": "18W",
     "category": "גופי תאורה",
     "subCategory": "גופי תלייה",
@@ -13892,13 +13454,24 @@ const __PRODUCTS__ = [
     "extractedSpecs": {
       "הספק": "18W",
       "צבע": "לבן"
-    }
+    },
+    "variantFamily": "rol8-pendant",
+    "variantAxis": "צבע",
+    "variantLabel": "לבן",
+    "familyName": "רול.8 תלוי תקרה 2 מטר · 80x150 מ\"מ BridgeLUX 18W",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 1,
+    "imgWidth": 0.216,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-80COB150WH-PENDANT(4).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-80cob150bk-ww-pendant",
     "sku": "CL-80COB150BK/WW-Pendant",
-    "name": "** רול.8 תלוי תקרה 2 מטר שחור 80x150 מ\"מ BridgeLUX 3000K 45° 18W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-80COB150BK-PENDANT(1).jpg",
+    "name": "רול.8 תלוי תקרה 2 מטר שחור 80x150 מ\"מ BridgeLUX 3000K 45° 18W",
+    "img": "product-images/ll-light-cl-80cob150bk-ww-pendant.webp",
     "desc": "18W | 3000K | 45°",
     "category": "גופי תאורה",
     "subCategory": "גופי תלייה",
@@ -13916,13 +13489,24 @@ const __PRODUCTS__ = [
       "הספק": "18W",
       "גוון אור": "3000K",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "rol8-pendant",
+    "variantAxis": "צבע",
+    "variantLabel": "שחור",
+    "familyName": "רול.8 תלוי תקרה 2 מטר · 80x150 מ\"מ BridgeLUX 18W",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 1,
+    "imgWidth": 0.224,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-80COB150BK-PENDANT(1).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-60gu130bk-pendant",
     "sku": "CL-60GU130BK/Pendant",
     "name": "רול.6 תלוי תקרה 1.5 מטר שחור 60x130 מ\"מ GU10",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU130_BK_Pendant(1).jpg",
+    "img": "product-images/ll-light-cl-60gu130bk-pendant.webp",
     "desc": "GU10",
     "category": "גופי תאורה",
     "subCategory": "גופי תלייה",
@@ -13936,13 +13520,18 @@ const __PRODUCTS__ = [
     ],
     "extractedSpecs": {
       "צבע": "שחור"
-    }
+    },
+    "imgBase": 1,
+    "imgWidth": 0.136,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-60GU130_BK_Pendant(1).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-40cob300bk-ww-pendant",
     "sku": "CL-40COB300BK/WW-Pendant",
     "name": "רול.4 תלוי תקרה 2 מטר שחור 40x300 מ\"מ BridgeLUX 3000K 38° 8W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-40COB300BKWW-2p(1).jpg",
+    "img": "product-images/ll-light-cl-40cob300bk-ww-pendant.webp",
     "desc": "8W | 3000K | 38°",
     "category": "גופי תאורה",
     "subCategory": "גופי תלייה",
@@ -13960,13 +13549,24 @@ const __PRODUCTS__ = [
       "הספק": "8W",
       "גוון אור": "3000K",
       "צבע": "שחור"
-    }
+    },
+    "variantFamily": "rol4-pendant",
+    "variantAxis": "אורך",
+    "variantLabel": "300 מ\"מ",
+    "familyName": "רול.4 תלוי תקרה 2 מטר שחור · BridgeLUX 3000K 38° 8W",
+    "variantPrimary": true,
+    "variantOrder": 0,
+    "imgBase": 1,
+    "imgWidth": 0.144,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-40COB300BKWW-2p(1).jpg",
+    "imgCutout": true
   },
   {
     "id": "ll-light-cl-40cob600bk-ww-pendant",
     "sku": "CL-40COB600BK/WW-Pendant",
     "name": "רול.4 תלוי תקרה 2 מטר שחור 40x600 מ\"מ BridgeLUX 3000K 38° 8W",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/CL-40COB600BKWW-P(1).jpg",
+    "img": "product-images/ll-light-cl-40cob600bk-ww-pendant.webp",
     "desc": "8W | 3000K | 38°",
     "category": "גופי תאורה",
     "subCategory": "גופי תלייה",
@@ -13984,127 +13584,18 @@ const __PRODUCTS__ = [
       "הספק": "8W",
       "גוון אור": "3000K",
       "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-rb27bb",
-    "sku": "LH-RB27BB",
-    "name": "גוף תליה \"רטרו\" ברונזה מוברש E27 (כולל טבעת באריזה) כבל שחור 2.00 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-RB27RB-Retro.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 75.5,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-vbb27dm-bk",
-    "sku": "LH-VBB27DM/BK",
-    "name": "ג\"ת \"יהלום\" עם כבל 1.50 מטר E27 בצבע שחור מט",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/Diamond(3).jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 167.6,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-rb27rb",
-    "sku": "LH-RB27RB",
-    "name": "גוף תליה \"רטרו\" \"זהב מוברש\" E27 כבל שחור 2.00 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-RB27RB - Retro.jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 75.5,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-rb27bk",
-    "sku": "LH-RB27BK",
-    "name": "גוף תליה שחור מאט E27 (כולל טבעת באריזה) כבל שחור 2.0 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-RB27BK_NEW(1).jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 75.5,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "שחור"
-    }
-  },
-  {
-    "id": "ll-light-lh-rb27wh",
-    "sku": "LH-RB27WH",
-    "name": "גוף תליה לבן מאט E27 (כולל טבעת באריזה) כבל לבן 2.0 מטר",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-RB27WH_NEW(1).jpg",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 75.5,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "לבן"
-    }
-  },
-  {
-    "id": "ll-light-lh-tdh27-ch",
-    "sku": "LH-TDH27/CH",
-    "name": "●● גוף תליה כרום E27 (זכוכית שקופה קונוס)",
-    "img": "https://www.eurolux.co.il/Media/Resize/250_250/LH-TDH27CH(2).png",
-    "desc": "E27",
-    "category": "גופי תאורה",
-    "subCategory": "גופי תלייה",
-    "family": "תלויות קלאסיות E27",
-    "price": 487.3,
-    "url": null,
-    "isFlagship": false,
-    "scarcity": null,
-    "specTags": [
-      "E27"
-    ],
-    "extractedSpecs": {
-      "צבע": "כרום"
-    }
+    },
+    "variantFamily": "rol4-pendant",
+    "variantAxis": "אורך",
+    "variantLabel": "600 מ\"מ",
+    "familyName": "רול.4 תלוי תקרה 2 מטר שחור · BridgeLUX 3000K 38° 8W",
+    "variantPrimary": false,
+    "variantOrder": 1,
+    "imgBase": 1,
+    "imgWidth": 0.096,
+    "imgScale": 0.82,
+    "imgSource": "https://www.eurolux.co.il/Media/Resize/250_250/CL-40COB600BKWW-P(1).jpg",
+    "imgCutout": true
   }
 ];
 

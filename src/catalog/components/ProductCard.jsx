@@ -2,13 +2,24 @@ import ProductImg              from './ProductImg';
 import SpecTags               from './SpecTags';
 import { getNeonDimLabel }    from './NeonSchematics';
 
-export default function ProductCard({ product, onClick, priority }) {
+export default function ProductCard({ product, variants, onClick, priority }) {
   const neonDim = getNeonDimLabel(product.id);
+  const title   = variants ? product.familyName : product.name;
+
+  // הכרטיס כולו הוא יעד הלחיצה — אין עוד כפתור "פרטים נוספים" בתוכו.
+  // role/tabIndex/onKeyDown נחוצים כדי שהוא יישאר נגיש במקלדת ולא רק בעכבר.
+  const open = () => onClick(product);
+  const onKeyDown = e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+  };
 
   return (
-    <article className="product-card">
+    <article className="product-card" role="button" tabIndex={0}
+      aria-label={`${title} — פרטים נוספים`} onClick={open} onKeyDown={onKeyDown}>
       <div style={{ position: 'relative' }}>
-        <ProductImg src={product.img} name={product.name} priority={priority} />
+        <ProductImg src={product.img} name={product.name} priority={priority}
+          scale={product.imgScale} base={product.imgBase} width={product.imgWidth}
+          cutout={product.imgCutout} />
         {neonDim && (
           <div style={{
             position: 'absolute', bottom: 8, left: 8,
@@ -21,21 +32,28 @@ export default function ProductCard({ product, onClick, priority }) {
           </div>
         )}
       </div>
-      <div style={{ padding: '12px 14px 14px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-        <div style={{ fontSize: 12, color: '#767676', marginBottom: 4, letterSpacing: 1, textTransform: 'uppercase' }}>
+      <div className="product-card-body">
+        <div className="product-card-sub">
           {product.subCategory || product.category}
         </div>
-        <div style={{
-          fontSize: 14, fontWeight: 700, color: '#1C1C1C', lineHeight: 1.3, minHeight: 36,
-          display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden',
-        }}>
-          {product.name}
+        <div className="product-card-title">
+          {title}
         </div>
+        {variants && (
+          // רמז בלבד — הבחירה עצמה נעשית בחלון המוצר, כדי לא להעמיס את הרשת.
+          // תוויות ארוכות (למשל "120 · 64W · 4000K · שחור") מקוצרות למונה,
+          // אחרת השורה נשברת ושוברת את גובה הכרטיס.
+          <div className="product-card-variants">
+            <span className="product-card-variant-axis">{product.variantAxis}:</span>
+            <span className="product-card-variant-value">
+              {(() => {
+                const joined = variants.map(v => v.variantLabel).join(' · ');
+                return joined.length <= 30 ? joined : `${variants.length} אפשרויות`;
+              })()}
+            </span>
+          </div>
+        )}
         <SpecTags product={product} />
-        <button className="btn-outline" onClick={() => onClick(product)}
-          style={{ marginTop: 'auto', width: '100%', fontSize: 13, padding: '7px 0' }}>
-          פרטים נוספים
-        </button>
       </div>
     </article>
   );

@@ -17,6 +17,12 @@ export default function SpecTags({ product }) {
     if (m.ip)                 tags.push({ label: m.ip });
     if (m.type && m.type !== 'סטנדרט') tags.push({ label: m.type });
     if (m.color !== 'לבן')    tags.push({ label: m.color });
+  } else if (product.trackType) {
+    // פסי צבירה בלבד. סוג הפס הוא ההבחנה הקנייתית העיקרית כאן — מגנטי 48V
+    // ומתח גבוה 230V אינם תואמים זה לזה — ולכן הוא מודגש ומופיע ראשון על הכרטיס.
+    tags.push({ label: product.trackType, hi: true });
+    if (product.itemKind && product.itemKind !== 'גוף תאורה') tags.push({ label: product.itemKind });
+    (product.specTags || []).forEach(t => tags.push({ label: t }));
   } else if (cat === 'פרופילים') {
     const d    = product.desc || '';
     const mkat = d.match(/מקט:\s*([^\s|]+)/);
@@ -30,7 +36,7 @@ export default function SpecTags({ product }) {
   if (!tags.length) return null;
 
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginTop: 8 }}>
+    <div className="spec-tags">
       {tags.slice(0, 4).map((t, i) => (
         <span key={i} className={`spec-tag${t.hi ? ' highlight' : ''}`}>{t.label}</span>
       ))}

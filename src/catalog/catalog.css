@@ -32,20 +32,16 @@ button, input, select, textarea { font-family: 'Heebo', sans-serif; }
 }
 
 .product-card {
-  background: #FFFFFF;
-  border: 1px solid #E0DDD6;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  background: none;
+  border: 0;
+  overflow: visible;
   cursor: pointer;
-  min-height: 320px;
   display: flex;
   flex-direction: column;
 }
-.product-card:hover {
-  border-color: #E8A020;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+.product-card:focus-visible {
+  outline: 2px solid #E8A020;
+  outline-offset: 4px;
 }
 
 @keyframes shimmer {
@@ -74,16 +70,138 @@ button, input, select, textarea { font-family: 'Heebo', sans-serif; }
 .filter-chip:hover { border-color: #E8A020; color: #E8A020; }
 .filter-chip.active { border-color: #E8A020; color: #1C1C1C; background: #E8A020; }
 
-.spec-tag {
-  background: #F0EDE8;
-  border: 1px solid #E0DDD6;
-  border-radius: 6px;
-  padding: 2px 8px;
-  font-size: 11px;
-  color: #666666;
-  display: inline-block;
+/* משטח תמונת המוצר.
+   המקור הוא 250x250 ואי אפשר לחדד אותו, לכן העבודה היא על ההצגה: משטח עם
+   הפרדה עדינה מהכרטיס במקום מלבן אפור שטוח, ריווח שנותן למוצר לנשום,
+   וזום קל בריחוף שמייצר תחושת אינטראקטיביות. */
+.product-img-frame {
+  position: relative;
+  overflow: hidden;
+  /* טווח טונאלי רחב יותר (23 במקום 16): המשטח עצמו מפריד את המוצר מהטקסט,
+     ולכן קו ההפרדה שהיה כאן הוסר. */
+  background:
+    radial-gradient(118% 94% at 50% 7%, #FCFBF8 0%, #E7E4DB 100%);
 }
-.spec-tag.highlight { border-color: rgba(232,160,32,0.5); color: #C4880A; background: rgba(232,160,32,0.08); }
+/* במה ריבועית בתוך המסגרת. הריבועיות היא לא אסתטיקה אלא תנאי: תמונות המקור
+   ריבועיות (250x250), ולכן רק בבמה ריבועית אחוז בתוכה מתאים אחד-לאחד
+   לקואורדינטה בתמונה — וזה מה שמאפשר לעגן את הצל לבסיס הנמדד של כל מוצר. */
+.product-img-stage {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  aspect-ratio: 1;
+  --img-scale: 1;
+  transform: translateX(-50%) scale(var(--img-scale));
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.product-card:hover .product-img-stage {
+  transform: translateX(-50%) scale(calc(var(--img-scale) * 1.05));
+}
+.product-img {
+  position: absolute;
+  inset: 9%;            /* התמונה תופסת 9%..91% מהבמה */
+  width: 82%;
+  height: 82%;
+  object-fit: contain;
+}
+
+/* צל מגע — מה שמפריד בין "חיתוך שמרחף" לבין "מוצר שעומד על משטח".
+   נצמד לבסיס הנמדד של המוצר ולא לתחתית המסגרת: 10% מהמוצרים נגמרים כבר
+   ב-70% מגובה התמונה, ואצלם צל בתחתית היה מרחף באוויר מתחתיהם.
+   מוצג רק כשלתמונה יש ערוץ אלפא — מתחת ל-JPEG אטום הוא ממילא מוסתר. */
+.product-img-shadow {
+  position: absolute;
+  left: 50%;
+  top: calc(9% + var(--img-base, 0.95) * 82%);
+  width: calc(var(--img-width, 0.6) * 82% * 1.18);
+  height: 8%;
+  transform: translate(-50%, -34%);
+  border-radius: 50%;
+  background: radial-gradient(closest-side,
+    rgba(24, 22, 18, 0.26) 0%,
+    rgba(24, 22, 18, 0.12) 46%,
+    rgba(24, 22, 18, 0) 75%);
+  pointer-events: none;
+}
+
+
+.filter-chip-count {
+  display: inline-block;
+  margin-inline-start: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #8A8A8A;
+}
+.filter-chip:hover .filter-chip-count { color: #C4880A; }
+.filter-chip.active .filter-chip-count { color: #1C1C1C; opacity: 0.65; }
+
+/* שורת המיון של פסי צבירה מגנטים ומתח גבוה (TrackFilters) */
+.track-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+  padding: 14px 16px;
+  background: #FFFFFF;
+  border: 1px solid #E0DDD6;
+  border-radius: 10px;
+}
+.track-filter-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.track-filter-label {
+  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #595959;
+  width: 64px;
+}
+.track-filter-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .track-filters { padding: 12px; margin-bottom: 20px; gap: 12px; }
+  .track-filter-row { align-items: flex-start; flex-direction: column; gap: 6px; }
+  .track-filter-label { width: auto; }
+  /* גלילה אופקית במקום שבירה לשתי שורות — שומר על שורה אחת לכל ציר */
+  .track-filter-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    width: 100%;
+    padding-bottom: 2px;
+  }
+  .track-filter-chips::-webkit-scrollbar { display: none; }
+  .track-filter-chips > .filter-chip { scroll-snap-align: start; }
+}
+
+.spec-tags { display: flex; flex-wrap: wrap; }
+.spec-tag {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: #565349;
+}
+.spec-tag.highlight { color: #15140E; }
+.spec-tag + .spec-tag::before {
+  content: '\00b7';
+  margin: 0 7px;
+  color: #B5B1A6;
+  font-weight: 300;
+}
 
 .modal-overlay {
   position: fixed; inset: 0;
@@ -260,11 +378,21 @@ button, input, select, textarea { font-family: 'Heebo', sans-serif; }
   .nav-desktop-links { display: none !important; }
   .hamburger { display: flex; }
 }
-.products-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+.products-grid { display: grid; gap: 56px 30px; grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); }
 @media (max-width: 600px) {
   .catalog-content-pad { padding: 24px 16px !important; }
-  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .tab-button { padding: 12px 14px !important; gap: 4px !important; font-size: 13px !important; }
+  /* ארבעת הטאבים רחבים מ-390px ביחד וגלשו מהמסך. כאן הם מצטמצמים כדי
+     להיכנס ברוב הטלפונים, ובמסכים צרים מזה השורה נגללת אופקית במקום
+     להרחיב את העמוד כולו. */
+  .tab-strip {
+    padding: 0 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tab-strip::-webkit-scrollbar { display: none; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 18px; }
+  .tab-button { padding: 12px 9px !important; gap: 4px !important; font-size: 13px !important; }
 }
 
 .pulse-gold {
@@ -399,3 +527,77 @@ a:focus-visible,
   }
   @view-transition { navigation: none; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   "דיוק טכני" — גוף הכרטיס וטיפוגרפיה שקטה.
+   מוזג מתוך שכבת-העל הזמנית שהייתה ב-catalog-precision.html; הכללים
+   נכתבו כאן מחדש על הבוררים האמיתיים במקום ב-!important מעל הקיים.
+   ═══════════════════════════════════════════════════════════════════ */
+.product-card-body { padding: 18px 2px 0; display: flex; flex-direction: column; flex: 1; }
+
+/* תת-קטגוריה → מונו שקט */
+.product-card-sub {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.17em;
+  color: #6E6858;
+  line-height: 1.5;
+  margin-bottom: 9px;
+  text-transform: uppercase;
+}
+
+/* שם המוצר — 17px/400, בלי חיתוך לשתי שורות */
+.product-card-title {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: -0.008em;
+  color: #1C1C1C;
+  margin-bottom: 10px;
+}
+
+/* רמז הווריאנטים — נתון, לא מבטא: בלי זהב */
+.product-card-variants { margin-top: 6px; margin-bottom: 8px; display: flex; align-items: baseline; gap: 5px; }
+.product-card-variant-axis { font-size: 11px; color: #767676; flex-shrink: 0; }
+.product-card-variant-value {
+  font-size: 11px;
+  color: #565349;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* מונה הכותרת — נתון, לא מבטא */
+.category-header-count { font-size: 14px; font-weight: 400; color: #565349; }
+
+/* ── צילומי ההקשר של הסטריפ ──────────────────────────────────────────
+   35 תמונות סטריפ הן צילומי התקנה, לא אובייקט על רקע לבן. חיתוך היה הורס
+   אותן, ולכן במקום לצוף כמלבן על המשטח הן ממלאות את האריח מקצה לקצה. כך
+   המסגרת נעלמת בלי לגעת בתוכן. מזוהות לפי הנתיב: אחרי חיתוך גופי התאורה,
+   הדרייברים והפרופילים, רק הן נותרו תחת strips/. */
+.product-img-stage:has(> .product-img[src*="strips/"]) {
+  position: absolute;
+  inset: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  transform: none;
+}
+.product-img[src*="strips/"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.product-card:hover .product-img[src*="strips/"] { transform: scale(1.05); }
+
+.mobile-filter-btn { border-radius: 0; }
+
+/* שורת הטאבים: הריווח כאן ולא ב-inline, כדי ש-media query יוכל לצמצם אותו.
+   התוויות לא נשברות — טאב שנשבר לשתי שורות שובר את גובה השורה כולה. */
+.tab-strip { padding: 0 24px; }
+.tab-button { white-space: nowrap; flex-shrink: 0; }

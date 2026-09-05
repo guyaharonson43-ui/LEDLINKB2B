@@ -32,5 +32,20 @@ export const PS_POWER_RANGES = [
 
 export const STRIP_CRI_OPTIONS = ['הכל', '>80', '>90', '>94', '>95'];
 
+// פסי צבירה מגנטים ומתח גבוה — מיון לפי סוג הפס, נגזר מ-product.trackType
+// (מסווג ע"י scripts/classify-track-products.mjs).
+// שתי מערכות שאינן תואמות זו לזו: מגנטי 48V מול פס 230V רגיל. מספר הפאזות
+// לא מוצג בכוונה — לקוח שצריך לדעת מתקשר.
+// "מסילה לינארית" (HiLINE) אינו צ'יפ בכוונה — המוצרים האלה מוצגים תחת "הכל".
+export const TRACK_TYPE_OPTIONS = ['הכל', 'מגנטי 48V', 'מתח גבוה 230V'];
+
+// תת-הקטגוריה היחידה שעבורה מוצגת שורת המיון הזו
+export const TRACK_SUBCATEGORY = 'פסי צבירה מגנטים ומתח גבוה';
+// השם הקודם. קישורים עם ?sub= הישן כבר באוויר (sitemap, דף הבית, שיתופים),
+// ולכן הם ממופים לשם החדש במקום ליפול ל"הכל".
+export const SUBCATEGORY_ALIASES = { 'פסי צבירה ומסילות': 'פסי צבירה מגנטים ומתח גבוה' };
+
+export const INIT_TRACK = { type: 'הכל' };
+
 export const INIT_STRIP = { ip: 'הכל', type: 'הכל', color: 'הכל', voltage: 'הכל', cri: 'הכל', power: 'הכל', lmw: 'הכל' };
 export const INIT_PS    = { smartType: 'הכל', voltage: 'הכל', inputVoltage: 'הכל', ip: 'הכל', dimming: 'הכל', power: 'הכל' };

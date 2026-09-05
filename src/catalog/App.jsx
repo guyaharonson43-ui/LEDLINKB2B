@@ -2,9 +2,10 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import { cleanName, trackEvent }    from './utils/helpers';
 import { getStripMeta }             from './utils/stripMeta';
 import {
-  INIT_STRIP, INIT_PS,
+  INIT_STRIP, INIT_PS, INIT_TRACK,
   STRIP_POWER_RANGES, STRIP_LMW_RANGES,
   PS_POWER_RANGES,
+  TRACK_TYPE_OPTIONS, TRACK_SUBCATEGORY, SUBCATEGORY_ALIASES,
 } from './utils/filterConstants';
 import Navbar            from './components/Navbar';
 import CategoryHeader    from './components/CategoryHeader';
@@ -12,6 +13,7 @@ import ProductCard       from './components/ProductCard';
 import StripFilters      from './components/StripFilters';
 import DriverFilters     from './components/DriverFilters';
 import ProfileFilters    from './components/ProfileFilters';
+import TrackFilters      from './components/TrackFilters';
 import SkeletonCard      from './components/SkeletonCard';
 import Footer            from './components/Footer';
 import { Icons }         from './components/Icons';
@@ -29,9 +31,13 @@ const TABS = [
   { id: 'גופי תאורה', label: 'גופי תאורה', desc: 'פסי צבירה, ספוטים ושקועים, בקרה וחיישנים' },
 ];
 
-const LIGHTING_SUBCAT_ORDER = ['פסי צבירה ומסילות', 'ספוטים ושקועים', 'צמודי תקרה', 'גופי תלייה', 'בקרה וחיישנים'];
+const LIGHTING_SUBCAT_ORDER = ['פסי צבירה מגנטים ומתח גבוה', 'ספוטים ושקועים', 'צמודי תקרה', 'גופי תלייה', 'בקרה וחיישנים'];
 
 const PAGE_SIZE = 30;
+
+// שם תת-הקטגוריה השתנה. קישורים עם ?sub= הישן כבר באוויר (sitemap, דף הבית,
+// שיתופים של לקוחות) — ממפים אותם לשם החדש כדי שלא ייפלו ל"הכל".
+const resolveSubCat = sub => (sub ? (SUBCATEGORY_ALIASES[sub] || sub) : sub);
 
 export default function App() {
   const [products]              = useState(allProducts);
@@ -66,9 +72,13 @@ export default function App() {
   const [psF, setPsF]           = useState({ ...INIT_PS });
   const [lightingSubCat, setLightingSubCat] = useState(() => {
     const p = new URLSearchParams(window.location.search);
-    if (p.get('sub')) return p.get('sub');
-    if (!p.get('tab') && !p.get('q') && !p.get('product')) return 'פסי צבירה ומסילות';
+    if (p.get('sub')) return resolveSubCat(p.get('sub'));
+    if (!p.get('tab') && !p.get('q') && !p.get('product')) return TRACK_SUBCATEGORY;
     return 'הכל';
+  });
+  const [trackF, setTrackF] = useState(() => {
+    const type = new URLSearchParams(window.location.search).get('type');
+    return { type: TRACK_TYPE_OPTIONS.includes(type) ? type : 'הכל' };
   });
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showCfg, setShowCfg]   = useState(false);
@@ -86,12 +96,13 @@ export default function App() {
     const onPop = e => {
       const p   = new URLSearchParams(window.location.search);
       const id  = (e.state && e.state.tab) || p.get('tab') || 'גופי תאורה';
-      const sub = (e.state && e.state.sub) || p.get('sub') || 'הכל';
+      const sub = resolveSubCat((e.state && e.state.sub) || p.get('sub')) || 'הכל';
       setActiveTab(id);
       setLightingSubCat(sub);
       setSearch('');
       setStripF({ ...INIT_STRIP });
       setPsF({ ...INIT_PS });
+      setTrackF({ type: TRACK_TYPE_OPTIONS.includes(p.get('type')) ? p.get('type') : 'הכל' });
       setPage(1);
     };
     window.addEventListener('popstate', onPop);
@@ -127,12 +138,30 @@ export default function App() {
     setSearch('');
     setStripF({ ...INIT_STRIP });
     setPsF({ ...INIT_PS });
+    setTrackF({ ...INIT_TRACK });
     setLightingSubCat('הכל');
     setSidebarOpen(false);
     setPage(1);
     const url = new URL(window.location.href);
     url.searchParams.set('tab', id);
+    url.searchParams.delete('sub');
+    url.searchParams.delete('type');
     window.history.pushState({ tab: id }, '', url.toString());
+  }, []);
+
+  // החלפת תת-קטגוריה מאפסת את מיון פסי הצבירה — הצירים שלו רלוונטיים רק לתת-קטגוריה
+  // אחת, והשארת בחירה "דביקה" בין קטגוריות מייצרת תוצאות ריקות בלי סיבה נראית לעין.
+  const switchSubCat = useCallback((sc, tab) => {
+    setLightingSubCat(sc);
+    setTrackF({ ...INIT_TRACK });
+    setSidebarOpen(false);
+    setPage(1);
+    const url = new URL(window.location.href);
+    url.searchParams.set('tab', tab);
+    if (sc === 'הכל') url.searchParams.delete('sub');
+    else url.searchParams.set('sub', sc);
+    url.searchParams.delete('type');
+    window.history.pushState({ tab, sub: sc }, '', url.toString());
   }, []);
 
   const filtered = useMemo(() => {
@@ -197,27 +226,115 @@ export default function App() {
 
     if (activeTab === 'גופי תאורה') {
       if (lightingSubCat !== 'הכל') r = r.filter(p => p.subCategory === lightingSubCat);
+      if (lightingSubCat === TRACK_SUBCATEGORY) {
+        if (trackF.type !== 'הכל') r = r.filter(p => p.trackType === trackF.type);
+      }
     }
 
     return r;
-  }, [products, activeTab, search, stripF, psF, lightingSubCat]);
+  }, [products, activeTab, search, stripF, psF, lightingSubCat, trackF]);
+
+  const showTrackFilters = activeTab === 'גופי תאורה' && lightingSubCat === TRACK_SUBCATEGORY;
+
+  // בסיס המיון: כל מוצרי תת-הקטגוריה אחרי החיפוש החופשי בלבד, לפני שני צירי המיון.
+  const trackBase = useMemo(() => {
+    if (!showTrackFilters) return [];
+    const q = search.trim().toLowerCase();
+    return products.filter(p =>
+      p.category === 'גופי תאורה' &&
+      p.subCategory === TRACK_SUBCATEGORY &&
+      // סופר כרטיסים ולא מק"טים, כדי שהמונה בצ'יפ יתאים למספר הכרטיסים
+      // שבאמת יוצגו אחרי הלחיצה
+      (!p.variantFamily || p.variantPrimary) &&
+      (!q || p.name.toLowerCase().includes(q) || (p.desc || '').toLowerCase().includes(q))
+    );
+  }, [products, showTrackFilters, search]);
+
+  // מונה לכל צ'יפ — מספר התוצאות שיתקבלו אם ילחצו עליו.
+  const trackCounts = useMemo(() => trackBase.reduce((acc, p) => {
+    if (p.trackType) acc[p.trackType] = (acc[p.trackType] || 0) + 1;
+    return acc;
+  }, {}), [trackBase]);
 
   const activeFilterCount = useMemo(() => {
     if (activeTab === 'סטריפ LED')   return Object.values(stripF).filter(v => v !== 'הכל').length;
     if (activeTab === 'דרייברים')    return Object.values(psF).filter(v => v !== 'הכל').length;
-    if (activeTab === 'גופי תאורה') return lightingSubCat !== 'הכל' ? 1 : 0;
+    if (activeTab === 'גופי תאורה') {
+      return (lightingSubCat !== 'הכל' ? 1 : 0)
+        + (showTrackFilters ? Object.values(trackF).filter(v => v !== 'הכל').length : 0);
+    }
     return 0;
-  }, [activeTab, stripF, psF, lightingSubCat]);
+  }, [activeTab, stripF, psF, lightingSubCat, showTrackFilters, trackF]);
+
+  // סנכרון ?type= לכתובת כדי שקישור למיון ספציפי יהיה ניתן לשיתוף.
+  // replaceState ולא pushState — כדי שכל לחיצה על צ'יפ לא תיצור צעד נוסף בהיסטוריה.
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    const active = showTrackFilters && trackF.type !== 'הכל';
+    if (active) {
+      // הכתובת חייבת לתאר את עצמה במלואה — קישור עם ?type= בלבד לא ישחזר את
+      // תת-הקטגוריה אצל מי שיפתח אותו, ולכן tab ו-sub נכתבים יחד איתו.
+      url.searchParams.set('tab', activeTab);
+      url.searchParams.set('sub', lightingSubCat);
+      url.searchParams.set('type', trackF.type);
+    } else {
+      url.searchParams.delete('type');
+    }
+    if (url.toString() !== window.location.href) {
+      window.history.replaceState(window.history.state, '', url.toString());
+    }
+  }, [showTrackFilters, trackF, activeTab, lightingSubCat]);
 
   useEffect(() => { setPage(1); }, [filtered]);
 
-  const visibleProducts = filtered.slice(0, page * PAGE_SIZE);
-  const hasMore         = visibleProducts.length < filtered.length;
+  // במסך צר שורת הטאבים נגללת אופקית, והטאב הפעיל עלול לשבת מחוץ לתצוגה —
+  // בעיקר בכניסה עם ?tab= לקטגוריה האחרונה. block:'nearest' מונע מהדפדפן
+  // לגלול גם אנכית ולדלג על ראש העמוד.
+  useEffect(() => {
+    const strip = document.querySelector('.tab-strip');
+    if (!strip || strip.scrollWidth <= strip.clientWidth) return;
+    const active = strip.querySelector('[aria-selected="true"]');
+    if (active) active.scrollIntoView({ inline: 'center', block: 'nearest' });
+  }, [activeTab]);
+
+  // איחוד וריאנטים לכרטיס אחד. הקיבוץ קורה *אחרי* הסינון בכוונה: אם המשתמש
+  // סינן 40W, הכרטיס יציג את וריאנט ה-40W כנציג ולא את ברירת המחדל.
+  const cards = useMemo(() => {
+    const out = [];
+    const seen = new Map();
+    for (const p of filtered) {
+      if (!p.variantFamily) { out.push({ key: p.id, product: p, variants: null }); continue; }
+      const hit = seen.get(p.variantFamily);
+      if (hit) { hit.variants.push(p); continue; }
+      const card = { key: p.variantFamily, product: p, variants: [p] };
+      seen.set(p.variantFamily, card);
+      out.push(card);
+    }
+    for (const c of out) {
+      if (!c.variants) continue;
+      c.variants.sort((a, b) => a.variantOrder - b.variantOrder);
+      c.product = c.variants[0];
+      if (c.variants.length === 1) c.variants = null;
+    }
+    return out;
+  }, [filtered]);
+
+  const visibleCards = cards.slice(0, page * PAGE_SIZE);
+  const hasMore      = visibleCards.length < cards.length;
 
   const openProduct = useCallback(p => {
     trackEvent('product_view', { product_id: p.id, product_name: p.name, category: p.category });
     setSelected(p);
   }, []);
+
+  // כל הווריאנטים של המשפחה הפתוחה. נגזר מ-products ולא מ-filtered — מי שפתח
+  // מוצר צריך לראות את כל האפשרויות, גם כאלה שסינון פעיל הסתיר מהרשת.
+  const selectedVariants = useMemo(() => {
+    if (!selected || !selected.variantFamily) return null;
+    return products
+      .filter(p => p.variantFamily === selected.variantFamily)
+      .sort((a, b) => a.variantOrder - b.variantOrder);
+  }, [products, selected]);
 
   const tabInfo    = TABS.find(t => t.id === activeTab);
   const showFilters = activeTab !== 'פרופילים';
@@ -238,7 +355,7 @@ export default function App() {
       <div style={{ padding: '20px 0' }}>
         <div style={{ fontSize: 12, fontWeight: 800, letterSpacing: '.08em', color: '#595959', marginBottom: 12 }}>קטגוריה</div>
         {lightingSubCats.map(sc => (
-          <button key={sc} onClick={() => setLightingSubCat(sc)}
+          <button key={sc} onClick={() => switchSubCat(sc, activeTab)} aria-pressed={lightingSubCat === sc}
             style={{ display: 'block', width: '100%', textAlign: 'right', background: 'none', border: 'none',
               padding: '8px 0', cursor: 'pointer', fontFamily: 'Heebo,sans-serif', fontSize: 14,
               color: lightingSubCat === sc ? '#E8A020' : '#1C1C1C', fontWeight: lightingSubCat === sc ? 700 : 400 }}>
@@ -255,10 +372,12 @@ export default function App() {
 
       {/* Tab bar */}
       <div style={{ borderBottom: '1px solid #E0DDD6', background: '#FFFFFF', position: 'sticky', top: 64, zIndex: 90, boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
-        <div role="tablist" aria-label="קטגוריות מוצרים"
-          style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', display: 'flex', gap: 0 }}>
+        <div role="tablist" aria-label="קטגוריות מוצרים" className="tab-strip"
+          style={{ maxWidth: 1280, margin: '0 auto', display: 'flex', gap: 0 }}>
           {TABS.map(t => {
-            const cnt    = products.filter(p => p.category === t.id).length;
+            // סופר כרטיסים ולא מק"טים, כדי שהמונה בטאב יתאים למה שנספר בכותרת
+            // הקטגוריה ולמה שבאמת מוצג ברשת
+            const cnt    = products.filter(p => p.category === t.id && (!p.variantFamily || p.variantPrimary)).length;
             const active = activeTab === t.id;
             return (
               <button key={t.id} role="tab" aria-selected={active} id={`tab-${t.id}`}
@@ -269,8 +388,8 @@ export default function App() {
                   fontFamily: 'Heebo,sans-serif', fontSize: 14, fontWeight: 700, transition: 'all 0.15s',
                   display: 'flex', alignItems: 'center', gap: 8 }}>
                 {t.label}
-                <span style={{ fontSize: 11, background: active ? 'rgba(232,160,32,0.12)' : '#F0EDE8',
-                  color: active ? '#1C1C1C' : '#595959', padding: '1px 7px', borderRadius: 20, fontWeight: 700 }}>
+                <span style={{ fontSize: 12, background: active ? 'rgba(232,160,32,0.12)' : '#F0EDE8',
+                  color: active ? '#1C1C1C' : '#595959', padding: '1px 7px', borderRadius: 20, fontWeight: 400 }}>
                   {cnt}
                 </span>
               </button>
@@ -281,7 +400,7 @@ export default function App() {
 
       {/* Main content */}
       <main className="catalog-content-pad" style={{ maxWidth: 1280, margin: '0 auto', padding: '40px 24px' }}>
-        <CategoryHeader label={tabInfo.label} count={filtered.length} desc={tabInfo.desc} />
+        <CategoryHeader label={tabInfo.label} count={cards.length} desc={tabInfo.desc} />
 
         {/* Search + mobile filter button */}
         <div style={{ display: 'flex', gap: 12, marginBottom: 32, alignItems: 'center' }}>
@@ -351,6 +470,16 @@ export default function App() {
           </div>
         )}
 
+        {/* מיון פסי צבירה — בראש העמוד, צמוד מעל רשת התוצאות שהוא משנה */}
+        {showTrackFilters && (
+          <TrackFilters
+            filters={trackF}
+            setFilters={setTrackF}
+            counts={trackCounts}
+            total={trackBase.length}
+          />
+        )}
+
         {/* Layout: sidebar + grid */}
         <div className={showFilters ? 'catalog-layout with-sidebar' : 'catalog-layout no-sidebar'}>
 
@@ -389,7 +518,7 @@ export default function App() {
                   style={{ width: '100%', marginTop: 20, padding: '14px', background: '#E8A020',
                     color: '#1C1C1C', border: 'none', borderRadius: 10, fontSize: 15, fontWeight: 800, cursor: 'pointer',
                     fontFamily: 'Heebo, sans-serif' }}>
-                  הצג {filtered.length} מוצרים
+                  הצג {cards.length} מוצרים
                 </button>
               </div>
             </div>
@@ -453,14 +582,17 @@ export default function App() {
             ) : (
               <div>
                 <div className="products-grid">
-                  {visibleProducts.map((p, i) => <ProductCard key={p.id} product={p} onClick={openProduct} priority={i === 0} />)}
+                  {visibleCards.map((c, i) => (
+                    <ProductCard key={c.key} product={c.product} variants={c.variants}
+                      onClick={openProduct} priority={i === 0} />
+                  ))}
                 </div>
                 {hasMore && (
                   <div style={{ textAlign: 'center', padding: '32px 0 16px' }}>
                     <button onClick={() => setPage(p => p + 1)}
                       style={{ background: '#1C1C1C', color: '#fff', border: 'none', borderRadius: 8,
                         padding: '12px 32px', fontSize: 15, fontWeight: 600, cursor: 'pointer', fontFamily: 'Heebo, sans-serif' }}>
-                      הצג עוד ({filtered.length - visibleProducts.length} נותרו)
+                      הצג עוד ({cards.length - visibleCards.length} נותרו)
                     </button>
                   </div>
                 )}
@@ -488,9 +620,14 @@ export default function App() {
       </button>
 
       {selected && (
-        <ProductModal product={selected} onClose={() => {
+        <ProductModal product={selected} variants={selectedVariants} onClose={() => {
           setSelected(null);
-          history.replaceState(null, '', location.pathname + (activeTab ? '?tab=' + encodeURIComponent(activeTab) : ''));
+          // מסירים רק את ?product= — בנייה מחדש של הכתובת מאפסת גם את ?sub=/?type=
+          // ומחזירה את המשתמש לתחילת הקטגוריה אחרי סגירת חלון מוצר.
+          const url = new URL(window.location.href);
+          url.searchParams.delete('product');
+          if (activeTab) url.searchParams.set('tab', activeTab);
+          history.replaceState(history.state, '', url.toString());
         }} />
       )}
 

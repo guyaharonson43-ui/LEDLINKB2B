@@ -7,47 +7,35 @@ import NeonSchematic          from './NeonSchematics';
 import { Icons }              from './Icons';
 import drawings              from '../data/drawings';
 
-// ניסיון לטעון גרסת (2) → (1) → בסיסית
-function bestImgSrc(url) {
-  // הוסף (2) לפני הסיומת: TKM-ROPE30.jpg → TKM-ROPE30(2).jpg
-  return url.replace(/(\.[^.]+)$/, '(2)$1');
-}
-
+// הלייטבוקס ניסה קודם גרסאות (2) ואז (1) של הקובץ בהנחה שהן ברזולוציה גבוהה
+// יותר. נבדק מול השרת על מדגם של 12 תמונות: אף אחת מהן לא קיימת — כלומר כל
+// פתיחה עשתה שתי בקשות כושלות לפני שהתמונה הופיעה. ההסתעפות הוסרה.
 function Lightbox({ src, alt, onClose }) {
-  const [imgSrc, setImgSrc] = useState(bestImgSrc(src));
-  const fallbacks = [
-    src.replace(/(\.[^.]+)$/, '(1)$1'),
-    src,
-  ];
-  const [fallbackIdx, setFallbackIdx] = useState(0);
-
-  useEffect(() => {
-    setImgSrc(bestImgSrc(src));
-    setFallbackIdx(0);
-  }, [src]);
-
   useEffect(() => {
     const onKey = e => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, [onClose]);
 
-  const handleError = () => {
-    if (fallbackIdx < fallbacks.length) {
-      setImgSrc(fallbacks[fallbackIdx]);
-      setFallbackIdx(i => i + 1);
-    }
-  };
-
   return (
     <div onClick={onClose} style={{
       position: 'fixed', inset: 0, zIndex: 9999,
       background: 'rgba(0,0,0,0.88)', display: 'flex',
-      alignItems: 'center', justifyContent: 'center', cursor: 'zoom-out'
+      alignItems: 'center', justifyContent: 'center', cursor: 'zoom-out', padding: 24
     }}>
-      <img src={imgSrc} alt={alt} onError={handleError} onClick={e => e.stopPropagation()}
-        style={{ width: '60vw', height: '60vh', objectFit: 'contain', borderRadius: 8, boxShadow: '0 8px 40px rgba(0,0,0,0.6)', cursor: 'default' }} />
-      <button onClick={onClose} style={{
+      {/* התמונה מוצגת בגודלה הטבעי ולא נמתחת. קודם היא נמתחה ל-60vw/60vh —
+          מקור של 250px הוצג ב-864px ויצא מרוח. עדיף קטן וחד מגדול ומטושטש,
+          והכרטיס הלבן מסביב נותן להצגה נוכחות במקום תמונה קטנה שמרחפת. */}
+      <div onClick={e => e.stopPropagation()} style={{
+        background: '#FFFFFF', borderRadius: 12, padding: 28,
+        boxShadow: '0 24px 70px rgba(0,0,0,0.55)', cursor: 'default',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+      }}>
+        <img src={src} alt={alt}
+          style={{ display: 'block', width: 'auto', height: 'auto',
+                   maxWidth: 'min(82vw, 640px)', maxHeight: 'min(72vh, 640px)' }} />
+      </div>
+      <button onClick={onClose} aria-label="סגור תצוגה מוגדלת" style={{
         position: 'absolute', top: 20, left: 20,
         background: 'rgba(255,255,255,0.15)', border: 'none',
         color: '#fff', fontSize: 28, width: 44, height: 44,
@@ -57,14 +45,20 @@ function Lightbox({ src, alt, onClose }) {
   );
 }
 
-function fullImg(url) {
-  return url ? url.replace(/\/Media\/Resize\/[^/]+\//, '/Media/Uploads/') : url;
-}
+// היה כאן fullImg() שהחליף /Media/Resize/250_250/ ב-/Media/Uploads/ כדי לקבל
+// תמונה גדולה יותר. נבדק מול השרת: שני הנתיבים מחזירים בדיוק את אותו קובץ
+// 250x250 — ליורולוקס אין מקור גדול יותר בשום נתיב, גם לא בדף המוצר שלהם.
+// התוצאה הייתה הורדה כפולה של אותם בייטים תחת URL שני, במקום שימוש במה
+// שכבר במטמון מהכרטיס.
 
-export default function ProductModal({ product, onClose }) {
+export default function ProductModal({ product: initialProduct, variants, onClose }) {
+  // הווריאנט הנבחר יושב ב-state מקומי, ושאר הקומפוננטה ממשיכה לקרוא ל-`product`.
+  // כך תמונה, מפרט, datasheet, לינק השיתוף וטקסט הוואטסאפ מתחלפים יחד.
+  const [product, setProduct] = useState(initialProduct);
+  useEffect(() => { setProduct(initialProduct); }, [initialProduct]);
   const ds       = (datasheets[product.id] || datasheets[product.name] || []);
   const drawing  = drawings[product.id] || null;
-  const productImgFull = fullImg(product.img);
+  const productImgFull = product.img;
   const cat      = product.category;
   const [copied, setCopied] = useState(false);
   const [lightbox, setLightbox] = useState(null);
@@ -209,6 +203,23 @@ export default function ProductModal({ product, onClose }) {
               {product.subCategory || product.category}
             </div>
             <h2 id="product-modal-title" style={{ fontSize: 20, fontWeight: 800, color: '#1C1C1C', margin: 0 }}>{product.name}</h2>
+            {variants && variants.length > 1 && (
+              <div style={{ marginTop: 12 }} role="group" aria-label={`בחירת ${product.variantAxis}`}>
+                <div style={{ fontSize: 11, color: '#767676', letterSpacing: 1, marginBottom: 6 }}>
+                  {product.variantAxis}
+                </div>
+                <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                  {variants.map(v => (
+                    <button key={v.id} type="button"
+                      className={`filter-chip${v.id === product.id ? ' active' : ''}`}
+                      aria-pressed={v.id === product.id}
+                      onClick={() => setProduct(v)}>
+                      {v.variantLabel}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
           <button ref={closeRef} onClick={onClose} aria-label="סגור"
             style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#AAAAAA', padding: 4, marginTop: 2 }}>
@@ -222,7 +233,9 @@ export default function ProductModal({ product, onClose }) {
             <div>
               <div onClick={() => setLightbox({ src: productImgFull, alt: product.name })}
                 style={{ borderRadius: 8, overflow: 'hidden', border: '1px solid #E0DDD6', cursor: 'zoom-in' }}>
-                <ProductImg src={productImgFull} name={product.name} tall />
+                <ProductImg src={productImgFull} name={product.name} tall priority
+                  scale={product.imgScale} base={product.imgBase} width={product.imgWidth}
+                  cutout={product.imgCutout} />
               </div>
               {drawing && (
                 <div style={{ marginTop: 12 }}>

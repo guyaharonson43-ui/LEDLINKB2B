@@ -47,6 +47,7 @@ function copyFile(name) {
 }
 
 // Image + asset directories
+copyDir('product-images');   // תמונות מוצר עם רקע מוסר (cutout-product-images.mjs)
 copyDir('strips');
 copyDir('projects');
 copyDir('DATASHEET');
