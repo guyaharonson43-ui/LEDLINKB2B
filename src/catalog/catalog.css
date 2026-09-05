@@ -10,10 +10,10 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; overflow-x: hidden; overflow-x: clip; }
 @view-transition { navigation: auto; }
 ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.08s; }
-body { background: #F4F4F0; color: #1C1C1C; font-family: 'Heebo', sans-serif; overflow-x: hidden; }
+body { background: #F4F4F0; color: #1C1C1C; font-family: 'Heebo', sans-serif; overflow-x: hidden; overflow-x: clip; }
 button, input, select, textarea { font-family: 'Heebo', sans-serif; }
 
 ::-webkit-scrollbar { width: 6px; }
@@ -295,8 +295,8 @@ button, input, select, textarea { font-family: 'Heebo', sans-serif; }
 .hamburger.open .hamburger-line:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 .mm-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 149; }
 .mm-overlay.open { display: block; }
-.mobile-menu { position: fixed; top: 0; right: 0; bottom: 0; width: 280px; background: #1A1A1A; border-left: 1px solid #2A2A2A; z-index: 150; overflow-y: auto; transform: translateX(110%); transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); box-shadow: -12px 0 40px rgba(0,0,0,0.6); }
-.mobile-menu.open { transform: translateX(0); }
+.mobile-menu { position: fixed; top: 0; right: 0; bottom: 0; width: 280px; background: #1A1A1A; border-left: 1px solid #2A2A2A; z-index: 150; overflow-y: auto; transform: translateX(110%); visibility: hidden; transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), visibility 0s 0.3s; box-shadow: -12px 0 40px rgba(0,0,0,0.6); }
+.mobile-menu.open { transform: translateX(0); visibility: visible; transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), visibility 0s 0s; }
 .mm-header { display: flex; align-items: center; justify-content: space-between; padding: 0 20px; height: 64px; border-bottom: 1px solid #222; }
 .mm-close { background: none; border: none; cursor: pointer; color: #666; font-size: 22px; line-height: 1; padding: 4px; transition: color 0.15s; }
 .mm-close:hover { color: #fff; }
