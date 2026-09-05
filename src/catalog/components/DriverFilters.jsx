@@ -19,14 +19,14 @@ function AxisChip({ axis, option, filters, setFilters }) {
     ? (filters[axis.key] || []).includes(option.value)
     : filters[axis.key] === option.value;
 
-  // ערך שהצטמצם לאפס בגלל ציר אחר מואפר ולא לחיץ, אבל נשאר במקומו —
-  // הסתרה מקפיצה את הצ'יפים מתחת לאצבע בכל לחיצה ומבלבלת יותר משהיא חוסכת.
+  // המונה עצמו אינו מוצג — הוא עדיין מחושב, וממנו נגזרת ההאפרה: ערך
+  // שהצטמצם לאפס בגלל ציר אחר מואפר ולא לחיץ, אבל נשאר במקומו. הסתרה
+  // מקפיצה את הצ'יפים מתחת לאצבע בכל לחיצה ומבלבלת יותר משהיא חוסכת.
   const disabled = option.count === 0 && !active;
 
   return (
     <Chip
       label={option.label}
-      count={option.count}
       active={active}
       disabled={disabled}
       title={disabled ? 'אין מוצרים תואמים בסינון הנוכחי' : undefined}
@@ -84,7 +84,7 @@ function DimmingAxis({ axis, filters, setFilters }) {
 //
 // בעמודה של 240px ארבעה כפתורים בשורה היו נשברים באמצע תווית; שורות מלאות
 // ברוחב הפאנל גם קריאות יותר וגם עומדות ביעד ה-44px של שטח נגיעה.
-function GroupSwitch({ filters, setFilters, groupCounts }) {
+function GroupSwitch({ filters, setFilters }) {
   return (
     <div role="group" aria-label="סוג דרייבר"
       style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 20,
@@ -102,10 +102,6 @@ function GroupSwitch({ filters, setFilters, groupCounts }) {
               color: on ? '#FFFFFF' : '#595959',
             }}>
             <span>{value}</span>
-            <span style={{ fontSize: 11, fontWeight: 700, opacity: on ? 0.7 : 1,
-              color: on ? '#FFFFFF' : '#8A8A8A' }}>
-              {groupCounts[value] || 0}
-            </span>
           </button>
         );
       })}
@@ -120,7 +116,7 @@ export default function DriverFilters({ filters, setFilters, facets, count }) {
 
   return (
     <div>
-      <GroupSwitch filters={filters} setFilters={setFilters} groupCounts={facets.groupCounts} />
+      <GroupSwitch filters={filters} setFilters={setFilters} />
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
         <span style={{ fontSize: 12, color: '#595959' }}>{count} מוצרים</span>
