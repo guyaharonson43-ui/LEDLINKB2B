@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { cleanName, trackEvent }    from './utils/helpers';
 import { getStripMeta }             from './utils/stripMeta';
 import {
@@ -65,9 +65,15 @@ export default function App() {
     return allProducts.find(p => p.id === decodeURIComponent(productId)) || null;
   });
   const [search, setSearch] = useState(() => new URLSearchParams(window.location.search).get('q') || '');
+  // כל חיפוש נשמר עם הקטגוריה שבה בוצע. החיפוש עצמו מסונן לפי הקטגוריה
+  // הפעילה, ולכן חיפוש מקטגוריה אחרת מחזיר תמיד אפס תוצאות — הצגתו
+  // בקטגוריה הנוכחית רק מטעה. רשומות בפורמט הישן (מחרוזות בלי קטגוריה)
+  // נזרקות בטעינה, כי אי אפשר לדעת לאן הן שייכות.
   const [recentSearches, setRecentSearches] = useState(() => {
-    try { return JSON.parse(localStorage.getItem('ledlink_recent_searches') || '[]'); }
-    catch { return []; }
+    try {
+      const raw = JSON.parse(localStorage.getItem('ledlink_recent_searches') || '[]');
+      return Array.isArray(raw) ? raw.filter(r => r && typeof r === 'object' && r.q && r.tab) : [];
+    } catch { return []; }
   });
   const [stripF, setStripF]     = useState({ ...INIT_STRIP });
   const [psF, setPsF]           = useState({ ...INIT_PS });
@@ -116,19 +122,20 @@ export default function App() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const saveSearch = useCallback(q => {
+  const saveSearch = useCallback((q, tab) => {
     q = (q || '').trim();
     if (q.length < 2) return;
     setRecentSearches(prev => {
-      const next = [q, ...prev.filter(s => s !== q)].slice(0, 5);
+      // חמש רשומות אחרונות בסך הכול, על פני כל הקטגוריות
+      const next = [{ q, tab }, ...prev.filter(r => !(r.q === q && r.tab === tab))].slice(0, 5);
       localStorage.setItem('ledlink_recent_searches', JSON.stringify(next));
       return next;
     });
   }, []);
 
-  const removeRecent = useCallback(q => {
+  const removeRecent = useCallback((q, tab) => {
     setRecentSearches(prev => {
-      const next = prev.filter(s => s !== q);
+      const next = prev.filter(r => !(r.q === q && r.tab === tab));
       localStorage.setItem('ledlink_recent_searches', JSON.stringify(next));
       return next;
     });
@@ -249,6 +256,21 @@ export default function App() {
   }, [products, search]);
 
   const driverFacets = useMemo(() => buildDriverFacets(driverBase, psF), [driverBase, psF]);
+
+  // הרמז השני: אם שורת הטאבים כן גולשת, הטאב הפעיל נגלל לתצוגה כדי
+  // שלעולם לא ייחתך מחוץ למסך — הכשל שבגללו הגלילה בוטלה בפעם הקודמת.
+  // inline: 'nearest' לא מזיז כלום כשהכול כבר נראה.
+  const activeTabRef = useRef(null);
+  useEffect(() => {
+    const el = activeTabRef.current;
+    if (!el?.parentElement) return;
+    if (el.parentElement.scrollWidth <= el.parentElement.clientWidth) return;
+    el.scrollIntoView({ inline: 'nearest', block: 'nearest', behavior: 'smooth' });
+  }, [activeTab]);
+
+  const tabRecentSearches = useMemo(
+    () => recentSearches.filter(r => r.tab === activeTab).map(r => r.q),
+    [recentSearches, activeTab]);
 
   const activeFilterCount = useMemo(() => {
     if (activeTab === 'סטריפ LED')   return Object.values(stripF).filter(v => v !== 'הכל').length;
@@ -384,6 +406,7 @@ export default function App() {
               <button key={t.id} role="tab" aria-selected={active} id={`tab-${t.id}`}
                 aria-controls="products-panel"
                 onClick={() => switchTab(t.id)}
+                ref={active ? activeTabRef : null}
                 className={active ? 'tab-button active' : 'tab-button'}>
                 <span className="tab-label">{t.label}</span>
                 <span className="tab-count">{cnt}</span>
@@ -406,12 +429,12 @@ export default function App() {
               placeholder={`חיפוש ב${tabInfo.label}...`}
               value={search}
               onChange={e => setSearch(e.target.value)}
-              onBlur={() => saveSearch(search)}
-              onKeyDown={e => e.key === 'Enter' && saveSearch(search)}
+              onBlur={() => saveSearch(search, activeTab)}
+              onKeyDown={e => e.key === 'Enter' && saveSearch(search, activeTab)}
               className="search-input"
             />
             {search && (
-              <button onClick={() => { saveSearch(search); setSearch(''); }}
+              <button onClick={() => { saveSearch(search, activeTab); setSearch(''); }}
                 style={{ position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)',
                   background: 'none', border: 'none', cursor: 'pointer', color: '#AAAAAA',
                   padding: 4, display: 'flex', alignItems: 'center', lineHeight: 1 }}
@@ -440,11 +463,11 @@ export default function App() {
           )}
         </div>
 
-        {/* Recent searches */}
-        {!search && recentSearches.length > 0 && (
+        {/* Recent searches — של הקטגוריה הנוכחית בלבד */}
+        {!search && tabRecentSearches.length > 0 && (
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20, flexWrap: 'wrap' }}>
             <span style={{ fontSize: 12, color: '#595959', flexShrink: 0 }}>חיפושים אחרונים:</span>
-            {recentSearches.map(q => (
+            {tabRecentSearches.map(q => (
               <span key={q} style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
                 <button onClick={() => setSearch(q)}
                   style={{ display: 'inline-flex', alignItems: 'center', gap: 4, background: '#FFFFFF',
@@ -452,7 +475,7 @@ export default function App() {
                     fontSize: 12, color: '#555555', cursor: 'pointer', fontFamily: 'Heebo,sans-serif' }}>
                   {q}
                 </button>
-                <button onClick={() => removeRecent(q)}
+                <button onClick={() => removeRecent(q, activeTab)}
                   style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#767676',
                     padding: 0, display: 'flex', alignItems: 'center' }}
                   aria-label={`הסר חיפוש ${q}`}>
