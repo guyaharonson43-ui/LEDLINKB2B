@@ -7,7 +7,7 @@ import { TRACK_TYPE_OPTIONS } from '../utils/filterConstants';
 //
 // צ'יפ ללא מוצרים אינו מוצג כלל (למעט אם הוא הבחירה הפעילה), כדי שלא תיווצר
 // לחיצה שמובילה למסך ריק.
-export default function TrackFilters({ filters, setFilters, counts, total }) {
+export default function TrackFilters({ filters, setFilters, counts }) {
   const visible = TRACK_TYPE_OPTIONS.filter(
     o => o === 'הכל' || o === filters.type || counts[o] > 0
   );
@@ -23,7 +23,6 @@ export default function TrackFilters({ filters, setFilters, counts, total }) {
             <Chip
               key={o}
               label={o}
-              count={o === 'הכל' ? total : counts[o] || 0}
               active={filters.type === o}
               onClick={() => setFilters(f => ({ ...f, type: o }))}
             />

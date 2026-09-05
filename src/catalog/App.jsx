@@ -494,7 +494,6 @@ export default function App() {
             filters={trackF}
             setFilters={setTrackF}
             counts={trackCounts}
-            total={trackBase.length}
           />
         )}
 
