@@ -96,12 +96,21 @@ const HIDDEN_OPTIONS = { ip: new Set(['IP00']) };
 // מחזיר תמיד מערך — ציר רב-ערכי (עמעום) מחזיר כמה, ציר חד-ערכי אחד.
 // ערך חסר הופך ל-UNSPECIFIED כדי שיהיה לו צ'יפ משלו: בגרסה הקודמת
 // 41 מוצרים בלי הספק נפלו בשקט מכל סינון, ומוצר תקין פשוט נעלם.
-function valuesOf(meta, key, group) {
+function valuesOf(meta, key, group, currentUniverse) {
   switch (key) {
     // גם כאן UNSPECIFIED ולא מערך ריק: IDNDP010/IDNDP110 הם CV אמיתיים בלי
     // ערך מתח רשום, ובלי צ'יפ משלהם הם היו נושרים מהציר בשקט.
     case 'voltage':      return [meta.outputVoltage || UNSPECIFIED];
-    case 'current':      return [meta.outputCurrent != null ? meta.outputCurrent : UNSPECIFIED];
+    case 'current': {
+      if (meta.outputCurrent == null) return [UNSPECIFIED];
+      // דרייבר MULTICURRENT עם טווח מאומת נספר תחת כל ערך זרם שהוא מספק,
+      // ולא רק תחת הערך היחיד שנשמר בקטלוג. בלי זה PUL42 (250–700mA) לא
+      // נספר תחת 350mA, למרות שהוא מתאים לחלוטין.
+      if (meta.currentRangeKnown && currentUniverse) {
+        return currentUniverse.filter(v => v >= meta.currentMin && v <= meta.currentMax);
+      }
+      return [meta.outputCurrent];
+    }
     case 'inputVoltage': return [meta.inputVoltage || UNSPECIFIED];
     case 'ip':           return meta.ip ? [meta.ip] : [UNSPECIFIED];
     case 'dimming':      return meta.dimming.length ? meta.dimming : [NO_DIMMING];
@@ -121,6 +130,13 @@ function valuesOf(meta, key, group) {
 function axisMatches(meta, axis, selection, group) {
   const isMulti = axis.mode === 'multi';
   if (isMulti ? !selection?.length : (!selection || selection === GROUPS.ALL)) return true;
+
+  // הזרם נבדק מול הטווח שהדרייבר מספק. בזרם קבוע יחיד הגבולות שווים, ולכן
+  // אותה בדיקה מכסה את שני המקרים.
+  if (axis.key === 'current' && meta.outputCurrent != null) {
+    return selection.some(v => typeof v === 'number'
+      && v >= meta.currentMin && v <= meta.currentMax);
+  }
 
   const vals = valuesOf(meta, axis.key, group);
   return isMulti
@@ -184,11 +200,18 @@ export function buildDriverFacets(all, filters) {
 
   const inGroup = group === GROUPS.ALL ? all : all.filter(p => getDriverMeta(p).group === group);
 
+  // ערכי הזרם שמהם נבנים הצ'יפים: הערכים הנקובים שנשמרו בקטלוג. טווח של
+  // דרייבר MULTICURRENT נפרש על פניהם ואינו מוסיף ערכים חדשים משלו, כדי
+  // שלא ייווצרו צ'יפים שאף מוצר לא נמכר לפיהם.
+  const currentUniverse = [...new Set(
+    inGroup.map(p => getDriverMeta(p).outputCurrent).filter(v => v != null)
+  )].sort((a, b) => a - b);
+
   const axes = AXES.filter(a => a.groups.includes(group)).map(axis => {
     // מונה "קיים בקבוצה" — מתעלם מכל סינון
     const present = new Map();
     for (const p of inGroup) {
-      for (const v of valuesOf(getDriverMeta(p), axis.key, group)) {
+      for (const v of valuesOf(getDriverMeta(p), axis.key, group, currentUniverse)) {
         present.set(v, (present.get(v) || 0) + 1);
       }
     }
@@ -197,7 +220,7 @@ export function buildDriverFacets(all, filters) {
     const facet = new Map();
     for (const p of inGroup) {
       if (!matchesDriver(p, filters, axis.key)) continue;
-      for (const v of valuesOf(getDriverMeta(p), axis.key, group)) {
+      for (const v of valuesOf(getDriverMeta(p), axis.key, group, currentUniverse)) {
         facet.set(v, (facet.get(v) || 0) + 1);
       }
     }

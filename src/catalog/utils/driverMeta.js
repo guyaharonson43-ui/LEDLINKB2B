@@ -85,6 +85,34 @@ function normPower(raw) {
 }
 
 // ---------------------------------------------------------------------------
+// טווחי הזרם של דרייברי MULTICURRENT
+// ---------------------------------------------------------------------------
+
+// דרייבר MULTICURRENT מספק טווח זרמים נבחר (DIP switch או כבל), אך הקטלוג
+// שומר ערך יחיד מתוכו. התוצאה: סינון 350mA לא החזיר את PUL42, שעושה
+// 250–700mA ולכן מתאים לחלוטין — הערך שנשמר עבורו הוא 250mA בלבד.
+//
+// הטווחים כאן חולצו מדפי הנתונים שבתיקיית datasheets, ולא מנוסחה. כל שורה
+// מציינת את הקובץ שממנו נלקחה, כדי שיהיה אפשר לאמת אותה מול המקור.
+const CURRENT_RANGES = [
+  { match: /^CC23W/i,  min: 100,  max: 700,  src: 'DS_CC.pdf / DS_CCD.pdf — A40CC23W000B, A40CC23WD00B' },
+  { match: /^CC36W/i,  min: 150,  max: 900,  src: 'DS_CC.pdf / DS_CCD.pdf — A40CC36W000B, A40CC36WD00B' },
+  { match: /^CC44W/i,  min: 300,  max: 1050, src: 'DS_CC.pdf / DS_CCD.pdf — A40CC44W000B, A40CC44WD00B' },
+  { match: /^CC60W/i,  min: 1250, max: 2000, src: 'DS_CC.pdf / DS_CCD.pdf — A40CC60W00B, A40CC60WD00B' },
+  { match: /^PUL42/i,  min: 250,  max: 700,  src: 'DS_PUL.pdf — A40PUL042BBB, A40PUL042BEB' },
+  { match: /^PUL60/i,  min: 800,  max: 2000, src: 'DS_PUL.pdf — A40PUL060ABB, A40PUL060AEB' },
+];
+
+// דגמי MULTICURRENT שאין להם עדיין דף נתונים בתיקייה — CCBX, PDMC, QBOX,
+// ZCCBX, ZMC013 — נשארים עם הערך היחיד שנשמר עבורם, כלומר ממשיכים להתנהג
+// כדרייבר בעל זרם קבוע יחיד עד שיתווסף המקור.
+function currentRangeFor(name, single) {
+  const hit = CURRENT_RANGES.find(r => r.match.test(name));
+  if (hit) return [hit.min, hit.max];
+  return [single, single];
+}
+
+// ---------------------------------------------------------------------------
 
 const cache = new WeakMap();
 
@@ -107,13 +135,25 @@ export function getDriverMeta(product) {
 
   const currentMa = m ? parseInt(m[1], 10) : null;
 
+  const name = product.name || '';
+  const multi = /MULTICURRENT/i.test(name);
+  const [cMin, cMax] = currentMa == null ? [null, null]
+                     : multi ? currentRangeFor(name, currentMa)
+                     : [currentMa, currentMa];
+
   const meta = {
     group:         deriveGroup(specs, currentMa),
     outputVoltage: currentMa == null && rawV ? rawV : null,
     outputCurrent: currentMa,
     // דרייבר שהזרם שלו נבחר בהתקנה (DIP/כבל). הנתונים שומרים ערך אחד בלבד
     // מתוך כמה שהמוצר תומך בהם, ולכן סינון מדויק עלול להחמיץ אותו.
-    multiCurrent:  /MULTICURRENT/i.test(product.name || ''),
+    multiCurrent:  multi,
+    // גבולות הזרם שהדרייבר באמת מספק. בדרייבר בעל זרם קבוע שניהם שווים
+    // ל-outputCurrent; ב-MULTICURRENT עם מקור מאומת זהו הטווח מדף הנתונים.
+    currentMin:    cMin,
+    currentMax:    cMax,
+    // האם הטווח מגובה במקור, או שזהו ערך יחיד שנשמר בקטלוג
+    currentRangeKnown: multi && cMin !== cMax,
     power:         normPower(specs.power),
     ip:            (specs.ip || '').trim() || null,
     inputVoltage:  normInputVoltage(specs.inputVoltage),
