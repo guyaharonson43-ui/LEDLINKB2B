@@ -373,25 +373,22 @@ export default function App() {
       {/* Tab bar */}
       <div style={{ borderBottom: '1px solid #E0DDD6', background: '#FFFFFF', position: 'sticky', top: 64, zIndex: 90, boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
         <div role="tablist" aria-label="קטגוריות מוצרים" className="tab-strip"
-          style={{ maxWidth: 1280, margin: '0 auto', display: 'flex', gap: 0 }}>
+          style={{ maxWidth: 1280, margin: '0 auto' }}>
           {TABS.map(t => {
             // סופר כרטיסים ולא מק"טים, כדי שהמונה בטאב יתאים למה שנספר בכותרת
             // הקטגוריה ולמה שבאמת מוצג ברשת
             const cnt    = products.filter(p => p.category === t.id && (!p.variantFamily || p.variantPrimary)).length;
             const active = activeTab === t.id;
             return (
+              // הפריסה כולה ב-CSS ולא ב-inline: במסך צר ארבעת הטאבים נערכים
+              // מחדש לרשת של ארבע עמודות עם המונה מתחת לשם, וזה אפשרי רק אם
+              // media query יכול לגעת בהם.
               <button key={t.id} role="tab" aria-selected={active} id={`tab-${t.id}`}
                 aria-controls="products-panel"
-                onClick={() => switchTab(t.id)} className="tab-button"
-                style={{ padding: '16px 24px', border: 'none', borderBottom: active ? '2px solid #E8A020' : '2px solid transparent',
-                  background: 'none', cursor: 'pointer', color: active ? '#1C1C1C' : '#595959',
-                  fontFamily: 'Heebo,sans-serif', fontSize: 14, fontWeight: 700, transition: 'all 0.15s',
-                  display: 'flex', alignItems: 'center', gap: 8 }}>
-                {t.label}
-                <span style={{ fontSize: 12, background: active ? 'rgba(232,160,32,0.12)' : '#F0EDE8',
-                  color: active ? '#1C1C1C' : '#595959', padding: '1px 7px', borderRadius: 20, fontWeight: 400 }}>
-                  {cnt}
-                </span>
+                onClick={() => switchTab(t.id)}
+                className={active ? 'tab-button active' : 'tab-button'}>
+                <span className="tab-label">{t.label}</span>
+                <span className="tab-count">{cnt}</span>
               </button>
             );
           })}
