@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import datasheets    from '../../../datasheets_data';
 import { trackEvent, pdfSrc } from '../utils/helpers';
+import { existingDatasheets } from '../utils/datasheetFiles';
 import { getDriverMeta } from '../utils/driverMeta';
 import { getStripMeta }       from '../utils/stripMeta';
 import ProductImg             from './ProductImg';
@@ -57,7 +58,8 @@ export default function ProductModal({ product: initialProduct, variants, onClos
   // כך תמונה, מפרט, datasheet, לינק השיתוף וטקסט הוואטסאפ מתחלפים יחד.
   const [product, setProduct] = useState(initialProduct);
   useEffect(() => { setProduct(initialProduct); }, [initialProduct]);
-  const ds       = (datasheets[product.id] || datasheets[product.name] || []);
+  // רק מסמכים שהקובץ שלהם קיים — לינק ל-PDF חסר מחזיר 404 וגרוע מהיעדר לינק
+  const ds       = existingDatasheets(datasheets[product.id] || datasheets[product.name] || []);
   const drawing  = drawings[product.id] || null;
   const productImgFull = product.img;
   const cat      = product.category;
