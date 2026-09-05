@@ -80,8 +80,14 @@ function byOrder(order) {
   };
 }
 
-// IP לפי הערך המספרי — IP00 < IP20 < IP40 < IP44 < IP65 < IP66
+// IP לפי הערך המספרי — IP20 < IP40 < IP44 < IP65 < IP66
 const byIp = (a, b) => (parseInt(a.slice(2), 10) || 0) - (parseInt(b.slice(2), 10) || 0);
+
+// ערכים שאינם קריטריון בחירה אלא ברירת המחדל עצמה, ולכן אין להם צ'יפ.
+// IP00 פירושו "ללא הגנה" — זה מה שמקבלים כשלא מסננים IP בכלל, וצ'יפ עבורו
+// רק מוסיף רעש לציר. המוצרים עצמם לא מוסתרים: הם ממשיכים להופיע בכל תוצאה
+// שאינה מסננת IP, וגם כשמסננים לפי זרם, הספק או עמעום.
+const HIDDEN_OPTIONS = { ip: new Set(['IP00']) };
 
 // ---------------------------------------------------------------------------
 // חילוץ ערכי הציר ממוצר יחיד
@@ -196,7 +202,10 @@ export function buildDriverFacets(all, filters) {
       }
     }
 
-    const options = sortValues(axis.key, [...present.keys()]).map(value => ({
+    const hidden = HIDDEN_OPTIONS[axis.key];
+    const values  = [...present.keys()].filter(v => !hidden?.has(v));
+
+    const options = sortValues(axis.key, values).map(value => ({
       value,
       label: axis.unit ? `${value}${axis.unit}` : String(value),
       count: facet.get(value) || 0,
