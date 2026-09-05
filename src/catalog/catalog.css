@@ -601,3 +601,15 @@ a:focus-visible,
    התוויות לא נשברות — טאב שנשבר לשתי שורות שובר את גובה השורה כולה. */
 .tab-strip { padding: 0 24px; }
 .tab-button { white-space: nowrap; flex-shrink: 0; }
+
+/* ── רצפת הרוחב של הכרטיס ──────────────────────────────────────────────
+   פריט ברשת מקבל min-width:auto, כלומר הוא מסרב להצטמצם מתחת לרוחב
+   התוכן המינימלי שלו. שם מוצר ארוך או שורת מפרט מרימים את הרצפה הזו,
+   ואז שני טורי 1fr יוצאים רחבים מהמסך: ב-320px הרשת יצאה 356px.
+   min-width:0 מחזיר לטורים את הרשות להצטמצם, ו-overflow-wrap מבטיח
+   שמילה או מק"ט ארוך יישברו במקום לגלוש מהכרטיס. */
+.products-grid > * { min-width: 0; }
+.product-card-title,
+.product-card-sub { overflow-wrap: anywhere; }
+.product-card-variant-value,
+.spec-tags { min-width: 0; }
