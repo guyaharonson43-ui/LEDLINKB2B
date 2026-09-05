@@ -101,11 +101,20 @@ const CURRENT_RANGES = [
   { match: /^CC60W/i,  min: 1250, max: 2000, src: 'DS_CC.pdf / DS_CCD.pdf — A40CC60W00B, A40CC60WD00B' },
   { match: /^PUL42/i,  min: 250,  max: 700,  src: 'DS_PUL.pdf — A40PUL042BBB, A40PUL042BEB' },
   { match: /^PUL60/i,  min: 800,  max: 2000, src: 'DS_PUL.pdf — A40PUL060ABB, A40PUL060AEB' },
+
+  // הדגמים הבאים הם ללא דף נתונים בתיקייה, והטווחים נלקחו מדפי המוצר של
+  // היצרן ב-qlt.it (ה-url ששמור על כל מוצר). מקור משני, ולכן מסומן בנפרד.
+  { match: /^CCBXH60/i,  min: 800, max: 1500, src: 'qlt.it/en/products/ccbxh60-multicurrent — 800…1500mA' },
+  { match: /^CCBXL60/i,  min: 250, max: 750,  src: 'qlt.it/en/products/ccbxl60-multicurrent-on-off — 250…750mA' },
+  { match: /^ZCCBXH60/i, min: 800, max: 1500, src: 'qlt.it/en/products/zccbxh60-multicurrent-zigbee-ble-push' },
+  { match: /^ZCCBXL60/i, min: 250, max: 750,  src: 'qlt.it/en/products/zccbxl60-multicurrent-zigbee-ble-push' },
+  { match: /^PDMC/i,     min: 250, max: 700,  src: 'qlt.it/en/products/pdmc-multicurrent — 250…700mA' },
+  { match: /^QBOX/i,     min: 600, max: 2100, src: 'qlt.it — qbox-multicurrent ו-qbox110-multicurrent, שניהם 600…2100mA' },
+  { match: /^ZMC013/i,   min: 100, max: 700,  src: 'qlt.it/en/products/zmc013-multicurrent-zigbee-ble-push' },
 ];
 
-// דגמי MULTICURRENT שאין להם עדיין דף נתונים בתיקייה — CCBX, PDMC, QBOX,
-// ZCCBX, ZMC013 — נשארים עם הערך היחיד שנשמר עבורם, כלומר ממשיכים להתנהג
-// כדרייבר בעל זרם קבוע יחיד עד שיתווסף המקור.
+// דגם MULTICURRENT שאינו מופיע בטבלה נשאר עם הערך היחיד שנשמר עבורו,
+// כלומר מתנהג כדרייבר בעל זרם קבוע — עדיף על טווח מנוחש.
 function currentRangeFor(name, single) {
   const hit = CURRENT_RANGES.find(r => r.match.test(name));
   if (hit) return [hit.min, hit.max];
