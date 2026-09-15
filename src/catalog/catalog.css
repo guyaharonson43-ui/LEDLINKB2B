@@ -341,6 +341,21 @@ button, input, select, textarea { font-family: 'Heebo', sans-serif; }
   transition: border-color 0.15s, background 0.15s, color 0.15s;
 }
 .driver-group-btn[aria-pressed="false"]:hover { border-color: #E8A020; color: #1C1C1C; }
+
+/* ערכי ציר סינון. ציר ארוך (הספק, זרם) נגלל בתוך עצמו — עשרות ערכי הספק
+   היו דוחפים את שאר הצירים הרחק מתחת לקפל. */
+.facet-options { display: flex; flex-wrap: wrap; gap: 6px; }
+.facet-options.long {
+  max-height: 152px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  align-content: flex-start;
+  padding-inline-end: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: #D0CCC4 transparent;
+}
+/* במגירת המובייל הפאנל כולו כבר נגלל; גלילה בתוך גלילה נתקעת שם מתחת לאצבע */
+.mobile-filter-panel .facet-options.long { max-height: none; overflow: visible; }
 .catalog-layout.with-sidebar { grid-template-columns: 240px 1fr; }
 .catalog-layout.no-sidebar   { grid-template-columns: 1fr; }
 

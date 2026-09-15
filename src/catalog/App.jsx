@@ -1,18 +1,16 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { cleanName, trackEvent }    from './utils/helpers';
-import { getStripMeta }             from './utils/stripMeta';
 import {
-  INIT_STRIP, INIT_PS, INIT_TRACK,
-  STRIP_POWER_RANGES, STRIP_LMW_RANGES,
-  TRACK_TYPE_OPTIONS, TRACK_SUBCATEGORY, SUBCATEGORY_ALIASES,
+  INIT_TRACK, TRACK_TYPE_OPTIONS, TRACK_SUBCATEGORY, SUBCATEGORY_ALIASES,
 } from './utils/filterConstants';
-import { GROUPS }                          from './utils/driverMeta';
-import { buildDriverFacets, matchesDriver } from './utils/driverFacets';
+import {
+  emptyFilters, activeFilterCount as countFacetFilters,
+  hasFacets, matchesFacets, buildFacets,
+} from './utils/catalogFacets';
 import Navbar            from './components/Navbar';
 import CategoryHeader    from './components/CategoryHeader';
 import ProductCard       from './components/ProductCard';
-import StripFilters      from './components/StripFilters';
-import DriverFilters     from './components/DriverFilters';
+import CatalogFilters    from './components/CatalogFilters';
 import ProfileFilters    from './components/ProfileFilters';
 import TrackFilters      from './components/TrackFilters';
 import SkeletonCard      from './components/SkeletonCard';
@@ -75,8 +73,8 @@ export default function App() {
       return Array.isArray(raw) ? raw.filter(r => r && typeof r === 'object' && r.q && r.tab) : [];
     } catch { return []; }
   });
-  const [stripF, setStripF]     = useState({ ...INIT_STRIP });
-  const [psF, setPsF]           = useState({ ...INIT_PS });
+  const [stripF, setStripF]     = useState(emptyFilters);
+  const [psF, setPsF]           = useState(emptyFilters);
   const [lightingSubCat, setLightingSubCat] = useState(() => {
     const p = new URLSearchParams(window.location.search);
     if (p.get('sub')) return resolveSubCat(p.get('sub'));
@@ -107,8 +105,8 @@ export default function App() {
       setActiveTab(id);
       setLightingSubCat(sub);
       setSearch('');
-      setStripF({ ...INIT_STRIP });
-      setPsF({ ...INIT_PS });
+      setStripF(emptyFilters());
+      setPsF(emptyFilters());
       setTrackF({ type: TRACK_TYPE_OPTIONS.includes(p.get('type')) ? p.get('type') : 'הכל' });
       setPage(1);
     };
@@ -144,8 +142,8 @@ export default function App() {
   const switchTab = useCallback(id => {
     setActiveTab(id);
     setSearch('');
-    setStripF({ ...INIT_STRIP });
-    setPsF({ ...INIT_PS });
+    setStripF(emptyFilters());
+    setPsF(emptyFilters());
     setTrackF({ ...INIT_TRACK });
     setLightingSubCat('הכל');
     setSidebarOpen(false);
@@ -180,37 +178,11 @@ export default function App() {
       r = r.filter(p => p.name.toLowerCase().includes(q) || (p.desc || '').toLowerCase().includes(q));
     }
 
-    if (activeTab === 'סטריפ LED') {
-      r = r.filter(p => {
-        const m = getStripMeta(p);
-        if (stripF.ip !== 'הכל' && m.ip !== stripF.ip) return false;
-        if (stripF.type !== 'הכל' && m.type !== stripF.type) return false;
-        if (stripF.color !== 'הכל' && m.color !== stripF.color) return false;
-        if (stripF.voltage !== 'הכל' && m.voltage !== stripF.voltage) return false;
-        if (stripF.cri !== 'הכל') {
-          const pCri = p.cri ?? null;
-          const minCri = parseInt(stripF.cri.replace('>', ''), 10);
-          if (pCri === null || pCri < minCri) return false;
-        }
-        if (stripF.power !== 'הכל') {
-          const range = STRIP_POWER_RANGES.find(x => x.label === stripF.power);
-          if (range && (m.power === null || m.power < range.min || m.power > range.max)) return false;
-        }
-        if (stripF.lmw !== 'הכל') {
-          const lmwM = (p.desc || '').match(/(\d+(?:\.\d+)?)\s*Lm\/W/i);
-          const val  = lmwM ? parseFloat(lmwM[1]) : null;
-          const range = STRIP_LMW_RANGES.find(x => x.label === stripF.lmw);
-          if (range && (val === null || val < range.min || val > range.max)) return false;
-        }
-        return true;
-      });
-    }
-
-    // כל לוגיקת הסינון של הדרייברים יושבת ב-driverFacets, כדי שאותו כלל
-    // בדיוק ישרת גם את הסינון וגם את חישוב המונים שליד כל צ'יפ.
-    if (activeTab === 'דרייברים') {
-      r = r.filter(p => matchesDriver(p, psF));
-    }
+    // דרייברים וסטריפים מסוננים כמו באתר היצרן — אותם צירים, אותם ערכים
+    // ו-AND גם בתוך ציר. כל הלוגיקה ב-catalogFacets, כדי שאותו כלל ישרת גם
+    // את הסינון וגם את הסתרת הערכים שלא נשאר להם מוצר.
+    if (activeTab === 'סטריפ LED') r = r.filter(p => matchesFacets(p, stripF));
+    if (activeTab === 'דרייברים')  r = r.filter(p => matchesFacets(p, psF));
 
     if (activeTab === 'גופי תאורה') {
       if (lightingSubCat !== 'הכל') r = r.filter(p => p.subCategory === lightingSubCat);
@@ -244,18 +216,21 @@ export default function App() {
     return acc;
   }, {}), [trackBase]);
 
-  // כל הדרייברים אחרי החיפוש החופשי בלבד — הבסיס שממנו נבנים הצירים והמונים,
-  // לפני שהצירים עצמם מסננים. אחרת כל בחירה הייתה מוחקת את שאר האפשרויות.
-  const driverBase = useMemo(() => {
-    let r = products.filter(p => p.category === 'דרייברים');
+  // מוצרי הטאב אחרי החיפוש החופשי בלבד — הבסיס שממנו נבנים תתי-הקטגוריות
+  // והצירים, לפני שהסינון עצמו מצמצם אותם.
+  const facetBase = useMemo(() => {
+    if (!hasFacets(activeTab)) return [];
+    let r = products.filter(p => p.category === activeTab);
     if (search.trim()) {
       const q = search.trim().toLowerCase();
       r = r.filter(p => p.name.toLowerCase().includes(q) || (p.desc || '').toLowerCase().includes(q));
     }
     return r;
-  }, [products, search]);
+  }, [products, activeTab, search]);
 
-  const driverFacets = useMemo(() => buildDriverFacets(driverBase, psF), [driverBase, psF]);
+  const facetFilters = activeTab === 'סטריפ LED' ? stripF : psF;
+  const facets = useMemo(() => buildFacets(facetBase, facetFilters, activeTab),
+    [facetBase, facetFilters, activeTab]);
 
   // הרמז השני: אם שורת הטאבים כן גולשת, הטאב הפעיל נגלל לתצוגה כדי
   // שלעולם לא ייחתך מחוץ למסך — הכשל שבגללו הגלילה בוטלה בפעם הקודמת.
@@ -273,12 +248,8 @@ export default function App() {
     [recentSearches, activeTab]);
 
   const activeFilterCount = useMemo(() => {
-    if (activeTab === 'סטריפ LED')   return Object.values(stripF).filter(v => v !== 'הכל').length;
-    if (activeTab === 'דרייברים') {
-      // group נבחר במתג שמעל הגריד ולא בסיידבר, ולכן אינו נספר כאן.
-      return Object.entries(psF).filter(([k, v]) =>
-        k !== 'group' && (Array.isArray(v) ? v.length > 0 : v !== 'הכל')).length;
-    }
+    if (activeTab === 'סטריפ LED')   return countFacetFilters(stripF);
+    if (activeTab === 'דרייברים')    return countFacetFilters(psF);
     if (activeTab === 'גופי תאורה') {
       return (lightingSubCat !== 'הכל' ? 1 : 0)
         + (showTrackFilters ? Object.values(trackF).filter(v => v !== 'הכל').length : 0);
@@ -369,8 +340,8 @@ export default function App() {
 
   const renderSidebar = () => {
     if (activeTab === 'פרופילים')   return <ProfileFilters count={filtered.length} />;
-    if (activeTab === 'סטריפ LED')  return <StripFilters filters={stripF} setFilters={setStripF} count={filtered.length} />;
-    if (activeTab === 'דרייברים')   return <DriverFilters filters={psF} setFilters={setPsF} facets={driverFacets} count={filtered.length} />;
+    if (activeTab === 'סטריפ LED')  return <CatalogFilters filters={stripF} setFilters={setStripF} facets={facets} count={filtered.length} />;
+    if (activeTab === 'דרייברים')   return <CatalogFilters filters={psF} setFilters={setPsF} facets={facets} count={filtered.length} />;
     if (activeTab === 'גופי תאורה') return (
       <div style={{ padding: '20px 0' }}>
         <div style={{ fontSize: 12, fontWeight: 800, letterSpacing: '.08em', color: '#595959', marginBottom: 12 }}>קטגוריה</div>
@@ -571,7 +542,7 @@ export default function App() {
               <div style={{ textAlign: 'center', padding: '80px 0', color: '#BBBBBB' }}>
                 <div style={{ fontSize: 48, marginBottom: 16 }}>◯</div>
                 <div style={{ fontSize: 16, color: '#888888' }}>לא נמצאו מוצרים</div>
-                <button onClick={() => { setSearch(''); setStripF({ ...INIT_STRIP }); setPsF({ ...INIT_PS }); }}
+                <button onClick={() => { setSearch(''); setStripF(emptyFilters()); setPsF(emptyFilters()); }}
                   style={{ marginTop: 16, color: '#E8A020', background: 'none', border: 'none', cursor: 'pointer', fontSize: 14 }}>
                   נקה סינון
                 </button>

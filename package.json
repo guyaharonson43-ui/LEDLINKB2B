@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "node scripts/generate-datasheet-manifest.mjs && vite build && node scripts/generate-static.mjs",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sync:qlt": "node scripts/sync-qlt-facets.mjs"
   },
   "repository": {
     "type": "git",
