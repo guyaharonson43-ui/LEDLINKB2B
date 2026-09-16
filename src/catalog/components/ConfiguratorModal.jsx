@@ -1,13 +1,13 @@
 import { useRef, useEffect } from 'react';
 import { initConfigurator } from '../utils/configurator';
 
-export default function ConfiguratorModal({ onClose }) {
+export default function ConfiguratorModal({ onClose, profiles, profileId, shared }) {
   const wrapRef = useRef(null);
 
   useEffect(() => {
     let cleanup = null;
     if (wrapRef.current) {
-      cleanup = initConfigurator(wrapRef.current, onClose);
+      cleanup = initConfigurator(wrapRef.current, onClose, { profiles, profileId, shared });
     }
     return () => { if (typeof cleanup === 'function') cleanup(); };
   }, []);

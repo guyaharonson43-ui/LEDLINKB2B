@@ -1,8 +1,71 @@
 ﻿// LEDLink Profile Configurator v9.4
 // Vanilla-JS wizard: template selection → canvas drawing → design options → BOM
-// Interface: initConfigurator(rootEl, onCloseFn) → cleanup function
+// Interface: initConfigurator(rootEl, onCloseFn, opts) → cleanup function
+//   opts.profiles  — [{ id, name }] דגמי הפרופילים לבחירה בשלב 3
+//   opts.profileId — דגם שנבחר מראש (כפתור "תכנן עם הפרופיל הזה")
+//   opts.shared    — תכנון מפוענח מקישור (decodeDesign) → נפתח ישר בסיכום
 
-export function initConfigurator(rootEl, onCloseFn) {
+var SHAPE_NAMES   = { I: 'קו ישר', L: "צורת ר'", U: "צורת ח'", FREE: 'שרטוט חופשי' };
+var COLOR_NAMES   = { BLK: 'שחור מט', WHT: 'לבן מט' };
+var LIGHTING_CODE = { 'מרכזית': 'c', 'אווירה': 'm' };
+var INSTALL_CODE  = { 'שקוע': 'r', 'צמוד/תלוי': 's' };
+
+function invert(o) { var r = {}; Object.keys(o).forEach(function(k) { r[o[k]] = k; }); return r; }
+
+// התכנון נארז לפרמטר ?cfg= בכתובת, כדי שהשרטוט יגיע בקישור בתוך הודעת הוואטסאפ
+// (קישור wa.me לא יכול לשאת קובץ). הכול ASCII — מחרוזות עבריות מקודדות לאות אחת.
+export function encodeDesign(state) {
+  var xs = state.vertices.map(function(v) { return v.x; });
+  var ys = state.vertices.map(function(v) { return v.y; });
+  var minX = Math.min.apply(null, xs), minY = Math.min.apply(null, ys);
+  var data = {
+    v: 1, m: state.mode,
+    p: state.vertices.map(function(v) { return [Math.round(v.x - minX), Math.round(v.y - minY)]; }),
+    s: state.inputs.slice(0, state.vertices.length - 1).map(Number),
+    f: state.feedIndex, c: state.color, k: state.cct,
+    l: LIGHTING_CODE[state.lightingType], i: INSTALL_CODE[state.installType],
+  };
+  if (state.profileId) data.pr = state.profileId;
+  return btoa(JSON.stringify(data)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+// מחזיר null על כל קלט שאינו תכנון תקין — הקישור מגיע מבחוץ.
+export function decodeDesign(code) {
+  try {
+    var b64 = String(code).replace(/-/g, '+').replace(/_/g, '/');
+    var d = JSON.parse(atob(b64 + '==='.slice((b64.length + 3) % 4)));
+    var isNum = function(n, min, max) { return typeof n === 'number' && isFinite(n) && n >= min && n <= max; };
+    if (!d || d.v !== 1 || !SHAPE_NAMES[d.m]) return null;
+    if (!Array.isArray(d.p) || d.p.length < 2 || d.p.length > 40) return null;
+    if (!d.p.every(function(pt) { return Array.isArray(pt) && isNum(pt[0], 0, 1e4) && isNum(pt[1], 0, 1e4); })) return null;
+    if (!Array.isArray(d.s) || d.s.length !== d.p.length - 1 || !d.s.every(function(n) { return isNum(n, 0.1, 1e5); })) return null;
+    if (!isNum(d.f, 0, d.s.length - 1) || !COLOR_NAMES[d.c] || (d.k !== '3000K' && d.k !== '4000K')) return null;
+    var lightingType = invert(LIGHTING_CODE)[d.l], installType = invert(INSTALL_CODE)[d.i];
+    if (!lightingType || !installType) return null;
+    return {
+      mode: d.m,
+      vertices: d.p.map(function(pt) { return { x: pt[0], y: pt[1] }; }),
+      inputs: d.s.map(String),
+      feedIndex: d.f, color: d.c, cct: d.k,
+      lightingType: lightingType, installType: installType,
+      profileId: typeof d.pr === 'string' && /^[\w-]{1,60}$/.test(d.pr) ? d.pr : '',
+    };
+  } catch (e) {
+    return null;
+  }
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, function(ch) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch];
+  });
+}
+
+export function initConfigurator(rootEl, onCloseFn, opts) {
+  opts = opts || {};
+  var profiles = opts.profiles || [];
+  var profileOptions = '<option value="">לא בטוח — המליצו לי על דגם</option>'
+    + profiles.map(function(p) { return '<option value="' + escapeHtml(p.id) + '">' + escapeHtml(p.name) + '</option>'; }).join('');
   // 1. Inject HTML structure
   rootEl.innerHTML = `
     <div class="cfg-card">
@@ -41,6 +104,8 @@ export function initConfigurator(rootEl, onCloseFn) {
       <!-- Step 3: Design -->
       <div class="cfg-step" id="cfg-step-3">
         <div class="cfg-step-title">חתימת אור וגימור</div>
+        <label class="cfg-label" for="cfg-profile">דגם פרופיל:</label>
+        <select class="cfg-select" id="cfg-profile">${profileOptions}</select>
         <span class="cfg-label">צבע פרופיל:</span>
         <div class="cfg-grid-2">
           <div class="cfg-opt selected" id="cfg-c-BLK">שחור מט</div>
@@ -69,8 +134,9 @@ export function initConfigurator(rootEl, onCloseFn) {
       <!-- Step 4: BOM -->
       <div class="cfg-step" id="cfg-step-4">
         <div class="cfg-step-title" style="color:#E8A020">מפרט מוכן לייצור!</div>
+        <div class="cfg-shared-note" id="cfg-shared-note" style="display:none">🔗 תכנון שנפתח מקישור. אפשר לערוך אותו או להוריד את השרטוט.</div>
         <img id="cfg-snapshot" class="cfg-snapshot" alt="שרטוט טכני">
-        <button class="cfg-btn-dl" id="cfg-dl-btn">💾 הורד שרטוט (צרף לווטסאפ)</button>
+        <button class="cfg-btn-dl" id="cfg-dl-btn">💾 הורד שרטוט (PNG)</button>
         <div class="cfg-bom-box" id="cfg-bom"></div>
         <button id="cfg-wa-link" class="cfg-btn-wa">💬 שלח תכנון, נחזור אליך</button>
         <div class="cfg-nav" style="margin-top:14px">
@@ -95,6 +161,7 @@ export function initConfigurator(rootEl, onCloseFn) {
     mode: 'I', vertices: [], feedIndex: 0, feedSelected: false,
     inputs: [], color: 'BLK', cct: '3000K',
     lightingType: 'מרכזית', installType: 'שקוע', locked: false,
+    profileId: opts.profileId || '',
   };
 
   // 4. Helpers
@@ -339,7 +406,10 @@ export function initConfigurator(rootEl, onCloseFn) {
   }
 
   function buildExportCanvas() {
-    var cw = canvas.width, ch = canvas.height;
+    // שוליים לרוחב — בנייד הקנבס צר ותוויות "צלע N" של צלעות אנכיות נחתכות בקצוות
+    var PADX = 70;
+    var cw = canvas.width + PADX * 2, ch = canvas.height;
+    var verts = state.vertices.map(function(v) { return { x: v.x + PADX, y: v.y }; });
     var HDR = 54, FTR = 34;
     var oc = document.createElement('canvas'); oc.width = cw; oc.height = ch + HDR + FTR;
     oc.style.direction = 'rtl';
@@ -365,43 +435,50 @@ export function initConfigurator(rootEl, onCloseFn) {
     for (var gy = 0; gy < ch; gy += 30) { ox.beginPath(); ox.moveTo(0, HDR + gy); ox.lineTo(cw, HDR + gy); ox.stroke(); }
 
     var cx = 0, cy = 0;
-    state.vertices.forEach(function(v) { cx += v.x; cy += v.y; });
-    cx /= state.vertices.length; cy /= state.vertices.length;
+    verts.forEach(function(v) { cx += v.x; cy += v.y; });
+    cx /= verts.length; cy /= verts.length;
 
-    for (var i = 0; i < state.vertices.length - 1; i++) {
-      var p1 = state.vertices[i], p2 = state.vertices[i + 1];
+    for (var i = 0; i < verts.length - 1; i++) {
+      var p1 = verts[i], p2 = verts[i + 1];
       var isFeed = state.feedSelected && i === state.feedIndex;
       var x1 = p1.x, y1 = p1.y + HDR, x2 = p2.x, y2 = p2.y + HDR;
       ox.beginPath(); ox.lineWidth = 10; ox.lineCap = 'square';
       ox.strokeStyle = isFeed ? '#E8A020' : '#1C1C1C';
       ox.moveTo(x1, y1); ox.lineTo(x2, y2); ox.stroke();
+
+      // תווית המידה יוצאת החוצה מהצורה, ותווית ההזנה לצד השני — כדי שלא יתנגשו
+      var smx = (p1.x + p2.x) / 2, smy = (p1.y + p2.y) / 2;
+      var isH = Math.abs(p2.x - p1.x) > Math.abs(p2.y - p1.y);
+      var outSign = isH ? (smy <= cy ? -1 : 1) : (smx >= cx ? 1 : -1);
+      ox.direction = 'rtl';
       if (isFeed) {
         var fx = (x1 + x2) / 2, fy = (y1 + y2) / 2;
         ox.font = 'bold 10px Heebo,sans-serif'; ox.textAlign = 'center'; ox.textBaseline = 'middle';
-        ox.fillStyle = '#E8A020'; ox.fillText('⚡ הזנה', fx, fy + 18);
+        var fw = ox.measureText('⚡ הזנה').width;
+        ox.fillStyle = '#E8A020';
+        if (isH) ox.fillText('⚡ הזנה', fx, fy - outSign * 18);
+        else     ox.fillText('⚡ הזנה', fx - outSign * (fw / 2 + 12), fy);
       }
       if (state.inputs[i]) {
-        var OFF = 26;
-        var smx = (p1.x + p2.x) / 2, smy = (p1.y + p2.y) / 2;
-        var isH = Math.abs(p2.x - p1.x) > Math.abs(p2.y - p1.y);
+        // מספר הצלע בשרטוט — ההודעה מפרטת מידות והזנה לפי המספרים האלה
+        var text = 'צלע ' + (i + 1) + ': ' + state.inputs[i] + ' ס"מ';
+        ox.font = 'bold 11px Heebo,sans-serif'; ox.textAlign = 'center'; ox.textBaseline = 'middle';
+        var tw = ox.measureText(text).width;
         var lx, ly;
         if (isH) {
           lx = (x1 + x2) / 2;
-          ly = (smy <= cy ? (smy + HDR) - OFF : (smy + HDR) + OFF);
+          ly = smy + HDR + outSign * 26;
         } else {
-          lx = (smx >= cx ? smx + OFF : smx - OFF);
+          lx = smx + outSign * (tw / 2 + 16);
           ly = (y1 + y2) / 2;
         }
-        var text = state.inputs[i] + ' ס"מ';
-        ox.font = 'bold 11px Heebo,sans-serif'; ox.textAlign = 'center'; ox.textBaseline = 'middle';
-        var tw = ox.measureText(text).width;
         ox.fillStyle = '#F4F4F0'; ox.fillRect(lx - tw / 2 - 5, ly - 8, tw + 10, 16);
         ox.strokeStyle = '#E0DDD6'; ox.lineWidth = 1; ox.strokeRect(lx - tw / 2 - 5, ly - 8, tw + 10, 16);
         ox.fillStyle = '#1C1C1C'; ox.fillText(text, lx, ly);
       }
     }
 
-    state.vertices.forEach(function(v) {
+    verts.forEach(function(v) {
       ox.beginPath(); ox.arc(v.x, v.y + HDR, 4, 0, Math.PI * 2);
       ox.fillStyle = '#E8A020'; ox.fill();
       ox.strokeStyle = '#1C1C1C'; ox.lineWidth = 1.5; ox.stroke();
@@ -413,9 +490,17 @@ export function initConfigurator(rootEl, onCloseFn) {
     ox.direction = 'rtl';
     ox.font = '10px Heebo,sans-serif'; ox.textAlign = 'center'; ox.textBaseline = 'middle';
     ox.fillStyle = '#666';
-    ox.fillText(state.installType + ' · ' + state.lightingType + ' · ' + state.cct + ' · ' + state.color, cw / 2, HDR + ch + 2 + (FTR - 2) / 2);
+    var profile = currentProfile();
+    ox.fillText((profile ? 'פרופיל ' + profile.name + ' · ' : '')
+      + state.installType + ' · ' + state.lightingType + ' · ' + state.cct + ' · ' + COLOR_NAMES[state.color],
+      cw / 2, HDR + ch + 2 + (FTR - 2) / 2);
     document.body.removeChild(oc);
     return oc;
+  }
+
+  function currentProfile() {
+    if (!state.profileId) return null;
+    return profiles.find(function(p) { return p.id === state.profileId; }) || { id: state.profileId, name: state.profileId };
   }
 
   function captureCanvas() {
@@ -429,7 +514,7 @@ export function initConfigurator(rootEl, onCloseFn) {
     o.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:999999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px;box-sizing:border-box;';
     o.innerHTML = '<div style="color:#E8A020;font-family:Heebo,sans-serif;font-size:15px;font-weight:700;text-align:center;">לחץ לחיצה ארוכה על השרטוט ← "שמור תמונה"</div>'
       + '<img src="' + dataURL + '" style="max-width:100%;max-height:55vh;border-radius:10px;border:2px solid #E8A020;">'
-      + '<button style="background:#E8A020;color:#111;border:none;border-radius:10px;padding:13px 32px;font-family:Heebo,sans-serif;font-size:16px;font-weight:700;cursor:pointer;">סגרתי — המשך לוואטסאפ</button>';
+      + '<button style="background:#E8A020;color:#111;border:none;border-radius:10px;padding:13px 32px;font-family:Heebo,sans-serif;font-size:16px;font-weight:700;cursor:pointer;">סגור</button>';
     o.querySelector('button').onclick = function() { document.body.removeChild(o); if (onClose) onClose(); };
     document.body.appendChild(o);
   }
@@ -457,10 +542,10 @@ export function initConfigurator(rootEl, onCloseFn) {
     var wpm   = (state.lightingType === 'מרכזית') ? 30 : 10;
     var reqW  = totalM * wpm * 1.2;
     var PSU   = [25, 50, 75, 100, 150, 200, 250, 350];
-    var psuText = '', splitNote = '';
+    var psuText = '', splitNote = '', num = 1;
 
     if (reqW > 350 || totalM > 5) {
-      var num = Math.ceil(Math.max(reqW / 350, totalM / 5));
+      num = Math.ceil(Math.max(reqW / 350, totalM / 5));
       var wpu = reqW / num;
       var mpsu = PSU.find(function(w) { return w >= wpu; }) || 350;
       psuText   = num + " יח' זהות של " + mpsu + 'W';
@@ -470,10 +555,21 @@ export function initConfigurator(rootEl, onCloseFn) {
       psuText = "יח' אחת של " + matchedPsu + 'W';
     }
 
-    var html = '<div class="cfg-bom-item"><span>אורך חיתוך אלומיניום</span><span class="cfg-bom-val">' + totalM.toFixed(2) + ' מ\'</span></div>';
+    var profile   = currentProfile();
+    var sides     = state.vertices.length - 1;
+    var colorName = COLOR_NAMES[state.color];
+    var feedText  = num > 1
+      ? num + ' נקודות הזנה (הראשית בצלע ' + (state.feedIndex + 1) + ')'
+      : 'צלע ' + (state.feedIndex + 1);
+    var sideLines = state.inputs.slice(0, sides).map(function(v, i) { return 'צלע ' + (i + 1) + ': ' + v + ' ס"מ'; });
+
+    var html = '<div class="cfg-bom-item"><span>דגם פרופיל</span><span class="cfg-bom-val">' + (profile ? escapeHtml(profile.name) : 'לא נבחר — נמליץ') + '</span></div>';
+    html += '<div class="cfg-bom-item"><span>צורה</span><span class="cfg-bom-val">' + SHAPE_NAMES[state.mode] + ' · ' + sides + ' צלעות</span></div>';
+    html += '<div class="cfg-bom-item"><span>מידות</span><span class="cfg-bom-val">' + sideLines.join('<br>') + '</span></div>';
+    html += '<div class="cfg-bom-item"><span>אורך חיתוך אלומיניום</span><span class="cfg-bom-val">' + totalM.toFixed(2) + ' מ\'</span></div>';
     html += '<div class="cfg-bom-item"><span>סוג התקנה / ייעוד</span><span class="cfg-bom-val">' + state.installType + ' / ' + state.lightingType + '</span></div>';
-    html += '<div class="cfg-bom-item"><span>גוון וגימור</span><span class="cfg-bom-val">' + state.cct + ' / ' + state.color + '</span></div>';
-    html += '<div class="cfg-bom-item"><span>הזנת חשמל ⚡</span><span class="cfg-bom-val">צלע מס\' ' + (state.feedIndex + 1) + '</span></div>';
+    html += '<div class="cfg-bom-item"><span>גוון וגימור</span><span class="cfg-bom-val">' + state.cct + ' / ' + colorName + '</span></div>';
+    html += '<div class="cfg-bom-item"><span>הזנת חשמל ⚡</span><span class="cfg-bom-val">' + feedText + '</span></div>';
     if (corners > 0) html += '<div class="cfg-bom-item"><span>פינות 90° + הלחמות</span><span class="cfg-bom-val">' + corners + '</span></div>';
     html += '<div class="cfg-bom-item" style="border-bottom:none;flex-direction:column;gap:4px">'
           + '<div style="display:flex;justify-content:space-between;width:100%"><span>ספקי כוח (24V)</span><span class="cfg-bom-val">' + psuText + '</span></div>'
@@ -481,9 +577,19 @@ export function initConfigurator(rootEl, onCloseFn) {
           + '</div>';
     rootEl.querySelector('#cfg-bom').innerHTML = html;
 
-    var msg = '*הזמנת מפרט LEDLink (מצורף שרטוט)*\n---\nאורך: ' + totalM.toFixed(2) + ' מ\'\nייעוד: ' + state.lightingType
-            + '\nהתקנה: ' + state.installType + '\nגוון/גימור: ' + state.cct + '/' + state.color
-            + '\nספקים: ' + psuText + '\n📌 הזנה: צלע ' + (state.feedIndex + 1) + '\n\n*נא לצרף את תמונת השרטוט ששמרתם.*';
+    var shareUrl = location.origin + location.pathname + '?cfg=' + encodeDesign(state);
+    var msg = '*הזמנת מפרט LEDLink*\n---'
+            + '\nפרופיל: ' + (profile ? profile.name + ' (מק"ט ' + profile.id + ')' : 'לא נבחר — אשמח להמלצה')
+            + '\nצורה: ' + SHAPE_NAMES[state.mode] + ' · ' + sides + ' צלעות' + (corners > 0 ? ' · ' + corners + ' פינות' : '')
+            + '\n' + sideLines.join('\n')
+            + '\nאורך כולל: ' + totalM.toFixed(2) + ' מ\''
+            + '\nייעוד: ' + state.lightingType + ' (' + wpm + 'W/m)'
+            + '\nהתקנה: ' + state.installType
+            + '\nגוון/גימור: ' + state.cct + ' / ' + colorName
+            + '\nספקים (24V): ' + psuText
+            + '\n⚡ הזנה: ' + feedText
+            + (splitNote ? '\n' + splitNote : '')
+            + '\n\n📐 השרטוט המלא:\n' + shareUrl;
     var isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
     waUrl = isMobile
       ? 'https://wa.me/972504722550?text=' + encodeURIComponent(msg)
@@ -512,33 +618,22 @@ export function initConfigurator(rootEl, onCloseFn) {
   rootEl.querySelector('#cfg-tool-clear').onclick  = clearCanvas;
   rootEl.querySelector('#cfg-dl-btn').onclick      = downloadSnapshot;
 
-  // WA send overlay — mounted at body level (avoids backdrop-filter clipping)
-  var waUrl     = '';
-  var waLink    = rootEl.querySelector('#cfg-wa-link');
-  var waOverlay = document.createElement('div');
-  waOverlay.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:99999;align-items:center;justify-content:center;';
-  waOverlay.innerHTML = '<div style="background:#0f1724;border:1px solid #E8A020;border-radius:14px;padding:28px 24px 24px;max-width:340px;width:90%;position:relative;text-align:right;font-family:Heebo,sans-serif">'
-    + '<button id="cfg-wa-close-btn" style="position:absolute;top:12px;left:14px;background:transparent;border:none;color:#aaa;font-size:22px;cursor:pointer;line-height:1">✕</button>'
-    + '<div style="font-size:32px;margin-bottom:12px">📎</div>'
-    + '<div style="font-size:16px;font-weight:700;color:#E8A020;margin-bottom:10px">רגע לפני השליחה</div>'
-    + '<div style="font-size:14px;color:#E0DDD6;line-height:1.7">השרטוט שלך יורד אוטומטית.<br>צרף אותו להודעת הוואטסאפ כדי שנוכל לעבד את ההזמנה מהר יותר.</div>'
-    + (isIOS ? '<div style="font-size:12px;color:#aaa;margin-top:10px;line-height:1.6">📱 בשלב הבא תראה את השרטוט — לחץ לחיצה ארוכה לשמירה, ואז לחץ "פתח וואטסאפ".</div>' : '')
-    + '</div>';
-  document.body.appendChild(waOverlay);
+  // השרטוט נשלח כקישור בתוך ההודעה, כך שאין צורך לצרף קובץ
+  var waUrl      = '';
+  var waLink     = rootEl.querySelector('#cfg-wa-link');
+  var sharedNote = rootEl.querySelector('#cfg-shared-note');
+  waLink.onclick = function() { window.open(waUrl, '_blank'); };
 
-  function dismissWaOverlay() {
-    waOverlay.style.display = 'none';
-    if (isIOS) {
-      var dataURL = buildExportCanvas().toDataURL('image/png');
-      showIOSSaveOverlay(dataURL, function() { window.open(waUrl, '_blank'); });
-    } else {
-      downloadSnapshot();
-      window.open(waUrl, '_blank');
-    }
+  // מצב תצוגה מקישור: מסתירים את השליחה עד שמתחילים לערוך
+  function setSharedView(on) {
+    sharedNote.style.display = on ? 'block' : 'none';
+    waLink.style.display     = on ? 'none' : '';
   }
-  waLink.onclick = function() { waOverlay.style.display = 'flex'; };
-  waOverlay.querySelector('#cfg-wa-close-btn').onclick = dismissWaOverlay;
-  waOverlay.addEventListener('click', function(e) { if (e.target === waOverlay) dismissWaOverlay(); });
+  rootEl.querySelector('#cfg-back-3').addEventListener('click', function() { setSharedView(false); });
+  rootEl.querySelector('#cfg-restart').addEventListener('click', function() { setSharedView(false); });
+
+  var profileSelect = rootEl.querySelector('#cfg-profile');
+  profileSelect.onchange = function() { state.profileId = profileSelect.value; };
 
   // Design option buttons
   var designGroups = [
@@ -547,17 +642,51 @@ export function initConfigurator(rootEl, onCloseFn) {
     { ids: ['cfg-lighting-central', 'cfg-lighting-mood'], key: 'lightingType', vals: ['מרכזית', 'אווירה'] },
     { ids: ['cfg-install-recessed', 'cfg-install-surface'], key: 'installType', vals: ['שקוע', 'צמוד/תלוי'] },
   ];
+  function selectDesign(grp, idx) {
+    grp.ids.forEach(function(gid, i) { rootEl.querySelector('#' + gid).classList.toggle('selected', i === idx); });
+    state[grp.key] = grp.vals[idx];
+  }
   designGroups.forEach(function(grp) {
     grp.ids.forEach(function(id, idx) {
       var el = rootEl.querySelector('#' + id);
-      if (!el) return;
-      el.onclick = function() {
-        grp.ids.forEach(function(gid) { rootEl.querySelector('#' + gid).classList.remove('selected'); });
-        el.classList.add('selected');
-        state[grp.key] = grp.vals[idx];
-      };
+      if (el) el.onclick = function() { selectDesign(grp, idx); };
     });
   });
+
+  // דגם שנבחר מראש או מקישור ואינו ברשימה — מוסיפים אותו כדי שלא ייעלם בשמירה
+  function syncProfileSelect() {
+    if (state.profileId && !profileSelect.querySelector('option[value="' + CSS.escape(state.profileId) + '"]')) {
+      var opt = document.createElement('option');
+      opt.value = state.profileId; opt.textContent = state.profileId;
+      profileSelect.appendChild(opt);
+    }
+    profileSelect.value = state.profileId;
+  }
+  syncProfileSelect();
+
+  // פתיחה מקישור ?cfg= — משחזרים את התכנון ומציגים ישר את הסיכום
+  function restoreShared(d) {
+    state.mode = d.mode; state.inputs = d.inputs; state.feedIndex = d.feedIndex; state.feedSelected = true;
+    state.profileId = d.profileId; state.locked = true;
+    designGroups.forEach(function(grp) { selectDesign(grp, Math.max(0, grp.vals.indexOf(d[grp.key]))); });
+    syncProfileSelect();
+    goToStep(2, true);
+    setTimeout(function() {
+      resize();
+      // השרטוט נשמר בפיקסלים של מסך השולח — מקטינים כדי שייכנס לקנבס הנוכחי
+      var xs = d.vertices.map(function(v) { return v.x; });
+      var ys = d.vertices.map(function(v) { return v.y; });
+      var w = Math.max.apply(null, xs), h = Math.max.apply(null, ys);
+      var scale = Math.min(1, (canvas.width - 140) / (w || 1), (canvas.height - 100) / (h || 1));
+      state.vertices = d.vertices.map(function(v) { return { x: v.x * scale, y: v.y * scale }; });
+      toolRotate.style.display = 'block'; toolClear.style.display = 'block'; statusEl.innerText = '';
+      recenterShape();
+      redrawCanvas();
+      generateFinalBOM();
+      setSharedView(true);
+    }, 60);
+  }
+  if (opts.shared) restoreShared(opts.shared);
 
   // Cleanup function returned to caller
   return function cleanup() {
@@ -565,6 +694,5 @@ export function initConfigurator(rootEl, onCloseFn) {
     canvas.removeEventListener('pointermove', onPointerMove);
     canvas.removeEventListener('pointerup',   onPointerUp);
     window.removeEventListener('popstate', onPopState);
-    if (waOverlay && waOverlay.parentNode) waOverlay.parentNode.removeChild(waOverlay);
   };
 }

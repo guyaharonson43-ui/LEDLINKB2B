@@ -53,7 +53,7 @@ function Lightbox({ src, alt, onClose }) {
 // התוצאה הייתה הורדה כפולה של אותם בייטים תחת URL שני, במקום שימוש במה
 // שכבר במטמון מהכרטיס.
 
-export default function ProductModal({ product: initialProduct, variants, onClose }) {
+export default function ProductModal({ product: initialProduct, variants, onClose, onDesign }) {
   // הווריאנט הנבחר יושב ב-state מקומי, ושאר הקומפוננטה ממשיכה לקרוא ל-`product`.
   // כך תמונה, מפרט, datasheet, לינק השיתוף וטקסט הוואטסאפ מתחלפים יחד.
   const [product, setProduct] = useState(initialProduct);
@@ -307,6 +307,13 @@ export default function ProductModal({ product: initialProduct, variants, onClos
               {copied ? '✓ הועתק' : '🔗 העתק לינק'}
             </button>
           </div>
+          {onDesign && (
+            <button onClick={() => onDesign(product.id)} className="btn-outline"
+              style={{ width: '100%', marginTop: 10, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                gap: 8, cursor: 'pointer', border: 'none' }}>
+              ✏️ תכנן עם הפרופיל הזה
+            </button>
+          )}
         </div>
       </div>
     </div>

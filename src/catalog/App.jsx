@@ -20,10 +20,20 @@ import Footer            from './components/Footer';
 import { Icons }         from './components/Icons';
 import ProductModal      from './components/ProductModal';
 import ConfiguratorModal from './components/ConfiguratorModal';
+import { decodeDesign }  from './utils/configurator';
 import productsDataRaw   from '../../products_data_with_lighting';
 
 // Pre-process once at module init — products are available before first render
 const allProducts = productsDataRaw.map(p => ({ ...p, name: cleanName(p.name) }));
+const PROFILE_OPTIONS = allProducts
+  .filter(p => p.category === 'פרופילים')
+  .map(p => ({ id: p.id, name: p.name }));
+
+// תכנון פרופיל שנשלח בקישור ?cfg= (מהודעת הוואטסאפ של המתכנן)
+const sharedDesign = (() => {
+  const code = new URLSearchParams(window.location.search).get('cfg');
+  return code ? decodeDesign(code) : null;
+})();
 
 const TABS = [
   { id: 'דרייברים',    label: 'דרייברים',    desc: 'ספקי מתח LED מאירופה — מתח קבוע, זרם קבוע, עמעום' },
@@ -44,6 +54,7 @@ export default function App() {
   const [products]              = useState(allProducts);
   const [activeTab, setActiveTab] = useState(() => {
     const p = new URLSearchParams(window.location.search);
+    if (sharedDesign) return 'פרופילים';
     const productId = p.get('product');
     if (productId) {
       const found = allProducts.find(q => q.id === decodeURIComponent(productId));
@@ -88,7 +99,9 @@ export default function App() {
     return { type: TRACK_TYPE_OPTIONS.includes(type) ? type : 'הכל' };
   });
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [showCfg, setShowCfg]   = useState(false);
+  const [showCfg, setShowCfg]   = useState(() => !!sharedDesign);
+  // אפשרויות פתיחה של המתכנן: דגם שנבחר מראש או תכנון מקישור
+  const [cfgOpts, setCfgOpts]   = useState(() => ({ shared: sharedDesign }));
   const [page, setPage]         = useState(1);
   const [loading]               = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -101,6 +114,8 @@ export default function App() {
   // Browser back/forward
   useEffect(() => {
     const onPop = e => {
+      // "חזור" בין שלבי המתכנן מטופל בתוך configurator.js — לא לאפס כאן לשונית וסינונים
+      if (e.state && e.state.cfgStep) return;
       const p   = new URLSearchParams(window.location.search);
       const id  = (e.state && e.state.tab) || p.get('tab') || 'גופי תאורה';
       const sub = resolveSubCat((e.state && e.state.sub) || p.get('sub')) || 'הכל';
@@ -355,6 +370,16 @@ export default function App() {
       .filter(p => p.variantFamily === selected.variantFamily)
       .sort((a, b) => a.variantOrder - b.variantOrder);
   }, [products, selected]);
+
+  const closeProduct = () => {
+    setSelected(null);
+    // מסירים רק את ?product= — בנייה מחדש של הכתובת מאפסת גם את ?sub=/?type=
+    // ומחזירה את המשתמש לתחילת הקטגוריה אחרי סגירת חלון מוצר.
+    const url = new URL(window.location.href);
+    url.searchParams.delete('product');
+    if (activeTab) url.searchParams.set('tab', activeTab);
+    history.replaceState(history.state, '', url.toString());
+  };
 
   const tabInfo    = TABS.find(t => t.id === activeTab);
   const showFilters = activeTab !== 'פרופילים';
@@ -617,19 +642,25 @@ export default function App() {
       </button>
 
       {selected && (
-        <ProductModal product={selected} variants={selectedVariants} onClose={() => {
-          setSelected(null);
-          // מסירים רק את ?product= — בנייה מחדש של הכתובת מאפסת גם את ?sub=/?type=
-          // ומחזירה את המשתמש לתחילת הקטגוריה אחרי סגירת חלון מוצר.
-          const url = new URL(window.location.href);
-          url.searchParams.delete('product');
-          if (activeTab) url.searchParams.set('tab', activeTab);
-          history.replaceState(history.state, '', url.toString());
-        }} />
+        <ProductModal product={selected} variants={selectedVariants} onClose={closeProduct}
+          onDesign={selected.category === 'פרופילים' ? profileId => {
+            closeProduct();
+            setCfgOpts({ profileId });
+            setShowCfg(true);
+          } : undefined} />
       )}
 
       {showCfg && (
-        <ConfiguratorModal onClose={() => setShowCfg(false)} />
+        <ConfiguratorModal profiles={PROFILE_OPTIONS} profileId={cfgOpts.profileId} shared={cfgOpts.shared}
+          onClose={() => {
+            setShowCfg(false);
+            setCfgOpts({});
+            const url = new URL(window.location.href);
+            if (url.searchParams.has('cfg')) {
+              url.searchParams.delete('cfg');
+              history.replaceState(history.state, '', url.toString());
+            }
+          }} />
       )}
     </div>
   );
