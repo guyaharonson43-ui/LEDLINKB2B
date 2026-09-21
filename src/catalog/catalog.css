@@ -712,7 +712,8 @@ a:focus-visible,
    אותן, ולכן במקום לצוף כמלבן על המשטח הן ממלאות את האריח מקצה לקצה. כך
    המסגרת נעלמת בלי לגעת בתוכן. מזוהות לפי הנתיב: אחרי חיתוך גופי התאורה,
    הדרייברים והפרופילים, רק הן נותרו תחת strips/. */
-.product-img-stage:has(> .product-img[src*="strips/"]) {
+.product-img-stage:has(> .product-img[src*="strips/"]),
+.product-img-stage:has(> .product-img[src*="-render."]) {
   position: absolute;
   inset: 0;
   left: 0;
@@ -721,7 +722,8 @@ a:focus-visible,
   aspect-ratio: auto;
   transform: none;
 }
-.product-img[src*="strips/"] {
+.product-img[src*="strips/"],
+.product-img[src*="-render."] {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -729,7 +731,8 @@ a:focus-visible,
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
-.product-card:hover .product-img[src*="strips/"] { transform: scale(1.05); }
+.product-card:hover .product-img[src*="strips/"],
+.product-card:hover .product-img[src*="-render."] { transform: scale(1.05); }
 
 .mobile-filter-btn { border-radius: 0; }
 
