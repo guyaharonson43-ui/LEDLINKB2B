@@ -118,7 +118,7 @@ git push -u origin feat/my-change  # לשלוח ל-GitHub
 **מה זה:** מסד נתונים בענן (PostgreSQL), עם התחברות משתמשים, אחסון קבצים ו-API מוכן.
 
 **מתי הוא רלוונטי:**
-- ניהול מוצרים ממסך ניהול, במקום לערוך את `products_data.js`
+- ניהול מוצרים ממסך ניהול, במקום לערוך את קבצי המוצרים
 - שמירת לידים/הצעות מחיר מטופס באתר
 - אזור לקוחות עם התחברות (מחירון B2B אישי)
 - עדכון מלאי או מחירים בלי קומיט
@@ -127,7 +127,7 @@ git push -u origin feat/my-change  # לשלוח ל-GitHub
 
 | נתונים | איפה נמצאים |
 |--------|-------------|
-| מוצרים | `products_data.js`, `lighting_products.js` |
+| מוצרים | `products_data_with_lighting.js` (הקטלוג טוען אותו), ועותקים ב-`products_data.js` ו-`lighting_products.js` |
 | דפי מוצר (PDF) | `datasheets_data.js` + תיקיית `datasheets/` |
 | תמונות | `product-images/`, `strips/`, `assets/` |
 
@@ -152,12 +152,6 @@ git push -u origin feat/my-change  # לשלוח ל-GitHub
 |-----------|-------|
 | לראות את האתר מקומית | `npm install` ואז `npm run dev` |
 | לבדוק שהבנייה עובדת | `npm run build` ואז `npm run preview` |
-| לעדכן מוצר | לערוך `products_data.js` → PR → Merge |
+| לעדכן מוצר | לערוך `products_data_with_lighting.js` → PR → Merge |
 | לבדוק למה האתר לא התעדכן | GitHub → Actions → הריצה האחרונה |
 | לחזור לגרסה קודמת | ב-PR הרלוונטי ב-GitHub → **Revert** → Merge |
-
----
-
-## הערה על CLAUDE.md
-
-`CLAUDE.md` עדיין כותב "אין build tools". זה כבר לא נכון: הפרויקט עבר ל-**Vite** (`vite.config.js`, `package.json`), והאתר החי נבנה מ-`dist/`. הריצה המקומית היא `npm run dev` ולא `python -m http.server`.

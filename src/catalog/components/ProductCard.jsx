@@ -1,9 +1,11 @@
 import ProductImg              from './ProductImg';
 import SpecTags               from './SpecTags';
 import { getNeonDimLabel }    from './NeonSchematics';
+import { stripRenderFor }     from '../utils/stripRender';
 
 export default function ProductCard({ product, variants, onClick, priority }) {
   const neonDim = getNeonDimLabel(product.id);
+  const render  = stripRenderFor(product);
   const title   = variants ? product.familyName : product.name;
 
   // הכרטיס כולו הוא יעד הלחיצה — אין עוד כפתור "פרטים נוספים" בתוכו.
@@ -17,9 +19,11 @@ export default function ProductCard({ product, variants, onClick, priority }) {
     <article className="product-card" role="button" tabIndex={0}
       aria-label={`${title} — פרטים נוספים`} onClick={open} onKeyDown={onKeyDown}>
       <div style={{ position: 'relative' }}>
-        <ProductImg src={product.img} name={product.name} priority={priority}
-          scale={product.imgScale} base={product.imgBase} width={product.imgWidth}
-          cutout={product.imgCutout} />
+        {render
+          ? <ProductImg src={render} name={product.name} priority={priority} />
+          : <ProductImg src={product.img} name={product.name} priority={priority}
+              scale={product.imgScale} base={product.imgBase} width={product.imgWidth}
+              cutout={product.imgCutout} />}
         {neonDim && (
           <div dir="ltr" style={{
             position: 'absolute', bottom: 8, left: 8,

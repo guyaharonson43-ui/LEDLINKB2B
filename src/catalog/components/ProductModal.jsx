@@ -5,6 +5,7 @@ import { existingDatasheets } from '../utils/datasheetFiles';
 import { getDriverMeta } from '../utils/driverMeta';
 import { getStripMeta }       from '../utils/stripMeta';
 import ProductImg             from './ProductImg';
+import { stripRenderFor }       from '../utils/stripRender';
 import NeonSchematic          from './NeonSchematics';
 import { Icons }              from './Icons';
 import drawings              from '../data/drawings';
@@ -61,7 +62,8 @@ export default function ProductModal({ product: initialProduct, variants, onClos
   // רק מסמכים שהקובץ שלהם קיים — לינק ל-PDF חסר מחזיר 404 וגרוע מהיעדר לינק
   const ds       = existingDatasheets(datasheets[product.id] || datasheets[product.name] || []);
   const drawing  = drawings[product.id] || null;
-  const productImgFull = product.img;
+  const render   = stripRenderFor(product);
+  const productImgFull = render || product.img;
   const cat      = product.category;
   const [copied, setCopied] = useState(false);
   const [lightbox, setLightbox] = useState(null);
@@ -246,10 +248,22 @@ export default function ProductModal({ product: initialProduct, variants, onClos
             <div>
               <div onClick={() => setLightbox({ src: productImgFull, alt: product.name })}
                 style={{ borderRadius: 8, overflow: 'hidden', border: '1px solid #E0DDD6', cursor: 'zoom-in' }}>
-                <ProductImg src={productImgFull} name={product.name} tall priority
-                  scale={product.imgScale} base={product.imgBase} width={product.imgWidth}
-                  cutout={product.imgCutout} />
+                {render
+                  ? <ProductImg src={render} name={product.name} tall priority />
+                  : <ProductImg src={productImgFull} name={product.name} tall priority
+                      scale={product.imgScale} base={product.imgBase} width={product.imgWidth}
+                      cutout={product.imgCutout} />}
               </div>
+              {render && product.img && (
+                <div style={{ marginTop: 12 }}>
+                  <div style={{ fontSize: 11, color: '#767676', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 8 }}>צילום יצרן</div>
+                  <div onClick={() => setLightbox({ src: product.img, alt: product.name })}
+                    style={{ borderRadius: 8, overflow: 'hidden', border: '1px solid #E0DDD6', background: '#fff', cursor: 'zoom-in' }}>
+                    <img src={product.img} alt={product.name} loading="lazy"
+                      style={{ width: '100%', height: 'auto', display: 'block' }} />
+                  </div>
+                </div>
+              )}
               {drawing && (
                 <div style={{ marginTop: 12 }}>
                   <div style={{ fontSize: 11, color: '#767676', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 8 }}>שרטוט טכני</div>
