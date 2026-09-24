@@ -3,9 +3,18 @@ import { useState } from 'react';
 
 export default function GuideCard({ g, onOpen }) {
   const [hovered, setHovered] = useState(false);
+  const openInPlace = e => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    e.preventDefault();
+    onOpen(g);
+  };
   return (
-    <article onClick={() => onOpen(g)} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+    <article onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
       style={{ background: '#fff', borderRadius: 12, border: '1px solid #E0DDD6', overflow: 'hidden', cursor: 'pointer', transition: 'transform 0.25s, box-shadow 0.25s', transform: hovered ? 'translateY(-4px)' : 'none', boxShadow: hovered ? '0 12px 32px rgba(0,0,0,0.1)' : 'none' }}>
+      {/* קישור אמיתי לעמוד הסטטי של המדריך (בשביל גוגל ו-Ctrl+לחיצה);
+          לחיצה רגילה ממשיכה לפתוח את המדריך בחלון כמו קודם */}
+      <a href={`/guides/${g.slug}/`} onClick={openInPlace}
+        style={{ display: 'block', color: 'inherit', textDecoration: 'none' }}>
       <div style={{ aspectRatio: '16/10', overflow: 'hidden', background: '#F0EDE8', position: 'relative' }}>
         <img src={g.img} alt={g.title} loading="lazy" decoding="async" width="500" height="312"
           style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s', transform: hovered ? 'scale(1.05)' : 'scale(1)' }}
@@ -28,6 +37,7 @@ export default function GuideCard({ g, onOpen }) {
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" /></svg>
         </span>
       </div>
+      </a>
     </article>
   );
 }
