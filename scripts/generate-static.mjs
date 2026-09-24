@@ -590,6 +590,28 @@ for (const p of products) {
 }
 console.log(`generate-static: product pages  →  dist/product/  (${products.length} pages)`);
 
+// Products removed from the catalog as duplicates: their /product/ URL was
+// already public (sitemap, Google), so it redirects to the product that
+// stays instead of turning into a 404. GitHub Pages has no server-side
+// redirects — a meta refresh + canonical is what Google honours here.
+const PRODUCT_REDIRECTS = {
+  'qlt-th24030': 'qlt-th24030u',   // same driver, listed twice (2026-09)
+};
+for (const [from, to] of Object.entries(PRODUCT_REDIRECTS)) {
+  const target = products.find(p => p.id === to);
+  if (!target) { console.warn(`generate-static: WARNING — redirect target ${to} not found`); continue; }
+  const url = canonicalUrl(target);
+  const dir = join(productDir, from);
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(join(dir, 'index.html'), `<!DOCTYPE html>
+<html lang="he" dir="rtl"><head><meta charset="UTF-8">
+<meta http-equiv="refresh" content="0;url=${url}">
+<link rel="canonical" href="${url}">
+<meta name="robots" content="noindex">
+<title>${escHtml(displayName(target))} | LEDLink</title>
+</head><body><p><a href="${url}">${escHtml(displayName(target))}</a></p></body></html>`, 'utf8');
+}
+
 // ── 7b. Guide pages (dist/guides/{slug}/index.html) ─────────────────────────
 // guides.html is a React app, so without JS (AI crawlers) it's an empty page
 // and all seven guides share one URL. Each guide gets its own static page

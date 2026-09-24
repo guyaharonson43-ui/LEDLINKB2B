@@ -8160,31 +8160,6 @@ const __PRODUCTS__ = [
     "imgScale": 0.88
   },
   {
-    "id": "qlt-th24030",
-    "name": "TH24030U Thin UL 24V",
-    "img": "product-images/qlt-th24030.webp",
-    "desc": "",
-    "category": "דרייברים",
-    "subCategory": "DIY",
-    "price": null,
-    "url": "https://www.qlt.it/en/products/th24030/",
-    "isFlagship": false,
-    "scarcity": null,
-    "specs": {
-      "power": "30W",
-      "ip": "IP20",
-      "outputMode": "CV",
-      "voltage": "24V",
-      "dimming": [],
-      "inputVoltage": "110V"
-    },
-    "imgSource": "strips/TH24030-1024x565.webp",
-    "imgCutout": true,
-    "imgBase": 0.956,
-    "imgWidth": 0.958,
-    "imgScale": 0.86
-  },
-  {
     "id": "qlt-th24030u",
     "name": "TH24030U Thin UL 24V",
     "img": "product-images/qlt-th24030.webp",

@@ -313,7 +313,6 @@ export default {
   "qlt-spi03": {"products_category":["Smart Light Controls"],"insulation_class":["IP40"],"input_voltage":["12V","24V"],"dimmable":["RF 2,4Ghz"]},
   "qlt-th24012": {"products_category":["Alimentatori On/Off"],"power":["12W"],"output_mode":["CV"],"constant_voltage":["24V"],"insulation_class":["IP20"],"input_voltage":["230V"]},
   "qlt-th24020": {"products_category":["Alimentatori On/Off"],"power":["20W"],"output_mode":["CV"],"constant_voltage":["24V"],"insulation_class":["IP20"],"input_voltage":["230V"]},
-  "qlt-th24030": {"products_category":["Alimentatori On/Off"],"power":["30W"],"output_mode":["CV"],"constant_voltage":["24V"],"insulation_class":["IP20"],"input_voltage":["110V","230V"]},
   "qlt-th24030u": {"products_category":["Alimentatori On/Off"],"power":["30W"],"output_mode":["CV"],"constant_voltage":["24V"],"insulation_class":["IP20"],"input_voltage":["110V","230V"]},
   "qlt-top-lf": {"products_category":["Trasformatori Elettronici per Lampadine LED"],"power":["60W"],"output_mode":["CV"],"constant_voltage":["12V/AC"],"insulation_class":["IP20"],"input_voltage":["230V"],"dimmable":["IGBT"]},
   "qlt-track28": {"products_category":["Convertitori LED per BINARI"],"power":["28W"],"output_mode":["CC"],"constant_voltage":["48V"],"constant_current":["250mA","350mA","400mA","450mA","500mA","550mA","600mA","700mA"],"insulation_class":["IP00"],"input_voltage":["48V"],"dimmable":["PWM 250..400Hz"]},
