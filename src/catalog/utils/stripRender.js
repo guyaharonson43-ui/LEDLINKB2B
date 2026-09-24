@@ -8,7 +8,7 @@ import STRIP_MODELS from '../data/stripModels.js';
 // גודל מארז הלד במ"מ: [לאורך הסטריפ, לרוחב הסטריפ]
 const LED_SIZE = {
   '2835': [3.5, 2.8], '3528': [3.5, 2.8], '2110': [1.0, 2.1], '2216': [1.6, 2.2],
-  '3535': [3.5, 3.5], '5050': [5, 5], '2020': [2, 2],
+  '3535': [3.5, 3.5], '3527': [3.5, 2.7], '5050': [5, 5], '2020': [2, 2], '2022': [2, 2.2],
 };
 
 // ── מאפייני המוצר ───────────────────────────────────────────────────────────
@@ -124,7 +124,8 @@ export function renderStripSVG(p) {
   for (let u = 0; u < LEN; u += STEP) {
     const e = u + STEP + 0.3, v = hw + sleeve;
     const band = (z0, z1, c) => `<polygon points="${pts([S.pt(u, v, z0), S.pt(e, v, z0), S.pt(e, v, z1), S.pt(u, v, z1)])}" fill="${c}"/>`;
-    if (sleeve) out.push(band(0.2, -3.8, mix('#E3E8EA', '#B8C1C4', 0.5 - S.shade(u) * 0.4)));
+    if (sleeve) out.push(band(3.6, -PCB_T - 0.6, mix('#E6ECEE', '#AEB9BD', 0.55 - S.shade(u) * 0.4)));
+    if (spec.ip >= 65 && spec.ip < 67) out.push(band(1.3, 0, mix('#CFE2EA', '#9FBCC8', 0.5 - S.shade(u) * 0.4)));
     out.push(band(0, -PCB_T, mix('#D9D4C8', '#B3AC9E', 0.5 - S.shade(u) * 0.4)));
     out.push(band(-PCB_T, -PCB_T - 0.35, '#8A2F2A'));
   }
@@ -164,9 +165,18 @@ export function renderStripSVG(p) {
       out.push(`<polygon points="${S.quad(u + 2.8, u + 6, -(hw - 1.1), -(hw - 1.6), 0.2)}" fill="#B4AEA3"/>`);
     }
   }
-  // ציפוי IP65 שקוף והברקה
-  if (spec.ip >= 65 && spec.ip < 67) out.push(`<polygon points="${S.quad(0, LEN, -hw, hw, 1)}" fill="#DCEAF0" fill-opacity="0.22"/>`);
-  if (spec.ip >= 65) out.push(`<polygon points="${S.quad(0, LEN, -hw * 0.8 - sleeve, -hw * 0.5 - sleeve, 1.2)}" fill="#FFFFFF" fill-opacity="0.5"/>`);
+  // IP65: ציפוי אפוקסי שקוף ועבה — שפה מוגבהת, גוון קריר וברק חזק לאורך
+  if (spec.ip >= 65 && spec.ip < 67) {
+    out.push(`<polygon points="${S.quad(0, LEN, -hw, hw, 1.3)}" fill="#D3E6EE" fill-opacity="0.38"/>`);
+    out.push(`<polygon points="${S.quad(0, LEN, hw - 0.7, hw, 1.3)}" fill="#B9D2DC" fill-opacity="0.7"/>`);
+    out.push(`<polygon points="${S.quad(0, LEN, -hw * 0.72, -hw * 0.38, 1.5)}" fill="#FFFFFF" fill-opacity="0.85"/>`);
+    out.push(`<polygon points="${S.quad(0, LEN, hw * 0.25, hw * 0.38, 1.5)}" fill="#FFFFFF" fill-opacity="0.45"/>`);
+  }
+  // IP67/68: שרוול סיליקון עבה ומט — מעמעם את הלדים ומקבל ברק רך
+  if (spec.ip >= 67) {
+    out.push(`<polygon points="${S.quad(0, LEN, -hw - sleeve, hw + sleeve, 3.6)}" fill="#EEF3F4" fill-opacity="0.62"/>`);
+    out.push(`<polygon points="${S.quad(0, LEN, -hw - sleeve * 0.6, -hw * 0.2, 3.8)}" fill="#FFFFFF" fill-opacity="0.55"/>`);
+  }
 
   // צל רך על המשטח
   const ground = [];
