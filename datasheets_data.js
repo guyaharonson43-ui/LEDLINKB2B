@@ -23,7 +23,6 @@
   "סטריפ LED 12W IP65": [{ label: "דף קטלוגי — B24 IP65", file: "datasheets/B24_IP65.pdf" }, { label: "דף נתונים — 24 IP65", file: "datasheets/DS_B24_IP65.pdf" }],
   "סטריפ LED 16W IP65": [{ label: "דף קטלוגי — B24 IP65", file: "datasheets/B24_IP65.pdf" }, { label: "דף נתונים — 24 IP65", file: "datasheets/DS_B24_IP65.pdf" }],
   "סטריפ LED 20W IP65": [{ label: "דף קטלוגי — B24 IP65", file: "datasheets/B24_IP65.pdf" }, { label: "דף נתונים — 24 IP65", file: "datasheets/DS_B24_IP65.pdf" }],
-  "סטריפ LED 50W IP20": [{ label: "דף קטלוגי — ST24560CT", file: "datasheets/ST24560CT.pdf" }, { label: "דף נתונים — T24560CT", file: "datasheets/DS_ST24560CT.pdf" }],
   "סטריפ LED DOB 15W IP20": [{ label: "דף קטלוגי — DOB", file: "datasheets/DOB.pdf" }, { label: "דף נתונים — OB", file: "datasheets/DS_DOB.pdf" }],
   "סטריפ LED RGBW 20W IP20": [{ label: "דף קטלוגי — S24120RW", file: "datasheets/S24120RW_S2412ARW.pdf" }, { label: "דף נתונים — 24120RW S2412ARW", file: "datasheets/DS_S24120RW_S2412ARW.pdf" }],
   "סטריפ LED 14.4W IP68": [{ label: "דף קטלוגי — H24 IP68", file: "datasheets/H24_IP68.pdf" }, { label: "דף נתונים — 24 IP68", file: "datasheets/DS_H24_IP68.pdf" }],

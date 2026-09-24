@@ -321,17 +321,6 @@ const __PRODUCTS__ = [
     "imgBase": 0.62
   },
   {
-    "id": "ledlink-strip-50w",
-    "name": "סטריפ LED 50W IP20",
-    "img": "strips/A24240.webp",
-    "desc": "הספק: 50W | 24V | 4600-5280Lm | 920-1056 Lm/m | גוון: 2700/3000/4000/5500K | IP20",
-    "category": "סטריפ LED",
-    "price": null,
-    "url": "https://ledlink.co.il/product/%d7%a1%d7%98%d7%a8%d7%99%d7%a4-%d7%9c%d7%93-20%d7%95%d7%95%d7%90%d7%98/",
-    "isFlagship": false,
-    "scarcity": null
-  },
-  {
     "id": "ledlink-strip-dob",
     "name": "סטריפ LED DOB 15W IP20",
     "img": "product-images/ledlink-strip-10w.webp",
