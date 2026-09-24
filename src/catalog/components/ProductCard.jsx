@@ -21,7 +21,7 @@ export default function ProductCard({ product, variants, onClick, priority }) {
           scale={product.imgScale} base={product.imgBase} width={product.imgWidth}
           cutout={product.imgCutout} />
         {neonDim && (
-          <div style={{
+          <div dir="ltr" style={{
             position: 'absolute', bottom: 8, left: 8,
             background: 'rgba(28,28,28,0.78)', color: '#FFFFFF',
             fontSize: 11, fontWeight: 700, padding: '3px 8px',
