@@ -58,6 +58,7 @@ copyDir('datasheets');
 for (const f of [
   'manifest.json', 'CNAME', 'hero.jpg', 'hero.webp',
   'a11y-widget.js', 'products_data.js', 'datasheets_data.js',
+  'llms.txt',
 ]) copyFile(f);
 
 // Static HTML pages (served as-is; not Vite-built)
@@ -183,7 +184,8 @@ for (const [cat, items] of Object.entries(byCategory)) {
   noscriptHtml += `<h2 style="font-size:18px;margin-top:24px">${cat}</h2><ul>`;
   for (const p of items) {
     const name = cleanName(p.name);
-    const link = p.url ? `<a href="${p.url}">${name}</a>` : name;
+    // p.url is the old WordPress slug (404s on this site) — link our own product page
+    const link = `<a href="${canonicalUrl(p)}">${escHtml(name)}</a>`;
     noscriptHtml += `<li>${link}</li>`;
   }
   noscriptHtml += '</ul>';
