@@ -5,127 +5,94 @@
 ## כללי עבודה
 
 - **כל הטקסט בממשק המשתמש בעברית**, כיוון RTL (`dir="rtl"`, `direction: rtl`)
-- **אין build tools** — הפרויקט מורץ ישירות בדפדפן, ללא npm / webpack / vite
-- **שרת מקומי**: `python -m http.server 8000` (ב-.claude/launch.json)
-- **שומר בדפדפן**: פתח `http://localhost:8000/index.html` או `http://localhost:8000/home.html`
+- **Build עם Vite** — React 18 מ-npm, JSX מקומפל ב-build (לא Babel בדפדפן, לא CDN)
+- **פיתוח מקומי**: `npm install` ואז `npm run dev` → `http://localhost:5173/catalog.html`
+- **בדיקת build**: `npm run build` ואז `npm run preview` (פורט 4173). ההגדרות ב-`.claude/launch.json`
+- **דיפלוי**: merge ל-`main` → GitHub Actions בונה ומעלה ל-GitHub Pages (`ledlink.co.il`). אין Netlify ואין Supabase. פירוט ב-`docs/HOW-IT-WORKS.md`
 
 ## מבנה הפרויקט
 
-| קובץ | תפקיד |
+| קובץ / תיקייה | תפקיד |
 |------|--------|
-| `home.html` | דף נחיתה שיווקי — Hero, Stats, קטגוריות, יתרונות, CTA, Footer |
-| `index.html` | קטלוג מוצרים — React 18 (CDN) + Babel + Tailwind CDN |
-| `tools.html` | כלי תכנון הנדסיים — חמישה מחשבונים בReact בקובץ אחד |
-| `catalog.html` | קטלוג דינמי מ-products_data.js (React) |
-| `products_data.js` | 373 מוצרים — נטען כ-`window.__PRODUCTS__` |
-| `datasheets_data.js` | מיפוי PDF לפי ID/שם מוצר |
+| `index.html` | דף הבית — HTML סטטי (לא React) |
+| `catalog.html` → `src/catalog/` | קטלוג המוצרים (React) |
+| `tools.html` → `src/tools/` | מחשבוני תכנון (React) |
+| `guides.html` → `src/guides/` | מדריכים (React) |
+| `landing.html`, `about.html`, `faq.html`, `privacy.html`, `takanon.html`, `accessibility.html` | דפים סטטיים |
+| `products_data_with_lighting.js` | **מקור המוצרים שהקטלוג טוען** (מיובא ב-`src/catalog/App.jsx`) |
+| `products_data.js`, `lighting_products.js` | עותקים ישנים של אותם נתונים — כשמתקנים מוצר, לתקן בשלושתם |
+| `datasheets_data.js` | מיפוי PDF לפי product.id / שם מוצר |
+| `datasheets/`, `DATASHEET/` | קבצי PDF של היצרן (QLT) ודפי נתונים לפרופילים |
+| `product-images/`, `strips/`, `assets/`, `projects/` | תמונות |
+| `scripts/` | סקריפטים ל-build ולתחזוקת נתונים (`generate-static.mjs`, `sync-qlt-facets.mjs` וכו') |
+| `docs/` | תיעוד פנימי — לא נכנס ל-build |
 
-## ארכיטקטורה — index.html וcatalog.html
+## Build
 
-React app בקובץ HTML אחד, ללא pre-transpile:
+`npm run build` מריץ שלושה שלבים:
+1. `scripts/generate-datasheet-manifest.mjs` — כותב את `src/catalog/utils/datasheetManifest.js`
+2. `vite build` — ארבע נקודות כניסה (`catalog`, `index`, `guides`, `tools`) ל-`dist/`
+3. `scripts/generate-static.mjs` — מעתיק תמונות/PDF, מייצר `sitemap.xml`, `robots.txt`, ודפי שיתוף `dist/share/{id}.html`
 
-- **`<script type="text/babel">`** — כל הקומפוננטות בתוך תגית אחת
-- **`IMG_BASE`** — קידומת לתמונות/PDF (כרגע `file:///C:/Users/guy/Downloads/ledlink/`)
-- **`window.__PRODUCTS__`** — מערך המוצרים מ-products_data.js
-- **`PRODUCT_DATASHEETS`** — מפתח PDF לפי product.id או product.name
+ה-workflow (`.github/workflows/deploy.yml`) מעתיק גם `landing.html` ו-`assets/`. ב-PR הוא רק בונה; דיפלוי רק ב-push ל-`main`.
 
-**קומפוננטות מרכזיות (index.html):**
-- `App` — state: activeTab, search, stripF (סינון סטריפ), psF (סינון פרופיל), selected (מוצר בחלון)
-- `Navbar` — ניווט עם קישור לבית וכלים
-- `ProductCard` / `ProductModal` — תצוגה וחלון מוצר
-- `StripFilters` / `DriverFilters` / `ProfileFilters` — סינון sidebar לפי קטגוריה
-- `SpecTags` — תגיות מפרט, נגזרות מ-`getStripMeta()` / `product.specs`
+> הבנייה המקומית משכתבת את `datasheetManifest.js` (סדר קבצים). אם השינוי לא קשור למשימה — להחזיר אותו לפני commit.
 
-**קטגוריות:** `'פרופילים'` | `'סטריפ LED'` | `'דרייברים'`
+## ארכיטקטורה — קטלוג (`src/catalog/`)
 
-**קומפוננטות (catalog.html):**
-- `App` — state: activeTab (קטגוריה נוכחית), search (חיפוש טקסט), selected (מוצר פתוח)
-- `CatalogNav` — ניווט בין קטגוריות
-- `CatalogGrid` — רשת מוצרים עם סינון חיפוש
-- `ProductModal` — חלון מוצר עם לינק datasheet
+- `App.jsx` — state: `activeTab` (קטגוריה), `search`, סינון, מוצר נבחר; פרמטרים מה-URL
+- `components/` — `ProductCard`, `ProductModal`, `CatalogFilters`, `ProfileFilters`, `TrackFilters`, `SpecTags`, `ConfiguratorModal`, `NeonSchematics`, `Navbar`, `Footer`
+- `utils/` — `helpers.js` (`cleanName`, `imgSrc`, `pdfSrc`, `trackEvent`), `stripMeta.js`, `driverMeta.js`, `catalogFacets.js`, `configurator.js`, `datasheetFiles.js`
+- `data/` — `qltFacets.js` (סינון בסגנון qlt.it), `drawings.js` (שרטוטי פרופילים)
 
-## ארכיטקטורה — tools.html
+**קטגוריות (TABS):** `'דרייברים'` | `'סטריפ LED'` | `'פרופילים'` | `'גופי תאורה'` (ברירת מחדל)
 
-מחשבונים הנדסיים בקובץ אחד:
+**שרטוטי חתך נאון** — `NeonSchematics.jsx`: קומפוננטת `Section` מציירת כל פרופיל ביחידות מ"מ עם קווי מידה. `NEON_ID_MAP` ממפה product.id לפרופיל. המידות והצורה לקוחות מדפי הנתונים של QLT (`datasheets/DS_*.pdf`, עמוד "Dimensions").
 
-**מחשבונים (כקומפוננטות React):**
-1. `VoltageDropCalc` — בדיקת מפל מתח בכבלים DC
-2. `LumenCalc` — חישוב תאורה לפי EN 12464
-3. `ROICalc` — חיסכון אנרגיה בעדכון LED
-4. `BeamLinearCalc` — פיזור אלומה של גוף ליניארי
-5. `BiologicalCalc` — Melanopic Lux (השפעה ביולוגית)
+## ארכיטקטורה — מחשבונים (`src/tools/`)
 
-**מבנה App:**
-- TOOLS array — רשימת כלים (id, label)
-- TOOL_ITEMS — אותו דבר לתפריט mobile
-- Navbar — ניווט עם dropdowns
-- Tool tabs — בחירה בין מחשבונים
-- Tool content — רינדור הקומפוננטה הנוכחית
-- Footer — אתר ממפיל (כתובת, טלפון, שעות)
+כל מחשבון קומפוננטה ב-`components/`. הרשימה ב-`TabBar.jsx`:
+`voltage` (מפל מתח), `lumen` (לומן לחלל), `roi` (חיסכון אנרגיה), `beam-linear` (פיזור אלומה), `circadian` (מחשבון ביולוגי), `linear` (פרופיל LED), `power` (ספק כוח).
 
-**WhatsApp integration:**
-- כל מחשבון יוצר `waText` — טקסט שיתוף עם תוצאות
-- קישור WhatsApp ב-`waLink()` — לשליחת הצעת מחיר
+כל מחשבון יוצר טקסט תוצאות לשליחה ב-WhatsApp (`ContactRow.jsx`).
 
 ## מבנה מוצר
 
 ```js
 {
-  id: "ledlink-xxx",           // מזהה ייחודי
+  id: "qlt-xxx",               // מזהה ייחודי
   name: "שם המוצר",            // עברית, עלול להכיל HTML entities
-  img: "strips/xxx.jpg",       // נתיב יחסי מ-IMG_BASE
-  desc: "...",                 // תיאור (סטריפ: שדות ב-|)
+  img: "strips/xxx.webp",      // נתיב יחסי לשורש האתר
+  desc: "...",                 // תיאור (סטריפ: שדות ב-|, כולל "Lm/m" שמוצג בחלון המוצר)
   category: "סטריפ LED",       // קטגוריה ראשית
-  subCategory: "COB",          // אופציונלי
-  url: "https://...",          // דף מוצר באתר
-  specs: {                     // דרייברים בלבד
-    power, voltage, ip, outputMode, inputVoltage, dimming: []
+  subCategory: "Neon",         // אופציונלי
+  url: "https://...",          // דף מוצר אצל היצרן
+  specs: {                     // power, voltage, ip, outputMode, inputVoltage, dimming: []
   }
 }
 ```
 
 ## עיצוב וצבעים
 
-- **צבע ראשי:** `#E8A020` (זהב)
-- **צבע משנה:** `#C4880A` (זהב כהה)
-- **טקסט:** `#1C1C1C` (שחור)
-- **רקע:** `#F4F4F0` (בז' בהיר)
-- **Navbar:** `#1A1A1A` (שחור כהה מאוד)
-- **Font:** Heebo (Google Fonts)
-- **RTL:** `dir="rtl"`, `direction: rtl` בכל דף
+- **צבע ראשי:** `#E8A020` (זהב) · **משני:** `#C4880A` (זהב כהה)
+- **טקסט:** `#1C1C1C` · **רקע:** `#F4F4F0` · **Navbar:** `#1A1A1A`
+- **Font:** Heebo
+- **RTL:** `dir="rtl"` בכל דף. מידות ומספרים באנגלית (כמו `8×16mm`) לעטוף ב-`<bdi dir="ltr">` או `dir="ltr"`, אחרת הדפדפן הופך אותם ל-`16mm×8`
 
 ## נקודות חשובות
 
-1. **נתיבי קבצים** — כרגע מוחלטים (`file:///C:/Users/guy/...`), צריך לשנות לnested relative paths לפני העלאה
-2. **`IMG_BASE`** — נקודת ציון מרכזית לתמונות וPDF בכל דף
-3. **`cleanName()`** — מנקה HTML entities משמות מוצרים (עברית)
-4. **סינון סטריפ** — משלב `desc` ו-`specs` דרך `getStripMeta()`
-5. **Datasheet lookup** — ראשית לפי `product.id`, אחר כך לפי `product.name`
-6. **WhatsApp number** — `972504722550` קבוע ב-`WA_NUMBER` בכל דף
-7. **React CDN** — אין build, Babel standalone הופך JSX בדפדפן
-8. **URL parameters** — `tools.html?tool=circadian` לפתיחת מחשבון ספציפי, `catalog.html?tab=סטריפ LED`
-
-## ניווט
-
-- `home.html` → דף נחיתה
-- `index.html` → קטלוג מוצרים
-- `catalog.html` → קטלוג דינמי (בעתיד)
-- `tools.html` → כלי תכנון (שלוש שיטות: navbar dropdown, mobile menu, tab bar)
-- `guides.html` → מדריכים (עוד לא קיים)
-- `about.html` → אודות (עוד לא קיים)
+1. **נתיבי קבצים** — יחסיים לשורש האתר (`strips/...`, `datasheets/...`); `imgSrc()` / `pdfSrc()` מחזירים אותם כמו שהם
+2. **`cleanName()`** — מנקה HTML entities משמות מוצרים
+3. **סינון סטריפ** — משלב `desc` ו-`specs` דרך `stripMeta.js`
+4. **Datasheet lookup** — קודם לפי `product.id`, אחר כך לפי `product.name`
+5. **WhatsApp** — המספר `972504722550` מוגדר כ-`WA_NUMBER` (tools/guides) ובקישורי `wa.me` בקטלוג
+6. **URL parameters** — `catalog.html?tab=סטריפ LED`, `?product=<id>` (פותח מוצר), `?q=`, `?sub=`, `?cfg=` (תכנון פרופיל משותף); `tools.html?tool=circadian`
+7. **מקור אמת לנתוני מוצר** — דפי הנתונים של QLT ב-`datasheets/`. אתר qlt.it חסום מסביבת הענן
 
 ## זרימת עדכון
 
-1. **עדכון מוצרים** → עדכן `products_data.js` + תמונות ב-IMG_BASE
-2. **עדכון datasheet** → עדכן `datasheets_data.js`
-3. **עדכון עיצוב** → קובע בתוך `<style>` בתוך `<head>`
-4. **עדכון קומפוננטה** → edit בתוך `<script type="text/babel">`
-5. **בדיקה** → פתח בדפדפן עם שרת מקומי
-
-## טיפים
-
-- RTL דורש `direction: rtl` ב-CSS ו-`dir="rtl"` בHTML
-- Tailwind CDN תומך `direction:rtl` אבל צריך לנטר spacing
-- React CDN (לא ESM) — אין import/export, כל האתר בקובץ אחד
-- Babel standalone — JSX בדפדפן, ללא build
-- חפש entities בעברית: `&nbsp;`, `&lrm;` (left-to-right mark לדיוק)
+1. **עדכון מוצרים** → `products_data_with_lighting.js` (ולשמור תואם את `products_data.js` / `lighting_products.js`) + תמונות
+2. **עדכון datasheet** → `datasheets_data.js` + הקובץ ב-`datasheets/`
+3. **עדכון קומפוננטה** → הקובץ המתאים ב-`src/`
+4. **בדיקה** → `npm run dev`, ולפני PR `npm run build`
+5. **פרסום** → branch → PR ל-`main` (הבנייה רצה כבדיקה) → merge → האתר מתעדכן תוך כ-2 דקות
