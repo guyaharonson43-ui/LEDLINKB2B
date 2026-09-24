@@ -26,156 +26,155 @@ export function stripSpec(p) {
 
   const rows = density > 300 && kind === 'smd' ? 2 : 1;
   const widthMm = rows === 2 ? 15 : kind === 'rgbw' ? 12 : kind === 'rgb' ? 10 : 10;
-  return { kind, ip, watts, density, rows, widthMm };
+  // סטריפ זיגזג (3D) הוא היחיד שמתכופף הצידה, במישור שלו
+  const zigzag = /\b3D\b|זיגזג/i.test(name + desc);
+  return { kind, ip, watts, density, rows, widthMm, zigzag };
 }
 
 // ── ציור ────────────────────────────────────────────────────────────────────
-// הסטריפ מונח על משטח: לולאה אחת (כמו סליל שנפתח) וזנב ישר שיוצא קדימה.
-// מציירים במבט-על (x,y במישור) ואז מכווצים את y כדי לקבל זווית מבט של 30°.
+// הסטריפ הוא סרט במרחב: קו מרכז c(u) לאורך u (מ"מ), וכיוון רוחב w(u).
+// סטריפ רגיל מתכופף רק סביב ציר הרוחב — עולה ויורד (גל אנכי); זיגזג בלבד
+// מתכופף הצידה במישור שלו. כל פרט (לד, פד, קו חיתוך) מצויר כמצולע שממופה
+// על פני הסרט, ואז הכול מוקרן בזווית מבט קבועה.
 const f = n => Math.round(n * 100) / 100;
-const S = 2.3;                      // מ"מ → יחידות במבט-על
-const C = { x: 236, y: 244 };
-const R_OUT = 160;                  // רדיוס הסיבוב החיצוני של הסליל
-const TURNS = 2.6;                 // כמה סיבובים בסליל (ספירלה מבפנים החוצה)
-const TAIL = 230;                   // אורך הזנב הישר שיוצא קדימה
+const LEN = 130;                     // אורך הקטע במ"מ
+const YAW = -0.5, PITCH = 0.62;      // זווית המבט (רדיאנים)
 
-// המסלול נדגם פעם אחת לכל רוחב סטריפ (הפסיעה בין הסיבובים תלויה ברוחב)
-// קטע ישר באורך אמיתי (מ"מ), בזווית אלכסונית — מבט "קטלוגי" קרוב
-function buildStraight(lenMm) {
-  const pts = [], t = -0.42, L = lenMm * S;
-  for (let k = 0; k <= L; k += 2) pts.push({ x: Math.cos(t) * k, y: Math.sin(t) * k, d: k });
-  return pts;
-}
-// קטע מסולסל: אותו קטע ישר עם גל S עדין (משרעת ומחזור במ"מ)
-function buildWave(lenMm, ampMm, periods) {
-  const pts = [], t = -0.36, L = lenMm * S, A = ampMm * S;
-  const cos = Math.cos(t), sin = Math.sin(t);
-  let prev = null, d = 0;
-  for (let u = 0; u <= L; u += 1.5) {
-    const v = A * Math.sin(2 * Math.PI * periods * u / L);
-    const x = u * cos - v * sin, y = u * sin + v * cos;
-    if (prev) d += Math.hypot(x - prev.x, y - prev.y);
-    prev = { x, y, d }; pts.push(prev);
+function geometry(spec) {
+  const A = spec.zigzag ? 11 : 9;    // משרעת הגל במ"מ
+  const k = 2 * Math.PI / LEN;
+  if (spec.zigzag) {
+    // כיפוף במישור: c = (u, A·sin, 0), רוחב בניצב במישור
+    return u => {
+      const g = A * Math.sin(k * u), dg = A * k * Math.cos(k * u), n = Math.hypot(1, dg);
+      return { c: [u, g, 0], w: [-dg / n, 1 / n, 0], t: [1 / n, dg / n, 0] };
+    };
   }
-  return pts;
+  // גל אנכי: c = (u, 0, A·sin), הרוחב תמיד אופקי
+  return u => {
+    const h = A * Math.sin(k * u), dh = A * k * Math.cos(k * u), n = Math.hypot(1, dh);
+    return { c: [u, 0, h], w: [0, 1, 0], t: [1 / n, 0, dh / n] };
+  };
 }
-function buildPath(bandW) {
-  const pitch = bandW + 4;
-  const th1 = Math.PI * 1.9, th0 = th1 - TURNS * 2 * Math.PI;   // הזנב יוצא מימין-למעלה אל הצופה
-  const rIn = R_OUT - pitch * TURNS;
-  const pts = [];
-  let prev = null, d = 0;
-  for (let th = th0; th <= th1; th += 0.01) {
-    const r = rIn + (R_OUT - rIn) * (th - th0) / (th1 - th0);
-    const x = C.x + r * Math.cos(th), y = C.y + r * Math.sin(th);
-    if (prev) d += Math.hypot(x - prev.x, y - prev.y);
-    prev = { x, y, d }; pts.push(prev);
-  }
-  const n = pts.length, e = pts[n - 1], q = pts[n - 2];
-  const t = Math.atan2(e.y - q.y, e.x - q.x);
-  for (let k = 2; k <= TAIL; k += 2) pts.push({ x: e.x + Math.cos(t) * k, y: e.y + Math.sin(t) * k, d: e.d + k });
-  return pts;
-}
-let PATH = buildPath(46);
-let TOTAL = PATH[PATH.length - 1].d;
-function at(d) {
-  let lo = 0, hi = PATH.length - 1;
-  while (hi - lo > 1) { const m = (lo + hi) >> 1; if (PATH[m].d < d) lo = m; else hi = m; }
-  const a = PATH[lo], b = PATH[hi];
-  const u = b.d > a.d ? (d - a.d) / (b.d - a.d) : 0;
-  return { x: a.x + (b.x - a.x) * u, y: a.y + (b.y - a.y) * u, t: Math.atan2(b.y - a.y, b.x - a.x) };
-}
-function pathD() {
-  return 'M' + PATH.filter((_, i) => i % 3 === 0 || i === PATH.length - 1).map(p => `${f(p.x)},${f(p.y)}`).join(' L');
-}
-const place = (d, off, inner) => {
-  const p = at(d), deg = p.t * 180 / Math.PI;
-  const nx = -Math.sin(p.t) * off, ny = Math.cos(p.t) * off;
-  return `<g transform="translate(${f(p.x + nx)} ${f(p.y + ny)}) rotate(${f(deg)})">${inner}</g>`;
-};
 
-function ledPackage(kind) {
-  const s = S;
+const ca = Math.cos(YAW), sa = Math.sin(YAW), cb = Math.cos(PITCH), sb = Math.sin(PITCH);
+function project([x, y, z]) {
+  const x1 = x * ca - y * sa, y1 = x * sa + y * ca;
+  return [x1, -z * cb + y1 * sb];
+}
+
+function makeSurface(spec) {
+  const geo = geometry(spec);
+  // נקודה על פני הסרט: u לאורך, v לרוחב (מ"מ מהמרכז), dz גובה מעל הפנים
+  const pt = (u, v, dz = 0) => {
+    const g = geo(u);
+    const nrm = cross(g.t, g.w);
+    return project([g.c[0] + g.w[0] * v + nrm[0] * dz, g.c[1] + g.w[1] * v + nrm[1] * dz, g.c[2] + g.w[2] * v + nrm[2] * dz]);
+  };
+  // מלבן על פני הסרט → מצולע מוקרן
+  const quad = (u0, u1, v0, v1, dz = 0) => {
+    const P = [];
+    const n = Math.max(1, Math.ceil((u1 - u0) / 2));
+    for (let i = 0; i <= n; i++) P.push(pt(u0 + (u1 - u0) * i / n, v0, dz));
+    for (let i = n; i >= 0; i--) P.push(pt(u0 + (u1 - u0) * i / n, v1, dz));
+    return P.map(p => `${f(p[0])},${f(p[1])}`).join(' ');
+  };
+  // תאורה: אור מלמעלה-קדימה; הפנים מוארות לפי הנורמל
+  const light = norm([0.25, 0.35, 1]);
+  const shade = u => { const g = geo(u); return Math.max(0, dot(cross(g.t, g.w), light)); };
+  return { pt, quad, shade, geo };
+}
+const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+const norm = a => { const l = Math.hypot(...a); return a.map(x => x / l); };
+const mix = (c1, c2, t) => '#' + [0, 2, 4].map(i => Math.round(parseInt(c1.slice(1 + i, 3 + i), 16) * (1 - t) + parseInt(c2.slice(1 + i, 3 + i), 16) * t).toString(16).padStart(2, '0')).join('');
+
+function ledPackage(q, u, v, kind) {
   if (kind === 'rgb' || kind === 'rgbw') {
-    const w = 5 * s, dots = kind === 'rgbw' ? ['#E5484D', '#30A46C', '#3E63DD', '#F3DFA2'] : ['#E5484D', '#30A46C', '#3E63DD'];
-    const step = w / (dots.length + 1);
-    return `<rect x="${f(-w / 2)}" y="${f(-w / 2)}" width="${f(w)}" height="${f(w)}" rx="${f(0.6 * s)}" fill="url(#pkg)" stroke="#CFCBC2" stroke-width="0.7"/>`
-      + `<circle r="${f(2 * s)}" fill="#F6F3EC" stroke="#DCD7CC" stroke-width="0.6"/>`
-      + dots.map((c, i) => `<rect x="${f(-w / 2 + step * (i + 1) - 0.4 * s)}" y="${f(-0.4 * s)}" width="${f(0.8 * s)}" height="${f(0.8 * s)}" fill="${c}"/>`).join('');
+    const h = 2.5, dots = kind === 'rgbw' ? ['#E5484D', '#30A46C', '#3E63DD', '#F3DFA2'] : ['#E5484D', '#30A46C', '#3E63DD'];
+    const step = 2 * h / (dots.length + 1);
+    return `<polygon points="${q(u - h, u + h, v - h, v + h, 0.3)}" fill="url(#pkg)" stroke="#CFCBC2" stroke-width="0.25"/>`
+      + `<polygon points="${q(u - 1.9, u + 1.9, v - 1.9, v + 1.9, 0.35)}" fill="#F6F3EC"/>`
+      + dots.map((c, i) => `<polygon points="${q(u - h + step * (i + 1) - 0.4, u - h + step * (i + 1) + 0.4, v - 0.4, v + 0.4, 0.4)}" fill="${c}"/>`).join('');
   }
-  const w = 3.5 * s, h = 2.8 * s;
-  return `<rect x="${f(-w / 2)}" y="${f(-h / 2)}" width="${f(w)}" height="${f(h)}" rx="${f(0.35 * s)}" fill="url(#pkg)" stroke="#CFCBC2" stroke-width="0.7"/>`
-    + `<rect x="${f(-w / 2 + 0.45 * s)}" y="${f(-h / 2 + 0.4 * s)}" width="${f(w - 0.9 * s)}" height="${f(h - 0.8 * s)}" rx="${f(0.3 * s)}" fill="url(#phos)"/>`;
+  // 2835: 3.5 לאורך × 2.8 לרוחב
+  return `<polygon points="${q(u - 1.75, u + 1.75, v - 1.4, v + 1.4, 0.3)}" fill="url(#pkg)" stroke="#CFCBC2" stroke-width="0.25"/>`
+    + `<polygon points="${q(u - 1.3, u + 1.3, v - 1, v + 1, 0.35)}" fill="url(#phos)"/>`;
 }
 
-function band(width, color, extra = '') {
-  return `<path d="${pathD()}" fill="none" stroke="${color}" stroke-width="${f(width)}" stroke-linecap="butt" ${extra}/>`;
-}
+export function renderStripSVG(p) {
+  const spec = stripSpec(p);
+  const { quad: q, pt, shade } = makeSurface(spec);
+  const W = spec.widthMm, hw = W / 2;
+  const sleeve = spec.ip >= 67 ? 2.2 : 0;
+  const T = 0.9 + sleeve * 1.2;                         // עובי הקצה הנראה
+  const STEP = 1.5;
+  const out = [];
 
-function stripLayers(spec) {
-  const s = S, W = spec.widthMm * s;
-  const sleeve = spec.ip >= 67 ? 2.4 * s : 0;
-  const L = [];
-  if (sleeve) L.push(band(W + 2 * sleeve, '#E6ECEE', 'stroke-opacity="0.75"'), band(W + 2 * sleeve - 1.6, '#F3F6F7', 'stroke-opacity="0.6"'));
-  L.push(band(W + 1.4, '#C9C3B6'), band(W, '#F7F5F0'));
-  L.push(band(0.4 * s, '#E6D8BF', `transform="translate(0 0)"`));
-  // מסילות נחושת בשוליים — כקווים מקבילים
-  ;[-(W / 2 - 1.1 * s), W / 2 - 1.1 * s].forEach(o => {
-    for (let d = 0; d < TOTAL; d += 6) L.push(place(d, o, `<rect x="-3.2" y="${f(-0.18 * s)}" width="6.4" height="${f(0.36 * s)}" fill="#E4D5BA"/>`));
-  });
+  // קצה קדמי (עובי) — הדופן בצד הקרוב לצופה
+  for (let u = 0; u < LEN; u += STEP) {
+    const e = u + STEP + 0.3, a = pt(u, hw + sleeve), b = pt(e, hw + sleeve), c = pt(e, hw + sleeve, -T), d = pt(u, hw + sleeve, -T);
+    out.push(`<polygon points="${[a, b, c, d].map(p => `${f(p[0])},${f(p[1])}`).join(' ')}" fill="${mix('#B9B2A4', '#8F887B', 0.4 - shade(u) * 0.4)}"/>`);
+  }
+  // שרוול סיליקון (IP67/68)
+  if (sleeve) for (let u = 0; u < LEN; u += STEP) out.push(`<polygon points="${q(u, u + STEP + 0.2, -hw - sleeve, hw + sleeve, 0.05)}" fill="${mix('#EEF2F3', '#C9D2D5', 1 - shade(u))}"/>`);
+  // PCB עם הצללה לפי הזווית
+  for (let u = 0; u < LEN; u += STEP) out.push(`<polygon points="${q(u, u + STEP + 0.2, -hw, hw, 0.1)}" fill="${mix('#FBFAF6', '#CFCAC0', 1 - shade(u))}"/>`);
+  // מסילות נחושת
+  ;[-(hw - 1), hw - 1.35].forEach(v => out.push(`<polygon points="${q(0, LEN, v, v + 0.35, 0.15)}" fill="#E4D5BA"/>`));
+
   if (spec.kind === 'cob') {
-    L.push(band(W * 0.44, 'url(#phosLin)'), band(W * 0.12, '#FFF1C2', 'stroke-opacity="0.7"'));
+    out.push(`<polygon points="${q(0, LEN, -W * 0.22, W * 0.22, 0.4)}" fill="url(#phosLin)"/>`);
+    out.push(`<polygon points="${q(0, LEN, -W * 0.08, W * 0.02, 0.45)}" fill="#FFF1C2" fill-opacity="0.6"/>`);
   } else {
-    const pitch = 1000 / spec.density * s * (spec.rows === 2 ? 2 : 1);
-    const offs = spec.rows === 2 ? [-W * 0.18, W * 0.18] : [0];
+    const pitch = 1000 / spec.density * (spec.rows === 2 ? 2 : 1);
+    const vs = spec.rows === 2 ? [-W * 0.18, W * 0.18] : [0];
     const group = spec.kind === 'smd' ? Math.max(3, Math.round(spec.density / 40)) : 3;
     let i = 0;
-    for (let d = pitch / 2; d < TOTAL - pitch / 2; d += pitch, i++) {
-      offs.forEach((o, r) => L.push(place(d + (r ? pitch / 2 : 0), o, ledPackage(spec.kind))));
+    for (let u = pitch / 2; u < LEN - 2; u += pitch, i++) {
+      vs.forEach((v, r) => out.push(ledPackage(q, u + (r ? pitch / 2 : 0), v, spec.kind)));
       if (spec.kind === 'smd' && i % group === group - 1) {
-        L.push(place(d + pitch / 2, spec.rows === 2 ? 0 : W * 0.3, `<rect x="${f(-0.8 * s)}" y="${f(-0.5 * s)}" width="${f(1.6 * s)}" height="${f(s)}" fill="#2B2B2B"/>`));
+        const v = spec.rows === 2 ? 0 : W * 0.3, uu = u + pitch / 2;
+        out.push(`<polygon points="${q(uu - 0.8, uu + 0.8, v - 0.5, v + 0.5, 0.3)}" fill="#2B2B2B"/>`);
       }
     }
   }
+  // נקודות חיתוך
   const cutMm = spec.kind === 'cob' ? 50 : spec.kind === 'smd' ? Math.max(25, 3000 / spec.density) : 100 / 3;
-  for (let d = cutMm * s; d < TOTAL - 4 * s; d += cutMm * s) {
-    const pad = x => `<rect x="${f(x)}" y="${f(-0.95 * s)}" width="${f(1.3 * s)}" height="${f(1.9 * s)}" rx="${f(0.3 * s)}" fill="url(#cu)"/>`;
-    L.push(place(d, 0, `<line x1="0" y1="${f(-W / 2)}" x2="0" y2="${f(W / 2)}" stroke="#9A9489" stroke-width="0.8" stroke-dasharray="2.5 2"/>`));
-    [-W * 0.3, W * 0.3].forEach(o => L.push(place(d, o, pad(-1.7 * s) + pad(0.4 * s))));
+  for (let u = cutMm; u < LEN - 4; u += cutMm) {
+    out.push(`<polygon points="${q(u - 0.12, u + 0.12, -hw, hw, 0.2)}" fill="#9A9489"/>`);
+    [-W * 0.3, W * 0.3].forEach(v => out.push(
+      `<polygon points="${q(u - 1.7, u - 0.4, v - 0.95, v + 0.95, 0.25)}" fill="url(#cu)"/>`,
+      `<polygon points="${q(u + 0.4, u + 1.7, v - 0.95, v + 0.95, 0.25)}" fill="url(#cu)"/>`));
   }
-  if (spec.ip >= 65 && spec.ip < 67) L.push(band(W, '#D7E7EE', 'stroke-opacity="0.25"'));
-  if (spec.ip >= 65) L.push(band(W * 0.14, '#FFFFFF', `stroke-opacity="0.55" transform="translate(0 ${f(-W * 0.3)})"`));
-  return { layers: L.join(''), W, sleeve };
-}
+  // ציפוי IP65 והברקה
+  if (spec.ip >= 65 && spec.ip < 67) out.push(`<polygon points="${q(0, LEN, -hw, hw, 0.6)}" fill="#D7E7EE" fill-opacity="0.25"/>`);
+  if (spec.ip >= 65) out.push(`<polygon points="${q(0, LEN, -hw * 0.75 - sleeve, -hw * 0.45 - sleeve, 0.8)}" fill="#FFFFFF" fill-opacity="0.5"/>`);
 
-export function renderStripSVG(p, { layout = 'reel' } = {}) {
-  const spec = stripSpec(p);
-  const bandW = spec.widthMm * S + (spec.ip >= 67 ? 4.8 * S : 0);
-  PATH = layout === 'straight' ? buildStraight(110) : layout === 'wave' ? buildWave(130, 11, 1) : buildPath(bandW);
-  TOTAL = PATH[PATH.length - 1].d;
-  const { layers, W, sleeve } = stripLayers(spec);
-  const T = 1.4 * S + (sleeve ? sleeve * 0.7 : 0);
-  // מבט-על → מבט מזווית: כיווץ אנכי + סיבוב קל
-  // ממרכזים את הסליל במסגרת לפי תיבת הגבול שלו אחרי הכיווץ
-  const K = 0.6, m = bandW / 2 + 8;
-  const xs = PATH.map(p => p.x), ys = PATH.map(p => p.y * K);
-  const x0 = Math.min(...xs) - m, x1 = Math.max(...xs) + m;
-  const y0 = Math.min(...ys) - m * K, y1 = Math.max(...ys) + m * K + T + 20;
-  const fit = Math.min(440 / (x1 - x0), 440 / (y1 - y0));
-  const tx = 250 - fit * (x0 + x1) / 2, ty = 250 - fit * (y0 + y1) / 2;
-  const view = `translate(${f(tx)} ${f(ty)}) scale(${f(fit)} ${f(fit * K)})`;
+  // צל על המשטח מתחת לסרט
+  const ground = [];
+  for (let u = 0; u <= LEN; u += 4) ground.push(project([u, -hw, -14]));
+  for (let u = LEN; u >= 0; u -= 4) ground.push(project([u, hw + 4, -14]));
+
+  // התאמה למסגרת לפי תיבת הגבול של כל הנקודות
+  const all = [];
+  for (let u = 0; u <= LEN; u += 2) all.push(pt(u, -hw - sleeve), pt(u, hw + sleeve, -T));
+  const xs = all.map(p => p[0]), ys = all.map(p => p[1]);
+  const x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
+  const fit = Math.min(430 / (x1 - x0), 330 / (y1 - y0));
+  const tx = 250 - fit * (x0 + x1) / 2, ty = 240 - fit * (y0 + y1) / 2;
+
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
 <defs>
   <linearGradient id="pkg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E4E0D6"/></linearGradient>
   <radialGradient id="phos" cx="0.5" cy="0.45" r="0.7"><stop offset="0" stop-color="#FFE489"/><stop offset="1" stop-color="#E7B53A"/></radialGradient>
   <linearGradient id="phosLin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6CD55"/><stop offset="1" stop-color="#EDBA3F"/></linearGradient>
   <linearGradient id="cu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9B36A"/><stop offset="1" stop-color="#B7792E"/></linearGradient>
-  <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="10"/></filter>
+  <filter id="soft" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="${f(3.5)}"/></filter>
 </defs>
-<g transform="${view}">
-  <g transform="translate(10 34)" filter="url(#soft)">${band(W + 2 * sleeve + 10, '#5E564A', 'stroke-opacity="0.32"')}</g>
-  <g transform="translate(0 ${f(T / 0.52)})">${band(W + 2 * sleeve, '#B9B2A4')}</g>
-  ${layers}
+<g transform="translate(${f(tx)} ${f(ty)}) scale(${f(fit)})">
+  <polygon points="${ground.map(p => `${f(p[0])},${f(p[1])}`).join(' ')}" fill="#5E564A" fill-opacity="0.22" filter="url(#soft)"/>
+  ${out.join('')}
 </g>
 </svg>`;
 }
