@@ -4,6 +4,7 @@ import ToolsNavbar from './components/ToolsNavbar';
 import ToolsFooter from './components/ToolsFooter';
 import TabBar, { TOOLS } from './components/TabBar';
 import { WA_NUMBER, WaIcon } from './components/ContactRow';
+import { TOOL_INFO } from './toolInfo';
 
 const VoltageDropCalc   = lazy(() => import('./components/VoltageDropCalc'));
 const LumenCalc         = lazy(() => import('./components/LumenCalc'));
@@ -112,6 +113,21 @@ export default function App() {
           />}
           {tool === 'power'       && <PowerCalc />}
         </Suspense>
+
+        {TOOL_INFO[tool] && (
+          <section style={{ marginTop: 40, background: '#fff', border: '1px solid #E0DDD6', borderRadius: 12, padding: '24px 28px' }}>
+            <h2 style={{ fontSize: 20, fontWeight: 800, color: '#1C1C1C', marginBottom: 10 }}>
+              {TOOL_INFO[tool].title} — איך זה עובד
+            </h2>
+            <p style={{ fontSize: 15, color: '#555', lineHeight: 1.8, marginBottom: 10 }}>{TOOL_INFO[tool].summary}</p>
+            <p style={{ fontSize: 15, color: '#555', lineHeight: 1.8, marginBottom: TOOL_INFO[tool].example ? 10 : 0 }}>{TOOL_INFO[tool].how}</p>
+            {TOOL_INFO[tool].example && (
+              <p style={{ fontSize: 14, color: '#5a4a1a', background: '#fffbf0', borderRight: '3px solid #E8A020', borderRadius: 6, padding: '10px 14px', margin: 0 }}>
+                <strong>דוגמה: </strong>{TOOL_INFO[tool].example}
+              </p>
+            )}
+          </section>
+        )}
       </div>
 
       <ToolsFooter />
