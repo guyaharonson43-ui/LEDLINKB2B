@@ -354,7 +354,7 @@
   {
     "id": "ledlink-neon-top",
     "name": "נאון סטריפ LED TOP 14.4W IP67",
-    "img": "strips/N2424H.webp",
+    "img": "strips/neon/n2416h.webp",
     "desc": "הספק: 14.4W | 24V | 97-103 Lm/W | 1400-1490Lm/m | גוון: 2700/3000/4000K | IP67 | TOP",
     "category": "סטריפ LED",
     "price": null,
@@ -376,7 +376,7 @@
   {
     "id": "ledlink-neon-side",
     "name": "נאון סטריפ LED SIDE 18W IP67",
-    "img": "strips/N2412L.webp",
+    "img": "strips/neon/n2412l.webp",
     "desc": "הספק: 18W | 24V | 22-26 Lm/W | 400-470Lm/m | גוון: 2700/3000/4000K | IP67 | SIDE",
     "category": "סטריפ LED",
     "price": null,
@@ -387,7 +387,7 @@
   {
     "id": "ledlink-neon-rgb",
     "name": "סטריפ LED RGB IP67 14.4W",
-    "img": "strips/N2412BRG.webp",
+    "img": "strips/neon/n2412b.webp",
     "desc": "הספק: 14.4W | 24V | RGB | 330 Lm/m | IP67",
     "category": "סטריפ LED",
     "price": null,
@@ -1709,7 +1709,7 @@
   {
     "id": "qlt-n2412b0rg",
     "name": "נאון סטריפ LED 14.4W/m IP67 — N2412B0RG",
-    "img": "strips/A41N2412BRGB-1024x683.webp",
+    "img": "strips/neon/n2412b.webp",
     "desc": "הספק: 14.4W/m | 24V | 330 Lm/m | גוון: RGB | IP67",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1729,7 +1729,7 @@
   {
     "id": "qlt-n2412b1rg",
     "name": "נאון סטריפ LED 8W/m IP67 — N2412B1RG",
-    "img": "strips/A41N2412BRGB-1024x683.webp",
+    "img": "strips/neon/n2412b.webp",
     "desc": "הספק: 8W/m | 24V | 180 Lm/m | גוון: RGB | IP67",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1749,7 +1749,7 @@
   {
     "id": "qlt-n2412f",
     "name": "נאון סטריפ LED 18W/m IP67 — N2412F",
-    "img": "strips/NEONF-1024x683.webp",
+    "img": "strips/neon/n2412f.webp",
     "desc": "הספק: 18W/m | 24V | 580-700 Lm/m | גוון: 2700K/3000K/4000K | IP67",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1769,7 +1769,7 @@
   {
     "id": "qlt-n2412l",
     "name": "נאון סטריפ LED 18W/m IP67 — N2412L",
-    "img": "strips/NEON-L_NEON4X10-1024x597.webp",
+    "img": "strips/neon/n2412l.webp",
     "desc": "הספק: 18W/m | 24V | 400-470 Lm/m | גוון: 2700K/3000K/4000K | IP67",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1789,7 +1789,7 @@
   {
     "id": "qlt-n2414h0rg",
     "name": "נאון סטריפ LED 14W/m IP67 — N2414H0RG",
-    "img": "strips/NEON-RGB-nuova-1024x683.webp",
+    "img": "strips/neon/n2414rg.webp",
     "desc": "הספק: 14W/m | 24V | 640 Lm/m | גוון: RGB | IP67",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1809,7 +1809,7 @@
   {
     "id": "qlt-n2414h1",
     "name": "נאון סטריפ LED 11.52W/m IP67 — N2414H1",
-    "img": "strips/N2416H-1024x683.webp",
+    "img": "strips/neon/n2416h.webp",
     "desc": "הספק: 11.52W/m | 24V | 950-1010 Lm/m | גוון: 2700K/3000K/4000K | IP67",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1829,7 +1829,7 @@
   {
     "id": "qlt-n2414h1rg",
     "name": "נאון סטריפ LED 8W/m IP67 — N2414H1RG",
-    "img": "strips/NEON-RGB-nuova-1024x683.webp",
+    "img": "strips/neon/n2414rg.webp",
     "desc": "הספק: 8W/m | 24V | 360 Lm/m | גוון: RGB | IP67",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1849,7 +1849,7 @@
   {
     "id": "qlt-n2416h",
     "name": "נאון סטריפ LED 14.4W/m IP67 — N2416H",
-    "img": "strips/N2416H-1024x683.webp",
+    "img": "strips/neon/n2416h.webp",
     "desc": "הספק: 14.4W/m | 24V | 1400-1490 Lm/m | גוון: 2700K/3000K/4000K | IP67",
     "category": "סטריפ LED",
     "subCategory": "White",
@@ -1869,7 +1869,7 @@
   {
     "id": "qlt-n3x8-mini-neon",
     "name": "נאון סטריפ LED 6W/m IP67 — N3X8 MINI NEON",
-    "img": "strips/N0308-1024x683.webp",
+    "img": "strips/neon/n0308.webp",
     "desc": "הספק: 6W/m | 24V | 105-120 Lm/m | גוון: 2700K/3000K/4000K | IP67",
     "category": "סטריפ LED",
     "subCategory": "Neon",
@@ -1889,7 +1889,7 @@
   {
     "id": "qlt-n4x10",
     "name": "נאון סטריפ LED 10W/m IP67 — N4x10",
-    "img": "strips/N4X10-1024x444.webp",
+    "img": "strips/neon/n4x10.webp",
     "desc": "הספק: 10W/m | 24V | 245-270 Lm/m | גוון: 3000K/4000K | IP67",
     "category": "סטריפ LED",
     "subCategory": "Neon",
@@ -1909,7 +1909,7 @@
   {
     "id": "qlt-n4x10t",
     "name": "נאון סטריפ LED 9.6W/m IP67 — N4X10T",
-    "img": "strips/0410T_6J9A0119.webp",
+    "img": "strips/neon/n4x10t.webp",
     "desc": "הספק: 9.6W/m | 24V | 260-310 Lm/m | גוון: 2700K/3000K/4000K | IP67",
     "category": "סטריפ LED",
     "subCategory": "Neon",
@@ -1929,7 +1929,7 @@
   {
     "id": "qlt-n3x8",
     "name": "נאון סטריפ LED 6W/m IP67 — N8X8 NEON 3D",
-    "img": "strips/0808_6J9A0486-1024x683.webp",
+    "img": "strips/neon/n0808.webp",
     "desc": "הספק: 6W/m | 24V | 285-310 Lm/m | גוון: 2700K/3000K/4000K | IP67",
     "category": "סטריפ LED",
     "subCategory": "Neon",
@@ -1969,7 +1969,7 @@
   {
     "id": "qlt-nt1811-360-strip-neon-led-tube",
     "name": "נאון סטריפ LED 11W/m IP65 — NT1811 360° strip NEON LED TUBE",
-    "img": "strips/O23MM_FEN14WR-P5-G1-28AH9x-24V280D-R23L052-1024x683.webp",
+    "img": "strips/neon/nt.webp",
     "desc": "הספק: 11W/m | 24V | 770-780 Lm/m | גוון: 3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "Neon",
@@ -1989,7 +1989,7 @@
   {
     "id": "qlt-nt2314-360-strip-neon-led-tube",
     "name": "נאון סטריפ LED 14W/m IP65 — NT2314 360° strip NEON LED TUBE",
-    "img": "strips/O23MM_FEN14WR-P5-G1-28AH9x-24V280D-R23L052-1024x683.webp",
+    "img": "strips/neon/nt.webp",
     "desc": "הספק: 14W/m | 24V | 990-1000 Lm/m | גוון: 3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "Neon",
@@ -2009,7 +2009,7 @@
   {
     "id": "qlt-ntr2416-neon-triangle",
     "name": "נאון סטריפ LED 5.5W/m IP65 — NTR2416 NEON TRIANGLE",
-    "img": "strips/triangle-1-1-1024x576.webp",
+    "img": "strips/neon/ntr.webp",
     "desc": "הספק: 5.5W/m | 24V | 420 Lm/m | גוון: 3000K/4000K | IP65",
     "category": "סטריפ LED",
     "subCategory": "Neon",
@@ -2089,7 +2089,7 @@
   {
     "id": "qlt-spi-neon-rgbw",
     "name": "נאון סטריפ LED 12W/m IP67 — SPI NEON RGB+W",
-    "img": "strips/SPI-NEON-RGBW-1024x500.webp",
+    "img": "strips/neon/spi-rgbw.webp",
     "desc": "הספק: 12W/m | 24V | 800 Lm/m | גוון: RGBW | IP67",
     "category": "סטריפ LED",
     "subCategory": "Neon",
@@ -2109,7 +2109,7 @@
   {
     "id": "qlt-spi-neon-wh",
     "name": "נאון סטריפ LED 12W/m IP67 — SPI NEON WH",
-    "img": "strips/SPI-NEON-WHITE-1024x683.webp",
+    "img": "strips/neon/spi-wh.webp",
     "desc": "הספק: 12W/m | 24V | 250-290 Lm/m | גוון: 3000K/4000K | IP67",
     "category": "סטריפ LED",
     "subCategory": "Neon",
