@@ -8,7 +8,6 @@ const STRIP_MODELS = {
   "ledlink-strip-ip65-12w": {"density": 80, "led": "2835", "widthMm": 10.0, "cutMm": 100.0, "source": "DS_B24_IP65.pdf"},
   "ledlink-strip-ip65-16w": {"density": 128, "led": "2835", "widthMm": 10.0, "cutMm": 62.5, "source": "DS_B24_IP65.pdf"},
   "ledlink-strip-ip65-20w": {"density": 160, "led": "2835", "widthMm": 10.0, "cutMm": 50.0, "source": "DS_B24_IP65.pdf"},
-  "ledlink-strip-50w": {"density": 560, "alt": true, "led": "2110", "widthMm": 10.0, "cutMm": 25.0, "source": "DS_ST24560CT.pdf"},
   "ledlink-strip-dob": {"dob": true, "density": 288, "cutMm": 27.7, "source": "DOB.pdf"},
   "ledlink-strip-rgbw-ip20": {"density": 120, "led": "3527", "widthMm": 10.0, "source": "DS_S24120RW_S2412ARW.pdf"},
   "ledlink-strip-ip68-14w": {"density": 210, "led": "2835", "widthMm": 12.5, "cutMm": 33.3, "source": "DS_H24_IP68.pdf"},
