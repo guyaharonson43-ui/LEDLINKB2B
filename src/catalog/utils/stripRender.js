@@ -178,10 +178,12 @@ export function renderStripSVG(p) {
   for (let u = 0; u <= LEN; u += 2) all.push(S.pt(u, -hw - sleeve), S.pt(u, hw + sleeve, -PCB_T - 4));
   const xs = all.map(q => q[0]), ys = all.map(q => q[1]);
   const x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
-  const fit = Math.min(440 / (x1 - x0), 330 / (y1 - y0));
-  const tx = 250 - fit * (x0 + x1) / 2, ty = 245 - fit * (y0 + y1) / 2;
+  // מסגרת צמודה לסטריפ (לא ריבועית), כדי שימלא את רוחב הכרטיס
+  const fit = 480 / (x1 - x0);
+  const VH = Math.round((y1 - y0) * fit + 60);
+  const tx = 250 - fit * (x0 + x1) / 2, ty = VH / 2 - 12 - fit * (y0 + y1) / 2;
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 ${VH}" width="500" height="${VH}">
 <defs>
   <radialGradient id="phosW" cx="0.5" cy="0.45" r="0.75"><stop offset="0" stop-color="#FFD978"/><stop offset="1" stop-color="#E9A53A"/></radialGradient>
   <radialGradient id="phosC" cx="0.5" cy="0.45" r="0.75"><stop offset="0" stop-color="#FFF4C4"/><stop offset="1" stop-color="#EFD27A"/></radialGradient>
@@ -198,4 +200,26 @@ export function renderStripSVG(p) {
 
 export function stripImageURI(p) {
   return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(renderStripSVG(p));
+}
+
+// ── שילוב בקטלוג (בשלב בדיקה) ───────────────────────────────────────────────
+// ההדמיות מוצגות רק למי שנכנס עם ?renders=1 (נשמר ללשונית עד ?renders=0),
+// כדי לבדוק אותן באתר החי בלי לשנות את מה שמבקרים רגילים רואים.
+export const RENDERS_ON = (() => {
+  try {
+    const q = new URLSearchParams(window.location.search).get('renders');
+    if (q === '1') sessionStorage.setItem('stripRenders', '1');
+    if (q === '0') sessionStorage.removeItem('stripRenders');
+    return sessionStorage.getItem('stripRenders') === '1';
+  } catch { return false; }
+})();
+
+// נאון מקבל שרטוט חתך משלו (NeonSchematics) ונשאר עם צילום היצרן
+const NEON_ID = /^(ledlink-neon|qlt-n\d|qlt-nt|qlt-spi-neon)/;
+const cache = new Map();
+export function stripRenderFor(p) {
+  if (!RENDERS_ON || !p || p.category !== 'סטריפ LED') return null;
+  if (NEON_ID.test(p.id) || p.subCategory === 'Neon' || /נאון|NEON/i.test(p.name || '')) return null;
+  if (!cache.has(p.id)) cache.set(p.id, stripImageURI(p));
+  return cache.get(p.id);
 }
