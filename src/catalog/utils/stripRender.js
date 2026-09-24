@@ -40,6 +40,12 @@ const TURNS = 2.6;                 // כמה סיבובים בסליל (ספיר
 const TAIL = 230;                   // אורך הזנב הישר שיוצא קדימה
 
 // המסלול נדגם פעם אחת לכל רוחב סטריפ (הפסיעה בין הסיבובים תלויה ברוחב)
+// קטע ישר באורך אמיתי (מ"מ), בזווית אלכסונית — מבט "קטלוגי" קרוב
+function buildStraight(lenMm) {
+  const pts = [], t = -0.42, L = lenMm * S;
+  for (let k = 0; k <= L; k += 2) pts.push({ x: Math.cos(t) * k, y: Math.sin(t) * k, d: k });
+  return pts;
+}
 function buildPath(bandW) {
   const pitch = bandW + 4;
   const th1 = Math.PI * 1.9, th0 = th1 - TURNS * 2 * Math.PI;   // הזנב יוצא מימין-למעלה אל הצופה
@@ -129,10 +135,11 @@ function stripLayers(spec) {
   return { layers: L.join(''), W, sleeve };
 }
 
-export function renderStripSVG(p) {
+export function renderStripSVG(p, { layout = 'reel' } = {}) {
   const spec = stripSpec(p);
   const bandW = spec.widthMm * S + (spec.ip >= 67 ? 4.8 * S : 0);
-  PATH = buildPath(bandW); TOTAL = PATH[PATH.length - 1].d;
+  PATH = layout === 'straight' ? buildStraight(110) : buildPath(bandW);
+  TOTAL = PATH[PATH.length - 1].d;
   const { layers, W, sleeve } = stripLayers(spec);
   const T = 1.4 * S + (sleeve ? sleeve * 0.7 : 0);
   // מבט-על → מבט מזווית: כיווץ אנכי + סיבוב קל
