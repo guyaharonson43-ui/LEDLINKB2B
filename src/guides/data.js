@@ -1,6 +1,9 @@
+// slug = כתובת העמוד הסטטי /guides/{slug}/ (נוצר ב-scripts/generate-static.mjs).
+// אל תשנו slug קיים — זו כתובת שכבר מאונדקסת בגוגל.
 export const GUIDES = [
   {
     id: 5,
+    slug: 'led-profile-by-room',
     cat: 'מדריך קנייה',
     readTime: '2 דק׳',
     title: 'איזה פרופיל LED מתאים לאיזה חלל?',
@@ -29,6 +32,7 @@ export const GUIDES = [
   },
   {
     id: 1,
+    slug: 'kitchen-led-profile',
     cat: 'מדריך קנייה',
     readTime: '1-2 דק׳',
     title: 'איך לבחור פרופיל LED למטבח?',
@@ -51,6 +55,7 @@ export const GUIDES = [
   },
   {
     id: 2,
+    slug: 'living-room-lighting',
     cat: 'תכנון תאורה',
     readTime: '1-2 דק׳',
     title: '5 כללי זהב לתאורת סלון מודרני',
@@ -75,6 +80,7 @@ export const GUIDES = [
   },
   {
     id: 3,
+    slug: 'led-strip-power-calculation',
     cat: 'טכני',
     readTime: '1-2 דק׳',
     title: 'איך מחשבים הספק לסטריפ LED?',
@@ -98,6 +104,7 @@ export const GUIDES = [
   },
   {
     id: 4,
+    slug: 'drywall-led-profile-installation',
     cat: 'מדריך התקנה',
     readTime: '1-2 דק׳',
     title: 'התקנת פרופיל שקוע גבס — צעד אחר צעד',
@@ -123,7 +130,8 @@ export const GUIDES = [
     ],
   },
   {
-    id: 5,
+    id: 7,
+    slug: 'ip-rating-guide',
     cat: 'תכנון תאורה',
     readTime: '1-2 דק׳',
     title: 'IP44 / IP65 / IP67 — איזה דירוג לאיזה חלל?',
@@ -148,6 +156,7 @@ export const GUIDES = [
   },
   {
     id: 6,
+    slug: 'color-temperature-guide',
     cat: 'מדריך קנייה',
     readTime: '1-2 דק׳',
     title: 'גוון אור 2700K, 3000K או 4000K?',

@@ -34,7 +34,13 @@
 
 ## מדריכים ומידע
 
-- [מדריכי תאורת LED](https://ledlink.co.il/guides.html): בחירת פרופיל לפי חלל ולמטבח, תאורת סלון, חישוב הספק לסטריפ, התקנת פרופיל שקוע גבס, דירוגי IP וגוון אור (2700K/3000K/4000K)
+- [איזה פרופיל LED מתאים לאיזה חלל?](https://ledlink.co.il/guides/led-profile-by-room/): טבלת השוואה — סוג פרופיל, הספק, דרגת IP וכיסוי לפי חלל
+- [איך לבחור פרופיל LED למטבח?](https://ledlink.co.il/guides/kitchen-led-profile/): תאורת שיש, ארונות ואי מטבח
+- [5 כללי זהב לתאורת סלון מודרני](https://ledlink.co.il/guides/living-room-lighting/): שילוב תאורה כללית, מבטאת ופונקציונלית
+- [איך מחשבים הספק לסטריפ LED?](https://ledlink.co.il/guides/led-strip-power-calculation/): הנוסחה, מקדם ביטחון 20% ובחירת ספק מתח
+- [התקנת פרופיל שקוע גבס — צעד אחר צעד](https://ledlink.co.il/guides/drywall-led-profile-installation/)
+- [IP44 / IP65 / IP67 — איזה דירוג לאיזה חלל?](https://ledlink.co.il/guides/ip-rating-guide/)
+- [גוון אור 2700K, 3000K או 4000K?](https://ledlink.co.il/guides/color-temperature-guide/)
 - [שאלות נפוצות](https://ledlink.co.il/faq.html): משלוחים, איסוף, התאמה אישית וייעוץ
 - [אודות LEDLink](https://ledlink.co.il/about.html): היסטוריית החברה והמפעל
 

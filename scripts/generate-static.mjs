@@ -7,7 +7,7 @@
  */
 import { readFileSync, writeFileSync, copyFileSync, existsSync,
          mkdirSync, readdirSync, statSync } from 'fs';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
 import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -88,6 +88,9 @@ if (!Array.isArray(products) || products.length === 0) {
   console.error('generate-static: could not load products');
   process.exit(1);
 }
+
+// The guides React app's own data module (plain ESM, no JSX)
+const { GUIDES } = await import(pathToFileURL(join(ROOT, 'src/guides/data.js')).href);
 
 // datasheets_data.js: `const PRODUCT_DATASHEETS = {...}; export default PRODUCT_DATASHEETS;`
 // Same lookup order as ProductModal.jsx: by product.id first, then product.name.
@@ -214,8 +217,12 @@ const sitemapStatic = [
 const sitemapProducts = products
   .map(p => ({ loc: canonicalUrl(p), priority: '0.8', changefreq: 'monthly' }));
 
+const sitemapGuides = GUIDES
+  .map(g => ({ loc: `${BASE_URL}/guides/${g.slug}/`, priority: '0.7', changefreq: 'monthly' }));
+
 const sitemapAll = [
   ...sitemapStatic.map(u => ({ ...u, lastmod: today })),
+  ...sitemapGuides,
   ...sitemapProducts,
 ];
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -397,7 +404,8 @@ for (const p of products) {
   titleCounts[t] = (titleCounts[t] || 0) + 1;
 }
 
-const PRODUCT_PAGE_CSS = `
+// Shared by the static product and guide pages.
+const SITE_CSS = `
   *{box-sizing:border-box}
   body{font-family:'Heebo',Arial,sans-serif;direction:rtl;background:#F4F4F0;color:#1C1C1C;margin:0;line-height:1.6}
   a{color:inherit}
@@ -447,6 +455,29 @@ const PRODUCT_PAGE_CSS = `
   }
 `;
 
+const SITE_FONTS = `<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">`;
+
+const SITE_HEADER = `<header class="nav"><div class="nav-in">
+  <a class="logo" href="/"><b>LED</b><span>LINK</span></a>
+  <nav class="nav-links" aria-label="ניווט ראשי">
+    <a href="/catalog.html">קטלוג</a>
+    <a href="/tools.html">כלי תכנון</a>
+    <a href="/guides.html">מדריכים</a>
+    <a href="/about.html">אודות</a>
+    <a href="/faq.html">שאלות נפוצות</a>
+  </nav>
+</div></header>`;
+
+const SITE_FOOTER = `<footer><div class="foot-in">
+  <div><strong>LEDLink</strong> · יצרן רכיבי תאורת LED מאז 2009 · יצירה 19, רחובות</div>
+  <div><a href="tel:+97286326059">08-6326059</a> · <a href="mailto:office@ledlink.co.il">office@ledlink.co.il</a> · א׳–ה׳ <span dir="ltr">07:00–15:00</span></div>
+</div></footer>`;
+
+// "</" inside JSON would close the <script> early
+const ld = o => JSON.stringify(o).replace(/</g, '\\u003c');
+
 function buildProductPage(p) {
   const url      = canonicalUrl(p);
   const info     = CATEGORY_INFO[p.category] || CATEGORY_INFO['גופי תאורה'];
@@ -489,8 +520,6 @@ function buildProductPage(p) {
       [name, url],
     ].map(([n, item], i) => ({ '@type': 'ListItem', position: i + 1, name: n, item }))
   };
-  // "</" inside JSON would close the <script> early
-  const ld = o => JSON.stringify(o).replace(/</g, '\\u003c');
 
   return `<!DOCTYPE html>
 <html lang="he" dir="rtl">
@@ -509,24 +538,13 @@ function buildProductPage(p) {
 <meta property="og:site_name" content="LEDLink">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" as="image" href="${imgUrl}" fetchpriority="high">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+${SITE_FONTS}
 <script type="application/ld+json">${ld(productSchema)}</script>
 <script type="application/ld+json">${ld(breadcrumbSchema)}</script>
-<style>${PRODUCT_PAGE_CSS}</style>
+<style>${SITE_CSS}</style>
 </head>
 <body>
-<header class="nav"><div class="nav-in">
-  <a class="logo" href="/"><b>LED</b><span>LINK</span></a>
-  <nav class="nav-links" aria-label="ניווט ראשי">
-    <a href="/catalog.html">קטלוג</a>
-    <a href="/tools.html">כלי תכנון</a>
-    <a href="/guides.html">מדריכים</a>
-    <a href="/about.html">אודות</a>
-    <a href="/faq.html">שאלות נפוצות</a>
-  </nav>
-</div></header>
+${SITE_HEADER}
 <main>
   <nav class="crumbs" aria-label="פירורי לחם">
     <a href="/">דף הבית</a><span>›</span><a href="/catalog.html">קטלוג</a><span>›</span><a href="${tabUrl}">${escHtml(p.category)}</a><span>›</span>${escHtml(name)}
@@ -559,10 +577,7 @@ function buildProductPage(p) {
     return `<a href="${canonicalUrl(q)}"><img src="${imageUrl(q)}" alt="${escHtml(qn)}" loading="lazy" decoding="async">${escHtml(qn)}</a>`;
   }).join('')}</div>` : ''}
 </main>
-<footer><div class="foot-in">
-  <div><strong>LEDLink</strong> · יצרן רכיבי תאורת LED מאז 2009 · יצירה 19, רחובות</div>
-  <div><a href="tel:+97286326059">08-6326059</a> · <a href="mailto:office@ledlink.co.il">office@ledlink.co.il</a> · א׳–ה׳ <span dir="ltr">07:00–15:00</span></div>
-</div></footer>
+${SITE_FOOTER}
 </body>
 </html>`;
 }
@@ -573,6 +588,194 @@ for (const p of products) {
   writeFileSync(join(dir, 'index.html'), buildProductPage(p), 'utf8');
 }
 console.log(`generate-static: product pages  →  dist/product/  (${products.length} pages)`);
+
+// ── 7b. Guide pages (dist/guides/{slug}/index.html) ─────────────────────────
+// guides.html is a React app, so without JS (AI crawlers) it's an empty page
+// and all seven guides share one URL. Each guide gets its own static page
+// here, rendered from the same src/guides/data.js the React app uses.
+
+const guideDir = join(DIST, 'guides');
+
+// Guide links are written relative to the site root ("catalog.html?tab=…").
+function siteHref(url) {
+  if (/^https?:/.test(url)) return url;
+  return '/' + url.replace(/^\//, '').split('?').map((part, i) => i ? part.replace(/ /g, '%20') : part).join('?');
+}
+
+// Same logic as src/guides/components/renderParagraph.jsx: link the first
+// occurrence of each `word` in the paragraph.
+function guideParagraph(text, links) {
+  let parts = [escHtml(text)];
+  for (const { word, url } of links || []) {
+    const w = escHtml(word);
+    parts = parts.flatMap(part => {
+      if (part.startsWith('<a ')) return [part];
+      const idx = part.indexOf(w);
+      if (idx === -1) return [part];
+      return [part.slice(0, idx), `<a href="${siteHref(url)}">${w}</a>`, part.slice(idx + w.length)];
+    });
+  }
+  return parts.join('');
+}
+
+function guideBlock(b) {
+  if (b.type === 'h')   return `<h2>${escHtml(b.text)}</h2>`;
+  if (b.type === 'tip') return `<aside class="tip">${escHtml(b.text)}</aside>`;
+  if (b.type === 'table') return `<div class="tbl"><table>
+    <thead><tr>${b.headers.map(h => `<th scope="col">${escHtml(h)}</th>`).join('')}</tr></thead>
+    <tbody>${b.rows.map(r => `<tr>${r.map(c => `<td>${escHtml(c)}</td>`).join('')}</tr>`).join('')}</tbody>
+  </table></div>`;
+  return `<p>${guideParagraph(b.text, b.links)}</p>`;
+}
+
+const guideUrl = g => `${BASE_URL}/guides/${g.slug}/`;
+
+// Calculators that fit each guide, matched by what the guide is about.
+function guideTools(g) {
+  const t = g.title + ' ' + g.body.map(b => b.text || '').join(' ');
+  const tools = [];
+  if (/הספק|ספק|דרייבר/.test(t))  tools.push(['מחשבון ספק כוח', '/tools.html?tool=power']);
+  if (/מפל מתח|מרחק/.test(t))    tools.push(['מחשבון מפל מתח', '/tools.html?tool=voltage']);
+  if (/לומן|כמות האור|סלון|חלל/.test(t)) tools.push(['מחשבון לומן לחלל', '/tools.html?tool=lumen']);
+  if (/פרופיל/.test(t))           tools.push(['מחשבון פרופיל LED', '/tools.html?tool=linear']);
+  if (/גוון|K\b/.test(t))         tools.push(['מחשבון ביולוגי (אור מלנופי)', '/tools.html?tool=circadian']);
+  return tools.slice(0, 3);
+}
+
+const GUIDE_CSS = `
+  article{max-width:760px}
+  .hero{border-radius:12px;overflow:hidden;aspect-ratio:21/9;background:#E0DDD6;margin-bottom:24px}
+  .hero img{width:100%;height:100%;object-fit:cover;display:block}
+  .meta{color:#777;font-size:13px;margin:-8px 0 24px}
+  .lead{font-size:18px;color:#444;font-weight:500}
+  article h2{font-size:21px;margin:32px 0 8px}
+  article p{font-size:16px;color:#444;line-height:1.8;margin:0 0 14px}
+  article p a{color:#C4880A;font-weight:600;text-underline-offset:3px}
+  .tip{background:rgba(232,160,32,.08);border-right:4px solid #E8A020;border-radius:8px;padding:16px 20px;margin:24px 0;color:#444}
+  .tbl{overflow-x:auto;margin:20px 0}
+  .tbl table{width:100%;border-collapse:collapse;font-size:14px;background:#fff}
+  .tbl th{background:#F4F4F0;border-bottom:2px solid #E8A020;padding:10px 14px;text-align:right;white-space:nowrap}
+  .tbl td{padding:10px 14px;border-bottom:1px solid #E8E8E4;color:#444;vertical-align:top}
+  .cta{background:#1A1A1A;border-radius:12px;padding:28px;text-align:center;margin:40px 0 0}
+  .cta p{color:#fff !important;font-weight:700;font-size:18px;margin:0 0 16px}
+  .cta .actions{justify-content:center}
+  .cta .btn-cat{border-color:#fff;color:#fff}
+  .more{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+  .more a{background:#fff;border:1px solid #E0DDD6;border-radius:10px;padding:14px 16px;text-decoration:none;font-weight:700;font-size:14px}
+  .more a:hover{border-color:#E8A020}
+  .more small{display:block;color:#999;font-weight:500;margin-bottom:4px}
+`;
+
+function buildGuidePage(g) {
+  const url   = guideUrl(g);
+  const desc  = g.excerpt;
+  const tools = guideTools(g);
+  const others = GUIDES.filter(o => o.slug !== g.slug);
+  const waText = `שלום LEDLink, קראתי את המדריך "${g.title}" ואשמח לעזרה בתכנון התאורה שלי.`;
+
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: g.title,
+    description: desc,
+    image: g.img,
+    inLanguage: 'he',
+    url,
+    mainEntityOfPage: url,
+    articleSection: g.cat,
+    author: { '@type': 'Organization', name: 'LEDLink', url: `${BASE_URL}/` },
+    publisher: {
+      '@type': 'Organization', name: 'LEDLink', url: `${BASE_URL}/`,
+      logo: { '@type': 'ImageObject', url: `${BASE_URL}/logo.png` }
+    }
+  };
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      ['דף הבית', `${BASE_URL}/`],
+      ['מדריכים', `${BASE_URL}/guides.html`],
+      [g.title, url],
+    ].map(([n, item], i) => ({ '@type': 'ListItem', position: i + 1, name: n, item }))
+  };
+
+  return `<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${escHtml(g.title)} | מדריכי LEDLink</title>
+<meta name="description" content="${escHtml(desc)}">
+<link rel="canonical" href="${url}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="${url}">
+<meta property="og:title" content="${escHtml(g.title)}">
+<meta property="og:description" content="${escHtml(desc)}">
+<meta property="og:image" content="${g.img}">
+<meta property="og:locale" content="he_IL">
+<meta property="og:site_name" content="LEDLink">
+<meta name="twitter:card" content="summary_large_image">
+${SITE_FONTS}
+<script type="application/ld+json">${ld(articleSchema)}</script>
+<script type="application/ld+json">${ld(breadcrumbSchema)}</script>
+<style>${SITE_CSS}${GUIDE_CSS}</style>
+</head>
+<body>
+${SITE_HEADER}
+<main>
+  <nav class="crumbs" aria-label="פירורי לחם">
+    <a href="/">דף הבית</a><span>›</span><a href="/guides.html">מדריכים</a><span>›</span>${escHtml(g.title)}
+  </nav>
+  <article>
+    <div class="cat">${escHtml(g.cat)}</div>
+    <h1>${escHtml(g.title)}</h1>
+    <div class="meta">${escHtml(g.readTime)} קריאה · מאת צוות LEDLink</div>
+    <div class="hero"><img src="${g.img}" alt="${escHtml(g.title)}" width="760" height="326" fetchpriority="high"></div>
+    <p class="lead">${escHtml(desc)}</p>
+    ${g.body.map(guideBlock).join('\n    ')}
+    <div class="cta">
+      <p>צריכים עזרה בתכנון? מהנדס התאורה שלנו יחזור אליכם תוך שעות.</p>
+      <div class="actions">
+        <a class="btn btn-wa" href="https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waText)}" target="_blank" rel="noopener">שליחת הודעה בוואטסאפ</a>
+        ${g.catalogLink ? `<a class="btn btn-cat" href="${siteHref(g.catalogLink)}">${escHtml(g.catalogLabel || 'לקטלוג')}</a>` : ''}
+      </div>
+    </div>
+  </article>
+
+  ${tools.length ? `<h2>כלים שיעזרו לכם לחשב</h2>
+  <div class="more">${tools.map(([t, h]) => `<a href="${h}"><small>מחשבון חינמי</small>${escHtml(t)}</a>`).join('')}</div>` : ''}
+
+  <h2>מדריכים נוספים</h2>
+  <div class="more">${others.map(o => `<a href="/guides/${o.slug}/"><small>${escHtml(o.cat)}</small>${escHtml(o.title)}</a>`).join('')}</div>
+</main>
+${SITE_FOOTER}
+</body>
+</html>`;
+}
+
+for (const g of GUIDES) {
+  const dir = join(guideDir, g.slug);
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(join(dir, 'index.html'), buildGuidePage(g), 'utf8');
+}
+console.log(`generate-static: guide pages  →  dist/guides/  (${GUIDES.length} pages)`);
+
+// guides.html itself: static list of the guides inside #root, replaced by the
+// React app on load — so crawlers without JS see real content and links.
+{
+  const p = join(DIST, 'guides.html');
+  let html = readFileSync(p, 'utf8');
+  const list = `<noscript><div style="font-family:sans-serif;direction:rtl;padding:16px;max-width:900px;margin:0 auto">` +
+    `<h1>מדריכי תאורת LED</h1><ul>` +
+    GUIDES.map(g => `<li><a href="/guides/${g.slug}/">${escHtml(g.title)}</a> — ${escHtml(g.excerpt)}</li>`).join('') +
+    `</ul></div></noscript>`;
+  const before = html;
+  html = html.replace(/<div id="root">\s*<\/div>/, `<div id="root">${list}</div>`);
+  if (html === before) console.warn('generate-static: WARNING — #root not found in dist/guides.html');
+  writeFileSync(p, html, 'utf8');
+  console.log('generate-static: guide list  →  dist/guides.html');
+}
+
 
 // ── 8. Share pages (dist/share/{id}.html) ───────────────────────────────────
 
