@@ -110,27 +110,31 @@ const NEON_PROFILES = {
       </Section>
     ),
   },
-  // N2412F — 8×16, סטריפ אנכי על דופן, חריצי תפיסה בצדדים
+  // N2412F — 8×16, פינות עליונות משופעות, חריצי תפיסה בגובה 6.6–7.7, סטריפ אנכי משמאל לעמודת המפזר
   'f-8x16': {
     label: 'חתך רוחב — 8×16mm',
     svg: (
       <Section id="nf" w={8} h={16} dims={{ bottom: [0, 8, '8 mm'], right: [0, 16, '16 mm'] }}>
-        <path d="M1,0 H7 L8,1 V7 Q7.3,7.6 8,8.2 V16 H0 V8.2 Q0.7,7.6 0,7 V1 Z" fill={C.body} stroke={C.bodyEdge} strokeWidth="1" {...SW} />
-        <path d="M1.1,0.4 H6.9 L7.6,1.1 V6.2 H5.4 V15.2 H3.4 V6.2 H0.4 V1.1 Z" fill={C.dif} stroke={C.difEdge} strokeWidth="0.6" {...SW} />
-        <Pcb x={2.8} y={8.4} w={0.5} h={6.6} />
-        <Led x={3.3} y={10.2} w={0.8} h={2.8} />
+        <path d="M0.7,0 H7.3 L8,1.1 V6.6 Q7.4,7.15 8,7.7 V15.6 Q8,16 7.6,16 H0.4 Q0,16 0,15.6 V7.7 Q0.6,7.15 0,6.6 V1.1 Z"
+          fill={C.body} stroke={C.bodyEdge} strokeWidth="1" {...SW} />
+        <path d="M0.85,0.3 H7.15 L7.7,1.15 V6.1 L5.7,7.3 V15.2 H2.7 V6.6 L0.6,6 V1.15 Z" fill={C.dif} stroke={C.difEdge} strokeWidth="0.6" {...SW} />
+        <Pcb x={2.25} y={6.5} w={0.45} h={8.7} />
+        <rect x="2.62" y="7.95" width="1.05" height="3.7" fill="none" stroke={C.bodyEdge} strokeWidth="0.5" {...SW} />
+        <Led x={2.72} y={8.2} w={0.8} h={3.2} />
       </Section>
     ),
   },
-  // N2412L — 6×12, סטריפ אנכי על דופן, חריצים בחלק העליון
+  // N2412L — 6×12, מפזר צר שמתרחב למעלה, צוואר תפיסה ליד החלק העליון, סטריפ אנכי משמאל לעמודה
   'l-6x12': {
     label: 'חתך רוחב — 6×12mm',
     svg: (
-      <Section id="nl" w={6} h={12} dims={{ bottom: [0, 6, '6 mm'], right: [0, 12, '12 mm'] }}>
-        <path d="M0.5,0 H5.5 Q6,0 6,0.5 V1.3 Q5.5,1.8 6,2.3 V12 H0 V2.3 Q0.5,1.8 0,1.3 V0.5 Q0,0 0.5,0 Z" fill={C.body} stroke={C.bodyEdge} strokeWidth="1" {...SW} />
-        <path d="M0.6,0.35 H5.4 V1.2 L4.6,2.4 V11.3 H2.3 V2.4 L0.6,1.2 Z" fill={C.dif} stroke={C.difEdge} strokeWidth="0.6" {...SW} />
-        <Pcb x={1.8} y={3} w={0.45} h={8.3} />
-        <Led x={2.25} y={5} w={0.7} h={2.8} />
+      <Section id="nl" w={6} h={12} dims={{ bottom: [0, 6, '6 mm'], right: [0, 12, '12 mm'], glowFrom: 1.46, glowTo: 4.73 }}>
+        <path d="M0.25,0 H5.75 L6,0.25 V1.2 Q5.55,2.05 6,2.9 V11.7 Q6,12 5.7,12 H0.3 Q0,12 0,11.7 V2.9 Q0.45,2.05 0,1.2 V0.25 Z"
+          fill={C.body} stroke={C.bodyEdge} strokeWidth="1" {...SW} />
+        <path d="M1.46,0.2 H4.73 L4.39,2.5 V10.3 H2.3 V2.5 Z" fill={C.dif} stroke={C.difEdge} strokeWidth="0.6" {...SW} />
+        <Pcb x={1.95} y={2.5} w={0.35} h={7.8} />
+        <rect x="2.3" y="4.55" width="0.95" height="3.7" fill="none" stroke={C.bodyEdge} strokeWidth="0.5" {...SW} />
+        <Led x={2.42} y={4.75} w={0.65} h={3.3} />
       </Section>
     ),
   },
@@ -243,36 +247,13 @@ const NEON_PROFILES = {
       </Section>
     ),
   },
-  // נאון LEDLINK TOP — 10×10, אור מלמעלה
-  'h-top': {
-    label: 'חתך רוחב — TOP 10×10mm',
-    svg: (
-      <Section id="lt" w={10} h={10} dims={{ bottom: [0, 10, '10 mm'], right: [0, 10, '10 mm'] }}>
-        <rect x="0" y="0" width="10" height="10" rx="0.8" fill={C.body} stroke={C.bodyEdge} strokeWidth="1" {...SW} />
-        <rect x="0.6" y="0.4" width="8.8" height="6.6" rx="0.5" fill={C.dif} stroke={C.difEdge} strokeWidth="0.6" {...SW} />
-        <Pcb x={2.2} y={7.9} w={5.6} h={0.45} />
-        <Led x={3.6} y={7.2} w={2.8} h={0.7} />
-      </Section>
-    ),
-  },
-  // נאון LEDLINK SIDE — 12×7
-  'l-side': {
-    label: 'חתך רוחב — SIDE 12×7mm',
-    svg: (
-      <Section id="ls" w={12} h={7} dims={{ bottom: [0, 12, '12 mm'], right: [0, 7, '7 mm'] }}>
-        <rect x="0" y="0" width="12" height="7" rx="0.7" fill={C.body} stroke={C.bodyEdge} strokeWidth="1" {...SW} />
-        <rect x="0.5" y="0.4" width="11" height="3.8" rx="0.4" fill={C.dif} stroke={C.difEdge} strokeWidth="0.6" {...SW} />
-        <Pcb x={2.5} y={5.1} w={7} h={0.45} />
-        <Led x={4.6} y={4.4} w={2.8} h={0.7} />
-      </Section>
-    ),
-  },
 };
 
 const NEON_ID_MAP = {
-  'ledlink-neon-top':     'h-top',
-  'ledlink-neon-side':    'l-side',
-  'ledlink-neon-rgb':     'h-top',
+  // מוצרי LEDLINK הם דגמי QLT (לפי התמונה ודף הנתונים המקושר)
+  'ledlink-neon-top':     'h-10x10',   // N2416H
+  'ledlink-neon-side':    'l-6x12',    // N2412L
+  'ledlink-neon-rgb':     'b-9x10',    // N2412B0RG
   'qlt-n2412b0rg':        'b-9x10',
   'qlt-n2412b1rg':        'b-9x10',
   'qlt-n2412f':           'f-8x16',
