@@ -91,6 +91,7 @@ if (!Array.isArray(products) || products.length === 0) {
 
 // The guides React app's own data module (plain ESM, no JSX)
 const { GUIDES } = await import(pathToFileURL(join(ROOT, 'src/guides/data.js')).href);
+const { TOOL_INFO } = await import(pathToFileURL(join(ROOT, 'src/tools/toolInfo.js')).href);
 
 // datasheets_data.js: `const PRODUCT_DATASHEETS = {...}; export default PRODUCT_DATASHEETS;`
 // Same lookup order as ProductModal.jsx: by product.id first, then product.name.
@@ -774,6 +775,54 @@ console.log(`generate-static: guide pages  →  dist/guides/  (${GUIDES.length} 
   if (html === before) console.warn('generate-static: WARNING — #root not found in dist/guides.html');
   writeFileSync(p, html, 'utf8');
   console.log('generate-static: guide list  →  dist/guides.html');
+}
+
+// ── 7c. tools.html static content ───────────────────────────────────────────
+// The calculators are a React app: without JS the page is empty. Inject what
+// each calculator does and how it computes (src/tools/toolInfo.js — the same
+// text the app shows under each tool), plus an ItemList of WebApplication.
+{
+  const p = join(DIST, 'tools.html');
+  let html = readFileSync(p, 'utf8');
+  const tools = Object.entries(TOOL_INFO);
+  const toolUrl = id => `${BASE_URL}/tools.html?tool=${id}`;
+
+  const list = `<noscript><div style="font-family:sans-serif;direction:rtl;padding:16px;max-width:800px;margin:0 auto">` +
+    `<h1>כלי תכנון הנדסיים לתאורת LED</h1>` +
+    `<p>מחשבונים חינמיים של LEDLink לאנשי מקצוע ובעלי בתים. התוצאות הן הערכה ראשונית ואינן תחליף לתכנון הנדסי.</p>` +
+    tools.map(([id, t]) =>
+      `<section><h2><a href="/tools.html?tool=${id}">${escHtml(t.title)}</a></h2>` +
+      `<p>${escHtml(t.summary)}</p><p>${escHtml(t.how)}</p>` +
+      (t.example ? `<p>דוגמה: ${escHtml(t.example)}</p>` : '') + `</section>`).join('') +
+    `</div></noscript>`;
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'כלי תכנון לתאורת LED — LEDLink',
+    itemListElement: tools.map(([id, t], i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'WebApplication',
+        name: t.title,
+        description: t.summary,
+        url: toolUrl(id),
+        applicationCategory: 'UtilitiesApplication',
+        operatingSystem: 'Any',
+        inLanguage: 'he',
+        isAccessibleForFree: true,
+        provider: { '@type': 'Organization', name: 'LEDLink', url: `${BASE_URL}/` }
+      }
+    }))
+  };
+
+  const before = html;
+  html = html.replace(/<div id="root">\s*<\/div>/, `<div id="root">${list}</div>`);
+  if (html === before) console.warn('generate-static: WARNING — #root not found in dist/tools.html');
+  html = html.replace('</head>', `<script type="application/ld+json">${ld(schema)}</script>\n</head>`);
+  writeFileSync(p, html, 'utf8');
+  console.log(`generate-static: tool descriptions (${tools.length})  →  dist/tools.html`);
 }
 
 
