@@ -1,8 +1,8 @@
 /**
  * תמונות אחידות לכל מוצרי הנאון: נאון דולק על רקע שחור.
  *
- *  1. מקור לכל מוצר: הצילום הדולק של היצרן, צילום שחולץ מהקטלוג (N2412L),
- *     או הדמיה של נאון דולק כשאין ליצרן צילום כזה (N2416H, N2412B RGB).
+ *  1. מקור לכל מוצר: הצילום הדולק של היצרן, או הדמיה של נאון דולק כשאין
+ *     ליצרן צילום כזה (N2416H, N2412B RGB, N2412L, N2412F).
  *  2. עיבוד אחיד: חיתוך 3:2, רקע נדחס לשחור מלא, והבהירות מיושרת כך
  *     שהנאון הבהיר ביותר בכל תמונה מגיע לאותה רמה.
  *  3. פלט: strips/neon/<name>.webp, ועדכון שדה img בשלושת קבצי הנתונים.
@@ -20,11 +20,22 @@ const W = 1200, H = 800;
 
 // ── הדמיה של נאון דולק ──────────────────────────────────────────────────────
 // סליל רופף בפרספקטיבה (כמו בצילומי היצרן): כניסה משמאל, לולאה וזנב ימינה.
-const PATH = 'M -60 640 C 140 600, 250 560, 300 500 C 360 420, 500 270, 700 262 '
-  + 'C 930 254, 1010 380, 900 452 C 790 524, 500 540, 430 468 C 372 408, 520 342, 720 350 '
-  + 'C 930 358, 1110 440, 1280 560';
+// לכל דגם צורה משלו, כדי שההדמיות לא ייראו כהעתק זו של זו.
+const PATHS = {
+  loop: 'M -60 640 C 140 600, 250 560, 300 500 C 360 420, 500 270, 700 262 '
+    + 'C 930 254, 1010 380, 900 452 C 790 524, 500 540, 430 468 C 372 408, 520 342, 720 350 '
+    + 'C 930 358, 1110 440, 1280 560',
+  // S רחב — סליל שנפתח משמאל-למטה ויוצא ימינה-למעלה
+  wave: 'M -60 560 C 160 600, 320 610, 470 520 C 620 430, 560 250, 760 230 '
+    + 'C 960 210, 1010 380, 880 430 C 760 476, 650 380, 760 330 C 900 268, 1100 300, 1280 250',
+  // שתי לולאות מקבילות, כמו סליל שהונח על השולחן
+  coil: 'M -60 470 C 180 470, 250 330, 520 300 C 800 270, 1010 340, 980 440 '
+    + 'C 950 540, 600 580, 420 520 C 260 466, 330 380, 560 368 C 790 356, 900 420, 860 480 '
+    + 'C 820 540, 900 600, 1280 610',
+};
 
-function neonSVG({ color, rgb }) {
+function neonSVG({ color, rgb, shape = 'loop', w = 1 }) {
+  const PATH = PATHS[shape];
   const stroke = rgb ? 'url(#rgb)' : color;
   const layer = (w, c, op, blur, extra = '') =>
     `<path d="${PATH}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" opacity="${op}" ${blur ? `filter="url(#b${blur})"` : ''} ${extra}/>`;
@@ -38,12 +49,12 @@ function neonSVG({ color, rgb }) {
 </defs>
 <rect width="${W}" height="${H}" fill="url(#bg)"/>
 <g transform="translate(0 58)" opacity="0.28">${layer(60, stroke, 0.5, 46)}${layer(22, stroke, 0.6, 8)}</g>
-${layer(120, stroke, 0.22, 46)}
-${layer(56, stroke, 0.38, 22)}
-${layer(34, '#2a2a2a', 0.9, 0)}
-${layer(30, stroke, 0.95, 2)}
-${layer(18, rgb ? stroke : '#fffaf0', 0.95, 2)}
-${layer(8, '#ffffff', rgb ? 0.55 : 0.9, 2)}
+${layer(120 * w, stroke, 0.22, 46)}
+${layer(56 * w, stroke, 0.38, 22)}
+${layer(34 * w, '#2a2a2a', 0.9, 0)}
+${layer(30 * w, stroke, 0.95, 2)}
+${layer(18 * w, rgb ? stroke : '#fffaf0', 0.95, 2)}
+${layer(8 * w, '#ffffff', rgb ? 0.55 : 0.9, 2)}
 </svg>`;
 }
 
@@ -51,8 +62,9 @@ ${layer(8, '#ffffff', rgb ? 0.55 : 0.9, 2)}
 const SOURCES = {
   'n2416h':  { svg: neonSVG({ color: '#ffe2ae' }) },            // אין צילום דולק ליצרן
   'n2412b':  { svg: neonSVG({ rgb: true }) },                   // RGB — אין צילום דולק ליצרן
-  'n2412l':  { pdf: ['datasheets/N2412L.pdf', 328], black: 175, desat: true },  // הצילום הדולק מדף הקטלוג; רקע אפור בהיר
-  'n2412f':  { file: 'strips/NEONF-1024x683.webp' },
+  // N2412L (פנים מוארות 6 מ"מ) ו-N2412F (8 מ"מ): צילומי היצרן לא דולקים — הדמיה
+  'n2412l':  { svg: neonSVG({ color: '#fff0d2', shape: 'wave', w: 0.72 }) },
+  'n2412f':  { svg: neonSVG({ color: '#ffeccb', shape: 'coil', w: 0.9 }) },
   'n2414rg': { file: 'strips/NEON-RGB-nuova-1024x683.webp' },
   'n0308':   { file: 'strips/N0308-1024x683.webp' },
   'n4x10':   { file: 'strips/N4X10-1024x444.webp' },
@@ -78,8 +90,7 @@ const PRODUCTS = {
 async function load(src) {
   if (src.svg) return sharp(Buffer.from(src.svg));
   if (src.file) return sharp(join(ROOT, src.file));
-  // תמונה מוטמעת ב-PDF: pymupdf לא זמין מ-Node, ולכן היא נשמרה פעם אחת לקובץ
-  return sharp(join(ROOT, 'strips/neon/_src_n2412l.png'));
+  throw new Error('unknown source');
 }
 
 // ── עיבוד אחיד ──────────────────────────────────────────────────────────────
