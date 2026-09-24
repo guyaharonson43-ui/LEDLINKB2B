@@ -212,16 +212,16 @@ export function stripImageURI(p) {
   return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(renderStripSVG(p));
 }
 
-// ── שילוב בקטלוג (בשלב בדיקה) ───────────────────────────────────────────────
-// ההדמיות מוצגות רק למי שנכנס עם ?renders=1 (נשמר ללשונית עד ?renders=0),
-// כדי לבדוק אותן באתר החי בלי לשנות את מה שמבקרים רגילים רואים.
+// ── שילוב בקטלוג ─────────────────────────────────────────────────────────────
+// ההדמיות מוצגות לכולם. ?renders=0 מחזיר את צילומי היצרן (נשמר ללשונית עד
+// ?renders=1), כדי שאפשר יהיה להשוות.
 export const RENDERS_ON = (() => {
   try {
     const q = new URLSearchParams(window.location.search).get('renders');
-    if (q === '1') sessionStorage.setItem('stripRenders', '1');
-    if (q === '0') sessionStorage.removeItem('stripRenders');
-    return sessionStorage.getItem('stripRenders') === '1';
-  } catch { return false; }
+    if (q === '0') sessionStorage.setItem('stripRenders', 'off');
+    if (q === '1') sessionStorage.removeItem('stripRenders');
+    return sessionStorage.getItem('stripRenders') !== 'off';
+  } catch { return true; }
 })();
 
 // נאון מקבל שרטוט חתך משלו (NeonSchematics) ונשאר עם צילום היצרן
