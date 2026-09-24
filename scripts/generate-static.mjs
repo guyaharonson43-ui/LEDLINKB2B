@@ -295,6 +295,9 @@ function guessLabel(v) {
 }
 
 const OUTPUT_MODE = { CV: 'מתח קבוע (CV)', CC: 'זרם קבוע (CC)', DALI: 'DALI' };
+// Same mapping as src/catalog/utils/driverMeta.js, so the product page and the
+// catalog show the same input range.
+const INPUT_VOLTAGE = { '110V': 'AC 220-240V', '230V': 'AC 220-240V', '100÷250V AC': 'AC 100-250V' };
 
 // Normalised [label, value] spec rows from whichever fields the product has.
 function specRows(p) {
@@ -326,7 +329,7 @@ function specRows(p) {
   if (s.outputMode)  add('סוג יציאה', OUTPUT_MODE[s.outputMode] || s.outputMode);
   if (s.voltage)     /MA$/i.test(s.voltage) ? add('זרם יציאה', s.voltage.replace(/MA$/i, 'mA'))
                                             : add(p.category === 'דרייברים' ? 'מתח יציאה' : 'מתח', s.voltage);
-  if (s.inputVoltage && p.category === 'דרייברים') add('מתח כניסה', s.inputVoltage);
+  if (s.inputVoltage && p.category === 'דרייברים') add('מתח כניסה', INPUT_VOLTAGE[s.inputVoltage] || s.inputVoltage);
   if (s.ip)          add('דרגת הגנה', s.ip);
   if (Array.isArray(s.dimming) && s.dimming.length) add('עמעום ושליטה', s.dimming.join(', '));
   if (p.cri)         add('CRI', `${p.cri}+`);
