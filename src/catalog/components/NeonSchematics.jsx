@@ -161,27 +161,56 @@ const NEON_PROFILES = {
       </svg>
     ),
   },
+  // לפי השרטוט של QLT: גוף סיליקון 4×10, הסטריפ מולחם לדופן הצד והאור יוצא דרך הפס העליון
   '4x10': {
     label: 'חתך רוחב — 4×10mm',
     svg: (
-      <svg viewBox="0 0 90 130" width="90" height="130" style={{ display: 'block' }}>
-        {[30, 55].map(x => (
+      <svg viewBox="0 0 100 130" width="100" height="130" style={{ display: 'block' }}>
+        {[36, 52].map(x => (
           <g key={x}>
-            <line x1={x} y1="8" x2={x} y2="2" stroke="#E8A020" strokeWidth="1.5" />
+            <line x1={x} y1="10" x2={x} y2="3" stroke="#E8A020" strokeWidth="1.5" />
             <polygon points={`${x - 3},6 ${x},1 ${x + 3},6`} fill="#E8A020" />
           </g>
         ))}
-        <rect x="18" y="12" width="54" height="90" fill="#D9D9D9" stroke="#666" strokeWidth="1.2" rx="2" />
-        <rect x="22" y="15" width="46" height="10" fill="#FFFDE7" stroke="#E8A020" strokeWidth="0.6" rx="1" />
-        {[30, 45, 60].map(x => <circle key={x} cx={x} cy={20} r="2.5" fill="#FFD54F" />)}
-        <line x1="18" y1="110" x2="72" y2="110" stroke="#555" strokeWidth="0.7" />
-        <line x1="18" y1="107" x2="18" y2="113" stroke="#555" strokeWidth="0.7" />
-        <line x1="72" y1="107" x2="72" y2="113" stroke="#555" strokeWidth="0.7" />
-        <text x="45" y="122" fontSize="10" fill="#444" textAnchor="middle">4 mm</text>
-        <line x1="79" y1="12" x2="79" y2="102" stroke="#555" strokeWidth="0.7" />
-        <line x1="76" y1="12" x2="82" y2="12" stroke="#555" strokeWidth="0.7" />
-        <line x1="76" y1="102" x2="82" y2="102" stroke="#555" strokeWidth="0.7" />
-        <text x="87" y="60" fontSize="10" fill="#444" textAnchor="middle" transform="rotate(90,87,60)">10 mm</text>
+        <rect x="28" y="14" width="32" height="80" fill="#D9D9D9" stroke="#666" strokeWidth="1.2" />
+        <polygon points="28,14 60,14 60,24 52,24 50,32 45,32 45,26 36,26 31,20 28,20"
+          fill="#FFF3C4" stroke="#C4880A" strokeWidth="0.6" />
+        <rect x="38" y="30" width="7" height="56" fill="#F4F4F0" stroke="#999" strokeWidth="0.5" />
+        <rect x="29.5" y="44" width="7" height="26" fill="#FFF3C4" stroke="#C4880A" strokeWidth="0.6" />
+        <rect x="31" y="52" width="4" height="10" fill="#FFD54F" />
+        <line x1="28" y1="104" x2="60" y2="104" stroke="#555" strokeWidth="0.7" />
+        <line x1="28" y1="101" x2="28" y2="107" stroke="#555" strokeWidth="0.7" />
+        <line x1="60" y1="101" x2="60" y2="107" stroke="#555" strokeWidth="0.7" />
+        <text x="44" y="118" fontSize="10" fill="#444" textAnchor="middle">4 mm</text>
+        <line x1="70" y1="14" x2="70" y2="94" stroke="#555" strokeWidth="0.7" />
+        <line x1="67" y1="14" x2="73" y2="14" stroke="#555" strokeWidth="0.7" />
+        <line x1="67" y1="94" x2="73" y2="94" stroke="#555" strokeWidth="0.7" />
+        <text x="80" y="54" fontSize="10" fill="#444" textAnchor="middle" transform="rotate(90,80,54)">10 mm</text>
+      </svg>
+    ),
+  },
+  // לפי השרטוט של QLT: פרופיל T, כנף עליונה 6 מ"מ, גוף 4 מ"מ, גובה 10 מ"מ, לד על דופן הצד
+  't-4x10': {
+    label: 'חתך רוחב — T 6/4×10mm',
+    svg: (
+      <svg viewBox="0 -8 100 143" width="100" height="143" style={{ display: 'block' }}>
+        <line x1="20" y1="8" x2="68" y2="8" stroke="#555" strokeWidth="0.7" />
+        <line x1="20" y1="5" x2="20" y2="11" stroke="#555" strokeWidth="0.7" />
+        <line x1="68" y1="5" x2="68" y2="11" stroke="#555" strokeWidth="0.7" />
+        <text x="44" y="4" fontSize="9" fill="#444" textAnchor="middle">6 mm</text>
+        <path d="M22,24 L22,17 Q22,14 25,14 L63,14 Q66,14 66,17 L66,24 L60,32 L60,94 L28,94 L28,32 Z"
+          fill="#FFF3C4" stroke="#666" strokeWidth="1.2" />
+        <line x1="28" y1="32" x2="60" y2="32" stroke="#E0C98A" strokeWidth="0.6" strokeDasharray="2,2" />
+        <rect x="55" y="40" width="3" height="46" fill="#F4F4F0" stroke="#999" strokeWidth="0.5" />
+        <rect x="51" y="54" width="4" height="14" fill="#FFD54F" stroke="#C4880A" strokeWidth="0.5" />
+        <line x1="28" y1="104" x2="60" y2="104" stroke="#555" strokeWidth="0.7" />
+        <line x1="28" y1="101" x2="28" y2="107" stroke="#555" strokeWidth="0.7" />
+        <line x1="60" y1="101" x2="60" y2="107" stroke="#555" strokeWidth="0.7" />
+        <text x="44" y="118" fontSize="10" fill="#444" textAnchor="middle">4 mm</text>
+        <line x1="76" y1="14" x2="76" y2="94" stroke="#555" strokeWidth="0.7" />
+        <line x1="73" y1="14" x2="79" y2="14" stroke="#555" strokeWidth="0.7" />
+        <line x1="73" y1="94" x2="79" y2="94" stroke="#555" strokeWidth="0.7" />
+        <text x="86" y="54" fontSize="10" fill="#444" textAnchor="middle" transform="rotate(90,86,54)">10 mm</text>
       </svg>
     ),
   },
@@ -246,7 +275,7 @@ const NEON_ID_MAP = {
   'qlt-n2416h':           'h-top',
   'qlt-n3x8-mini-neon':   'mini-3x8',
   'qlt-n4x10':            '4x10',
-  'qlt-n4x10t':           '4x10',
+  'qlt-n4x10t':           't-4x10',
   'qlt-n3x8':             '8x8',
   'qlt-np2436834':        'double',
   'qlt-nt1811-360-strip-neon-led-tube': 'tube-18',
@@ -280,7 +309,7 @@ export default function NeonSchematic({ product }) {
         style={{ marginTop: 12, background: '#F8F8F6', border: '1px solid #E0DDD6', borderRadius: 8,
           padding: '10px 16px 6px', textAlign: 'center', cursor: 'zoom-in' }}>
         <div style={{ fontSize: 10, color: '#595959', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 6 }}>חתך רוחב</div>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', direction: 'ltr',
           transform: 'scale(0.62)', transformOrigin: 'center top', marginBottom: '-30px' }}>
           {profile.svg}
         </div>
@@ -298,7 +327,7 @@ export default function NeonSchematic({ product }) {
               style={{ position: 'absolute', top: 12, left: 16, background: 'none', border: 'none',
                 cursor: 'pointer', color: '#999', fontSize: 22, lineHeight: 1, padding: 4 }}>✕</button>
             <div style={{ fontSize: 11, color: '#595959', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 16 }}>חתך רוחב</div>
-            <div style={{ display: 'flex', justifyContent: 'center', transform: 'scale(1.6)', transformOrigin: 'center top', marginBottom: 60 }}>
+            <div style={{ display: 'flex', justifyContent: 'center', direction: 'ltr', transform: 'scale(1.6)', transformOrigin: 'center top', marginBottom: 60 }}>
               {profile.svg}
             </div>
             <div style={{ fontSize: 13, color: '#555', marginTop: 8, fontWeight: 600 }}>{profile.label}</div>
