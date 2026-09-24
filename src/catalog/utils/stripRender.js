@@ -46,6 +46,19 @@ function buildStraight(lenMm) {
   for (let k = 0; k <= L; k += 2) pts.push({ x: Math.cos(t) * k, y: Math.sin(t) * k, d: k });
   return pts;
 }
+// קטע מסולסל: אותו קטע ישר עם גל S עדין (משרעת ומחזור במ"מ)
+function buildWave(lenMm, ampMm, periods) {
+  const pts = [], t = -0.36, L = lenMm * S, A = ampMm * S;
+  const cos = Math.cos(t), sin = Math.sin(t);
+  let prev = null, d = 0;
+  for (let u = 0; u <= L; u += 1.5) {
+    const v = A * Math.sin(2 * Math.PI * periods * u / L);
+    const x = u * cos - v * sin, y = u * sin + v * cos;
+    if (prev) d += Math.hypot(x - prev.x, y - prev.y);
+    prev = { x, y, d }; pts.push(prev);
+  }
+  return pts;
+}
 function buildPath(bandW) {
   const pitch = bandW + 4;
   const th1 = Math.PI * 1.9, th0 = th1 - TURNS * 2 * Math.PI;   // הזנב יוצא מימין-למעלה אל הצופה
@@ -138,7 +151,7 @@ function stripLayers(spec) {
 export function renderStripSVG(p, { layout = 'reel' } = {}) {
   const spec = stripSpec(p);
   const bandW = spec.widthMm * S + (spec.ip >= 67 ? 4.8 * S : 0);
-  PATH = layout === 'straight' ? buildStraight(110) : buildPath(bandW);
+  PATH = layout === 'straight' ? buildStraight(110) : layout === 'wave' ? buildWave(130, 11, 1) : buildPath(bandW);
   TOTAL = PATH[PATH.length - 1].d;
   const { layers, W, sleeve } = stripLayers(spec);
   const T = 1.4 * S + (sleeve ? sleeve * 0.7 : 0);
