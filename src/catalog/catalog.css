@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Guarantee swap behaviour for any locally-cached Heebo variant */
-@font-face {
-  font-family: 'Heebo';
-  font-display: swap;
-  src: local('Heebo');
-}
-
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scrollbar-gutter: stable; overflow-x: hidden; overflow-x: clip; }
 @view-transition { navigation: auto; }
@@ -743,6 +736,11 @@ a:focus-visible,
    min-width:0 מחזיר לטורים את הרשות להצטמצם, ו-overflow-wrap מבטיח
    שמילה או מק"ט ארוך יישברו במקום לגלוש מהכרטיס. */
 .products-grid > * { min-width: 0; }
+
+/* ביצועים: כרטיסים מחוץ למסך לא עוברים layout/paint עד שגוללים אליהם.
+   auto = הדפדפן זוכר את הגובה האמיתי אחרי הציור הראשון, כך שהגלילה לא קופצת. */
+.products-grid > .product-card { content-visibility: auto; contain-intrinsic-size: auto 380px; }
+@media (max-width: 640px) { .products-grid > .product-card { contain-intrinsic-size: auto 300px; } }
 .product-card-title,
 .product-card-sub { overflow-wrap: anywhere; }
 .product-card-variant-value,

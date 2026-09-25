@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <!-- Google Analytics (deferred to idle — avoids main-thread cost on LCP path) -->
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.addEventListener('load',function(){(window.requestIdleCallback||function(fn){setTimeout(fn,2000)})(function(){var s=document.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id=G-0EFYL6ZDMW';document.head.appendChild(s);gtag('js',new Date());gtag('config','G-0EFYL6ZDMW');})});</script>
   <!-- Microsoft Clarity -->
@@ -24,13 +26,10 @@
   <meta name="theme-color" content="#1A1A1A">
   <!-- Preload hero image (LCP) -->
   <link rel="preload" as="image" href="hero.webp" fetchpriority="high">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
+  <!-- Fonts: self-hosted (/fonts/) — no round trip to Google -->
+  <link rel="preload" href="/fonts/heebo-hebrew.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/heebo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style>@font-face{font-family:'Heebo';font-style:normal;font-weight:100 900;font-display:swap;src:url(/fonts/heebo-hebrew.woff2) format('woff2');unicode-range:U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F}@font-face{font-family:'Heebo';font-style:normal;font-weight:100 900;font-display:swap;src:url(/fonts/heebo-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}</style>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; overflow-x: hidden; overflow-x: clip; }
@@ -801,7 +800,7 @@
            width="800" height="600"
            fetchpriority="high"
            loading="eager"
-           decoding="sync">
+           decoding="async">
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -1355,7 +1354,7 @@
     #scroll-top-btn.visible{opacity:1;transform:translateY(0);pointer-events:auto;}
     #scroll-top-btn:hover{background:#262626;}
   </style>
-  <script defer src="a11y-widget.js"></script>
+  <script>/* a11y widget: right away for visitors with saved accessibility settings, otherwise once the page is idle */(function(){function l(){var s=document.createElement('script');s.src='/a11y-widget.js';document.body.appendChild(s);}var saved=null;try{saved=localStorage.getItem('a11y');}catch(e){}if(saved&&saved!=='{}'){document.readyState==='loading'?document.addEventListener('DOMContentLoaded',l):l();}else{window.addEventListener('load',function(){(window.requestIdleCallback||function(f){setTimeout(f,2000)})(l);});}})();</script>
   <script>
     function toggleMobileMenu() {
       document.getElementById('hamburger').classList.toggle('open');
