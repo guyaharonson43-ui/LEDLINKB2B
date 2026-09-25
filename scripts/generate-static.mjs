@@ -52,13 +52,14 @@ copyDir('strips');
 copyDir('projects');
 copyDir('DATASHEET');
 copyDir('datasheets');
+copyDir('fonts');        // self-hosted Heebo + IBM Plex Mono (OFL) — see <head> of each page
 // libs/ (CDN fallbacks) removed — tools.html is now Vite-built, no CDN deps needed
 
 // Root-level static files
 for (const f of [
   'manifest.json', 'CNAME', 'hero.jpg', 'hero.webp',
   'a11y-widget.js', 'products_data.js', 'datasheets_data.js',
-  'llms.txt', 'logo.png',
+  'llms.txt', 'logo.png', 'favicon.ico', 'apple-touch-icon.png',
 ]) copyFile(f);
 
 // Static HTML pages (served as-is; not Vite-built)
@@ -456,9 +457,12 @@ const SITE_CSS = `
   }
 `;
 
-const SITE_FONTS = `<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">`;
+const SITE_FONTS = `<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<!-- Fonts: self-hosted (/fonts/) — no round trip to Google -->
+<link rel="preload" href="/fonts/heebo-hebrew.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/heebo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:'Heebo';font-style:normal;font-weight:100 900;font-display:swap;src:url(/fonts/heebo-hebrew.woff2) format('woff2');unicode-range:U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F}@font-face{font-family:'Heebo';font-style:normal;font-weight:100 900;font-display:swap;src:url(/fonts/heebo-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}</style>`;
 
 const SITE_HEADER = `<header class="nav"><div class="nav-in">
   <a class="logo" href="/"><b>LED</b><span>LINK</span></a>
@@ -738,6 +742,7 @@ function buildGuidePage(g) {
 <meta property="og:locale" content="he_IL">
 <meta property="og:site_name" content="LEDLink">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://images.unsplash.com">
 ${SITE_FONTS}
 <script type="application/ld+json">${ld(articleSchema)}</script>
 <script type="application/ld+json">${ld(breadcrumbSchema)}</script>

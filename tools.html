@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EFYL6ZDMW"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0EFYL6ZDMW');</script>
@@ -21,19 +23,16 @@
   <meta name="twitter:title" content="כלי תכנון תאורת LED | LEDLink">
   <meta name="twitter:description" content="כלי תכנון הנדסיים חינמיים לתאורת LED">
   <meta name="twitter:image" content="https://ledlink.co.il/hero.webp">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H2TbE.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFzsQ.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9GYTbFzsQ.woff2" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
+  <!-- Fonts: self-hosted (/fonts/) — no round trip to Google -->
+  <link rel="preload" href="/fonts/heebo-hebrew.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/heebo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style>@font-face{font-family:'Heebo';font-style:normal;font-weight:100 900;font-display:swap;src:url(/fonts/heebo-hebrew.woff2) format('woff2');unicode-range:U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F}@font-face{font-family:'Heebo';font-style:normal;font-weight:100 900;font-display:swap;src:url(/fonts/heebo-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}</style>
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#1A1A1A">
 </head>
 <body>
   <div id="root"></div>
   <script type="module" src="/src/tools/main.jsx"></script>
-  <script defer src="/a11y-widget.js"></script>
+  <script>/* a11y widget: right away for visitors with saved accessibility settings, otherwise once the page is idle */(function(){function l(){var s=document.createElement('script');s.src='/a11y-widget.js';document.body.appendChild(s);}var saved=null;try{saved=localStorage.getItem('a11y');}catch(e){}if(saved&&saved!=='{}'){document.readyState==='loading'?document.addEventListener('DOMContentLoaded',l):l();}else{window.addEventListener('load',function(){(window.requestIdleCallback||function(f){setTimeout(f,2000)})(l);});}})();</script>
 </body>
 </html>
