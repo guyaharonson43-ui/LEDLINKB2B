@@ -515,7 +515,8 @@ function buildProductPage(p) {
     image: imgUrl,
     brand: { '@type': 'Brand', name: 'LEDLink' },
     category: p.category,
-    ...(sku ? { sku } : {}),
+    // Strips with no model code fall back to the catalog id, so every Product has a sku.
+    sku: sku || p.id,
     url,
     ...(rows.length ? {
       additionalProperty: rows.filter(r => r[0] !== 'מק"ט')
