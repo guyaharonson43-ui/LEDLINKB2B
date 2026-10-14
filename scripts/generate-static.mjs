@@ -93,6 +93,7 @@ if (!Array.isArray(products) || products.length === 0) {
 // The guides React app's own data module (plain ESM, no JSX)
 const { GUIDES } = await import(pathToFileURL(join(ROOT, 'src/guides/data.js')).href);
 const { TOOL_INFO } = await import(pathToFileURL(join(ROOT, 'src/tools/toolInfo.js')).href);
+const { PROFILE_PAGES, PROFILE_SPECS, PROFILE_MODEL } = await import(pathToFileURL(join(ROOT, 'src/profiles/data.js')).href);
 
 // datasheets_data.js: `const PRODUCT_DATASHEETS = {...}; export default PRODUCT_DATASHEETS;`
 // Same lookup order as ProductModal.jsx: by product.id first, then product.name.
@@ -222,8 +223,13 @@ const sitemapProducts = products
 const sitemapGuides = GUIDES
   .map(g => ({ loc: `${BASE_URL}/guides/${g.slug}/`, priority: '0.7', changefreq: 'monthly' }));
 
+const profilePageUrl = pg => `${BASE_URL}/profiles/${pg.slug ? pg.slug + '/' : ''}`;
+const sitemapProfiles = PROFILE_PAGES
+  .map(pg => ({ loc: profilePageUrl(pg), priority: pg.slug ? '0.8' : '0.9', changefreq: 'monthly' }));
+
 const sitemapAll = [
   ...sitemapStatic.map(u => ({ ...u, lastmod: today })),
+  ...sitemapProfiles,
   ...sitemapGuides,
   ...sitemapProducts,
 ];
@@ -255,7 +261,7 @@ const WA_NUMBER  = '972504722550';
 const CATEGORY_INFO = {
   'פרופילים': {
     blurb: 'פרופילי האלומיניום של LEDLink מיוצרים במפעל שלנו ברחובות ונחתכים לפי מידה עד 6 מטר, בשחור, בלבן או בכל גוון RAL. הפרופיל מפזר את החום מהסטריפ, מאריך את חייו ומסתיר את נקודות האור מאחורי כיסוי אחיד.',
-    links: [['איזה פרופיל LED מתאים לאיזה חלל?', '/guides/led-profile-by-room/'], ['התקנת פרופיל שקוע גבס — צעד אחר צעד', '/guides/drywall-led-profile-installation/'], ['מחשבון פרופיל LED', '/tools.html?tool=linear']],
+    links: [['פרופילי אלומיניום ל-LED — כל הדגמים', '/profiles/'], ['איזה פרופיל LED מתאים לאיזה חלל?', '/guides/led-profile-by-room/'], ['התקנת פרופיל שקוע גבס — צעד אחר צעד', '/guides/drywall-led-profile-installation/'], ['מחשבון פרופיל LED', '/tools.html?tool=linear']],
     tail: 'ייצור וחיתוך לפי מידה ברחובות, משלוח לכל הארץ.',
   },
   'סטריפ LED': {
@@ -468,6 +474,7 @@ const SITE_HEADER = `<header class="nav"><div class="nav-in">
   <a class="logo" href="/"><b>LED</b><span>LINK</span></a>
   <nav class="nav-links" aria-label="ניווט ראשי">
     <a href="/catalog.html">קטלוג</a>
+    <a href="/profiles/">פרופילים</a>
     <a href="/tools.html">כלי תכנון</a>
     <a href="/guides.html">מדריכים</a>
     <a href="/about.html">אודות</a>
@@ -810,6 +817,155 @@ console.log(`generate-static: guide pages  →  dist/guides/  (${GUIDES.length} 
   writeFileSync(p, html, 'utf8');
   console.log('generate-static: guide list  →  dist/guides.html');
 }
+
+// ── 7b2. Profile content pages (dist/profiles/[{slug}/]index.html) ──────────
+// Static landing pages for the profile search terms ("פרופיל שקוע גבס",
+// "פרופילי אלומיניום ל-LED"). Copy lives in src/profiles/data.js; the model
+// specs come from the DATASHEET/ pages.
+
+const PROFILE_CSS = `
+  .models{width:100%;border-collapse:collapse;font-size:14px;background:#fff}
+  .models td:first-child{white-space:nowrap}
+  .models img{width:56px;height:56px;object-fit:contain;vertical-align:middle;margin-inline-end:10px;background:#fff}
+  .models a{color:#1C1C1C;font-weight:700;text-decoration:none}
+  .models a:hover{color:#C4880A}
+  .models .ds{color:#C4880A;font-weight:600;font-size:13px}
+  .faq details{background:#fff;border:1px solid #E0DDD6;border-radius:10px;padding:14px 18px;margin-bottom:10px}
+  .faq summary{font-weight:700;cursor:pointer}
+  .faq details p{margin:10px 0 0}
+`;
+
+const dim = v => v ? `<bdi dir="ltr">${escHtml(v)}</bdi>` : '—';
+
+function profileRows(ids) {
+  return ids.map(id => products.find(p => p.id === id)).filter(Boolean).map(p => {
+    const model = PROFILE_MODEL[p.id] || '';
+    const sp    = PROFILE_SPECS[model] || {};
+    const type  = (p.desc.split('|').map(x => x.trim()).find(x => /פרופיל|IP\d/.test(x)) || '').replace(/^פרופיל$/, 'פרופיל צמוד');
+    const dsFile = `DATASHEET/LINK${model}.html`;
+    const ds    = existsSync(join(ROOT, dsFile)) ? `<a class="ds" href="/${dsFile}">דף נתונים</a>` : '';
+    return `<tr>
+      <td><a href="/product/${p.id}/"><img src="${imageUrl(p)}" alt="${escHtml(displayName(p))}" width="56" height="56" loading="lazy" decoding="async">${escHtml(displayName(p))}</a></td>
+      <td>${escHtml(type)}</td>
+      <td>${sp.w ? `${dim(sp.w)} × ${dim(sp.h)} מ"מ` : '—'}</td>
+      <td>${dim(sp.power)}</td>
+      <td>${dim(sp.lm)}</td>
+      <td>${ds}</td>
+    </tr>`;
+  }).join('\n');
+}
+
+function buildProfilePage(pg) {
+  const url    = profilePageUrl(pg);
+  const ids    = pg.products === 'all'
+    ? products.filter(p => p.category === 'פרופילים' && PROFILE_MODEL[p.id]).map(p => p.id)
+    : pg.products;
+  const items  = ids.map(id => products.find(p => p.id === id)).filter(Boolean);
+  const others = PROFILE_PAGES.filter(o => o.slug !== pg.slug);
+  const waText = `שלום LEDLink, אשמח לעזרה בבחירת ${pg.title}.\n${url}`;
+  const ogImg  = items[0] ? imageUrl(items[0]) : `${BASE_URL}/hero.webp`;
+
+  const crumbs = [['דף הבית', `${BASE_URL}/`]];
+  if (pg.slug) crumbs.push(['פרופילי אלומיניום ל-LED', profilePageUrl(PROFILE_PAGES[0])]);
+  crumbs.push([pg.title, url]);
+
+  const schemas = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: pg.title,
+      description: pg.excerpt,
+      url,
+      inLanguage: 'he',
+      isPartOf: { '@type': 'WebSite', name: 'LEDLink', url: `${BASE_URL}/` },
+      publisher: { '@type': 'Organization', name: 'LEDLink', url: `${BASE_URL}/` },
+      mainEntity: {
+        '@type': 'ItemList',
+        numberOfItems: items.length,
+        itemListElement: items.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: canonicalUrl(p), name: displayName(p) })),
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: pg.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: crumbs.map(([n, item], i) => ({ '@type': 'ListItem', position: i + 1, name: n, item })),
+    },
+  ];
+
+  return `<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${escHtml(pg.seoTitle)}</title>
+<meta name="description" content="${escHtml(pg.excerpt)}">
+<link rel="canonical" href="${url}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="${url}">
+<meta property="og:title" content="${escHtml(pg.seoTitle)}">
+<meta property="og:description" content="${escHtml(pg.excerpt)}">
+<meta property="og:image" content="${ogImg}">
+<meta property="og:locale" content="he_IL">
+<meta property="og:site_name" content="LEDLink">
+<meta name="twitter:card" content="summary_large_image">
+${SITE_FONTS}
+${schemas.map(o => `<script type="application/ld+json">${ld(o)}</script>`).join('\n')}
+<style>${SITE_CSS}${GUIDE_CSS}${PROFILE_CSS}</style>
+</head>
+<body>
+${SITE_HEADER}
+<main>
+  <nav class="crumbs" aria-label="פירורי לחם">
+    ${crumbs.map(([n, item], i) => i < crumbs.length - 1 ? `<a href="${item.replace(BASE_URL, '')}">${escHtml(n)}</a><span>›</span>` : escHtml(n)).join('')}
+  </nav>
+  <article>
+    <div class="cat">פרופילי אלומיניום · ייצור LEDLink רחובות</div>
+    <h1>${escHtml(pg.title)}</h1>
+    <p class="lead">${escHtml(pg.excerpt)}</p>
+    ${pg.body.map(guideBlock).join('\n    ')}
+  </article>
+
+  <h2>${pg.slug ? 'הדגמים' : 'כל הדגמים'} — מידות ומפרט</h2>
+  <div class="tbl"><table class="models">
+    <thead><tr><th scope="col">דגם</th><th scope="col">סוג</th><th scope="col">רוחב × גובה</th><th scope="col">הספק סטריפ</th><th scope="col">לומן</th><th scope="col"></th></tr></thead>
+    <tbody>
+${profileRows(ids)}
+    </tbody>
+  </table></div>
+  <p style="font-size:13px;color:#777">המידות, ההספק והלומן לפי דפי הנתונים של LEDLink. כל הדגמים נחתכים עד 6 מטר ומגיעים בשחור, בלבן או בגוון RAL.</p>
+
+  <h2>שאלות נפוצות</h2>
+  <div class="faq" style="max-width:760px">
+    ${pg.faq.map(([q, a]) => `<details><summary>${escHtml(q)}</summary><p>${escHtml(a)}</p></details>`).join('\n    ')}
+  </div>
+
+  <div class="cta" style="max-width:760px">
+    <p>צריכים הצעת מחיר או עזרה בבחירת הדגם?</p>
+    <div class="actions">
+      <a class="btn btn-wa" href="https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waText)}" target="_blank" rel="noopener">שליחת הודעה בוואטסאפ</a>
+      <a class="btn btn-cat" href="/catalog.html?tab=${encodeURIComponent('פרופילים')}">לקטלוג הפרופילים</a>
+    </div>
+  </div>
+
+  <h2>עוד על פרופילים</h2>
+  <div class="more">${others.map(o => `<a href="${profilePageUrl(o).replace(BASE_URL, '')}"><small>פרופילים</small>${escHtml(o.title)}</a>`).join('')}<a href="/guides/led-profile-by-room/"><small>מדריך</small>איזה פרופיל LED מתאים לאיזה חלל?</a><a href="/guides/kitchen-led-profile/"><small>מדריך</small>איך לבחור פרופיל LED למטבח?</a></div>
+</main>
+${SITE_FOOTER}
+</body>
+</html>`;
+}
+
+for (const pg of PROFILE_PAGES) {
+  const dir = join(DIST, 'profiles', pg.slug);
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(join(dir, 'index.html'), buildProfilePage(pg), 'utf8');
+}
+console.log(`generate-static: profile pages  →  dist/profiles/  (${PROFILE_PAGES.length} pages)`);
 
 // ── 7c. tools.html static content ───────────────────────────────────────────
 // The calculators are a React app: without JS the page is empty. Inject what
