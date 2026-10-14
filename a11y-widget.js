@@ -153,8 +153,8 @@
 
     <div id="a11y-contact">
       רכז נגישות: <strong>גיא אהרונסון</strong><br>
-      <a href="tel:+972501234567">050-123-4567</a> |
-      <a href="mailto:info@ledlink.co.il">info@ledlink.co.il</a>
+      <a href="tel:+97286326059">08-632-6059</a> |
+      <a href="mailto:office@ledlink.co.il">office@ledlink.co.il</a>
     </div>
   `;
 
