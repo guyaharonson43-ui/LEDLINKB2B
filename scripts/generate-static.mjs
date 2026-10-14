@@ -255,22 +255,22 @@ const WA_NUMBER  = '972504722550';
 const CATEGORY_INFO = {
   'פרופילים': {
     blurb: 'פרופילי האלומיניום של LEDLink מיוצרים במפעל שלנו ברחובות ונחתכים לפי מידה עד 6 מטר, בשחור, בלבן או בכל גוון RAL. הפרופיל מפזר את החום מהסטריפ, מאריך את חייו ומסתיר את נקודות האור מאחורי כיסוי אחיד.',
-    links: [['איזה פרופיל LED מתאים לאיזה חלל?', '/guides.html'], ['מחשבון פרופיל LED', '/tools.html?tool=linear']],
+    links: [['איזה פרופיל LED מתאים לאיזה חלל?', '/guides/led-profile-by-room/'], ['התקנת פרופיל שקוע גבס — צעד אחר צעד', '/guides/drywall-led-profile-installation/'], ['מחשבון פרופיל LED', '/tools.html?tool=linear']],
     tail: 'ייצור וחיתוך לפי מידה ברחובות, משלוח לכל הארץ.',
   },
   'סטריפ LED': {
     blurb: 'סטריפ LED מקצועי לתאורה ארכיטקטונית ולתאורת פנים וחוץ. לבחירת ספק כוח מתאים חשבו את ההספק הכולל (אורך × הספק למטר) והוסיפו מרווח ביטחון של 20% לפחות.',
-    links: [['מחשבון ספק כוח', '/tools.html?tool=power'], ['מחשבון מפל מתח', '/tools.html?tool=voltage'], ['איך מחשבים הספק לסטריפ LED?', '/guides.html']],
+    links: [['מחשבון ספק כוח', '/tools.html?tool=power'], ['מחשבון מפל מתח', '/tools.html?tool=voltage'], ['איך מחשבים הספק לסטריפ LED?', '/guides/led-strip-power-calculation/'], ['IP44 / IP65 / IP67 — איזה דירוג לאיזה חלל?', '/guides/ip-rating-guide/']],
     tail: 'ייעוץ טכני ללא עלות ומשלוח לכל הארץ.',
   },
   'דרייברים': {
     blurb: 'דרייבר (ספק כוח) ממיר את מתח הרשת למתח קבוע (CV) עבור סטריפ LED, או לזרם קבוע (CC) עבור גופי תאורה ומודולים. מומלץ לבחור דרייבר שההספק שלו גבוה ב-20% לפחות מהעומס בפועל.',
-    links: [['מחשבון ספק כוח', '/tools.html?tool=power'], ['מחשבון מפל מתח', '/tools.html?tool=voltage']],
+    links: [['מחשבון ספק כוח', '/tools.html?tool=power'], ['מחשבון מפל מתח', '/tools.html?tool=voltage'], ['איך מחשבים הספק לסטריפ LED?', '/guides/led-strip-power-calculation/']],
     tail: 'ייעוץ טכני ללא עלות ומשלוח לכל הארץ.',
   },
   'גופי תאורה': {
     blurb: 'גופי תאורה מקצועיים לפרויקטים של מגורים, משרדים ומסחר. צוות LEDLink ישמח לעזור בתכנון התאורה ובבחירת הגוף המתאים לחלל.',
-    links: [['מחשבון לומן לחלל', '/tools.html?tool=lumen'], ['גוון אור 2700K, 3000K או 4000K?', '/guides.html']],
+    links: [['מחשבון לומן לחלל', '/tools.html?tool=lumen'], ['גוון אור 2700K, 3000K או 4000K?', '/guides/color-temperature-guide/']],
     tail: 'ייעוץ תאורה ללא עלות ומשלוח לכל הארץ.',
   },
 };
@@ -601,6 +601,13 @@ console.log(`generate-static: product pages  →  dist/product/  (${products.len
 const PRODUCT_REDIRECTS = {
   'qlt-th24030': 'qlt-th24030u',   // same driver, listed twice (2026-09)
 };
+// The old WordPress site used the bare model number as the product slug
+// (/product/5213/). Google still has those indexed, so each LEDLink profile
+// model gets a redirect from its old URL to its current page.
+for (const p of products) {
+  const m = /^ledlink-(\d+)$/.exec(p.id);
+  if (m && !PRODUCT_REDIRECTS[m[1]]) PRODUCT_REDIRECTS[m[1]] = p.id;
+}
 for (const [from, to] of Object.entries(PRODUCT_REDIRECTS)) {
   const target = products.find(p => p.id === to);
   if (!target) { console.warn(`generate-static: WARNING — redirect target ${to} not found`); continue; }
