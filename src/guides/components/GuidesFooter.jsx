@@ -51,6 +51,7 @@ export default function GuidesFooter() {
           <div className="footer-copy">© 2026 LEDLink – כל הזכויות שמורות</div>
           <div className="footer-legal">
             <a href="about.html">אודות</a>
+            <a href="/profiles/">פרופילי אלומיניום</a>
             <a href="takanon.html">תקנון</a>
             <a href="privacy.html">מדיניות פרטיות</a>
             <a href="accessibility.html">הצהרת נגישות</a>

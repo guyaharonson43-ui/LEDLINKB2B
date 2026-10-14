@@ -414,7 +414,8 @@ export default function App() {
 
       {/* Main content */}
       <main className="catalog-content-pad" style={{ maxWidth: 1280, margin: '0 auto', padding: '40px 24px' }}>
-        <CategoryHeader label={tabInfo.label} count={cards.length} desc={tabInfo.desc} />
+        <CategoryHeader label={tabInfo.label} count={cards.length} desc={tabInfo.desc}
+          link={activeTab === 'פרופילים' ? { href: '/profiles/', label: 'איך בוחרים פרופיל? המדריך המלא' } : null} />
 
         {/* Search + mobile filter button */}
         <div style={{ display: 'flex', gap: 12, marginBottom: 32, alignItems: 'center' }}>

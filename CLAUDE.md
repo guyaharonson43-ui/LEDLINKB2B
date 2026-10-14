@@ -18,6 +18,7 @@
 | `catalog.html` → `src/catalog/` | קטלוג המוצרים (React) |
 | `tools.html` → `src/tools/` | מחשבוני תכנון (React) |
 | `guides.html` → `src/guides/` | מדריכים (React) |
+| `src/profiles/data.js` | תוכן דפי הפרופילים `/profiles/` (HTML סטטי שנבנה ב-`generate-static.mjs`) |
 | `landing.html`, `about.html`, `faq.html`, `privacy.html`, `takanon.html`, `accessibility.html` | דפים סטטיים |
 | `products_data_with_lighting.js` | **מקור המוצרים שהקטלוג טוען** (מיובא ב-`src/catalog/App.jsx`) |
 | `products_data.js`, `lighting_products.js` | עותקים ישנים של אותם נתונים — כשמתקנים מוצר, לתקן בשלושתם |
