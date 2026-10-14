@@ -474,7 +474,6 @@ const SITE_HEADER = `<header class="nav"><div class="nav-in">
   <a class="logo" href="/"><b>LED</b><span>LINK</span></a>
   <nav class="nav-links" aria-label="ניווט ראשי">
     <a href="/catalog.html">קטלוג</a>
-    <a href="/profiles/">פרופילים</a>
     <a href="/tools.html">כלי תכנון</a>
     <a href="/guides.html">מדריכים</a>
     <a href="/about.html">אודות</a>
@@ -485,6 +484,7 @@ const SITE_HEADER = `<header class="nav"><div class="nav-in">
 const SITE_FOOTER = `<footer><div class="foot-in">
   <div><strong>LEDLink</strong> · יצרן רכיבי תאורת LED מאז 2009 · יצירה 19, רחובות</div>
   <div><a href="tel:+97286326059">08-6326059</a> · <a href="mailto:office@ledlink.co.il">office@ledlink.co.il</a> · א׳–ה׳ <span dir="ltr">07:00–15:00</span></div>
+  <div><a href="/profiles/">פרופילי אלומיניום ל-LED</a></div>
 </div></footer>`;
 
 // "</" inside JSON would close the <script> early

@@ -36,6 +36,11 @@ export default function App() {
 
       {/* Guides grid */}
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '48px 24px' }}>
+        <a href="/profiles/" style={{ display: 'block', background: '#1A1A1A', borderRight: '4px solid #E8A020', borderRadius: 12, padding: '24px 28px', marginBottom: 24, textDecoration: 'none' }}>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 3, color: '#E8A020', marginBottom: 8 }}>מדריך מרכזי</div>
+          <div style={{ fontSize: 22, fontWeight: 800, color: '#FFFFFF', marginBottom: 6 }}>פרופילי אלומיניום ל-LED — כל הדגמים</div>
+          <div style={{ fontSize: 15, color: 'rgba(255,255,255,0.85)', lineHeight: 1.6 }}>שקוע גבס או גלוי? איזה פרופיל מתאים לאיזה חלל, ומה ההבדלים ביניהם ←</div>
+        </a>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 24 }}>
           {GUIDES.map(g => <GuideCard key={g.id} g={g} onOpen={setOpenGuide} />)}
         </div>
