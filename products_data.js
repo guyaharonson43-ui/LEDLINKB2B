@@ -6778,6 +6778,26 @@
     }
   },
   {
+    "id": "qlt-slimbox10048",
+    "name": "SLIMBOX10048",
+    "img": "strips/SLBOX-Multicurrent-1024x940.webp",
+    "desc": "",
+    "category": "דרייברים",
+    "subCategory": "DIY",
+    "price": null,
+    "url": "https://www.qlt.it/en/products/slimbox10048/",
+    "isFlagship": false,
+    "scarcity": null,
+    "specs": {
+      "power": "100W",
+      "ip": "IP20",
+      "outputMode": "CV",
+      "voltage": "48V",
+      "dimming": [],
+      "inputVoltage": "110V"
+    }
+  },
+  {
     "id": "qlt-slimbox60",
     "name": "SLIMBOX60",
     "img": "strips/SLBOX-Multicurrent-1024x940.webp",
