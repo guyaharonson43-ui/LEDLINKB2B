@@ -436,6 +436,7 @@
   "SL24200 Slim 24V": [{ label: "דף קטלוגי — SL24", file: "datasheets/SL24.pdf" }, { label: "דף נתונים — SL24", file: "datasheets/DS_SL24.pdf" }, { label: "הוראות הפעלה", file: "datasheets/I_SL24.pdf" }],
   "SL2435": [{ label: "דף קטלוגי — SL", file: "datasheets/SL.pdf" }, { label: "דף נתונים — SL", file: "datasheets/DS_SL.pdf" }, { label: "הוראות הפעלה", file: "datasheets/I_Alimentatori.pdf" }],
   "SLIMBOX100": [{ label: "דף קטלוגי — SLBOX", file: "datasheets/SLBOX.pdf" }, { label: "דף נתונים — SLIMBOX", file: "datasheets/DS_SLIMBOX.pdf" }, { label: "הוראות הפעלה", file: "datasheets/I_SLBOX.pdf" }],
+  "SLIMBOX10048": [{ label: "דף קטלוגי — SLBOX", file: "datasheets/SLBOX.pdf" }, { label: "דף נתונים — SLIMBOX", file: "datasheets/DS_SLIMBOX.pdf" }, { label: "הוראות הפעלה", file: "datasheets/I_SLBOX.pdf" }],
   "SLIMBOX60": [{ label: "דף קטלוגי — SLBOX", file: "datasheets/SLBOX.pdf" }, { label: "דף נתונים — SLIMBOX", file: "datasheets/DS_SLIMBOX.pdf" }, { label: "הוראות הפעלה", file: "datasheets/I_SLBOX.pdf" }],
   "SLIMBOX60 1": [{ label: "דף קטלוגי — SLBOXD", file: "datasheets/SLBOXD.pdf" }, { label: "דף נתונים — SLBOXD", file: "datasheets/DS_SLBOXD.pdf" }, { label: "הוראות הפעלה", file: "datasheets/I_SLBOX.pdf" }],
   "SPI03": [{ label: "דף קטלוגי — SPI03", file: "datasheets/SPI03.pdf" }, { label: "דף נתונים — SPI03", file: "datasheets/DS_SPI03.pdf" }, { label: "הוראות הפעלה", file: "datasheets/I_SPI03_PT.pdf" }],

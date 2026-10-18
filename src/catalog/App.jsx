@@ -560,6 +560,21 @@ export default function App() {
               </div>
             )}
 
+            {/* סינון פעיל מוסתר במובייל מאחורי כפתור "סינון" — לוכד משתמשים שמנקים רק את
+                שורת החיפוש ונשארים עם רשימה מצומצמת. כאן תמיד יש דרך חזרה בלחיצה אחת. */}
+            {hasFacets(activeTab) && activeFilterCount > 0 && (
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                gap: 12, marginBottom: 16, padding: '10px 14px', background: '#FFF8E8',
+                border: '1px solid #F0DBA8', borderRadius: 8, fontSize: 14, color: '#1C1C1C' }}>
+                <span>מוצגים {cards.length} מוצרים · {activeFilterCount} סינונים פעילים</span>
+                <button onClick={() => { setSearch(''); setStripF(emptyFilters()); setPsF(emptyFilters()); }}
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#9A6A00',
+                    fontWeight: 700, fontSize: 14, fontFamily: 'Heebo, sans-serif', textDecoration: 'underline', padding: 4 }}>
+                  נקה הכל
+                </button>
+              </div>
+            )}
+
             {loading ? (
               <div className="products-grid">
                 {Array.from({ length: 12 }).map((_, i) => <SkeletonCard key={i} />)}
