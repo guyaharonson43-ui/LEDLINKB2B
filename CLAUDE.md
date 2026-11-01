@@ -86,7 +86,7 @@
 2. **`cleanName()`** — מנקה HTML entities משמות מוצרים
 3. **סינון סטריפ** — משלב `desc` ו-`specs` דרך `stripMeta.js`
 4. **Datasheet lookup** — קודם לפי `product.id`, אחר כך לפי `product.name`
-5. **WhatsApp** — המספר `972504722550` מוגדר כ-`WA_NUMBER` (tools/guides) ובקישורי `wa.me` בקטלוג
+5. **WhatsApp** — המספר `97286326059` מוגדר כ-`WA_NUMBER` (tools/guides) ובקישורי `wa.me` בקטלוג
 6. **URL parameters** — `catalog.html?tab=סטריפ LED`, `?product=<id>` (פותח מוצר), `?q=`, `?sub=`, `?cfg=` (תכנון פרופיל משותף); `tools.html?tool=circadian`
 7. **מקור אמת לנתוני מוצר** — דפי הנתונים של QLT ב-`datasheets/`. אתר qlt.it חסום מסביבת הענן
 

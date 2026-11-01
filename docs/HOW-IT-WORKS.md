@@ -101,7 +101,7 @@ git push -u origin feat/my-change  # לשלוח ל-GitHub
 - **Functions**: קוד צד-שרת קטן (למשל שליחת מייל)
 - הפניות (redirects) וכותרות (headers) דרך `netlify.toml`
 
-**מצב נוכחי:** לא בשימוש. האתר פשוט ולידים מגיעים דרך WhatsApp (`wa.me/972504722550`), אז GitHub Pages מספיק.
+**מצב נוכחי:** לא בשימוש. האתר פשוט ולידים מגיעים דרך WhatsApp (`wa.me/97286326059`), אז GitHub Pages מספיק.
 
 **אם תרצה לעבור ל-Netlify בעתיד:**
 1. להתחבר ל-Netlify עם GitHub ולבחור את הריפו

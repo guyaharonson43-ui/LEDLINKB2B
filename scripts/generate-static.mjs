@@ -256,7 +256,7 @@ function escHtml(s) {
 // its own for search engines and AI crawlers (which don't run the catalog JS).
 
 const productDir = join(DIST, 'product');
-const WA_NUMBER  = '972504722550';
+const WA_NUMBER  = '97286326059';
 
 const CATEGORY_INFO = {
   'פרופילים': {
@@ -483,7 +483,7 @@ const SITE_HEADER = `<header class="nav"><div class="nav-in">
 
 const SITE_FOOTER = `<footer><div class="foot-in">
   <div><strong>LEDLink</strong> · יצרן רכיבי תאורת LED מאז 2009 · יצירה 19, רחובות</div>
-  <div><a href="tel:+97286326059">08-6326059</a> · <a href="mailto:office@ledlink.co.il">office@ledlink.co.il</a> · א׳–ה׳ <span dir="ltr">07:00–15:00</span></div>
+  <div><a href="tel:+97286326059">08-6326059</a> · <a href="mailto:office@ledlink.co.il">office@ledlink.co.il</a> · א׳–ה׳ <span dir="ltr">08:00–15:00</span></div>
   <div><a href="/profiles/">פרופילי אלומיניום ל-LED</a></div>
 </div></footer>`;
 

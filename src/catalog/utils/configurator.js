@@ -592,8 +592,8 @@ export function initConfigurator(rootEl, onCloseFn, opts) {
             + '\n\n📐 השרטוט המלא:\n' + shareUrl;
     var isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
     waUrl = isMobile
-      ? 'https://wa.me/972504722550?text=' + encodeURIComponent(msg)
-      : 'https://web.whatsapp.com/send?phone=972504722550&text=' + encodeURIComponent(msg);
+      ? 'https://wa.me/97286326059?text=' + encodeURIComponent(msg)
+      : 'https://web.whatsapp.com/send?phone=97286326059&text=' + encodeURIComponent(msg);
     goToStep(4);
   }
 
