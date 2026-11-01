@@ -8,7 +8,7 @@
 var CFG    = window.CHATBOT_CONFIG || {};
 var API_KEY  = CFG.CLAUDE_API_KEY  || '';
 var IMG_BASE = CFG.IMG_BASE        || 'file:///C:/Users/guy/Downloads/ledlink/';
-var WA_NUM   = CFG.WHATSAPP_NUMBER || '972501234567';
+var WA_NUM   = CFG.WHATSAPP_NUMBER || '97286326059';
 
 // ── Color Temperature Table ──────────────────────────────────────────────
 var COLOR_TEMP = {

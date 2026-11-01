@@ -647,7 +647,7 @@ React.createElement("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fi
 ), /*#__PURE__*/
 React.createElement("div", null, /*#__PURE__*/
 React.createElement("div", { className: "footer-col-title" }, "\u05E9\u05E2\u05D5\u05EA \u05E4\u05E2\u05D9\u05DC\u05D5\u05EA"), /*#__PURE__*/
-React.createElement("div", { className: "footer-hours-row" }, /*#__PURE__*/React.createElement("span", { className: "hours-day" }, "\u05E8\u05D0\u05E9\u05D5\u05DF \u2013 \u05D7\u05DE\u05D9\u05E9\u05D9"), /*#__PURE__*/React.createElement("span", { className: "hours-open" }, "15:00 \u2013 08:00")), /*#__PURE__*/
+React.createElement("div", { className: "footer-hours-row" }, /*#__PURE__*/React.createElement("span", { className: "hours-day" }, "\u05E8\u05D0\u05E9\u05D5\u05DF \u2013 \u05D7\u05DE\u05D9\u05E9\u05D9"), /*#__PURE__*/React.createElement("span", { className: "hours-open", dir: "ltr" }, "08:00 \u2013 15:00")), /*#__PURE__*/
 React.createElement("div", { className: "footer-hours-row" }, /*#__PURE__*/React.createElement("span", { className: "hours-day" }, "\u05E9\u05D9\u05E9\u05D9"), /*#__PURE__*/React.createElement("span", { className: "hours-closed" }, "\u05E1\u05D2\u05D5\u05E8")), /*#__PURE__*/
 React.createElement("div", { className: "footer-hours-row" }, /*#__PURE__*/React.createElement("span", { className: "hours-day" }, "\u05E9\u05D1\u05EA"), /*#__PURE__*/React.createElement("span", { className: "hours-closed" }, "\u05E1\u05D2\u05D5\u05E8"))
 )
