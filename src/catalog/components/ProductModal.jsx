@@ -310,7 +310,7 @@ export default function ProductModal({ product: initialProduct, variants, onClos
 
           {/* Actions */}
           <div style={{ display: 'flex', gap: 12, marginTop: 24 }}>
-            <a href={`https://wa.me/972504722550?text=${encodeURIComponent('שלום LEDLink, אשמח לקבל מחיר עבור: ' + product.name + ' (מק"ט: ' + product.id + ')')}`}
+            <a href={`https://wa.me/97286326059?text=${encodeURIComponent('שלום LEDLink, אשמח לקבל מחיר עבור: ' + product.name + ' (מק"ט: ' + product.id + ')')}`}
               target="_blank" rel="noopener noreferrer" className="btn-gold"
               style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, textDecoration: 'none' }}
               onClick={() => trackEvent('whatsapp_click', { product_id: product.id, product_name: product.name })}>
