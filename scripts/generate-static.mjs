@@ -633,7 +633,7 @@ for (const [from, to] of Object.entries(PRODUCT_REDIRECTS)) {
 
 // ── 7b. Guide pages (dist/guides/{slug}/index.html) ─────────────────────────
 // guides.html is a React app, so without JS (AI crawlers) it's an empty page
-// and all seven guides share one URL. Each guide gets its own static page
+// and all guides share one URL. Each guide gets its own static page
 // here, rendered from the same src/guides/data.js the React app uses.
 
 const guideDir = join(DIST, 'guides');
