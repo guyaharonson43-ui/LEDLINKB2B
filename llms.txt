@@ -46,6 +46,7 @@
 - [התקנת פרופיל שקוע גבס — צעד אחר צעד](https://ledlink.co.il/guides/drywall-led-profile-installation/)
 - [IP44 / IP65 / IP67 — איזה דירוג לאיזה חלל?](https://ledlink.co.il/guides/ip-rating-guide/)
 - [גוון אור 2700K, 3000K או 4000K?](https://ledlink.co.il/guides/color-temperature-guide/)
+- [פס לד לפרגולה — מדריך תכנון והתקנה](https://ledlink.co.il/guides/pergola-led-strip/): דרגת IP, הספק למטר, פרופיל מוגן מים ודרייבר לחוץ
 - [שאלות נפוצות](https://ledlink.co.il/faq.html): משלוחים, איסוף, התאמה אישית וייעוץ
 - [אודות LEDLink](https://ledlink.co.il/about.html): היסטוריית החברה והמפעל
 
