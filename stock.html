@@ -146,6 +146,7 @@
               <th class="hide-sm">סוג</th>
               <th class="hide-sm">מיקום</th>
               <th>מלאי</th>
+              <th>במשטח</th>
               <th>מצב</th>
             </tr>
           </thead>
@@ -221,21 +222,23 @@
 
       $('rows').innerHTML = list.length ? list.map((i) => {
         const s = statusOf(i);
-        const extra = i.palletUnits ? `<div class="sub">במשטחים: ${fmt(i.palletUnits)}</div>` : '';
+        const pallet = i.palletUnits ? `${fmt(i.palletUnits)} ${escapeHtml(i.unit)}` : '—';
         const sku = i.sku ? `<div class="sub">${escapeHtml(i.sku)}</div>` : '';
         const color = i.color ? ` · ${escapeHtml(i.color)}` : '';
         return `<tr>
           <td><strong>${escapeHtml(i.name)}</strong>${sku}${color ? `<div class="sub">${color.slice(3)}</div>` : ''}</td>
           <td class="hide-sm">${escapeHtml(i.kind)}</td>
           <td class="hide-sm">${escapeHtml(i.location || '-')}</td>
-          <td class="num">${fmt(i.stock)} ${escapeHtml(i.unit)}${extra}</td>
+          <td class="num">${fmt(i.stock)} ${escapeHtml(i.unit)}</td>
+          <td class="num">${pallet}</td>
           <td><span class="badge ${s}">${STATUS_LABEL[s]}</span></td>
         </tr>`;
-      }).join('') : '<tr><td colspan="5" class="empty">לא נמצאו פריטים</td></tr>';
+      }).join('') : '<tr><td colspan="6" class="empty">לא נמצאו פריטים</td></tr>';
 
       const out = items.filter((i) => statusOf(i) === 'out').length;
       const low = items.filter((i) => statusOf(i) === 'low').length;
-      $('meta').textContent = `${list.length} מתוך ${items.length} פריטים · אזלו: ${out} · נמוכים: ${low}`;
+      const onPallets = items.filter((i) => i.palletUnits > 0).length;
+      $('meta').textContent = `${list.length} מתוך ${items.length} פריטים · אזלו: ${out} · נמוכים: ${low} · יש משטחים: ${onPallets}`;
     }
 
     function escapeHtml(s) {
