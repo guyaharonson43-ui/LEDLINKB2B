@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>מצב מלאי</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #E8A020;
+      --gold-dark: #C4880A;
+      --ink: #1C1C1C;
+      --bg: #F4F4F0;
+      --card: #FFFFFF;
+      --line: #E2E2DC;
+      --muted: #6B6B66;
+      --ok: #2E7D32;
+      --low: #B26A00;
+      --out: #C62828;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --ink: #F2F2EE; --bg: #161614; --card: #22221F; --line: #3A3A35; --muted: #A3A39C;
+      }
+    }
+    :root[data-theme="dark"] {
+      --ink: #F2F2EE; --bg: #161614; --card: #22221F; --line: #3A3A35; --muted: #A3A39C;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Heebo', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      direction: rtl;
+      min-height: 100vh;
+    }
+    header {
+      background: #1A1A1A;
+      color: #fff;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    header h1 { font-size: 18px; margin: 0; font-weight: 700; }
+    header h1 span { color: var(--gold); }
+    main { max-width: 980px; margin: 0 auto; padding: 16px; }
+    button, select, input {
+      font: inherit;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--ink);
+      padding: 9px 12px;
+    }
+    button { cursor: pointer; }
+    button.primary { background: var(--gold); border-color: var(--gold); color: #1C1C1C; font-weight: 700; }
+    button.ghost { background: transparent; color: #fff; border-color: #555; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .login { max-width: 360px; margin: 40px auto; }
+    .login h2 { margin: 0 0 12px; font-size: 18px; }
+    .login form { display: flex; flex-direction: column; gap: 10px; }
+    .login input { width: 100%; }
+    .error { color: var(--out); font-size: 14px; min-height: 18px; }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+      align-items: center;
+    }
+    .toolbar input[type="search"] { flex: 1 1 220px; min-width: 0; }
+    .meta { color: var(--muted); font-size: 13px; margin: 0 0 10px; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; background: var(--card); }
+    th, td { padding: 10px 8px; border-bottom: 1px solid var(--line); text-align: right; font-size: 14px; }
+    th { font-size: 13px; color: var(--muted); font-weight: 500; }
+    td.num { white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .badge.ok { background: var(--ok); }
+    .badge.low { background: var(--low); }
+    .badge.out { background: var(--out); }
+    .sub { color: var(--muted); font-size: 12px; }
+    .empty { text-align: center; color: var(--muted); padding: 24px; }
+    @media (max-width: 600px) {
+      header h1 { font-size: 16px; }
+      th, td { font-size: 13px; padding: 8px 6px; }
+      .hide-sm { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><span>LED</span>LINK · מצב מלאי</h1>
+    <button id="logout" class="ghost" hidden>יציאה</button>
+  </header>
+
+  <main>
+    <section id="loginView" class="card login" hidden>
+      <h2>כניסת מנהל</h2>
+      <form id="loginForm" autocomplete="off">
+        <input type="password" id="password" placeholder="סיסמת מנהל" required>
+        <button type="submit" class="primary" id="loginBtn">כניסה</button>
+        <div class="error" id="loginError"></div>
+      </form>
+    </section>
+
+    <section id="stockView" hidden>
+      <div class="toolbar">
+        <input type="search" id="search" placeholder="חיפוש לפי שם, מק״ט, צבע או מיקום">
+        <select id="kindFilter">
+          <option value="">כל הסוגים</option>
+        </select>
+        <select id="statusFilter">
+          <option value="">כל המצבים</option>
+          <option value="out">אזל</option>
+          <option value="low">מלאי נמוך</option>
+          <option value="ok">יש במלאי</option>
+        </select>
+        <button id="refresh">רענון</button>
+      </div>
+      <p class="meta" id="meta"></p>
+      <div class="error" id="stockError"></div>
+      <div class="table-wrap card" style="padding:0">
+        <table>
+          <thead>
+            <tr>
+              <th>פריט</th>
+              <th class="hide-sm">סוג</th>
+              <th class="hide-sm">מיקום</th>
+              <th>מלאי</th>
+              <th>מצב</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Address of the inventory server (the Render web service). Set this once.
+    const API_BASE = 'https://YOUR-INVENTORY-APP.onrender.com';
+    const TOKEN_KEY = 'ledlink_stock_token';
+
+    const $ = (id) => document.getElementById(id);
+    let items = [];
+
+    function readToken() {
+      try { return localStorage.getItem(TOKEN_KEY) || ''; } catch { return ''; }
+    }
+    function saveToken(t) {
+      try { t ? localStorage.setItem(TOKEN_KEY, t) : localStorage.removeItem(TOKEN_KEY); } catch {}
+    }
+
+    function show(view) {
+      $('loginView').hidden = view !== 'login';
+      $('stockView').hidden = view !== 'stock';
+      $('logout').hidden = view !== 'stock';
+    }
+
+    function statusOf(i) {
+      if (i.stock <= 0) return 'out';
+      if (i.minStock > 0 && i.stock <= i.minStock) return 'low';
+      return 'ok';
+    }
+    const STATUS_LABEL = { out: 'אזל', low: 'נמוך', ok: 'יש' };
+    const fmt = (n) => Number(n || 0).toLocaleString('he-IL', { maximumFractionDigits: 3 });
+
+    async function api(path, options = {}) {
+      const res = await fetch(API_BASE + path, options);
+      let body = {};
+      try { body = await res.json(); } catch {}
+      return { ok: res.ok, status: res.status, body };
+    }
+
+    async function login(password) {
+      const r = await api('/api/site/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password }),
+      });
+      if (!r.ok) throw new Error(r.body.error || 'הכניסה נכשלה');
+      saveToken(r.body.token);
+    }
+
+    function fillKinds() {
+      const kinds = [...new Set(items.map((i) => i.kind))].sort();
+      const current = $('kindFilter').value;
+      $('kindFilter').innerHTML = '<option value="">כל הסוגים</option>' +
+        kinds.map((k) => `<option value="${k}">${k}</option>`).join('');
+      $('kindFilter').value = kinds.includes(current) ? current : '';
+    }
+
+    function render() {
+      const q = $('search').value.trim().toLowerCase();
+      const kind = $('kindFilter').value;
+      const status = $('statusFilter').value;
+      const list = items
+        .filter((i) => !kind || i.kind === kind)
+        .filter((i) => !status || statusOf(i) === status)
+        .filter((i) => !q || [i.name, i.sku, i.color, i.location].some((f) => String(f || '').toLowerCase().includes(q)))
+        .sort((a, b) => a.name.localeCompare(b.name, 'he'));
+
+      $('rows').innerHTML = list.length ? list.map((i) => {
+        const s = statusOf(i);
+        const extra = i.palletUnits ? `<div class="sub">במשטחים: ${fmt(i.palletUnits)}</div>` : '';
+        const sku = i.sku ? `<div class="sub">${escapeHtml(i.sku)}</div>` : '';
+        const color = i.color ? ` · ${escapeHtml(i.color)}` : '';
+        return `<tr>
+          <td><strong>${escapeHtml(i.name)}</strong>${sku}${color ? `<div class="sub">${color.slice(3)}</div>` : ''}</td>
+          <td class="hide-sm">${escapeHtml(i.kind)}</td>
+          <td class="hide-sm">${escapeHtml(i.location || '-')}</td>
+          <td class="num">${fmt(i.stock)} ${escapeHtml(i.unit)}${extra}</td>
+          <td><span class="badge ${s}">${STATUS_LABEL[s]}</span></td>
+        </tr>`;
+      }).join('') : '<tr><td colspan="5" class="empty">לא נמצאו פריטים</td></tr>';
+
+      const out = items.filter((i) => statusOf(i) === 'out').length;
+      const low = items.filter((i) => statusOf(i) === 'low').length;
+      $('meta').textContent = `${list.length} מתוך ${items.length} פריטים · אזלו: ${out} · נמוכים: ${low}`;
+    }
+
+    function escapeHtml(s) {
+      return String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+
+    async function loadStock() {
+      $('stockError').textContent = '';
+      const token = readToken();
+      if (!token) return show('login');
+      try {
+        const r = await api('/api/site/stock', { headers: { Authorization: 'Bearer ' + token } });
+        if (r.status === 401) {
+          saveToken('');
+          return show('login');
+        }
+        if (!r.ok) throw new Error(r.body.error || 'לא ניתן לטעון את המלאי');
+        items = r.body.items || [];
+        show('stock');
+        fillKinds();
+        render();
+        const t = new Date(r.body.updatedAt);
+        $('meta').textContent += ` · עודכן ${t.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' })}`;
+      } catch (err) {
+        show('stock');
+        $('stockError').textContent = err.message || 'שגיאת תקשורת';
+      }
+    }
+
+    $('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      $('loginError').textContent = '';
+      $('loginBtn').disabled = true;
+      try {
+        await login($('password').value);
+        $('password').value = '';
+        await loadStock();
+      } catch (err) {
+        $('loginError').textContent = err.message || 'הכניסה נכשלה';
+      } finally {
+        $('loginBtn').disabled = false;
+      }
+    });
+
+    $('logout').addEventListener('click', () => {
+      saveToken('');
+      items = [];
+      show('login');
+    });
+    $('refresh').addEventListener('click', loadStock);
+    $('search').addEventListener('input', render);
+    $('kindFilter').addEventListener('change', render);
+    $('statusFilter').addEventListener('change', render);
+
+    loadStock();
+  </script>
+</body>
+</html>
